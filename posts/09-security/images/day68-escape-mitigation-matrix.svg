@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" width="980" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="980" height="600" fill="#ffffff"/>
+  <text x="490" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">탈출 시나리오별 방어 장치 효과</text>
+  <rect x="20" y="60" width="940" height="56" fill="#334155"/>
+  <g fill="#ffffff" text-anchor="middle" font-weight="700">
+    <text x="145" y="93" font-size="14">시나리오</text>
+    <text x="327" y="84" font-size="12">user namespace</text>
+    <text x="327" y="104" font-size="11">(remap · rootless)</text>
+    <text x="442" y="84" font-size="12">capabilities</text>
+    <text x="442" y="104" font-size="11">drop ALL</text>
+    <text x="557" y="84" font-size="12">seccomp</text>
+    <text x="557" y="104" font-size="11">(기본 프로파일)</text>
+    <text x="672" y="84" font-size="12">AppArmor</text>
+    <text x="672" y="104" font-size="11">(커스텀)</text>
+    <text x="787" y="84" font-size="12">read-only</text>
+    <text x="787" y="104" font-size="11">루트 FS</text>
+    <text x="902" y="84" font-size="12">정책으로 금지</text>
+    <text x="902" y="104" font-size="11">(PSA · Kyverno)</text>
+  </g>
+  <rect x="20" y="116" width="940" height="52" fill="#f8fafc"/>
+  <line x1="20" y1="168" x2="960" y2="168" stroke="#e2e8f0"/>
+  <text x="32" y="147" font-size="13" font-weight="700" fill="#0f172a">--privileged</text>
+  <rect x="277" y="125" width="100" height="34" rx="6" fill="#fef3c7"/><text x="327" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="392" y="125" width="100" height="34" rx="6" fill="#fee2e2"/><text x="442" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="507" y="125" width="100" height="34" rx="6" fill="#fee2e2"/><text x="557" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">해제됨</text>
+  <rect x="622" y="125" width="100" height="34" rx="6" fill="#fee2e2"/><text x="672" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">해제됨</text>
+  <rect x="737" y="125" width="100" height="34" rx="6" fill="#fee2e2"/><text x="787" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="852" y="125" width="100" height="34" rx="6" fill="#dcfce7"/><text x="902" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <line x1="20" y1="220" x2="960" y2="220" stroke="#e2e8f0"/>
+  <text x="32" y="199" font-size="13" font-weight="700" fill="#0f172a">docker.sock 마운트</text>
+  <rect x="277" y="177" width="100" height="34" rx="6" fill="#fef3c7"/><text x="327" y="199" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="392" y="177" width="100" height="34" rx="6" fill="#fee2e2"/><text x="442" y="199" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="507" y="177" width="100" height="34" rx="6" fill="#fee2e2"/><text x="557" y="199" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="622" y="177" width="100" height="34" rx="6" fill="#fef3c7"/><text x="672" y="199" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="737" y="177" width="100" height="34" rx="6" fill="#fee2e2"/><text x="787" y="199" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="852" y="177" width="100" height="34" rx="6" fill="#dcfce7"/><text x="902" y="199" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <rect x="20" y="220" width="940" height="52" fill="#f8fafc"/>
+  <line x1="20" y1="272" x2="960" y2="272" stroke="#e2e8f0"/>
+  <text x="32" y="243" font-size="13" font-weight="700" fill="#0f172a">호스트 경로 마운트</text>
+  <text x="32" y="261" font-size="11" fill="#64748b">(/, /etc, /var/lib/kubelet)</text>
+  <rect x="277" y="229" width="100" height="34" rx="6" fill="#dcfce7"/><text x="327" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <rect x="392" y="229" width="100" height="34" rx="6" fill="#fef3c7"/><text x="442" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="507" y="229" width="100" height="34" rx="6" fill="#fee2e2"/><text x="557" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="622" y="229" width="100" height="34" rx="6" fill="#fef3c7"/><text x="672" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="737" y="229" width="100" height="34" rx="6" fill="#fee2e2"/><text x="787" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="852" y="229" width="100" height="34" rx="6" fill="#dcfce7"/><text x="902" y="251" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <line x1="20" y1="324" x2="960" y2="324" stroke="#e2e8f0"/>
+  <text x="32" y="295" font-size="13" font-weight="700" fill="#0f172a">호스트 PID · 네트워크 공유</text>
+  <text x="32" y="313" font-size="11" fill="#64748b">(+ SYS_PTRACE 등)</text>
+  <rect x="277" y="281" width="100" height="34" rx="6" fill="#fef3c7"/><text x="327" y="303" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="392" y="281" width="100" height="34" rx="6" fill="#fef3c7"/><text x="442" y="303" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="507" y="281" width="100" height="34" rx="6" fill="#fee2e2"/><text x="557" y="303" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="622" y="281" width="100" height="34" rx="6" fill="#fef3c7"/><text x="672" y="303" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="737" y="281" width="100" height="34" rx="6" fill="#fee2e2"/><text x="787" y="303" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="852" y="281" width="100" height="34" rx="6" fill="#dcfce7"/><text x="902" y="303" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <rect x="20" y="324" width="940" height="52" fill="#f8fafc"/>
+  <line x1="20" y1="376" x2="960" y2="376" stroke="#e2e8f0"/>
+  <text x="32" y="347" font-size="13" font-weight="700" fill="#0f172a">위험 capability 추가</text>
+  <text x="32" y="365" font-size="11" fill="#64748b">(SYS_ADMIN, SYS_MODULE 등)</text>
+  <rect x="277" y="333" width="100" height="34" rx="6" fill="#fef3c7"/><text x="327" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="392" y="333" width="100" height="34" rx="6" fill="#dcfce7"/><text x="442" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <rect x="507" y="333" width="100" height="34" rx="6" fill="#fef3c7"/><text x="557" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="622" y="333" width="100" height="34" rx="6" fill="#fef3c7"/><text x="672" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="737" y="333" width="100" height="34" rx="6" fill="#fee2e2"/><text x="787" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="852" y="333" width="100" height="34" rx="6" fill="#dcfce7"/><text x="902" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <line x1="20" y1="428" x2="960" y2="428" stroke="#e2e8f0"/>
+  <text x="32" y="399" font-size="13" font-weight="700" fill="#0f172a">침입 후 도구 설치 · 변조</text>
+  <text x="32" y="417" font-size="11" fill="#64748b">(리버스 셸, 마이너 등)</text>
+  <rect x="277" y="385" width="100" height="34" rx="6" fill="#fee2e2"/><text x="327" y="407" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="392" y="385" width="100" height="34" rx="6" fill="#fee2e2"/><text x="442" y="407" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="507" y="385" width="100" height="34" rx="6" fill="#fef3c7"/><text x="557" y="407" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="622" y="385" width="100" height="34" rx="6" fill="#fef3c7"/><text x="672" y="407" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="737" y="385" width="100" height="34" rx="6" fill="#dcfce7"/><text x="787" y="407" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">차단</text>
+  <rect x="852" y="385" width="100" height="34" rx="6" fill="#fef3c7"/><text x="902" y="407" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="20" y="428" width="940" height="52" fill="#f8fafc"/>
+  <line x1="20" y1="480" x2="960" y2="480" stroke="#e2e8f0"/>
+  <text x="32" y="451" font-size="13" font-weight="700" fill="#0f172a">런타임 · 커널 취약점</text>
+  <text x="32" y="469" font-size="11" fill="#64748b">(runc CVE-2019-5736 등)</text>
+  <rect x="277" y="437" width="100" height="34" rx="6" fill="#fef3c7"/><text x="327" y="459" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="392" y="437" width="100" height="34" rx="6" fill="#fef3c7"/><text x="442" y="459" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="507" y="437" width="100" height="34" rx="6" fill="#fef3c7"/><text x="557" y="459" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="622" y="437" width="100" height="34" rx="6" fill="#fef3c7"/><text x="672" y="459" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">부분</text>
+  <rect x="737" y="437" width="100" height="34" rx="6" fill="#fee2e2"/><text x="787" y="459" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <rect x="852" y="437" width="100" height="34" rx="6" fill="#fee2e2"/><text x="902" y="459" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">무력</text>
+  <line x1="270" y1="116" x2="270" y2="480" stroke="#e2e8f0"/>
+  <g font-size="12" fill="#334155">
+    <rect x="20" y="498" width="16" height="16" rx="3" fill="#dcfce7"/><text x="42" y="511">차단 = 시나리오를 직접 막거나 무의미하게 만듦</text>
+    <rect x="340" y="498" width="16" height="16" rx="3" fill="#fef3c7"/><text x="362" y="511">부분 = 피해 축소 또는 일부 경로만 차단</text>
+    <rect x="620" y="498" width="16" height="16" rx="3" fill="#fee2e2"/><text x="642" y="511">무력 · 해제됨 = 효과 없음 또는 옵션이 장치를 끔</text>
+  </g>
+  <text x="490" y="548" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">privileged · docker.sock은 컨테이너 안의 장치로 못 막는다 → 정책으로 금지</text>
+  <text x="490" y="574" text-anchor="middle" font-size="13" fill="#475569">런타임 · 커널 취약점의 1차 방어는 패치(runc · containerd · 커널)와 샌드박스 런타임(gVisor · Kata)</text>
+</svg>

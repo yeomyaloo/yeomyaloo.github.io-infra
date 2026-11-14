@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">SLI → SLO → SLA, 그리고 에러 버짓</text>
+
+  <!-- ===== Left: SLI / SLO / SLA ===== -->
+  <rect x="20" y="60" width="430" height="420" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <rect x="40" y="76" width="390" height="104" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="60" y="104" font-size="17" font-weight="700" fill="#0f766e">SLI · 측정값</text>
+  <text x="200" y="104" font-size="13" fill="#334155">엔지니어가 본다</text>
+  <text x="60" y="132" font-size="14" fill="#0f172a">좋은 이벤트 ÷ 전체 이벤트</text>
+  <text x="60" y="160" font-size="13" fill="#334155">예: 5xx 아닌 응답 비율 = 99.95%</text>
+
+  <rect x="40" y="216" width="390" height="104" rx="10" fill="#ffffff" stroke="#0d9488" stroke-width="2"/>
+  <text x="60" y="244" font-size="17" font-weight="700" fill="#0f766e">SLO · 내부 목표</text>
+  <text x="214" y="244" font-size="13" fill="#334155">개발·운영·제품이 합의</text>
+  <text x="60" y="272" font-size="14" fill="#0f172a">30일 동안 SLI ≥ 99.9%</text>
+  <text x="60" y="300" font-size="13" fill="#334155">에러 버짓 = 1 − SLO = 0.1%</text>
+
+  <rect x="40" y="356" width="390" height="104" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="60" y="384" font-size="17" font-weight="700" fill="#b45309">SLA · 고객 계약</text>
+  <text x="208" y="384" font-size="13" fill="#334155">영업·법무·고객</text>
+  <text x="60" y="412" font-size="14" fill="#0f172a">월 99.5% 미만이면 요금 크레딧</text>
+  <text x="60" y="440" font-size="13" fill="#334155">SLO보다 느슨하게 → 대응할 여유</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="235" y1="180" x2="235" y2="212" marker-end="url(#arrow)"/>
+    <line x1="235" y1="320" x2="235" y2="352" marker-end="url(#arrow)"/>
+  </g>
+  <text x="248" y="202" font-size="12" fill="#334155">목표를 건다</text>
+  <text x="248" y="342" font-size="12" fill="#334155">못 지키면 비용</text>
+
+  <!-- ===== Right: error budget burn ===== -->
+  <rect x="470" y="60" width="470" height="420" rx="12" fill="#ffffff" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="705" y="88" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">남은 에러 버짓 (SLO 99.9%, 30일 창)</text>
+
+  <!-- grid -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="540" y1="120" x2="910" y2="120"/>
+    <line x1="540" y1="180" x2="910" y2="180"/>
+    <line x1="540" y1="240" x2="910" y2="240"/>
+    <line x1="540" y1="300" x2="910" y2="300"/>
+    <line x1="725" y1="120" x2="725" y2="360"/>
+    <line x1="910" y1="120" x2="910" y2="360"/>
+  </g>
+  <g stroke="#334155" stroke-width="1.5">
+    <line x1="540" y1="120" x2="540" y2="360"/>
+    <line x1="540" y1="360" x2="910" y2="360"/>
+  </g>
+  <g font-size="12" fill="#64748b" text-anchor="end">
+    <text x="532" y="124">100%</text>
+    <text x="532" y="244">50%</text>
+    <text x="532" y="364">0%</text>
+  </g>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="540" y="378">0일</text>
+    <text x="725" y="378">15일</text>
+    <text x="905" y="378">30일</text>
+  </g>
+
+  <!-- burn lines -->
+  <line x1="540" y1="120" x2="910" y2="360" stroke="#16a34a" stroke-width="3"/>
+  <line x1="540" y1="120" x2="725" y2="360" stroke="#f59e0b" stroke-width="3"/>
+  <line x1="540" y1="120" x2="566" y2="360" stroke="#dc2626" stroke-width="3"/>
+
+  <rect x="742" y="130" width="160" height="80" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-size="13" font-weight="700">
+    <line x1="752" y1="150" x2="774" y2="150" stroke="#16a34a" stroke-width="3"/>
+    <text x="782" y="155" fill="#15803d">번 레이트 1 → 30일</text>
+    <line x1="752" y1="172" x2="774" y2="172" stroke="#f59e0b" stroke-width="3"/>
+    <text x="782" y="177" fill="#b45309">번 레이트 2 → 15일</text>
+    <line x1="752" y1="194" x2="774" y2="194" stroke="#dc2626" stroke-width="3"/>
+    <text x="782" y="199" fill="#b91c1c">14.4 → 약 2일</text>
+  </g>
+
+  <!-- formulas -->
+  <rect x="490" y="396" width="430" height="68" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="506" y="422" font-size="13" fill="#0f172a">에러 버짓 0.1% × 43,200분 = <tspan font-weight="700">43.2분</tspan> / 30일</text>
+  <text x="506" y="448" font-size="13" fill="#0f172a">번 레이트 = 현재 에러율 ÷ (1 − SLO)</text>
+</svg>

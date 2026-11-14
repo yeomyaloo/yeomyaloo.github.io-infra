@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Chapter 8 회고 — SLO를 중심으로 도는 신뢰성 루프</text>
+  <ellipse cx="480" cy="290" rx="360" ry="170" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="380" y="83" width="200" height="74" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="480" y="103" text-anchor="middle" font-size="12" font-weight="700" fill="#0d9488">Day 58</text>
+  <text x="480" y="125" text-anchor="middle" font-size="14" font-weight="700" fill="#134e4a">SLI/SLO · 에러 버짓</text>
+  <text x="480" y="145" text-anchor="middle" font-size="12" fill="#134e4a">무엇이 '정상'인가</text>
+  <rect x="635" y="133" width="200" height="74" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="735" y="153" text-anchor="middle" font-size="12" font-weight="700" fill="#2496ed">Day 59</text>
+  <text x="735" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">OpenTelemetry</text>
+  <text x="735" y="195" text-anchor="middle" font-size="12" fill="#1e3a8a">트레이스·메트릭·로그 계측</text>
+  <rect x="740" y="253" width="200" height="74" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="840" y="273" text-anchor="middle" font-size="12" font-weight="700" fill="#2496ed">Day 60</text>
+  <text x="840" y="295" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Loki + Alloy</text>
+  <text x="840" y="315" text-anchor="middle" font-size="12" fill="#1e3a8a">로그 수집 · 검색</text>
+  <rect x="635" y="373" width="200" height="74" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="735" y="393" text-anchor="middle" font-size="12" font-weight="700" fill="#2496ed">Day 61</text>
+  <text x="735" y="415" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Tempo</text>
+  <text x="735" y="435" text-anchor="middle" font-size="12" fill="#1e3a8a">분산 트레이싱</text>
+  <rect x="380" y="423" width="200" height="74" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="443" text-anchor="middle" font-size="12" font-weight="700" fill="#f59e0b">Day 62</text>
+  <text x="480" y="465" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">Alertmanager</text>
+  <text x="480" y="485" text-anchor="middle" font-size="12" fill="#78350f">번 레이트 증상 알림</text>
+  <rect x="125" y="373" width="200" height="74" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="225" y="393" text-anchor="middle" font-size="12" font-weight="700" fill="#f59e0b">Day 63</text>
+  <text x="225" y="415" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">SLO 기반 Canary</text>
+  <text x="225" y="435" text-anchor="middle" font-size="12" fill="#78350f">나쁜 배포 자동 롤백</text>
+  <rect x="20" y="253" width="200" height="74" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="120" y="273" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">Day 64</text>
+  <text x="120" y="295" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">Chaos Mesh</text>
+  <text x="120" y="315" text-anchor="middle" font-size="12" fill="#991b1b">가설 검증 실험</text>
+  <rect x="125" y="133" width="200" height="74" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="225" y="153" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">Day 65</text>
+  <text x="225" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">장애 대응 · 회고</text>
+  <text x="225" y="195" text-anchor="middle" font-size="12" fill="#991b1b">런북 · 온콜 · 포스트모템</text>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="580" y1="140" x2="631" y2="150" marker-end="url(#arrow)"/>
+    <line x1="767" y1="207" x2="805" y2="250" marker-end="url(#arrow)"/>
+    <line x1="808" y1="327" x2="770" y2="370" marker-end="url(#arrow)"/>
+    <line x1="635" y1="430" x2="584" y2="440" marker-end="url(#arrow)"/>
+    <line x1="380" y1="440" x2="329" y2="430" marker-end="url(#arrow)"/>
+    <line x1="193" y1="373" x2="155" y2="330" marker-end="url(#arrow)"/>
+    <line x1="152" y1="253" x2="190" y2="210" marker-end="url(#arrow)"/>
+    <line x1="325" y1="150" x2="376" y2="140" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="330" y="225" width="300" height="130" rx="14" fill="#0d9488"/>
+  <text x="480" y="260" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">SLO · 에러 버짓</text>
+  <text x="480" y="288" text-anchor="middle" font-size="13" fill="#ccfbf1">모든 판단의 공통 기준</text>
+  <text x="480" y="312" text-anchor="middle" font-size="12" fill="#ccfbf1">알림 임계값 · 배포 합격선 ·</text>
+  <text x="480" y="332" text-anchor="middle" font-size="12" fill="#ccfbf1">실험 허용 여부 · 회고의 영향 범위</text>
+  <g font-size="12">
+    <rect x="150" y="522" width="14" height="14" fill="#ccfbf1" stroke="#0d9488"/><text x="170" y="534" fill="#334155">정의</text>
+    <rect x="240" y="522" width="14" height="14" fill="#eff6ff" stroke="#2496ed"/><text x="260" y="534" fill="#334155">보기 (계측·수집)</text>
+    <rect x="410" y="522" width="14" height="14" fill="#fef3c7" stroke="#f59e0b"/><text x="430" y="534" fill="#334155">반응 (알림·자동 롤백)</text>
+    <rect x="610" y="522" width="14" height="14" fill="#fee2e2" stroke="#dc2626"/><text x="630" y="534" fill="#334155">검증 · 학습 (실험·회고)</text>
+  </g>
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Grafana Alloy 로그 파이프라인 (Pod 로그 → Loki)</text>
+
+  <!-- K8s API -->
+  <rect x="20" y="56" width="544" height="44" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="292" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Kubernetes API — Pod 목록·메타데이터 / pods/log (kubelet)</text>
+
+  <!-- Boxes -->
+  <g>
+    <rect x="20" y="130" width="168" height="160" rx="10" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+    <rect x="208" y="130" width="168" height="160" rx="10" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+    <rect x="396" y="130" width="168" height="160" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+    <rect x="584" y="130" width="168" height="160" rx="10" fill="#ffffff" stroke="#0d9488" stroke-width="2"/>
+    <rect x="772" y="130" width="168" height="160" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="104" y="156" font-size="15" font-weight="700" fill="#1d4ed8">① 발견</text>
+    <text x="292" y="156" font-size="15" font-weight="700" fill="#1d4ed8">② 라벨 정리</text>
+    <text x="480" y="156" font-size="15" font-weight="700" fill="#0f766e">③ 수집</text>
+    <text x="668" y="156" font-size="15" font-weight="700" fill="#0f766e">④ 가공</text>
+    <text x="856" y="156" font-size="15" font-weight="700" fill="#b45309">⑤ 전송</text>
+  </g>
+  <g text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <text x="104" y="180">discovery.kubernetes</text>
+    <text x="292" y="180">discovery.relabel</text>
+    <text x="480" y="180">loki.source.kubernetes</text>
+    <text x="668" y="180">loki.process</text>
+    <text x="856" y="180">loki.write</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#334155">
+    <text x="104" y="212">role = "pod"</text>
+    <text x="104" y="234">Pod마다 target 1개</text>
+    <text x="104" y="256">__meta_kubernetes_*</text>
+
+    <text x="292" y="212">필요한 메타데이터만</text>
+    <text x="292" y="234">Loki 라벨로 복사</text>
+    <text x="292" y="256">kube-system 등 drop</text>
+
+    <text x="480" y="212">API로 컨테이너 로그 tail</text>
+    <text x="480" y="234">특권·호스트 마운트 X</text>
+    <text x="480" y="256">Alloy 1개로 전체 수집</text>
+
+    <text x="668" y="212">stage.regex</text>
+    <text x="668" y="234" font-size="11">stage.structured_metadata</text>
+    <text x="668" y="256">stage.static_labels</text>
+
+    <text x="856" y="212">endpoint.url =</text>
+    <text x="856" y="234">loki-gateway…</text>
+    <text x="856" y="256">/loki/api/v1/push</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="104" y1="100" x2="104" y2="126" marker-end="url(#arrow)"/>
+    <line x1="480" y1="100" x2="480" y2="126" marker-end="url(#arrow)"/>
+    <line x1="188" y1="210" x2="204" y2="210" marker-end="url(#arrow)"/>
+    <line x1="376" y1="210" x2="392" y2="210" marker-end="url(#arrow)"/>
+    <line x1="564" y1="210" x2="580" y2="210" marker-end="url(#arrow)"/>
+    <line x1="752" y1="210" x2="768" y2="210" marker-end="url(#arrow)"/>
+    <line x1="856" y1="290" x2="856" y2="336" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="10" fill="#64748b" font-family="Consolas,'D2Coding',monospace">
+    <text x="112" y="118">targets</text>
+    <text x="488" y="118">logs</text>
+  </g>
+
+  <!-- Loki -->
+  <rect x="772" y="340" width="168" height="64" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="856" y="366" text-anchor="middle" font-size="15" font-weight="700" fill="#0f766e">Loki</text>
+  <text x="856" y="388" text-anchor="middle" font-size="12" fill="#334155">namespace: loki</text>
+
+  <!-- detail panel -->
+  <rect x="20" y="316" width="732" height="148" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="36" y="340" font-size="13" font-weight="700" fill="#1d4ed8">② 라벨 변환 예</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <text x="36" y="362" xml:space="preserve">__meta_kubernetes_namespace="demo-dev"                         → namespace="demo-dev"</text>
+    <text x="36" y="380">__meta_kubernetes_pod_label_app_kubernetes_io_name="demo-app" → app="demo-app"</text>
+  </g>
+  <text x="36" y="408" font-size="13" font-weight="700" fill="#0f766e">④ 가공 예</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <text x="36" y="430">"... [trace_id=9f1c3b0e... span_id=...] - work failed"</text>
+    <text x="36" y="448">→ <tspan font-family="'Noto Sans KR','Malgun Gothic',sans-serif">구조화 메타데이터</tspan> trace_id=9f1c3b0e... <tspan font-family="'Noto Sans KR','Malgun Gothic',sans-serif">(라벨 아님) + 라벨</tspan> cluster="infra-lab"</text>
+  </g>
+</svg>

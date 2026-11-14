@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">클라우드 네이티브 보안 4C</text>
+
+  <!-- Onion layers -->
+  <rect x="30" y="70" width="500" height="460" rx="16" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="280" y="98" text-anchor="middle" font-size="17" font-weight="700" fill="#7f1d1d">Cloud (인프라) — 공유기 · H01 서버</text>
+  <text x="280" y="122" text-anchor="middle" font-size="13" fill="#7f1d1d">방화벽 · SSH · 패치 · 물리 접근</text>
+
+  <rect x="70" y="140" width="420" height="370" rx="14" fill="#dbeafe" stroke="#326ce5" stroke-width="2"/>
+  <text x="280" y="168" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">Cluster — kind / kubeadm</text>
+  <text x="280" y="192" text-anchor="middle" font-size="13" fill="#1e3a8a">RBAC · NetworkPolicy · Admission · 감사 로그</text>
+
+  <rect x="110" y="210" width="340" height="280" rx="12" fill="#e0f2fe" stroke="#2496ed" stroke-width="2"/>
+  <text x="280" y="238" text-anchor="middle" font-size="17" font-weight="700" fill="#0c4a6e">Container — Docker / Pod</text>
+  <text x="280" y="262" text-anchor="middle" font-size="13" fill="#0c4a6e">이미지 스캔·서명 · seccomp · rootless</text>
+
+  <rect x="150" y="280" width="260" height="190" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="280" y="316" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">Code — RAG API · LiteLLM</text>
+  <g font-size="13" fill="#14532d" text-anchor="middle">
+    <text x="280" y="350">입력 검증 · 인증</text>
+    <text x="280" y="376">의존성 · 시크릿 관리</text>
+    <text x="280" y="402">프롬프트 인젝션 방어</text>
+  </g>
+  <text x="280" y="446" text-anchor="middle" font-size="12" fill="#166534">가장 안쪽 = 가장 마지막 방어선</text>
+
+  <!-- Right: mapping -->
+  <text x="755" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">지금까지 다룬 곳 → Chapter 9</text>
+
+  <rect x="570" y="95" width="370" height="90" rx="10" fill="#ffffff" stroke="#b91c1c"/>
+  <rect x="570" y="95" width="8" height="90" fill="#b91c1c"/>
+  <text x="590" y="118" font-size="15" font-weight="700" fill="#b91c1c">Cloud</text>
+  <text x="590" y="141" font-size="13" fill="#334155">지금까지: H01 SSH 키·ufw, H02 fail2ban,</text>
+  <text x="590" y="159" font-size="13" fill="#334155">H03 Tunnel·Tailscale</text>
+  <text x="590" y="178" font-size="13" font-weight="700" fill="#0f172a">Chapter 9: Day 67 호스트 하드닝</text>
+
+  <rect x="570" y="195" width="370" height="90" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <rect x="570" y="195" width="8" height="90" fill="#326ce5"/>
+  <text x="590" y="218" font-size="15" font-weight="700" fill="#326ce5">Cluster</text>
+  <text x="590" y="241" font-size="13" fill="#334155">지금까지: Day 19 RBAC·NetPol·PSA,</text>
+  <text x="590" y="259" font-size="13" fill="#334155">Day 55 시크릿, Day 57 Kyverno</text>
+  <text x="590" y="278" font-size="13" font-weight="700" fill="#0f172a">Chapter 9: Day 69 · 70 · 71 · 73</text>
+
+  <rect x="570" y="295" width="370" height="90" rx="10" fill="#ffffff" stroke="#2496ed"/>
+  <rect x="570" y="295" width="8" height="90" fill="#2496ed"/>
+  <text x="590" y="318" font-size="15" font-weight="700" fill="#2496ed">Container</text>
+  <text x="590" y="341" font-size="13" fill="#334155">지금까지: Day 07 기초,</text>
+  <text x="590" y="359" font-size="13" fill="#334155">Day 57 Trivy 스캔·cosign 서명</text>
+  <text x="590" y="378" font-size="13" font-weight="700" fill="#0f172a">Chapter 9: Day 68 런타임 · Day 72 Falco</text>
+
+  <rect x="570" y="395" width="370" height="90" rx="10" fill="#ffffff" stroke="#16a34a"/>
+  <rect x="570" y="395" width="8" height="90" fill="#16a34a"/>
+  <text x="590" y="418" font-size="15" font-weight="700" fill="#16a34a">Code</text>
+  <text x="590" y="441" font-size="13" fill="#334155">지금까지: Day 48 가드레일,</text>
+  <text x="590" y="459" font-size="13" fill="#334155">Day 51 CI · Day 57 의존성 스캔</text>
+  <text x="590" y="478" font-size="13" font-weight="700" fill="#0f172a">Chapter 9: Day 71 시크릿 주입 · Day 73 SSO</text>
+
+  <text x="755" y="520" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">바깥 계층이 뚫리면 안쪽 통제는 무력해진다</text>
+</svg>

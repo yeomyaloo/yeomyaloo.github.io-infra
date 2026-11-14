@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">PSA 모드 — 누가, 언제, 무엇을 검사하나</text>
+
+  <!-- user -->
+  <rect x="20" y="80" width="170" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="105" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">kubectl apply</text>
+  <text x="105" y="132" text-anchor="middle" font-size="13" fill="#64748b">Deployment</text>
+
+  <!-- API server -->
+  <rect x="240" y="60" width="440" height="140" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="460" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">API 서버 · PodSecurity 어드미션</text>
+  <rect x="260" y="102" width="190" height="82" rx="8" fill="#fde68a"/>
+  <text x="355" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">warn</text>
+  <text x="355" y="148" text-anchor="middle" font-size="12" fill="#78350f">Pod 템플릿도 검사</text>
+  <text x="355" y="168" text-anchor="middle" font-size="12" fill="#78350f">→ 응답에 Warning 헤더</text>
+  <rect x="470" y="102" width="190" height="82" rx="8" fill="#c7d2fe"/>
+  <text x="565" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">audit</text>
+  <text x="565" y="148" text-anchor="middle" font-size="12" fill="#312e81">Pod 템플릿도 검사</text>
+  <text x="565" y="168" text-anchor="middle" font-size="12" fill="#312e81">→ 감사 로그 annotation</text>
+
+  <!-- outputs -->
+  <rect x="730" y="66" width="210" height="58" rx="8" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="835" y="90" text-anchor="middle" font-size="13" fill="#78350f">터미널: Warning: would</text>
+  <text x="835" y="110" text-anchor="middle" font-size="13" fill="#78350f">violate PodSecurity ...</text>
+  <rect x="730" y="136" width="210" height="58" rx="8" fill="#eef2ff" stroke="#4f46e5"/>
+  <text x="835" y="160" text-anchor="middle" font-size="13" fill="#312e81">감사 로그 (Day 73)</text>
+  <text x="835" y="180" text-anchor="middle" font-size="12" fill="#312e81">audit-violations 기록</text>
+
+  <!-- deployment created -->
+  <rect x="240" y="250" width="200" height="60" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="340" y="276" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">Deployment 생성됨</text>
+  <text x="340" y="296" text-anchor="middle" font-size="12" fill="#14532d">enforce는 여기 관여 안 함</text>
+
+  <rect x="240" y="350" width="200" height="60" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="340" y="376" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">ReplicaSet</text>
+  <text x="340" y="396" text-anchor="middle" font-size="12" fill="#14532d">Pod 생성 요청</text>
+
+  <!-- enforce -->
+  <rect x="500" y="340" width="190" height="80" rx="10" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/>
+  <text x="595" y="368" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">enforce</text>
+  <text x="595" y="390" text-anchor="middle" font-size="12" fill="#7f1d1d">Pod 오브젝트만 검사</text>
+  <text x="595" y="408" text-anchor="middle" font-size="12" fill="#7f1d1d">위반이면 거부</text>
+
+  <rect x="740" y="330" width="200" height="44" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="840" y="357" text-anchor="middle" font-size="13" fill="#7f1d1d">위반: FailedCreate, Pod 0개</text>
+  <rect x="740" y="386" width="200" height="44" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="840" y="413" text-anchor="middle" font-size="13" fill="#14532d">통과: Pod 생성 → Running</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="190" y1="115" x2="236" y2="115" marker-end="url(#arrow)"/>
+    <line x1="680" y1="95" x2="726" y2="95" marker-end="url(#arrow)"/>
+    <line x1="680" y1="165" x2="726" y2="165" marker-end="url(#arrow)"/>
+    <line x1="340" y1="200" x2="340" y2="246" marker-end="url(#arrow)"/>
+    <line x1="340" y1="310" x2="340" y2="346" marker-end="url(#arrow)"/>
+    <line x1="440" y1="380" x2="496" y2="380" marker-end="url(#arrow)"/>
+    <line x1="690" y1="408" x2="736" y2="408" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="690" y1="352" x2="736" y2="352" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+  <text x="480" y="456" text-anchor="middle" font-size="14" fill="#334155">warn·audit은 apply 시점에 알려 주고, enforce는 Pod가 만들어지는 순간에만 막는다</text>
+</svg>

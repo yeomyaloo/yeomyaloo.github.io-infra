@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Alertmanager — 라우팅 트리와 처리 단계</text>
+
+  <!-- Prometheus alerts -->
+  <rect x="20" y="64" width="200" height="250" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="120" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#7c2d12">Prometheus 알림</text>
+  <g font-size="11" font-family="Consolas,'D2Coding',monospace">
+    <rect x="34" y="104" width="172" height="50" rx="6" fill="#fca5a5"/>
+    <text x="42" y="124" fill="#7f1d1d">SLOErrorBudgetBurnFast</text>
+    <text x="42" y="143" fill="#7f1d1d">severity=page</text>
+    <rect x="34" y="162" width="172" height="50" rx="6" fill="#fde68a"/>
+    <text x="42" y="182" fill="#78350f">SLOErrorBudgetBurnSlow</text>
+    <text x="42" y="201" fill="#78350f">severity=ticket</text>
+    <rect x="34" y="220" width="172" height="50" rx="6" fill="#fca5a5"/>
+    <text x="42" y="240" fill="#7f1d1d">SLOLatencyBudgetBurnFast</text>
+    <text x="42" y="259" fill="#7f1d1d">severity=page</text>
+  </g>
+  <text x="120" y="296" text-anchor="middle" font-size="11" fill="#64748b">+ Watchdog (항상 Firing)</text>
+
+  <!-- Alertmanager box -->
+  <rect x="250" y="64" width="460" height="460" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="480" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Alertmanager</text>
+
+  <!-- Root route -->
+  <rect x="330" y="104" width="300" height="56" rx="8" fill="#334155"/>
+  <text x="480" y="127" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">route (루트) → team-ticket</text>
+  <text x="480" y="148" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#e2e8f0">group_by: [alertname, namespace, slo]</text>
+
+  <!-- Children -->
+  <rect x="268" y="200" width="134" height="72" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="335" y="222" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">Watchdog|</text>
+  <text x="335" y="238" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">InfoInhibitor</text>
+  <text x="335" y="260" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">→ null</text>
+
+  <rect x="413" y="200" width="134" height="72" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="480" y="222" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">severity=page</text>
+  <text x="480" y="242" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">→ oncall-page</text>
+  <text x="480" y="261" text-anchor="middle" font-size="10" fill="#7f1d1d">wait 10s · repeat 1h</text>
+
+  <rect x="558" y="200" width="134" height="72" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="625" y="222" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#78350f">ticket|warning</text>
+  <text x="625" y="242" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">→ team-ticket</text>
+  <text x="625" y="261" text-anchor="middle" font-size="10" fill="#78350f">wait 30s · repeat 12h</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="400" y1="160" x2="340" y2="196" marker-end="url(#arrow)"/>
+    <line x1="480" y1="160" x2="480" y2="196" marker-end="url(#arrow)"/>
+    <line x1="560" y1="160" x2="620" y2="196" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="292" text-anchor="middle" font-size="11" fill="#64748b">위에서부터 첫 매칭에서 멈춤 (continue: true면 계속)</text>
+
+  <!-- Pipeline -->
+  <text x="480" y="324" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">알림 그룹마다 거치는 단계</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="268" y="338" width="96" height="52" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="316" y="360" font-weight="700" fill="#312e81">grouping</text>
+    <text x="316" y="379" font-size="11" fill="#312e81">한 메시지로</text>
+    <rect x="378" y="338" width="96" height="52" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="426" y="360" font-weight="700" fill="#312e81">inhibition</text>
+    <text x="426" y="379" font-size="11" fill="#312e81">규칙으로 숨김</text>
+    <rect x="488" y="338" width="96" height="52" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="536" y="360" font-weight="700" fill="#312e81">silence</text>
+    <text x="536" y="379" font-size="11" fill="#312e81">사람이 음소거</text>
+    <rect x="598" y="338" width="96" height="52" rx="8" fill="#0d9488"/>
+    <text x="646" y="360" font-weight="700" fill="#ffffff">전송</text>
+    <text x="646" y="379" font-size="11" fill="#ccfbf1">repeat_interval</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="364" y1="364" x2="374" y2="364" marker-end="url(#arrow)"/>
+    <line x1="474" y1="364" x2="484" y2="364" marker-end="url(#arrow)"/>
+    <line x1="584" y1="364" x2="594" y2="364" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Inhibit rule note -->
+  <rect x="268" y="408" width="426" height="100" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="481" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">inhibit_rules 예</text>
+  <text x="481" y="452" text-anchor="middle" font-size="12" fill="#334155">source: severity="page"  →  target: severity="ticket"</text>
+  <text x="481" y="472" text-anchor="middle" font-size="12" fill="#334155">equal: [namespace, slo]</text>
+  <text x="481" y="494" text-anchor="middle" font-size="12" fill="#0f766e">같은 SLO에 page가 울리는 동안 ticket은 보내지 않음</text>
+
+  <!-- Receivers -->
+  <rect x="740" y="64" width="200" height="460" rx="12" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="840" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#134e4a">receivers</text>
+
+  <rect x="756" y="110" width="168" height="120" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="840" y="134" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">oncall-page</text>
+  <text x="840" y="158" text-anchor="middle" font-size="12" fill="#7f1d1d">Slack #oncall</text>
+  <text x="840" y="176" text-anchor="middle" font-size="10" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">api_url_file (Secret)</text>
+  <text x="840" y="202" text-anchor="middle" font-size="12" fill="#7f1d1d">+ webhook</text>
+  <text x="840" y="219" text-anchor="middle" font-size="10" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">alert-echo:8080</text>
+
+  <rect x="756" y="250" width="168" height="90" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="840" y="274" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">team-ticket</text>
+  <text x="840" y="298" text-anchor="middle" font-size="12" fill="#78350f">webhook</text>
+  <text x="840" y="316" text-anchor="middle" font-size="10" font-family="Consolas,'D2Coding',monospace" fill="#78350f">alert-echo:8080</text>
+
+  <rect x="756" y="360" width="168" height="70" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="840" y="388" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">null</text>
+  <text x="840" y="410" text-anchor="middle" font-size="12" fill="#334155">아무 데도 안 보냄</text>
+
+  <text x="840" y="462" text-anchor="middle" font-size="11" fill="#134e4a">검증:</text>
+  <text x="840" y="482" text-anchor="middle" font-size="10" font-family="Consolas,'D2Coding',monospace" fill="#134e4a">amtool config routes test</text>
+  <text x="840" y="500" text-anchor="middle" font-size="10" font-family="Consolas,'D2Coding',monospace" fill="#134e4a">amtool alert add</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="140" x2="326" y2="132" marker-end="url(#arrow)"/>
+    <line x1="694" y1="364" x2="736" y2="300" marker-end="url(#arrow)"/>
+  </g>
+</svg>

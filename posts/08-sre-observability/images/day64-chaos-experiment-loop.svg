@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">카오스 실험 루프와 폭발 반경</text>
+
+  <!-- Loop panel -->
+  <rect x="20" y="56" width="560" height="404" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="300" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">실험 한 번 = 과학 실험 한 번</text>
+
+  <!-- 1 -->
+  <rect x="45" y="96" width="230" height="96" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="160" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#134e4a">① 정상 상태 정의</text>
+  <text x="160" y="146" text-anchor="middle" font-size="12" fill="#134e4a">측정 가능한 SLI로 정한다</text>
+  <text x="160" y="168" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">가용성 ≥ 99.9%, p99 &lt; 300ms</text>
+
+  <!-- 2 -->
+  <rect x="325" y="96" width="230" height="96" rx="10" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="440" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">② 가설 세우기</text>
+  <text x="440" y="146" text-anchor="middle" font-size="12" fill="#312e81">"Pod 1개가 죽어도</text>
+  <text x="440" y="166" text-anchor="middle" font-size="12" fill="#312e81">정상 상태는 유지된다"</text>
+
+  <!-- 3 -->
+  <rect x="325" y="262" width="230" height="96" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="440" y="288" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">③ 장애 주입</text>
+  <text x="440" y="312" text-anchor="middle" font-size="12" fill="#78350f">Chaos Mesh CR 적용</text>
+  <text x="440" y="332" text-anchor="middle" font-size="12" fill="#78350f">작게, 시간 제한(duration)</text>
+
+  <!-- 4 -->
+  <rect x="45" y="262" width="230" height="96" rx="10" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+  <text x="160" y="288" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">④ 관찰 · 판정</text>
+  <text x="160" y="312" text-anchor="middle" font-size="12" fill="#334155">Grafana SLO 패널 비교</text>
+  <text x="160" y="332" text-anchor="middle" font-size="12" fill="#334155">가설 유지? 깨짐? → 개선</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="275" y1="144" x2="321" y2="144" marker-end="url(#arrow)"/>
+    <line x1="440" y1="192" x2="440" y2="258" marker-end="url(#arrow)"/>
+    <line x1="325" y1="310" x2="279" y2="310" marker-end="url(#arrow)"/>
+    <line x1="160" y1="262" x2="160" y2="196" marker-end="url(#arrow)"/>
+  </g>
+  <text x="300" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#0d9488">자동화해서 반복</text>
+
+  <!-- Abort -->
+  <rect x="45" y="378" width="510" height="64" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="300" y="403" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">중단 조건(Abort)을 먼저 정한다</text>
+  <text x="300" y="426" text-anchor="middle" font-size="12" fill="#991b1b">예: 에러율 5% 초과 또는 번 레이트 알림 발생 → 즉시 실험 삭제</text>
+
+  <!-- Blast radius panel -->
+  <rect x="600" y="56" width="340" height="404" rx="12" fill="#ffffff" stroke="#0d9488"/>
+  <text x="770" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#134e4a">폭발 반경 최소화</text>
+  <circle cx="770" cy="262" r="150" fill="#fee2e2" stroke="#dc2626"/>
+  <circle cx="770" cy="262" r="110" fill="#fde68a" stroke="#f59e0b"/>
+  <circle cx="770" cy="262" r="70" fill="#ccfbf1" stroke="#0d9488"/>
+  <circle cx="770" cy="262" r="35" fill="#0d9488"/>
+  <text x="770" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">운영 일부 트래픽</text>
+  <text x="770" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">stage 전체</text>
+  <text x="770" y="212" text-anchor="middle" font-size="12" font-weight="700" fill="#134e4a">dev 여러 Pod</text>
+  <text x="770" y="267" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Pod 1개</text>
+  <text x="770" y="432" text-anchor="middle" font-size="12" fill="#334155">안쪽에서 시작해 자신감이 쌓이면</text>
+  <text x="770" y="450" text-anchor="middle" font-size="12" fill="#334155">한 겹씩 바깥으로 넓힌다</text>
+</svg>

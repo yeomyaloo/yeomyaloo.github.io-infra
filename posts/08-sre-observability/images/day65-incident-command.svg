@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">장애 지휘 체계 (Incident Command)</text>
+
+  <!-- Notes -->
+  <rect x="40" y="62" width="280" height="84" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="180" y="88" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">원칙</text>
+  <text x="180" y="110" text-anchor="middle" font-size="12" fill="#334155">한 사람에 한 역할, 명확한 인계</text>
+  <text x="180" y="130" text-anchor="middle" font-size="12" fill="#334155">"지금 IC는 누구?"에 즉답 가능</text>
+
+  <rect x="640" y="62" width="280" height="84" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="780" y="88" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">규모에 맞게</text>
+  <text x="780" y="110" text-anchor="middle" font-size="12" fill="#334155">SEV3 이하: 온콜 1명이 IC 겸 Ops</text>
+  <text x="780" y="130" text-anchor="middle" font-size="12" fill="#334155">SEV1: 역할을 모두 다른 사람에게</text>
+
+  <!-- IC -->
+  <rect x="370" y="58" width="220" height="92" rx="12" fill="#0d9488"/>
+  <text x="480" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Incident Commander</text>
+  <text x="480" y="110" text-anchor="middle" font-size="12" fill="#ccfbf1">전체 조율 · 우선순위 결정</text>
+  <text x="480" y="130" text-anchor="middle" font-size="12" fill="#ccfbf1">직접 고치지 않는다</text>
+
+  <!-- Roles -->
+  <rect x="40" y="200" width="270" height="104" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="175" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">Ops Lead (운영)</text>
+  <text x="175" y="252" text-anchor="middle" font-size="12" fill="#78350f">원인 추적, 완화 조치 실행</text>
+  <text x="175" y="272" text-anchor="middle" font-size="12" fill="#78350f">시스템을 바꾸는 유일한 팀</text>
+  <text x="175" y="292" text-anchor="middle" font-size="12" fill="#78350f">(롤백 · 증설 · 기능 끄기)</text>
+
+  <rect x="345" y="200" width="270" height="104" rx="10" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="480" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">Comms Lead (소통)</text>
+  <text x="480" y="252" text-anchor="middle" font-size="12" fill="#312e81">정해진 주기로 상황 공유</text>
+  <text x="480" y="272" text-anchor="middle" font-size="12" fill="#312e81">상태 페이지 · 경영진 · CS</text>
+  <text x="480" y="292" text-anchor="middle" font-size="12" fill="#312e81">대응자에게 오는 질문을 막아 줌</text>
+
+  <rect x="650" y="200" width="270" height="104" rx="10" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+  <text x="785" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Scribe · Planning</text>
+  <text x="785" y="252" text-anchor="middle" font-size="12" fill="#334155">타임라인 · 결정 사항 기록</text>
+  <text x="785" y="272" text-anchor="middle" font-size="12" fill="#334155">장기화 대비 교대 계획</text>
+  <text x="785" y="292" text-anchor="middle" font-size="12" fill="#334155">후속 이슈 등록</text>
+
+  <!-- Bottom -->
+  <rect x="40" y="350" width="270" height="72" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-dasharray="5 4"/>
+  <text x="175" y="380" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">대응 엔지니어 · SME</text>
+  <text x="175" y="402" text-anchor="middle" font-size="12" fill="#78350f">DB · 네트워크 담당 등 호출</text>
+
+  <rect x="345" y="350" width="270" height="72" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-dasharray="5 4"/>
+  <text x="480" y="380" text-anchor="middle" font-size="13" font-weight="700" fill="#312e81">이해관계자 · 고객</text>
+  <text x="480" y="402" text-anchor="middle" font-size="12" fill="#312e81">#incident 채널 밖의 사람들</text>
+
+  <rect x="650" y="350" width="270" height="72" rx="10" fill="#ffffff" stroke="#334155" stroke-dasharray="5 4"/>
+  <text x="785" y="380" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">인시던트 문서</text>
+  <text x="785" y="402" text-anchor="middle" font-size="12" fill="#334155">→ 포스트모템 초안이 됨</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <path d="M430,150 L430,170 L175,170 L175,196" marker-end="url(#arrow)"/>
+    <line x1="480" y1="150" x2="480" y2="196" marker-end="url(#arrow)"/>
+    <path d="M530,150 L530,170 L785,170 L785,196" marker-end="url(#arrow)"/>
+    <line x1="175" y1="304" x2="175" y2="346" marker-end="url(#arrow)"/>
+    <line x1="480" y1="304" x2="480" y2="346" marker-end="url(#arrow)"/>
+    <line x1="785" y1="304" x2="785" y2="346" marker-end="url(#arrow)"/>
+  </g>
+</svg>

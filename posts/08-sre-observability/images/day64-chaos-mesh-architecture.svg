@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Chaos Mesh 동작 구조 (kind infra-lab)</text>
+
+  <!-- User -->
+  <rect x="20" y="64" width="190" height="160" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="115" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">사용자</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" text-anchor="middle">
+    <rect x="35" y="108" width="160" height="36" rx="18" fill="#e2e8f0"/>
+    <text x="115" y="131" fill="#0f172a">kubectl apply</text>
+    <rect x="35" y="156" width="160" height="36" rx="18" fill="#e2e8f0"/>
+    <text x="115" y="179" fill="#0f172a">Dashboard :2333</text>
+  </g>
+  <text x="115" y="212" text-anchor="middle" font-size="12" fill="#64748b">YAML = 실험 정의</text>
+
+  <!-- API server -->
+  <rect x="250" y="64" width="220" height="160" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="360" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">kube-apiserver</text>
+  <text x="360" y="114" text-anchor="middle" font-size="12" fill="#1e3a8a">Chaos Mesh CRD</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#0f172a">
+    <text x="360" y="140">PodChaos</text>
+    <text x="360" y="160">NetworkChaos</text>
+    <text x="360" y="180">StressChaos</text>
+    <text x="360" y="200">Workflow · Schedule</text>
+  </g>
+
+  <!-- Controller -->
+  <rect x="560" y="64" width="200" height="80" rx="10" fill="#0d9488"/>
+  <text x="660" y="92" text-anchor="middle" font-size="12" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">chaos-controller-manager</text>
+  <text x="660" y="114" text-anchor="middle" font-size="12" fill="#ccfbf1">Deployment ×3</text>
+  <text x="660" y="132" text-anchor="middle" font-size="12" fill="#ccfbf1">CR을 보고 주입·복구 지시</text>
+
+  <!-- Grafana -->
+  <rect x="790" y="64" width="150" height="160" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="865" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">Prometheus</text>
+  <text x="865" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">+ Grafana</text>
+  <text x="865" y="140" text-anchor="middle" font-size="12" fill="#78350f">monitoring ns</text>
+  <text x="865" y="168" text-anchor="middle" font-size="12" fill="#78350f">가용성 · p99 ·</text>
+  <text x="865" y="186" text-anchor="middle" font-size="12" fill="#78350f">번 레이트 패널로</text>
+  <text x="865" y="204" text-anchor="middle" font-size="12" fill="#78350f">영향 관찰</text>
+
+  <!-- Node -->
+  <rect x="250" y="262" width="690" height="222" rx="12" fill="#f8fafc" stroke="#334155" stroke-dasharray="6 4"/>
+  <text x="270" y="288" font-size="14" font-weight="700" fill="#334155">kind 노드 (worker)</text>
+
+  <rect x="270" y="302" width="200" height="82" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="370" y="326" text-anchor="middle" font-size="13" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#134e4a">chaos-daemon</text>
+  <text x="370" y="348" text-anchor="middle" font-size="12" fill="#134e4a">DaemonSet, privileged</text>
+  <text x="370" y="368" text-anchor="middle" font-size="12" fill="#134e4a">노드마다 1개</text>
+
+  <rect x="270" y="410" width="200" height="60" rx="10" fill="#93c5fd"/>
+  <text x="370" y="434" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">containerd</text>
+  <text x="370" y="454" text-anchor="middle" font-size="10" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">/run/containerd/containerd.sock</text>
+
+  <rect x="530" y="302" width="230" height="168" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="645" y="326" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">대상 Pod (demo-dev)</text>
+  <text x="645" y="344" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#14532d">dev-demo-app</text>
+  <rect x="545" y="356" width="200" height="46" rx="6" fill="#fde68a"/>
+  <text x="645" y="375" text-anchor="middle" font-size="12" fill="#78350f">netns: tc netem</text>
+  <text x="645" y="393" text-anchor="middle" font-size="12" fill="#78350f">delay · loss</text>
+  <rect x="545" y="410" width="200" height="46" rx="6" fill="#fca5a5"/>
+  <text x="645" y="429" text-anchor="middle" font-size="12" fill="#7f1d1d">cgroup: 스트레스 프로세스</text>
+  <text x="645" y="447" text-anchor="middle" font-size="12" fill="#7f1d1d">CPU · 메모리 부하</text>
+
+  <rect x="780" y="302" width="145" height="168" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="852" y="328" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">⚠️ 기본값 주의</text>
+  <text x="852" y="354" text-anchor="middle" font-size="12" fill="#991b1b">차트 기본 런타임은</text>
+  <text x="852" y="374" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#991b1b">docker</text>
+  <text x="852" y="400" text-anchor="middle" font-size="12" fill="#991b1b">kind 노드는</text>
+  <text x="852" y="420" text-anchor="middle" font-size="12" fill="#991b1b">containerd라서</text>
+  <text x="852" y="446" text-anchor="middle" font-size="12" fill="#991b1b">값을 꼭 바꾼다</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="210" y1="144" x2="246" y2="144" marker-end="url(#arrow)"/>
+    <line x1="470" y1="92" x2="556" y2="92" marker-end="url(#arrow)"/>
+    <line x1="560" y1="122" x2="474" y2="122" marker-end="url(#arrow)"/>
+    <line x1="600" y1="144" x2="424" y2="298" marker-end="url(#arrow)"/>
+    <line x1="370" y1="384" x2="370" y2="406" marker-end="url(#arrow)"/>
+    <line x1="470" y1="343" x2="526" y2="343" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="700" y1="302" x2="850" y2="228" stroke="#0d9488" stroke-width="2" stroke-dasharray="5 4" fill="none" marker-end="url(#arrowT)"/>
+  <g font-size="12" fill="#334155" font-weight="700">
+    <text x="513" y="86" text-anchor="middle">watch</text>
+    <text x="515" y="140" text-anchor="middle">Pod 삭제</text>
+    <text x="512" y="236">gRPC</text>
+    <text x="498" y="335" text-anchor="middle">주입</text>
+  </g>
+  <text x="862" y="252" font-size="12" font-weight="700" fill="#0d9488">SLI 수집</text>
+</svg>

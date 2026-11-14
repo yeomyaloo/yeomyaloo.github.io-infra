@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Istio ambient — 사이드카 없이 노드별 ztunnel이 mTLS</text>
+
+  <!-- istiod -->
+  <rect x="360" y="54" width="240" height="64" rx="10" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="480" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">istiod (istio-system)</text>
+  <text x="480" y="102" text-anchor="middle" font-size="12" fill="#312e81">워크로드 인증서 발급 · 설정 배포</text>
+
+  <!-- node 1 -->
+  <rect x="20" y="150" width="400" height="250" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="40" y="176" font-size="15" font-weight="700" fill="#1e3a8a">infra-lab-worker</text>
+  <rect x="40" y="192" width="170" height="70" rx="8" fill="#86efac"/>
+  <text x="125" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">mesh-demo/client</text>
+  <text x="125" y="238" text-anchor="middle" font-size="12" fill="#14532d">SA: client</text>
+  <text x="125" y="254" text-anchor="middle" font-size="11" fill="#14532d">앱은 평문 HTTP로 보냄</text>
+  <rect x="230" y="192" width="170" height="70" rx="8" fill="#e2e8f0"/>
+  <text x="315" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">legacy/client</text>
+  <text x="315" y="238" text-anchor="middle" font-size="12" fill="#334155">메시 밖 (라벨 없음)</text>
+  <text x="315" y="254" text-anchor="middle" font-size="11" fill="#334155">PROTOCOL: TCP</text>
+  <rect x="40" y="300" width="360" height="80" rx="8" fill="#2496ed"/>
+  <text x="220" y="330" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">ztunnel (DaemonSet)</text>
+  <text x="220" y="354" text-anchor="middle" font-size="12" fill="#ffffff">identity: spiffe://cluster.local/ns/mesh-demo/sa/client</text>
+
+  <!-- node 2 -->
+  <rect x="540" y="150" width="400" height="250" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="560" y="176" font-size="15" font-weight="700" fill="#1e3a8a">infra-lab-worker2</text>
+  <rect x="660" y="192" width="170" height="70" rx="8" fill="#86efac"/>
+  <text x="745" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">mesh-demo/api</text>
+  <text x="745" y="238" text-anchor="middle" font-size="12" fill="#14532d">SA: default</text>
+  <text x="745" y="254" text-anchor="middle" font-size="11" fill="#14532d">PeerAuthentication STRICT</text>
+  <rect x="560" y="300" width="360" height="80" rx="8" fill="#2496ed"/>
+  <text x="740" y="330" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">ztunnel :15008 수신</text>
+  <text x="740" y="354" text-anchor="middle" font-size="12" fill="#ffffff">인증서 검증 → AuthorizationPolicy</text>
+
+  <!-- cert distribution -->
+  <g stroke="#4f46e5" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+    <path d="M450,118 L450,138 L432,138 L432,310 L404,310" marker-end="url(#arrow)"/>
+    <path d="M510,118 L510,138 L528,138 L528,310 L556,310" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="160" text-anchor="middle" font-size="11" fill="#4f46e5">인증서</text>
+
+  <!-- traffic -->
+  <line x1="125" y1="262" x2="125" y2="296" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <path d="M400,340 L544,340" stroke="#16a34a" stroke-width="6" fill="none"/>
+  <path d="M542,330 L558,340 L542,350 z" fill="#16a34a"/>
+  <text x="478" y="326" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">HBONE</text>
+  <text x="478" y="364" text-anchor="middle" font-size="12" fill="#14532d">mTLS :15008</text>
+  <line x1="745" y1="298" x2="745" y2="266" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- legacy plaintext -->
+  <path d="M400,226 C470,226 560,226 656,226" stroke="#dc2626" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <text x="480" y="216" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">평문 :80</text>
+  <text x="480" y="246" text-anchor="middle" font-size="11" fill="#dc2626">STRICT: 거부</text>
+
+  <!-- bottom explanation -->
+  <rect x="20" y="418" width="920" height="66" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="40" y="444" font-size="13" fill="#334155">메시 편입: kubectl label ns mesh-demo istio.io/dataplane-mode=ambient (Pod 재시작 불필요)</text>
+  <text x="40" y="468" font-size="13" fill="#334155">NetworkPolicy와 함께 쓰면 ingress TCP 15008, 프로브 출발지 169.254.7.127/32 허용 필요</text>
+</svg>

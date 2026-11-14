@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">세 가지 limit — 측정이 쌓여 metric이 끝나는 순간</text>
+
+  <!-- Legend -->
+  <g font-size="13">
+    <circle cx="250" cy="68" r="12" fill="#16a34a"/><text x="250" y="73" text-anchor="middle" fill="#ffffff" font-weight="700">S</text>
+    <text x="268" y="73" fill="#334155">Successful</text>
+    <circle cx="380" cy="68" r="12" fill="#dc2626"/><text x="380" y="73" text-anchor="middle" fill="#ffffff" font-weight="700">F</text>
+    <text x="398" y="73" fill="#334155">Failed</text>
+    <circle cx="480" cy="68" r="12" fill="#7c3aed"/><text x="480" y="73" text-anchor="middle" fill="#ffffff" font-weight="700">E</text>
+    <text x="498" y="73" fill="#334155">Error</text>
+    <circle cx="575" cy="68" r="12" fill="#f59e0b"/><text x="575" y="73" text-anchor="middle" fill="#ffffff" font-weight="700">I</text>
+    <text x="593" y="73" fill="#334155">Inconclusive (NaN 등)</text>
+  </g>
+
+  <!-- Row 1: failureLimit -->
+  <rect x="20" y="96" width="920" height="108" rx="12" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="40" y="124" font-size="15" font-weight="700" fill="#7f1d1d">failureLimit: 1</text>
+  <text x="40" y="146" font-size="12" fill="#7f1d1d">실패 "누적" 횟수</text>
+  <text x="40" y="166" font-size="12" fill="#7f1d1d">기본값 0</text>
+  <g font-size="13" font-weight="700" text-anchor="middle" fill="#ffffff">
+    <circle cx="250" cy="150" r="18" fill="#16a34a"/><text x="250" y="155">S</text>
+    <circle cx="310" cy="150" r="18" fill="#dc2626"/><text x="310" y="155">F</text>
+    <circle cx="370" cy="150" r="18" fill="#16a34a"/><text x="370" y="155">S</text>
+    <circle cx="430" cy="150" r="18" fill="#16a34a"/><text x="430" y="155">S</text>
+    <circle cx="490" cy="150" r="18" fill="#dc2626" stroke="#0f172a" stroke-width="3"/><text x="490" y="155">F</text>
+  </g>
+  <g font-size="11" fill="#7f1d1d" text-anchor="middle">
+    <text x="310" y="186">실패 1 (허용)</text>
+    <text x="490" y="186">실패 2 &gt; 1</text>
+  </g>
+  <rect x="560" y="122" width="360" height="56" rx="8" fill="#ffffff" stroke="#dc2626"/>
+  <text x="740" y="145" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">metric Failed → Rollout abort</text>
+  <text x="740" y="166" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">failed (2) &gt; failureLimit (1)</text>
+
+  <!-- Row 2: consecutiveErrorLimit -->
+  <rect x="20" y="218" width="920" height="108" rx="12" fill="#f5f3ff" stroke="#7c3aed"/>
+  <text x="40" y="246" font-size="15" font-weight="700" fill="#4c1d95">consecutiveErrorLimit: 2</text>
+  <text x="40" y="268" font-size="12" fill="#4c1d95">오류 "연속" 횟수</text>
+  <text x="40" y="288" font-size="12" fill="#4c1d95">기본값 4 · 성공하면 리셋</text>
+  <g font-size="13" font-weight="700" text-anchor="middle" fill="#ffffff">
+    <circle cx="250" cy="272" r="18" fill="#7c3aed"/><text x="250" y="277">E</text>
+    <circle cx="310" cy="272" r="18" fill="#16a34a"/><text x="310" y="277">S</text>
+    <circle cx="370" cy="272" r="18" fill="#7c3aed"/><text x="370" y="277">E</text>
+    <circle cx="430" cy="272" r="18" fill="#7c3aed"/><text x="430" y="277">E</text>
+    <circle cx="490" cy="272" r="18" fill="#7c3aed" stroke="#0f172a" stroke-width="3"/><text x="490" y="277">E</text>
+  </g>
+  <g font-size="11" fill="#4c1d95" text-anchor="middle">
+    <text x="310" y="308">리셋</text>
+    <text x="430" y="308">연속 2</text>
+    <text x="490" y="308">연속 3 &gt; 2</text>
+  </g>
+  <rect x="560" y="244" width="360" height="56" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+  <text x="740" y="267" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">metric Error → Rollout abort</text>
+  <text x="740" y="288" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#4c1d95">consecutiveErrors (3) &gt; consecutiveErrorLimit (2)</text>
+
+  <!-- Row 3: inconclusiveLimit -->
+  <rect x="20" y="340" width="920" height="108" rx="12" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="40" y="368" font-size="15" font-weight="700" fill="#78350f">inconclusiveLimit: 2</text>
+  <text x="40" y="390" font-size="12" fill="#78350f">판정 불가 "누적" 횟수</text>
+  <text x="40" y="410" font-size="12" fill="#78350f">기본값 0</text>
+  <g font-size="13" font-weight="700" text-anchor="middle" fill="#ffffff">
+    <circle cx="250" cy="394" r="18" fill="#f59e0b"/><text x="250" y="399">I</text>
+    <circle cx="310" cy="394" r="18" fill="#16a34a"/><text x="310" y="399">S</text>
+    <circle cx="370" cy="394" r="18" fill="#f59e0b"/><text x="370" y="399">I</text>
+    <circle cx="430" cy="394" r="18" fill="#f59e0b" stroke="#0f172a" stroke-width="3"/><text x="430" y="399">I</text>
+  </g>
+  <g font-size="11" fill="#78350f" text-anchor="middle">
+    <text x="370" y="430">누적 2</text>
+    <text x="430" y="430">누적 3 &gt; 2</text>
+  </g>
+  <rect x="560" y="366" width="360" height="56" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="740" y="389" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">metric Inconclusive → Rollout pause</text>
+  <text x="740" y="410" text-anchor="middle" font-size="11" fill="#78350f">사람이 promote 또는 abort (자동 롤백 아님)</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kind에서 kube-bench를 Job으로 돌리면</text>
+
+  <!-- Host -->
+  <rect x="20" y="56" width="920" height="330" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="40" y="82" font-size="15" font-weight="700" fill="#334155">내 PC (Docker) — kind 노드는 "컨테이너"</text>
+
+  <!-- control-plane node -->
+  <rect x="40" y="96" width="430" height="270" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="255" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">infra-lab-control-plane</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="60" y="138" width="120" height="34" rx="6" fill="#326ce5"/><text x="120" y="160" fill="#ffffff">kube-apiserver</text>
+    <rect x="60" y="180" width="120" height="34" rx="6" fill="#326ce5"/><text x="120" y="202" fill="#ffffff">etcd</text>
+    <rect x="60" y="222" width="120" height="34" rx="6" fill="#60a5fa"/><text x="120" y="244" fill="#ffffff">kubelet</text>
+  </g>
+  <g font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">
+    <rect x="60" y="270" width="180" height="80" rx="6" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="70" y="290">/etc/kubernetes</text>
+    <text x="70" y="308">/var/lib/etcd</text>
+    <text x="70" y="326">/var/lib/kubelet</text>
+    <text x="70" y="344">/usr/bin</text>
+  </g>
+  <!-- job pod -->
+  <rect x="270" y="140" width="185" height="150" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="362" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">kube-bench-master</text>
+  <g font-size="12" fill="#7f1d1d" text-anchor="middle">
+    <text x="362" y="186">nodeSelector +</text>
+    <text x="362" y="204">tolerations</text>
+    <text x="362" y="226">hostPID: true</text>
+    <text x="362" y="246">hostPath (읽기 전용)</text>
+    <text x="362" y="270">master, etcd, policies</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none" stroke-dasharray="5 4">
+    <line x1="268" y1="200" x2="184" y2="160" marker-end="url(#arrow)"/>
+    <line x1="268" y1="290" x2="244" y2="300" marker-end="url(#arrow)"/>
+  </g>
+  <text x="188" y="216" font-size="11" fill="#334155">플래그 읽기</text>
+
+  <!-- worker node -->
+  <rect x="500" y="96" width="420" height="270" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="710" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">infra-lab-worker</text>
+  <rect x="520" y="138" width="120" height="34" rx="6" fill="#60a5fa"/>
+  <text x="580" y="160" text-anchor="middle" font-size="13" fill="#ffffff">kubelet</text>
+  <g font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">
+    <rect x="520" y="190" width="180" height="62" rx="6" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="530" y="212">/var/lib/kubelet</text>
+    <text x="530" y="232">/etc/kubernetes</text>
+  </g>
+  <rect x="725" y="140" width="175" height="112" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="812" y="166" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">kube-bench</text>
+  <g font-size="12" fill="#7f1d1d" text-anchor="middle">
+    <text x="812" y="190">공식 job.yaml</text>
+    <text x="812" y="210">hostPID, hostPath</text>
+    <text x="812" y="232">node (4.x)</text>
+  </g>
+  <rect x="520" y="270" width="380" height="80" rx="8" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="710" y="294" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">kube-bench 네임스페이스</text>
+  <text x="710" y="316" text-anchor="middle" font-size="12" fill="#78350f">enforce=privileged 라벨 필요</text>
+  <text x="710" y="336" text-anchor="middle" font-size="12" fill="#78350f">(Job 자체가 baseline 위반)</text>
+
+  <!-- result -->
+  <rect x="40" y="404" width="420" height="80" rx="10" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="250" y="428" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">kubectl logs job/... → 결과</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace">
+    <text x="60" y="454" fill="#16a34a">[PASS]</text><text x="120" y="454" fill="#dc2626">[FAIL]</text>
+    <text x="180" y="454" fill="#b45309">[WARN]</text><text x="240" y="454" fill="#64748b">[INFO]</text>
+  </g>
+  <text x="60" y="474" font-size="12" fill="#334155">Remediations와 Summary까지 함께 읽기</text>
+
+  <rect x="500" y="404" width="420" height="80" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="710" y="428" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">한계</text>
+  <text x="710" y="451" text-anchor="middle" font-size="12" fill="#7f1d1d">파일 권한은 노드 "컨테이너" 기준, 실제 호스트 아님</text>
+  <text x="710" y="471" text-anchor="middle" font-size="12" fill="#7f1d1d">실제 기준선은 Day 20 kubeadm 클러스터에서</text>
+</svg>

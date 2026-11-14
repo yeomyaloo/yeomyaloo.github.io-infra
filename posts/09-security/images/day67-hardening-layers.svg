@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">H01 호스트 하드닝 — 접속이 통과하는 관문</text>
+  <text x="30" y="84" font-size="13" fill="#475569">인터넷 · LAN에서 들어오는 접속 시도 →</text>
+
+  <!-- Boxes -->
+  <g>
+    <rect x="30" y="100" width="160" height="200" rx="10" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+    <rect x="30" y="100" width="160" height="36" rx="10" fill="#b91c1c"/>
+    <rect x="30" y="124" width="160" height="12" fill="#b91c1c"/>
+    <text x="110" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">nftables (hostfw)</text>
+
+    <rect x="215" y="100" width="160" height="200" rx="10" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+    <rect x="215" y="100" width="160" height="36" rx="10" fill="#b91c1c"/>
+    <rect x="215" y="124" width="160" height="12" fill="#b91c1c"/>
+    <text x="295" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">fail2ban</text>
+
+    <rect x="400" y="100" width="160" height="200" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <rect x="400" y="100" width="160" height="36" rx="10" fill="#334155"/>
+    <rect x="400" y="124" width="160" height="12" fill="#334155"/>
+    <text x="480" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">sshd</text>
+
+    <rect x="585" y="100" width="160" height="200" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <rect x="585" y="100" width="160" height="36" rx="10" fill="#334155"/>
+    <rect x="585" y="124" width="160" height="12" fill="#334155"/>
+    <text x="665" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">sudo</text>
+
+    <rect x="770" y="100" width="160" height="200" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="850" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">root 권한 작업</text>
+  </g>
+  <g font-size="12" fill="#334155">
+    <text x="44" y="164">policy drop (기본 거부)</text>
+    <text x="44" y="190">SSH는 LAN · Tailscale만</text>
+    <text x="44" y="216">IP당 분당 새 연결 10개</text>
+    <text x="44" y="242">IPv4 + IPv6 (inet)</text>
+    <text x="44" y="268">Docker 테이블과 분리</text>
+
+    <text x="229" y="164">nftables-multiport</text>
+    <text x="229" y="190">재범 시 차단 시간 증가</text>
+    <text x="229" y="216">recidive: 1주 전체 차단</text>
+    <text x="229" y="242">priority filter-1</text>
+    <text x="229" y="268">(hostfw보다 먼저)</text>
+
+    <text x="414" y="164">publickey만</text>
+    <text x="414" y="190">AllowGroups sshusers</text>
+    <text x="414" y="216">MaxAuthTries 3</text>
+    <text x="414" y="242">포워딩: -L만 허용</text>
+    <text x="414" y="268">LogLevel VERBOSE</text>
+
+    <text x="599" y="164">sudoers.d 명령 단위</text>
+    <text x="599" y="190">편집은 sudoedit</text>
+    <text x="599" y="216">use_pty · 전용 로그</text>
+    <text x="599" y="242">timestamp 5분</text>
+    <text x="599" y="268">셸 여는 명령 금지</text>
+
+    <text x="784" y="164">설정 파일 변경</text>
+    <text x="784" y="190">서비스 재시작</text>
+    <text x="784" y="216">패키지 설치</text>
+    <text x="784" y="242">방화벽 규칙 변경</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2">
+    <line x1="190" y1="200" x2="212" y2="200" marker-end="url(#arrow)"/>
+    <line x1="375" y1="200" x2="397" y2="200" marker-end="url(#arrow)"/>
+    <line x1="560" y1="200" x2="582" y2="200" marker-end="url(#arrow)"/>
+    <line x1="745" y1="200" x2="767" y2="200" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Logging bands -->
+  <rect x="30" y="320" width="345" height="64" rx="10" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="202" y="347" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">네트워크 기록</text>
+  <text x="202" y="370" text-anchor="middle" font-size="12" fill="#334155">커널 로그 nft-input-drop · fail2ban.log</text>
+
+  <rect x="400" y="320" width="530" height="64" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="665" y="347" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">auditd — 설정 파일 변경(-w) · root 명령(execve) 기록</text>
+  <text x="665" y="370" text-anchor="middle" font-size="12" fill="#78350f">sudo를 거쳐도 auid로 "실제로 로그인한 사람"을 추적 (부인 방지)</text>
+
+  <!-- Measure band -->
+  <rect x="30" y="402" width="900" height="64" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="480" y="429" text-anchor="middle" font-size="13" font-weight="700" fill="#312e81">측정 — Lynis (하드닝 지수 · 경고 · 제안)  +  CIS Benchmark / USG (Ubuntu Pro)</text>
+  <text x="480" y="452" text-anchor="middle" font-size="12" fill="#312e81">하드닝 전 기준선 → 적용 → 재점검 → 전후 비교 표, 따르지 않는 제안은 이유와 함께 기록</text>
+
+  <text x="480" y="500" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">원칙: 기본 거부 · 최소 권한 · 기록 · 측정</text>
+</svg>

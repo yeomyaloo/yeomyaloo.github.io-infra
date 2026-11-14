@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">메트릭 · 트레이스 · 로그를 잇는 상관 설정</text>
+
+  <!-- Metrics -->
+  <rect x="30" y="110" width="230" height="150" rx="12" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="145" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#7c2d12">메트릭</text>
+  <text x="145" y="162" text-anchor="middle" font-size="13" fill="#7c2d12">Prometheus (uid: prometheus)</text>
+  <text x="145" y="190" text-anchor="middle" font-size="12" fill="#334155">p95 그래프 위의 점 ◆</text>
+  <text x="145" y="210" text-anchor="middle" font-size="12" fill="#334155">= exemplar (traceID 라벨)</text>
+  <text x="145" y="238" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#64748b">traces_spanmetrics_*</text>
+
+  <!-- Traces -->
+  <rect x="365" y="110" width="230" height="150" rx="12" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="480" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#134e4a">트레이스</text>
+  <text x="480" y="162" text-anchor="middle" font-size="13" fill="#134e4a">Tempo (uid: tempo)</text>
+  <g font-size="11">
+    <rect x="390" y="178" width="180" height="14" rx="3" fill="#0d9488"/>
+    <rect x="410" y="198" width="120" height="14" rx="3" fill="#14b8a6"/>
+    <rect x="430" y="218" width="130" height="14" rx="3" fill="#dc2626"/>
+  </g>
+  <text x="480" y="250" text-anchor="middle" font-size="12" fill="#134e4a">워터폴: 어느 span이 느린가</text>
+
+  <!-- Logs -->
+  <rect x="700" y="110" width="230" height="150" rx="12" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+  <text x="815" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">로그</text>
+  <text x="815" y="162" text-anchor="middle" font-size="13" fill="#334155">Loki (uid: loki)</text>
+  <text x="815" y="194" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">ERROR ... trace_id=4bf9...</text>
+  <text x="815" y="214" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">span_id=00f0... - timeout</text>
+  <text x="815" y="242" text-anchor="middle" font-size="12" fill="#334155">로그 줄 안의 trace ID</text>
+
+  <!-- Arrows top: metrics -> traces, logs -> traces -->
+  <g stroke="#0d9488" stroke-width="2.5" fill="none">
+    <line x1="260" y1="150" x2="361" y2="150" marker-end="url(#arrowTeal)"/>
+    <line x1="700" y1="150" x2="599" y2="150" marker-end="url(#arrowTeal)"/>
+  </g>
+  <!-- Arrows bottom: traces -> metrics, traces -> logs -->
+  <g stroke="#334155" stroke-width="2" fill="none" stroke-dasharray="6 4">
+    <line x1="365" y1="225" x2="264" y2="225" marker-end="url(#arrow)"/>
+    <line x1="595" y1="225" x2="696" y2="225" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" font-weight="700" text-anchor="middle">
+    <text x="312" y="100" fill="#0f766e">exemplar</text>
+    <text x="648" y="100" fill="#0f766e">derived field</text>
+    <text x="312" y="280" fill="#334155">tracesToMetrics</text>
+    <text x="648" y="280" fill="#334155">tracesToLogsV2</text>
+  </g>
+
+  <!-- Settings table -->
+  <rect x="30" y="300" width="900" height="74" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <g font-size="12" fill="#334155">
+    <text x="50" y="324"><tspan font-weight="700" fill="#0f766e">exemplar</tspan>  Prometheus 데이터소스 exemplarTraceIdDestinations → tempo, 라벨 traceID</text>
+    <text x="50" y="344"><tspan font-weight="700" fill="#0f766e">derived field</tspan>  Loki 데이터소스 derivedFields: matcherRegex 'trace_id=([0-9a-f]{32})' → tempo</text>
+    <text x="50" y="364"><tspan font-weight="700" fill="#334155">tracesTo*</tspan>  Tempo 데이터소스 jsonData: tracesToLogsV2(loki), tracesToMetrics(prometheus), serviceMap</text>
+  </g>
+
+  <!-- Flow -->
+  <text x="480" y="406" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">조사 흐름 — 세 번의 클릭</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="420" width="200" height="40" rx="20" fill="#fde68a"/>
+    <text x="130" y="445" fill="#78350f">① p95가 튐 (메트릭)</text>
+    <rect x="263" y="420" width="200" height="40" rx="20" fill="#ccfbf1"/>
+    <text x="363" y="445" fill="#134e4a">② ◆ 클릭 → 트레이스</text>
+    <rect x="496" y="420" width="200" height="40" rx="20" fill="#ccfbf1"/>
+    <text x="596" y="445" fill="#134e4a">③ 느린 span 확인</text>
+    <rect x="729" y="420" width="200" height="40" rx="20" fill="#e2e8f0"/>
+    <text x="829" y="445" fill="#0f172a">④ 그 span의 로그</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="230" y1="440" x2="259" y2="440" marker-end="url(#arrow)"/>
+    <line x1="463" y1="440" x2="492" y2="440" marker-end="url(#arrow)"/>
+    <line x1="696" y1="440" x2="725" y2="440" marker-end="url(#arrow)"/>
+  </g>
+</svg>

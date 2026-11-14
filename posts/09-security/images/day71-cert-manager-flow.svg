@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">cert-manager — 선언하면 발급하고, 만료 전에 갱신한다</text>
+
+  <!-- CA bootstrap column -->
+  <rect x="20" y="60" width="250" height="300" rx="12" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="145" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">사설 CA 부트스트랩</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="102" width="210" height="52" rx="8" fill="#fde68a"/>
+    <text x="145" y="124" fill="#78350f" font-weight="700">ClusterIssuer</text>
+    <text x="145" y="144" fill="#78350f">selfsigned-bootstrap</text>
+    <rect x="40" y="186" width="210" height="52" rx="8" fill="#fde68a"/>
+    <text x="145" y="208" fill="#78350f" font-weight="700">Certificate (isCA)</text>
+    <text x="145" y="228" fill="#78350f">lab-root-ca → Secret</text>
+    <rect x="40" y="270" width="210" height="72" rx="8" fill="#f59e0b"/>
+    <text x="145" y="296" fill="#ffffff" font-weight="700">ClusterIssuer lab-ca</text>
+    <text x="145" y="316" fill="#ffffff">ca.secretName:</text>
+    <text x="145" y="333" fill="#ffffff">lab-root-ca</text>
+  </g>
+
+  <!-- request column -->
+  <rect x="320" y="60" width="300" height="300" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="470" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">tls-demo 네임스페이스</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="340" y="102" width="260" height="62" rx="8" fill="#ffffff" stroke="#326ce5"/>
+    <text x="470" y="124" fill="#1e3a8a" font-weight="700">Gateway tls-gw</text>
+    <text x="470" y="144" fill="#1e3a8a">annotation: cluster-issuer=lab-ca</text>
+    <text x="470" y="158" fill="#64748b" font-size="11">listener hostname · Terminate · certificateRefs</text>
+    <rect x="340" y="190" width="260" height="46" rx="8" fill="#326ce5"/>
+    <text x="470" y="210" fill="#ffffff" font-weight="700">Certificate gw-tls-cert</text>
+    <text x="470" y="228" fill="#ffffff" font-size="12">gateway-shim이 자동 생성</text>
+    <rect x="340" y="262" width="260" height="40" rx="8" fill="#93c5fd"/>
+    <text x="470" y="287" fill="#1e3a8a">CertificateRequest (CSR)</text>
+    <rect x="340" y="314" width="260" height="36" rx="8" fill="#86efac"/>
+    <text x="470" y="337" fill="#14532d" font-weight="700">Secret gw-tls-cert (kubernetes.io/tls)</text>
+  </g>
+
+  <!-- consumer column -->
+  <rect x="670" y="60" width="270" height="300" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="805" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">사용하는 쪽</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="690" y="110" width="230" height="64" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="805" y="136" fill="#14532d" font-weight="700">Traefik websecure :8443</text>
+    <text x="805" y="158" fill="#14532d">Secret을 읽어 TLS 종료</text>
+    <rect x="690" y="210" width="230" height="64" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="805" y="236" fill="#14532d" font-weight="700">클라이언트</text>
+    <text x="805" y="258" fill="#14532d">curl --cacert lab-ca.crt</text>
+    <text x="805" y="306" fill="#64748b" font-size="12">-k 없이 체인·호스트명 검증 통과</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="145" y1="154" x2="145" y2="182" marker-end="url(#arrow)"/>
+    <line x1="145" y1="238" x2="145" y2="266" marker-end="url(#arrow)"/>
+    <line x1="470" y1="164" x2="470" y2="186" marker-end="url(#arrow)"/>
+    <line x1="470" y1="236" x2="470" y2="258" marker-end="url(#arrow)"/>
+    <line x1="470" y1="302" x2="470" y2="310" marker-end="url(#arrow)"/>
+    <line x1="336" y1="282" x2="254" y2="306" marker-end="url(#arrow)"/>
+    <line x1="600" y1="332" x2="686" y2="150" marker-end="url(#arrow)"/>
+    <line x1="805" y1="206" x2="805" y2="178" marker-end="url(#arrow)"/>
+  </g>
+  <text x="295" y="276" text-anchor="middle" font-size="12" fill="#334155">서명</text>
+  <text x="648" y="300" text-anchor="middle" font-size="12" fill="#334155">참조</text>
+  <text x="815" y="196" font-size="12" fill="#334155">HTTPS</text>
+
+  <!-- renewal loop -->
+  <rect x="20" y="384" width="920" height="96" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="40" y="412" font-size="15" font-weight="700" fill="#7f1d1d">자동 갱신 루프</text>
+  <text x="40" y="438" font-size="13" fill="#7f1d1d">기본: 유효 기간의 2/3 지점(또는 renewBefore)에 새 CertificateRequest → Secret 교체 → Traefik이 새 인증서 사용</text>
+  <text x="40" y="462" font-size="13" fill="#7f1d1d">Issuer만 바꾸면 같은 흐름으로 Let's Encrypt(ACME), OpenBao/Vault PKI 등에서도 발급</text>
+</svg>

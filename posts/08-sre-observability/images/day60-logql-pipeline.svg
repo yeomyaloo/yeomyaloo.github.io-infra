@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">LogQL 쿼리 구조 — 좁히고, 거르고, 꺼내고, 센다</text>
+
+  <!-- cost bar -->
+  <rect x="20" y="54" width="920" height="12" rx="6" fill="#e2e8f0"/>
+  <rect x="20" y="54" width="300" height="12" rx="6" fill="#86efac"/>
+  <text x="20" y="84" font-size="12" fill="#15803d">싸다 (인덱스·문자열 비교)</text>
+  <text x="940" y="84" text-anchor="end" font-size="12" fill="#b45309">비싸다 (줄마다 파싱)</text>
+
+  <!-- boxes -->
+  <g>
+    <rect x="20" y="100" width="168" height="170" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+    <rect x="208" y="100" width="168" height="170" rx="10" fill="#ffffff" stroke="#0d9488" stroke-width="2"/>
+    <rect x="396" y="100" width="168" height="170" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="584" y="100" width="168" height="170" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="772" y="100" width="168" height="170" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="700">
+    <text x="104" y="126" fill="#0f766e">① 스트림 선택자</text>
+    <text x="292" y="126" fill="#0f766e">② 라인 필터</text>
+    <text x="480" y="126" fill="#b45309">③ 파서</text>
+    <text x="668" y="126" fill="#b45309">④ 라벨 필터</text>
+    <text x="856" y="126" fill="#334155">⑤ 포맷 (선택)</text>
+  </g>
+  <g text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <text x="104" y="156">{namespace="demo-dev",</text>
+    <text x="104" y="172">app="demo-app"}</text>
+    <text x="292" y="156">|= "gitops_demo_app"</text>
+    <text x="292" y="172">!= "healthz"</text>
+    <text x="480" y="156">| pattern "..."</text>
+    <text x="480" y="172">| json  | logfmt</text>
+    <text x="668" y="156">| level = "ERROR"</text>
+    <text x="668" y="172">| trace_id = "9f1c…"</text>
+    <text x="856" y="156">| line_format</text>
+    <text x="856" y="172">"{{.msg}}"</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#334155">
+    <text x="104" y="204">필수. 라벨 인덱스로</text>
+    <text x="104" y="224">스트림(청크)을 좁힘</text>
+    <text x="104" y="250" font-weight="700" fill="#0f766e">최대한 구체적으로</text>
+
+    <text x="292" y="204">grep처럼 포함·제외</text>
+    <text x="292" y="224">|= != |~ !~</text>
+    <text x="292" y="250" font-weight="700" fill="#0f766e">파서보다 앞에</text>
+
+    <text x="480" y="204">줄에서 값을 꺼내</text>
+    <text x="480" y="224">질의 중에만 쓰는 라벨로</text>
+    <text x="480" y="250" font-weight="700" fill="#b45309">저장 라벨 아님</text>
+
+    <text x="668" y="204">추출 값·구조화</text>
+    <text x="668" y="224">메타데이터로 거르기</text>
+    <text x="668" y="250" font-weight="700" fill="#b45309">= != =~ &gt; &lt;</text>
+
+    <text x="856" y="204">출력 줄을</text>
+    <text x="856" y="224">템플릿으로 다시 씀</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="188" y1="185" x2="204" y2="185" marker-end="url(#arrow)"/>
+    <line x1="376" y1="185" x2="392" y2="185" marker-end="url(#arrow)"/>
+    <line x1="564" y1="185" x2="580" y2="185" marker-end="url(#arrow)"/>
+    <line x1="752" y1="185" x2="768" y2="185" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- metric query -->
+  <rect x="20" y="294" width="920" height="120" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="40" y="320" font-size="15" font-weight="700" fill="#1d4ed8">메트릭 쿼리 — 범위 [5m] + 함수로 감싸면 로그가 시계열이 된다</text>
+  <text x="40" y="350" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">sum by (pod) ( count_over_time( <tspan fill="#0d9488">{app="demo-app"} |= "work failed"</tspan> [5m] ) )</text>
+  <text x="40" y="378" font-size="12" fill="#334155">count_over_time · rate · bytes_over_time · | unwrap 필드 + quantile_over_time</text>
+  <text x="40" y="400" font-size="12" fill="#334155">→ Grafana 패널, Loki 룰러 알림 (같은 값이 메트릭으로 있으면 Prometheus가 더 싸고 정확)</text>
+</svg>

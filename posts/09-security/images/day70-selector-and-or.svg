@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">셀렉터 조합 — 하이픈 하나가 AND와 OR을 가른다</text>
+
+  <!-- LEFT: AND -->
+  <rect x="20" y="56" width="450" height="440" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="245" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">AND — 한 항목 안에 둘 다</text>
+  <rect x="40" y="98" width="410" height="128" rx="8" fill="#0f172a"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#e2e8f0">
+    <text x="54" y="120">ingress:</text>
+    <text x="54" y="138">- from:</text>
+    <text x="68" y="156">- namespaceSelector:</text>
+    <text x="97" y="174">matchLabels: {…: monitoring}</text>
+    <text x="83" y="192" fill="#86efac">podSelector:</text>
+    <text x="97" y="210">matchLabels: {…: prometheus}</text>
+  </g>
+
+  <!-- RIGHT: OR -->
+  <rect x="490" y="56" width="450" height="440" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="715" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#7f1d1d">OR — 항목을 나눔</text>
+  <rect x="510" y="98" width="410" height="128" rx="8" fill="#0f172a"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#e2e8f0">
+    <text x="524" y="120">ingress:</text>
+    <text x="524" y="138">- from:</text>
+    <text x="538" y="156">- namespaceSelector:</text>
+    <text x="567" y="174">matchLabels: {…: monitoring}</text>
+    <text x="538" y="192" fill="#fca5a5">- podSelector:</text>
+    <text x="567" y="210">matchLabels: {…: prometheus}</text>
+  </g>
+
+  <!-- namespace diagrams: function repeated manually -->
+  <!-- LEFT namespaces -->
+  <g font-size="13">
+    <rect x="40" y="244" width="200" height="110" rx="8" fill="#ffffff" stroke="#64748b"/>
+    <text x="140" y="264" text-anchor="middle" font-weight="700" fill="#334155">ns: monitoring</text>
+    <rect x="52" y="276" width="176" height="30" rx="6" fill="#86efac"/><text x="140" y="296" text-anchor="middle" fill="#14532d">prometheus  허용</text>
+    <rect x="52" y="314" width="176" height="30" rx="6" fill="#e2e8f0"/><text x="140" y="334" text-anchor="middle" fill="#64748b">grafana  거부</text>
+
+    <rect x="250" y="244" width="200" height="110" rx="8" fill="#ffffff" stroke="#64748b"/>
+    <text x="350" y="264" text-anchor="middle" font-weight="700" fill="#334155">ns: shop (정책 위치)</text>
+    <rect x="262" y="276" width="176" height="30" rx="6" fill="#326ce5"/><text x="350" y="296" text-anchor="middle" fill="#ffffff">api  (보호 대상)</text>
+    <rect x="262" y="314" width="176" height="30" rx="6" fill="#e2e8f0"/><text x="350" y="334" text-anchor="middle" fill="#64748b">prometheus 라벨  거부</text>
+
+    <rect x="40" y="366" width="410" height="50" rx="8" fill="#ffffff" stroke="#64748b"/>
+    <text x="56" y="396" font-weight="700" fill="#334155">ns: other</text>
+    <rect x="262" y="376" width="176" height="30" rx="6" fill="#e2e8f0"/><text x="350" y="396" text-anchor="middle" fill="#64748b">prometheus 라벨  거부</text>
+  </g>
+  <text x="245" y="448" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">"monitoring 안의 prometheus"만</text>
+  <text x="245" y="472" text-anchor="middle" font-size="13" fill="#14532d">describe: 한 From 블록에 두 셀렉터</text>
+
+  <!-- RIGHT namespaces -->
+  <g font-size="13">
+    <rect x="510" y="244" width="200" height="110" rx="8" fill="#ffffff" stroke="#64748b"/>
+    <text x="610" y="264" text-anchor="middle" font-weight="700" fill="#334155">ns: monitoring</text>
+    <rect x="522" y="276" width="176" height="30" rx="6" fill="#86efac"/><text x="610" y="296" text-anchor="middle" fill="#14532d">prometheus  허용</text>
+    <rect x="522" y="314" width="176" height="30" rx="6" fill="#fde68a"/><text x="610" y="334" text-anchor="middle" fill="#78350f">grafana  허용!</text>
+
+    <rect x="720" y="244" width="200" height="110" rx="8" fill="#ffffff" stroke="#64748b"/>
+    <text x="820" y="264" text-anchor="middle" font-weight="700" fill="#334155">ns: shop (정책 위치)</text>
+    <rect x="732" y="276" width="176" height="30" rx="6" fill="#326ce5"/><text x="820" y="296" text-anchor="middle" fill="#ffffff">api  (보호 대상)</text>
+    <rect x="732" y="314" width="176" height="30" rx="6" fill="#fde68a"/><text x="820" y="334" text-anchor="middle" fill="#78350f">prometheus 라벨  허용!</text>
+
+    <rect x="510" y="366" width="410" height="50" rx="8" fill="#ffffff" stroke="#64748b"/>
+    <text x="526" y="396" font-weight="700" fill="#334155">ns: other</text>
+    <rect x="732" y="376" width="176" height="30" rx="6" fill="#e2e8f0"/><text x="820" y="396" text-anchor="middle" fill="#64748b">prometheus 라벨  거부</text>
+  </g>
+  <text x="715" y="448" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">"monitoring의 모든 Pod" 또는</text>
+  <text x="715" y="472" text-anchor="middle" font-size="13" fill="#7f1d1d">"shop 안의 prometheus 라벨 Pod"</text>
+</svg>

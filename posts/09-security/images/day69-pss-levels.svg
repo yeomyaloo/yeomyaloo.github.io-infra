@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Pod Security Standards — 세 레벨은 누적 구조</text>
+
+  <!-- privileged -->
+  <rect x="20" y="64" width="290" height="380" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="165" y="96" text-anchor="middle" font-size="20" font-weight="700" fill="#334155">privileged</text>
+  <text x="165" y="120" text-anchor="middle" font-size="14" fill="#64748b">제한 없음</text>
+  <rect x="40" y="140" width="250" height="120" rx="8" fill="#e2e8f0"/>
+  <text x="165" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">대상: 노드 에이전트</text>
+  <g font-size="13" fill="#334155" text-anchor="middle">
+    <text x="165" y="194">CNI · CSI 드라이버</text>
+    <text x="165" y="216">로그·모니터링 에이전트</text>
+    <text x="165" y="238">kube-system, kube-bench</text>
+  </g>
+  <text x="165" y="300" text-anchor="middle" font-size="13" fill="#64748b">hostNetwork, hostPath,</text>
+  <text x="165" y="320" text-anchor="middle" font-size="13" fill="#64748b">privileged 모두 허용</text>
+  <text x="165" y="410" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">일반 앱에는 쓰지 않는다</text>
+
+  <!-- baseline -->
+  <rect x="335" y="64" width="290" height="380" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="96" text-anchor="middle" font-size="20" font-weight="700" fill="#92400e">baseline</text>
+  <text x="480" y="120" text-anchor="middle" font-size="14" fill="#92400e">알려진 권한 상승 경로 차단</text>
+  <g font-size="13" fill="#78350f">
+    <rect x="355" y="140" width="250" height="30" rx="6" fill="#fde68a"/><text x="370" y="160">hostNetwork / hostPID / hostIPC</text>
+    <rect x="355" y="178" width="250" height="30" rx="6" fill="#fde68a"/><text x="370" y="198">privileged: true</text>
+    <rect x="355" y="216" width="250" height="30" rx="6" fill="#fde68a"/><text x="370" y="236">hostPath 볼륨 · hostPort</text>
+    <rect x="355" y="254" width="250" height="30" rx="6" fill="#fde68a"/><text x="370" y="274">SYS_ADMIN 등 capability 추가</text>
+    <rect x="355" y="292" width="250" height="30" rx="6" fill="#fde68a"/><text x="370" y="312">seccomp·AppArmor Unconfined</text>
+  </g>
+  <text x="480" y="380" text-anchor="middle" font-size="13" fill="#78350f">대부분의 앱이 수정 없이 통과</text>
+  <text x="480" y="410" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">모든 앱 네임스페이스의 최소 기준</text>
+
+  <!-- restricted -->
+  <rect x="650" y="64" width="290" height="380" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="795" y="96" text-anchor="middle" font-size="20" font-weight="700" fill="#b91c1c">restricted</text>
+  <text x="795" y="120" text-anchor="middle" font-size="14" fill="#b91c1c">baseline 전부 + 하드닝 강제</text>
+  <rect x="670" y="140" width="250" height="30" rx="6" fill="#ffffff" stroke="#fca5a5"/>
+  <text x="795" y="160" text-anchor="middle" font-size="13" fill="#7f1d1d">baseline의 모든 검사 포함</text>
+  <g font-size="13" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">
+    <rect x="670" y="178" width="250" height="30" rx="6" fill="#fca5a5"/><text x="682" y="198">runAsNonRoot: true</text>
+    <rect x="670" y="216" width="250" height="30" rx="6" fill="#fca5a5"/><text x="682" y="236">seccomp: RuntimeDefault</text>
+    <rect x="670" y="254" width="250" height="30" rx="6" fill="#fca5a5"/><text x="682" y="274">allowPrivilegeEscalation:false</text>
+    <rect x="670" y="292" width="250" height="30" rx="6" fill="#fca5a5"/><text x="682" y="312">capabilities.drop: [ALL]</text>
+  </g>
+  <rect x="670" y="330" width="250" height="30" rx="6" fill="#fca5a5"/>
+  <text x="682" y="350" font-size="13" fill="#7f1d1d">볼륨 타입 제한 (hostPath 등 불가)</text>
+  <text x="795" y="384" text-anchor="middle" font-size="12" fill="#7f1d1d">readOnlyRootFilesystem은 검사 안 함</text>
+  <text x="795" y="410" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">매니페스트 수정 필요</text>
+
+  <!-- arrows between -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="311" y1="455" x2="333" y2="455" marker-end="url(#arrow)"/>
+    <line x1="626" y1="455" x2="648" y2="455" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="462" text-anchor="middle" font-size="12" fill="#64748b">왼쪽 → 오른쪽으로 갈수록 제한이 강해짐</text>
+</svg>

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Loki — 라벨만 인덱싱, 본문은 청크로</text>
+
+  <!-- Alloy -->
+  <rect x="20" y="86" width="150" height="64" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="95" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">Grafana Alloy</text>
+  <text x="95" y="132" text-anchor="middle" font-size="12" fill="#78350f">라벨 + 로그 줄 push</text>
+
+  <!-- Loki box -->
+  <rect x="200" y="60" width="530" height="290" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="216" y="84" font-size="15" font-weight="700" fill="#0f766e">Loki (모놀리식 모드: 아래 전부가 프로세스 하나)</text>
+
+  <g text-anchor="middle">
+    <rect x="220" y="96" width="140" height="56" rx="8" fill="#ffffff" stroke="#0d9488"/>
+    <text x="290" y="119" font-size="14" font-weight="700" fill="#0f172a">distributor</text>
+    <text x="290" y="139" font-size="11" fill="#64748b">검증·라벨 제한·분배</text>
+
+    <rect x="395" y="96" width="140" height="56" rx="8" fill="#ffffff" stroke="#0d9488"/>
+    <text x="465" y="119" font-size="14" font-weight="700" fill="#0f172a">ingester</text>
+    <text x="465" y="139" font-size="11" fill="#64748b">스트림별로 모아 압축</text>
+
+    <rect x="570" y="96" width="140" height="56" rx="8" fill="#ffffff" stroke="#0d9488"/>
+    <text x="640" y="119" font-size="14" font-weight="700" fill="#0f172a">querier</text>
+    <text x="640" y="139" font-size="11" fill="#64748b">LogQL 실행</text>
+  </g>
+
+  <!-- index & chunks -->
+  <rect x="220" y="186" width="230" height="146" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="2"/>
+  <text x="335" y="208" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">인덱스 (TSDB) — 라벨만</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <text x="232" y="234">{app="demo-app",</text>
+    <text x="240" y="250">container="demo-app"}</text>
+    <text x="380" y="250" fill="#0d9488">→ c1, c2</text>
+    <text x="232" y="276">{app="grafana",</text>
+    <text x="240" y="292">container="grafana"}</text>
+    <text x="380" y="292" fill="#0d9488">→ c3</text>
+  </g>
+  <text x="335" y="320" text-anchor="middle" font-size="11" fill="#64748b">작다 → 싸고 빠름</text>
+
+  <rect x="480" y="186" width="230" height="146" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="595" y="208" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">청크 — 압축된 로그 본문</text>
+  <g font-size="12" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <rect x="496" y="222" width="60" height="44" rx="4" fill="#ccfbf1" stroke="#0d9488"/><text x="526" y="249" fill="#0f766e">c1</text>
+    <rect x="565" y="222" width="60" height="44" rx="4" fill="#ccfbf1" stroke="#0d9488"/><text x="595" y="249" fill="#0f766e">c2</text>
+    <rect x="634" y="222" width="60" height="44" rx="4" fill="#e2e8f0" stroke="#94a3b8"/><text x="664" y="249" fill="#334155">c3</text>
+  </g>
+  <text x="595" y="294" text-anchor="middle" font-size="11" fill="#64748b">PVC(파일 시스템) 또는</text>
+  <text x="595" y="310" text-anchor="middle" font-size="11" fill="#64748b">S3·GCS 같은 오브젝트 스토리지</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="170" y1="118" x2="216" y2="118" marker-end="url(#arrow)"/>
+    <line x1="360" y1="124" x2="391" y2="124" marker-end="url(#arrow)"/>
+    <path d="M440,152 L440,170 L335,170 L335,182" marker-end="url(#arrow)"/>
+    <path d="M490,152 L490,170 L595,170 L595,182" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#0d9488" stroke-width="2" fill="none" stroke-dasharray="5 3">
+    <path d="M640,152 L640,176 L460,176 L460,240 L454,240" marker-end="url(#arrowT)"/>
+  </g>
+  <g stroke="#0d9488" stroke-width="2" fill="none" stroke-dasharray="5 3">
+    <line x1="680" y1="186" x2="680" y2="156" marker-end="url(#arrowT)"/>
+  </g>
+
+  <!-- Grafana -->
+  <rect x="770" y="86" width="170" height="64" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="855" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3412">Grafana</text>
+  <text x="855" y="132" text-anchor="middle" font-size="12" fill="#9a3412">Explore · LogQL</text>
+  <line x1="770" y1="124" x2="714" y2="124" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="770" y="186" width="170" height="146" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="855" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">질의 예</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <text x="782" y="236">{app="demo-app"}</text>
+    <text x="790" y="256" fill="#64748b" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">↑ ① 인덱스로 선택</text>
+    <text x="782" y="282">|= "work failed"</text>
+    <text x="790" y="302" fill="#64748b" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">↑ ② 청크를 훑음</text>
+  </g>
+
+  <!-- ===== Bottom: streams and cardinality ===== -->
+  <text x="20" y="384" font-size="16" font-weight="700" fill="#0f172a">라벨 집합 = 스트림 — 카디널리티가 성능을 결정한다</text>
+
+  <rect x="20" y="398" width="450" height="146" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="36" y="422" font-size="14" font-weight="700" fill="#15803d">✓ 낮은 카디널리티 라벨</text>
+  <text x="36" y="442" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">namespace · app · container · cluster</text>
+  <g>
+    <rect x="36" y="456" width="300" height="20" rx="3" fill="#86efac"/>
+    <rect x="36" y="482" width="240" height="20" rx="3" fill="#86efac"/>
+    <rect x="36" y="508" width="180" height="20" rx="3" fill="#86efac"/>
+  </g>
+  <text x="350" y="486" font-size="12" fill="#14532d">스트림 몇 개,</text>
+  <text x="350" y="504" font-size="12" fill="#14532d">청크가 크고 효율적</text>
+
+  <rect x="490" y="398" width="450" height="146" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="506" y="422" font-size="14" font-weight="700" fill="#b91c1c">✗ trace_id를 라벨로</text>
+  <text x="506" y="442" font-size="12" fill="#334155">요청마다 새 값 → 요청 수만큼 스트림</text>
+  <g fill="#fca5a5">
+    <rect x="506" y="456" width="16" height="20" rx="2"/><rect x="526" y="456" width="16" height="20" rx="2"/><rect x="546" y="456" width="16" height="20" rx="2"/><rect x="566" y="456" width="16" height="20" rx="2"/><rect x="586" y="456" width="16" height="20" rx="2"/><rect x="606" y="456" width="16" height="20" rx="2"/><rect x="626" y="456" width="16" height="20" rx="2"/><rect x="646" y="456" width="16" height="20" rx="2"/><rect x="666" y="456" width="16" height="20" rx="2"/><rect x="686" y="456" width="16" height="20" rx="2"/>
+    <rect x="506" y="482" width="16" height="20" rx="2"/><rect x="526" y="482" width="16" height="20" rx="2"/><rect x="546" y="482" width="16" height="20" rx="2"/><rect x="566" y="482" width="16" height="20" rx="2"/><rect x="586" y="482" width="16" height="20" rx="2"/><rect x="606" y="482" width="16" height="20" rx="2"/><rect x="626" y="482" width="16" height="20" rx="2"/><rect x="646" y="482" width="16" height="20" rx="2"/><rect x="666" y="482" width="16" height="20" rx="2"/><rect x="686" y="482" width="16" height="20" rx="2"/>
+    <rect x="506" y="508" width="16" height="20" rx="2"/><rect x="526" y="508" width="16" height="20" rx="2"/><rect x="546" y="508" width="16" height="20" rx="2"/><rect x="566" y="508" width="16" height="20" rx="2"/><rect x="586" y="508" width="16" height="20" rx="2"/><rect x="606" y="508" width="16" height="20" rx="2"/><rect x="626" y="508" width="16" height="20" rx="2"/><rect x="646" y="508" width="16" height="20" rx="2"/><rect x="666" y="508" width="16" height="20" rx="2"/><rect x="686" y="508" width="16" height="20" rx="2"/>
+  </g>
+  <text x="716" y="476" font-size="12" fill="#7f1d1d">작은 청크 수천 개,</text>
+  <text x="716" y="494" font-size="12" fill="#7f1d1d">인덱스·메모리 폭증</text>
+  <text x="716" y="520" font-size="12" font-weight="700" fill="#b91c1c">→ 구조화 메타데이터로</text>
+</svg>

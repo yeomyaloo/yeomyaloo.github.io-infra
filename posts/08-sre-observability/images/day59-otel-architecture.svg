@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OpenTelemetry 구조 — API · SDK · OTLP · Collector</text>
+
+  <!-- ===== App Pod ===== -->
+  <rect x="20" y="62" width="270" height="344" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="155" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Pod: dev-demo-app</text>
+
+  <g text-anchor="middle">
+    <rect x="38" y="104" width="234" height="50" rx="8" fill="#ffffff" stroke="#334155"/>
+    <text x="155" y="125" font-size="14" font-weight="700" fill="#0f172a">앱 코드 (FastAPI)</text>
+    <text x="155" y="144" font-size="11" fill="#64748b" font-family="Consolas,'D2Coding',monospace">start_as_current_span()</text>
+
+    <rect x="38" y="166" width="234" height="50" rx="8" fill="#ffffff" stroke="#334155" stroke-dasharray="5 3"/>
+    <text x="155" y="187" font-size="14" font-weight="700" fill="#0f172a">계측 라이브러리</text>
+    <text x="155" y="206" font-size="11" fill="#64748b">FastAPI · logging 자동 계측</text>
+
+    <rect x="38" y="228" width="234" height="40" rx="8" fill="#ccfbf1" stroke="#0d9488"/>
+    <text x="155" y="253" font-size="14" font-weight="700" fill="#0f766e">OTel API (no-op 가능)</text>
+
+    <rect x="38" y="280" width="234" height="54" rx="8" fill="#0d9488"/>
+    <text x="155" y="303" font-size="14" font-weight="700" fill="#ffffff">OTel SDK</text>
+    <text x="155" y="322" font-size="11" fill="#ccfbf1">Resource · Sampler · Batch</text>
+
+    <rect x="38" y="346" width="234" height="44" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="155" y="373" font-size="14" font-weight="700" fill="#78350f">OTLP Exporter</text>
+  </g>
+  <g stroke="#334155" stroke-width="1.5" fill="none">
+    <line x1="155" y1="216" x2="155" y2="225" marker-end="url(#arrow)"/>
+    <line x1="155" y1="268" x2="155" y2="277" marker-end="url(#arrow)"/>
+    <line x1="155" y1="334" x2="155" y2="343" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- OTLP arrow -->
+  <line x1="272" y1="368" x2="346" y2="368" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="318" y="356" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">OTLP</text>
+  <text x="318" y="388" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">:4317</text>
+  <text x="318" y="402" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">:4318</text>
+
+  <!-- ===== Collector ===== -->
+  <rect x="350" y="62" width="390" height="344" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="545" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#0f766e">OpenTelemetry Collector (gateway)</text>
+
+  <g text-anchor="middle" font-size="13" font-weight="700">
+    <text x="414" y="118" fill="#334155">receivers</text>
+    <text x="545" y="118" fill="#334155">processors</text>
+    <text x="676" y="118" fill="#334155">exporters</text>
+  </g>
+
+  <g text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12">
+    <rect x="364" y="134" width="100" height="38" rx="6" fill="#ffffff" stroke="#0d9488" stroke-width="2"/>
+    <text x="414" y="158" fill="#0f172a">otlp</text>
+    <rect x="364" y="184" width="100" height="38" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="414" y="208" fill="#64748b">prometheus</text>
+    <rect x="364" y="234" width="100" height="38" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="414" y="258" fill="#64748b">file_log</text>
+
+    <rect x="482" y="134" width="126" height="38" rx="6" fill="#ffffff" stroke="#0d9488"/>
+    <text x="545" y="158" fill="#0f172a">k8s_attributes</text>
+    <rect x="482" y="184" width="126" height="38" rx="6" fill="#ffffff" stroke="#0d9488"/>
+    <text x="545" y="208" fill="#0f172a">memory_limiter</text>
+    <rect x="482" y="234" width="126" height="38" rx="6" fill="#ffffff" stroke="#0d9488"/>
+    <text x="545" y="258" fill="#0f172a">batch</text>
+
+    <rect x="626" y="134" width="100" height="38" rx="6" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+    <text x="676" y="158" fill="#0f172a">debug</text>
+    <rect x="626" y="184" width="100" height="38" rx="6" fill="#ffffff" stroke="#0d9488"/>
+    <text x="676" y="208" fill="#0f172a">otlp</text>
+    <rect x="626" y="234" width="100" height="38" rx="6" fill="#ffffff" stroke="#0d9488"/>
+    <text x="676" y="258" fill="#0f172a">otlphttp</text>
+  </g>
+
+  <g stroke="#0d9488" stroke-width="1.8" fill="none">
+    <line x1="464" y1="153" x2="479" y2="153" marker-end="url(#arrowT)"/>
+    <line x1="545" y1="172" x2="545" y2="181" marker-end="url(#arrowT)"/>
+    <line x1="545" y1="222" x2="545" y2="231" marker-end="url(#arrowT)"/>
+    <path d="M608,253 L616,253 L616,153 L623,153" marker-end="url(#arrowT)"/>
+    <line x1="616" y1="203" x2="623" y2="203" marker-end="url(#arrowT)"/>
+    <line x1="616" y1="253" x2="623" y2="253" marker-end="url(#arrowT)"/>
+  </g>
+
+  <rect x="364" y="290" width="362" height="100" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="378" y="314" font-size="12" font-weight="700" fill="#334155" font-family="Consolas,'D2Coding',monospace">service.pipelines:</text>
+  <text x="392" y="336" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">traces:  otlp → … → debug</text>
+  <text x="392" y="356" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">metrics: otlp → … → debug</text>
+  <text x="392" y="376" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">logs:    otlp → … → debug</text>
+
+  <!-- ===== Backends ===== -->
+  <g text-anchor="middle">
+    <rect x="780" y="134" width="160" height="44" rx="8" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+    <text x="860" y="154" font-size="13" font-weight="700" fill="#0f766e">stdout (오늘)</text>
+    <text x="860" y="171" font-size="11" fill="#334155">kubectl logs로 확인</text>
+
+    <rect x="780" y="190" width="160" height="44" rx="8" fill="#ffffff" stroke="#334155"/>
+    <text x="860" y="210" font-size="13" font-weight="700" fill="#0f172a">Tempo</text>
+    <text x="860" y="227" font-size="11" fill="#64748b">트레이스 · Day 61</text>
+
+    <rect x="780" y="246" width="160" height="44" rx="8" fill="#ffffff" stroke="#334155"/>
+    <text x="860" y="266" font-size="13" font-weight="700" fill="#0f172a">Loki</text>
+    <text x="860" y="283" font-size="11" fill="#64748b">로그 · Day 60</text>
+
+    <rect x="780" y="302" width="160" height="44" rx="8" fill="#ffffff" stroke="#334155"/>
+    <text x="860" y="322" font-size="13" font-weight="700" fill="#0f172a">Prometheus</text>
+    <text x="860" y="339" font-size="11" fill="#64748b">메트릭 · Day 17</text>
+  </g>
+  <g stroke="#334155" stroke-width="1.5" fill="none">
+    <line x1="726" y1="153" x2="776" y2="153" marker-end="url(#arrow)"/>
+    <line x1="726" y1="203" x2="776" y2="210" marker-end="url(#arrow)" stroke-dasharray="5 3"/>
+    <line x1="726" y1="253" x2="776" y2="266" marker-end="url(#arrow)" stroke-dasharray="5 3"/>
+    <line x1="726" y1="263" x2="776" y2="320" marker-end="url(#arrow)" stroke-dasharray="5 3"/>
+  </g>
+  <text x="860" y="372" text-anchor="middle" font-size="11" fill="#64748b">점선 = 이후 Day에서 연결</text>
+
+  <rect x="20" y="424" width="920" height="40" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="480" y="449" text-anchor="middle" font-size="14" fill="#334155">앱은 OTLP 하나만 말하면 된다 — 백엔드 교체·가공·K8s 메타데이터 부착은 Collector 설정으로</text>
+</svg>

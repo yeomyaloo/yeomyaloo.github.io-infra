@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">계정 하나로 SSO, 요청 하나하나는 감사 로그로</text>
+
+  <!-- users -->
+  <rect x="20" y="66" width="170" height="200" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="105" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">사용자</text>
+  <rect x="35" y="108" width="140" height="62" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="105" y="133" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">alice</text>
+  <text x="105" y="156" text-anchor="middle" font-size="12" fill="#64748b">team-a-devs</text>
+  <rect x="35" y="184" width="140" height="62" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="105" y="209" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">bob</text>
+  <text x="105" y="232" text-anchor="middle" font-size="12" fill="#64748b">platform-admins</text>
+
+  <!-- keycloak -->
+  <rect x="230" y="56" width="290" height="270" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="375" y="84" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">Keycloak · realm infra</text>
+  <text x="375" y="104" text-anchor="middle" font-size="11" fill="#64748b">dev 모드 · keycloak.infra.test:8443</text>
+  <text x="250" y="130" font-size="12" font-weight="700" fill="#312e81">group</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="250" y="138" width="120" height="28" rx="14" fill="#c7d2fe"/>
+    <text x="310" y="157" fill="#312e81">platform-admins</text>
+    <rect x="380" y="138" width="120" height="28" rx="14" fill="#c7d2fe"/>
+    <text x="440" y="157" fill="#312e81">team-a-devs</text>
+  </g>
+  <text x="250" y="190" font-size="12" font-weight="700" fill="#312e81">client</text>
+  <g font-size="12">
+    <rect x="250" y="198" width="250" height="26" rx="6" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="262" y="216" fill="#0f172a"><tspan font-family="Consolas,'D2Coding',monospace">kubernetes</tspan><tspan dx="10">public (kubelogin)</tspan></text>
+    <rect x="250" y="230" width="250" height="26" rx="6" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="262" y="248" fill="#0f172a"><tspan font-family="Consolas,'D2Coding',monospace">grafana</tspan><tspan dx="10">confidential</tspan></text>
+    <rect x="250" y="262" width="250" height="26" rx="6" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="262" y="280" fill="#0f172a"><tspan font-family="Consolas,'D2Coding',monospace">argocd</tspan><tspan dx="10">confidential</tspan></text>
+  </g>
+  <text x="375" y="312" text-anchor="middle" font-size="11" fill="#312e81">Group Membership 매퍼 → groups 클레임</text>
+
+  <!-- consumers -->
+  <rect x="570" y="56" width="370" height="90" rx="10" fill="#dbeafe" stroke="#326ce5"/>
+  <text x="590" y="80" font-size="15" font-weight="700" fill="#1e3a8a">kube-apiserver (+ RBAC)</text>
+  <g font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">
+    <text x="590" y="104">oidc:team-a-devs → team-a/developer</text>
+    <text x="590" y="126">oidc:platform-admins → cluster-admin</text>
+  </g>
+
+  <rect x="570" y="160" width="370" height="70" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="590" y="184" font-size="15" font-weight="700" fill="#7c2d12">Grafana</text>
+  <text x="590" y="210" font-size="12" fill="#7c2d12">platform-admins → Admin, 그 외 → Viewer</text>
+
+  <rect x="570" y="244" width="370" height="70" rx="10" fill="#fff1eb" stroke="#ef7b4d"/>
+  <text x="590" y="268" font-size="15" font-weight="700" fill="#7c2d12">Argo CD</text>
+  <text x="590" y="294" font-size="12" fill="#7c2d12">platform-admins → role:admin, 기본 → readonly</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="190" y1="166" x2="227" y2="166" marker-end="url(#arrow)"/>
+    <line x1="520" y1="101" x2="567" y2="101" marker-end="url(#arrow)"/>
+    <line x1="520" y1="195" x2="567" y2="195" marker-end="url(#arrow)"/>
+    <line x1="520" y1="279" x2="567" y2="279" marker-end="url(#arrow)"/>
+  </g>
+  <text x="208" y="158" text-anchor="middle" font-size="11" fill="#334155">로그인</text>
+  <text x="544" y="93" text-anchor="middle" font-size="11" fill="#334155">토큰</text>
+
+  <!-- audit pipeline -->
+  <rect x="20" y="350" width="920" height="150" rx="12" fill="#fef2f2" stroke="#b91c1c"/>
+  <text x="40" y="376" font-size="15" font-weight="700" fill="#7f1d1d">감사 로그 경로 (control-plane 노드)</text>
+  <g text-anchor="middle">
+    <rect x="40" y="392" width="150" height="60" rx="8" fill="#dbeafe" stroke="#326ce5"/>
+    <text x="115" y="417" font-size="13" font-weight="700" fill="#1e3a8a">kube-apiserver</text>
+    <text x="115" y="438" font-size="11" fill="#1e3a8a">audit policy 적용</text>
+
+    <rect x="226" y="392" width="200" height="60" rx="8" fill="#ffffff" stroke="#b91c1c"/>
+    <text x="326" y="417" font-size="13" font-weight="700" fill="#7f1d1d">audit.log (JSON)</text>
+    <text x="326" y="438" font-size="11" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">/var/log/kubernetes/audit</text>
+
+    <rect x="462" y="392" width="150" height="60" rx="8" fill="#fde68a"/>
+    <text x="537" y="417" font-size="13" font-weight="700" fill="#78350f">Alloy</text>
+    <text x="537" y="438" font-size="11" fill="#78350f">control-plane 전용</text>
+
+    <rect x="648" y="392" width="120" height="60" rx="8" fill="#ccfbf1" stroke="#0d9488"/>
+    <text x="708" y="417" font-size="13" font-weight="700" fill="#134e4a">Loki</text>
+    <text x="708" y="438" font-size="11" fill="#134e4a">Day 60</text>
+
+    <rect x="804" y="392" width="120" height="60" rx="8" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="864" y="417" font-size="13" font-weight="700" fill="#7c2d12">Grafana</text>
+    <text x="864" y="438" font-size="11" fill="#7c2d12">LogQL 조회</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="190" y1="422" x2="223" y2="422" marker-end="url(#arrow)"/>
+    <line x1="426" y1="422" x2="459" y2="422" marker-end="url(#arrow)"/>
+    <line x1="612" y1="422" x2="645" y2="422" marker-end="url(#arrow)"/>
+    <line x1="768" y1="422" x2="801" y2="422" marker-end="url(#arrow)"/>
+  </g>
+  <text x="40" y="482" font-size="12" fill="#7f1d1d">정책: 소음=None · Secret·ConfigMap=Metadata · exec=Metadata · RBAC 변경=RequestResponse · 쓰기=Request</text>
+
+  <!-- name resolution note -->
+  <text x="480" y="530" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">issuer 이름은 하나 — https://keycloak.infra.test:8443/realms/infra</text>
+  <text x="480" y="554" text-anchor="middle" font-size="12" fill="#64748b">브라우저: PC hosts + port-forward · API 서버: 노드 /etc/hosts → ClusterIP · Pod: CoreDNS rewrite</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">기본 거부 전후 트래픽 매트릭스 (shop 네임스페이스)</text>
+
+  <!-- header -->
+  <rect x="20" y="60" width="420" height="44" fill="#334155"/>
+  <rect x="440" y="60" width="240" height="44" fill="#64748b"/>
+  <rect x="680" y="60" width="260" height="44" fill="#b91c1c"/>
+  <g font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">
+    <text x="230" y="88">출발 → 도착</text>
+    <text x="560" y="88">정책 없음 (기본 허용)</text>
+    <text x="810" y="88">default-deny + 허용 정책</text>
+  </g>
+
+  <!-- rows: y start 104, height 50 -->
+  <g font-size="14" fill="#0f172a">
+    <rect x="20" y="104" width="420" height="50" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="36" y="134">shop/web → shop/api :8080</text>
+    <rect x="20" y="154" width="420" height="50" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="36" y="184">outsider/curl → shop/api</text>
+    <rect x="20" y="204" width="420" height="50" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="36" y="234">monitoring/prometheus → shop/api</text>
+    <rect x="20" y="254" width="420" height="50" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="36" y="284">monitoring/기타 Pod → shop/api</text>
+    <rect x="20" y="304" width="420" height="50" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="36" y="334">shop/web → 인터넷 (example.com)</text>
+    <rect x="20" y="354" width="420" height="50" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="36" y="384">shop/* → kube-dns :53</text>
+  </g>
+
+  <!-- before column: all allowed (amber = 허용이지만 의도치 않음 for 2,4,5) -->
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <rect x="440" y="104" width="240" height="50" fill="#dcfce7" stroke="#ffffff"/><text x="560" y="134" fill="#14532d">허용</text>
+    <rect x="440" y="154" width="240" height="50" fill="#fde68a" stroke="#ffffff"/><text x="560" y="184" fill="#78350f">허용 (위험)</text>
+    <rect x="440" y="204" width="240" height="50" fill="#dcfce7" stroke="#ffffff"/><text x="560" y="234" fill="#14532d">허용</text>
+    <rect x="440" y="254" width="240" height="50" fill="#fde68a" stroke="#ffffff"/><text x="560" y="284" fill="#78350f">허용 (위험)</text>
+    <rect x="440" y="304" width="240" height="50" fill="#fde68a" stroke="#ffffff"/><text x="560" y="334" fill="#78350f">허용 (유출 경로)</text>
+    <rect x="440" y="354" width="240" height="50" fill="#dcfce7" stroke="#ffffff"/><text x="560" y="384" fill="#14532d">허용</text>
+  </g>
+
+  <!-- after column -->
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <rect x="680" y="104" width="260" height="50" fill="#86efac" stroke="#ffffff"/><text x="810" y="128" fill="#14532d">허용</text>
+    <rect x="680" y="154" width="260" height="50" fill="#fca5a5" stroke="#ffffff"/><text x="810" y="178" fill="#7f1d1d">거부</text>
+    <rect x="680" y="204" width="260" height="50" fill="#86efac" stroke="#ffffff"/><text x="810" y="228" fill="#14532d">허용</text>
+    <rect x="680" y="254" width="260" height="50" fill="#fca5a5" stroke="#ffffff"/><text x="810" y="278" fill="#7f1d1d">거부</text>
+    <rect x="680" y="304" width="260" height="50" fill="#fca5a5" stroke="#ffffff"/><text x="810" y="328" fill="#7f1d1d">거부</text>
+    <rect x="680" y="354" width="260" height="50" fill="#86efac" stroke="#ffffff"/><text x="810" y="378" fill="#14532d">허용</text>
+  </g>
+  <g font-size="11" fill="#334155" text-anchor="middle">
+    <text x="810" y="146">web egress + api ingress</text>
+    <text x="810" y="196">허용 규칙 없음</text>
+    <text x="810" y="246">namespaceSelector AND podSelector</text>
+    <text x="810" y="296">ns는 맞지만 Pod 라벨 불일치</text>
+    <text x="810" y="346">egress 규칙 없음</text>
+    <text x="810" y="396">allow-dns-egress</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="13" fill="#334155">
+    <rect x="20" y="428" width="18" height="18" fill="#86efac"/><text x="46" y="442">의도된 허용</text>
+    <rect x="160" y="428" width="18" height="18" fill="#fca5a5"/><text x="186" y="442">차단 (curl 000 / 타임아웃)</text>
+    <rect x="380" y="428" width="18" height="18" fill="#fde68a"/><text x="406" y="442">열려 있지만 필요 없는 경로 = 수평 이동 통로</text>
+  </g>
+  <text x="20" y="470" font-size="12" fill="#64748b">허용 규칙은 합집합 · 연결이 허용되면 응답 패킷은 자동 허용(stateful)</text>
+</svg>

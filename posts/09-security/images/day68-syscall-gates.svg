@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="470" fill="#ffffff"/>
+  <text x="500" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">syscall 하나가 통과하는 관문 — 순서와 Docker 옵션</text>
+
+  <!-- user namespace band -->
+  <rect x="420" y="62" width="410" height="62" rx="10" fill="#ede9fe" stroke="#4f46e5"/>
+  <text x="625" y="87" text-anchor="middle" font-size="13" font-weight="700" fill="#312e81">user namespace (userns-remap · rootless)</text>
+  <text x="625" y="110" text-anchor="middle" font-size="12" fill="#312e81">컨테이너 root를 호스트 일반 UID로 → 호스트 자원 검사에서 탈락</text>
+  <g stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="4 3">
+    <line x1="515" y1="124" x2="515" y2="148"/>
+  </g>
+
+  <!-- Process -->
+  <rect x="20" y="170" width="150" height="80" rx="10" fill="#e0f2fe" stroke="#2496ed" stroke-width="2"/>
+  <text x="95" y="203" text-anchor="middle" font-size="14" font-weight="700" fill="#0c4a6e">컨테이너 프로세스</text>
+  <text x="95" y="226" text-anchor="middle" font-size="12" fill="#0c4a6e" font-family="Consolas,'D2Coding',monospace">open("/etc/x", W)</text>
+
+  <!-- Gates -->
+  <rect x="200" y="150" width="190" height="120" rx="10" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+  <text x="295" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">① seccomp (BPF)</text>
+  <text x="295" y="200" text-anchor="middle" font-size="12" fill="#334155">syscall 진입 시점</text>
+  <text x="295" y="220" text-anchor="middle" font-size="12" fill="#334155">syscall 번호·인자 검사</text>
+  <text x="295" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">거부 → EPERM</text>
+
+  <rect x="420" y="150" width="190" height="120" rx="10" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+  <text x="515" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">② DAC + capabilities</text>
+  <text x="515" y="200" text-anchor="middle" font-size="12" fill="#334155">UID·권한 비트 검사</text>
+  <text x="515" y="220" text-anchor="middle" font-size="12" fill="#334155">CAP_* 보유 여부 검사</text>
+  <text x="515" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">거부 → EACCES / EPERM</text>
+
+  <rect x="640" y="150" width="190" height="120" rx="10" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+  <text x="735" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">③ LSM (AppArmor)</text>
+  <text x="735" y="200" text-anchor="middle" font-size="12" fill="#334155">경로 · 동작 규칙</text>
+  <text x="735" y="220" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">deny /etc/** w</text>
+  <text x="735" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">거부 → EACCES</text>
+
+  <rect x="860" y="170" width="120" height="80" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="920" y="203" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">커널 자원</text>
+  <text x="920" y="226" text-anchor="middle" font-size="12" fill="#14532d">파일 · 소켓 · 마운트</text>
+
+  <g stroke="#334155" stroke-width="2">
+    <line x1="170" y1="210" x2="197" y2="210" marker-end="url(#arrow)"/>
+    <line x1="390" y1="210" x2="417" y2="210" marker-end="url(#arrow)"/>
+    <line x1="610" y1="210" x2="637" y2="210" marker-end="url(#arrow)"/>
+    <line x1="830" y1="210" x2="857" y2="210" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Docker options -->
+  <g font-size="11" text-anchor="middle" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">
+    <text x="295" y="292">--security-opt seccomp=</text>
+    <text x="515" y="292">--cap-drop ALL --cap-add</text>
+    <text x="515" y="308">--user 1000</text>
+    <text x="735" y="292">--security-opt apparmor=</text>
+  </g>
+
+  <!-- Bottom bands -->
+  <rect x="200" y="330" width="630" height="44" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="515" y="357" text-anchor="middle" font-size="12" fill="#78350f"><tspan font-weight="700">no-new-privileges</tspan> — execve 시 setuid 비트·파일 capability로 권한 상승 금지 (NoNewPrivs = 1)</text>
+  <rect x="200" y="388" width="630" height="44" rx="10" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="515" y="415" text-anchor="middle" font-size="12" fill="#334155"><tspan font-weight="700">--read-only + tmpfs(noexec, nosuid)</tspan> — 쓰고 실행할 자리 자체를 없앰 (마운트 수준)</text>
+  <text x="500" y="458" text-anchor="middle" font-size="12" fill="#64748b">한 관문만 통과해도 끝이 아니다 — 모든 관문을 통과해야 자원에 닿는다</text>
+</svg>

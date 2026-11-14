@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Tempo 3 모놀리식 구성과 데이터 흐름</text>
+
+  <!-- App -->
+  <rect x="20" y="80" width="175" height="100" rx="10" fill="#e2e8f0" stroke="#334155"/>
+  <text x="107" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">데모 앱</text>
+  <text x="107" y="128" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">demo-dev/dev-demo-app</text>
+  <text x="107" y="150" text-anchor="middle" font-size="12" fill="#334155">FastAPI + OTel SDK</text>
+  <text x="107" y="168" text-anchor="middle" font-size="11" fill="#64748b">(Day 59 계측)</text>
+
+  <!-- Collector -->
+  <rect x="20" y="250" width="175" height="140" rx="10" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="107" y="276" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">OTel Collector</text>
+  <g font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#312e81" text-anchor="middle">
+    <text x="107" y="302">receivers: otlp</text>
+    <text x="107" y="324">processors: batch</text>
+    <text x="107" y="346">exporters:</text>
+    <text x="107" y="366">otlp_grpc/tempo</text>
+  </g>
+
+  <!-- Tempo box -->
+  <rect x="225" y="64" width="545" height="400" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="497" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#134e4a">Tempo (-target=all, Pod 1개)</text>
+
+  <!-- Row 1 -->
+  <rect x="245" y="104" width="145" height="60" rx="8" fill="#0d9488"/>
+  <text x="317" y="130" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">distributor</text>
+  <text x="317" y="150" text-anchor="middle" font-size="12" fill="#ccfbf1">:4317 / :4318 OTLP</text>
+
+  <rect x="425" y="104" width="145" height="60" rx="8" fill="#ccfbf1" stroke="#0d9488"/>
+  <text x="497" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#134e4a">live-store</text>
+  <text x="497" y="149" text-anchor="middle" font-size="12" fill="#134e4a">최근 트레이스 (메모리+WAL)</text>
+
+  <rect x="605" y="104" width="145" height="60" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="677" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">블록 저장소</text>
+  <text x="677" y="149" text-anchor="middle" font-size="12" fill="#78350f">PV (운영: S3·GCS)</text>
+
+  <!-- Row 2 -->
+  <rect x="245" y="200" width="145" height="76" rx="8" fill="#ccfbf1" stroke="#0d9488"/>
+  <text x="317" y="224" text-anchor="middle" font-size="14" font-weight="700" fill="#134e4a">metrics-generator</text>
+  <text x="317" y="245" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#134e4a">service-graphs</text>
+  <text x="317" y="263" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#134e4a">span-metrics</text>
+
+  <rect x="605" y="190" width="145" height="56" rx="8" fill="#ccfbf1" stroke="#0d9488"/>
+  <text x="677" y="213" text-anchor="middle" font-size="13" font-weight="700" fill="#134e4a">backend-worker</text>
+  <text x="677" y="234" text-anchor="middle" font-size="12" fill="#134e4a">압축 · 보존 기간</text>
+
+  <!-- Row 3 -->
+  <rect x="425" y="310" width="145" height="60" rx="8" fill="#ccfbf1" stroke="#0d9488"/>
+  <text x="497" y="334" text-anchor="middle" font-size="14" font-weight="700" fill="#134e4a">query-frontend</text>
+  <text x="497" y="355" text-anchor="middle" font-size="12" fill="#134e4a">+ querier (TraceQL)</text>
+
+  <!-- Note inside Tempo -->
+  <rect x="245" y="396" width="505" height="52" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="497" y="418" text-anchor="middle" font-size="13" fill="#334155">Kafka 없음 — distributor가 프로세스 안에서 live-store·generator로 직접 전달</text>
+  <text x="497" y="438" text-anchor="middle" font-size="12" fill="#64748b">(Tempo 3.0에서 ingester·compactor 제거, 대규모는 tempo-distributed + Kafka)</text>
+
+  <!-- Right column -->
+  <rect x="795" y="190" width="145" height="90" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="867" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#7c2d12">Prometheus</text>
+  <text x="867" y="242" text-anchor="middle" font-size="11" fill="#7c2d12">remote write 수신</text>
+  <text x="867" y="260" text-anchor="middle" font-size="11" fill="#7c2d12">exemplar 저장</text>
+
+  <rect x="795" y="310" width="145" height="80" rx="10" fill="#e2e8f0" stroke="#334155"/>
+  <text x="867" y="340" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Grafana</text>
+  <text x="867" y="362" text-anchor="middle" font-size="12" fill="#334155">Explore · 서비스 그래프</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="107" y1="180" x2="107" y2="246" marker-end="url(#arrow)"/>
+    <line x1="195" y1="300" x2="242" y2="158" marker-end="url(#arrow)"/>
+    <line x1="867" y1="310" x2="867" y2="284" marker-end="url(#arrow)"/>
+    <line x1="795" y1="340" x2="574" y2="340" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#0d9488" stroke-width="2" fill="none">
+    <line x1="390" y1="134" x2="421" y2="134" marker-end="url(#arrowTeal)"/>
+    <line x1="570" y1="134" x2="601" y2="134" marker-end="url(#arrowTeal)"/>
+    <line x1="317" y1="164" x2="317" y2="196" marker-end="url(#arrowTeal)"/>
+    <line x1="497" y1="310" x2="497" y2="168" marker-end="url(#arrowTeal)"/>
+    <line x1="560" y1="310" x2="613" y2="168" marker-end="url(#arrowTeal)"/>
+    <line x1="677" y1="186" x2="677" y2="168" marker-end="url(#arrowTeal)"/>
+    <line x1="390" y1="262" x2="791" y2="262" marker-end="url(#arrowTeal)"/>
+  </g>
+  <g font-size="12" font-weight="700" fill="#334155">
+    <text x="115" y="220">OTLP</text>
+    <text x="206" y="232" text-anchor="middle" transform="rotate(-72 206 232)">OTLP gRPC</text>
+    <text x="680" y="282" text-anchor="middle" fill="#0f766e">remote write + exemplar</text>
+    <text x="682" y="332" text-anchor="middle">TraceQL :3200</text>
+    <text x="882" y="300" text-anchor="start" font-size="11">PromQL</text>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">멀티 윈도우 · 멀티 번 레이트 알림 (SLO 99.9%, 30일)</text>
+
+  <!-- Formula -->
+  <rect x="20" y="54" width="920" height="58" rx="10" fill="#ccfbf1" stroke="#0d9488"/>
+  <text x="480" y="78" text-anchor="middle" font-size="14" fill="#134e4a">번 레이트 = 에러율 ÷ 0.001 (에러 버짓 0.1% = 30일 중 43.2분)</text>
+  <text x="480" y="100" text-anchor="middle" font-size="13" fill="#134e4a">소진 버짓 = 번 레이트 × 창 ÷ 720h   예) 14.4 × 1h ÷ 720h = 2%</text>
+
+  <!-- Header -->
+  <g font-size="13" font-weight="700" fill="#334155">
+    <text x="70" y="146" text-anchor="middle">긴급도</text>
+    <text x="270" y="146" text-anchor="middle">긴 창 ─ 짧은 창 (둘 다 넘어야 Firing)</text>
+    <text x="520" y="146" text-anchor="middle">창</text>
+    <text x="625" y="146" text-anchor="middle">번 레이트</text>
+    <text x="740" y="146" text-anchor="middle">기준 에러율</text>
+    <text x="860" y="146" text-anchor="middle">소진 버짓</text>
+  </g>
+  <line x1="20" y1="156" x2="940" y2="156" stroke="#94a3b8"/>
+
+  <!-- Row 1 -->
+  <rect x="30" y="170" width="80" height="34" rx="17" fill="#dc2626"/>
+  <text x="70" y="192" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">page</text>
+  <rect x="140" y="176" width="240" height="22" rx="4" fill="#fca5a5"/>
+  <rect x="380" y="176" width="20" height="22" rx="4" fill="#dc2626"/>
+  <text x="260" y="192" text-anchor="middle" font-size="12" fill="#7f1d1d">1시간 평균</text>
+  <text x="520" y="192" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">1h / 5m</text>
+  <text x="625" y="192" text-anchor="middle" font-size="15" font-weight="700" fill="#dc2626">× 14.4</text>
+  <text x="740" y="192" text-anchor="middle" font-size="14" fill="#0f172a">&gt; 1.44%</text>
+  <text x="860" y="192" text-anchor="middle" font-size="14" fill="#0f172a">2%</text>
+
+  <!-- Row 2 -->
+  <rect x="30" y="222" width="80" height="34" rx="17" fill="#dc2626"/>
+  <text x="70" y="244" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">page</text>
+  <rect x="140" y="228" width="240" height="22" rx="4" fill="#fca5a5"/>
+  <rect x="380" y="228" width="20" height="22" rx="4" fill="#dc2626"/>
+  <text x="260" y="244" text-anchor="middle" font-size="12" fill="#7f1d1d">6시간 평균</text>
+  <text x="520" y="244" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">6h / 30m</text>
+  <text x="625" y="244" text-anchor="middle" font-size="15" font-weight="700" fill="#dc2626">× 6</text>
+  <text x="740" y="244" text-anchor="middle" font-size="14" fill="#0f172a">&gt; 0.6%</text>
+  <text x="860" y="244" text-anchor="middle" font-size="14" fill="#0f172a">5%</text>
+
+  <!-- Row 3 -->
+  <rect x="30" y="274" width="80" height="34" rx="17" fill="#f59e0b"/>
+  <text x="70" y="296" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">ticket</text>
+  <rect x="140" y="280" width="240" height="22" rx="4" fill="#fde68a"/>
+  <rect x="380" y="280" width="20" height="22" rx="4" fill="#f59e0b"/>
+  <text x="260" y="296" text-anchor="middle" font-size="12" fill="#78350f">1일 평균</text>
+  <text x="520" y="296" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">1d / 2h</text>
+  <text x="625" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#b45309">× 3</text>
+  <text x="740" y="296" text-anchor="middle" font-size="14" fill="#0f172a">&gt; 0.3%</text>
+  <text x="860" y="296" text-anchor="middle" font-size="14" fill="#0f172a">10%</text>
+
+  <!-- Row 4 -->
+  <rect x="30" y="326" width="80" height="34" rx="17" fill="#f59e0b"/>
+  <text x="70" y="348" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">ticket</text>
+  <rect x="140" y="332" width="240" height="22" rx="4" fill="#fde68a"/>
+  <rect x="380" y="332" width="20" height="22" rx="4" fill="#f59e0b"/>
+  <text x="260" y="348" text-anchor="middle" font-size="12" fill="#78350f">3일 평균</text>
+  <text x="520" y="348" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">3d / 6h</text>
+  <text x="625" y="348" text-anchor="middle" font-size="15" font-weight="700" fill="#b45309">× 1</text>
+  <text x="740" y="348" text-anchor="middle" font-size="14" fill="#0f172a">&gt; 0.1%</text>
+  <text x="860" y="348" text-anchor="middle" font-size="14" fill="#0f172a">10%</text>
+
+  <text x="390" y="378" text-anchor="middle" font-size="11" fill="#64748b">↑ 짧은 창 = 긴 창의 1/12 (최근 구간)</text>
+
+  <!-- Bottom explanation -->
+  <g font-size="13">
+    <rect x="20" y="398" width="296" height="86" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="168" y="422" text-anchor="middle" font-weight="700" fill="#0f172a">긴 창</text>
+    <text x="168" y="446" text-anchor="middle" fill="#334155">1분짜리 튐은 평균에 묻힘</text>
+    <text x="168" y="468" text-anchor="middle" fill="#16a34a" font-weight="700">→ 오탐 방지</text>
+
+    <rect x="332" y="398" width="296" height="86" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="480" y="422" text-anchor="middle" font-weight="700" fill="#0f172a">짧은 창</text>
+    <text x="480" y="446" text-anchor="middle" fill="#334155">"지금도 타고 있나" 확인</text>
+    <text x="480" y="468" text-anchor="middle" fill="#16a34a" font-weight="700">→ 복구되면 몇 분 안에 해제</text>
+
+    <rect x="644" y="398" width="296" height="86" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="792" y="422" text-anchor="middle" font-weight="700" fill="#0f172a">여러 번 레이트</text>
+    <text x="792" y="446" text-anchor="middle" fill="#334155">빠른 소진은 page, 느린 소진은 ticket</text>
+    <text x="792" y="468" text-anchor="middle" fill="#16a34a" font-weight="700">→ 누락 방지</text>
+  </g>
+</svg>
