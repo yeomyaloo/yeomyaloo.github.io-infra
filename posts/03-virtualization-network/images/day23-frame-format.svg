@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">프레임 구조 — Ethernet · 802.1Q(VLAN) · VXLAN</text>
+
+  <!-- Row 1: plain ethernet -->
+  <text x="20" y="85" font-size="14" font-weight="700" fill="#334155">일반 Ethernet</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="170" y="62" width="120" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="230" y="86" fill="#0f172a">Dst MAC (6)</text>
+    <rect x="290" y="62" width="120" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="350" y="86" fill="#0f172a">Src MAC (6)</text>
+    <rect x="410" y="62" width="70" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="445" y="86" fill="#0f172a">Type</text>
+    <rect x="480" y="62" width="380" height="38" fill="#ffffff" stroke="#64748b"/><text x="670" y="86" fill="#0f172a">Payload (IP 패킷, 최대 1500)</text>
+    <rect x="860" y="62" width="60" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="890" y="86" fill="#0f172a">FCS</text>
+  </g>
+
+  <!-- Row 2: 802.1Q -->
+  <text x="20" y="160" font-size="14" font-weight="700" fill="#334155">802.1Q (VLAN)</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="170" y="137" width="120" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="230" y="161" fill="#0f172a">Dst MAC (6)</text>
+    <rect x="290" y="137" width="120" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="350" y="161" fill="#0f172a">Src MAC (6)</text>
+    <rect x="410" y="137" width="110" height="38" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/><text x="465" y="161" font-size="12" font-weight="700" fill="#7f1d1d">VLAN 태그 (4)</text>
+    <rect x="520" y="137" width="70" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="555" y="161" fill="#0f172a">Type</text>
+    <rect x="590" y="137" width="270" height="38" fill="#ffffff" stroke="#64748b"/><text x="725" y="161" fill="#0f172a">Payload</text>
+    <rect x="860" y="137" width="60" height="38" fill="#e2e8f0" stroke="#64748b"/><text x="890" y="161" fill="#0f172a">FCS</text>
+  </g>
+  <!-- tag detail -->
+  <line x1="410" y1="175" x2="330" y2="200" stroke="#dc2626" stroke-dasharray="4 3"/>
+  <line x1="520" y1="175" x2="700" y2="200" stroke="#dc2626" stroke-dasharray="4 3"/>
+  <g font-size="12" text-anchor="middle">
+    <rect x="330" y="200" width="130" height="32" fill="#fee2e2" stroke="#dc2626"/><text x="395" y="221" fill="#7f1d1d">TPID 0x8100</text>
+    <rect x="460" y="200" width="60" height="32" fill="#fee2e2" stroke="#dc2626"/><text x="490" y="221" fill="#7f1d1d">PCP 3b</text>
+    <rect x="520" y="200" width="60" height="32" fill="#fee2e2" stroke="#dc2626"/><text x="550" y="221" fill="#7f1d1d">DEI 1b</text>
+    <rect x="580" y="200" width="120" height="32" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/><text x="640" y="221" font-weight="700" fill="#7f1d1d">VID 12b</text>
+  </g>
+  <text x="720" y="221" font-size="12" fill="#7f1d1d">→ 1 ~ 4094</text>
+
+  <!-- Row 3: VXLAN -->
+  <text x="20" y="335" font-size="14" font-weight="700" fill="#334155">VXLAN 캡슐화</text>
+  <!-- overhead brace -->
+  <path d="M 170 300 L 170 292 L 540 292 L 540 300" stroke="#2496ed" stroke-width="2" fill="none"/>
+  <text x="355" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">+50바이트 = Outer Eth 14 + IP 20 + UDP 8 + VXLAN 8</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="170" y="310" width="100" height="44" fill="#bfdbfe" stroke="#2496ed"/>
+    <text x="220" y="329" fill="#1e3a8a">Outer Eth</text><text x="220" y="346" font-size="11" fill="#1e3a8a">VTEP MAC</text>
+    <rect x="270" y="310" width="80" height="44" fill="#bfdbfe" stroke="#2496ed"/>
+    <text x="310" y="329" fill="#1e3a8a">Outer IP</text><text x="310" y="346" font-size="11" fill="#1e3a8a">VTEP IP</text>
+    <rect x="350" y="310" width="90" height="44" fill="#bfdbfe" stroke="#2496ed"/>
+    <text x="395" y="329" fill="#1e3a8a">UDP</text><text x="395" y="346" font-size="11" fill="#1e3a8a">dst 4789</text>
+    <rect x="440" y="310" width="100" height="44" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/>
+    <text x="490" y="329" font-weight="700" fill="#7f1d1d">VXLAN</text><text x="490" y="346" font-size="11" fill="#7f1d1d">VNI 24bit</text>
+    <rect x="540" y="310" width="90" height="44" fill="#bbf7d0" stroke="#16a34a"/>
+    <text x="585" y="337" font-size="12" fill="#14532d">Dst/Src MAC</text>
+    <rect x="630" y="310" width="50" height="44" fill="#bbf7d0" stroke="#16a34a"/>
+    <text x="655" y="337" font-size="12" fill="#14532d">Type</text>
+    <rect x="680" y="310" width="180" height="44" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="770" y="337" font-size="12" fill="#14532d">Payload (내부 IP 패킷)</text>
+    <rect x="860" y="310" width="60" height="44" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="890" y="337" fill="#0f172a">FCS</text>
+  </g>
+  <path d="M 540 362 L 540 370 L 860 370 L 860 362" stroke="#16a34a" stroke-width="2" fill="none"/>
+  <text x="700" y="388" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">원래 L2 프레임 그대로 (VM · Pod가 보낸 것)</text>
+
+  <text x="480" y="418" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">VLAN: 12비트 → 최대 4094개  ·  VXLAN: 24비트 → 약 1,677만 개</text>
+</svg>

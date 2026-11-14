@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="510" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">KVM · QEMU · libvirt 스택</text>
+
+  <!-- User space -->
+  <rect x="20" y="50" width="920" height="285" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="32" y="70" font-size="12" fill="#64748b">User space</text>
+
+  <!-- Clients -->
+  <text x="120" y="90" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">클라이언트</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14" text-anchor="middle">
+    <rect x="40" y="97" width="160" height="36" rx="18" fill="#e2e8f0"/><text x="120" y="120" fill="#0f172a">virsh</text>
+    <rect x="40" y="141" width="160" height="36" rx="18" fill="#e2e8f0"/><text x="120" y="164" fill="#0f172a">virt-install</text>
+    <rect x="40" y="185" width="160" height="36" rx="18" fill="#e2e8f0"/><text x="120" y="208" fill="#0f172a">virt-manager</text>
+    <rect x="40" y="229" width="160" height="36" rx="18" fill="#ed1944"/><text x="120" y="252" fill="#ffffff">nova-compute</text>
+  </g>
+  <text x="120" y="290" text-anchor="middle" font-size="12" fill="#ed1944">OpenStack Nova도</text>
+  <text x="120" y="307" text-anchor="middle" font-size="12" fill="#ed1944">libvirt API를 호출</text>
+
+  <!-- libvirtd -->
+  <text x="262" y="100" font-size="12" font-weight="700" fill="#334155">libvirt API</text>
+  <rect x="260" y="110" width="210" height="140" rx="10" fill="#4f46e5"/>
+  <text x="365" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">libvirtd</text>
+  <text x="365" y="160" text-anchor="middle" font-size="12" fill="#e0e7ff">(virtqemud)</text>
+  <rect x="285" y="175" width="160" height="30" rx="6" fill="#c7d2fe"/>
+  <text x="365" y="195" text-anchor="middle" font-size="13" fill="#312e81">도메인 XML 정의</text>
+  <text x="365" y="232" text-anchor="middle" font-size="12" fill="#ffffff">VM 생성 · 시작 · 중지 관리</text>
+
+  <!-- QEMU processes -->
+  <rect x="510" y="72" width="210" height="112" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="615" y="94" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#7c2d12">qemu-system-x86_64</text>
+  <text x="615" y="112" text-anchor="middle" font-size="12" fill="#92400e">guest = vm1</text>
+  <rect x="522" y="122" width="90" height="24" rx="4" fill="#fde68a"/>
+  <text x="567" y="139" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">virtio-blk</text>
+  <rect x="618" y="122" width="90" height="24" rx="4" fill="#fde68a"/>
+  <text x="663" y="139" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">virtio-net</text>
+  <text x="615" y="170" text-anchor="middle" font-size="12" fill="#92400e">vCPU 0 · vCPU 1 (스레드)</text>
+
+  <rect x="510" y="200" width="210" height="112" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="615" y="222" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#7c2d12">qemu-system-x86_64</text>
+  <text x="615" y="240" text-anchor="middle" font-size="12" fill="#92400e">guest = vm2</text>
+  <rect x="522" y="250" width="90" height="24" rx="4" fill="#fde68a"/>
+  <text x="567" y="267" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">virtio-blk</text>
+  <rect x="618" y="250" width="90" height="24" rx="4" fill="#fde68a"/>
+  <text x="663" y="267" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">virtio-net</text>
+  <text x="615" y="298" text-anchor="middle" font-size="12" fill="#92400e">vCPU 0 · vCPU 1 (스레드)</text>
+
+  <!-- Docker 비교 -->
+  <rect x="750" y="62" width="175" height="260" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-dasharray="6 4"/>
+  <text x="837" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">비교 — Docker</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" text-anchor="middle">
+    <rect x="770" y="98" width="135" height="32" rx="6" fill="#dbeafe"/><text x="837" y="119" fill="#1e3a8a">docker CLI</text>
+    <rect x="770" y="148" width="135" height="32" rx="6" fill="#dbeafe"/><text x="837" y="169" fill="#1e3a8a">dockerd</text>
+    <rect x="770" y="198" width="135" height="32" rx="6" fill="#dbeafe"/><text x="837" y="219" fill="#1e3a8a">containerd</text>
+    <rect x="770" y="248" width="135" height="32" rx="6" fill="#dbeafe"/><text x="837" y="269" fill="#1e3a8a">runc</text>
+  </g>
+  <text x="837" y="304" text-anchor="middle" font-size="11" fill="#64748b">virsh ≈ docker CLI</text>
+
+  <!-- Kernel -->
+  <rect x="20" y="345" width="920" height="80" rx="12" fill="#eef2ff" stroke="#4f46e5"/>
+  <text x="32" y="365" font-size="12" fill="#4f46e5">Kernel space</text>
+  <text x="120" y="398" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">Linux Kernel</text>
+  <rect x="260" y="360" width="210" height="50" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="365" y="390" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">tap · bridge (virbr0)</text>
+  <rect x="510" y="360" width="210" height="50" rx="8" fill="#f59e0b"/>
+  <text x="615" y="390" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">KVM (/dev/kvm)</text>
+  <rect x="750" y="360" width="175" height="50" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="837" y="390" text-anchor="middle" font-size="13" font-weight="700" fill="#312e81">namespace · cgroup</text>
+
+  <!-- Hardware -->
+  <rect x="20" y="435" width="920" height="55" rx="10" fill="#334155"/>
+  <text x="480" y="468" text-anchor="middle" font-size="14" fill="#ffffff">하드웨어 — CPU (VT-x / AMD-V) · Memory (EPT / NPT) · Disk · NIC</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="200" y1="115" x2="256" y2="150" marker-end="url(#arrow)"/>
+    <line x1="200" y1="159" x2="256" y2="168" marker-end="url(#arrow)"/>
+    <line x1="200" y1="203" x2="256" y2="190" marker-end="url(#arrow)"/>
+    <line x1="200" y1="247" x2="256" y2="210" marker-end="url(#arrow)"/>
+    <line x1="470" y1="160" x2="506" y2="130" marker-end="url(#arrow)"/>
+    <line x1="470" y1="200" x2="506" y2="250" marker-end="url(#arrow)"/>
+    <line x1="660" y1="312" x2="660" y2="356" marker-end="url(#arrow)"/>
+    <line x1="545" y1="312" x2="474" y2="356" marker-end="url(#arrow)"/>
+    <line x1="837" y1="130" x2="837" y2="145" marker-end="url(#arrow)"/>
+    <line x1="837" y1="180" x2="837" y2="195" marker-end="url(#arrow)"/>
+    <line x1="837" y1="230" x2="837" y2="245" marker-end="url(#arrow)"/>
+    <line x1="837" y1="312" x2="837" y2="356" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" fill="#334155" font-weight="700">
+    <text x="668" y="340">ioctl (vCPU 실행)</text>
+    <text x="470" y="330" text-anchor="end">tap 장치</text>
+  </g>
+</svg>

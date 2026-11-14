@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Kolla-Ansible 배포 흐름 (공식 Quick Start)</text>
+
+  <text x="30" y="64" font-size="13" font-weight="700" fill="#64748b">준비 — 배포 호스트에서만</text>
+
+  <!-- Row 1 -->
+  <rect x="30" y="74" width="210" height="86" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="44" y="96" font-size="13" font-weight="700" fill="#0f172a">① 가상환경 + 설치</text>
+  <text x="44" y="118" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">python3 -m venv</text>
+  <text x="44" y="138" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">pip install kolla-ansible</text>
+
+  <rect x="260" y="74" width="210" height="86" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="274" y="96" font-size="13" font-weight="700" fill="#0f172a">② 의존성</text>
+  <text x="274" y="118" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">install-deps</text>
+  <text x="274" y="138" font-size="12" fill="#64748b">Ansible Galaxy 컬렉션</text>
+
+  <rect x="490" y="74" width="210" height="86" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="504" y="96" font-size="13" font-weight="700" fill="#78350f">③ /etc/kolla 준비</text>
+  <text x="504" y="118" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">kolla-genpwd</text>
+  <text x="504" y="138" font-size="12" fill="#92400e">passwords.yml 채우기</text>
+
+  <rect x="720" y="74" width="210" height="86" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="734" y="96" font-size="13" font-weight="700" fill="#78350f">④ 설정 편집</text>
+  <text x="734" y="118" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">globals.yml · multinode</text>
+  <text x="734" y="138" font-size="12" fill="#92400e">NIC · VIP · 노드 역할</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="240" y1="117" x2="257" y2="117" marker-end="url(#arrow)"/>
+    <line x1="470" y1="117" x2="487" y2="117" marker-end="url(#arrow)"/>
+    <line x1="700" y1="117" x2="717" y2="117" marker-end="url(#arrow)"/>
+    <path d="M825,160 V186 H135 V221" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="150" y="208" font-size="13" font-weight="700" fill="#9f1239">kolla-ansible &lt;명령&gt; -i ~/multinode — 모든 노드 대상</text>
+
+  <!-- Row 2 -->
+  <rect x="30" y="224" width="210" height="86" rx="10" fill="#ed1944"/>
+  <text x="44" y="246" font-size="13" font-weight="700" fill="#ffffff">⑤ 노드 사전 준비</text>
+  <text x="44" y="268" font-size="12" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">bootstrap-servers</text>
+  <text x="44" y="288" font-size="12" fill="#ffe4e6">Docker 엔진 설치 등</text>
+
+  <rect x="260" y="224" width="210" height="86" rx="10" fill="#ed1944"/>
+  <text x="274" y="246" font-size="13" font-weight="700" fill="#ffffff">⑥ 사전 점검</text>
+  <text x="274" y="268" font-size="12" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">prechecks</text>
+  <text x="274" y="288" font-size="12" fill="#ffe4e6">포트 · NIC · VIP (변경 없음)</text>
+
+  <rect x="490" y="224" width="210" height="86" rx="10" fill="#ed1944"/>
+  <text x="504" y="246" font-size="13" font-weight="700" fill="#ffffff">⑦ 배포</text>
+  <text x="504" y="268" font-size="12" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">deploy</text>
+  <text x="504" y="288" font-size="12" fill="#ffe4e6">pull → 설정 → 컨테이너 기동</text>
+
+  <rect x="720" y="224" width="210" height="86" rx="10" fill="#ed1944"/>
+  <text x="734" y="246" font-size="13" font-weight="700" fill="#ffffff">⑧ 마무리</text>
+  <text x="734" y="268" font-size="12" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">post-deploy</text>
+  <text x="734" y="288" font-size="12" fill="#ffe4e6">clouds.yaml · admin-openrc</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="240" y1="267" x2="257" y2="267" marker-end="url(#arrow)"/>
+    <line x1="470" y1="267" x2="487" y2="267" marker-end="url(#arrow)"/>
+    <line x1="700" y1="267" x2="717" y2="267" marker-end="url(#arrow)"/>
+    <line x1="825" y1="310" x2="825" y2="333" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Result -->
+  <rect x="30" y="336" width="900" height="44" rx="10" fill="#86efac" stroke="#16a34a"/>
+  <text x="480" y="363" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">init-runonce로 데모 네트워크 · 이미지 · flavor 생성 → openstack server create</text>
+
+  <text x="480" y="410" text-anchor="middle" font-size="13" fill="#64748b">운영 중: reconfigure (설정 변경) · deploy --limit (노드 추가) · upgrade (릴리스 업그레이드)</text>
+</svg>

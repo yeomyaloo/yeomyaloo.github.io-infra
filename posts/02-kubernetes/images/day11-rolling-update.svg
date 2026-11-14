@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">롤링 업데이트 (replicas 4, maxSurge 1, maxUnavailable 0)</text>
+
+  <!-- Row 1 -->
+  <text x="30" y="80" font-size="14" font-weight="700" fill="#0f172a">① 시작</text>
+  <text x="30" y="98" font-size="12" fill="#64748b">nginx:1.27 Pod 4개</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="360" y="64" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="405" y="89" fill="#1e3a8a">1.27</text>
+    <rect x="462" y="64" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="507" y="89" fill="#1e3a8a">1.27</text>
+    <rect x="564" y="64" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="609" y="89" fill="#1e3a8a">1.27</text>
+    <rect x="666" y="64" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="711" y="89" fill="#1e3a8a">1.27</text>
+  </g>
+  <text x="880" y="89" text-anchor="middle" font-size="12" fill="#334155">총 4 / 가용 4</text>
+
+  <!-- Row 2 -->
+  <text x="30" y="150" font-size="14" font-weight="700" fill="#0f172a">② 새 Pod 1개 추가</text>
+  <text x="30" y="168" font-size="12" fill="#64748b">maxSurge 1 → 최대 5개까지</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="360" y="134" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="405" y="159" fill="#1e3a8a">1.27</text>
+    <rect x="462" y="134" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="507" y="159" fill="#1e3a8a">1.27</text>
+    <rect x="564" y="134" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="609" y="159" fill="#1e3a8a">1.27</text>
+    <rect x="666" y="134" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="711" y="159" fill="#1e3a8a">1.27</text>
+    <rect x="768" y="134" width="90" height="40" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-dasharray="5 3"/><text x="813" y="159" fill="#15803d">1.28 준비중</text>
+  </g>
+  <text x="910" y="159" text-anchor="middle" font-size="12" fill="#334155">총 5</text>
+
+  <!-- Row 3 -->
+  <text x="30" y="220" font-size="14" font-weight="700" fill="#0f172a">③ 새 Pod Ready → 옛 Pod 1개 종료</text>
+  <text x="30" y="238" font-size="12" fill="#64748b">maxUnavailable 0 → 가용 4개 유지</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="360" y="204" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="405" y="229" fill="#1e3a8a">1.27</text>
+    <rect x="462" y="204" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="507" y="229" fill="#1e3a8a">1.27</text>
+    <rect x="564" y="204" width="90" height="40" rx="8" fill="#dbeafe" stroke="#326ce5"/><text x="609" y="229" fill="#1e3a8a">1.27</text>
+    <rect x="666" y="204" width="90" height="40" rx="8" fill="#fca5a5" stroke="#dc2626" opacity="0.75"/><text x="711" y="229" fill="#7f1d1d">종료 중</text>
+    <rect x="768" y="204" width="90" height="40" rx="8" fill="#86efac" stroke="#16a34a"/><text x="813" y="229" fill="#14532d">1.28</text>
+  </g>
+  <text x="910" y="229" text-anchor="middle" font-size="12" fill="#334155">가용 4</text>
+
+  <!-- Row 4: repeat -->
+  <text x="30" y="296" font-size="14" font-weight="700" fill="#0f172a">④ ②~③ 반복</text>
+  <text x="360" y="296" font-size="13" fill="#64748b">새 Pod가 Ready가 될 때마다 옛 Pod를 하나씩 교체 …</text>
+
+  <!-- Row 5 -->
+  <text x="30" y="350" font-size="14" font-weight="700" fill="#0f172a">⑤ 완료</text>
+  <text x="30" y="368" font-size="12" fill="#64748b">옛 RS는 replicas 0으로 보관</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="360" y="334" width="90" height="40" rx="8" fill="#86efac" stroke="#16a34a"/><text x="405" y="359" fill="#14532d">1.28</text>
+    <rect x="462" y="334" width="90" height="40" rx="8" fill="#86efac" stroke="#16a34a"/><text x="507" y="359" fill="#14532d">1.28</text>
+    <rect x="564" y="334" width="90" height="40" rx="8" fill="#86efac" stroke="#16a34a"/><text x="609" y="359" fill="#14532d">1.28</text>
+    <rect x="666" y="334" width="90" height="40" rx="8" fill="#86efac" stroke="#16a34a"/><text x="711" y="359" fill="#14532d">1.28</text>
+  </g>
+  <text x="880" y="359" text-anchor="middle" font-size="12" fill="#334155">총 4 / 가용 4</text>
+
+  <line x1="20" y1="120" x2="940" y2="120" stroke="#e2e8f0"/>
+  <line x1="20" y1="190" x2="940" y2="190" stroke="#e2e8f0"/>
+  <line x1="20" y1="260" x2="940" y2="260" stroke="#e2e8f0"/>
+  <line x1="20" y1="315" x2="940" y2="315" stroke="#e2e8f0"/>
+
+  <!-- legend -->
+  <g font-size="12" fill="#334155">
+    <rect x="60" y="406" width="22" height="16" rx="3" fill="#dbeafe" stroke="#326ce5"/><text x="90" y="419">nginx:1.27 (옛 RS)</text>
+    <rect x="260" y="406" width="22" height="16" rx="3" fill="#86efac" stroke="#16a34a"/><text x="290" y="419">nginx:1.28 (새 RS)</text>
+    <rect x="460" y="406" width="22" height="16" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-dasharray="4 2"/><text x="490" y="419">Ready 대기 중</text>
+    <rect x="640" y="406" width="22" height="16" rx="3" fill="#fca5a5" stroke="#dc2626"/><text x="670" y="419">종료 중 (Terminating)</text>
+  </g>
+</svg>

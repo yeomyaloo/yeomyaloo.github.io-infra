@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Pod 내부 구조 — 무엇을 공유하나</text>
+
+  <!-- Node -->
+  <rect x="20" y="60" width="600" height="380" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="40" y="86" font-size="14" font-weight="700" fill="#334155">Worker Node (예: infra-lab-worker)</text>
+
+  <!-- Pod -->
+  <rect x="45" y="100" width="550" height="320" rx="14" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="65" y="128" font-size="16" font-weight="700" fill="#1e3a8a">Pod: web-sidecar</text>
+  <text x="575" y="128" text-anchor="end" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#326ce5">IP 10.244.1.5</text>
+
+  <rect x="65" y="142" width="510" height="36" rx="8" fill="#e2e8f0"/>
+  <text x="320" y="165" text-anchor="middle" font-size="13" fill="#334155">pause 컨테이너 — Network / UTS / IPC namespace를 붙잡고 있음</text>
+
+  <!-- nginx -->
+  <rect x="65" y="200" width="210" height="110" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="170" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">nginx</text>
+  <text x="170" y="250" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#166534">nginx:1.27 · :80</text>
+  <text x="170" y="292" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#166534">/usr/share/nginx/html</text>
+
+  <!-- writer -->
+  <rect x="365" y="200" width="210" height="110" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="470" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">content-writer</text>
+  <text x="470" y="250" text-anchor="middle" font-size="12" fill="#92400e">busybox · 사이드카</text>
+  <text x="470" y="292" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#92400e">/html</text>
+
+  <line x1="363" y1="240" x2="278" y2="240" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="230" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">localhost:80</text>
+
+  <!-- volume -->
+  <rect x="65" y="345" width="510" height="50" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="320" y="375" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">Volume: html (emptyDir) — 두 컨테이너가 같은 파일을 봄</text>
+  <g stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 4">
+    <line x1="170" y1="310" x2="170" y2="345"/>
+    <line x1="470" y1="310" x2="470" y2="345"/>
+  </g>
+
+  <!-- legend -->
+  <rect x="650" y="60" width="290" height="380" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="795" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Pod 안의 컨테이너들은</text>
+
+  <rect x="665" y="105" width="260" height="155" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="680" y="130" font-size="14" font-weight="700" fill="#15803d">공유 (Pod 단위)</text>
+  <g font-size="13" fill="#14532d">
+    <text x="684" y="156">• IP 주소 · 포트 공간</text>
+    <text x="684" y="178">• localhost 통신</text>
+    <text x="684" y="200">• hostname (UTS)</text>
+    <text x="684" y="222">• IPC (공유 메모리 등)</text>
+    <text x="684" y="244">• 볼륨 (선언한 경우)</text>
+  </g>
+
+  <rect x="665" y="275" width="260" height="150" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="680" y="300" font-size="14" font-weight="700" fill="#334155">컨테이너별</text>
+  <g font-size="13" fill="#334155">
+    <text x="684" y="326">• 이미지 · 파일 시스템</text>
+    <text x="684" y="348">• CPU/메모리 limit (cgroup)</text>
+    <text x="684" y="370">• 프로세스 목록 (PID ns)</text>
+    <text x="684" y="392">• 재시작 횟수 (RESTARTS)</text>
+  </g>
+</svg>

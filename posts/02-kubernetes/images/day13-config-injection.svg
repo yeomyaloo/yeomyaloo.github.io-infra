@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">ConfigMap / Secret을 Pod에 넣는 두 가지 방법</text>
+
+  <!-- ConfigMap -->
+  <rect x="30" y="80" width="230" height="130" rx="12" fill="#dbeafe" stroke="#326ce5" stroke-width="2"/>
+  <text x="145" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">ConfigMap</text>
+  <text x="145" y="132" text-anchor="middle" font-size="13" fill="#334155">app-config</text>
+  <g font-size="14" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">
+    <text x="55" y="164">APP_ENV: dev</text>
+    <text x="55" y="190">LOG_LEVEL: info</text>
+  </g>
+
+  <!-- Secret -->
+  <rect x="30" y="250" width="230" height="130" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="145" y="280" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">Secret</text>
+  <text x="145" y="302" text-anchor="middle" font-size="13" fill="#334155">db-secret (base64)</text>
+  <g font-size="14" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">
+    <text x="45" y="334">DB_USER: YXBw</text>
+    <text x="45" y="360">DB_PASSWORD: UzNj…</text>
+  </g>
+
+  <!-- Route: env -->
+  <rect x="330" y="95" width="250" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="455" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f" font-family="Consolas,'D2Coding',monospace">env / envFrom</text>
+  <text x="455" y="150" text-anchor="middle" font-size="13" fill="#334155">컨테이너 시작 시 1회 복사</text>
+  <text x="455" y="176" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">변경 반영 안 됨 → 재시작 필요</text>
+
+  <!-- Route: volume -->
+  <rect x="330" y="265" width="250" height="100" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="455" y="294" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d" font-family="Consolas,'D2Coding',monospace">volumes</text>
+  <text x="455" y="320" text-anchor="middle" font-size="13" fill="#334155">kubelet이 주기적으로 파일 갱신</text>
+  <text x="455" y="346" text-anchor="middle" font-size="13" font-weight="700" fill="#16a34a">변경 자동 반영 (보통 1분 내외)</text>
+
+  <!-- Pod -->
+  <rect x="650" y="70" width="285" height="330" rx="12" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="792" y="98" text-anchor="middle" font-size="17" font-weight="700" fill="#326ce5">Pod</text>
+  <rect x="670" y="112" width="245" height="105" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="685" y="136" font-size="13" font-weight="700" fill="#334155">프로세스 환경 변수</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">
+    <text x="685" y="164">LOG_LEVEL=info</text>
+    <text x="685" y="188">DB_USER=app</text>
+  </g>
+  <rect x="670" y="232" width="245" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="685" y="256" font-size="13" font-weight="700" fill="#334155">볼륨 마운트된 파일</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">
+    <text x="685" y="284">/etc/config/APP_ENV</text>
+    <text x="685" y="306">/etc/config/LOG_LEVEL</text>
+    <text x="685" y="336">/etc/secret/DB_PASSWORD</text>
+  </g>
+  <text x="685" y="362" font-size="12" fill="#64748b">Secret 볼륨 = tmpfs(메모리)</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="260" y1="130" x2="327" y2="130" marker-end="url(#arrow)"/>
+    <line x1="260" y1="185" x2="327" y2="290" marker-end="url(#arrow)"/>
+    <line x1="260" y1="275" x2="327" y2="170" marker-end="url(#arrow)"/>
+    <line x1="260" y1="340" x2="327" y2="340" marker-end="url(#arrow)"/>
+    <line x1="580" y1="145" x2="667" y2="165" marker-end="url(#arrow)"/>
+    <line x1="580" y1="315" x2="667" y2="307" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="480" y="432" text-anchor="middle" font-size="13" fill="#64748b">※ subPath로 파일 하나만 마운트하면 볼륨이어도 자동 반영되지 않는다</text>
+</svg>

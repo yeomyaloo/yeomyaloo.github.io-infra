@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Terraform 동작 구조</text>
+
+  <!-- Code -->
+  <rect x="20" y="70" width="200" height="262" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="120" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">코드 (.tf)</text>
+  <text x="120" y="120" text-anchor="middle" font-size="12" fill="#64748b">원하는 상태 · Git 관리</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" text-anchor="middle" fill="#0f172a">
+    <rect x="35" y="134" width="170" height="28" rx="14" fill="#e2e8f0"/><text x="120" y="153">versions.tf</text>
+    <rect x="35" y="166" width="170" height="28" rx="14" fill="#e2e8f0"/><text x="120" y="185">variables.tf</text>
+    <rect x="35" y="198" width="170" height="28" rx="14" fill="#e2e8f0"/><text x="120" y="217">network.tf</text>
+    <rect x="35" y="230" width="170" height="28" rx="14" fill="#e2e8f0"/><text x="120" y="249">compute.tf</text>
+    <rect x="35" y="262" width="170" height="28" rx="14" fill="#e2e8f0"/><text x="120" y="281">outputs.tf</text>
+    <rect x="35" y="294" width="170" height="28" rx="14" fill="#e2e8f0"/><text x="120" y="313">cloud-init.sh.tftpl</text>
+  </g>
+
+  <!-- Terraform CLI -->
+  <rect x="270" y="70" width="380" height="262" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="460" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#312e81">Terraform / OpenTofu CLI</text>
+  <g font-size="13" fill="#0f172a">
+    <rect x="290" y="114" width="340" height="34" rx="8" fill="#c7d2fe"/>
+    <text x="304" y="136"><tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">init</tspan>  — provider 다운로드 · backend 준비</text>
+    <rect x="290" y="156" width="340" height="34" rx="8" fill="#c7d2fe"/>
+    <text x="304" y="178"><tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">plan</tspan>  — 코드 vs 현재 상태 diff 계산</text>
+    <rect x="290" y="198" width="340" height="34" rx="8" fill="#a5b4fc"/>
+    <text x="304" y="220"><tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">apply</tspan>  — 그래프 순서대로 생성 · 변경</text>
+    <rect x="290" y="240" width="340" height="34" rx="8" fill="#fca5a5"/>
+    <text x="304" y="262"><tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">destroy</tspan>  — 역순으로 전부 삭제</text>
+  </g>
+  <rect x="290" y="284" width="340" height="36" rx="8" fill="#4f46e5"/>
+  <text x="460" y="307" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#ffffff">provider: terraform-provider-openstack</text>
+
+  <!-- OpenStack -->
+  <rect x="700" y="70" width="240" height="262" rx="12" fill="#fff1f2" stroke="#ed1944" stroke-width="2"/>
+  <text x="820" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#9f1239">OpenStack API</text>
+  <g font-size="13" text-anchor="middle" fill="#0f172a">
+    <rect x="720" y="114" width="200" height="34" rx="8" fill="#ffe4e6"/><text x="820" y="136">Keystone (인증)</text>
+    <rect x="720" y="156" width="200" height="34" rx="8" fill="#ffe4e6"/><text x="820" y="178">Neutron (네트워크)</text>
+    <rect x="720" y="198" width="200" height="34" rx="8" fill="#ffe4e6"/><text x="820" y="220">Nova (인스턴스)</text>
+    <rect x="720" y="240" width="200" height="34" rx="8" fill="#ffe4e6"/><text x="820" y="262">Glance (이미지 조회)</text>
+    <rect x="720" y="282" width="200" height="34" rx="8" fill="#ffe4e6"/><text x="820" y="304">Cinder · Octavia …</text>
+  </g>
+
+  <!-- tfvars -->
+  <rect x="20" y="370" width="200" height="86" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="120" y="402" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#0f172a">terraform.tfvars</text>
+  <text x="120" y="426" text-anchor="middle" font-size="12" fill="#64748b">환경별 변수 값 주입</text>
+  <text x="120" y="444" text-anchor="middle" font-size="12" fill="#64748b">(dev · prod …)</text>
+
+  <!-- State -->
+  <rect x="270" y="370" width="380" height="86" rx="12" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="460" y="402" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="15" font-weight="700" fill="#78350f">terraform.tfstate</text>
+  <text x="460" y="426" text-anchor="middle" font-size="12" fill="#78350f">코드 속 리소스 ↔ 실제 리소스 ID 매핑</text>
+  <text x="460" y="444" text-anchor="middle" font-size="12" fill="#92400e">민감 정보 포함 → Git 금지</text>
+
+  <!-- Remote backend -->
+  <rect x="700" y="370" width="240" height="86" rx="12" fill="#ffffff" stroke="#f59e0b" stroke-dasharray="6 4"/>
+  <text x="820" y="402" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">원격 backend</text>
+  <text x="820" y="426" text-anchor="middle" font-size="12" fill="#64748b">S3 호환 스토리지 등</text>
+  <text x="820" y="444" text-anchor="middle" font-size="12" fill="#64748b">팀 공유 + 잠금(lock)</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="200" x2="267" y2="200" marker-end="url(#arrow)"/>
+    <line x1="120" y1="370" x2="120" y2="335" marker-end="url(#arrow)"/>
+    <line x1="630" y1="302" x2="717" y2="302" marker-end="url(#arrow)"/>
+    <line x1="460" y1="337" x2="460" y2="365" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="650" y1="413" x2="697" y2="413" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" fill="#334155" font-weight="700">
+    <text x="244" y="192" text-anchor="middle">읽기</text>
+    <text x="674" y="294" text-anchor="middle">REST</text>
+    <text x="472" y="356">읽기 / 쓰기</text>
+  </g>
+</svg>

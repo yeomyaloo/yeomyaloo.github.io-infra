@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Deployment → ReplicaSet → Pod 계층</text>
+
+  <!-- Deployment -->
+  <rect x="330" y="56" width="300" height="64" rx="12" fill="#326ce5"/>
+  <text x="480" y="83" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Deployment: web</text>
+  <text x="480" y="106" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#dbeafe">replicas: 4 · RollingUpdate</text>
+
+  <!-- old RS -->
+  <rect x="90" y="175" width="330" height="80" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-dasharray="6 4"/>
+  <text x="255" y="199" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#334155">ReplicaSet web-6b8f7d9c5d</text>
+  <text x="255" y="221" text-anchor="middle" font-size="12" fill="#334155">revision 1 · nginx:1.27 · replicas 0</text>
+  <text x="255" y="241" text-anchor="middle" font-size="12" fill="#64748b">(롤백용으로 보관)</text>
+
+  <!-- new RS -->
+  <rect x="540" y="175" width="330" height="80" rx="10" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="705" y="199" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#312e81">ReplicaSet web-7c9d8f6b4f</text>
+  <text x="705" y="221" text-anchor="middle" font-size="12" fill="#3730a3">revision 2 · nginx:1.28 · replicas 4</text>
+  <text x="705" y="241" text-anchor="middle" font-size="12" fill="#3730a3">(현재 활성)</text>
+
+  <!-- old RS pods -->
+  <rect x="170" y="315" width="170" height="48" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="255" y="344" text-anchor="middle" font-size="12" fill="#64748b">Pod 0개</text>
+
+  <!-- new RS pods -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" text-anchor="middle">
+    <rect x="540" y="295" width="160" height="48" rx="8" fill="#86efac"/>
+    <text x="620" y="315" fill="#14532d">web-7c9d8f6b4f-4lq2x</text><text x="620" y="333" fill="#166534">Running</text>
+    <rect x="710" y="295" width="160" height="48" rx="8" fill="#86efac"/>
+    <text x="790" y="315" fill="#14532d">web-7c9d8f6b4f-8vjzt</text><text x="790" y="333" fill="#166534">Running</text>
+    <rect x="540" y="353" width="160" height="48" rx="8" fill="#86efac"/>
+    <text x="620" y="373" fill="#14532d">web-7c9d8f6b4f-kd7mw</text><text x="620" y="391" fill="#166534">Running</text>
+    <rect x="710" y="353" width="160" height="48" rx="8" fill="#86efac"/>
+    <text x="790" y="373" fill="#14532d">web-7c9d8f6b4f-xp9rn</text><text x="790" y="391" fill="#166534">Running</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="420" y1="120" x2="290" y2="172" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+    <line x1="540" y1="120" x2="680" y2="172" marker-end="url(#arrow)"/>
+    <line x1="255" y1="255" x2="255" y2="312" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+    <line x1="705" y1="255" x2="705" y2="292" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" fill="#334155" text-anchor="middle">
+    <text x="320" y="140">옛 템플릿</text>
+    <text x="640" y="140">현재 템플릿</text>
+  </g>
+
+  <text x="480" y="434" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">이름 규칙: &lt;Deployment&gt;-&lt;pod-template-hash&gt;-&lt;랜덤 5자&gt;</text>
+</svg>

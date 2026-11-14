@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">동적 프로비저닝 — PVC 하나로 디스크와 PV가 생기는 과정</text>
+
+  <!-- Zones -->
+  <rect x="30" y="64" width="430" height="140" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="45" y="86" font-size="13" font-weight="700" fill="#64748b">개발자 영역 (네임스페이스)</text>
+  <rect x="500" y="64" width="430" height="140" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="515" y="86" font-size="13" font-weight="700" fill="#64748b">관리자 / 인프라 영역 (클러스터 전체)</text>
+
+  <!-- Pod -->
+  <rect x="50" y="110" width="170" height="74" rx="10" fill="#86efac" stroke="#16a34a"/>
+  <text x="135" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">Pod</text>
+  <text x="135" y="166" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#14532d">claimName: data-pvc</text>
+
+  <!-- PVC -->
+  <rect x="270" y="110" width="170" height="74" rx="10" fill="#326ce5"/>
+  <text x="355" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">PVC data-pvc</text>
+  <text x="355" y="166" text-anchor="middle" font-size="13" fill="#dbeafe">1Gi · RWO</text>
+
+  <!-- StorageClass -->
+  <rect x="520" y="110" width="180" height="74" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="610" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">StorageClass</text>
+  <text x="610" y="166" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#78350f">standard</text>
+
+  <!-- Provisioner -->
+  <rect x="735" y="110" width="180" height="74" rx="10" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="825" y="140" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">프로비저너 (CSI)</text>
+  <text x="825" y="166" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#312e81">rancher.io/local-path</text>
+
+  <!-- PV -->
+  <rect x="270" y="290" width="170" height="80" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="355" y="322" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">PV</text>
+  <text x="355" y="348" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#312e81">pvc-3f2a6c1e-…</text>
+
+  <!-- Disk -->
+  <rect x="735" y="290" width="180" height="80" rx="10" fill="#e2e8f0" stroke="#334155"/>
+  <text x="825" y="322" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">실제 저장소</text>
+  <text x="825" y="348" text-anchor="middle" font-size="12" fill="#334155">노드 디렉터리 / EBS / Cinder</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="147" x2="267" y2="147" marker-end="url(#arrow)"/>
+    <line x1="440" y1="147" x2="517" y2="147" marker-end="url(#arrow)"/>
+    <line x1="700" y1="147" x2="732" y2="147" marker-end="url(#arrow)"/>
+    <line x1="825" y1="184" x2="825" y2="287" marker-end="url(#arrow)"/>
+    <line x1="750" y1="184" x2="443" y2="300" marker-end="url(#arrow)"/>
+    <line x1="440" y1="335" x2="732" y2="335" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#16a34a" stroke-width="3" fill="none">
+    <line x1="355" y1="187" x2="355" y2="287" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  </g>
+
+  <!-- Arrow labels -->
+  <g font-size="13" font-weight="700" fill="#334155">
+    <text x="244" y="230" text-anchor="middle">② 사용</text>
+    <text x="478" y="138" text-anchor="middle">①</text>
+    <text x="835" y="244">③ 디스크 생성</text>
+    <text x="600" y="262">④ PV 생성</text>
+    <text x="365" y="244" fill="#16a34a">⑤ Bound (1:1)</text>
+    <text x="586" y="326" text-anchor="middle" font-weight="400">PV가 실제 저장소를 가리킴</text>
+  </g>
+  <line x1="244" y1="214" x2="244" y2="190" stroke="#94a3b8" stroke-width="1"/>
+
+  <!-- Steps -->
+  <rect x="30" y="398" width="900" height="86" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <g font-size="13" fill="#334155">
+    <text x="50" y="424">① PVC가 storageClassName(생략 시 기본 클래스)으로 StorageClass를 지정</text>
+    <text x="50" y="446">② Pod가 PVC를 사용 → WaitForFirstConsumer 대기 해제, Pod가 갈 노드 결정</text>
+    <text x="50" y="468">③④ 프로비저너가 그 노드에 맞춰 디스크와 PV를 생성 → ⑤ PVC와 PV가 1:1로 Bound</text>
+  </g>
+</svg>

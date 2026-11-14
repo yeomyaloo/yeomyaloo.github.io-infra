@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">ServiceMonitor로 scrape 대상이 결정되는 과정</text>
+  <text x="480" y="60" text-anchor="middle" font-size="14" fill="#64748b">라벨이 한 칸씩 이어져야 Prometheus가 Pod의 /metrics까지 도달한다</text>
+
+  <!-- Prometheus CR -->
+  <rect x="20" y="90" width="200" height="210" rx="12" fill="#fff1f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="120" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">Prometheus</text>
+  <text x="120" y="138" text-anchor="middle" font-size="12" fill="#64748b">(CR, ns: monitoring)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155" xml:space="preserve">
+    <text x="32" y="172">serviceMonitorSelector:</text>
+    <text x="32" y="192">  matchLabels:</text>
+    <text x="32" y="212">    <tspan fill="#dc2626" font-weight="700">release: monitoring</tspan></text>
+  </g>
+
+  <!-- ServiceMonitor -->
+  <rect x="260" y="90" width="200" height="210" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="360" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">ServiceMonitor</text>
+  <text x="360" y="138" text-anchor="middle" font-size="12" fill="#64748b">(ns: demo)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155" xml:space="preserve">
+    <text x="272" y="166">metadata.labels:</text>
+    <text x="272" y="184">  <tspan fill="#dc2626" font-weight="700">release: monitoring</tspan></text>
+    <text x="272" y="208">spec.selector:</text>
+    <text x="272" y="226">  <tspan fill="#326ce5" font-weight="700">app: podinfo</tspan></text>
+    <text x="272" y="250">endpoints:</text>
+    <text x="272" y="268">  port: <tspan fill="#16a34a" font-weight="700">http</tspan></text>
+    <text x="272" y="286">  path: /metrics</text>
+  </g>
+
+  <!-- Service -->
+  <rect x="500" y="90" width="200" height="210" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="600" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">Service</text>
+  <text x="600" y="138" text-anchor="middle" font-size="12" fill="#64748b">(podinfo, ns: demo)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155" xml:space="preserve">
+    <text x="512" y="166">metadata.labels:</text>
+    <text x="512" y="184">  <tspan fill="#326ce5" font-weight="700">app: podinfo</tspan></text>
+    <text x="512" y="208">ports:</text>
+    <text x="512" y="226">  - name: <tspan fill="#16a34a" font-weight="700">http</tspan></text>
+    <text x="512" y="244">    port: 9898</text>
+    <text x="512" y="268">selector:</text>
+    <text x="512" y="286">  app: podinfo</text>
+  </g>
+
+  <!-- Pods -->
+  <rect x="740" y="90" width="200" height="210" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="840" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">Pod (Endpoints)</text>
+  <text x="840" y="138" text-anchor="middle" font-size="12" fill="#64748b">EndpointSlice가 IP 목록 제공</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d" text-anchor="middle">
+    <rect x="760" y="154" width="160" height="58" rx="8" fill="#86efac"/>
+    <text x="840" y="177">podinfo-...-abcde</text>
+    <text x="840" y="199">10.244.0.12:9898</text>
+    <rect x="760" y="224" width="160" height="58" rx="8" fill="#86efac"/>
+    <text x="840" y="247">podinfo-...-fghij</text>
+    <text x="840" y="269">10.244.0.13:9898</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="195" x2="256" y2="195" marker-end="url(#arrow)"/>
+    <line x1="460" y1="195" x2="496" y2="195" marker-end="url(#arrow)"/>
+    <line x1="700" y1="195" x2="736" y2="195" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Step captions -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="140" y="318" width="200" height="50" rx="8" fill="#fee2e2"/>
+    <text x="240" y="339" font-weight="700" fill="#7f1d1d">① release 라벨로</text>
+    <text x="240" y="358" fill="#7f1d1d">ServiceMonitor 선택</text>
+    <rect x="380" y="318" width="200" height="50" rx="8" fill="#dbeafe"/>
+    <text x="480" y="339" font-weight="700" fill="#1e3a8a">② app 라벨로</text>
+    <text x="480" y="358" fill="#1e3a8a">Service 선택</text>
+    <rect x="620" y="318" width="200" height="50" rx="8" fill="#dcfce7"/>
+    <text x="720" y="339" font-weight="700" fill="#14532d">③ http 포트 뒤의</text>
+    <text x="720" y="358" fill="#14532d">Pod IP들을 scrape</text>
+  </g>
+
+  <rect x="140" y="384" width="680" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="480" y="409" text-anchor="middle" font-size="14" fill="#334155">결과: Targets 화면에 <tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">serviceMonitor/demo/podinfo/0</tspan> (2/2 UP)</text>
+</svg>

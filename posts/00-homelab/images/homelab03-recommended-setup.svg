@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">추천 구성 — 공개는 Tunnel, 관리는 Tailscale, 열린 포트 0개</text>
+
+  <!-- Clients -->
+  <rect x="20" y="82" width="200" height="72" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="120" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#7c2d12">누구나</text>
+  <text x="120" y="136" text-anchor="middle" font-size="12" fill="#7c2d12">브라우저 (앱 설치 불필요)</text>
+
+  <rect x="20" y="252" width="200" height="72" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="120" y="282" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">나 (노트북 · 휴대폰)</text>
+  <text x="120" y="306" text-anchor="middle" font-size="12" fill="#14532d">Tailscale 앱 로그인</text>
+
+  <!-- Middle -->
+  <rect x="265" y="82" width="180" height="72" rx="10" fill="#f59e0b"/>
+  <text x="355" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Cloudflare 엣지</text>
+  <text x="355" y="136" text-anchor="middle" font-size="12" fill="#ffffff">HTTPS · Access(선택)</text>
+
+  <rect x="265" y="252" width="180" height="72" rx="10" fill="#16a34a"/>
+  <text x="355" y="282" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">tailnet</text>
+  <text x="355" y="306" text-anchor="middle" font-size="12" fill="#ffffff">WireGuard · 100.x.y.z</text>
+
+  <!-- Router -->
+  <rect x="490" y="62" width="100" height="282" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="540" y="196" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">공유기</text>
+  <text x="540" y="220" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="700">포트포워딩</text>
+  <text x="540" y="238" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="700">0개</text>
+
+  <!-- Server -->
+  <rect x="630" y="52" width="310" height="306" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="785" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">홈랩 서버</text>
+
+  <rect x="648" y="98" width="120" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="708" y="123" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f" font-family="Consolas,'D2Coding',monospace">cloudflared</text>
+  <rect x="648" y="268" width="120" height="40" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="708" y="293" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d" font-family="Consolas,'D2Coding',monospace">tailscale0</text>
+
+  <g font-size="12" text-anchor="middle">
+    <text x="862" y="98" fill="#7c2d12" font-weight="700">공개용</text>
+    <rect x="800" y="106" width="125" height="34" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+    <text x="862" y="128" fill="#0f172a">블로그 · 데모</text>
+    <rect x="800" y="148" width="125" height="34" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+    <text x="862" y="170" fill="#0f172a">포트폴리오</text>
+
+    <text x="862" y="216" fill="#14532d" font-weight="700">관리용</text>
+    <rect x="800" y="224" width="125" height="34" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="862" y="246" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">SSH :22</text>
+    <rect x="800" y="266" width="125" height="34" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="862" y="288" fill="#0f172a">Grafana · Kuma</text>
+    <rect x="800" y="308" width="125" height="34" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="862" y="330" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">DB :5432</text>
+  </g>
+
+  <!-- arrows: public path -->
+  <line x1="222" y1="118" x2="261" y2="118" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="646" y1="118" x2="449" y2="118" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+  <text x="547" y="108" text-anchor="middle" font-size="11" fill="#b45309" font-weight="700">아웃바운드</text>
+  <g stroke="#f59e0b" stroke-width="2" fill="none">
+    <line x1="768" y1="118" x2="797" y2="123" marker-end="url(#arrowOrange)"/>
+    <line x1="768" y1="124" x2="797" y2="163" marker-end="url(#arrowOrange)"/>
+  </g>
+
+  <!-- arrows: admin path -->
+  <line x1="222" y1="288" x2="261" y2="288" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="449" y1="288" x2="644" y2="288" stroke="#16a34a" stroke-width="2.5" marker-start="url(#arrowGreen)" marker-end="url(#arrowGreen)"/>
+  <text x="547" y="278" text-anchor="middle" font-size="11" fill="#15803d" font-weight="700">암호화 터널</text>
+  <g stroke="#16a34a" stroke-width="2" fill="none">
+    <line x1="768" y1="282" x2="797" y2="243" marker-end="url(#arrowGreen)"/>
+    <line x1="768" y1="288" x2="797" y2="283" marker-end="url(#arrowGreen)"/>
+    <line x1="768" y1="294" x2="797" y2="323" marker-end="url(#arrowGreen)"/>
+  </g>
+
+  <rect x="20" y="370" width="920" height="40" rx="20" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="480" y="395" text-anchor="middle" font-size="14" fill="#0f172a" font-weight="700">불특정 다수가 보는 웹 → Cloudflare Tunnel   |   나만 쓰는 SSH · 대시보드 · DB → Tailscale</text>
+</svg>

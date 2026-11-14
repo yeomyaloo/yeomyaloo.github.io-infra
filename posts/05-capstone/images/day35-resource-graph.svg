@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Terraform 리소스 의존성 그래프</text>
+  <text x="480" y="54" text-anchor="middle" font-size="13" fill="#64748b">A → B : B가 A를 참조 → A가 먼저 생성되고, 삭제는 역순 · 같은 열은 병렬 처리</text>
+
+  <!-- Edges (drawn first, under the boxes) -->
+  <g stroke="#334155" stroke-width="1.5" fill="none">
+    <!-- col1 -> col2 -->
+    <line x1="170" y1="115" x2="203" y2="87" marker-end="url(#arrow)"/>
+    <line x1="170" y1="115" x2="203" y2="143" marker-end="url(#arrow)"/>
+    <line x1="170" y1="215" x2="203" y2="215" marker-end="url(#arrow)"/>
+    <line x1="170" y1="320" x2="203" y2="378" marker-end="url(#arrow)"/>
+    <!-- secgroup -> ports -->
+    <polyline points="170,320 372,320 372,180 388,180" marker-end="url(#arrow)"/>
+    <polyline points="372,250 388,250" marker-end="url(#arrow)"/>
+    <!-- col2 -> col3 -->
+    <line x1="355" y1="85" x2="388" y2="89" marker-end="url(#arrow)"/>
+    <line x1="355" y1="215" x2="388" y2="93" marker-end="url(#arrow)"/>
+    <line x1="355" y1="215" x2="388" y2="182" marker-end="url(#arrow)"/>
+    <line x1="355" y1="215" x2="388" y2="248" marker-end="url(#arrow)"/>
+    <!-- floatingip -> fip_associate -->
+    <line x1="355" y1="145" x2="618" y2="112" marker-end="url(#arrow)"/>
+    <!-- col3 -> col4 -->
+    <line x1="540" y1="180" x2="618" y2="114" marker-end="url(#arrow)"/>
+    <line x1="540" y1="180" x2="618" y2="218" marker-end="url(#arrow)"/>
+    <line x1="540" y1="250" x2="618" y2="338" marker-end="url(#arrow)"/>
+    <line x1="540" y1="330" x2="618" y2="224" marker-end="url(#arrow)"/>
+    <line x1="540" y1="330" x2="618" y2="336" marker-end="url(#arrow)"/>
+    <line x1="540" y1="390" x2="618" y2="227" marker-end="url(#arrow)"/>
+    <line x1="540" y1="390" x2="618" y2="342" marker-end="url(#arrow)"/>
+    <line x1="540" y1="450" x2="618" y2="230" marker-end="url(#arrow)"/>
+    <line x1="540" y1="450" x2="618" y2="346" marker-end="url(#arrow)"/>
+  </g>
+  <!-- depends_on (dashed) -->
+  <g stroke="#64748b" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+    <line x1="540" y1="90" x2="618" y2="106" marker-end="url(#arrow)"/>
+    <line x1="540" y1="90" x2="618" y2="212" marker-end="url(#arrow)"/>
+    <line x1="540" y1="90" x2="618" y2="332" marker-end="url(#arrow)"/>
+  </g>
+  <!-- user_data template reference -->
+  <polyline points="355,152 580,152 580,214 618,214" stroke="#4f46e5" stroke-width="2" fill="none" marker-end="url(#arrowPurple)"/>
+
+  <!-- Column 1 -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle">
+    <rect x="20" y="97" width="150" height="36" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-dasharray="4 3"/>
+    <text x="95" y="119" fill="#334155">data.ext_net</text>
+    <rect x="20" y="197" width="150" height="36" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+    <text x="95" y="219" fill="#1e3a8a">network.k8s</text>
+    <rect x="20" y="302" width="150" height="36" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="95" y="324" fill="#7f1d1d">secgroup.k8s</text>
+
+    <!-- Column 2 -->
+    <rect x="205" y="67" width="150" height="36" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+    <text x="280" y="89" fill="#1e3a8a">router.k8s</text>
+    <rect x="205" y="127" width="150" height="36" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="280" y="149" fill="#78350f">floatingip.cp</text>
+    <rect x="205" y="197" width="150" height="36" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+    <text x="280" y="219" fill="#1e3a8a">subnet.k8s</text>
+    <rect x="205" y="362" width="150" height="36" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="280" y="384" fill="#7f1d1d">secgroup_rule ×6</text>
+
+    <!-- Column 3 -->
+    <rect x="390" y="72" width="150" height="36" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+    <text x="465" y="94" fill="#1e3a8a">router_interface</text>
+    <rect x="390" y="162" width="150" height="36" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+    <text x="465" y="184" fill="#1e3a8a">port.cp</text>
+    <rect x="390" y="232" width="150" height="36" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+    <text x="465" y="254" fill="#1e3a8a">port.worker[*]</text>
+    <rect x="390" y="312" width="150" height="36" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="465" y="334" fill="#14532d">keypair.k8s</text>
+    <rect x="390" y="372" width="150" height="36" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-dasharray="4 3"/>
+    <text x="465" y="394" fill="#334155">data.image</text>
+    <rect x="390" y="432" width="150" height="36" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+    <text x="465" y="454" fill="#334155">random_string ×2</text>
+
+    <!-- Column 4 -->
+    <rect x="620" y="92" width="150" height="36" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="695" y="114" fill="#78350f">fip_associate.cp</text>
+    <rect x="620" y="202" width="150" height="36" rx="8" fill="#16a34a"/>
+    <text x="695" y="224" fill="#ffffff" font-weight="700">instance.cp</text>
+    <rect x="620" y="322" width="150" height="36" rx="8" fill="#16a34a"/>
+    <text x="695" y="344" fill="#ffffff" font-weight="700">instance.worker[*]</text>
+  </g>
+
+  <!-- Note -->
+  <rect x="800" y="170" width="145" height="130" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="872" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">직접 확인하기</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">
+    <text x="812" y="218">terraform graph</text>
+    <text x="812" y="236">  | dot -Tsvg</text>
+    <text x="812" y="254">  &gt; graph.svg</text>
+  </g>
+  <text x="872" y="282" text-anchor="middle" font-size="11" fill="#64748b">(graphviz 필요)</text>
+
+  <!-- Legend -->
+  <g font-size="12" fill="#334155">
+    <line x1="40" y1="508" x2="80" y2="508" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="88" y="512">참조 (암시적 의존성)</text>
+    <line x1="230" y1="508" x2="270" y2="508" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+    <text x="278" y="512">depends_on (명시적)</text>
+    <line x1="420" y1="508" x2="460" y2="508" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    <text x="468" y="512">user_data 템플릿이 FIP 주소 참조</text>
+    <rect x="690" y="499" width="26" height="18" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-dasharray="4 3"/>
+    <text x="724" y="512">data = 조회만 (생성 X)</text>
+  </g>
+</svg>

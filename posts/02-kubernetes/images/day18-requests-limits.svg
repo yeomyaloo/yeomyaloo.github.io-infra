@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="8" height="8" fill="#fee2e2"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#fca5a5" stroke-width="4"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">requests와 limits — 언제, 무엇에 쓰이나</text>
+
+  <!-- A: one container axis -->
+  <rect x="20" y="56" width="450" height="210" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="40" y="84" font-size="16" font-weight="700" fill="#0f172a">컨테이너 하나의 CPU 축</text>
+  <text x="40" y="104" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">requests.cpu: 200m / limits.cpu: 500m</text>
+
+  <rect x="60" y="124" width="120" height="44" fill="#86efac"/>
+  <rect x="180" y="124" width="180" height="44" fill="#fde68a"/>
+  <rect x="360" y="124" width="80" height="44" fill="url(#hatch)"/>
+  <rect x="60" y="124" width="380" height="44" fill="none" stroke="#334155"/>
+  <g font-size="13" text-anchor="middle" font-weight="700">
+    <text x="120" y="151" fill="#14532d">보장 구간</text>
+    <text x="270" y="151" fill="#78350f">노드가 한가하면 사용</text>
+    <text x="400" y="151" fill="#7f1d1d">불가</text>
+  </g>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="60" y1="168" x2="60" y2="180"/>
+    <line x1="180" y1="168" x2="180" y2="180"/>
+    <line x1="360" y1="168" x2="360" y2="180"/>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#334155">
+    <text x="60" y="196">0</text>
+    <text x="180" y="196" font-weight="700">requests 200m</text>
+    <text x="360" y="196" font-weight="700">limits 500m</text>
+  </g>
+  <g font-size="13" fill="#334155">
+    <text x="40" y="226">• <tspan font-weight="700" fill="#16a34a">requests</tspan> → 스케줄러가 노드를 고를 때 사용 (예약)</text>
+    <text x="40" y="250">• <tspan font-weight="700" fill="#dc2626">limits</tspan> → 실행 중 cgroup이 강제하는 상한</text>
+  </g>
+
+  <!-- B: over-limit behavior -->
+  <rect x="490" y="56" width="450" height="100" rx="12" fill="#fefce8" stroke="#f59e0b"/>
+  <text x="510" y="84" font-size="15" font-weight="700" fill="#78350f">CPU가 limit에 닿으면 → 스로틀링</text>
+  <text x="510" y="106" font-size="12" fill="#78350f">CPU 시간을 덜 받을 뿐, 프로세스는 계속 실행 (응답이 느려짐)</text>
+  <polyline points="510,140 560,140 590,122 640,122 700,122 760,122 790,140 900,140" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <line x1="510" y1="122" x2="920" y2="122" stroke="#dc2626" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="920" y="117" text-anchor="end" font-size="11" fill="#dc2626">limit (평평하게 잘림)</text>
+
+  <rect x="490" y="166" width="450" height="100" rx="12" fill="#fff1f2" stroke="#dc2626"/>
+  <text x="510" y="194" font-size="15" font-weight="700" fill="#7f1d1d">메모리가 limit을 넘으면 → OOMKilled</text>
+  <text x="510" y="216" font-size="12" fill="#7f1d1d">회수할 방법이 없으므로 커널 OOM Killer가 프로세스 종료</text>
+  <rect x="510" y="228" width="190" height="28" rx="14" fill="#fca5a5"/>
+  <text x="605" y="247" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">exit code 137 (SIGKILL)</text>
+  <rect x="716" y="228" width="200" height="28" rx="14" fill="#fca5a5"/>
+  <text x="816" y="247" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">재시작 → CrashLoopBackOff</text>
+
+  <!-- C: scheduler view -->
+  <rect x="20" y="286" width="920" height="200" rx="12" fill="#eff6ff" stroke="#326ce5"/>
+  <text x="40" y="314" font-size="16" font-weight="700" fill="#1e3a8a">스케줄러의 시각 — 노드 allocatable(4 CPU)과 이미 배치된 Pod의 requests 합계</text>
+
+  <rect x="80" y="340" width="160" height="40" rx="6" fill="#ffffff" stroke="#326ce5" stroke-dasharray="6 4"/>
+  <text x="160" y="365" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">새 Pod D: 800m</text>
+
+  <rect x="80" y="400" width="200" height="44" fill="#93c5fd"/>
+  <rect x="280" y="400" width="300" height="44" fill="#60a5fa"/>
+  <rect x="580" y="400" width="200" height="44" fill="#93c5fd"/>
+  <rect x="780" y="400" width="100" height="44" fill="#ffffff"/>
+  <rect x="80" y="400" width="800" height="44" fill="none" stroke="#1e3a8a" stroke-width="2"/>
+  <g font-size="13" text-anchor="middle" font-weight="700">
+    <text x="180" y="427" fill="#1e3a8a">Pod A 1000m</text>
+    <text x="430" y="427" fill="#ffffff">Pod B 1500m</text>
+    <text x="680" y="427" fill="#1e3a8a">Pod C 1000m</text>
+    <text x="830" y="427" fill="#16a34a">남은 500m</text>
+  </g>
+  <text x="80" y="468" font-size="12" fill="#334155">0</text>
+  <text x="880" y="468" text-anchor="end" font-size="12" fill="#334155">4000m</text>
+
+  <line x1="240" y1="360" x2="600" y2="360" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="620" y="356" font-size="13" font-weight="700" fill="#dc2626">800m &gt; 남은 500m → Pending</text>
+  <text x="620" y="376" font-size="12" fill="#64748b">(실제 사용량이 낮아도 requests 기준)</text>
+</svg>

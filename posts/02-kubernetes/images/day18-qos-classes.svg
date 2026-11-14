@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">QoS 클래스와 축출(eviction) 순서</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">노드 메모리가 부족해지면 kubelet은 BestEffort부터 내보낸다</text>
+
+  <!-- BestEffort -->
+  <rect x="30" y="80" width="280" height="250" rx="12" fill="#fff1f2" stroke="#dc2626" stroke-width="2"/>
+  <rect x="30" y="80" width="280" height="46" rx="12" fill="#fca5a5"/>
+  <text x="170" y="110" text-anchor="middle" font-size="18" font-weight="700" fill="#7f1d1d">BestEffort</text>
+  <text x="170" y="154" text-anchor="middle" font-size="13" fill="#334155">requests · limits 전혀 없음</text>
+  <rect x="55" y="170" width="230" height="64" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#64748b">
+    <text x="70" y="196">resources: {}</text>
+    <text x="70" y="218"># 아무것도 안 씀</text>
+  </g>
+  <text x="170" y="266" text-anchor="middle" font-size="13" fill="#7f1d1d">남는 자원을 쓰지만 보장은 없음</text>
+  <rect x="95" y="284" width="150" height="30" rx="15" fill="#dc2626"/>
+  <text x="170" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1순위로 축출</text>
+
+  <!-- Burstable -->
+  <rect x="340" y="80" width="280" height="250" rx="12" fill="#fefce8" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="340" y="80" width="280" height="46" rx="12" fill="#fde68a"/>
+  <text x="480" y="110" text-anchor="middle" font-size="18" font-weight="700" fill="#78350f">Burstable</text>
+  <text x="480" y="154" text-anchor="middle" font-size="13" fill="#334155">일부만 지정 또는 requests &lt; limits</text>
+  <rect x="365" y="170" width="230" height="64" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="380" y="196">requests: cpu 50m, mem 32Mi</text>
+    <text x="380" y="218">limits:   cpu 200m, mem 128Mi</text>
+  </g>
+  <text x="480" y="266" text-anchor="middle" font-size="13" fill="#78350f">requests 대비 많이 쓰는 Pod부터</text>
+  <rect x="405" y="284" width="150" height="30" rx="15" fill="#f59e0b"/>
+  <text x="480" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2순위</text>
+
+  <!-- Guaranteed -->
+  <rect x="650" y="80" width="280" height="250" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <rect x="650" y="80" width="280" height="46" rx="12" fill="#86efac"/>
+  <text x="790" y="110" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">Guaranteed</text>
+  <text x="790" y="154" text-anchor="middle" font-size="13" fill="#334155">CPU·메모리 requests = limits</text>
+  <rect x="675" y="170" width="230" height="64" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="690" y="196">requests: cpu 100m, mem 64Mi</text>
+    <text x="690" y="218">limits:   cpu 100m, mem 64Mi</text>
+  </g>
+  <text x="790" y="266" text-anchor="middle" font-size="13" fill="#14532d">모든 컨테이너가 이 조건을 만족해야 함</text>
+  <rect x="715" y="284" width="150" height="30" rx="15" fill="#16a34a"/>
+  <text x="790" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">마지막</text>
+
+  <!-- Order arrow -->
+  <line x1="34" y1="365" x2="926" y2="365" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/>
+  <text x="480" y="395" text-anchor="middle" font-size="14" font-weight="700" fill="#dc2626">축출 순서: 왼쪽이 먼저 축출되고, 오른쪽일수록 오래 살아남는다</text>
+</svg>

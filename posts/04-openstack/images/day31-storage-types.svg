@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OpenStack 스토리지 3종 — Ephemeral / Block / Object</text>
+
+  <!-- Column 1: Ephemeral -->
+  <rect x="30" y="60" width="280" height="330" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="30" y="60" width="280" height="54" rx="12" fill="#64748b"/>
+  <text x="170" y="83" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Ephemeral 디스크</text>
+  <text x="170" y="104" text-anchor="middle" font-size="12" fill="#f1f5f9">Nova · compute 노드 로컬</text>
+  <rect x="80" y="128" width="180" height="100" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="170" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">VM</text>
+  <rect x="130" y="164" width="80" height="48" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="170" y="194" text-anchor="middle" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">vda</text>
+  <g font-size="13" fill="#334155">
+    <text x="46" y="266">접근 · /dev/vda (블록 장치)</text>
+    <text x="46" y="292">수명 · VM 삭제 시 함께 삭제</text>
+    <text x="46" y="318">용도 · OS 루트, 임시 데이터</text>
+    <text x="46" y="344">비유 · 컨테이너 쓰기 계층</text>
+  </g>
+  <text x="170" y="374" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">VM과 운명을 같이함</text>
+
+  <!-- Column 2: Block -->
+  <rect x="340" y="60" width="280" height="330" rx="12" fill="#eef2ff" stroke="#4f46e5"/>
+  <rect x="340" y="60" width="280" height="54" rx="12" fill="#4f46e5"/>
+  <text x="480" y="83" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Block 스토리지</text>
+  <text x="480" y="104" text-anchor="middle" font-size="12" fill="#e0e7ff">Cinder</text>
+  <rect x="360" y="138" width="110" height="80" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="415" y="166" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">VM</text>
+  <text x="415" y="194" text-anchor="middle" font-size="13" fill="#14532d" font-family="Consolas,'D2Coding',monospace">/dev/vdb</text>
+  <rect x="520" y="140" width="84" height="76" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="562" y="172" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">vol1</text>
+  <text x="562" y="196" text-anchor="middle" font-size="12" fill="#312e81">1 GB</text>
+  <line x1="470" y1="178" x2="520" y2="178" stroke="#4f46e5" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="495" y="168" text-anchor="middle" font-size="11" fill="#312e81">attach</text>
+  <g font-size="13" fill="#334155">
+    <text x="356" y="266">접근 · /dev/vdb (블록 장치)</text>
+    <text x="356" y="292">수명 · VM과 독립 (붙였다 뗐다)</text>
+    <text x="356" y="318">용도 · DB, 영속 디스크, 부팅</text>
+    <text x="356" y="344">비유 · Docker Volume / K8s PV</text>
+  </g>
+  <text x="480" y="374" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">VM을 지워도 볼륨은 남음</text>
+
+  <!-- Column 3: Object -->
+  <rect x="650" y="60" width="280" height="330" rx="12" fill="#fffbeb" stroke="#f59e0b"/>
+  <rect x="650" y="60" width="280" height="54" rx="12" fill="#f59e0b"/>
+  <text x="790" y="83" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Object 스토리지</text>
+  <text x="790" y="104" text-anchor="middle" font-size="12" fill="#fffbeb">Swift</text>
+  <rect x="666" y="148" width="80" height="60" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="706" y="183" text-anchor="middle" font-size="13" fill="#0f172a">client</text>
+  <line x1="746" y1="178" x2="799" y2="178" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="772" y="168" text-anchor="middle" font-size="11" fill="#334155">HTTP</text>
+  <rect x="802" y="128" width="112" height="100" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="858" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">photos/</text>
+  <rect x="814" y="158" width="88" height="26" rx="4" fill="#ffffff"/>
+  <text x="858" y="176" text-anchor="middle" font-size="11" fill="#78350f" font-family="Consolas,'D2Coding',monospace">cat.jpg</text>
+  <rect x="814" y="192" width="88" height="26" rx="4" fill="#ffffff"/>
+  <text x="858" y="210" text-anchor="middle" font-size="11" fill="#78350f" font-family="Consolas,'D2Coding',monospace">app.log</text>
+  <g font-size="13" fill="#334155">
+    <text x="666" y="266">접근 · HTTP REST (PUT/GET)</text>
+    <text x="666" y="292">수명 · 직접 삭제할 때까지</text>
+    <text x="666" y="318">용도 · 백업, 이미지, 미디어</text>
+    <text x="666" y="344">비유 · AWS S3</text>
+  </g>
+  <text x="790" y="374" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">어디서든 URL로 접근</text>
+
+  <text x="480" y="416" text-anchor="middle" font-size="13" fill="#64748b">Cinder와 Swift는 스토리지 그 자체가 아니라, 스토리지를 API로 제공하는 컨트롤 플레인</text>
+</svg>

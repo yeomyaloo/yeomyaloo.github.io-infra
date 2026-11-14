@@ -70,7 +70,7 @@
     <line x1="674" y1="290" x2="740" y2="290" marker-end="url(#arrow)"/>
   </g>
   <g font-size="13" fill="#334155">
-    <text x="230" y="168" font-weight="700">REST API</text>
+    <text x="247" y="172" text-anchor="middle" font-size="12" font-weight="700" transform="rotate(-48.7 247 172)">REST API</text>
     <text x="707" y="226" text-anchor="middle" font-weight="700">pull</text>
     <text x="707" y="310" text-anchor="middle" font-weight="700">push</text>
   </g>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kind에서 localhost:30080 → Pod 까지의 경로</text>
+
+  <!-- Host PC -->
+  <rect x="20" y="70" width="920" height="410" rx="14" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="40" y="96" font-size="15" font-weight="700" fill="#334155">내 PC (호스트)</text>
+
+  <rect x="40" y="120" width="170" height="80" rx="10" fill="#ffffff" stroke="#334155"/>
+  <text x="125" y="152" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">curl / 브라우저</text>
+  <text x="125" y="178" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#334155">localhost:30080</text>
+
+  <!-- Docker network -->
+  <rect x="250" y="110" width="670" height="350" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="270" y="136" font-size="14" font-weight="700" fill="#1e3a8a">Docker 네트워크 "kind" — 노드 = 컨테이너</text>
+
+  <!-- control-plane node -->
+  <rect x="270" y="150" width="290" height="140" rx="10" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="415" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#326ce5" font-family="Consolas,'D2Coding',monospace">infra-lab-control-plane</text>
+  <rect x="290" y="188" width="250" height="40" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="415" y="213" text-anchor="middle" font-size="13" fill="#78350f">NodePort :30080 (kube-proxy)</text>
+  <text x="415" y="256" text-anchor="middle" font-size="12" fill="#64748b">NodePort는 모든 노드에 열림</text>
+  <text x="415" y="276" text-anchor="middle" font-size="12" fill="#64748b">→ Traefik Pod가 있는 노드로 전달</text>
+
+  <!-- worker node -->
+  <rect x="590" y="150" width="310" height="290" rx="10" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="745" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#326ce5" font-family="Consolas,'D2Coding',monospace">infra-lab-worker</text>
+  <rect x="615" y="190" width="260" height="70" rx="8" fill="#326ce5"/>
+  <text x="745" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Traefik Pod</text>
+  <text x="745" y="242" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#dbeafe">web :8000 / websecure :8443</text>
+  <rect x="615" y="300" width="120" height="44" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="675" y="327" text-anchor="middle" font-size="13" fill="#14532d">foo Pod</text>
+  <rect x="755" y="300" width="120" height="44" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="815" y="327" text-anchor="middle" font-size="13" fill="#312e81">bar Pod</text>
+  <text x="745" y="380" text-anchor="middle" font-size="12" fill="#64748b">Ingress / HTTPRoute 규칙으로 선택</text>
+  <text x="745" y="400" text-anchor="middle" font-size="12" fill="#64748b">(Pod는 다른 노드에 있어도 됨)</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="210" y1="208" x2="287" y2="208" marker-end="url(#arrow)"/>
+    <line x1="540" y1="208" x2="612" y2="220" marker-end="url(#arrow)"/>
+    <line x1="700" y1="260" x2="677" y2="297" marker-end="url(#arrow)"/>
+    <line x1="790" y1="260" x2="813" y2="297" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Step labels -->
+  <g font-size="12" font-weight="700" fill="#dc2626">
+    <text x="214" y="232">①</text>
+    <text x="566" y="200">②</text>
+    <text x="616" y="284">③</text>
+  </g>
+
+  <!-- Legend -->
+  <rect x="270" y="310" width="290" height="130" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <g font-size="12" fill="#334155">
+    <text x="284" y="336"><tspan font-weight="700" fill="#dc2626">①</tspan> extraPortMappings (Day 09)</text>
+    <text x="300" y="356" font-family="Consolas,'D2Coding',monospace">host 30080 → node 30080</text>
+    <text x="284" y="382"><tspan font-weight="700" fill="#dc2626">②</tspan> Traefik Service (NodePort 30080)</text>
+    <text x="300" y="402" font-family="Consolas,'D2Coding',monospace">30080 → targetPort 8000</text>
+    <text x="284" y="428"><tspan font-weight="700" fill="#dc2626">③</tspan> 라우팅 규칙 → 백엔드 Service의 Pod</text>
+  </g>
+</svg>

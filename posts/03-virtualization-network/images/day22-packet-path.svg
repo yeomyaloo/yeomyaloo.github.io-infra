@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">브리지 네트워크 패킷 경로</text>
+
+  <!-- ===== East-West ===== -->
+  <rect x="15" y="48" width="930" height="150" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="30" y="72" font-size="15" font-weight="700" fill="#14532d">East-West — ns1 → ns2 (같은 브리지, L2 전달)</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="90" width="150" height="60" rx="8" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="105" y="115" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#312e81">ns1 eth0</text>
+    <text x="105" y="135" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#312e81">10.10.0.11</text>
+    <rect x="217" y="90" width="150" height="60" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="292" y="115" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#14532d">veth-ns1</text>
+    <text x="292" y="135" font-size="12" fill="#14532d">브리지 포트</text>
+    <rect x="404" y="90" width="150" height="60" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="479" y="115" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#14532d">br0</text>
+    <text x="479" y="135" font-size="12" fill="#14532d">FDB 조회 → 포트 결정</text>
+    <rect x="591" y="90" width="150" height="60" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="666" y="115" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#14532d">veth-ns2</text>
+    <text x="666" y="135" font-size="12" fill="#14532d">브리지 포트</text>
+    <rect x="778" y="90" width="150" height="60" rx="8" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="853" y="115" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#312e81">ns2 eth0</text>
+    <text x="853" y="135" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#312e81">10.10.0.12</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="180" y1="120" x2="214" y2="120" marker-end="url(#arrow)"/>
+    <line x1="367" y1="120" x2="401" y2="120" marker-end="url(#arrow)"/>
+    <line x1="554" y1="120" x2="588" y2="120" marker-end="url(#arrow)"/>
+    <line x1="741" y1="120" x2="775" y2="120" marker-end="url(#arrow)"/>
+  </g>
+  <text x="30" y="178" font-size="12" fill="#334155">① ARP 브로드캐스트(모든 포트로 플러딩)로 ns2의 MAC 확인  ② 이후 유니캐스트는 FDB에 학습된 포트로만 전달 — 라우팅·NAT 없음</text>
+
+  <!-- ===== North-South ===== -->
+  <rect x="15" y="212" width="930" height="215" rx="12" fill="#fffbeb" stroke="#fde68a"/>
+  <text x="30" y="236" font-size="15" font-weight="700" fill="#78350f">North-South — ns1 → 8.8.8.8 (라우팅 + NAT)</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="30" y="252" width="130" height="78" rx="8" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="95" y="275" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#312e81">ns1 eth0</text>
+    <text x="95" y="295" font-family="Consolas,'D2Coding',monospace" fill="#312e81">10.10.0.11</text>
+    <text x="95" y="315" font-family="Consolas,'D2Coding',monospace" fill="#312e81">default via .1</text>
+
+    <rect x="182" y="252" width="130" height="78" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="247" y="275" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#14532d">veth-ns1</text>
+    <text x="247" y="295" fill="#14532d">(veth pair)</text>
+
+    <rect x="334" y="252" width="130" height="78" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="399" y="275" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#14532d">br0</text>
+    <text x="399" y="295" fill="#14532d">목적 MAC = br0</text>
+    <text x="399" y="315" fill="#14532d">→ 호스트로 올림</text>
+
+    <rect x="486" y="252" width="130" height="78" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="551" y="275" font-size="13" font-weight="700" fill="#78350f">호스트 라우팅</text>
+    <text x="551" y="295" font-family="Consolas,'D2Coding',monospace" fill="#78350f">ip_forward=1</text>
+    <text x="551" y="315" font-family="Consolas,'D2Coding',monospace" fill="#78350f">FORWARD 체인</text>
+
+    <rect x="638" y="252" width="130" height="78" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="703" y="275" font-size="13" font-weight="700" fill="#78350f">NAT</text>
+    <text x="703" y="295" font-family="Consolas,'D2Coding',monospace" fill="#78350f">MASQUERADE</text>
+    <text x="703" y="315" fill="#78350f">src → 호스트 IP</text>
+
+    <rect x="790" y="252" width="130" height="78" rx="8" fill="#2496ed"/>
+    <text x="855" y="275" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#ffffff">enp1s0</text>
+    <text x="855" y="295" fill="#ffffff">→ 인터넷</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="160" y1="291" x2="179" y2="291" marker-end="url(#arrow)"/>
+    <line x1="312" y1="291" x2="331" y2="291" marker-end="url(#arrow)"/>
+    <line x1="464" y1="291" x2="483" y2="291" marker-end="url(#arrow)"/>
+    <line x1="616" y1="291" x2="635" y2="291" marker-end="url(#arrow)"/>
+    <line x1="768" y1="291" x2="787" y2="291" marker-end="url(#arrow)"/>
+  </g>
+  <text x="30" y="360" font-size="12" fill="#334155">목적지가 다른 대역 → 게이트웨이(10.10.0.1 = br0)의 MAC으로 보냄 → 호스트 커널이 라우팅하고 POSTROUTING에서 SNAT</text>
+  <text x="30" y="382" font-size="12" fill="#334155">응답 패킷은 conntrack이 기억해 둔 매핑으로 자동 역변환되어 ns1로 돌아옵니다.</text>
+  <text x="30" y="410" font-size="12" font-weight="700" fill="#92400e">tcpdump 관찰 지점: ns1 eth0 (src 10.10.0.11) · br0 · enp1s0 (src 호스트 IP로 바뀜)</text>
+</svg>

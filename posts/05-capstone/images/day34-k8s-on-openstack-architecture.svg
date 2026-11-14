@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OpenStack 위의 Kubernetes 클러스터</text>
+
+  <!-- User -->
+  <rect x="20" y="72" width="220" height="80" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="130" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">사용자 (DevStack 호스트)</text>
+  <text x="130" y="128" text-anchor="middle" font-size="13" fill="#64748b">kubectl · ssh · curl</text>
+
+  <!-- FIP pills -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="270" y="72" width="250" height="32" rx="16" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="395" y="93" fill="#78350f">FIP ① → k8s-cp1 :6443 · :22</text>
+    <rect x="270" y="120" width="250" height="32" rx="16" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="395" y="141" fill="#78350f">FIP ② → Octavia VIP :80</text>
+  </g>
+
+  <!-- NAT note -->
+  <rect x="640" y="72" width="300" height="80" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="790" y="98" text-anchor="middle" font-size="13" fill="#334155">Floating IP는 Router가</text>
+  <text x="790" y="118" text-anchor="middle" font-size="13" fill="#334155">사설 IP(10.0.10.x)로 1:1 NAT</text>
+  <text x="790" y="138" text-anchor="middle" font-size="12" fill="#64748b">VM 자체는 공인 IP를 모른다</text>
+
+  <!-- External network -->
+  <rect x="20" y="170" width="920" height="30" rx="6" fill="#fff1f2" stroke="#ed1944" stroke-width="2"/>
+  <text x="34" y="190" font-size="13" font-weight="700" fill="#9f1239">public (외부 네트워크) · 172.24.4.0/24</text>
+
+  <!-- Router -->
+  <rect x="410" y="222" width="140" height="44" rx="8" fill="#ed1944"/>
+  <text x="480" y="249" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">k8s-router</text>
+
+  <!-- Tenant network -->
+  <rect x="20" y="290" width="920" height="30" rx="6" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="34" y="310" font-size="13" font-weight="700" fill="#1e3a8a">k8s-net / k8s-subnet · 10.0.10.0/24</text>
+
+  <!-- Security group -->
+  <rect x="20" y="340" width="685" height="240" rx="12" fill="#ffffff" stroke="#dc2626" stroke-dasharray="6 4"/>
+  <text x="385" y="358" font-size="12" font-weight="700" fill="#dc2626">Security Group: k8s-sg</text>
+
+  <!-- VM: control plane -->
+  <rect x="35" y="372" width="210" height="196" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="140" y="396" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-cp1</text>
+  <text x="140" y="416" text-anchor="middle" font-size="12" fill="#64748b">control plane · Ubuntu 24.04</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="45" y="430" width="190" height="28" rx="6" fill="#326ce5"/>
+    <text x="140" y="449" fill="#ffffff">kube-apiserver · etcd</text>
+    <rect x="45" y="464" width="190" height="28" rx="6" fill="#c7d2fe"/>
+    <text x="140" y="483" fill="#312e81">scheduler · ctrl-manager</text>
+    <rect x="45" y="498" width="190" height="28" rx="6" fill="#ffe4e6" stroke="#ed1944"/>
+    <text x="140" y="517" fill="#9f1239">OCCM (cloud-controller)</text>
+    <rect x="45" y="532" width="190" height="28" rx="6" fill="#fde68a"/>
+    <text x="140" y="551" fill="#78350f">cinder-csi controller</text>
+  </g>
+
+  <!-- VM: worker 1 -->
+  <rect x="260" y="372" width="210" height="196" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="365" y="396" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-w1</text>
+  <text x="365" y="416" text-anchor="middle" font-size="12" fill="#64748b">worker · Ubuntu 24.04</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="270" y="430" width="190" height="28" rx="6" fill="#e2e8f0"/>
+    <text x="365" y="449" fill="#0f172a">kubelet · containerd</text>
+    <rect x="270" y="464" width="190" height="28" rx="6" fill="#c7d2fe"/>
+    <text x="365" y="483" fill="#312e81">flannel (VXLAN)</text>
+    <rect x="270" y="498" width="190" height="28" rx="6" fill="#fde68a"/>
+    <text x="365" y="517" fill="#78350f">cinder-csi nodeplugin</text>
+    <rect x="270" y="532" width="190" height="28" rx="6" fill="#86efac"/>
+    <text x="365" y="551" fill="#14532d">Pod · Pod</text>
+  </g>
+
+  <!-- VM: worker 2 -->
+  <rect x="485" y="372" width="210" height="196" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="590" y="396" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-w2</text>
+  <text x="590" y="416" text-anchor="middle" font-size="12" fill="#64748b">worker · Ubuntu 24.04</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="495" y="430" width="190" height="28" rx="6" fill="#e2e8f0"/>
+    <text x="590" y="449" fill="#0f172a">kubelet · containerd</text>
+    <rect x="495" y="464" width="190" height="28" rx="6" fill="#c7d2fe"/>
+    <text x="590" y="483" fill="#312e81">flannel (VXLAN)</text>
+    <rect x="495" y="498" width="190" height="28" rx="6" fill="#fde68a"/>
+    <text x="590" y="517" fill="#78350f">cinder-csi nodeplugin</text>
+    <rect x="495" y="532" width="190" height="28" rx="6" fill="#86efac"/>
+    <text x="590" y="551" fill="#14532d">Pod · Pod</text>
+  </g>
+
+  <!-- Octavia -->
+  <rect x="720" y="340" width="220" height="110" rx="10" fill="#fff1f2" stroke="#ed1944" stroke-width="2"/>
+  <text x="830" y="364" text-anchor="middle" font-size="14" font-weight="700" fill="#9f1239">Octavia LB (amphora)</text>
+  <g font-size="12" text-anchor="middle" fill="#334155">
+    <text x="830" y="388">VIP 10.0.10.50</text>
+    <text x="830" y="408">listener :80 → pool</text>
+    <text x="830" y="428">member = 노드IP:NodePort</text>
+  </g>
+
+  <!-- Cinder -->
+  <rect x="720" y="470" width="220" height="110" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="830" y="494" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">Cinder Volume</text>
+  <g font-size="12" text-anchor="middle" fill="#334155">
+    <text x="830" y="518">pvc-5b1e… (5 GiB)</text>
+    <text x="830" y="538">Nova가 VM에 attach</text>
+    <text x="830" y="558">→ VM 안에서 /dev/vdb</text>
+  </g>
+
+  <!-- Connectors -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="240" y1="88" x2="268" y2="88" marker-end="url(#arrow)"/>
+    <line x1="240" y1="136" x2="268" y2="136" marker-end="url(#arrow)"/>
+    <polyline points="520,88 560,88 560,168" marker-end="url(#arrow)"/>
+    <polyline points="520,136 600,136 600,168" marker-end="url(#arrow)"/>
+    <line x1="480" y1="200" x2="480" y2="222"/>
+    <line x1="480" y1="266" x2="480" y2="290"/>
+    <line x1="140" y1="320" x2="140" y2="372"/>
+    <line x1="365" y1="320" x2="365" y2="372"/>
+    <line x1="590" y1="320" x2="590" y2="372"/>
+    <line x1="830" y1="320" x2="830" y2="340"/>
+    <line x1="720" y1="420" x2="698" y2="420" marker-end="url(#arrow)"/>
+    <line x1="720" y1="520" x2="698" y2="520" marker-end="url(#arrow)"/>
+  </g>
+</svg>

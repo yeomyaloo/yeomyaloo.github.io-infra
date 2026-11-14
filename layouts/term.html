@@ -1,5 +1,5 @@
 {{ define "main" }}
 <p class="muted"><a href="{{ "tags/" | relURL }}">태그</a></p>
 <h1>#{{ .Title }}</h1>
-{{ partial "post-list.html" .Pages.ByDate.Reverse }}
+{{ partial "post-list.html" .Pages.ByWeight }}
 {{ end }}

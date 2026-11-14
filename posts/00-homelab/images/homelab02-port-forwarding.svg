@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">포트포워딩 — 목적지 주소를 바꿔서 서버로 전달</text>
+
+  <!-- External user -->
+  <rect x="20" y="70" width="200" height="100" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="120" y="102" text-anchor="middle" font-size="17" font-weight="700" fill="#7c2d12">외부 사용자</text>
+  <text x="120" y="126" text-anchor="middle" font-size="13" fill="#7c2d12">(LTE 핫스팟)</text>
+  <text x="120" y="150" text-anchor="middle" font-size="12" fill="#7c2d12" font-family="Consolas,'D2Coding',monospace">198.51.100.20</text>
+
+  <!-- Router -->
+  <rect x="340" y="62" width="280" height="116" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="480" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">공유기 (WAN 203.0.113.45)</text>
+  <rect x="356" y="104" width="248" height="60" rx="8" fill="#2496ed"/>
+  <text x="480" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">포트포워드 규칙</text>
+  <text x="480" y="150" text-anchor="middle" font-size="13" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">TCP 22222 → 192.168.0.10:22</text>
+
+  <!-- Server -->
+  <rect x="740" y="70" width="200" height="100" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="840" y="102" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">홈랩 서버</text>
+  <text x="840" y="126" text-anchor="middle" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">192.168.0.10</text>
+  <text x="840" y="150" text-anchor="middle" font-size="13" fill="#14532d">sshd :22 대기</text>
+
+  <g stroke="#334155" stroke-width="2.5" fill="none">
+    <line x1="222" y1="120" x2="336" y2="120" marker-end="url(#arrow)"/>
+    <line x1="622" y1="120" x2="736" y2="120" marker-end="url(#arrow)"/>
+  </g>
+  <text x="279" y="110" text-anchor="middle" font-size="12" fill="#334155">인터넷</text>
+  <text x="679" y="110" text-anchor="middle" font-size="12" fill="#334155">집 LAN</text>
+
+  <!-- Packet 1 -->
+  <rect x="40" y="208" width="380" height="104" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="56" y="232" font-size="14" font-weight="700" fill="#0f172a">① 공유기에 도착한 패킷</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace">
+    <text x="56" y="262" fill="#0f172a">목적지 203.0.113.45:22222</text>
+    <text x="56" y="290" fill="#64748b">출발지 198.51.100.20:53210</text>
+  </g>
+
+  <!-- Packet 2 -->
+  <rect x="540" y="208" width="380" height="104" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="556" y="232" font-size="14" font-weight="700" fill="#0f172a">② 서버로 전달된 패킷</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace">
+    <text x="556" y="262" fill="#dc2626" font-weight="700">목적지 192.168.0.10:22  (DNAT)</text>
+    <text x="556" y="290" fill="#64748b">출발지 198.51.100.20:53210 (그대로)</text>
+  </g>
+  <line x1="424" y1="260" x2="536" y2="260" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="480" y="250" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="700">목적지 변환</text>
+
+  <!-- Response -->
+  <rect x="40" y="332" width="880" height="44" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="480" y="359" text-anchor="middle" font-size="14" fill="#14532d" font-weight="700">③ 응답은 NAT 테이블로 역변환 → 사용자는 203.0.113.45:22222 와 대화한다고 생각한다</text>
+
+  <rect x="40" y="388" width="880" height="40" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="480" y="413" text-anchor="middle" font-size="14" fill="#7f1d1d" font-weight="700">규칙이 없는 포트(예: 3306)로 온 연결은 그대로 버려진다 — DMZ는 이 보호막을 없앤다</text>
+</svg>

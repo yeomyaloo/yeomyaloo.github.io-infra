@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">빌드 캐시와 명령 순서 — app.py 한 줄만 고치고 다시 빌드하면?</text>
+
+  <!-- Left panel: bad order -->
+  <rect x="20" y="58" width="450" height="342" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="245" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#991b1b">나쁜 순서</text>
+
+  <!-- Right panel: good order -->
+  <rect x="490" y="58" width="450" height="342" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="715" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">좋은 순서</text>
+
+  <!-- Step boxes -->
+  <g fill="#ffffff" stroke="#cbd5e1">
+    <rect x="35" y="106" width="420" height="44" rx="6"/>
+    <rect x="35" y="162" width="420" height="44" rx="6"/>
+    <rect x="35" y="218" width="420" height="44" rx="6"/>
+    <rect x="35" y="274" width="420" height="44" rx="6"/>
+    <rect x="35" y="330" width="420" height="44" rx="6"/>
+    <rect x="505" y="106" width="420" height="44" rx="6"/>
+    <rect x="505" y="162" width="420" height="44" rx="6"/>
+    <rect x="505" y="218" width="420" height="44" rx="6"/>
+    <rect x="505" y="274" width="420" height="44" rx="6"/>
+    <rect x="505" y="330" width="420" height="44" rx="6"/>
+  </g>
+
+  <!-- Code text -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <text x="50" y="133">FROM python:3.12-slim</text>
+    <text x="50" y="189">WORKDIR /app</text>
+    <text x="50" y="245" font-weight="700">COPY . .</text>
+    <text x="50" y="301">RUN pip install -r requirements.txt</text>
+    <text x="50" y="357">CMD ["python", "app.py"]</text>
+
+    <text x="520" y="133">FROM python:3.12-slim</text>
+    <text x="520" y="189">WORKDIR /app</text>
+    <text x="520" y="245">COPY requirements.txt .</text>
+    <text x="520" y="301">RUN pip install -r requirements.txt</text>
+    <text x="520" y="357" font-weight="700">COPY . .</text>
+  </g>
+
+  <!-- Badges -->
+  <g font-size="13" font-weight="700" text-anchor="middle">
+    <rect x="355" y="116" width="80" height="24" rx="12" fill="#86efac"/><text x="395" y="133" fill="#14532d">CACHED</text>
+    <rect x="355" y="172" width="80" height="24" rx="12" fill="#86efac"/><text x="395" y="189" fill="#14532d">CACHED</text>
+    <rect x="355" y="228" width="80" height="24" rx="12" fill="#fca5a5"/><text x="395" y="245" fill="#7f1d1d">재실행</text>
+    <rect x="355" y="284" width="80" height="24" rx="12" fill="#fca5a5"/><text x="395" y="301" fill="#7f1d1d">재실행</text>
+    <rect x="355" y="340" width="80" height="24" rx="12" fill="#fca5a5"/><text x="395" y="357" fill="#7f1d1d">재실행</text>
+
+    <rect x="825" y="116" width="80" height="24" rx="12" fill="#86efac"/><text x="865" y="133" fill="#14532d">CACHED</text>
+    <rect x="825" y="172" width="80" height="24" rx="12" fill="#86efac"/><text x="865" y="189" fill="#14532d">CACHED</text>
+    <rect x="825" y="228" width="80" height="24" rx="12" fill="#86efac"/><text x="865" y="245" fill="#14532d">CACHED</text>
+    <rect x="825" y="284" width="80" height="24" rx="12" fill="#86efac"/><text x="865" y="301" fill="#14532d">CACHED</text>
+    <rect x="825" y="340" width="80" height="24" rx="12" fill="#fca5a5"/><text x="865" y="357" fill="#7f1d1d">재실행</text>
+  </g>
+
+  <!-- Results -->
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <text x="245" y="432" fill="#dc2626">app.py 변경 → COPY . . 캐시 깨짐</text>
+    <text x="245" y="456" fill="#dc2626">→ pip install까지 매번 다시 (수십 초)</text>
+    <text x="715" y="432" fill="#16a34a">의존성 설치는 캐시 재사용</text>
+    <text x="715" y="456" fill="#16a34a">→ 소스 복사만 다시 (1~2초)</text>
+  </g>
+
+  <text x="480" y="500" text-anchor="middle" font-size="14" fill="#334155">캐시는 위에서부터 확인한다 — 한 단계가 깨지면 그 아래 단계는 전부 다시 실행된다</text>
+</svg>

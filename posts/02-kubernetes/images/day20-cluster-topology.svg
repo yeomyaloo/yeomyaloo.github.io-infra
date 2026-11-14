@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="510" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kubeadm 멀티노드 클러스터 구성</text>
+
+  <!-- Host PC -->
+  <rect x="10" y="48" width="940" height="450" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="28" y="72" font-size="14" font-weight="700" fill="#334155">호스트 PC (Vagrant + VirtualBox 또는 Multipass)</text>
+
+  <g transform="translate(0,14)">
+    <!-- API path from workers -->
+    <g stroke="#334155" stroke-width="2" fill="none" stroke-dasharray="6 4">
+      <path d="M395,364 L360,364 L360,189 L318,189" marker-end="url(#arrow)"/>
+      <path d="M675,364 L650,364 L650,82 L360,82 L360,189"/>
+    </g>
+    <text x="505" y="77" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">kubelet → kube-apiserver :6443</text>
+
+    <!-- Control plane VM -->
+    <rect x="40" y="90" width="300" height="330" rx="10" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+    <text x="190" y="116" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">k8s-cp</text>
+    <text x="190" y="136" text-anchor="middle" font-size="12" fill="#64748b">control-plane · 192.168.56.10</text>
+
+    <rect x="55" y="150" width="270" height="150" rx="8" fill="#eff6ff" stroke="#326ce5"/>
+    <text x="190" y="168" text-anchor="middle" font-size="12" fill="#1e3a8a">static Pod (kubelet이 직접 실행)</text>
+    <g font-size="13" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">
+      <rect x="65" y="176" width="250" height="26" rx="5" fill="#326ce5"/><text x="190" y="194">kube-apiserver</text>
+      <rect x="65" y="206" width="250" height="26" rx="5" fill="#326ce5"/><text x="190" y="224">etcd</text>
+      <rect x="65" y="236" width="250" height="26" rx="5" fill="#326ce5"/><text x="190" y="254">kube-scheduler</text>
+      <rect x="65" y="266" width="250" height="26" rx="5" fill="#326ce5"/><text x="190" y="284">kube-controller-manager</text>
+    </g>
+
+    <!-- Worker 1 VM -->
+    <rect x="380" y="90" width="260" height="330" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="510" y="116" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">k8s-w1</text>
+    <text x="510" y="136" text-anchor="middle" font-size="12" fill="#64748b">worker · 192.168.56.11</text>
+    <rect x="395" y="150" width="230" height="150" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+    <text x="510" y="168" text-anchor="middle" font-size="12" fill="#14532d">Pods · 10.244.1.0/24</text>
+    <g text-anchor="middle">
+      <rect x="410" y="180" width="95" height="46" rx="6" fill="#86efac"/>
+      <text x="457" y="199" font-size="13" font-weight="700" fill="#14532d">web</text>
+      <text x="457" y="217" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">10.244.1.23</text>
+      <rect x="515" y="180" width="95" height="46" rx="6" fill="#86efac"/>
+      <text x="562" y="199" font-size="13" font-weight="700" fill="#14532d">web</text>
+      <text x="562" y="217" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">10.244.1.87</text>
+      <rect x="410" y="236" width="95" height="46" rx="6" fill="#86efac"/>
+      <text x="457" y="255" font-size="13" font-weight="700" fill="#14532d">coredns</text>
+      <text x="457" y="273" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">10.244.1.5</text>
+    </g>
+
+    <!-- Worker 2 VM -->
+    <rect x="660" y="90" width="260" height="330" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="790" y="116" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">k8s-w2</text>
+    <text x="790" y="136" text-anchor="middle" font-size="12" fill="#64748b">worker · 192.168.56.12</text>
+    <rect x="675" y="150" width="230" height="150" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+    <text x="790" y="168" text-anchor="middle" font-size="12" fill="#14532d">Pods · 10.244.2.0/24</text>
+    <g text-anchor="middle">
+      <rect x="690" y="180" width="95" height="46" rx="6" fill="#86efac"/>
+      <text x="737" y="199" font-size="13" font-weight="700" fill="#14532d">web</text>
+      <text x="737" y="217" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">10.244.2.41</text>
+      <rect x="795" y="180" width="95" height="46" rx="6" fill="#86efac"/>
+      <text x="842" y="199" font-size="13" font-weight="700" fill="#14532d">web</text>
+      <text x="842" y="217" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">10.244.2.112</text>
+      <rect x="690" y="236" width="95" height="46" rx="6" fill="#86efac"/>
+      <text x="737" y="255" font-size="13" font-weight="700" fill="#14532d">coredns</text>
+      <text x="737" y="273" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">10.244.2.9</text>
+    </g>
+
+    <!-- Node agents (repeated per node) -->
+    <g font-size="13" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+      <rect x="55" y="310" width="130" height="30" rx="5" fill="#c7d2fe"/><text x="120" y="330" fill="#312e81">kube-proxy</text>
+      <rect x="195" y="310" width="130" height="30" rx="5" fill="#c7d2fe"/><text x="260" y="330" fill="#312e81">cilium-agent</text>
+      <rect x="395" y="310" width="110" height="30" rx="5" fill="#c7d2fe"/><text x="450" y="330" fill="#312e81">kube-proxy</text>
+      <rect x="515" y="310" width="110" height="30" rx="5" fill="#c7d2fe"/><text x="570" y="330" fill="#312e81">cilium-agent</text>
+      <rect x="675" y="310" width="110" height="30" rx="5" fill="#c7d2fe"/><text x="730" y="330" fill="#312e81">kube-proxy</text>
+      <rect x="795" y="310" width="110" height="30" rx="5" fill="#c7d2fe"/><text x="850" y="330" fill="#312e81">cilium-agent</text>
+
+      <rect x="55" y="350" width="270" height="28" rx="5" fill="#326ce5"/><text x="190" y="369" fill="#ffffff" font-weight="700">kubelet</text>
+      <rect x="395" y="350" width="230" height="28" rx="5" fill="#326ce5"/><text x="510" y="369" fill="#ffffff" font-weight="700">kubelet</text>
+      <rect x="675" y="350" width="230" height="28" rx="5" fill="#326ce5"/><text x="790" y="369" fill="#ffffff" font-weight="700">kubelet</text>
+
+      <rect x="55" y="386" width="270" height="26" rx="5" fill="#93c5fd"/><text x="190" y="404" fill="#1e3a8a">containerd (systemd cgroup)</text>
+      <rect x="395" y="386" width="230" height="26" rx="5" fill="#93c5fd"/><text x="510" y="404" fill="#1e3a8a">containerd</text>
+      <rect x="675" y="386" width="230" height="26" rx="5" fill="#93c5fd"/><text x="790" y="404" fill="#1e3a8a">containerd</text>
+    </g>
+
+    <!-- Node network -->
+    <g stroke="#64748b" stroke-width="2">
+      <line x1="190" y1="420" x2="190" y2="432"/>
+      <line x1="510" y1="420" x2="510" y2="432"/>
+      <line x1="790" y1="420" x2="790" y2="432"/>
+    </g>
+    <rect x="40" y="432" width="880" height="34" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="480" y="454" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">노드 네트워크 192.168.56.0/24 (Vagrant host-only) · Pod CIDR 10.244.0.0/16 · Service CIDR 10.96.0.0/12</text>
+  </g>
+</svg>

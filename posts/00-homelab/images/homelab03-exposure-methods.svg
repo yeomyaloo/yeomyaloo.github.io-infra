@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">연결을 누가 먼저 거는가 — 세 가지 공개 방식</text>
+
+  <!-- ===== Lane 1: Port forwarding ===== -->
+  <rect x="20" y="58" width="920" height="130" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="95" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">포트포워딩</text>
+  <text x="95" y="136" text-anchor="middle" font-size="12" fill="#7f1d1d">누구나 · 포트 열림</text>
+
+  <rect x="190" y="93" width="120" height="60" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="250" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">사용자</text>
+  <rect x="600" y="88" width="110" height="70" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+  <text x="655" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">공유기</text>
+  <text x="655" y="140" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="700">포트 열림</text>
+  <rect x="770" y="93" width="150" height="60" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="845" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">홈랩 서버</text>
+
+  <line x1="312" y1="123" x2="596" y2="123" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <line x1="712" y1="123" x2="766" y2="123" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <text x="455" y="113" text-anchor="middle" font-size="13" fill="#dc2626" font-weight="700">밖 → 안 (인바운드)</text>
+  <text x="455" y="145" text-anchor="middle" font-size="12" fill="#7f1d1d">CGNAT · 포트 차단이면 불가</text>
+
+  <!-- ===== Lane 2: Cloudflare Tunnel ===== -->
+  <rect x="20" y="202" width="920" height="130" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="95" y="256" text-anchor="middle" font-size="16" font-weight="700" fill="#7c2d12">Cloudflare</text>
+  <text x="95" y="276" text-anchor="middle" font-size="16" font-weight="700" fill="#7c2d12">Tunnel</text>
+  <text x="95" y="300" text-anchor="middle" font-size="12" fill="#7c2d12">누구나 · 포트 0</text>
+
+  <rect x="190" y="237" width="120" height="60" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="250" y="272" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">사용자</text>
+  <rect x="360" y="232" width="180" height="70" rx="10" fill="#f59e0b"/>
+  <text x="450" y="262" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Cloudflare 엣지</text>
+  <text x="450" y="284" text-anchor="middle" font-size="12" fill="#ffffff">HTTPS · Access</text>
+  <rect x="600" y="232" width="110" height="70" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="655" y="260" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">공유기</text>
+  <text x="655" y="284" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="700">열린 포트 0</text>
+  <rect x="770" y="237" width="150" height="60" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="845" y="263" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">홈랩 서버</text>
+  <text x="845" y="283" text-anchor="middle" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">cloudflared</text>
+
+  <line x1="312" y1="267" x2="356" y2="267" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="768" y1="267" x2="714" y2="267" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+  <line x1="598" y1="267" x2="544" y2="267" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+  <text x="655" y="322" text-anchor="middle" font-size="12" fill="#b45309" font-weight="700">서버가 먼저 연결 (안 → 밖, 아웃바운드)</text>
+
+  <!-- ===== Lane 3: Tailscale ===== -->
+  <rect x="20" y="346" width="920" height="140" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="95" y="406" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">Tailscale</text>
+  <text x="95" y="430" text-anchor="middle" font-size="12" fill="#14532d">내 기기만 · 포트 0</text>
+
+  <rect x="190" y="372" width="120" height="60" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="250" y="398" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">내 노트북</text>
+  <text x="250" y="418" text-anchor="middle" font-size="12" fill="#14532d">Tailscale 앱</text>
+  <rect x="360" y="360" width="180" height="44" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="450" y="379" text-anchor="middle" font-size="12" fill="#334155" font-weight="700">조정 서버</text>
+  <text x="450" y="396" text-anchor="middle" font-size="11" fill="#64748b">키 · 주소 교환만</text>
+  <rect x="600" y="372" width="110" height="60" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="655" y="398" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">공유기</text>
+  <text x="655" y="420" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="700">열린 포트 0</text>
+  <rect x="770" y="372" width="150" height="60" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="845" y="398" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">홈랩 서버</text>
+  <text x="845" y="418" text-anchor="middle" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">100.101.102.103</text>
+
+  <g stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" fill="none">
+    <line x1="310" y1="385" x2="358" y2="380"/>
+    <line x1="770" y1="380" x2="542" y2="380"/>
+  </g>
+  <path d="M250,434 L250,456 L845,456 L845,434" fill="none" stroke="#16a34a" stroke-width="3" marker-start="url(#arrowGreen)" marker-end="url(#arrowGreen)"/>
+  <text x="520" y="476" text-anchor="middle" font-size="12" fill="#14532d" font-weight="700">WireGuard 종단 간 암호화 (가능하면 P2P 직결, 안 되면 DERP 중계)</text>
+</svg>

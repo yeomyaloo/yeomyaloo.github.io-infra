@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2496ed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">VXLAN Overlay 패킷 경로 — VNI 100</text>
+
+  <!-- ===== Node 1 ===== -->
+  <rect x="20" y="48" width="310" height="320" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="70" font-size="14" font-weight="700" fill="#334155">vm1 (컴퓨트 노드 1)</text>
+  <g text-anchor="middle">
+    <rect x="50" y="80" width="250" height="60" rx="8" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="175" y="102" font-size="14" font-weight="700" fill="#312e81">tenant (netns = 인스턴스)</text>
+    <text x="175" y="125" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#312e81">eth0 10.200.0.1/24 mtu 1450</text>
+    <rect x="110" y="160" width="130" height="28" rx="6" fill="#86efac" stroke="#16a34a"/>
+    <text x="175" y="179" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d">v-tenant</text>
+    <rect x="50" y="208" width="250" height="35" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="175" y="231" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#14532d">br-vx</text>
+    <rect x="50" y="263" width="250" height="45" rx="8" fill="#f59e0b"/>
+    <text x="175" y="283" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#ffffff">vxlan100 (VTEP)</text>
+    <text x="175" y="300" font-size="12" fill="#ffffff">캡슐화</text>
+    <rect x="50" y="325" width="250" height="32" rx="8" fill="#2496ed"/>
+    <text x="175" y="346" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#ffffff">enp1s0 192.168.122.57</text>
+  </g>
+
+  <!-- ===== Node 2 ===== -->
+  <rect x="630" y="48" width="310" height="320" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="646" y="70" font-size="14" font-weight="700" fill="#334155">vm2 (컴퓨트 노드 2)</text>
+  <g text-anchor="middle">
+    <rect x="660" y="80" width="250" height="60" rx="8" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="785" y="102" font-size="14" font-weight="700" fill="#312e81">tenant (netns = 인스턴스)</text>
+    <text x="785" y="125" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#312e81">eth0 10.200.0.2/24 mtu 1450</text>
+    <rect x="720" y="160" width="130" height="28" rx="6" fill="#86efac" stroke="#16a34a"/>
+    <text x="785" y="179" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d">v-tenant</text>
+    <rect x="660" y="208" width="250" height="35" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="785" y="231" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#14532d">br-vx</text>
+    <rect x="660" y="263" width="250" height="45" rx="8" fill="#f59e0b"/>
+    <text x="785" y="283" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#ffffff">vxlan100 (VTEP)</text>
+    <text x="785" y="300" font-size="12" fill="#ffffff">디캡슐화</text>
+    <rect x="660" y="325" width="250" height="32" rx="8" fill="#2496ed"/>
+    <text x="785" y="346" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#ffffff">enp1s0 192.168.122.58</text>
+  </g>
+
+  <!-- down arrows node1, up arrows node2 -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="175" y1="140" x2="175" y2="157" marker-end="url(#arrow)"/>
+    <line x1="175" y1="188" x2="175" y2="205" marker-end="url(#arrow)"/>
+    <line x1="175" y1="243" x2="175" y2="260" marker-end="url(#arrow)"/>
+    <line x1="175" y1="308" x2="175" y2="322" marker-end="url(#arrow)"/>
+    <line x1="175" y1="357" x2="175" y2="397" marker-end="url(#arrow)"/>
+    <line x1="785" y1="397" x2="785" y2="360" marker-end="url(#arrow)"/>
+    <line x1="785" y1="325" x2="785" y2="311" marker-end="url(#arrow)"/>
+    <line x1="785" y1="263" x2="785" y2="246" marker-end="url(#arrow)"/>
+    <line x1="785" y1="208" x2="785" y2="191" marker-end="url(#arrow)"/>
+    <line x1="785" y1="160" x2="785" y2="143" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- middle: steps -->
+  <g font-size="12" fill="#334155">
+    <text x="345" y="92">① tenant가 10.200.0.2로 ping</text>
+    <text x="345" y="114">② br-vx가 FDB 조회 → vxlan100 포트로</text>
+    <text x="345" y="136">③ vxlan100이 VNI 100 헤더로 캡슐화</text>
+    <text x="345" y="158">④ 언더레이로 UDP 4789 전송</text>
+    <text x="345" y="180">⑤ 상대 VTEP이 디캡슐화 → br-vx → tenant</text>
+  </g>
+
+  <!-- tunnel -->
+  <line x1="300" y1="285" x2="657" y2="285" stroke="#2496ed" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#arrowB)"/>
+  <text x="480" y="276" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">VXLAN 터널 (UDP 4789)</text>
+
+  <!-- encapsulated packet -->
+  <g font-size="11" text-anchor="middle">
+    <rect x="337" y="300" width="72" height="36" fill="#bfdbfe" stroke="#2496ed"/>
+    <text x="373" y="315" fill="#1e3a8a">Outer IP</text><text x="373" y="329" fill="#1e3a8a">.57→.58</text>
+    <rect x="409" y="300" width="50" height="36" fill="#bfdbfe" stroke="#2496ed"/>
+    <text x="434" y="315" fill="#1e3a8a">UDP</text><text x="434" y="329" fill="#1e3a8a">4789</text>
+    <rect x="459" y="300" width="56" height="36" fill="#fca5a5" stroke="#dc2626"/>
+    <text x="487" y="315" fill="#7f1d1d">VXLAN</text><text x="487" y="329" fill="#7f1d1d">VNI 100</text>
+    <rect x="515" y="300" width="108" height="36" fill="#bbf7d0" stroke="#16a34a"/>
+    <text x="569" y="315" fill="#14532d">내부 프레임</text><text x="569" y="329" fill="#14532d">10.200.0.1→.2</text>
+  </g>
+  <text x="480" y="356" text-anchor="middle" font-size="11" fill="#64748b">언더레이 장비는 바깥 헤더만 보고 전달</text>
+
+  <!-- underlay -->
+  <rect x="20" y="400" width="920" height="52" rx="10" fill="#334155"/>
+  <text x="480" y="423" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">언더레이 — libvirt default 네트워크 (virbr0, 192.168.122.0/24)</text>
+  <text x="480" y="442" text-anchor="middle" font-size="12" fill="#e2e8f0">Day 21의 KVM 호스트 · 오버레이 주소(10.200.0.0/24)와 VNI는 전혀 모름</text>
+</svg>

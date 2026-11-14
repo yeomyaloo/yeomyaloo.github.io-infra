@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 590" width="960" height="590" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="590" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">노드 준비부터 클러스터 완성까지 — 어느 노드에서 무엇을?</text>
+
+  <!-- Lane headers -->
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="350" y="58" width="180" height="32" rx="6" fill="#326ce5"/><text x="440" y="80" fill="#ffffff">k8s-cp</text>
+    <rect x="560" y="58" width="180" height="32" rx="6" fill="#16a34a"/><text x="650" y="80" fill="#ffffff">k8s-w1</text>
+    <rect x="770" y="58" width="180" height="32" rx="6" fill="#16a34a"/><text x="860" y="80" fill="#ffffff">k8s-w2</text>
+  </g>
+  <!-- Lane guides -->
+  <g stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4 4">
+    <line x1="440" y1="92" x2="440" y2="552"/>
+    <line x1="650" y1="92" x2="650" y2="552"/>
+    <line x1="860" y1="92" x2="860" y2="552"/>
+  </g>
+
+  <!-- Step labels -->
+  <g>
+    <rect x="20" y="100" width="310" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="124" font-size="15" font-weight="700" fill="#0f172a">① VM 준비</text>
+    <text x="36" y="145" font-size="12" fill="#64748b">호스트 PC에서 Vagrant / Multipass로 3대</text>
+
+    <rect x="20" y="166" width="310" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="190" font-size="15" font-weight="700" fill="#0f172a">② OS 준비</text>
+    <text x="36" y="211" font-size="12" fill="#64748b">kubelet · CNI가 요구하는 커널 설정</text>
+
+    <rect x="20" y="232" width="310" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="256" font-size="15" font-weight="700" fill="#0f172a">③ 컨테이너 런타임</text>
+    <text x="36" y="277" font-size="12" fill="#64748b">kubelet과 CRI로 통신 · cgroup driver 통일</text>
+
+    <rect x="20" y="298" width="310" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="322" font-size="15" font-weight="700" fill="#0f172a">④ 쿠버네티스 패키지</text>
+    <text x="36" y="343" font-size="12" fill="#64748b">pkgs.k8s.io 저장소 + apt-mark hold</text>
+
+    <rect x="20" y="364" width="310" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="388" font-size="15" font-weight="700" fill="#0f172a">⑤ kubeadm init</text>
+    <text x="36" y="409" font-size="12" fill="#64748b">컨트롤 플레인 부트스트랩 → join 명령 출력</text>
+
+    <rect x="20" y="430" width="310" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="454" font-size="15" font-weight="700" fill="#0f172a">⑥ CNI 설치 (Cilium)</text>
+    <text x="36" y="475" font-size="12" fill="#64748b">Pod 네트워크 생성 → 노드 NotReady → Ready</text>
+
+    <rect x="20" y="496" width="310" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="36" y="520" font-size="15" font-weight="700" fill="#0f172a">⑦ kubeadm join</text>
+    <text x="36" y="541" font-size="12" fill="#64748b">워커가 토큰으로 클러스터에 합류</text>
+  </g>
+
+  <!-- Row 1: VM -->
+  <g font-size="13" text-anchor="middle" fill="#0f172a">
+    <rect x="360" y="108" width="160" height="40" rx="6" fill="#e2e8f0" stroke="#64748b"/><text x="440" y="133">Ubuntu 24.04 VM</text>
+    <rect x="570" y="108" width="160" height="40" rx="6" fill="#e2e8f0" stroke="#64748b"/><text x="650" y="133">Ubuntu 24.04 VM</text>
+    <rect x="780" y="108" width="160" height="40" rx="6" fill="#e2e8f0" stroke="#64748b"/><text x="860" y="133">Ubuntu 24.04 VM</text>
+  </g>
+
+  <!-- Row 2: OS -->
+  <g font-size="12" text-anchor="middle" fill="#78350f">
+    <rect x="360" y="174" width="160" height="40" rx="6" fill="#fde68a" stroke="#f59e0b"/><text x="440" y="190">swap off · 모듈</text><text x="440" y="206">sysctl</text>
+    <rect x="570" y="174" width="160" height="40" rx="6" fill="#fde68a" stroke="#f59e0b"/><text x="650" y="190">swap off · 모듈</text><text x="650" y="206">sysctl</text>
+    <rect x="780" y="174" width="160" height="40" rx="6" fill="#fde68a" stroke="#f59e0b"/><text x="860" y="190">swap off · 모듈</text><text x="860" y="206">sysctl</text>
+  </g>
+
+  <!-- Row 3: containerd -->
+  <g font-size="12" text-anchor="middle" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">
+    <rect x="360" y="240" width="160" height="40" rx="6" fill="#93c5fd" stroke="#2496ed"/><text x="440" y="256">containerd</text><text x="440" y="272">SystemdCgroup=true</text>
+    <rect x="570" y="240" width="160" height="40" rx="6" fill="#93c5fd" stroke="#2496ed"/><text x="650" y="256">containerd</text><text x="650" y="272">SystemdCgroup=true</text>
+    <rect x="780" y="240" width="160" height="40" rx="6" fill="#93c5fd" stroke="#2496ed"/><text x="860" y="256">containerd</text><text x="860" y="272">SystemdCgroup=true</text>
+  </g>
+
+  <!-- Row 4: packages -->
+  <g font-size="12" text-anchor="middle" fill="#312e81" font-family="Consolas,'D2Coding',monospace">
+    <rect x="360" y="306" width="160" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5"/><text x="440" y="322">kubeadm · kubelet</text><text x="440" y="338">kubectl (hold)</text>
+    <rect x="570" y="306" width="160" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5"/><text x="650" y="322">kubeadm · kubelet</text><text x="650" y="338">kubectl (hold)</text>
+    <rect x="780" y="306" width="160" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5"/><text x="860" y="322">kubeadm · kubelet</text><text x="860" y="338">kubectl (hold)</text>
+  </g>
+
+  <!-- Row 5: init (cp only) -->
+  <rect x="360" y="372" width="160" height="40" rx="6" fill="#326ce5"/>
+  <text x="440" y="388" text-anchor="middle" font-size="12" fill="#ffffff" font-family="Consolas,'D2Coding',monospace" font-weight="700">kubeadm init</text>
+  <text x="440" y="404" text-anchor="middle" font-size="12" fill="#ffffff">+ kubeconfig 설정</text>
+
+  <!-- Row 6: CNI (cp only) -->
+  <rect x="360" y="438" width="160" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="440" y="463" text-anchor="middle" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace" font-weight="700">cilium install</text>
+
+  <!-- Row 7: join (workers) -->
+  <g font-size="12" text-anchor="middle" fill="#ffffff" font-family="Consolas,'D2Coding',monospace" font-weight="700">
+    <rect x="570" y="504" width="160" height="40" rx="6" fill="#16a34a"/><text x="650" y="529">sudo kubeadm join</text>
+    <rect x="780" y="504" width="160" height="40" rx="6" fill="#16a34a"/><text x="860" y="529">sudo kubeadm join</text>
+  </g>
+
+  <!-- join command handoff -->
+  <g stroke="#334155" stroke-width="2" fill="none" stroke-dasharray="6 4">
+    <path d="M520,392 L650,392 L650,501" marker-end="url(#arrow)"/>
+    <path d="M650,392 L860,392 L860,501" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="670" y="408" width="170" height="24" rx="4" fill="#ffffff"/>
+  <text x="755" y="425" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">join 명령 (token, 24h)</text>
+
+  <!-- "all nodes" bracket -->
+  <text x="480" y="578" text-anchor="middle" font-size="14" fill="#334155">②~④는 <tspan font-weight="700">3대 모두</tspan> 동일하게, ⑤⑥은 control-plane에서만, ⑦은 워커에서만</text>
+</svg>

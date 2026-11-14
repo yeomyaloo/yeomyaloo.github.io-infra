@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">배포 실패와 롤백 — 리비전 이력</text>
+
+  <!-- revisions -->
+  <rect x="40" y="62" width="190" height="64" rx="10" fill="#dbeafe" stroke="#326ce5"/>
+  <text x="135" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">revision 1</text>
+  <text x="135" y="110" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#1e40af">nginx:1.27</text>
+
+  <rect x="270" y="62" width="190" height="64" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-dasharray="6 4"/>
+  <text x="365" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">revision 2</text>
+  <text x="365" y="110" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">nginx:1.28</text>
+
+  <rect x="500" y="62" width="190" height="64" rx="10" fill="#fca5a5" stroke="#dc2626"/>
+  <text x="595" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">revision 3 (실패)</text>
+  <text x="595" y="110" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#991b1b">nginx:9.99-typo</text>
+
+  <rect x="730" y="62" width="190" height="64" rx="10" fill="#86efac" stroke="#16a34a"/>
+  <text x="825" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">revision 4</text>
+  <text x="825" y="110" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#166534">nginx:1.28</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="230" y1="94" x2="267" y2="94" marker-end="url(#arrow)"/>
+    <line x1="460" y1="94" x2="497" y2="94" marker-end="url(#arrow)"/>
+    <line x1="690" y1="94" x2="727" y2="94" marker-end="url(#arrow)"/>
+    <path d="M365,126 C365,182 825,182 825,129" stroke="#16a34a" stroke-dasharray="6 4"/>
+  </g>
+  <text x="708" y="56" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" font-weight="700" fill="#15803d">rollout undo</text>
+  <text x="595" y="194" text-anchor="middle" font-size="12" fill="#15803d">같은 템플릿을 새 리비전으로 다시 롤아웃 → history 에서 2 는 사라지고 4 로 표시</text>
+
+  <!-- snapshot panel -->
+  <rect x="40" y="215" width="880" height="185" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="60" y="242" font-size="14" font-weight="700" fill="#0f172a">revision 3 배포 중 멈춘 순간의 상태</text>
+
+  <rect x="60" y="255" width="420" height="125" rx="10" fill="#ffffff" stroke="#16a34a"/>
+  <text x="270" y="279" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">옛 RS (nginx:1.28) — replicas 4</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="75" y="300" width="90" height="40" rx="8" fill="#86efac"/><text x="120" y="325" fill="#14532d">Running</text>
+    <rect x="175" y="300" width="90" height="40" rx="8" fill="#86efac"/><text x="220" y="325" fill="#14532d">Running</text>
+    <rect x="275" y="300" width="90" height="40" rx="8" fill="#86efac"/><text x="320" y="325" fill="#14532d">Running</text>
+    <rect x="375" y="300" width="90" height="40" rx="8" fill="#86efac"/><text x="420" y="325" fill="#14532d">Running</text>
+  </g>
+  <text x="270" y="364" text-anchor="middle" font-size="12" fill="#166534">트래픽을 계속 처리 (서비스 정상)</text>
+
+  <rect x="500" y="255" width="200" height="125" rx="10" fill="#ffffff" stroke="#dc2626"/>
+  <text x="600" y="279" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">새 RS (9.99-typo) — 1</text>
+  <rect x="545" y="296" width="110" height="48" rx="8" fill="#fca5a5"/>
+  <text x="600" y="316" text-anchor="middle" font-size="11" fill="#7f1d1d">ImagePull</text>
+  <text x="600" y="333" text-anchor="middle" font-size="11" fill="#7f1d1d">BackOff</text>
+  <text x="600" y="364" text-anchor="middle" font-size="12" fill="#991b1b">Ready 불가</text>
+
+  <rect x="720" y="255" width="185" height="125" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+  <g font-size="12" fill="#78350f">
+    <text x="734" y="283" font-weight="700">왜 안전한가?</text>
+    <text x="734" y="306">새 Pod가 Ready 아님</text>
+    <text x="734" y="326">→ 롤아웃 1단계에서 정지</text>
+    <text x="734" y="346">maxUnavailable 0</text>
+    <text x="734" y="366">→ 옛 Pod 4개 유지</text>
+  </g>
+</svg>

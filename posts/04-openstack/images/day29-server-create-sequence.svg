@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 760" width="1160" height="760" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="1160" height="760" fill="#ffffff"/>
+  <text x="580" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">openstack server create 시퀀스</text>
+
+  <!-- Headers -->
+  <g text-anchor="middle" font-size="13" font-weight="700">
+    <rect x="6" y="56" width="128" height="48" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="70" y="85" fill="#0f172a">사용자 (CLI)</text>
+    <rect x="146" y="56" width="128" height="48" rx="8" fill="#4f46e5"/>
+    <text x="210" y="85" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">nova-api</text>
+    <rect x="296" y="56" width="128" height="48" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="360" y="85" fill="#1e1b4b" font-family="Consolas,'D2Coding',monospace">conductor</text>
+    <rect x="446" y="56" width="128" height="48" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="510" y="85" fill="#1e1b4b" font-family="Consolas,'D2Coding',monospace">scheduler</text>
+    <rect x="586" y="56" width="128" height="48" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-dasharray="5 3"/>
+    <text x="650" y="85" fill="#1e1b4b">Placement</text>
+    <rect x="736" y="56" width="128" height="48" rx="8" fill="#4f46e5"/>
+    <text x="800" y="85" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">nova-compute</text>
+    <rect x="886" y="56" width="128" height="48" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="950" y="85" fill="#78350f">Glance · Neutron</text>
+    <rect x="1026" y="56" width="128" height="48" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="1090" y="85" fill="#14532d">libvirt / KVM</text>
+  </g>
+
+  <!-- Lifelines -->
+  <g stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4">
+    <line x1="70" y1="104" x2="70" y2="740"/>
+    <line x1="210" y1="104" x2="210" y2="740"/>
+    <line x1="360" y1="104" x2="360" y2="740"/>
+    <line x1="510" y1="104" x2="510" y2="740"/>
+    <line x1="650" y1="104" x2="650" y2="740"/>
+    <line x1="800" y1="104" x2="800" y2="740"/>
+    <line x1="950" y1="104" x2="950" y2="740"/>
+    <line x1="1090" y1="104" x2="1090" y2="740"/>
+  </g>
+
+  <!-- Solid messages -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="70" y1="145" x2="207" y2="145" marker-end="url(#arrow)"/>
+    <line x1="210" y1="265" x2="357" y2="265" marker-end="url(#arrow)"/>
+    <line x1="360" y1="305" x2="507" y2="305" marker-end="url(#arrow)"/>
+    <line x1="510" y1="345" x2="647" y2="345" marker-end="url(#arrow)"/>
+    <line x1="510" y1="460" x2="647" y2="460" marker-end="url(#arrow)"/>
+    <line x1="360" y1="570" x2="797" y2="570" marker-end="url(#arrow)"/>
+    <line x1="800" y1="610" x2="947" y2="610" marker-end="url(#arrow)"/>
+    <line x1="800" y1="650" x2="1087" y2="650" marker-end="url(#arrow)"/>
+    <line x1="70" y1="726" x2="207" y2="726" marker-end="url(#arrow)"/>
+  </g>
+  <!-- Reply messages -->
+  <g stroke="#334155" stroke-width="2" fill="none" stroke-dasharray="6 4">
+    <line x1="210" y1="225" x2="73" y2="225" marker-end="url(#arrow)"/>
+    <line x1="650" y1="380" x2="513" y2="380" marker-end="url(#arrow)"/>
+    <line x1="510" y1="500" x2="363" y2="500" marker-end="url(#arrow)"/>
+    <line x1="800" y1="690" x2="363" y2="690" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Notes (self actions) -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="200" y="170" width="240" height="28" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="320" y="189" fill="#0f172a">② 토큰 · 쿼터 확인, BuildRequest 저장</text>
+    <rect x="430" y="403" width="160" height="28" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="510" y="422" fill="#14532d" font-weight="700">⑧ 필터 → 가중치</text>
+    <rect x="270" y="517" width="180" height="28" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="360" y="536" fill="#0f172a">cell DB에 인스턴스 기록</text>
+  </g>
+
+  <!-- Labels -->
+  <g font-size="12" fill="#0f172a" text-anchor="middle">
+    <text x="140" y="137" font-weight="700">① POST /servers</text>
+    <text x="140" y="217">③ 202 · BUILD</text>
+    <text x="285" y="257" font-weight="700">④ 빌드 요청 (cast)</text>
+    <text x="435" y="297" font-weight="700">⑤ <tspan font-family="Consolas,'D2Coding',monospace" font-size="11">select_destinations</tspan></text>
+    <text x="580" y="337" font-weight="700">⑥ 후보 조회</text>
+    <text x="580" y="372">⑦ 후보 호스트 목록</text>
+    <text x="580" y="452" font-weight="700">⑨ 자원 선점 (claim)</text>
+    <text x="435" y="492">⑩ 선택된 호스트</text>
+    <text x="580" y="562" font-weight="700">⑪ build_and_run_instance (RPC cast)</text>
+    <text x="875" y="602" font-weight="700">⑫ 이미지 · 포트</text>
+    <text x="1015" y="642" font-weight="700">⑬ XML 정의 + 시작</text>
+    <text x="580" y="682">⑭ 상태 ACTIVE 기록 (conductor 경유)</text>
+    <text x="140" y="718" font-weight="700">⑮ 조회 → ACTIVE</text>
+  </g>
+  <text x="1150" y="752" text-anchor="end" font-size="11" fill="#64748b">실선: 요청 · 점선: 응답/결과   (①~③ 즉시 응답, ④ 이후 비동기)</text>
+</svg>

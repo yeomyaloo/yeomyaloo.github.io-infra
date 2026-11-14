@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 630" width="960" height="630" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="630" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Nova 아키텍처 (Cells v2 + Placement)</text>
+
+  <!-- Client -->
+  <rect x="20" y="92" width="160" height="50" rx="25" fill="#e2e8f0"/>
+  <text x="100" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">openstack CLI</text>
+
+  <!-- API level -->
+  <rect x="200" y="56" width="740" height="230" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="220" y="80" font-size="14" font-weight="700" fill="#334155">API 레벨 — 컨트롤러 (전역)</text>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-weight="700" text-anchor="middle">
+    <rect x="220" y="92" width="160" height="50" rx="8" fill="#4f46e5"/>
+    <text x="300" y="122" font-size="15" fill="#ffffff">nova-api</text>
+    <rect x="400" y="92" width="170" height="50" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="485" y="122" font-size="14" fill="#1e1b4b">nova-scheduler</text>
+    <rect x="220" y="214" width="200" height="56" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="320" y="238" font-size="14" fill="#1e1b4b">nova-conductor</text>
+  </g>
+  <text x="320" y="258" text-anchor="middle" font-size="11" fill="#4f46e5">(super conductor)</text>
+
+  <rect x="610" y="92" width="130" height="50" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-dasharray="5 3"/>
+  <text x="675" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#1e1b4b">Placement</text>
+  <text x="675" y="132" text-anchor="middle" font-size="11" fill="#4f46e5">(별도 서비스)</text>
+
+  <rect x="220" y="160" width="350" height="34" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="395" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">RabbitMQ (API 레벨)</text>
+
+  <g text-anchor="middle">
+    <rect x="770" y="92" width="150" height="50" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="845" y="114" font-size="13" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">nova_api DB</text>
+    <text x="845" y="132" font-size="11" fill="#64748b">flavor · 키페어 · 셀 매핑</text>
+    <rect x="770" y="214" width="150" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="845" y="238" font-size="13" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">nova_cell0 DB</text>
+    <text x="845" y="258" font-size="11" fill="#64748b">스케줄 실패 인스턴스</text>
+  </g>
+
+  <!-- Cell1 -->
+  <rect x="200" y="306" width="740" height="232" rx="12" fill="#eef2ff" stroke="#4f46e5"/>
+  <text x="220" y="330" font-size="14" font-weight="700" fill="#1e1b4b">cell1 — 컴퓨트 노드 묶음 (셀마다 DB · MQ 분리)</text>
+
+  <rect x="220" y="344" width="480" height="34" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="460" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">RabbitMQ (cell1)</text>
+
+  <rect x="220" y="400" width="200" height="56" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="320" y="424" text-anchor="middle" font-size="14" font-weight="700" fill="#1e1b4b" font-family="Consolas,'D2Coding',monospace">nova-conductor</text>
+  <text x="320" y="444" text-anchor="middle" font-size="11" fill="#4f46e5">(cell1 conductor)</text>
+
+  <rect x="450" y="400" width="160" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="530" y="424" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">nova_cell1 DB</text>
+  <text x="530" y="444" text-anchor="middle" font-size="11" fill="#64748b">인스턴스 · 노드 정보</text>
+
+  <!-- Compute node -->
+  <rect x="730" y="340" width="194" height="186" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="827" y="362" text-anchor="middle" font-size="13" font-weight="700" fill="#1e1b4b">컴퓨트 노드</text>
+  <rect x="746" y="372" width="162" height="40" rx="6" fill="#4f46e5"/>
+  <text x="827" y="397" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">nova-compute</text>
+  <rect x="746" y="424" width="162" height="36" rx="6" fill="#86efac"/>
+  <text x="827" y="447" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">libvirt (Day 21)</text>
+  <g text-anchor="middle" font-size="12" fill="#14532d">
+    <rect x="746" y="472" width="76" height="40" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="784" y="496">VM</text>
+    <rect x="832" y="472" width="76" height="40" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="870" y="496">VM</text>
+  </g>
+
+  <!-- Other services -->
+  <rect x="200" y="558" width="740" height="52" rx="10" fill="#fff1f2" stroke="#ed1944"/>
+  <text x="220" y="589" font-size="13" font-weight="700" fill="#9f1239">다른 서비스 (REST + 토큰)</text>
+  <g text-anchor="middle" font-size="13" font-weight="700">
+    <rect x="420" y="568" width="110" height="32" rx="16" fill="#ed1944"/><text x="475" y="589" fill="#ffffff">Keystone</text>
+    <rect x="540" y="568" width="110" height="32" rx="16" fill="#fde68a"/><text x="595" y="589" fill="#78350f">Glance</text>
+    <rect x="660" y="568" width="110" height="32" rx="16" fill="#bbf7d0"/><text x="715" y="589" fill="#14532d">Neutron</text>
+    <rect x="780" y="568" width="110" height="32" rx="16" fill="#fed7aa"/><text x="835" y="589" fill="#7c2d12">Cinder</text>
+  </g>
+
+  <!-- Arrows: RPC solid -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="180" y1="117" x2="217" y2="117" marker-end="url(#arrow)"/>
+    <line x1="300" y1="142" x2="300" y2="157" marker-end="url(#arrow)"/>
+    <line x1="485" y1="160" x2="485" y2="145" marker-end="url(#arrow)"/>
+    <line x1="320" y1="194" x2="320" y2="211" marker-end="url(#arrow)"/>
+    <line x1="250" y1="270" x2="250" y2="341" marker-end="url(#arrow)"/>
+    <line x1="320" y1="378" x2="320" y2="397" marker-end="url(#arrow)"/>
+    <line x1="420" y1="428" x2="447" y2="428" marker-end="url(#arrow)"/>
+    <line x1="700" y1="361" x2="743" y2="388" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="827" y1="412" x2="827" y2="421" marker-end="url(#arrow)"/>
+    <line x1="420" y1="242" x2="767" y2="242" marker-end="url(#arrow)" stroke="#64748b" stroke-dasharray="3 3"/>
+  </g>
+  <!-- Arrows: REST dashed -->
+  <g stroke="#ed1944" stroke-width="2" fill="none" stroke-dasharray="6 4">
+    <line x1="570" y1="117" x2="607" y2="117" marker-end="url(#arrow)"/>
+    <path d="M800,340 L800,300 L700,300 L700,145" marker-end="url(#arrow)"/>
+    <line x1="880" y1="526" x2="880" y2="565" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="11" fill="#334155">
+    <text x="258" y="300" font-weight="700">빌드 요청 (RPC)</text>
+    <text x="692" y="262" text-anchor="end" fill="#ed1944" font-weight="700">자원 보고</text>
+    <text x="692" y="276" text-anchor="end" fill="#ed1944">(inventory)</text>
+    <text x="589" y="108" text-anchor="middle" fill="#ed1944" font-weight="700">후보</text>
+    <text x="872" y="550" text-anchor="end" fill="#ed1944" font-weight="700">이미지 · 포트</text>
+  </g>
+
+  <!-- Legend -->
+  <g font-size="12" fill="#334155">
+    <text x="20" y="340" font-weight="700">범례</text>
+    <line x1="20" y1="362" x2="60" y2="362" stroke="#334155" stroke-width="2"/>
+    <text x="68" y="366">RPC (RabbitMQ)</text>
+    <line x1="20" y1="388" x2="60" y2="388" stroke="#ed1944" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="68" y="392">REST API</text>
+    <line x1="20" y1="414" x2="60" y2="414" stroke="#64748b" stroke-width="2" stroke-dasharray="3 3"/>
+    <text x="68" y="418">DB 접근</text>
+  </g>
+</svg>

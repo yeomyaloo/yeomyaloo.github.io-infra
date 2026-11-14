@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2496ed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">기본 bridge vs 사용자 정의 bridge — 이름 해석</text>
+
+  <!-- ===== Left: default bridge ===== -->
+  <rect x="20" y="60" width="450" height="340" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="245" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#334155">기본 bridge (docker0)</text>
+
+  <rect x="40" y="105" width="150" height="70" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="115" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">alpine</text>
+  <text x="115" y="157" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">ping web2</text>
+
+  <rect x="300" y="105" width="150" height="70" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="375" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">web2</text>
+  <text x="375" y="157" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">172.17.0.3</text>
+
+  <line x1="190" y1="140" x2="296" y2="140" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="245" y="132" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">?</text>
+
+  <rect x="40" y="205" width="410" height="80" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="245" y="236" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" fill="#7f1d1d">ping: bad address 'web2'</text>
+  <text x="245" y="264" text-anchor="middle" font-size="13" fill="#7f1d1d">이름 해석(DNS) 없음 → IP로만 통신 가능</text>
+
+  <rect x="40" y="320" width="410" height="50" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="245" y="350" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">docker0 — 옵션 없이 띄운 모든 컨테이너가 섞임</text>
+
+  <!-- ===== Right: user-defined bridge ===== -->
+  <rect x="490" y="60" width="450" height="340" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="715" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">사용자 정의 bridge (appnet)</text>
+
+  <rect x="510" y="105" width="150" height="70" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="585" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">alpine</text>
+  <text x="585" y="157" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">ping web</text>
+
+  <rect x="770" y="105" width="150" height="70" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="845" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">web</text>
+  <text x="845" y="157" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">172.18.0.2</text>
+
+  <rect x="510" y="215" width="190" height="70" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="605" y="244" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">내장 DNS</text>
+  <text x="605" y="267" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#312e81">127.0.0.11</text>
+
+  <g stroke-width="2" fill="none">
+    <line x1="560" y1="175" x2="560" y2="211" stroke="#334155" marker-end="url(#arrow)"/>
+    <line x1="630" y1="215" x2="630" y2="179" stroke="#334155" marker-end="url(#arrow)"/>
+    <line x1="660" y1="140" x2="766" y2="140" stroke="#2496ed" marker-end="url(#arrow-blue)"/>
+  </g>
+  <g font-size="12" fill="#334155">
+    <text x="553" y="198" text-anchor="end">① web?</text>
+    <text x="638" y="198">② 172.18.0.2</text>
+    <text x="713" y="130" text-anchor="middle" fill="#1d4ed8" font-weight="700">③ 통신 성공</text>
+  </g>
+
+  <rect x="720" y="215" width="200" height="70" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="820" y="244" text-anchor="middle" font-size="13" fill="#14532d">이름 · 별칭(alias)으로</text>
+  <text x="820" y="266" text-anchor="middle" font-size="13" fill="#14532d">컨테이너를 찾는다</text>
+
+  <rect x="510" y="320" width="410" height="50" rx="8" fill="#2496ed"/>
+  <text x="715" y="350" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">br-xxxxxxxxxxxx — 같은 네트워크끼리만 통신</text>
+</svg>

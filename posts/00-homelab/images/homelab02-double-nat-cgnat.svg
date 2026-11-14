@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">공유기 WAN IP로 진단하는 세 가지 구조</text>
+
+  <!-- column headers -->
+  <g font-size="13" fill="#64748b" text-anchor="middle" font-weight="700">
+    <text x="85" y="62">구조</text>
+    <text x="215" y="62">인터넷</text>
+    <text x="365" y="62">통신사 장비</text>
+    <text x="545" y="62">내 공유기</text>
+    <text x="705" y="62">서버</text>
+    <text x="860" y="62">포트포워딩</text>
+  </g>
+
+  <!-- Row A: normal -->
+  <rect x="20" y="76" width="130" height="100" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="85" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">정상</text>
+  <text x="85" y="142" text-anchor="middle" font-size="12" fill="#14532d">WAN = 공인 IP</text>
+
+  <ellipse cx="215" cy="126" rx="45" ry="30" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="215" y="131" text-anchor="middle" font-size="13" fill="#7c2d12" font-weight="700">인터넷</text>
+  <text x="365" y="116" text-anchor="middle" font-size="12" fill="#94a3b8">(없음 · 직결)</text>
+  <rect x="470" y="96" width="150" height="60" rx="8" fill="#eff6ff" stroke="#2496ed"/>
+  <text x="545" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">내 공유기</text>
+  <text x="545" y="143" text-anchor="middle" font-size="12" fill="#c2410c" font-family="Consolas,'D2Coding',monospace">WAN 203.0.113.45</text>
+  <rect x="660" y="96" width="90" height="60" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="705" y="131" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">서버</text>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="260" y1="130" x2="470" y2="130"/>
+    <line x1="620" y1="126" x2="660" y2="126"/>
+  </g>
+  <rect x="775" y="96" width="170" height="60" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="860" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">가능</text>
+  <text x="860" y="142" text-anchor="middle" font-size="12" fill="#14532d">내 공유기에만 설정</text>
+
+  <!-- Row B: double NAT -->
+  <rect x="20" y="196" width="130" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="85" y="238" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">이중 NAT</text>
+  <text x="85" y="262" text-anchor="middle" font-size="12" fill="#78350f">WAN = 사설 대역</text>
+
+  <ellipse cx="215" cy="246" rx="45" ry="30" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="215" y="251" text-anchor="middle" font-size="13" fill="#7c2d12" font-weight="700">인터넷</text>
+  <rect x="290" y="216" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="365" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">통신사 모뎀/공유기</text>
+  <text x="365" y="263" text-anchor="middle" font-size="12" fill="#c2410c" font-family="Consolas,'D2Coding',monospace">WAN 203.0.113.45</text>
+  <rect x="470" y="216" width="150" height="60" rx="8" fill="#eff6ff" stroke="#2496ed"/>
+  <text x="545" y="240" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">내 공유기</text>
+  <text x="545" y="263" text-anchor="middle" font-size="12" fill="#b45309" font-family="Consolas,'D2Coding',monospace">WAN 192.168.1.2</text>
+  <rect x="660" y="216" width="90" height="60" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="705" y="251" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">서버</text>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="260" y1="246" x2="290" y2="246"/>
+    <line x1="440" y1="246" x2="470" y2="246"/>
+    <line x1="620" y1="246" x2="660" y2="246"/>
+  </g>
+  <rect x="775" y="216" width="170" height="60" rx="8" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="860" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">앞단 장비도 포워딩</text>
+  <text x="860" y="262" text-anchor="middle" font-size="12" fill="#78350f">또는 브리지 모드</text>
+
+  <!-- Row C: CGNAT -->
+  <rect x="20" y="316" width="130" height="100" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="85" y="358" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">CGNAT</text>
+  <text x="85" y="382" text-anchor="middle" font-size="12" fill="#7f1d1d">WAN = 100.64/10</text>
+
+  <ellipse cx="215" cy="366" rx="45" ry="30" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="215" y="371" text-anchor="middle" font-size="13" fill="#7c2d12" font-weight="700">인터넷</text>
+  <rect x="290" y="336" width="150" height="60" rx="8" fill="#f1f5f9" stroke="#dc2626" stroke-dasharray="5 4"/>
+  <text x="365" y="360" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">통신사 CGNAT 장비</text>
+  <text x="365" y="383" text-anchor="middle" font-size="12" fill="#7f1d1d">여러 가입자가 공유</text>
+  <rect x="470" y="336" width="150" height="60" rx="8" fill="#eff6ff" stroke="#2496ed"/>
+  <text x="545" y="360" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">내 공유기</text>
+  <text x="545" y="383" text-anchor="middle" font-size="12" fill="#dc2626" font-family="Consolas,'D2Coding',monospace">WAN 100.72.15.3</text>
+  <rect x="660" y="336" width="90" height="60" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="705" y="371" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">서버</text>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="260" y1="366" x2="290" y2="366"/>
+    <line x1="440" y1="366" x2="470" y2="366"/>
+    <line x1="620" y1="366" x2="660" y2="366"/>
+  </g>
+  <rect x="775" y="336" width="170" height="60" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="860" y="360" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">내 쪽에서는 불가</text>
+  <text x="860" y="382" text-anchor="middle" font-size="12" fill="#7f1d1d">Tunnel · Tailscale로</text>
+
+  <text x="480" y="432" text-anchor="middle" font-size="13" fill="#334155">진단: 공유기 관리 페이지의 WAN IP 와 curl -4 ifconfig.me 결과가 같으면 정상</text>
+</svg>

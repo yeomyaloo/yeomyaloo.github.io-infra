@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">컨테이너 보안 — 겹겹의 방어선</text>
+
+  <!-- side arrow -->
+  <line x1="100" y1="70" x2="100" y2="500" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text transform="translate(80,285) rotate(-90)" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">프로세스의 요청이 커널에 닿기까지</text>
+
+  <!-- column headers -->
+  <text x="390" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">방어 계층</text>
+  <text x="790" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">적용 방법</text>
+
+  <!-- layers -->
+  <g font-size="15" font-weight="700">
+    <rect x="150" y="72" width="480" height="46" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="390" y="101" text-anchor="middle" fill="#14532d">애플리케이션 프로세스</text>
+
+    <rect x="150" y="128" width="480" height="46" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="390" y="157" text-anchor="middle" fill="#312e81">non-root 사용자 / user namespace</text>
+
+    <rect x="150" y="184" width="480" height="46" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="390" y="213" text-anchor="middle" fill="#312e81">capabilities — root 권한 쪼개기</text>
+
+    <rect x="150" y="240" width="480" height="46" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="390" y="269" text-anchor="middle" fill="#312e81">no-new-privileges · 읽기 전용 rootfs</text>
+
+    <rect x="150" y="296" width="480" height="46" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="390" y="325" text-anchor="middle" fill="#78350f">seccomp — 시스템 콜 필터</text>
+
+    <rect x="150" y="352" width="480" height="46" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="390" y="381" text-anchor="middle" fill="#78350f">AppArmor / SELinux (LSM)</text>
+
+    <rect x="150" y="408" width="480" height="46" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+    <text x="390" y="437" text-anchor="middle" fill="#1e3a8a">namespace (격리) + cgroup (제한)</text>
+
+    <rect x="150" y="464" width="480" height="46" rx="8" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/>
+    <text x="390" y="493" text-anchor="middle" fill="#7f1d1d">호스트 커널 — 모든 컨테이너가 공유</text>
+  </g>
+
+  <!-- how-to -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">
+    <text x="660" y="100">이미지 최소화, 취약점 스캔</text>
+    <text x="660" y="156">USER 지시어 · --user 1000</text>
+    <text x="660" y="212">--cap-drop ALL --cap-add …</text>
+    <text x="660" y="262">--security-opt</text>
+    <text x="660" y="279">  no-new-privileges · --read-only</text>
+    <text x="660" y="324">기본 프로파일 (builtin)</text>
+    <text x="660" y="380">docker-default 프로파일</text>
+    <text x="660" y="436">--memory --cpus --pids-limit</text>
+    <text x="660" y="492" fill="#dc2626" font-weight="700">--privileged = 위 방어선 대부분 해제</text>
+  </g>
+</svg>

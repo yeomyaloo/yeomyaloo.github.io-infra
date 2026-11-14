@@ -16,6 +16,6 @@
 </div>
 
 <h2>최근 글</h2>
-{{ partial "post-list.html" (first 5 site.RegularPages.ByDate.Reverse) }}
+{{ partial "post-list.html" (first 5 (sort (sort site.RegularPages "Weight" "desc") "Date" "desc")) }}
 <p><a href="{{ "all/" | relURL }}">전체 글 보기 →</a></p>
 {{ end }}

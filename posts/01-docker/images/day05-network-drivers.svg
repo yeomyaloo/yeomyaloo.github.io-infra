@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">네트워크 드라이버 비교 — bridge / host / none</text>
+
+  <!-- ===== bridge ===== -->
+  <rect x="20" y="60" width="290" height="390" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="165" y="90" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">bridge (기본)</text>
+  <text x="165" y="112" text-anchor="middle" font-size="13" fill="#64748b">컨테이너마다 독립 네트워크 스택</text>
+
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="130" width="115" height="80" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="97" y="155" font-weight="700" fill="#14532d">컨테이너 A</text>
+    <rect x="55" y="170" width="85" height="28" rx="4" fill="#ffffff" stroke="#16a34a"/>
+    <text x="97" y="189" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">172.17.0.2</text>
+
+    <rect x="175" y="130" width="115" height="80" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="232" y="155" font-weight="700" fill="#14532d">컨테이너 B</text>
+    <rect x="190" y="170" width="85" height="28" rx="4" fill="#ffffff" stroke="#16a34a"/>
+    <text x="232" y="189" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">172.17.0.3</text>
+  </g>
+
+  <rect x="40" y="250" width="250" height="40" rx="8" fill="#2496ed"/>
+  <text x="165" y="275" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">docker0  172.17.0.1</text>
+
+  <rect x="40" y="320" width="250" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="165" y="345" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">iptables NAT (-p, MASQUERADE)</text>
+
+  <rect x="40" y="390" width="250" height="40" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="165" y="415" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">호스트 eth0</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="97" y1="210" x2="97" y2="246" marker-end="url(#arrow)"/>
+    <line x1="232" y1="210" x2="232" y2="246" marker-end="url(#arrow)"/>
+    <line x1="165" y1="290" x2="165" y2="316" marker-end="url(#arrow)"/>
+    <line x1="165" y1="360" x2="165" y2="386" marker-end="url(#arrow)"/>
+  </g>
+  <text x="110" y="234" font-size="12" fill="#334155">veth</text>
+  <text x="245" y="234" font-size="12" fill="#334155">veth</text>
+
+  <!-- ===== host ===== -->
+  <rect x="335" y="60" width="290" height="390" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="480" y="90" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">host</text>
+  <text x="480" y="112" text-anchor="middle" font-size="13" fill="#64748b">호스트 네트워크 스택을 그대로 공유</text>
+
+  <rect x="355" y="130" width="250" height="230" rx="10" fill="#e2e8f0" stroke="#64748b" stroke-dasharray="6 4"/>
+  <text x="480" y="152" text-anchor="middle" font-size="13" fill="#334155">호스트 network namespace</text>
+  <rect x="380" y="170" width="200" height="60" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="480" y="196" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">컨테이너 (nginx)</text>
+  <text x="480" y="217" text-anchor="middle" font-size="12" fill="#14532d">:80 을 직접 LISTEN</text>
+  <rect x="380" y="250" width="200" height="40" rx="8" fill="#fca5a5" stroke="#dc2626"/>
+  <text x="480" y="275" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">NAT 없음 · -p 무시됨</text>
+  <text x="480" y="320" text-anchor="middle" font-size="12" fill="#334155">호스트 프로세스와 포트 충돌 주의</text>
+  <text x="480" y="340" text-anchor="middle" font-size="12" fill="#334155">(Linux 전용)</text>
+
+  <rect x="355" y="390" width="250" height="40" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="480" y="415" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">호스트 eth0</text>
+  <line x1="480" y1="360" x2="480" y2="386" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===== none ===== -->
+  <rect x="650" y="60" width="290" height="390" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="795" y="90" text-anchor="middle" font-size="18" font-weight="700" fill="#7f1d1d">none</text>
+  <text x="795" y="112" text-anchor="middle" font-size="13" fill="#64748b">루프백만 있는 완전 격리</text>
+
+  <rect x="680" y="130" width="230" height="130" rx="10" fill="#86efac" stroke="#16a34a"/>
+  <text x="795" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">컨테이너</text>
+  <rect x="725" y="175" width="140" height="32" rx="6" fill="#ffffff" stroke="#16a34a"/>
+  <text x="795" y="196" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d">lo 127.0.0.1</text>
+  <text x="795" y="236" text-anchor="middle" font-size="13" fill="#14532d">eth0 없음</text>
+
+  <rect x="690" y="290" width="210" height="60" rx="8" fill="#ffffff" stroke="#dc2626" stroke-dasharray="5 4"/>
+  <text x="795" y="315" text-anchor="middle" font-size="13" fill="#7f1d1d">외부와 통신 불가</text>
+  <text x="795" y="335" text-anchor="middle" font-size="13" fill="#7f1d1d">배치 작업 · 보안 샌드박스</text>
+
+  <rect x="670" y="390" width="250" height="40" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="795" y="415" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">호스트 eth0</text>
+  <text x="795" y="374" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">✕</text>
+</svg>

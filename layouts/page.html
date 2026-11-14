@@ -22,9 +22,11 @@
     {{ .Content }}
   </div>
 
-  {{- /* 같은 챕터 안에서 날짜순 이전/다음 글 */ -}}
+  {{- /* 챕터 순서 → 챕터 안 weight(Day 번호) 순서로 이어지는 이전/다음 글 */ -}}
+  {{- $all := slice }}
+  {{- range site.Home.Sections.ByWeight }}{{ range .RegularPages.ByWeight }}{{ $all = $all | append . }}{{ end }}{{ end }}
   {{- $prev := "" }}{{ $next := "" }}{{ $found := false }}
-  {{- range .CurrentSection.RegularPages.ByDate }}
+  {{- range $all }}
     {{- if $found }}{{ if not $next }}{{ $next = . }}{{ end }}
     {{- else if eq . $ }}{{ $found = true }}
     {{- else }}{{ $prev = . }}{{ end }}

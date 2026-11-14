@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="380" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Release 리비전 — upgrade와 rollback</text>
+  <text x="480" y="60" text-anchor="middle" font-size="14" fill="#64748b">릴리스: my-podinfo (namespace: demo)</text>
+
+  <!-- Revision 1 -->
+  <rect x="60" y="90" width="220" height="160" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="60" y="90" width="220" height="40" rx="12" fill="#e2e8f0"/>
+  <text x="170" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">REVISION 1</text>
+  <text x="170" y="156" text-anchor="middle" font-size="14" fill="#334155">helm install</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155" text-anchor="middle">
+    <text x="170" y="182">replicaCount: 2</text>
+    <text x="170" y="202">message: v1</text>
+  </g>
+  <rect x="115" y="216" width="110" height="24" rx="12" fill="#e2e8f0"/>
+  <text x="170" y="233" text-anchor="middle" font-size="12" fill="#64748b">superseded</text>
+
+  <!-- Revision 2 -->
+  <rect x="370" y="90" width="220" height="160" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="370" y="90" width="220" height="40" rx="12" fill="#e2e8f0"/>
+  <text x="480" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">REVISION 2</text>
+  <text x="480" y="156" text-anchor="middle" font-size="14" fill="#334155">helm upgrade -f ...</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155" text-anchor="middle">
+    <text x="480" y="182">replicaCount: 3</text>
+    <text x="480" y="202">message: v2</text>
+  </g>
+  <rect x="425" y="216" width="110" height="24" rx="12" fill="#e2e8f0"/>
+  <text x="480" y="233" text-anchor="middle" font-size="12" fill="#64748b">superseded</text>
+
+  <!-- Revision 3 -->
+  <rect x="680" y="90" width="220" height="160" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <rect x="680" y="90" width="220" height="40" rx="12" fill="#86efac"/>
+  <text x="790" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">REVISION 3</text>
+  <text x="790" y="156" text-anchor="middle" font-size="14" fill="#14532d">helm rollback ... 1</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d" text-anchor="middle">
+    <text x="790" y="182">replicaCount: 2</text>
+    <text x="790" y="202">message: v1</text>
+  </g>
+  <rect x="735" y="216" width="110" height="24" rx="12" fill="#16a34a"/>
+  <text x="790" y="233" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">deployed</text>
+
+  <!-- Time arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="280" y1="170" x2="366" y2="170" marker-end="url(#arrow)"/>
+    <line x1="590" y1="170" x2="676" y2="170" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Copy arrow -->
+  <path d="M170,250 C170,330 790,330 790,254" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#arrow-red)"/>
+  <rect x="270" y="300" width="420" height="30" rx="6" fill="#ffffff"/>
+  <text x="480" y="321" text-anchor="middle" font-size="14" font-weight="700" fill="#dc2626">revision 1의 내용을 복사해 새 revision 3을 만든다</text>
+  <text x="480" y="362" text-anchor="middle" font-size="13" fill="#64748b">과거 기록은 지워지지 않음 → rollback도 history에 남는다 (Deployment·Service·ConfigMap 모두 함께)</text>
+</svg>

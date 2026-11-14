@@ -1,5 +1,6 @@
 ---
 title: "Day 01. 컨테이너와 Docker 첫걸음"
+weight: 1
 date: 2026-11-15T01:42:00+09:00
 tags: ["docker", "container", "기초"]
 summary: "컨테이너가 왜 등장했는지, VM과의 구조 차이, Docker 구성 요소(CLI·dockerd·containerd·runc)와 컨테이너 실행·조회·접속·중지·삭제까지."

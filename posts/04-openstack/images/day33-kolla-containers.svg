@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OpenStack 서비스 하나 = Docker 컨테이너 하나</text>
+
+  <!-- control01 -->
+  <rect x="30" y="56" width="280" height="350" rx="12" fill="#fff1f2" stroke="#ed1944" stroke-width="2"/>
+  <text x="44" y="80" font-size="15" font-weight="700" fill="#9f1239">control01</text>
+  <g font-size="11" text-anchor="middle" fill="#ffffff">
+    <rect x="42" y="92" width="125" height="28" rx="6" fill="#ed1944"/><text x="104" y="110">keystone</text>
+    <rect x="173" y="92" width="125" height="28" rx="6" fill="#ed1944"/><text x="235" y="110">glance_api</text>
+    <rect x="42" y="126" width="125" height="28" rx="6" fill="#ed1944"/><text x="104" y="144">nova_api</text>
+    <rect x="173" y="126" width="125" height="28" rx="6" fill="#ed1944"/><text x="235" y="144">nova_scheduler</text>
+    <rect x="42" y="160" width="125" height="28" rx="6" fill="#ed1944"/><text x="104" y="178">neutron_server</text>
+    <rect x="173" y="160" width="125" height="28" rx="6" fill="#ed1944"/><text x="235" y="178">placement_api</text>
+    <rect x="42" y="194" width="125" height="28" rx="6" fill="#ed1944"/><text x="104" y="212">heat_engine</text>
+    <rect x="173" y="194" width="125" height="28" rx="6" fill="#ed1944"/><text x="235" y="212">horizon</text>
+  </g>
+  <g font-size="11" text-anchor="middle" fill="#78350f">
+    <rect x="42" y="228" width="125" height="28" rx="6" fill="#fde68a"/><text x="104" y="246">mariadb</text>
+    <rect x="173" y="228" width="125" height="28" rx="6" fill="#fde68a"/><text x="235" y="246">rabbitmq</text>
+    <rect x="42" y="262" width="125" height="28" rx="6" fill="#fde68a"/><text x="104" y="280">haproxy</text>
+    <rect x="173" y="262" width="125" height="28" rx="6" fill="#c7d2fe"/><text x="235" y="280" fill="#312e81">ovn_nb_db / sb_db</text>
+  </g>
+  <rect x="42" y="302" width="256" height="28" rx="6" fill="#2496ed"/>
+  <text x="170" y="321" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Docker Engine</text>
+  <rect x="42" y="336" width="256" height="28" rx="6" fill="#334155"/>
+  <text x="170" y="355" text-anchor="middle" font-size="12" fill="#ffffff">Ubuntu 24.04 커널 · 호스트 네트워크</text>
+  <text x="44" y="390" font-size="11" fill="#9f1239" font-family="Consolas,'D2Coding',monospace">vol: mariadb · rabbitmq · kolla_logs</text>
+
+  <!-- compute01 -->
+  <rect x="340" y="56" width="280" height="350" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="354" y="80" font-size="15" font-weight="700" fill="#1e3a8a">compute01</text>
+  <g font-size="11" text-anchor="middle" fill="#1e3a8a">
+    <rect x="352" y="92" width="125" height="28" rx="6" fill="#93c5fd"/><text x="414" y="110">nova_compute</text>
+    <rect x="483" y="92" width="125" height="28" rx="6" fill="#93c5fd" stroke="#dc2626" stroke-width="2"/><text x="545" y="110">nova_libvirt</text>
+    <rect x="352" y="126" width="125" height="28" rx="6" fill="#93c5fd"/><text x="414" y="144">nova_ssh</text>
+    <rect x="483" y="126" width="125" height="28" rx="6" fill="#c7d2fe"/><text x="545" y="144" fill="#312e81">ovn_controller</text>
+    <rect x="352" y="160" width="125" height="28" rx="6" fill="#c7d2fe" stroke="#dc2626" stroke-width="2"/><text x="414" y="178" font-size="10" fill="#312e81">openvswitch_vswitchd</text>
+    <rect x="483" y="160" width="125" height="28" rx="6" fill="#c7d2fe"/><text x="545" y="178" fill="#312e81">openvswitch_db</text>
+    <rect x="352" y="194" width="256" height="28" rx="6" fill="#c7d2fe"/><text x="480" y="212" fill="#312e81">neutron_ovn_metadata_agent</text>
+  </g>
+  <g font-size="11" text-anchor="middle" fill="#334155">
+    <rect x="352" y="228" width="80" height="28" rx="6" fill="#e2e8f0"/><text x="392" y="246">fluentd</text>
+    <rect x="440" y="228" width="80" height="28" rx="6" fill="#e2e8f0"/><text x="480" y="246">cron</text>
+    <rect x="528" y="228" width="80" height="28" rx="6" fill="#e2e8f0"/><text x="568" y="246">toolbox</text>
+  </g>
+  <g font-size="11" fill="#14532d" text-anchor="middle">
+    <rect x="352" y="262" width="80" height="28" rx="6" fill="#86efac" stroke="#16a34a" stroke-dasharray="3 2"/><text x="392" y="280">VM</text>
+    <rect x="440" y="262" width="80" height="28" rx="6" fill="#86efac" stroke="#16a34a" stroke-dasharray="3 2"/><text x="480" y="280">VM</text>
+  </g>
+  <text x="528" y="280" font-size="10" fill="#64748b">← qemu 프로세스</text>
+  <rect x="352" y="302" width="256" height="28" rx="6" fill="#2496ed"/>
+  <text x="480" y="321" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Docker Engine</text>
+  <rect x="352" y="336" width="256" height="28" rx="6" fill="#334155"/>
+  <text x="480" y="355" text-anchor="middle" font-size="12" fill="#ffffff">Ubuntu 24.04 커널 · KVM · 호스트 네트워크</text>
+  <text x="354" y="390" font-size="11" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">vol: nova_libvirt · libvirtd · kolla_logs</text>
+
+  <!-- Chapter 1 mapping -->
+  <text x="790" y="76" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Chapter 1에서 배운 그대로</text>
+  <g>
+    <rect x="650" y="88" width="280" height="56" rx="8" fill="#f8fafc" stroke="#2496ed"/>
+    <text x="664" y="110" font-size="13" font-weight="700" fill="#0f172a">이미지 + 릴리스 태그</text>
+    <text x="664" y="131" font-size="12" fill="#64748b">Day 02 · 업그레이드 = 태그 교체</text>
+
+    <rect x="650" y="152" width="280" height="56" rx="8" fill="#f8fafc" stroke="#2496ed"/>
+    <text x="664" y="174" font-size="13" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">--network host</text>
+    <text x="664" y="195" font-size="12" fill="#64748b">Day 05 · OVS·libvirt가 호스트 망을 직접 조작</text>
+
+    <rect x="650" y="216" width="280" height="56" rx="8" fill="#f8fafc" stroke="#2496ed"/>
+    <text x="664" y="238" font-size="13" font-weight="700" fill="#0f172a">named volume / bind mount</text>
+    <text x="664" y="259" font-size="12" fill="#64748b">Day 04 · DB·로그 유지, 설정은 /etc/kolla</text>
+
+    <rect x="650" y="280" width="280" height="56" rx="8" fill="#f8fafc" stroke="#dc2626"/>
+    <text x="664" y="302" font-size="13" font-weight="700" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">--privileged</text>
+    <text x="664" y="323" font-size="12" fill="#64748b">Day 07 · KVM·커널 접근 (빨간 테두리)</text>
+
+    <rect x="650" y="344" width="280" height="56" rx="8" fill="#f8fafc" stroke="#2496ed"/>
+    <text x="664" y="366" font-size="13" font-weight="700" fill="#0f172a">unless-stopped + healthcheck</text>
+    <text x="664" y="387" font-size="12" fill="#64748b">Day 01·03 · 재부팅 · 장애 시 자동 재시작</text>
+  </g>
+
+  <text x="480" y="448" text-anchor="middle" font-size="13" fill="#334155">서비스가 컨테이너로 분리되어 있어 하나만 재시작 · 교체해도 나머지는 영향 없음 (sudo docker restart nova_compute)</text>
+</svg>

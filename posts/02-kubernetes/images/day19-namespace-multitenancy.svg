@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">네임스페이스 멀티테넌시 — 울타리 4+1종</text>
+
+  <!-- Users -->
+  <rect x="310" y="56" width="160" height="44" rx="22" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="390" y="83" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">alice (team-a)</text>
+  <rect x="650" y="56" width="160" height="44" rx="22" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="730" y="83" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">bob (team-b)</text>
+
+  <!-- Cluster -->
+  <rect x="20" y="128" width="920" height="352" rx="12" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="36" y="150" font-size="14" font-weight="700" fill="#1e3a8a">Kubernetes Cluster (노드 · 커널 · API 서버는 공유)</text>
+
+  <!-- team-a -->
+  <rect x="45" y="165" width="400" height="300" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-dasharray="6 4"/>
+  <text x="245" y="190" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">namespace: team-a</text>
+  <g font-size="13" text-anchor="middle" font-weight="700">
+    <rect x="75" y="205" width="100" height="36" rx="6" fill="#86efac"/><text x="125" y="228" fill="#14532d">web</text>
+    <rect x="190" y="205" width="100" height="36" rx="6" fill="#86efac"/><text x="240" y="228" fill="#14532d">api</text>
+    <rect x="305" y="205" width="100" height="36" rx="6" fill="#86efac"/><text x="355" y="228" fill="#14532d">db</text>
+  </g>
+  <g font-size="13" fill="#0f172a">
+    <rect x="65" y="260" width="360" height="30" rx="6" fill="#ffffff" stroke="#4f46e5"/>
+    <rect x="65" y="260" width="8" height="30" fill="#4f46e5"/>
+    <text x="84" y="280"><tspan font-weight="700">RBAC</tspan>  Role developer → alice, dev-sa</text>
+    <rect x="65" y="297" width="360" height="30" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+    <rect x="65" y="297" width="8" height="30" fill="#f59e0b"/>
+    <text x="84" y="317"><tspan font-weight="700">ResourceQuota</tspan>  pods 5 · cpu 1 · mem 1Gi</text>
+    <rect x="65" y="334" width="360" height="30" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+    <rect x="65" y="334" width="8" height="30" fill="#f59e0b"/>
+    <text x="84" y="354"><tspan font-weight="700">LimitRange</tspan>  기본 requests 100m / 128Mi</text>
+    <rect x="65" y="371" width="360" height="30" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <rect x="65" y="371" width="8" height="30" fill="#16a34a"/>
+    <text x="84" y="391"><tspan font-weight="700">NetworkPolicy</tspan>  같은 네임스페이스만 허용</text>
+    <rect x="65" y="408" width="360" height="30" rx="6" fill="#ffffff" stroke="#dc2626"/>
+    <rect x="65" y="408" width="8" height="30" fill="#dc2626"/>
+    <text x="84" y="428"><tspan font-weight="700">Pod Security</tspan>  enforce=baseline</text>
+  </g>
+
+  <!-- team-b -->
+  <rect x="515" y="165" width="400" height="300" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-dasharray="6 4"/>
+  <text x="715" y="190" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">namespace: team-b</text>
+  <g font-size="13" text-anchor="middle" font-weight="700">
+    <rect x="545" y="205" width="100" height="36" rx="6" fill="#86efac"/><text x="595" y="228" fill="#14532d">shop</text>
+    <rect x="660" y="205" width="100" height="36" rx="6" fill="#86efac"/><text x="710" y="228" fill="#14532d">cart</text>
+    <rect x="775" y="205" width="100" height="36" rx="6" fill="#86efac"/><text x="825" y="228" fill="#14532d">redis</text>
+  </g>
+  <g font-size="13" fill="#0f172a">
+    <rect x="535" y="260" width="360" height="30" rx="6" fill="#ffffff" stroke="#4f46e5"/>
+    <rect x="535" y="260" width="8" height="30" fill="#4f46e5"/>
+    <text x="554" y="280"><tspan font-weight="700">RBAC</tspan>  ClusterRole edit → bob</text>
+    <rect x="535" y="297" width="360" height="30" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+    <rect x="535" y="297" width="8" height="30" fill="#f59e0b"/>
+    <text x="554" y="317"><tspan font-weight="700">ResourceQuota</tspan>  pods 20 · cpu 4 · mem 8Gi</text>
+    <rect x="535" y="334" width="360" height="30" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+    <rect x="535" y="334" width="8" height="30" fill="#f59e0b"/>
+    <text x="554" y="354"><tspan font-weight="700">LimitRange</tspan>  기본 requests 200m / 256Mi</text>
+    <rect x="535" y="371" width="360" height="30" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <rect x="535" y="371" width="8" height="30" fill="#16a34a"/>
+    <text x="554" y="391"><tspan font-weight="700">NetworkPolicy</tspan>  같은 네임스페이스만 허용</text>
+    <rect x="535" y="408" width="360" height="30" rx="6" fill="#ffffff" stroke="#dc2626"/>
+    <rect x="535" y="408" width="8" height="30" fill="#dc2626"/>
+    <text x="554" y="428"><tspan font-weight="700">Pod Security</tspan>  enforce=restricted</text>
+  </g>
+
+  <!-- User access arrows -->
+  <g stroke-width="2" fill="none">
+    <line x1="390" y1="100" x2="390" y2="162" stroke="#16a34a" marker-end="url(#arrowGreen)"/>
+    <line x1="730" y1="100" x2="730" y2="162" stroke="#16a34a" marker-end="url(#arrowGreen)"/>
+    <line x1="470" y1="88" x2="600" y2="162" stroke="#dc2626" stroke-dasharray="5 4" marker-end="url(#arrowRed)"/>
+  </g>
+  <g stroke="#dc2626" stroke-width="3">
+    <line x1="507" y1="106" x2="523" y2="122"/>
+    <line x1="523" y1="106" x2="507" y2="122"/>
+  </g>
+  <text x="532" y="102" font-size="13" font-weight="700" fill="#dc2626">403</text>
+  <text x="400" y="122" font-size="12" fill="#16a34a" font-weight="700">허용</text>
+  <text x="740" y="122" font-size="12" fill="#16a34a" font-weight="700">허용</text>
+
+  <!-- Cross-namespace traffic blocked -->
+  <line x1="545" y1="223" x2="413" y2="223" stroke="#dc2626" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowRed)"/>
+  <g stroke="#dc2626" stroke-width="3">
+    <line x1="472" y1="215" x2="488" y2="231"/>
+    <line x1="488" y1="215" x2="472" y2="231"/>
+  </g>
+  <text x="480" y="256" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">트래픽</text>
+  <text x="480" y="272" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">차단</text>
+</svg>

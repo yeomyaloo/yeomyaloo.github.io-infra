@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">DevStack 설치 흐름</text>
+
+  <!-- Top steps -->
+  <g text-anchor="middle">
+    <rect x="20" y="60" width="168" height="80" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="104" y="92" font-size="16" font-weight="700" fill="#0f172a">① stack 사용자</text>
+    <text x="104" y="118" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">useradd · sudoers</text>
+
+    <rect x="208" y="60" width="168" height="80" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="292" y="92" font-size="16" font-weight="700" fill="#0f172a">② 소스 받기</text>
+    <text x="292" y="118" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">git clone devstack</text>
+
+    <rect x="396" y="60" width="168" height="80" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="480" y="92" font-size="16" font-weight="700" fill="#78350f">③ local.conf</text>
+    <text x="480" y="118" font-size="12" fill="#78350f">비밀번호 4개 · HOST_IP</text>
+
+    <rect x="584" y="60" width="168" height="80" rx="10" fill="#ed1944"/>
+    <text x="668" y="92" font-size="16" font-weight="700" fill="#ffffff">④ <tspan font-family="Consolas,'D2Coding',monospace">./stack.sh</tspan></text>
+    <text x="668" y="118" font-size="12" fill="#ffffff">20 ~ 60분</text>
+
+    <rect x="772" y="60" width="168" height="80" rx="10" fill="#86efac" stroke="#16a34a"/>
+    <text x="856" y="92" font-size="16" font-weight="700" fill="#14532d">⑤ 사용하기</text>
+    <text x="856" y="118" font-size="12" fill="#14532d">Horizon · source openrc</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="188" y1="100" x2="205" y2="100" marker-end="url(#arrow)"/>
+    <line x1="376" y1="100" x2="393" y2="100" marker-end="url(#arrow)"/>
+    <line x1="564" y1="100" x2="581" y2="100" marker-end="url(#arrow)"/>
+    <line x1="752" y1="100" x2="769" y2="100" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- stack.sh detail -->
+  <path d="M584,140 L20,178 M752,140 L940,178" stroke="#ed1944" stroke-width="1.5" stroke-dasharray="5 4" fill="none"/>
+  <rect x="20" y="178" width="920" height="206" rx="12" fill="#fff1f2" stroke="#ed1944"/>
+  <text x="40" y="208" font-size="15" font-weight="700" fill="#9f1239">./stack.sh 내부에서 일어나는 일</text>
+
+  <g text-anchor="middle" font-size="12">
+    <rect x="32" y="228" width="116" height="74" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="90" y="258" font-weight="700" fill="#0f172a">OS 패키지</text>
+    <text x="90" y="280" fill="#334155">apt 설치</text>
+
+    <rect x="162" y="228" width="116" height="74" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="220" y="258" font-weight="700" fill="#0f172a">MariaDB</text>
+    <text x="220" y="280" fill="#334155">RabbitMQ 준비</text>
+
+    <rect x="292" y="228" width="116" height="74" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="350" y="258" font-weight="700" fill="#0f172a">서비스 소스</text>
+    <text x="350" y="280" fill="#334155">git clone · pip</text>
+
+    <rect x="422" y="228" width="116" height="74" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="480" y="258" font-weight="700" fill="#0f172a">설정 파일</text>
+    <text x="480" y="280" fill="#334155" font-family="Consolas,'D2Coding',monospace">/etc/nova …</text>
+
+    <rect x="552" y="228" width="116" height="74" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="610" y="258" font-weight="700" fill="#0f172a">Keystone 등록</text>
+    <text x="610" y="280" fill="#334155">서비스 · 엔드포인트</text>
+
+    <rect x="682" y="228" width="116" height="74" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="740" y="258" font-weight="700" fill="#0f172a">systemd 시작</text>
+    <text x="740" y="280" fill="#334155" font-family="Consolas,'D2Coding',monospace">devstack@*</text>
+
+    <rect x="812" y="228" width="116" height="74" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="870" y="258" font-weight="700" fill="#0f172a">기본 리소스</text>
+    <text x="870" y="280" fill="#334155">이미지 · 네트워크</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="148" y1="265" x2="160" y2="265" marker-end="url(#arrow)"/>
+    <line x1="278" y1="265" x2="290" y2="265" marker-end="url(#arrow)"/>
+    <line x1="408" y1="265" x2="420" y2="265" marker-end="url(#arrow)"/>
+    <line x1="538" y1="265" x2="550" y2="265" marker-end="url(#arrow)"/>
+    <line x1="668" y1="265" x2="680" y2="265" marker-end="url(#arrow)"/>
+    <line x1="798" y1="265" x2="810" y2="265" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="480" y="338" text-anchor="middle" font-size="13" fill="#334155">로그: <tspan font-family="Consolas,'D2Coding',monospace">/opt/stack/logs/stack.sh.log</tspan></text>
+  <text x="480" y="362" text-anchor="middle" font-size="13" fill="#334155">실패 시 <tspan font-family="Consolas,'D2Coding',monospace">./unstack.sh</tspan> → 원인 수정 → <tspan font-family="Consolas,'D2Coding',monospace">./stack.sh</tspan></text>
+</svg>

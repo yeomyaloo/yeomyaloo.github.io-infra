@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">컨테이너 프로세스를 감싸는 namespace</text>
+
+  <!-- connectors (drawn first, under boxes) -->
+  <g stroke="#94a3b8" stroke-width="2" fill="none">
+    <line x1="240" y1="105" x2="330" y2="215"/>
+    <line x1="240" y1="205" x2="330" y2="245"/>
+    <line x1="240" y1="305" x2="330" y2="285"/>
+    <line x1="240" y1="405" x2="330" y2="315"/>
+    <line x1="720" y1="105" x2="630" y2="215"/>
+    <line x1="720" y1="205" x2="630" y2="245"/>
+    <line x1="720" y1="305" x2="630" y2="285" stroke-dasharray="5 4"/>
+    <line x1="720" y1="405" x2="630" y2="315" stroke-dasharray="5 4"/>
+  </g>
+
+  <!-- center process -->
+  <rect x="330" y="190" width="300" height="140" rx="14" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+  <text x="480" y="232" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">컨테이너 프로세스</text>
+  <text x="480" y="260" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" fill="#14532d">nginx (컨테이너 안 PID 1)</text>
+  <text x="480" y="286" text-anchor="middle" font-size="13" fill="#14532d">호스트에서 보면 PID 12345</text>
+  <text x="480" y="310" text-anchor="middle" font-size="13" fill="#14532d">커널은 호스트와 공유</text>
+
+  <!-- left column: Docker default -->
+  <g>
+    <rect x="40" y="70" width="200" height="70" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="140" y="98" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#1e3a8a">pid</text>
+    <text x="140" y="123" text-anchor="middle" font-size="13" fill="#1e3a8a">PID 번호 공간 (1부터)</text>
+
+    <rect x="40" y="170" width="200" height="70" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="140" y="198" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#1e3a8a">net</text>
+    <text x="140" y="223" text-anchor="middle" font-size="13" fill="#1e3a8a">eth0 · IP · 포트 · 라우팅</text>
+
+    <rect x="40" y="270" width="200" height="70" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="140" y="298" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#1e3a8a">mnt</text>
+    <text x="140" y="323" text-anchor="middle" font-size="13" fill="#1e3a8a">자기만의 / (이미지 rootfs)</text>
+
+    <rect x="40" y="370" width="200" height="70" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="140" y="398" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#1e3a8a">uts</text>
+    <text x="140" y="423" text-anchor="middle" font-size="13" fill="#1e3a8a">호스트명 · 도메인명</text>
+  </g>
+
+  <!-- right column -->
+  <g>
+    <rect x="720" y="70" width="200" height="70" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="820" y="98" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#1e3a8a">ipc</text>
+    <text x="820" y="123" text-anchor="middle" font-size="13" fill="#1e3a8a">공유 메모리 · 메시지 큐</text>
+
+    <rect x="720" y="170" width="200" height="70" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="820" y="198" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#1e3a8a">cgroup</text>
+    <text x="820" y="223" text-anchor="middle" font-size="13" fill="#1e3a8a">cgroup 트리의 루트 위치</text>
+
+    <rect x="720" y="270" width="200" height="70" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="820" y="298" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#334155">user</text>
+    <text x="820" y="323" text-anchor="middle" font-size="13" fill="#334155">UID/GID 매핑</text>
+
+    <rect x="720" y="370" width="200" height="70" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="820" y="398" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="16" font-weight="700" fill="#334155">time</text>
+    <text x="820" y="423" text-anchor="middle" font-size="13" fill="#334155">부팅 시간 · 시계</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="13" fill="#334155">
+    <rect x="250" y="462" width="22" height="16" rx="3" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="280" y="475">Docker 기본: 컨테이너마다 새로 생성</text>
+    <rect x="530" y="462" width="22" height="16" rx="3" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="560" y="475">기본 미사용: 호스트와 공유</text>
+  </g>
+</svg>

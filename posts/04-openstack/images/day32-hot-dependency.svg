@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="490" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">HOT 템플릿 구조와 리소스 의존성 그래프 (web.yaml)</text>
+
+  <!-- Left: sections -->
+  <rect x="30" y="56" width="260" height="414" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="160" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">템플릿 섹션</text>
+
+  <rect x="45" y="92" width="230" height="40" rx="6" fill="#e2e8f0"/>
+  <text x="58" y="117" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">heat_template_version</text>
+  <rect x="227" y="102" width="40" height="20" rx="10" fill="#dc2626"/>
+  <text x="247" y="116" text-anchor="middle" font-size="11" fill="#ffffff">필수</text>
+
+  <rect x="45" y="140" width="230" height="34" rx="6" fill="#e2e8f0"/>
+  <text x="58" y="162" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">description</text>
+
+  <rect x="45" y="182" width="230" height="92" rx="6" fill="#fde68a"/>
+  <text x="58" y="204" font-size="13" font-weight="700" fill="#78350f" font-family="Consolas,'D2Coding',monospace">parameters</text>
+  <text x="58" y="226" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">key_name · image</text>
+  <text x="58" y="244" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">flavor · public_net · cidr</text>
+  <text x="58" y="264" font-size="11" fill="#92400e">≈ Helm values (--parameter)</text>
+
+  <rect x="45" y="282" width="230" height="110" rx="6" fill="#c7d2fe"/>
+  <text x="58" y="304" font-size="13" font-weight="700" fill="#312e81" font-family="Consolas,'D2Coding',monospace">resources</text>
+  <rect x="227" y="292" width="40" height="20" rx="10" fill="#dc2626"/>
+  <text x="247" y="306" text-anchor="middle" font-size="11" fill="#ffffff">필수</text>
+  <text x="58" y="330" font-size="12" fill="#312e81">리소스 8개 (논리 이름)</text>
+  <text x="58" y="352" font-size="12" fill="#312e81">get_resource / get_attr 로</text>
+  <text x="58" y="372" font-size="12" fill="#312e81">서로 참조 → 오른쪽 그래프</text>
+
+  <rect x="45" y="400" width="230" height="56" rx="6" fill="#86efac"/>
+  <text x="58" y="422" font-size="13" font-weight="700" fill="#14532d" font-family="Consolas,'D2Coding',monospace">outputs</text>
+  <text x="58" y="444" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">private_ip · floating_ip · url</text>
+
+  <!-- Right: dependency graph -->
+  <g font-size="14" font-weight="700" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <rect x="340" y="80" width="130" height="40" rx="8" fill="#c7d2fe" stroke="#4f46e5"/><text x="405" y="105" fill="#312e81">net</text>
+    <rect x="560" y="80" width="130" height="40" rx="8" fill="#c7d2fe" stroke="#4f46e5"/><text x="625" y="105" fill="#312e81">router</text>
+    <rect x="780" y="80" width="130" height="40" rx="8" fill="#fca5a5" stroke="#dc2626"/><text x="845" y="105" fill="#7f1d1d">web_sg</text>
+    <rect x="340" y="170" width="130" height="40" rx="8" fill="#c7d2fe" stroke="#4f46e5"/><text x="405" y="195" fill="#312e81">subnet</text>
+    <rect x="450" y="260" width="130" height="40" rx="8" fill="#c7d2fe" stroke="#4f46e5"/><text x="515" y="285" fill="#312e81">router_if</text>
+    <rect x="700" y="260" width="130" height="40" rx="8" fill="#c7d2fe" stroke="#4f46e5"/><text x="765" y="285" fill="#312e81">web_port</text>
+    <rect x="560" y="350" width="130" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/><text x="625" y="375" fill="#78350f">web_fip</text>
+    <rect x="780" y="350" width="130" height="40" rx="8" fill="#86efac" stroke="#16a34a"/><text x="845" y="375" fill="#14532d">web_server</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="405" y1="120" x2="405" y2="167" marker-end="url(#arrow)"/>
+    <line x1="470" y1="108" x2="712" y2="257" marker-end="url(#arrow)"/>
+    <line x1="440" y1="210" x2="495" y2="257" marker-end="url(#arrow)"/>
+    <line x1="610" y1="120" x2="540" y2="257" marker-end="url(#arrow)"/>
+    <line x1="470" y1="195" x2="697" y2="272" marker-end="url(#arrow)"/>
+    <line x1="845" y1="120" x2="790" y2="257" marker-end="url(#arrow)"/>
+    <line x1="800" y1="300" x2="835" y2="347" marker-end="url(#arrow)"/>
+    <line x1="730" y1="300" x2="660" y2="347" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="540" y1="300" x2="595" y2="347" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <text x="488" y="336" font-size="12" font-weight="700" fill="#dc2626">depends_on</text>
+
+  <!-- Wave labels -->
+  <g font-size="12" fill="#64748b">
+    <text x="930" y="104" text-anchor="end">①</text>
+    <text x="930" y="194" text-anchor="end">②</text>
+    <text x="930" y="284" text-anchor="end">③</text>
+    <text x="930" y="374" text-anchor="end">④</text>
+  </g>
+
+  <!-- Legend -->
+  <line x1="330" y1="416" x2="370" y2="416" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="380" y="420" font-size="12" fill="#334155">A → B : A가 먼저 생성됨 (get_resource / get_attr 참조)</text>
+  <line x1="330" y1="442" x2="370" y2="442" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <text x="380" y="446" font-size="12" fill="#334155">명시적 의존성 (참조는 없지만 순서가 필요)</text>
+  <text x="330" y="472" font-size="12" fill="#64748b">①~④ 같은 단계는 병렬 생성 · 삭제는 그래프를 거꾸로 (④ → ①)</text>
+</svg>

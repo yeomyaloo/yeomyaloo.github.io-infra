@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Ingress vs Gateway API — 한 덩어리 vs 역할별 분리</text>
+
+  <!-- Ingress side -->
+  <rect x="20" y="64" width="380" height="416" rx="14" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="210" y="92" text-anchor="middle" font-size="17" font-weight="700" fill="#334155">Ingress</text>
+
+  <rect x="40" y="110" width="140" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="110" y="143" text-anchor="middle" font-size="13" fill="#0f172a">IngressClass</text>
+
+  <rect x="40" y="186" width="340" height="190" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="210" y="212" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">Ingress 오브젝트 하나에 전부</text>
+  <g font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#78350f">
+    <text x="60" y="242">ingressClassName</text>
+    <text x="60" y="266">tls: (인증서)</text>
+    <text x="60" y="290">rules: host / path → svc</text>
+    <text x="60" y="314">annotations:</text>
+    <text x="76" y="336">  컨트롤러별 확장 (비표준)</text>
+  </g>
+  <text x="210" y="364" text-anchor="middle" font-size="12" fill="#92400e">운영자와 개발자가 같은 오브젝트를 수정</text>
+
+  <g font-size="13" fill="#334155">
+    <text x="40" y="410">• 표준 필드: 호스트 · 경로 · TLS 정도</text>
+    <text x="40" y="434">• 헤더 매칭 · 가중치는 어노테이션/CRD</text>
+    <text x="40" y="458">• 컨트롤러를 바꾸면 YAML 재작성</text>
+  </g>
+  <line x1="110" y1="166" x2="110" y2="183" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Gateway side -->
+  <rect x="420" y="64" width="520" height="416" rx="14" fill="#eef2ff" stroke="#4f46e5"/>
+  <text x="680" y="92" text-anchor="middle" font-size="17" font-weight="700" fill="#312e81">Gateway API</text>
+
+  <!-- role labels -->
+  <g font-size="12" font-weight="700" fill="#64748b">
+    <text x="440" y="132">인프라 제공자</text>
+    <text x="440" y="212">클러스터 운영자</text>
+    <text x="440" y="306">앱 개발자</text>
+  </g>
+
+  <rect x="560" y="108" width="240" height="44" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="680" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">GatewayClass <tspan font-weight="400" font-size="12">(구현체)</tspan></text>
+
+  <rect x="560" y="176" width="240" height="60" rx="8" fill="#326ce5"/>
+  <text x="680" y="201" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Gateway</text>
+  <text x="680" y="222" text-anchor="middle" font-size="12" fill="#dbeafe">리스너 · 포트 · TLS 인증서</text>
+
+  <rect x="560" y="268" width="170" height="74" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="645" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">HTTPRoute</text>
+  <text x="645" y="312" text-anchor="middle" font-size="11" fill="#312e81">ns: team-a</text>
+  <text x="645" y="330" text-anchor="middle" font-size="11" fill="#312e81">헤더 · 경로 매칭</text>
+
+  <rect x="750" y="268" width="170" height="74" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="835" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">HTTPRoute</text>
+  <text x="835" y="312" text-anchor="middle" font-size="11" fill="#312e81">ns: team-b</text>
+  <text x="835" y="330" text-anchor="middle" font-size="11" fill="#312e81">가중치 분배</text>
+
+  <rect x="740" y="372" width="85" height="40" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="782" y="397" text-anchor="middle" font-size="12" fill="#14532d">foo 90%</text>
+  <rect x="840" y="372" width="85" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="882" y="397" text-anchor="middle" font-size="12" fill="#78350f">bar 10%</text>
+  <rect x="560" y="372" width="170" height="40" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="645" y="397" text-anchor="middle" font-size="12" fill="#14532d">Service (team-a)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="680" y1="152" x2="680" y2="173" marker-end="url(#arrow)"/>
+    <line x1="645" y1="268" x2="645" y2="239" marker-end="url(#arrow)"/>
+    <line x1="835" y1="268" x2="760" y2="239" marker-end="url(#arrow)"/>
+    <line x1="645" y1="342" x2="645" y2="369" marker-end="url(#arrow)"/>
+    <line x1="820" y1="342" x2="790" y2="369" marker-end="url(#arrow)"/>
+    <line x1="850" y1="342" x2="875" y2="369" marker-end="url(#arrow)"/>
+  </g>
+  <text x="842" y="258" font-size="11" fill="#334155">parentRefs</text>
+
+  <g font-size="13" fill="#312e81">
+    <text x="440" y="440">• 역할별 리소스 → RBAC도 분리 · status로 연결 상태 확인</text>
+    <text x="440" y="464">• 헤더 매칭 · 가중치 · 리다이렉트가 표준 필드 (구현체 무관)</text>
+  </g>
+</svg>

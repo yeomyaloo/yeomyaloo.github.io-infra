@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Chapter 1~5 회고 — 우리가 쌓아 올린 스택</text>
+
+  <!-- Timeline cards (left) -->
+  <g>
+    <rect x="20" y="90" width="230" height="78" rx="10" fill="#dbeafe"/>
+    <rect x="20" y="90" width="8" height="78" rx="4" fill="#2496ed"/>
+    <text x="40" y="112" font-size="13" font-weight="700" fill="#1e3a8a">Chapter 1 · Day 01–07</text>
+    <text x="40" y="133" font-size="14" font-weight="700" fill="#0f172a">Docker</text>
+    <text x="40" y="153" font-size="12" fill="#475569">컨테이너 하나를 제대로</text>
+
+    <rect x="20" y="174" width="230" height="78" rx="10" fill="#e0e7ff"/>
+    <rect x="20" y="174" width="8" height="78" rx="4" fill="#326ce5"/>
+    <text x="40" y="196" font-size="13" font-weight="700" fill="#1e3a8a">Chapter 2 · Day 08–20</text>
+    <text x="40" y="217" font-size="14" font-weight="700" fill="#0f172a">Kubernetes</text>
+    <text x="40" y="237" font-size="12" fill="#475569">여러 컨테이너를 자동으로</text>
+
+    <rect x="20" y="258" width="230" height="78" rx="10" fill="#eef2ff"/>
+    <rect x="20" y="258" width="8" height="78" rx="4" fill="#4f46e5"/>
+    <text x="40" y="280" font-size="13" font-weight="700" fill="#312e81">Chapter 3 · Day 21–24</text>
+    <text x="40" y="301" font-size="14" font-weight="700" fill="#0f172a">가상화 &amp; 네트워크</text>
+    <text x="40" y="321" font-size="12" fill="#475569">KVM · bridge · VXLAN · OVS</text>
+
+    <rect x="20" y="342" width="230" height="78" rx="10" fill="#ffe4e6"/>
+    <rect x="20" y="342" width="8" height="78" rx="4" fill="#ed1944"/>
+    <text x="40" y="364" font-size="13" font-weight="700" fill="#9f1239">Chapter 4 · Day 25–33</text>
+    <text x="40" y="385" font-size="14" font-weight="700" fill="#0f172a">OpenStack</text>
+    <text x="40" y="405" font-size="12" fill="#475569">나만의 프라이빗 클라우드</text>
+
+    <rect x="20" y="426" width="230" height="78" rx="10" fill="#dcfce7"/>
+    <rect x="20" y="426" width="8" height="78" rx="4" fill="#16a34a"/>
+    <text x="40" y="448" font-size="13" font-weight="700" fill="#14532d">Chapter 5 · Day 34–35</text>
+    <text x="40" y="469" font-size="14" font-weight="700" fill="#0f172a">종합 프로젝트</text>
+    <text x="40" y="489" font-size="12" fill="#475569">K8s on OpenStack + IaC</text>
+  </g>
+
+  <!-- Chapter 6 teaser -->
+  <rect x="290" y="62" width="645" height="86" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="612" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">다음 시즌 · Chapter 6. AI 인프라</text>
+  <text x="612" y="112" text-anchor="middle" font-size="13" fill="#78350f">GPU 노드 · vLLM / Ollama LLM 서빙</text>
+  <text x="612" y="134" text-anchor="middle" font-size="13" fill="#78350f">RAG 파이프라인 + 벡터 DB · K8s 위 LLM 운영 · 모니터링</text>
+
+  <!-- Stack (right) -->
+  <rect x="290" y="172" width="570" height="50" rx="8" fill="#2496ed"/>
+  <text x="575" y="203" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Ch.1  컨테이너 — containerd · 이미지 · namespace / cgroup</text>
+
+  <rect x="290" y="230" width="570" height="50" rx="8" fill="#326ce5"/>
+  <text x="575" y="261" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Ch.2  Kubernetes — kubeadm · Service · PVC (+ OCCM · Cinder CSI)</text>
+
+  <rect x="290" y="288" width="570" height="50" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="575" y="319" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">Ch.5  VM × 3 — k8s-cp1 · k8s-w1 · k8s-w2 (Nova 인스턴스)</text>
+
+  <rect x="290" y="346" width="570" height="68" rx="8" fill="#ffe4e6" stroke="#ed1944" stroke-width="2"/>
+  <text x="302" y="366" font-size="14" font-weight="700" fill="#9f1239">Ch.4  OpenStack</text>
+  <g font-size="12" text-anchor="middle" fill="#ffffff">
+    <rect x="302" y="376" width="85" height="28" rx="6" fill="#ed1944"/><text x="344" y="395">Keystone</text>
+    <rect x="394" y="376" width="85" height="28" rx="6" fill="#ed1944"/><text x="436" y="395">Glance</text>
+    <rect x="486" y="376" width="85" height="28" rx="6" fill="#ed1944"/><text x="528" y="395">Nova</text>
+    <rect x="578" y="376" width="85" height="28" rx="6" fill="#ed1944"/><text x="620" y="395">Neutron</text>
+    <rect x="670" y="376" width="85" height="28" rx="6" fill="#ed1944"/><text x="712" y="395">Cinder</text>
+    <rect x="762" y="376" width="85" height="28" rx="6" fill="#ed1944"/><text x="804" y="395">Octavia</text>
+  </g>
+
+  <rect x="290" y="422" width="570" height="44" rx="8" fill="#c7d2fe"/>
+  <text x="575" y="450" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">Ch.3  KVM / QEMU / libvirt · Linux bridge · VXLAN · OVS</text>
+
+  <rect x="290" y="474" width="570" height="40" rx="8" fill="#e2e8f0"/>
+  <text x="575" y="499" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">물리 서버 (CPU · RAM · NIC · Disk)</text>
+
+  <!-- IaC bar (Ch.5) -->
+  <rect x="875" y="230" width="60" height="184" rx="8" fill="#16a34a"/>
+  <text transform="translate(898,322) rotate(-90)" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Terraform (IaC)</text>
+  <text transform="translate(920,322) rotate(-90)" text-anchor="middle" font-size="11" fill="#dcfce7">Ch.5 · 코드로 관리</text>
+
+  <!-- Arrow from stack top to Chapter 6 -->
+  <line x1="575" y1="170" x2="575" y2="152" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+
+  <text x="612" y="540" text-anchor="middle" font-size="12" fill="#64748b">아래에서 위로: 물리 서버 → 가상화 → 클라우드 → VM → 클러스터 → 컨테이너</text>
+</svg>

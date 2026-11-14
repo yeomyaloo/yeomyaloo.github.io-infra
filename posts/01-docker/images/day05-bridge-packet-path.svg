@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">bridge 네트워크 패킷 경로 (-p 8080:80)</text>
+
+  <!-- External client -->
+  <rect x="20" y="195" width="150" height="80" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="95" y="225" text-anchor="middle" font-size="15" font-weight="700" fill="#7c2d12">외부 클라이언트</text>
+  <text x="95" y="250" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#7c2d12">호스트IP:8080</text>
+
+  <!-- Host -->
+  <rect x="200" y="60" width="740" height="360" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="220" y="86" font-size="16" font-weight="700" fill="#334155">Docker Host (Linux)</text>
+
+  <!-- eth0 -->
+  <rect x="220" y="195" width="140" height="80" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="290" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">eth0</text>
+  <text x="290" y="252" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">192.168.0.10</text>
+
+  <!-- iptables -->
+  <rect x="395" y="175" width="230" height="120" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="510" y="200" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">iptables (nat 테이블)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">
+    <text x="408" y="228">DNAT</text>
+    <text x="408" y="246">:8080 → 172.17.0.2:80</text>
+    <text x="408" y="270">MASQUERADE</text>
+    <text x="408" y="288">172.17.0.0/16 → 호스트IP</text>
+  </g>
+
+  <!-- docker0 -->
+  <rect x="660" y="175" width="120" height="120" rx="8" fill="#2496ed"/>
+  <text x="720" y="225" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">docker0</text>
+  <text x="720" y="248" text-anchor="middle" font-size="12" fill="#ffffff">가상 스위치</text>
+  <text x="720" y="268" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#ffffff">172.17.0.1</text>
+
+  <!-- containers -->
+  <rect x="810" y="90" width="120" height="110" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="870" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">web</text>
+  <rect x="822" y="132" width="96" height="54" rx="4" fill="#ffffff" stroke="#16a34a"/>
+  <text x="870" y="154" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">eth0</text>
+  <text x="870" y="174" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">172.17.0.2</text>
+
+  <rect x="810" y="290" width="120" height="110" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="870" y="318" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">db</text>
+  <rect x="822" y="332" width="96" height="54" rx="4" fill="#ffffff" stroke="#16a34a"/>
+  <text x="870" y="354" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">eth0</text>
+  <text x="870" y="374" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">172.17.0.3</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="170" y1="235" x2="216" y2="235" marker-end="url(#arrow)"/>
+    <line x1="360" y1="235" x2="391" y2="235" marker-end="url(#arrow)"/>
+    <line x1="625" y1="235" x2="656" y2="235" marker-end="url(#arrow)"/>
+    <line x1="780" y1="205" x2="818" y2="160" marker-end="url(#arrow)"/>
+    <line x1="780" y1="265" x2="818" y2="340" stroke-dasharray="5 4"/>
+  </g>
+  <g font-size="12" fill="#334155" font-weight="700">
+    <text x="800" y="170" text-anchor="end">veth</text>
+    <text x="798" y="328" text-anchor="end">veth</text>
+  </g>
+
+  <!-- step badges -->
+  <g font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">
+    <circle cx="193" cy="215" r="10" fill="#4f46e5"/><text x="193" y="219">1</text>
+    <circle cx="377" cy="215" r="10" fill="#4f46e5"/><text x="377" y="219">2</text>
+    <circle cx="642" cy="215" r="10" fill="#4f46e5"/><text x="642" y="219">3</text>
+    <circle cx="804" cy="140" r="10" fill="#4f46e5"/><text x="804" y="144">4</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="13" fill="#334155">
+    <text x="30" y="452"><tspan font-weight="700" fill="#4f46e5">1</tspan> 요청이 호스트 eth0:8080 도착</text>
+    <text x="320" y="452"><tspan font-weight="700" fill="#4f46e5">2</tspan> DNAT로 목적지를 172.17.0.2:80 으로 변경</text>
+    <text x="30" y="480"><tspan font-weight="700" fill="#4f46e5">3</tspan> docker0 브리지가 해당 veth로 전달</text>
+    <text x="320" y="480"><tspan font-weight="700" fill="#4f46e5">4</tspan> 컨테이너 eth0 에 도착 → nginx 응답</text>
+    <text x="30" y="508" fill="#64748b">응답 및 컨테이너 → 인터넷 트래픽은 역방향으로 나가며, 출발지 IP가 MASQUERADE로 호스트 IP로 바뀝니다.</text>
+  </g>
+</svg>

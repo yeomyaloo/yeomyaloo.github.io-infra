@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 550" width="960" height="550" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="550" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Kolla-Ansible 멀티노드 구성 (3노드)</text>
+
+  <!-- Deploy host -->
+  <rect x="30" y="56" width="270" height="194" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="165" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">배포 호스트 (= control01)</text>
+  <g font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">
+    <rect x="45" y="92" width="240" height="26" rx="6" fill="#e2e8f0"/><text x="55" y="110">~/kolla-venv  (kolla-ansible)</text>
+    <rect x="45" y="124" width="240" height="26" rx="6" fill="#fde68a"/><text x="55" y="142">/etc/kolla/globals.yml</text>
+    <rect x="45" y="156" width="240" height="26" rx="6" fill="#fde68a"/><text x="55" y="174">/etc/kolla/passwords.yml</text>
+    <rect x="45" y="188" width="240" height="26" rx="6" fill="#c7d2fe"/><text x="55" y="206">~/multinode  (inventory)</text>
+  </g>
+  <text x="165" y="238" text-anchor="middle" font-size="12" fill="#64748b">venv 활성화 후 kolla-ansible 실행</text>
+
+  <!-- What deploy does -->
+  <rect x="330" y="56" width="340" height="194" rx="12" fill="#fff1f2" stroke="#ed1944"/>
+  <text x="500" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="#9f1239">deploy가 각 노드에서 하는 일</text>
+  <g font-size="13" fill="#334155">
+    <text x="350" y="110">1  컨테이너 이미지 pull</text>
+    <text x="350" y="138">2  /etc/kolla/&lt;서비스&gt;/ 설정 렌더링</text>
+    <text x="350" y="166">3  Docker로 서비스 컨테이너 기동</text>
+    <text x="350" y="194">4  DB 생성 · Keystone 엔드포인트 등록</text>
+    <text x="350" y="222">5  HAProxy + Keepalived로 VIP 제공</text>
+  </g>
+
+  <!-- Registry -->
+  <rect x="700" y="56" width="230" height="64" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="815" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12" font-family="Consolas,'D2Coding',monospace">quay.io/openstack.kolla</text>
+  <text x="815" y="104" text-anchor="middle" font-size="12" fill="#92400e">이미지 레지스트리</text>
+  <line x1="815" y1="120" x2="815" y2="286" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="825" y="200" font-size="12" font-weight="700" fill="#92400e">docker pull</text>
+
+  <!-- SSH arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="140" y1="250" x2="140" y2="287" marker-end="url(#arrow)"/>
+    <line x1="220" y1="250" x2="470" y2="287" marker-end="url(#arrow)"/>
+    <line x1="260" y1="250" x2="760" y2="287" marker-end="url(#arrow)"/>
+  </g>
+  <text x="36" y="274" font-size="11" font-weight="700" fill="#334155">SSH (Ansible)</text>
+
+  <!-- control01 -->
+  <rect x="30" y="290" width="280" height="150" rx="12" fill="#fff1f2" stroke="#ed1944" stroke-width="2"/>
+  <text x="44" y="312" font-size="15" font-weight="700" fill="#9f1239">control01</text>
+  <text x="44" y="330" font-size="11" fill="#9f1239">control · network · monitoring · storage</text>
+  <g font-size="10" text-anchor="middle" fill="#ffffff">
+    <rect x="42" y="340" width="84" height="24" rx="5" fill="#ed1944"/><text x="84" y="356">keystone</text>
+    <rect x="130" y="340" width="84" height="24" rx="5" fill="#ed1944"/><text x="172" y="356">nova_api</text>
+    <rect x="218" y="340" width="84" height="24" rx="5" fill="#ed1944"/><text x="260" y="356">neutron_server</text>
+    <rect x="42" y="370" width="84" height="24" rx="5" fill="#ed1944"/><text x="84" y="386">mariadb</text>
+    <rect x="130" y="370" width="84" height="24" rx="5" fill="#ed1944"/><text x="172" y="386">rabbitmq</text>
+    <rect x="218" y="370" width="84" height="24" rx="5" fill="#ed1944"/><text x="260" y="386">ovn_northd</text>
+  </g>
+  <rect x="42" y="404" width="260" height="24" rx="5" fill="#2496ed"/>
+  <text x="172" y="421" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Docker Engine</text>
+
+  <!-- compute01 -->
+  <rect x="340" y="290" width="280" height="150" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="354" y="312" font-size="15" font-weight="700" fill="#1e3a8a">compute01</text>
+  <text x="354" y="330" font-size="11" fill="#1e3a8a">compute</text>
+  <g font-size="10" text-anchor="middle" fill="#1e3a8a">
+    <rect x="352" y="340" width="84" height="24" rx="5" fill="#93c5fd"/><text x="394" y="356">nova_compute</text>
+    <rect x="440" y="340" width="84" height="24" rx="5" fill="#93c5fd"/><text x="482" y="356">nova_libvirt</text>
+    <rect x="528" y="340" width="84" height="24" rx="5" fill="#93c5fd"/><text x="570" y="356">ovn_controller</text>
+    <rect x="352" y="370" width="84" height="24" rx="5" fill="#93c5fd"/><text x="394" y="386">openvswitch_db</text>
+    <rect x="440" y="370" width="84" height="24" rx="5" fill="#93c5fd"/><text x="482" y="386">nova_ssh</text>
+    <rect x="528" y="370" width="84" height="24" rx="5" fill="#93c5fd"/><text x="570" y="386">fluentd</text>
+  </g>
+  <rect x="352" y="404" width="260" height="24" rx="5" fill="#2496ed"/>
+  <text x="482" y="421" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Docker Engine</text>
+
+  <!-- compute02 -->
+  <rect x="650" y="290" width="280" height="150" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="664" y="312" font-size="15" font-weight="700" fill="#1e3a8a">compute02</text>
+  <text x="664" y="330" font-size="11" fill="#1e3a8a">compute</text>
+  <g font-size="10" text-anchor="middle" fill="#1e3a8a">
+    <rect x="662" y="340" width="84" height="24" rx="5" fill="#93c5fd"/><text x="704" y="356">nova_compute</text>
+    <rect x="750" y="340" width="84" height="24" rx="5" fill="#93c5fd"/><text x="792" y="356">nova_libvirt</text>
+    <rect x="838" y="340" width="84" height="24" rx="5" fill="#93c5fd"/><text x="880" y="356">ovn_controller</text>
+    <rect x="662" y="370" width="84" height="24" rx="5" fill="#93c5fd"/><text x="704" y="386">openvswitch_db</text>
+    <rect x="750" y="370" width="84" height="24" rx="5" fill="#93c5fd"/><text x="792" y="386">nova_ssh</text>
+    <rect x="838" y="370" width="84" height="24" rx="5" fill="#93c5fd"/><text x="880" y="386">fluentd</text>
+  </g>
+  <rect x="662" y="404" width="260" height="24" rx="5" fill="#2496ed"/>
+  <text x="792" y="421" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Docker Engine</text>
+
+  <!-- Networks -->
+  <rect x="30" y="474" width="900" height="26" rx="6" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="140" y="492" text-anchor="middle" font-size="11" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">network_interface</text>
+  <text x="405" y="492" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">관리 · API · 터널망 192.168.100.0/24</text>
+  <text x="715" y="492" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">VIP 192.168.100.250 (HAProxy)</text>
+  <rect x="30" y="510" width="900" height="26" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="480" y="528" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">외부망 192.168.200.0/24 — neutron_external_interface: ens4 (IP 없음, br-ex에 연결)</text>
+
+  <!-- NIC lines -->
+  <g stroke="#2496ed" stroke-width="3">
+    <line x1="100" y1="440" x2="100" y2="474"/>
+    <line x1="410" y1="440" x2="410" y2="474"/>
+    <line x1="720" y1="440" x2="720" y2="474"/>
+  </g>
+  <g stroke="#f59e0b" stroke-width="3">
+    <line x1="250" y1="440" x2="250" y2="510"/>
+    <line x1="560" y1="440" x2="560" y2="510"/>
+    <line x1="870" y1="440" x2="870" y2="510"/>
+  </g>
+  <g font-size="11" font-family="Consolas,'D2Coding',monospace">
+    <text x="106" y="460" fill="#1e3a8a">ens3</text>
+    <text x="416" y="460" fill="#1e3a8a">ens3</text>
+    <text x="726" y="460" fill="#1e3a8a">ens3</text>
+    <text x="256" y="460" fill="#92400e">ens4</text>
+    <text x="566" y="460" fill="#92400e">ens4</text>
+    <text x="876" y="460" fill="#92400e">ens4</text>
+  </g>
+
+</svg>

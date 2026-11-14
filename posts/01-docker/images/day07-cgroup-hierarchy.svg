@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">cgroup v2 계층과 Docker 자원 옵션</text>
+
+  <!-- tree connectors -->
+  <g stroke="#94a3b8" stroke-width="2" fill="none">
+    <polyline points="50,110 50,155 70,155"/>
+    <polyline points="50,155 50,205 70,205"/>
+    <polyline points="50,205 50,255 70,255"/>
+    <polyline points="90,275 90,315 110,315"/>
+    <polyline points="90,315 90,370 110,370"/>
+  </g>
+
+  <!-- tree nodes -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14">
+    <rect x="30" y="70" width="220" height="40" rx="8" fill="#334155"/>
+    <text x="140" y="95" text-anchor="middle" font-weight="700" fill="#ffffff">/sys/fs/cgroup</text>
+
+    <rect x="70" y="137" width="200" height="36" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="85" y="160" fill="#334155">init.scope</text>
+    <rect x="70" y="187" width="200" height="36" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="85" y="210" fill="#334155">user.slice</text>
+    <rect x="70" y="237" width="200" height="38" rx="6" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="85" y="261" font-weight="700" fill="#1e3a8a">system.slice</text>
+
+    <rect x="110" y="297" width="200" height="36" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="125" y="320" fill="#334155">docker.service</text>
+    <rect x="110" y="350" width="250" height="40" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+    <text x="125" y="375" font-weight="700" fill="#14532d">docker-3c9d….scope</text>
+  </g>
+  <text x="235" y="412" text-anchor="middle" font-size="12" fill="#64748b">컨테이너 1개 = cgroup 1개 (systemd 드라이버)</text>
+
+  <line x1="360" y1="370" x2="396" y2="370" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- note -->
+  <rect x="400" y="70" width="540" height="90" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="420" y="100" font-size="14" font-weight="700" fill="#7c2d12">파일에 값을 쓰면 커널이 그 그룹의 자원을 제한한다</text>
+  <text x="420" y="124" font-size="13" fill="#7c2d12">컨테이너 안에서는 cgroup namespace 덕분에 이 scope가</text>
+  <text x="420" y="144" font-size="13" fill="#7c2d12">/sys/fs/cgroup 의 루트(/)처럼 보인다</text>
+
+  <!-- files panel -->
+  <rect x="400" y="290" width="270" height="160" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="535" y="314" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">cgroup 인터페이스 파일</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d">
+    <rect x="415" y="328" width="240" height="30" rx="5" fill="#ffffff" stroke="#16a34a"/>
+    <text x="425" y="348">memory.max  268435456</text>
+    <rect x="415" y="368" width="240" height="30" rx="5" fill="#ffffff" stroke="#16a34a"/>
+    <text x="425" y="388">cpu.max     50000 100000</text>
+    <rect x="415" y="408" width="240" height="30" rx="5" fill="#ffffff" stroke="#16a34a"/>
+    <text x="425" y="428">pids.max    100</text>
+  </g>
+
+  <!-- docker flags -->
+  <text x="830" y="210" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">docker run 옵션</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14" text-anchor="middle">
+    <rect x="740" y="225" width="180" height="30" rx="15" fill="#2496ed"/>
+    <text x="830" y="245" fill="#ffffff">--memory 256m</text>
+    <rect x="740" y="275" width="180" height="30" rx="15" fill="#2496ed"/>
+    <text x="830" y="295" fill="#ffffff">--cpus 0.5</text>
+    <rect x="740" y="325" width="180" height="30" rx="15" fill="#2496ed"/>
+    <text x="830" y="345" fill="#ffffff">--pids-limit 100</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <path d="M740,240 C705,240 700,343 659,343" marker-end="url(#arrow)"/>
+    <path d="M740,290 C710,290 705,383 659,383" marker-end="url(#arrow)"/>
+    <path d="M740,340 C715,340 710,423 659,423" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- behavior -->
+  <g font-size="13">
+    <rect x="400" y="178" width="270" height="96" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="415" y="203" fill="#7f1d1d">메모리 초과 → OOM Kill (137)</text>
+    <text x="415" y="228" fill="#7f1d1d">CPU 초과 → 스로틀링 (느려질 뿐)</text>
+    <text x="415" y="253" fill="#7f1d1d">PID 초과 → fork 실패</text>
+  </g>
+</svg>

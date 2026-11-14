@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OpenStack 서비스의 공통 구조</text>
+
+  <!-- Left panel: inside a service -->
+  <rect x="20" y="56" width="560" height="370" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="300" y="84" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">① 서비스 내부 — 메시지 큐로 RPC (예: Nova)</text>
+
+  <rect x="60" y="104" width="220" height="46" rx="8" fill="#ed1944"/>
+  <text x="170" y="133" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">nova-api (REST)</text>
+
+  <rect x="350" y="104" width="200" height="46" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="450" y="133" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">MariaDB (nova DB)</text>
+
+  <rect x="60" y="194" width="490" height="46" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="305" y="223" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">RabbitMQ — RPC 메시지 큐 (oslo.messaging)</text>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14" text-anchor="middle" font-weight="700">
+    <rect x="60" y="284" width="150" height="46" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="135" y="312" fill="#1e1b4b">nova-scheduler</text>
+    <rect x="230" y="284" width="150" height="46" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="305" y="312" fill="#1e1b4b">nova-conductor</text>
+    <rect x="400" y="284" width="150" height="46" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="475" y="312" fill="#1e1b4b">nova-compute</text>
+    <rect x="400" y="350" width="150" height="36" rx="8" fill="#86efac"/>
+    <text x="475" y="373" fill="#14532d" font-size="13">libvirt → KVM</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="280" y1="127" x2="347" y2="127" marker-end="url(#arrow)"/>
+    <line x1="170" y1="150" x2="170" y2="191" marker-end="url(#arrow)"/>
+    <line x1="135" y1="240" x2="135" y2="281" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+    <line x1="305" y1="240" x2="305" y2="281" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+    <line x1="475" y1="240" x2="475" y2="281" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+    <line x1="475" y1="330" x2="475" y2="347" marker-end="url(#arrow)"/>
+    <path d="M340,284 L340,262 L565,262 L565,127 L553,127" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" fill="#334155">
+    <text x="314" y="145" text-anchor="middle">SQL</text>
+    <text x="180" y="176">RPC cast / call</text>
+    <text x="392" y="257" fill="#64748b">DB 접근</text>
+  </g>
+  <text x="60" y="366" font-size="12" fill="#64748b">※ nova-compute는 DB에 직접 붙지 않고</text>
+  <text x="60" y="384" font-size="12" fill="#64748b">   conductor를 거쳐 읽고 씀 (보안)</text>
+
+  <!-- Right panel: between services -->
+  <rect x="600" y="56" width="340" height="370" rx="12" fill="#fff1f2" stroke="#ed1944"/>
+  <text x="770" y="84" text-anchor="middle" font-size="16" font-weight="700" fill="#9f1239">② 서비스 사이 — REST + 토큰</text>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="630" y="104" width="280" height="46" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="770" y="132" fill="#1e1b4b">nova-compute</text>
+    <rect x="630" y="250" width="280" height="46" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="770" y="278" fill="#78350f">glance-api</text>
+  </g>
+  <rect x="630" y="356" width="280" height="46" rx="8" fill="#ed1944"/>
+  <text x="770" y="384" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Keystone (토큰 검증)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="655" y1="150" x2="655" y2="247" marker-end="url(#arrow)"/>
+    <line x1="655" y1="296" x2="655" y2="353" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" fill="#334155">
+    <text x="668" y="182" font-family="Consolas,'D2Coding',monospace">GET /v2/images/{id}/file</text>
+    <text x="668" y="204" font-family="Consolas,'D2Coding',monospace">X-Auth-Token: gAAAA…</text>
+    <text x="668" y="226" fill="#64748b">이미지 파일 다운로드</text>
+    <text x="668" y="330">이 토큰 유효한가? (캐시)</text>
+  </g>
+</svg>

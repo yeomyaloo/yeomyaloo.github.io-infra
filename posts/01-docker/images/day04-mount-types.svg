@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">세 가지 마운트 방식 — Volume / Bind Mount / tmpfs</text>
+
+  <!-- Container -->
+  <rect x="40" y="62" width="880" height="112" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="60" y="88" font-size="16" font-weight="700" fill="#14532d">컨테이너</text>
+  <text x="140" y="88" font-size="13" fill="#64748b">(컨테이너 레이어는 rm 하면 사라짐)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" text-anchor="middle" fill="#14532d">
+    <rect x="70" y="106" width="240" height="44" rx="8" fill="#86efac"/>
+    <text x="190" y="133">/var/lib/postgresql/data</text>
+    <rect x="360" y="106" width="240" height="44" rx="8" fill="#86efac"/>
+    <text x="480" y="133">/usr/share/nginx/html</text>
+    <rect x="650" y="106" width="240" height="44" rx="8" fill="#86efac"/>
+    <text x="770" y="133">/scratch</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="190" y1="152" x2="190" y2="296" marker-end="url(#arrow)"/>
+    <line x1="480" y1="152" x2="480" y2="296" marker-end="url(#arrow)"/>
+    <line x1="770" y1="152" x2="770" y2="296" marker-end="url(#arrow)"/>
+  </g>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700">
+    <text x="200" y="230" fill="#1d4ed8">type=volume</text>
+    <text x="490" y="230" fill="#92400e">type=bind</text>
+    <text x="780" y="230" fill="#4f46e5">type=tmpfs</text>
+  </g>
+
+  <!-- Host -->
+  <rect x="40" y="256" width="880" height="190" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="60" y="282" font-size="16" font-weight="700" fill="#334155">Docker Host</text>
+
+  <!-- Volume area -->
+  <rect x="70" y="300" width="240" height="126" rx="8" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+  <text x="190" y="328" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">Volume</text>
+  <text x="190" y="352" text-anchor="middle" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">/var/lib/docker/volumes/</text>
+  <text x="190" y="378" text-anchor="middle" font-size="13" fill="#334155">Docker가 관리하는 디스크 영역</text>
+  <text x="190" y="400" text-anchor="middle" font-size="13" fill="#334155">DB · 운영 데이터</text>
+
+  <!-- Bind area -->
+  <rect x="360" y="300" width="240" height="126" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="328" text-anchor="middle" font-size="17" font-weight="700" fill="#78350f">Bind Mount</text>
+  <text x="480" y="352" text-anchor="middle" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">~/docker-lab/site</text>
+  <text x="480" y="378" text-anchor="middle" font-size="13" fill="#334155">호스트의 아무 경로나 그대로</text>
+  <text x="480" y="400" text-anchor="middle" font-size="13" fill="#334155">소스 코드 · 설정 파일</text>
+
+  <!-- tmpfs area -->
+  <rect x="650" y="300" width="240" height="126" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="770" y="328" text-anchor="middle" font-size="17" font-weight="700" fill="#312e81">tmpfs</text>
+  <text x="770" y="352" text-anchor="middle" font-size="12" fill="#312e81" font-family="Consolas,'D2Coding',monospace">RAM</text>
+  <text x="770" y="378" text-anchor="middle" font-size="13" fill="#334155">호스트 메모리, 디스크에 안 남음</text>
+  <text x="770" y="400" text-anchor="middle" font-size="13" fill="#334155">비밀 값 · 임시 캐시</text>
+
+  <!-- Caption -->
+  <g font-size="14" text-anchor="middle">
+    <text x="190" y="476" fill="#16a34a" font-weight="700">컨테이너 삭제 후에도 유지</text>
+    <text x="480" y="476" fill="#16a34a" font-weight="700">컨테이너 삭제 후에도 유지</text>
+    <text x="770" y="476" fill="#dc2626" font-weight="700">컨테이너 중지 시 사라짐</text>
+  </g>
+</svg>

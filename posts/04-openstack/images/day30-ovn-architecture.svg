@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">ML2/OVN 아키텍처 — API에서 OpenFlow까지</text>
+
+  <!-- CLI -->
+  <rect x="40" y="62" width="250" height="50" rx="25" fill="#e2e8f0"/>
+  <text x="165" y="92" text-anchor="middle" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">openstack network create</text>
+  <line x1="290" y1="87" x2="356" y2="87" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Control plane -->
+  <rect x="340" y="50" width="280" height="320" rx="12" fill="#fff1f2" stroke="#ed1944" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <rect x="360" y="62" width="240" height="50" rx="8" fill="#ed1944"/>
+  <text x="480" y="84" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">neutron-server</text>
+  <text x="480" y="103" text-anchor="middle" font-size="12" fill="#ffffff">ML2 / OVN 메커니즘 드라이버</text>
+
+  <rect x="360" y="140" width="240" height="52" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="480" y="162" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">OVN Northbound DB</text>
+  <text x="480" y="182" text-anchor="middle" font-size="12" fill="#4f46e5">논리 스위치 · 라우터 · ACL · NAT</text>
+
+  <rect x="360" y="220" width="240" height="42" rx="8" fill="#c7d2fe"/>
+  <text x="480" y="246" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">ovn-northd (번역기)</text>
+
+  <rect x="360" y="290" width="240" height="52" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="480" y="312" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">OVN Southbound DB</text>
+  <text x="480" y="332" text-anchor="middle" font-size="12" fill="#4f46e5">논리 플로우 · Chassis · 포트 바인딩</text>
+
+  <g stroke="#334155" stroke-width="2">
+    <line x1="480" y1="112" x2="480" y2="137" marker-end="url(#arrow)"/>
+    <line x1="480" y1="192" x2="480" y2="217" marker-end="url(#arrow)"/>
+    <line x1="480" y1="262" x2="480" y2="287" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Left notes -->
+  <text x="40" y="160" font-size="14" font-weight="700" fill="#334155">컨트롤 플레인</text>
+  <text x="40" y="182" font-size="13" fill="#64748b">"원하는 상태"를 저장하고</text>
+  <text x="40" y="202" font-size="13" fill="#64748b">논리 플로우로 번역</text>
+  <text x="40" y="232" font-size="13" fill="#64748b">DevStack 올인원에서는</text>
+  <text x="40" y="252" font-size="13" fill="#64748b">모두 같은 노드에서 실행</text>
+
+  <!-- Right notes: mapping -->
+  <rect x="650" y="62" width="280" height="250" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="790" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Neutron → OVN 대응</text>
+  <g font-size="13" fill="#334155">
+    <text x="668" y="118">Network</text><text x="780" y="118">→ 논리 스위치</text>
+    <text x="668" y="146">Router</text><text x="780" y="146">→ 논리 라우터</text>
+    <text x="668" y="174">Port</text><text x="780" y="174">→ 논리 포트</text>
+    <text x="668" y="202">Security Group</text><text x="780" y="202">→ ACL</text>
+    <text x="668" y="230">Floating IP</text><text x="780" y="230">→ NAT 엔트리</text>
+    <text x="668" y="258">DHCP</text><text x="780" y="258">→ OVN 내장</text>
+  </g>
+  <text x="790" y="292" text-anchor="middle" font-size="12" fill="#64748b">L3 / DHCP 에이전트가 필요 없음</text>
+
+  <!-- arrows SB to chassis -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="420" y1="342" x2="160" y2="428" marker-end="url(#arrow)"/>
+    <line x1="540" y1="342" x2="640" y2="428" marker-end="url(#arrow)"/>
+  </g>
+  <text x="200" y="372" font-size="12" fill="#334155" font-weight="700">구독(OVSDB)</text>
+  <text x="630" y="372" font-size="12" fill="#334155" font-weight="700">구독(OVSDB)</text>
+
+  <!-- Chassis 1 -->
+  <rect x="30" y="398" width="420" height="160" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="50" y="420" font-size="14" font-weight="700" fill="#1e3a8a">Compute 1 (Chassis)</text>
+  <rect x="50" y="430" width="180" height="40" rx="8" fill="#2496ed"/>
+  <text x="140" y="455" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">ovn-controller</text>
+  <rect x="255" y="430" width="80" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="295" y="455" text-anchor="middle" font-size="14" fill="#14532d">vm1</text>
+  <rect x="350" y="430" width="80" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="390" y="455" text-anchor="middle" font-size="14" fill="#14532d">vm2</text>
+  <rect x="50" y="500" width="380" height="40" rx="8" fill="#93c5fd"/>
+  <text x="240" y="525" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">br-int (OVS 통합 브리지)</text>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="140" y1="470" x2="140" y2="497" marker-end="url(#arrow)"/>
+    <line x1="295" y1="470" x2="295" y2="500"/>
+    <line x1="390" y1="470" x2="390" y2="500"/>
+  </g>
+  <text x="148" y="490" font-size="11" fill="#334155">OpenFlow</text>
+  <text x="303" y="490" font-size="11" fill="#334155">tap</text>
+
+  <!-- Chassis 2 -->
+  <rect x="510" y="398" width="420" height="160" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="530" y="420" font-size="14" font-weight="700" fill="#1e3a8a">Compute 2 / Gateway (Chassis)</text>
+  <rect x="530" y="430" width="180" height="40" rx="8" fill="#2496ed"/>
+  <text x="620" y="455" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">ovn-controller</text>
+  <rect x="735" y="430" width="80" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="775" y="455" text-anchor="middle" font-size="14" fill="#14532d">vm3</text>
+  <rect x="530" y="500" width="270" height="40" rx="8" fill="#93c5fd"/>
+  <text x="665" y="525" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">br-int</text>
+  <rect x="830" y="500" width="80" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="870" y="525" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">br-ex</text>
+  <line x1="800" y1="520" x2="830" y2="520" stroke="#334155" stroke-width="2"/>
+  <text x="870" y="452" text-anchor="middle" font-size="11" fill="#78350f">외부망 ↑</text>
+  <line x1="870" y1="500" x2="870" y2="462" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)"/>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="620" y1="470" x2="620" y2="497" marker-end="url(#arrow)"/>
+    <line x1="775" y1="470" x2="775" y2="500"/>
+  </g>
+  <text x="628" y="490" font-size="11" fill="#334155">OpenFlow</text>
+
+  <!-- Geneve tunnel -->
+  <line x1="430" y1="520" x2="530" y2="520" stroke="#16a34a" stroke-width="4" stroke-dasharray="8 4"/>
+  <text x="480" y="512" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">Geneve</text>
+  <text x="480" y="540" text-anchor="middle" font-size="11" fill="#15803d">UDP 6081</text>
+</svg>

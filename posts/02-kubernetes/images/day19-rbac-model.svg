@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 545" width="960" height="545" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="545" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RBAC — Subject · Binding · Role</text>
+
+  <!-- Column headers -->
+  <g font-size="15" font-weight="700" text-anchor="middle" fill="#334155">
+    <text x="145" y="66">Subject (누구에게)</text>
+    <text x="470" y="66">Binding (연결)</text>
+    <text x="805" y="66">Role / ClusterRole (무엇을)</text>
+  </g>
+
+  <!-- Row 1: namespace team-a -->
+  <rect x="20" y="82" width="920" height="130" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="34" y="102" font-size="13" font-weight="700" fill="#1e3a8a">namespace: team-a  —  Role + RoleBinding → team-a 안에서만 유효</text>
+
+  <rect x="45" y="115" width="200" height="80" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="145" y="148" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">ServiceAccount</text>
+  <text x="145" y="173" text-anchor="middle" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">dev-sa</text>
+
+  <rect x="370" y="115" width="200" height="80" rx="8" fill="#e2e8f0" stroke="#334155"/>
+  <text x="470" y="148" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">RoleBinding</text>
+  <text x="470" y="173" text-anchor="middle" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">developer-binding</text>
+
+  <rect x="695" y="115" width="220" height="80" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="805" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">Role</text>
+  <text x="805" y="162" text-anchor="middle" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">developer</text>
+  <text x="805" y="184" text-anchor="middle" font-size="12" fill="#14532d">pods · deployments 읽기/쓰기</text>
+
+  <!-- Row 2: namespace team-b (binding only) -->
+  <rect x="340" y="230" width="260" height="130" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="354" y="250" font-size="13" font-weight="700" fill="#1e3a8a">namespace: team-b</text>
+
+  <rect x="45" y="265" width="200" height="80" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="145" y="298" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">ServiceAccount</text>
+  <text x="145" y="323" text-anchor="middle" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">dev-sa (team-a)</text>
+
+  <rect x="370" y="265" width="200" height="80" rx="8" fill="#e2e8f0" stroke="#334155"/>
+  <text x="470" y="298" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">RoleBinding</text>
+  <text x="470" y="323" text-anchor="middle" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">team-a-viewer</text>
+
+  <rect x="695" y="265" width="220" height="80" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="805" y="290" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">ClusterRole</text>
+  <text x="805" y="312" text-anchor="middle" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">view</text>
+  <text x="805" y="334" text-anchor="middle" font-size="12" fill="#78350f">클러스터 범위 권한 템플릿</text>
+
+  <text x="480" y="384" text-anchor="middle" font-size="13" fill="#334155">ClusterRole을 RoleBinding으로 묶으면 → 그 네임스페이스(team-b)에서만 읽기 권한</text>
+
+  <!-- Row 3: cluster-wide -->
+  <rect x="20" y="400" width="920" height="130" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="34" y="420" font-size="13" font-weight="700" fill="#334155">클러스터 전체  —  ClusterRole + ClusterRoleBinding → 모든 네임스페이스 + Node·PV 등</text>
+
+  <rect x="45" y="435" width="200" height="80" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="145" y="468" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">Group</text>
+  <text x="145" y="493" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">kubeadm:cluster-admins</text>
+
+  <rect x="370" y="435" width="200" height="80" rx="8" fill="#e2e8f0" stroke="#334155"/>
+  <text x="470" y="468" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">ClusterRoleBinding</text>
+  <text x="470" y="493" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">kubeadm:cluster-admins</text>
+
+  <rect x="695" y="435" width="220" height="80" rx="8" fill="#fca5a5" stroke="#dc2626"/>
+  <text x="805" y="460" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">ClusterRole</text>
+  <text x="805" y="482" text-anchor="middle" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">cluster-admin</text>
+  <text x="805" y="504" text-anchor="middle" font-size="12" fill="#7f1d1d">모든 리소스 · 모든 동사</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="245" y1="155" x2="367" y2="155" marker-end="url(#arrow)"/>
+    <line x1="570" y1="155" x2="692" y2="155" marker-end="url(#arrow)"/>
+    <line x1="245" y1="305" x2="367" y2="305" marker-end="url(#arrow)"/>
+    <line x1="570" y1="305" x2="692" y2="305" marker-end="url(#arrow)"/>
+    <line x1="245" y1="475" x2="367" y2="475" marker-end="url(#arrow)"/>
+    <line x1="570" y1="475" x2="692" y2="475" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" fill="#64748b" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <text x="306" y="146">subjects</text>
+    <text x="631" y="146">roleRef</text>
+    <text x="306" y="296">subjects</text>
+    <text x="631" y="296">roleRef</text>
+    <text x="306" y="466">subjects</text>
+    <text x="631" y="466">roleRef</text>
+  </g>
+</svg>

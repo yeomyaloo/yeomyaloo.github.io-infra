@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Keystone 개념 모델 — 누가 · 어디서 · 무엇으로</text>
+
+  <!-- Domain -->
+  <rect x="20" y="56" width="620" height="404" rx="12" fill="#fff1f2" stroke="#ed1944" stroke-width="2"/>
+  <text x="40" y="82" font-size="16" font-weight="700" fill="#9f1239">Domain: Default</text>
+
+  <!-- Users -->
+  <g text-anchor="middle" font-size="14" font-weight="700">
+    <rect x="50" y="100" width="170" height="44" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="135" y="127" fill="#1e1b4b">alice (User)</text>
+
+    <rect x="40" y="176" width="200" height="118" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-dasharray="5 4"/>
+    <text x="140" y="198" fill="#4f46e5" font-size="13">dev-readers (Group)</text>
+    <rect x="60" y="212" width="160" height="40" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="140" y="237" fill="#1e1b4b">bob (User)</text>
+    <text x="140" y="280" fill="#64748b" font-size="11" font-weight="400">구성원이 늘면 자동으로 같은 권한</text>
+
+    <rect x="50" y="330" width="170" height="44" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="135" y="357" fill="#0f172a">admin (User)</text>
+  </g>
+
+  <!-- Projects -->
+  <g text-anchor="middle" font-size="14" font-weight="700">
+    <rect x="430" y="100" width="190" height="44" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="525" y="127" fill="#78350f">ops-team (Project)</text>
+    <rect x="430" y="210" width="190" height="44" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="525" y="237" fill="#78350f">dev-team (Project)</text>
+    <rect x="430" y="330" width="190" height="44" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="525" y="357" fill="#0f172a">admin (Project)</text>
+  </g>
+
+  <!-- Role assignments -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="122" x2="427" y2="122" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+    <line x1="220" y1="138" x2="427" y2="222" marker-end="url(#arrow)"/>
+    <line x1="240" y1="238" x2="427" y2="238" marker-end="url(#arrow)"/>
+    <line x1="220" y1="352" x2="427" y2="352" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="13" font-weight="700" text-anchor="middle">
+    <rect x="282" y="104" width="96" height="22" rx="4" fill="#ffffff"/>
+    <text x="330" y="120" fill="#16a34a">reader (예시)</text>
+    <rect x="290" y="158" width="70" height="22" rx="4" fill="#ffffff"/>
+    <text x="325" y="174" fill="#4f46e5">member</text>
+    <rect x="300" y="244" width="66" height="22" rx="4" fill="#ffffff"/>
+    <text x="333" y="260" fill="#16a34a">reader</text>
+    <rect x="296" y="334" width="62" height="22" rx="4" fill="#ffffff"/>
+    <text x="327" y="349" fill="#dc2626">admin</text>
+  </g>
+  <text x="330" y="430" text-anchor="middle" font-size="13" fill="#334155">같은 alice라도 <tspan font-weight="700">프로젝트마다 다른 역할</tspan>을 가질 수 있다</text>
+
+  <!-- Right panel -->
+  <rect x="660" y="56" width="280" height="404" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="800" y="84" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">역할 할당 = 3요소</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="680" y="100" width="240" height="40" rx="8" fill="#c7d2fe"/>
+    <text x="800" y="125" fill="#1e1b4b"><tspan font-weight="700">누가</tspan> — User / Group</text>
+    <rect x="680" y="148" width="240" height="40" rx="8" fill="#fde68a"/>
+    <text x="800" y="173" fill="#78350f"><tspan font-weight="700">어디서</tspan> — Project / Domain</text>
+    <rect x="680" y="196" width="240" height="40" rx="8" fill="#bbf7d0"/>
+    <text x="800" y="221" fill="#14532d"><tspan font-weight="700">무엇으로</tspan> — Role</text>
+  </g>
+
+  <text x="800" y="274" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">기본 역할 (상위가 하위를 포함)</text>
+  <rect x="680" y="288" width="240" height="156" rx="10" fill="#fca5a5" stroke="#dc2626"/>
+  <text x="696" y="310" font-size="14" font-weight="700" fill="#7f1d1d">admin</text>
+  <text x="904" y="310" font-size="11" fill="#7f1d1d" text-anchor="end">클라우드 전체 관리</text>
+  <rect x="696" y="320" width="208" height="112" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="712" y="342" font-size="14" font-weight="700" fill="#1e1b4b">member</text>
+  <text x="890" y="342" font-size="11" fill="#1e1b4b" text-anchor="end">생성 · 수정 · 삭제</text>
+  <rect x="712" y="354" width="176" height="66" rx="8" fill="#bbf7d0" stroke="#16a34a"/>
+  <text x="800" y="382" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">reader</text>
+  <text x="800" y="404" text-anchor="middle" font-size="11" fill="#14532d">조회만 (list / show)</text>
+</svg>

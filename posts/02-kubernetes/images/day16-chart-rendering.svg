@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">템플릿 + values = 매니페스트</text>
+
+  <!-- Template -->
+  <rect x="16" y="60" width="380" height="200" rx="12" fill="#eef2ff" stroke="#4f46e5"/>
+  <text x="30" y="86" font-size="15" font-weight="700" fill="#312e81">templates/configmap.yaml</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#1e1b4b" xml:space="preserve">
+    <text x="30" y="112">apiVersion: v1</text>
+    <text x="30" y="130">kind: ConfigMap</text>
+    <text x="30" y="148">metadata:</text>
+    <text x="30" y="166">  name: <tspan fill="#4f46e5" font-weight="700">{{ include "mychart.fullname" . }}</tspan>-config</text>
+    <text x="30" y="184">data:</text>
+    <text x="30" y="202">  MESSAGE: <tspan fill="#4f46e5" font-weight="700">{{ .Values.greeting.message | quote }}</tspan></text>
+    <text x="30" y="220">  APP_ENV: <tspan fill="#4f46e5" font-weight="700">{{ .Values.greeting.env | upper | quote }}</tspan></text>
+  </g>
+  <text x="30" y="247" font-size="12" fill="#64748b">{{ }} 부분이 값으로 치환될 자리</text>
+
+  <!-- Values -->
+  <rect x="16" y="280" width="380" height="170" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="30" y="306" font-size="15" font-weight="700" fill="#78350f">values (우선순위: 아래가 이김)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f" xml:space="preserve">
+    <text x="30" y="332"># values.yaml (차트 기본값)</text>
+    <text x="30" y="350">greeting:</text>
+    <text x="30" y="368">  message: "Hello from mychart"</text>
+    <text x="30" y="386">  env: dev</text>
+  </g>
+  <rect x="26" y="398" width="360" height="40" rx="8" fill="#fde68a"/>
+  <text x="38" y="423" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#78350f">helm install web ./mychart --set greeting.env=prod</text>
+
+  <!-- Engine -->
+  <rect x="420" y="190" width="120" height="110" rx="12" fill="#326ce5"/>
+  <text x="480" y="232" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">Helm</text>
+  <text x="480" y="256" text-anchor="middle" font-size="14" fill="#ffffff">템플릿 엔진</text>
+  <text x="480" y="278" text-anchor="middle" font-size="12" fill="#dbeafe">(Go template)</text>
+
+  <!-- Rendered -->
+  <rect x="564" y="60" width="380" height="240" rx="12" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="578" y="86" font-size="15" font-weight="700" fill="#14532d">렌더링 결과 (평범한 YAML)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d" xml:space="preserve">
+    <text x="578" y="116">apiVersion: v1</text>
+    <text x="578" y="136">kind: ConfigMap</text>
+    <text x="578" y="156">metadata:</text>
+    <text x="578" y="176">  name: <tspan font-weight="700" fill="#16a34a">web-mychart-config</tspan></text>
+    <text x="578" y="196">data:</text>
+    <text x="578" y="216">  MESSAGE: <tspan font-weight="700" fill="#16a34a">"Hello from mychart"</tspan></text>
+    <text x="578" y="236">  APP_ENV: <tspan font-weight="700" fill="#16a34a">"PROD"</tspan></text>
+  </g>
+  <text x="578" y="276" font-size="12" fill="#64748b">env는 --set으로 prod, upper 함수로 대문자 변환</text>
+
+  <!-- Next step -->
+  <rect x="564" y="330" width="380" height="120" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <g font-size="13" fill="#334155">
+    <text x="578" y="358"><tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">helm template</tspan> → 여기서 멈춤 (출력만)</text>
+    <text x="578" y="388"><tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">helm install/upgrade</tspan> → 적용 + Release 기록</text>
+    <text x="578" y="420" fill="#64748b" font-size="12">렌더링은 항상 helm CLI(내 PC)에서 일어난다</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <polyline points="396,160 408,160 408,220 416,220" marker-end="url(#arrow)"/>
+    <polyline points="396,365 408,365 408,270 416,270" marker-end="url(#arrow)"/>
+    <line x1="540" y1="245" x2="560" y2="245" marker-end="url(#arrow)"/>
+    <line x1="754" y1="300" x2="754" y2="326" marker-end="url(#arrow)"/>
+  </g>
+</svg>

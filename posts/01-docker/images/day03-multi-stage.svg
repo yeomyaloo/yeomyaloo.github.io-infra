@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">멀티 스테이지 빌드</text>
+
+  <!-- Stage 1: builder -->
+  <rect x="40" y="64" width="370" height="316" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="8,5"/>
+  <text x="225" y="94" text-anchor="middle" font-size="17" font-weight="700" fill="#334155">Stage 1 · builder</text>
+  <text x="225" y="116" text-anchor="middle" font-size="13" fill="#64748b" font-family="Consolas,'D2Coding',monospace">FROM golang:1.24-alpine AS builder</text>
+  <g font-size="14" text-anchor="middle">
+    <rect x="65" y="134" width="320" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="225" y="157" fill="#334155">Go 컴파일러 · 빌드 도구</text>
+    <rect x="65" y="180" width="320" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="225" y="203" fill="#334155">소스 코드 (main.go, go.mod)</text>
+    <rect x="65" y="226" width="320" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="225" y="249" fill="#334155">모듈 · 빌드 캐시, 중간 산출물</text>
+    <rect x="65" y="278" width="320" height="38" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+    <text x="225" y="302" fill="#14532d" font-weight="700">/out/server (정적 바이너리)</text>
+  </g>
+  <text x="225" y="346" text-anchor="middle" font-size="14" fill="#64748b">이미지 크기 약 300MB</text>
+  <text x="225" y="368" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">최종 이미지에 포함되지 않음</text>
+
+  <!-- Stage 2: final -->
+  <rect x="560" y="64" width="360" height="316" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="740" y="94" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">Stage 2 · 최종 이미지</text>
+  <g font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace" text-anchor="middle">
+    <text x="740" y="116">FROM gcr.io/distroless/</text>
+    <text x="740" y="132">static-debian12:nonroot</text>
+  </g>
+  <g font-size="14" text-anchor="middle">
+    <rect x="580" y="150" width="320" height="36" rx="6" fill="#dbeafe"/>
+    <text x="740" y="173" fill="#1e3a8a">최소 런타임 파일 (CA 인증서 등)</text>
+    <text x="740" y="230" fill="#64748b" font-size="13">셸 · 패키지 매니저 · 컴파일러 없음</text>
+    <rect x="580" y="278" width="320" height="38" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+    <text x="740" y="302" fill="#14532d" font-weight="700">/server</text>
+  </g>
+  <text x="740" y="352" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">이미지 크기 약 9MB</text>
+
+  <!-- Arrow -->
+  <line x1="388" y1="297" x2="576" y2="297" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="485" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d" font-family="Consolas,'D2Coding',monospace">COPY --from=builder</text>
+  <text x="485" y="320" text-anchor="middle" font-size="13" fill="#14532d">결과물만 복사</text>
+
+  <!-- Caption -->
+  <g font-size="14" fill="#334155" text-anchor="middle">
+    <text x="480" y="420">최종 이미지에는 마지막 FROM 스테이지의 레이어만 남는다</text>
+    <text x="480" y="446">컴파일러 · 소스 · 캐시는 builder에 두고 버린다 → 작고, 공격 표면이 좁은 이미지</text>
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Swift 아키텍처 — Proxy · Ring · 복제</text>
+
+  <!-- Data model -->
+  <rect x="30" y="60" width="250" height="230" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="155" y="84" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">데이터 모델 (3단계)</text>
+  <rect x="45" y="98" width="220" height="178" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="58" y="118" font-size="13" font-weight="700" fill="#78350f">Account</text>
+  <text x="58" y="136" font-size="11" fill="#92400e" font-family="Consolas,'D2Coding',monospace">AUTH_&lt;project_id&gt;</text>
+  <rect x="60" y="148" width="190" height="116" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="72" y="168" font-size="13" font-weight="700" fill="#78350f">Container</text>
+  <text x="72" y="186" font-size="11" fill="#92400e" font-family="Consolas,'D2Coding',monospace">photos</text>
+  <rect x="75" y="198" width="160" height="26" rx="6" fill="#ffffff"/>
+  <text x="85" y="216" font-size="12" fill="#78350f">Object <tspan font-family="Consolas,'D2Coding',monospace">cat.jpg</tspan></text>
+  <rect x="75" y="230" width="160" height="26" rx="6" fill="#ffffff"/>
+  <text x="85" y="248" font-size="12" fill="#78350f">Object <tspan font-family="Consolas,'D2Coding',monospace">2026/a.png</tspan></text>
+
+  <!-- Client -->
+  <rect x="30" y="320" width="250" height="44" rx="22" fill="#e2e8f0"/>
+  <text x="155" y="347" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">PUT /v1/AUTH_…/photos/cat.jpg</text>
+  <line x1="280" y1="336" x2="333" y2="262" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="318" y="320" font-size="12" font-weight="700" fill="#334155">HTTP</text>
+
+  <!-- Proxy -->
+  <rect x="330" y="150" width="200" height="110" rx="10" fill="#f59e0b"/>
+  <text x="430" y="182" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">Proxy Server</text>
+  <text x="430" y="210" text-anchor="middle" font-size="13" fill="#ffffff">① Keystone 토큰 확인</text>
+  <text x="430" y="234" text-anchor="middle" font-size="13" fill="#ffffff">② Ring으로 위치 계산</text>
+
+  <!-- Ring -->
+  <line x1="430" y1="260" x2="430" y2="300" stroke="#334155" stroke-width="2"/>
+  <circle cx="430" cy="356" r="56" fill="#ffffff" stroke="#ed1944" stroke-width="3" stroke-dasharray="10 5"/>
+  <text x="430" y="350" text-anchor="middle" font-size="16" font-weight="700" fill="#9f1239">Ring</text>
+  <text x="430" y="372" text-anchor="middle" font-size="12" fill="#9f1239">일관 해싱</text>
+  <text x="430" y="438" text-anchor="middle" font-size="12" fill="#64748b">경로 해시 → 파티션 → 디바이스</text>
+
+  <!-- Storage nodes -->
+  <g>
+    <rect x="590" y="62" width="340" height="110" rx="10" fill="#eff6ff" stroke="#2496ed"/>
+    <text x="606" y="84" font-size="14" font-weight="700" fill="#1e3a8a">Storage Node 1 · Zone 1</text>
+    <rect x="605" y="94" width="95" height="28" rx="14" fill="#93c5fd"/><text x="652" y="113" text-anchor="middle" font-size="12" fill="#1e3a8a">account</text>
+    <rect x="710" y="94" width="105" height="28" rx="14" fill="#93c5fd"/><text x="762" y="113" text-anchor="middle" font-size="12" fill="#1e3a8a">container</text>
+    <rect x="825" y="94" width="90" height="28" rx="14" fill="#2496ed"/><text x="870" y="113" text-anchor="middle" font-size="12" fill="#ffffff">object</text>
+    <rect x="605" y="132" width="310" height="28" rx="6" fill="#fde68a"/><text x="760" y="151" text-anchor="middle" font-size="12" fill="#78350f">디스크: cat.jpg 복제본 1</text>
+  </g>
+  <g>
+    <rect x="590" y="187" width="340" height="110" rx="10" fill="#eff6ff" stroke="#2496ed"/>
+    <text x="606" y="209" font-size="14" font-weight="700" fill="#1e3a8a">Storage Node 2 · Zone 2</text>
+    <rect x="605" y="219" width="95" height="28" rx="14" fill="#93c5fd"/><text x="652" y="238" text-anchor="middle" font-size="12" fill="#1e3a8a">account</text>
+    <rect x="710" y="219" width="105" height="28" rx="14" fill="#93c5fd"/><text x="762" y="238" text-anchor="middle" font-size="12" fill="#1e3a8a">container</text>
+    <rect x="825" y="219" width="90" height="28" rx="14" fill="#2496ed"/><text x="870" y="238" text-anchor="middle" font-size="12" fill="#ffffff">object</text>
+    <rect x="605" y="257" width="310" height="28" rx="6" fill="#fde68a"/><text x="760" y="276" text-anchor="middle" font-size="12" fill="#78350f">디스크: cat.jpg 복제본 2</text>
+  </g>
+  <g>
+    <rect x="590" y="312" width="340" height="110" rx="10" fill="#eff6ff" stroke="#2496ed"/>
+    <text x="606" y="334" font-size="14" font-weight="700" fill="#1e3a8a">Storage Node 3 · Zone 3</text>
+    <rect x="605" y="344" width="95" height="28" rx="14" fill="#93c5fd"/><text x="652" y="363" text-anchor="middle" font-size="12" fill="#1e3a8a">account</text>
+    <rect x="710" y="344" width="105" height="28" rx="14" fill="#93c5fd"/><text x="762" y="363" text-anchor="middle" font-size="12" fill="#1e3a8a">container</text>
+    <rect x="825" y="344" width="90" height="28" rx="14" fill="#2496ed"/><text x="870" y="363" text-anchor="middle" font-size="12" fill="#ffffff">object</text>
+    <rect x="605" y="382" width="310" height="28" rx="6" fill="#fde68a"/><text x="760" y="401" text-anchor="middle" font-size="12" fill="#78350f">디스크: cat.jpg 복제본 3</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="530" y1="190" x2="587" y2="120" marker-end="url(#arrow)"/>
+    <line x1="530" y1="205" x2="587" y2="242" marker-end="url(#arrow)"/>
+    <line x1="530" y1="220" x2="587" y2="365" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="480" y="466" text-anchor="middle" font-size="13" fill="#334155">복제본은 서로 다른 Zone(랙 · 전원 · 데이터센터)에 분산 → Replicator가 개수 유지 · 최종 일관성</text>
+</svg>

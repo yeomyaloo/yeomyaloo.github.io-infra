@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="330" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">이미지 이름의 구조</text>
+
+  <!-- Segments -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="22" text-anchor="middle">
+    <rect x="50" y="70" width="160" height="52" rx="8" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+    <text x="130" y="104" fill="#1e3a8a">docker.io</text>
+    <text x="225" y="104" fill="#334155">/</text>
+    <rect x="240" y="70" width="130" height="52" rx="8" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+    <text x="305" y="104" fill="#312e81">library</text>
+    <text x="385" y="104" fill="#334155">/</text>
+    <rect x="400" y="70" width="110" height="52" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="455" y="104" fill="#14532d">nginx</text>
+    <text x="525" y="104" fill="#334155">:</text>
+    <rect x="540" y="70" width="90" height="52" rx="8" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="585" y="104" fill="#78350f">1.27</text>
+    <text x="645" y="104" fill="#334155">@</text>
+    <rect x="660" y="70" width="250" height="52" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+    <text x="785" y="104" fill="#7f1d1d">sha256:6784fb08…</text>
+  </g>
+
+  <!-- Labels -->
+  <g text-anchor="middle">
+    <g font-size="15" font-weight="700">
+      <text x="130" y="152" fill="#1e3a8a">레지스트리</text>
+      <text x="305" y="152" fill="#312e81">네임스페이스</text>
+      <text x="455" y="152" fill="#14532d">저장소</text>
+      <text x="585" y="152" fill="#78350f">태그</text>
+      <text x="785" y="152" fill="#7f1d1d">다이제스트</text>
+    </g>
+    <g font-size="12" fill="#64748b">
+      <text x="130" y="174">생략 시 docker.io</text>
+      <text x="305" y="174">공식 이미지는 library</text>
+      <text x="455" y="174">이미지 이름</text>
+      <text x="585" y="174">생략 시 latest</text>
+      <text x="785" y="174">내용의 해시 · 바뀌지 않음</text>
+      <text x="585" y="194">바뀔 수 있음</text>
+    </g>
+  </g>
+
+  <!-- Examples -->
+  <rect x="50" y="216" width="860" height="94" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="15" fill="#334155">
+    <text x="80" y="246">nginx</text>
+    <text x="400" y="246" fill="#64748b">→</text>
+    <text x="440" y="246">docker.io/library/nginx:latest</text>
+    <text x="80" y="272">bitnami/redis:7.4</text>
+    <text x="400" y="272" fill="#64748b">→</text>
+    <text x="440" y="272">docker.io/bitnami/redis:7.4</text>
+    <text x="80" y="298">localhost:5000/my-nginx:1.0</text>
+    <text x="400" y="298" fill="#64748b">→</text>
+    <text x="440" y="298">내 PC 레지스트리의 my-nginx, 태그 1.0</text>
+  </g>
+</svg>

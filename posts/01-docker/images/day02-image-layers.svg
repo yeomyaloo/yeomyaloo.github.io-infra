@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">이미지 레이어와 컨테이너 쓰기 계층</text>
+
+  <!-- Containers -->
+  <rect x="250" y="70" width="220" height="100" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="360" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">컨테이너 web-1</text>
+  <rect x="265" y="114" width="190" height="40" rx="6" fill="#86efac"/>
+  <text x="360" y="139" text-anchor="middle" font-size="14" fill="#14532d">쓰기 계층 (R/W)</text>
+
+  <rect x="490" y="70" width="220" height="100" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="600" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">컨테이너 web-2</text>
+  <rect x="505" y="114" width="190" height="40" rx="6" fill="#86efac"/>
+  <text x="600" y="139" text-anchor="middle" font-size="14" fill="#14532d">쓰기 계층 (R/W)</text>
+
+  <!-- Arrows: containers sit on the same image -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="360" y1="206" x2="360" y2="174" marker-end="url(#arrow)"/>
+    <line x1="600" y1="206" x2="600" y2="174" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Image -->
+  <rect x="250" y="210" width="460" height="200" rx="10" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="236" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">이미지 nginx:latest (읽기 전용)</text>
+  <g font-size="14" text-anchor="middle" fill="#78350f">
+    <rect x="270" y="250" width="420" height="42" rx="6" fill="#fde68a"/>
+    <text x="480" y="276">Layer 3 · COPY 엔트리포인트 스크립트 (수 KB)</text>
+    <rect x="270" y="300" width="420" height="42" rx="6" fill="#fde68a"/>
+    <text x="480" y="326">Layer 2 · RUN nginx 설치 (117MB)</text>
+    <rect x="270" y="350" width="420" height="42" rx="6" fill="#fcd34d"/>
+    <text x="480" y="376">Layer 1 · Debian 베이스 (78MB)</text>
+  </g>
+
+  <!-- Right annotations -->
+  <g stroke="#16a34a" stroke-width="2" fill="none">
+    <path d="M725,72 L735,72 L735,168 L725,168"/>
+  </g>
+  <g font-size="13" fill="#166534">
+    <text x="748" y="104" font-weight="700" font-size="14">쓰기 가능</text>
+    <text x="748" y="126">컨테이너마다 1개씩</text>
+    <text x="748" y="148">docker rm 하면 삭제</text>
+  </g>
+  <g stroke="#f59e0b" stroke-width="2" fill="none">
+    <path d="M725,212 L735,212 L735,408 L725,408"/>
+  </g>
+  <g font-size="13" fill="#92400e">
+    <text x="748" y="288" font-weight="700" font-size="14">읽기 전용</text>
+    <text x="748" y="310">모든 컨테이너가 공유</text>
+    <text x="748" y="332">디스크에 한 번만 저장</text>
+  </g>
+
+  <!-- Left annotation -->
+  <g font-size="13" fill="#334155" text-anchor="end">
+    <text x="232" y="104" font-weight="700" font-size="14">docker run</text>
+    <text x="232" y="126">= 이미지 위에</text>
+    <text x="232" y="148">얇은 계층 하나 추가</text>
+    <text x="232" y="300" font-weight="700" font-size="14">docker pull</text>
+    <text x="232" y="322">= 레이어 단위로</text>
+    <text x="232" y="344">내려받기</text>
+  </g>
+
+  <text x="480" y="448" text-anchor="middle" font-size="14" fill="#334155">컨테이너가 보는 / = 자기 쓰기 계층 + 공유 이미지 레이어를 겹쳐서 본 것 (Union FS)</text>
+</svg>

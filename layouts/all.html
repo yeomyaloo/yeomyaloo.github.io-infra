@@ -1,7 +1,8 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{- range site.RegularPages.GroupByDate "2006" }}
-<h2 class="year">{{ .Key }}</h2>
-{{ partial "post-list.html" .Pages }}
+<p class="muted">글 {{ len site.RegularPages }}편</p>
+{{- range site.Home.Sections.ByWeight }}
+<h2 class="year"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+{{ partial "post-list.html" .RegularPages.ByWeight }}
 {{- end }}
 {{ end }}

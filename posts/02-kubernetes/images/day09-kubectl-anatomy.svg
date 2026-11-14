@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 270" width="960" height="270" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="270" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kubectl 명령 구조</text>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-size="20" font-weight="700" text-anchor="middle">
+    <rect x="152" y="70" width="108" height="50" rx="8" fill="#e2e8f0"/><text x="206" y="102" fill="#0f172a">kubectl</text>
+    <rect x="276" y="70" width="60" height="50" rx="8" fill="#326ce5"/><text x="306" y="102" fill="#ffffff">get</text>
+    <rect x="352" y="70" width="72" height="50" rx="8" fill="#c7d2fe"/><text x="388" y="102" fill="#312e81">pods</text>
+    <rect x="440" y="70" width="84" height="50" rx="8" fill="#86efac"/><text x="482" y="102" fill="#14532d">nginx</text>
+    <rect x="540" y="70" width="144" height="50" rx="8" fill="#fde68a"/><text x="612" y="102" fill="#78350f">-n default</text>
+    <rect x="700" y="70" width="108" height="50" rx="8" fill="#fde68a"/><text x="754" y="102" fill="#78350f">-o wide</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.5">
+    <line x1="206" y1="120" x2="206" y2="145"/>
+    <line x1="306" y1="120" x2="306" y2="145"/>
+    <line x1="388" y1="120" x2="388" y2="145"/>
+    <line x1="482" y1="120" x2="482" y2="145"/>
+    <line x1="612" y1="120" x2="612" y2="145"/>
+    <line x1="754" y1="120" x2="754" y2="145"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="206" y="166" font-size="13" font-weight="700" fill="#0f172a">CLI</text>
+    <text x="206" y="186" font-size="12" fill="#64748b">kubeconfig 사용</text>
+
+    <text x="306" y="166" font-size="13" font-weight="700" fill="#1e3a8a">동사</text>
+    <text x="306" y="186" font-size="12" fill="#64748b">무엇을 할지</text>
+
+    <text x="388" y="166" font-size="13" font-weight="700" fill="#312e81">리소스 종류</text>
+    <text x="388" y="186" font-size="12" fill="#64748b">약어: po</text>
+
+    <text x="482" y="166" font-size="13" font-weight="700" fill="#14532d">이름</text>
+    <text x="482" y="186" font-size="12" fill="#64748b">생략 시 전체</text>
+
+    <text x="612" y="166" font-size="13" font-weight="700" fill="#78350f">namespace</text>
+    <text x="612" y="186" font-size="12" fill="#64748b">-A: 모든 ns</text>
+
+    <text x="754" y="166" font-size="13" font-weight="700" fill="#78350f">출력 형식</text>
+    <text x="754" y="186" font-size="12" fill="#64748b">yaml · json · wide</text>
+  </g>
+
+  <rect x="230" y="212" width="500" height="38" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="480" y="237" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" fill="#334155">kubectl &lt;동사&gt; &lt;리소스 종류&gt; [이름] [플래그]</text>
+</svg>

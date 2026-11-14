@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">세 가지 Probe — 언제 검사하고, 실패하면 무엇을 하나</text>
+
+  <line x1="300" y1="64" x2="300" y2="320" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- startup -->
+  <rect x="60" y="80" width="236" height="56" rx="10" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="178" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">startupProbe</text>
+  <text x="178" y="125" text-anchor="middle" font-size="12" fill="#3730a3">초기화가 끝났나?</text>
+  <text x="178" y="160" text-anchor="middle" font-size="12" fill="#334155">성공 전까지 다른 probe 보류</text>
+  <text x="178" y="178" text-anchor="middle" font-size="12" fill="#b91c1c">끝내 실패 → 컨테이너 재시작</text>
+
+  <!-- liveness -->
+  <rect x="304" y="150" width="416" height="56" rx="10" fill="#86efac" stroke="#16a34a"/>
+  <text x="512" y="174" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">livenessProbe</text>
+  <text x="512" y="195" text-anchor="middle" font-size="12" fill="#166534">살아 있나? (먹통·데드락은 아닌가) — 주기적으로 계속</text>
+
+  <!-- readiness -->
+  <rect x="304" y="230" width="416" height="56" rx="10" fill="#dbeafe" stroke="#326ce5"/>
+  <text x="512" y="254" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">readinessProbe</text>
+  <text x="512" y="275" text-anchor="middle" font-size="12" fill="#1e40af">트래픽 받을 준비가 됐나? — 주기적으로 계속</text>
+
+  <!-- outcomes -->
+  <rect x="750" y="150" width="190" height="56" rx="10" fill="#fca5a5" stroke="#dc2626"/>
+  <text x="845" y="174" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">실패 → 재시작</text>
+  <text x="845" y="195" text-anchor="middle" font-size="12" fill="#991b1b">(RESTARTS +1)</text>
+
+  <rect x="750" y="230" width="190" height="56" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="845" y="254" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">실패 → 트래픽 제외</text>
+  <text x="845" y="275" text-anchor="middle" font-size="12" fill="#92400e">(READY 0/1, 재시작 없음)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="720" y1="178" x2="747" y2="178" marker-end="url(#arrow)"/>
+    <line x1="720" y1="258" x2="747" y2="258" marker-end="url(#arrow)"/>
+    <line x1="60" y1="320" x2="900" y2="320" marker-end="url(#arrow)"/>
+  </g>
+
+  <g font-size="12" fill="#334155" text-anchor="middle">
+    <circle cx="60" cy="320" r="5" fill="#334155"/>
+    <text x="60" y="342">컨테이너 시작</text>
+    <circle cx="300" cy="320" r="5" fill="#334155"/>
+    <text x="300" y="342">startup 성공</text>
+    <text x="900" y="342">시간</text>
+  </g>
+
+  <text x="480" y="380" text-anchor="middle" font-size="13" fill="#334155">검사 방식: httpGet (200~399) · tcpSocket · exec (exit 0) · grpc</text>
+</svg>

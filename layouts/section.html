@@ -1,7 +1,7 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
-{{ with .RegularPages.ByDate }}
+{{ with .RegularPages.ByWeight }}
   {{ partial "post-list.html" . }}
 {{ else }}
   <p class="muted">아직 글이 없습니다.</p>

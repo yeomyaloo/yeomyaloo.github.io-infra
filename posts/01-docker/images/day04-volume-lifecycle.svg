@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">볼륨의 수명 — 컨테이너는 바뀌어도 데이터는 유지</text>
+
+  <!-- Stage headers -->
+  <g font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">
+    <text x="170" y="74">① 실행</text>
+    <text x="480" y="74">② 컨테이너 삭제</text>
+    <text x="790" y="74">③ 새 컨테이너 연결</text>
+  </g>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#64748b" text-anchor="middle">
+    <text x="170" y="96">docker run --name pg</text>
+    <text x="480" y="96">docker rm -f pg</text>
+    <text x="790" y="96">docker run --name pg2</text>
+  </g>
+
+  <!-- Stage 1 container -->
+  <rect x="60" y="112" width="220" height="74" rx="10" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+  <text x="170" y="144" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">pg (postgres:16)</text>
+  <text x="170" y="166" text-anchor="middle" font-size="12" fill="#14532d">memo 테이블에 INSERT</text>
+
+  <!-- Stage 2 container (removed) -->
+  <rect x="370" y="112" width="220" height="74" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2" stroke-dasharray="7,5"/>
+  <text x="480" y="144" text-anchor="middle" font-size="15" font-weight="700" fill="#dc2626">pg 삭제됨</text>
+  <text x="480" y="166" text-anchor="middle" font-size="12" fill="#dc2626">컨테이너 레이어도 함께 삭제</text>
+
+  <!-- Stage 3 container -->
+  <rect x="680" y="112" width="220" height="74" rx="10" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+  <text x="790" y="144" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">pg2 (postgres:16)</text>
+  <text x="790" y="166" text-anchor="middle" font-size="12" fill="#14532d">SELECT → 데이터 그대로</text>
+
+  <!-- Flow arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="284" y1="149" x2="364" y2="149" marker-end="url(#arrow)"/>
+    <line x1="594" y1="149" x2="674" y2="149" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Mount links -->
+  <g stroke="#2496ed" stroke-width="3">
+    <line x1="170" y1="186" x2="170" y2="256"/>
+    <line x1="790" y1="186" x2="790" y2="256"/>
+  </g>
+  <g font-size="12" fill="#1d4ed8" font-family="Consolas,'D2Coding',monospace">
+    <text x="180" y="226">-v pgdata:...</text>
+    <text x="800" y="226">-v pgdata:...</text>
+  </g>
+  <text x="480" y="226" text-anchor="middle" font-size="13" fill="#64748b">마운트 해제, 볼륨은 남아 있음</text>
+
+  <!-- Volume bar -->
+  <rect x="50" y="256" width="860" height="66" rx="12" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+  <text x="480" y="284" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">pgdata (Named Volume)</text>
+  <text x="480" y="308" text-anchor="middle" font-size="13" fill="#1e3a8a">/var/lib/docker/volumes/pgdata/_data — 컨테이너 수명과 무관하게 계속 존재</text>
+
+  <text x="480" y="366" text-anchor="middle" font-size="14" fill="#334155">컨테이너는 일회용, 데이터는 볼륨에 — 같은 볼륨을 다시 붙이면 데이터가 그대로 돌아온다</text>
+</svg>

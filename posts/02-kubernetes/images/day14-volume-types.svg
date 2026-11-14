@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">볼륨의 수명 — 무엇이 언제 사라지는가</text>
+
+  <!-- Event lines -->
+  <g stroke="#dc2626" stroke-width="2" stroke-dasharray="6 5">
+    <line x1="460" y1="72" x2="460" y2="320"/>
+    <line x1="680" y1="72" x2="680" y2="320"/>
+  </g>
+  <g font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">
+    <text x="460" y="64">컨테이너 재시작</text>
+    <text x="680" y="64">Pod 삭제 → 재생성</text>
+  </g>
+
+  <!-- Lane labels -->
+  <g font-size="15" font-weight="700" fill="#0f172a">
+    <text x="30" y="106">컨테이너 쓰기 계층</text>
+    <text x="30" y="166">Pod</text>
+    <text x="30" y="226">emptyDir</text>
+    <text x="30" y="286">PVC → PV</text>
+  </g>
+
+  <!-- Row 1: container -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="230" y="80" width="220" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+    <text x="340" y="105" fill="#14532d">컨테이너 #1</text>
+    <rect x="470" y="80" width="200" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+    <text x="570" y="105" fill="#14532d">컨테이너 #2 (초기화)</text>
+    <rect x="690" y="80" width="240" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+    <text x="810" y="105" fill="#14532d">새 Pod의 컨테이너</text>
+
+    <!-- Row 2: pod -->
+    <rect x="230" y="140" width="440" height="40" rx="6" fill="#326ce5"/>
+    <text x="450" y="165" fill="#ffffff">Pod A</text>
+    <rect x="690" y="140" width="240" height="40" rx="6" fill="#326ce5"/>
+    <text x="810" y="165" fill="#ffffff">Pod B (새 이름, 새 IP)</text>
+
+    <!-- Row 3: emptyDir -->
+    <rect x="230" y="200" width="440" height="40" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="450" y="225" fill="#78350f">emptyDir — 컨테이너 재시작에도 유지</text>
+    <rect x="690" y="200" width="240" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-dasharray="5 4"/>
+    <text x="810" y="225" fill="#92400e">새 빈 디렉터리</text>
+
+    <!-- Row 4: PV -->
+    <rect x="230" y="260" width="700" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="580" y="285" fill="#312e81" font-weight="700">PV — Pod와 무관하게 데이터 유지 (PVC를 지울 때 reclaimPolicy에 따라 처리)</text>
+  </g>
+
+  <!-- Summary -->
+  <rect x="30" y="340" width="900" height="60" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="480" y="365" text-anchor="middle" font-size="14" fill="#334155">컨테이너 쓰기 계층 &lt; emptyDir (Pod 수명) &lt; PV (Pod보다 오래 삶)</text>
+  <text x="480" y="388" text-anchor="middle" font-size="13" fill="#64748b">DB·업로드 파일처럼 남아야 하는 데이터는 반드시 PVC로</text>
+</svg>

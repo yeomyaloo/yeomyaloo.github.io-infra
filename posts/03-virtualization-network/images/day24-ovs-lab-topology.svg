@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OVS 실습 토폴로지 — VLAN 태그 포트 + VXLAN 터널</text>
+
+  <!-- ===== Node 1 ===== -->
+  <rect x="20" y="48" width="520" height="322" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="70" font-size="14" font-weight="700" fill="#334155">vm1 (192.168.122.57)</text>
+  <g text-anchor="middle">
+    <rect x="45" y="82" width="140" height="62" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="115" y="106" font-size="15" font-weight="700" fill="#14532d">inst1</text>
+    <text x="115" y="128" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">10.0.0.1/24</text>
+    <rect x="205" y="82" width="140" height="62" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="275" y="106" font-size="15" font-weight="700" fill="#14532d">inst2</text>
+    <text x="275" y="128" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">10.0.0.2/24</text>
+    <rect x="365" y="82" width="140" height="62" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+    <text x="435" y="106" font-size="15" font-weight="700" fill="#312e81">inst3</text>
+    <text x="435" y="128" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#312e81">10.0.0.3/24</text>
+  </g>
+  <g stroke-width="4">
+    <line x1="115" y1="144" x2="115" y2="180" stroke="#16a34a"/>
+    <line x1="275" y1="144" x2="275" y2="180" stroke="#16a34a"/>
+    <line x1="435" y1="144" x2="435" y2="180" stroke="#4f46e5"/>
+  </g>
+  <!-- br-int node1 -->
+  <rect x="40" y="170" width="480" height="140" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+  <g text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12">
+    <rect x="55" y="180" width="120" height="40" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="115" y="196" fill="#14532d">tap-inst1</text><text x="115" y="212" font-weight="700" fill="#16a34a">tag=10</text>
+    <rect x="215" y="180" width="120" height="40" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="275" y="196" fill="#14532d">tap-inst2</text><text x="275" y="212" font-weight="700" fill="#16a34a">tag=10</text>
+    <rect x="375" y="180" width="120" height="40" rx="6" fill="#ffffff" stroke="#4f46e5"/>
+    <text x="435" y="196" fill="#312e81">tap-inst3</text><text x="435" y="212" font-weight="700" fill="#4f46e5">tag=20</text>
+    <rect x="315" y="248" width="190" height="50" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="410" y="268" font-weight="700" fill="#78350f">vxlan0  tag=10</text>
+    <text x="410" y="287" fill="#78350f">key=100 remote=.58</text>
+  </g>
+  <text x="60" y="270" font-family="Consolas,'D2Coding',monospace" font-size="17" font-weight="700" fill="#1e3a8a">br-int</text>
+  <text x="60" y="292" font-size="12" fill="#1e3a8a">(OVS 브리지)</text>
+  <rect x="315" y="328" width="190" height="32" rx="8" fill="#2496ed"/>
+  <text x="410" y="349" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#ffffff">enp1s0</text>
+
+  <!-- ===== Node 2 ===== -->
+  <rect x="640" y="48" width="300" height="322" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="656" y="70" font-size="14" font-weight="700" fill="#334155">vm2 (192.168.122.58)</text>
+  <rect x="720" y="82" width="140" height="62" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="790" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">inst4</text>
+  <text x="790" y="128" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">10.0.0.4/24</text>
+  <line x1="790" y1="144" x2="790" y2="180" stroke="#16a34a" stroke-width="4"/>
+  <rect x="660" y="170" width="260" height="140" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+  <g text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12">
+    <rect x="730" y="180" width="120" height="40" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="790" y="196" fill="#14532d">tap-inst4</text><text x="790" y="212" font-weight="700" fill="#16a34a">tag=10</text>
+    <rect x="675" y="248" width="190" height="50" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="770" y="268" font-weight="700" fill="#78350f">vxlan0  tag=10</text>
+    <text x="770" y="287" fill="#78350f">key=100 remote=.57</text>
+  </g>
+  <text x="880" y="240" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#1e3a8a">br-int</text>
+  <rect x="675" y="328" width="190" height="32" rx="8" fill="#2496ed"/>
+  <text x="770" y="349" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#ffffff">enp1s0</text>
+
+  <!-- tunnel -->
+  <line x1="505" y1="273" x2="672" y2="273" stroke="#f59e0b" stroke-width="3" stroke-dasharray="8 5"/>
+  <text x="590" y="262" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">VXLAN</text>
+  <text x="590" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">VNI 100</text>
+
+  <!-- underlay -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="410" y1="360" x2="410" y2="392" marker-end="url(#arrow)"/>
+    <line x1="770" y1="392" x2="770" y2="363" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="20" y="395" width="920" height="38" rx="10" fill="#334155"/>
+  <text x="480" y="419" text-anchor="middle" font-size="13" fill="#ffffff">언더레이 — virbr0 (192.168.122.0/24) · 터널은 논리적 연결, 실제 패킷은 enp1s0 → virbr0 경유</text>
+
+  <text x="480" y="455" text-anchor="middle" font-size="13" fill="#334155">inst1 · inst2 · inst4 (tag 10) 끼리만 통신 · inst3 (tag 20)은 격리</text>
+  <text x="480" y="473" text-anchor="middle" font-size="12" fill="#64748b">노드 안 VLAN 10 ↔ 노드 사이 VNI 100 — Neutron은 이 변환을 br-tun의 흐름 규칙으로 수행</text>
+</svg>

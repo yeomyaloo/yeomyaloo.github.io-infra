@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">단일 호스트 운영 vs 오케스트레이션</text>
+
+  <!-- Left: Docker / Compose -->
+  <rect x="20" y="60" width="430" height="370" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="235" y="90" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Docker / Compose</text>
+  <text x="235" y="112" text-anchor="middle" font-size="13" fill="#64748b">단일 호스트 — 사람이 직접 운영</text>
+
+  <rect x="50" y="135" width="370" height="44" rx="8" fill="#e2e8f0"/>
+  <text x="235" y="162" text-anchor="middle" font-size="13" fill="#0f172a">운영자: docker run / restart / scale 직접 실행</text>
+  <line x1="235" y1="179" x2="235" y2="206" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="50" y="210" width="370" height="150" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="235" y="234" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Host 1 (서버 한 대)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" text-anchor="middle">
+    <rect x="70" y="252" width="100" height="40" rx="6" fill="#86efac"/><text x="120" y="277" fill="#14532d">web :8080</text>
+    <rect x="185" y="252" width="100" height="40" rx="6" fill="#86efac"/><text x="235" y="277" fill="#14532d">web :8081</text>
+    <rect x="300" y="252" width="100" height="40" rx="6" fill="#86efac"/><text x="350" y="277" fill="#14532d">web :8082</text>
+  </g>
+  <text x="235" y="330" text-anchor="middle" font-size="12" fill="#334155">dockerd --restart → 같은 호스트에서만 재시작</text>
+  <text x="235" y="348" text-anchor="middle" font-size="12" fill="#334155">포트·로드밸런서도 직접 관리</text>
+
+  <rect x="50" y="372" width="370" height="44" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="235" y="399" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">호스트가 죽으면 → 컨테이너 전부 중단</text>
+
+  <!-- Right: Kubernetes -->
+  <rect x="490" y="60" width="450" height="370" rx="12" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="715" y="90" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Kubernetes 클러스터</text>
+  <text x="715" y="112" text-anchor="middle" font-size="13" fill="#64748b">원하는 상태를 선언 → 시스템이 유지</text>
+
+  <rect x="520" y="128" width="390" height="50" rx="8" fill="#326ce5"/>
+  <text x="715" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Control Plane — "replicas: 3" 유지</text>
+
+  <g stroke="#334155" stroke-width="2">
+    <line x1="579" y1="178" x2="579" y2="211" marker-end="url(#arrow)"/>
+    <line x1="715" y1="178" x2="715" y2="211" marker-end="url(#arrow)" stroke-dasharray="5 4"/>
+    <line x1="851" y1="178" x2="851" y2="211" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Node 1 -->
+  <rect x="520" y="215" width="118" height="150" rx="10" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="579" y="238" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Node 1</text>
+  <rect x="534" y="252" width="90" height="30" rx="6" fill="#86efac"/>
+  <text x="579" y="272" text-anchor="middle" font-size="12" fill="#14532d">web</text>
+  <rect x="534" y="292" width="90" height="30" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="579" y="312" text-anchor="middle" font-size="12" fill="#78350f">web (재생성)</text>
+
+  <!-- Node 2 (down) -->
+  <rect x="656" y="215" width="118" height="150" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="715" y="238" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">Node 2 (장애)</text>
+  <rect x="670" y="252" width="90" height="30" rx="6" fill="#fca5a5" opacity="0.6"/>
+  <text x="715" y="272" text-anchor="middle" font-size="12" fill="#7f1d1d">web</text>
+  <g stroke="#dc2626" stroke-width="3">
+    <line x1="690" y1="305" x2="740" y2="345"/>
+    <line x1="740" y1="305" x2="690" y2="345"/>
+  </g>
+
+  <!-- Node 3 -->
+  <rect x="792" y="215" width="118" height="150" rx="10" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="851" y="238" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Node 3</text>
+  <rect x="806" y="252" width="90" height="30" rx="6" fill="#86efac"/>
+  <text x="851" y="272" text-anchor="middle" font-size="12" fill="#14532d">web</text>
+
+  <!-- reschedule arrow -->
+  <path d="M670,276 C650,290 645,305 628,307" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <rect x="520" y="380" width="390" height="40" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="715" y="405" text-anchor="middle" font-size="14" font-weight="700" fill="#15803d">노드가 죽어도 → 다른 노드에 Pod 자동 재생성</text>
+</svg>

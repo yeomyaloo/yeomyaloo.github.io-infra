@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Heat 아키텍처 — 템플릿 하나로 Stack 만들기</text>
+
+  <!-- Template + CLI -->
+  <path d="M30,80 h140 l40,30 v100 h-180 z" fill="#fde68a" stroke="#f59e0b"/>
+  <path d="M170,80 v30 h40" fill="none" stroke="#f59e0b"/>
+  <text x="110" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f" font-family="Consolas,'D2Coding',monospace">web.yaml</text>
+  <text x="110" y="166" text-anchor="middle" font-size="13" fill="#92400e">HOT 템플릿</text>
+  <text x="110" y="188" text-anchor="middle" font-size="12" fill="#92400e">(선언 · YAML)</text>
+  <rect x="30" y="240" width="180" height="44" rx="22" fill="#e2e8f0"/>
+  <text x="120" y="267" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">openstack stack create</text>
+  <line x1="120" y1="210" x2="120" y2="238" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Heat services -->
+  <rect x="250" y="60" width="200" height="340" rx="12" fill="#fff1f2" stroke="#ed1944" stroke-width="2"/>
+  <text x="350" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#9f1239">Heat (Orchestration)</text>
+  <rect x="265" y="100" width="170" height="50" rx="8" fill="#ed1944"/>
+  <text x="350" y="131" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">heat-api</text>
+  <rect x="265" y="190" width="170" height="110" rx="8" fill="#ed1944"/>
+  <text x="350" y="220" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">heat-engine</text>
+  <text x="350" y="246" text-anchor="middle" font-size="12" fill="#ffffff">① 템플릿 파싱</text>
+  <text x="350" y="266" text-anchor="middle" font-size="12" fill="#ffffff">② 의존성 그래프 계산</text>
+  <text x="350" y="286" text-anchor="middle" font-size="12" fill="#ffffff">③ 서비스 API 호출</text>
+  <rect x="265" y="340" width="170" height="44" rx="8" fill="#ffffff" stroke="#ed1944"/>
+  <text x="350" y="367" text-anchor="middle" font-size="13" fill="#9f1239">Heat DB (스택 상태)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="210" y1="262" x2="230" y2="262"/>
+    <line x1="230" y1="262" x2="230" y2="125"/>
+    <line x1="230" y1="125" x2="262" y2="125" marker-end="url(#arrow)"/>
+    <line x1="350" y1="150" x2="350" y2="187" marker-end="url(#arrow)"/>
+    <line x1="350" y1="300" x2="350" y2="337" marker-end="url(#arrow)"/>
+  </g>
+  <text x="358" y="174" font-size="11" fill="#334155">RPC</text>
+
+  <!-- Stack -->
+  <rect x="500" y="60" width="440" height="340" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="516" y="82" font-size="14" font-weight="700" fill="#0f172a">Stack: web  (리소스 묶음)</text>
+
+  <!-- Neutron row -->
+  <rect x="520" y="96" width="150" height="80" rx="8" fill="#4f46e5"/>
+  <text x="595" y="142" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Neutron API</text>
+  <g font-size="12" text-anchor="middle" fill="#312e81">
+    <rect x="690" y="104" width="72" height="28" rx="6" fill="#c7d2fe"/><text x="726" y="123">net</text>
+    <rect x="770" y="104" width="72" height="28" rx="6" fill="#c7d2fe"/><text x="806" y="123">subnet</text>
+    <rect x="850" y="104" width="72" height="28" rx="6" fill="#c7d2fe"/><text x="886" y="123">router</text>
+    <rect x="690" y="140" width="72" height="28" rx="6" fill="#c7d2fe"/><text x="726" y="159">sg</text>
+    <rect x="770" y="140" width="72" height="28" rx="6" fill="#c7d2fe"/><text x="806" y="159">port</text>
+    <rect x="850" y="140" width="72" height="28" rx="6" fill="#c7d2fe"/><text x="886" y="159">fip</text>
+  </g>
+
+  <!-- Nova row -->
+  <rect x="520" y="196" width="150" height="50" rx="8" fill="#2496ed"/>
+  <text x="595" y="226" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Nova API</text>
+  <rect x="690" y="207" width="140" height="28" rx="6" fill="#86efac"/>
+  <text x="760" y="226" text-anchor="middle" font-size="12" fill="#14532d">web_server</text>
+
+  <!-- Cinder row -->
+  <rect x="520" y="266" width="150" height="50" rx="8" fill="#64748b"/>
+  <text x="595" y="296" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Cinder API</text>
+  <rect x="690" y="277" width="140" height="28" rx="6" fill="#ffffff" stroke="#64748b" stroke-dasharray="4 3"/>
+  <text x="760" y="296" text-anchor="middle" font-size="12" fill="#334155">volume (선택)</text>
+
+  <!-- Glance row -->
+  <rect x="520" y="336" width="150" height="50" rx="8" fill="#f59e0b"/>
+  <text x="595" y="366" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Glance API</text>
+  <text x="690" y="366" font-size="12" fill="#92400e">이미지 존재 확인 (constraint)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="435" y1="230" x2="517" y2="136" marker-end="url(#arrow)"/>
+    <line x1="435" y1="240" x2="517" y2="221" marker-end="url(#arrow)"/>
+    <line x1="435" y1="255" x2="517" y2="291" marker-end="url(#arrow)"/>
+    <line x1="435" y1="270" x2="517" y2="361" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="480" y="434" text-anchor="middle" font-size="13" fill="#64748b">heat-engine은 사용자를 대신해 각 서비스 API를 호출하는 "자동화된 클라이언트" — 결과물은 일반 리소스와 똑같다</text>
+</svg>
