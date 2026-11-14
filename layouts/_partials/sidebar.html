@@ -1,0 +1,15 @@
+{{- $cur := . -}}
+<nav aria-label="챕터 목차">
+  <a class="side-home{{ if .IsHome }} active{{ end }}" href="{{ site.Home.RelPermalink }}">홈</a>
+  {{- range site.Home.Sections.ByWeight }}
+  {{- $chapter := . }}
+  <details class="chapter"{{ if or (eq $cur $chapter) ($chapter.IsAncestor $cur) $cur.IsHome }} open{{ end }}>
+    <summary><a href="{{ .RelPermalink }}"{{ if eq $cur $chapter }} class="active"{{ end }}>{{ .LinkTitle }}</a></summary>
+    <ul>
+      {{- range .RegularPages.ByDate }}
+      <li><a href="{{ .RelPermalink }}"{{ if eq $cur . }} class="active" aria-current="page"{{ end }}>{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+  </details>
+  {{- end }}
+</nav>

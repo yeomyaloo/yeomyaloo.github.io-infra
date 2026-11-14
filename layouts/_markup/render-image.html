@@ -1,0 +1,6 @@
+{{- $src := .Destination -}}
+{{- with partial "resolve-image.html" (dict "page" .Page "src" .Destination) -}}
+  {{- $src = .RelPermalink -}}
+{{- end -}}
+<img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+{{- /* chomp */ -}}

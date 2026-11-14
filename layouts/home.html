@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="intro">
+  <h1>{{ site.Title }}</h1>
+  {{ .Content }}
+</section>
+
+<h2>챕터</h2>
+<div class="chapters">
+  {{- range site.Home.Sections.ByWeight }}
+  <a class="chapter-card" href="{{ .RelPermalink }}">
+    <strong>{{ .LinkTitle }}</strong>
+    {{- with .Description }}<span>{{ . }}</span>{{ end }}
+    <small>글 {{ len .RegularPages }}편</small>
+  </a>
+  {{- end }}
+</div>
+
+<h2>최근 글</h2>
+{{ partial "post-list.html" (first 5 site.RegularPages.ByDate.Reverse) }}
+<p><a href="{{ "all/" | relURL }}">전체 글 보기 →</a></p>
+{{ end }}

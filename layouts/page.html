@@ -1,0 +1,41 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    {{- with .CurrentSection }}{{ if not .IsHome }}<a class="post-chapter" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
+    <h1>{{ .Title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006년 1월 2일" }}</time>
+      {{- with .GetTerms "tags" }}
+      <span class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</span>
+      {{- end }}
+    </div>
+  </header>
+
+  {{- if and (ne .TableOfContents "") (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+  <details class="toc">
+    <summary>목차</summary>
+    {{ .TableOfContents }}
+  </details>
+  {{- end }}
+
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+
+  {{- /* 같은 챕터 안에서 날짜순 이전/다음 글 */ -}}
+  {{- $prev := "" }}{{ $next := "" }}{{ $found := false }}
+  {{- range .CurrentSection.RegularPages.ByDate }}
+    {{- if $found }}{{ if not $next }}{{ $next = . }}{{ end }}
+    {{- else if eq . $ }}{{ $found = true }}
+    {{- else }}{{ $prev = . }}{{ end }}
+  {{- end }}
+  {{- if or $prev $next }}
+  <nav class="pager" aria-label="이전·다음 글">
+    {{ with $prev }}<a class="prev" href="{{ .RelPermalink }}"><small>← 이전 글</small>{{ .LinkTitle }}</a>{{ else }}<span></span>{{ end }}
+    {{ with $next }}<a class="next" href="{{ .RelPermalink }}"><small>다음 글 →</small>{{ .LinkTitle }}</a>{{ end }}
+  </nav>
+  {{- end }}
+
+  {{ partial "comments.html" . }}
+</article>
+{{ end }}

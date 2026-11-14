@@ -1,0 +1,76 @@
+# 배포 시에는 GitHub Actions가 --baseURL 로 실제 주소를 넘겨줍니다.
+baseURL = "https://yeomyaloo.github.io/yeomyaloo.github.io-infra/"
+locale = "ko-KR"
+defaultContentLanguage = "ko"
+title = "yeomyaloo · Infra Study"
+
+enableRobotsTXT = true
+enableGitInfo = false
+summaryLength = 80
+titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
+
+[params]
+  description = "Docker에서 Kubernetes, OpenStack까지 — 하루 한 주제씩 쌓는 인프라 학습 기록"
+  author = "yeomyaloo"
+  github = "https://github.com/yeomyaloo"
+  # 글에 image 가 없을 때 쓰는 대표 이미지 (static/ 기준)
+  defaultImage = "og-default.png"
+
+  # Giscus 댓글: https://giscus.app 에서 값을 받아 채우면 댓글이 켜집니다.
+  [params.giscus]
+    repo = "yeomyaloo/yeomyaloo.github.io-infra"
+    repoId = ""
+    category = "Comments"
+    categoryId = ""
+
+# 글은 posts/ 에, 사이트 전용 페이지(전체 글 목록 등)는 content/ 에 둡니다.
+# posts/ 안의 이미지 같은 비-마크다운 파일은 assets 로도 마운트해서
+# 마크다운의 ./images/xxx.svg 상대 경로를 그대로 쓸 수 있게 합니다.
+[module]
+  [[module.mounts]]
+    source = "posts"
+    target = "content"
+    files = ["**/*.md"]
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "posts"
+    target = "assets/posts"
+    files = ["! **/*.md"]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+
+[taxonomies]
+  tag = "tags"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+  [markup.goldmark.renderer]
+    # 글 안의 <details> 퀴즈 같은 HTML을 그대로 쓰기 위해 허용 (본인 글만 올리는 저장소)
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[menus]
+  [[menus.main]]
+    name = "전체 글"
+    pageRef = "/all"
+    weight = 10
+  [[menus.main]]
+    name = "태그"
+    pageRef = "/tags"
+    weight = 20
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]
+  taxonomy = ["html"]
+  term = ["html", "rss"]
+
+[sitemap]
+  changeFreq = "weekly"

@@ -1,0 +1,147 @@
+/* ===== 색상 토큰 (라이트) ===== */
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f7f9;
+  --text: #1f2328;
+  --muted: #656d76;
+  --border: #e3e6ea;
+  --accent: #2563eb;
+  --accent-soft: #eaf1ff;
+  --code-bg: #f6f8fa;
+  --sidebar-w: 260px;
+  color-scheme: light;
+}
+/* ===== 다크 ===== */
+:root[data-theme="dark"] {
+  --bg: #0f1115;
+  --bg-soft: #171a21;
+  --text: #e6e8eb;
+  --muted: #9aa3ad;
+  --border: #2a2f38;
+  --accent: #7aa7ff;
+  --accent-soft: #1b2638;
+  --code-bg: #161b22;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.muted { color: var(--muted); }
+
+/* ===== 상단 바 ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 12px;
+  height: 56px; padding: 0 20px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.brand { font-weight: 700; color: var(--text); white-space: nowrap; }
+.topnav { margin-left: auto; display: flex; align-items: center; gap: 16px; font-size: 15px; }
+.topnav a { color: var(--muted); }
+.topnav a:hover { color: var(--text); }
+.nav-toggle, .theme-toggle {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  color: var(--text); font-size: 16px; line-height: 1; padding: 6px 9px; cursor: pointer;
+}
+.nav-toggle { display: none; }
+
+/* ===== 레이아웃 ===== */
+.layout { display: flex; max-width: 1200px; margin: 0 auto; }
+.sidebar {
+  flex: 0 0 var(--sidebar-w);
+  position: sticky; top: 56px; align-self: flex-start;
+  max-height: calc(100vh - 56px); overflow-y: auto;
+  padding: 24px 16px 40px 20px;
+  border-right: 1px solid var(--border);
+  font-size: 14.5px; line-height: 1.5;
+}
+.content { flex: 1; min-width: 0; max-width: 780px; padding: 32px 40px 80px; }
+
+/* ===== 사이드바 ===== */
+.sidebar a { color: var(--muted); display: block; padding: 4px 8px; border-radius: 6px; }
+.sidebar a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+.sidebar a.active { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.side-home { margin-bottom: 8px; }
+.chapter { margin: 4px 0; }
+.chapter summary { list-style: none; cursor: pointer; }
+.chapter summary::-webkit-details-marker { display: none; }
+.chapter summary a { font-weight: 700; color: var(--text); }
+.chapter ul { list-style: none; margin: 2px 0 8px; padding: 0 0 0 10px; border-left: 1px solid var(--border); margin-left: 8px; }
+
+/* ===== 본문 ===== */
+h1 { font-size: 30px; line-height: 1.35; margin: 0 0 12px; }
+h2 { font-size: 23px; margin: 48px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+h3 { font-size: 19px; margin: 32px 0 8px; }
+img { max-width: 100%; height: auto; display: block; margin: 16px auto; }
+blockquote { margin: 16px 0; padding: 4px 16px; border-left: 4px solid var(--accent); background: var(--bg-soft); color: var(--muted); border-radius: 0 6px 6px 0; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 40px 0; }
+table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; font-size: 15px; margin: 16px 0; }
+th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+th { background: var(--bg-soft); }
+
+code { font-family: "D2Coding", ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.88em; }
+:not(pre) > code { background: var(--code-bg); border: 1px solid var(--border); padding: 1px 5px; border-radius: 4px; }
+pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; overflow-x: auto; line-height: 1.55; font-size: 14.5px; }
+.highlight pre { margin: 16px 0; }
+
+/* ===== 글 ===== */
+.post-chapter { font-size: 14px; font-weight: 600; }
+.post-meta { color: var(--muted); font-size: 14.5px; display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+.tags a { margin-right: 8px; font-size: 14px; }
+.toc { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin-bottom: 24px; font-size: 15px; }
+.toc summary { cursor: pointer; font-weight: 600; }
+.toc ul { padding-left: 18px; margin: 6px 0; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; }
+.pager a { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); }
+.pager a:hover { border-color: var(--accent); text-decoration: none; }
+.pager .next { text-align: right; }
+.pager small { display: block; color: var(--muted); }
+
+/* ===== 목록 ===== */
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li { padding: 16px 0; border-bottom: 1px solid var(--border); }
+.post-list time { color: var(--muted); font-size: 14px; display: block; }
+.post-title { font-size: 18px; font-weight: 700; color: var(--text); }
+.post-summary { margin: 4px 0; color: var(--muted); font-size: 15px; }
+.year { border: 0; }
+.chapters { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.chapter-card { display: flex; flex-direction: column; gap: 4px; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; color: var(--text); }
+.chapter-card:hover { border-color: var(--accent); text-decoration: none; }
+.chapter-card span { color: var(--muted); font-size: 14.5px; }
+.chapter-card small { color: var(--muted); }
+.tag-cloud { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-cloud a { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; }
+.tag-cloud small { color: var(--muted); }
+
+.footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; display: flex; gap: 16px; justify-content: center; padding: 24px; }
+
+/* ===== 모바일 ===== */
+@media (max-width: 860px) {
+  .nav-toggle { display: inline-block; }
+  .brand { overflow: hidden; text-overflow: ellipsis; }
+  .topbar { padding: 0 12px; gap: 8px; }
+  .topnav { gap: 10px; }
+  .sidebar {
+    display: none; position: fixed; top: 56px; left: 0; bottom: 0; z-index: 9;
+    width: min(300px, 85vw); max-height: none; background: var(--bg);
+  }
+  .sidebar.open { display: block; box-shadow: 4px 0 16px rgba(0,0,0,.15); }
+  .content { padding: 24px 16px 64px; }
+  h1 { font-size: 26px; }
+}
+.comments { margin-top: 56px; }
+/* 다크 모드에서도 배경이 투명한 SVG 도식이 잘 보이도록 흰 바탕을 깔아 줌 */
+:root[data-theme="dark"] .post-body img { background: #ffffff; border-radius: 8px; padding: 8px; }

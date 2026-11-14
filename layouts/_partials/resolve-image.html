@@ -1,0 +1,16 @@
+{{- /*
+  마크다운 파일 기준 상대 경로(./images/x.svg)를 실제 리소스로 찾아 돌려줍니다.
+  입력: dict "page" 페이지 "src" 경로   반환: 리소스 또는 ""
+*/ -}}
+{{- $res := "" -}}
+{{- $src := .src -}}
+{{- if and $src (not (strings.Contains $src "://")) (not (strings.HasPrefix $src "/")) -}}
+  {{- with .page.Resources.Get $src -}}{{ $res = . }}{{- end -}}
+  {{- if not $res -}}
+    {{- with .page.File -}}
+      {{- $dir := replace .Dir "\\" "/" -}}
+      {{- with resources.Get (path.Join "posts" $dir $src) -}}{{ $res = . }}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $res -}}

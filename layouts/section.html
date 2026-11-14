@@ -1,0 +1,9 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+{{ with .RegularPages.ByDate }}
+  {{ partial "post-list.html" . }}
+{{ else }}
+  <p class="muted">아직 글이 없습니다.</p>
+{{ end }}
+{{ end }}
