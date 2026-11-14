@@ -1,6 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{{- $title := cond .IsHome site.Title (printf "%s · %s" .Title site.Title) }}
+{{- $name := .Title }}
+{{- if and (eq .Kind "term") (eq .Data.Plural "tabs") }}{{ range site.Params.tabs }}{{ if eq .key $.Data.Term }}{{ $name = .name }}{{ end }}{{ end }}{{ end }}
+{{- $title := cond .IsHome site.Title (printf "%s · %s" $name site.Title) }}
 {{- $desc := or .Description .Params.summary (cond .IsPage (.Summary | plainify) "") site.Params.description | plainify | strings.TrimSpace | truncate 160 }}
 {{- /* 대표 이미지: 글의 image → 없거나 SVG면 기본 이미지 (SNS 미리보기는 SVG를 지원하지 않음) */ -}}
 {{- $img := site.Params.defaultImage | absURL }}
@@ -20,7 +22,7 @@
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
-<meta property="og:title" content="{{ cond .IsHome site.Title .Title }}">
+<meta property="og:title" content="{{ cond .IsHome site.Title $name }}">
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:image" content="{{ $img }}">
@@ -31,7 +33,7 @@
 {{- end }}{{ end }}
 {{- end }}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ cond .IsHome site.Title .Title }}">
+<meta name="twitter:title" content="{{ cond .IsHome site.Title $name }}">
 <meta name="twitter:description" content="{{ $desc }}">
 <meta name="twitter:image" content="{{ $img }}">
 {{- with .OutputFormats.Get "rss" }}

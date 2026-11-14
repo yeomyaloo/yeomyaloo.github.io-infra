@@ -1,0 +1,12 @@
+{{- $cur := partial "current-tab.html" . -}}
+<nav class="tabstrip" aria-label="주제 탭">
+  {{- range site.Params.tabs }}
+  {{- $count := 0 }}
+  {{- range partial "tab-chapters.html" .key }}{{ $count = add $count (len .RegularPages) }}{{ end }}
+  {{- if gt $count 0 }}
+  <a href="{{ printf "%s/" .key | relURL }}"{{ if eq $cur .key }} class="active" aria-current="page"{{ end }}>{{ .name }}</a>
+  {{- else }}
+  <span class="soon" title="준비 중">{{ .name }}<small>준비 중</small></span>
+  {{- end }}
+  {{- end }}
+</nav>

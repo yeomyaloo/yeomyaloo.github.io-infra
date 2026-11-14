@@ -11,11 +11,34 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
 
 [params]
   shortTitle = "Infra Study"   # 좁은 화면 상단에 쓰는 짧은 제목
-  description = "Docker에서 Kubernetes, OpenStack까지 — 하루 한 주제씩 쌓는 인프라 학습 기록"
+  description = "인프라·AI·보안·해킹·자격증 — 하루 한 주제씩 쌓는 학습 기록"
   author = "yeomyaloo"
   github = "https://github.com/yeomyaloo"
   # 글에 image 가 없을 때 쓰는 대표 이미지 (static/ 기준)
   defaultImage = "og-default.png"
+
+  # 상단 탭. 챕터 _index.md 의 tab 값과 key 가 같아야 합니다.
+  # 글이 없는 탭은 "준비 중"으로 표시됩니다.
+  [[params.tabs]]
+    key = "infra"
+    name = "인프라"
+    description = "Docker → Kubernetes → OpenStack, 그리고 GitOps·SRE까지"
+  [[params.tabs]]
+    key = "ai"
+    name = "AI"
+    description = "LLM 서빙, RAG, GPU 인프라"
+  [[params.tabs]]
+    key = "security"
+    name = "보안"
+    description = "4C 레이어별로 지키는 인프라 보안"
+  [[params.tabs]]
+    key = "hacking"
+    name = "해킹"
+    description = "화이트해커 트랙"
+  [[params.tabs]]
+    key = "cert"
+    name = "자격증 준비"
+    description = "RHCSA(EX200) 등 자격증 대비"
 
   # Giscus 댓글: https://giscus.app 에서 값을 받아 채우면 댓글이 켜집니다.
   [params.giscus]
@@ -45,6 +68,12 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
 
 [taxonomies]
   tag = "tags"
+  tab = "tabs"   # 챕터 _index.md 의 cascade 로 글마다 자동 지정
+
+# 탭 첫 화면 주소: /infra/, /ai/, /security/ ...
+[permalinks]
+  [permalinks.term]
+    tabs = "/:slug/"
 
 [markup]
   [markup.highlight]
@@ -71,7 +100,7 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
   home = ["html", "rss"]
   section = ["html", "rss"]
   taxonomy = ["html"]
-  term = ["html", "rss"]
+  term = ["html", "rss"]   # 태그별·탭별 RSS
 
 [sitemap]
   changeFreq = "weekly"

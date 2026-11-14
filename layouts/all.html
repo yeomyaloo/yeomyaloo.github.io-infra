@@ -1,8 +1,14 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 <p class="muted">글 {{ len site.RegularPages }}편</p>
-{{- range site.Home.Sections.ByWeight }}
-<h2 class="year"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+{{- range site.Params.tabs }}
+{{- $chapters := partial "tab-chapters.html" .key }}
+{{- if $chapters }}
+<h2 class="tab-heading"><a href="{{ printf "%s/" .key | relURL }}">{{ .name }}</a></h2>
+{{- range $chapters }}
+<h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
 {{ partial "post-list.html" .RegularPages.ByWeight }}
+{{- end }}
+{{- end }}
 {{- end }}
 {{ end }}

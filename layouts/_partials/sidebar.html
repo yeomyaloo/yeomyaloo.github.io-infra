@@ -1,7 +1,13 @@
 {{- $cur := . -}}
+{{- $tab := partial "current-tab.html" . -}}
 <nav aria-label="챕터 목차">
   <a class="side-home{{ if .IsHome }} active{{ end }}" href="{{ site.Home.RelPermalink }}">홈</a>
-  {{- range site.Home.Sections.ByWeight }}
+  {{- if $tab }}
+  {{- /* 탭 안: 그 탭의 챕터만 */ -}}
+  {{- range site.Params.tabs }}{{ if eq .key $tab }}
+  <a class="side-tab{{ if and (eq $cur.Kind "term") (eq $cur.Data.Plural "tabs") }} active{{ end }}" href="{{ printf "%s/" .key | relURL }}">{{ .name }} 전체 보기</a>
+  {{- end }}{{ end }}
+  {{- range partial "tab-chapters.html" $tab }}
   {{- $chapter := . }}
   <details class="chapter"{{ if or (eq $cur $chapter) ($chapter.IsAncestor $cur) }} open{{ end }}>
     <summary><a href="{{ .RelPermalink }}"{{ if eq $cur $chapter }} class="active"{{ end }}>{{ .LinkTitle }}</a></summary>
@@ -11,5 +17,23 @@
       {{- end }}
     </ul>
   </details>
+  {{- end }}
+  {{- else }}
+  {{- /* 홈·전체 글·태그: 탭별 챕터 목록 */ -}}
+  {{- range site.Params.tabs }}
+  {{- $chapters := partial "tab-chapters.html" .key }}
+  <div class="side-group">
+    {{- if $chapters }}
+    <a class="side-tab" href="{{ printf "%s/" .key | relURL }}">{{ .name }}</a>
+    <ul>
+      {{- range $chapters }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- else }}
+    <span class="side-tab soon">{{ .name }} <small>준비 중</small></span>
+    {{- end }}
+  </div>
+  {{- end }}
   {{- end }}
 </nav>

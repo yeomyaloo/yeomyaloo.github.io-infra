@@ -4,14 +4,24 @@
   {{ .Content }}
 </section>
 
-<h2>챕터</h2>
+<h2>주제</h2>
 <div class="chapters">
-  {{- range site.Home.Sections.ByWeight }}
-  <a class="chapter-card" href="{{ .RelPermalink }}">
-    <strong>{{ .LinkTitle }}</strong>
-    {{- with .Description }}<span>{{ . }}</span>{{ end }}
-    <small>글 {{ len .RegularPages }}편</small>
+  {{- range site.Params.tabs }}
+  {{- $chapters := partial "tab-chapters.html" .key }}
+  {{- $count := 0 }}{{ range $chapters }}{{ $count = add $count (len .RegularPages) }}{{ end }}
+  {{- if gt $count 0 }}
+  <a class="chapter-card" href="{{ printf "%s/" .key | relURL }}">
+    <strong>{{ .name }}</strong>
+    <span>{{ .description }}</span>
+    <small>챕터 {{ len $chapters }}개 · 글 {{ $count }}편</small>
   </a>
+  {{- else }}
+  <div class="chapter-card soon">
+    <strong>{{ .name }}</strong>
+    <span>{{ .description }}</span>
+    <small>준비 중</small>
+  </div>
+  {{- end }}
   {{- end }}
 </div>
 

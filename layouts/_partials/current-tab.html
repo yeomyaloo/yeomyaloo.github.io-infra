@@ -1,0 +1,10 @@
+{{- /* 지금 페이지가 속한 탭 key 를 돌려줍니다. 탭과 무관한 페이지(홈·전체 글·태그)는 "" */ -}}
+{{- $tab := "" -}}
+{{- if and (eq .Kind "term") (eq .Data.Plural "tabs") -}}
+  {{- $tab = .Data.Term -}}
+{{- else if .Params.tab -}}
+  {{- $tab = .Params.tab -}}
+{{- else if and .IsPage .Params.tabs -}}
+  {{- $tab = index .Params.tabs 0 -}}
+{{- end -}}
+{{- return $tab -}}

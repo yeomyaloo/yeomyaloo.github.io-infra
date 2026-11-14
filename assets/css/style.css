@@ -9,6 +9,7 @@
   --accent-soft: #eaf1ff;
   --code-bg: #f6f8fa;
   --sidebar-w: 260px;
+  --header-h: 98px;   /* 상단 바 56 + 탭 줄 42 */
   color-scheme: light;
 }
 /* ===== 다크 ===== */
@@ -63,8 +64,8 @@ a:hover { text-decoration: underline; }
 .layout { display: flex; max-width: 1200px; margin: 0 auto; }
 .sidebar {
   flex: 0 0 var(--sidebar-w);
-  position: sticky; top: 56px; align-self: flex-start;
-  max-height: calc(100vh - 56px); overflow-y: auto;
+  position: sticky; top: var(--header-h); align-self: flex-start;
+  max-height: calc(100vh - var(--header-h)); overflow-y: auto;
   padding: 24px 16px 40px 20px;
   border-right: 1px solid var(--border);
   font-size: 14.5px; line-height: 1.5;
@@ -105,7 +106,7 @@ pre { background: var(--code-bg); border: 1px solid var(--border); border-radius
 .toc { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin-bottom: 24px; font-size: 15px; }
 .toc summary { cursor: pointer; font-weight: 600; }
 .toc ul { padding-left: 18px; margin: 6px 0; }
-.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; }
+.pager { display: flex; justify-content: space-between; gap: 16px; margin-top: var(--header-h); }
 .pager a { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); }
 .pager a:hover { border-color: var(--accent); text-decoration: none; }
 .pager .next { text-align: right; }
@@ -136,14 +137,16 @@ pre { background: var(--code-bg); border: 1px solid var(--border); border-radius
   .topbar { padding: 0 12px; gap: 8px; }
   .topnav { gap: 10px; }
   .sidebar {
-    display: none; position: fixed; top: 56px; left: 0; bottom: 0; z-index: 9;
+    display: none; position: fixed; top: var(--header-h); left: 0; bottom: auto; z-index: 9;
     width: min(300px, 85vw); max-height: none; background: var(--bg);
+    /* top+bottom 늘이기 대신 높이를 직접 지정 (일부 모바일 환경에서 top 이 무시되는 문제) */
+    height: calc(100vh - var(--header-h)); height: calc(100dvh - var(--header-h)); overflow-y: auto;
   }
   .sidebar.open { display: block; box-shadow: 4px 0 16px rgba(0,0,0,.15); }
   .content { padding: 24px 16px 64px; }
   h1 { font-size: 26px; }
 }
-.comments { margin-top: 56px; }
+.comments { margin-top: var(--header-h); }
 /* 다크 모드에서도 배경이 투명한 SVG 도식이 잘 보이도록 흰 바탕을 깔아 줌 */
 :root[data-theme="dark"] .post-body img { background: #ffffff; border-radius: 8px; padding: 8px; }
 
@@ -160,4 +163,31 @@ pre { background: var(--code-bg); border: 1px solid var(--border); border-radius
   .brand-full { display: none; }
   .brand-short { display: inline; }
   .topnav { gap: 10px; font-size: 14px; }
+}
+
+/* ===== 주제 탭 줄 ===== */
+.tabstrip {
+  position: sticky; top: 56px; z-index: 10;
+  display: flex; gap: 4px; height: 42px; align-items: stretch;
+  padding: 0 20px; background: var(--bg); border-bottom: 1px solid var(--border);
+  overflow-x: auto; scrollbar-width: none; white-space: nowrap;
+}
+.tabstrip::-webkit-scrollbar { display: none; }
+.tabstrip a, .tabstrip .soon {
+  display: inline-flex; align-items: center; gap: 4px; padding: 0 12px;
+  font-size: 15px; color: var(--muted); border-bottom: 2px solid transparent; flex: 0 0 auto;
+}
+.tabstrip a:hover { color: var(--text); text-decoration: none; }
+.tabstrip a.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 700; }
+.tabstrip .soon { opacity: .55; cursor: default; }
+.tabstrip .soon small, .side-tab small { font-size: 11px; border: 1px solid var(--border); border-radius: 999px; padding: 0 6px; }
+.side-tab { font-weight: 700; color: var(--text) !important; margin-top: 6px; }
+.side-tab.soon { display: block; padding: 4px 8px; color: var(--muted) !important; font-weight: 600; }
+.side-group ul { list-style: none; margin: 2px 0 10px; padding: 0 0 0 10px; border-left: 1px solid var(--border); margin-left: 8px; }
+.chapter-card.soon { opacity: .6; }
+.tab-heading { margin-top: 56px; }
+@media (max-width: 860px) {
+  .tabstrip { padding: 0 8px; }
+  .tabstrip a, .tabstrip .soon { padding: 0 10px; font-size: 14.5px; }
+  .tabstrip .soon small { display: none; }   /* 좁은 화면: 흐린 글씨로만 '준비 중' 표시 */
 }

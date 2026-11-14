@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{- $key := .Data.Term }}
+{{- range site.Params.tabs }}{{ if eq .key $key }}
+<h1>{{ .name }}</h1>
+<p class="muted">{{ .description }}</p>
+{{- end }}{{ end }}
+{{- $chapters := partial "tab-chapters.html" $key }}
+{{- range $chapters }}
+<h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+{{- with .Description }}<p class="muted">{{ . }}</p>{{ end }}
+{{ partial "post-list.html" .RegularPages.ByWeight }}
+{{- else }}
+<p class="muted">준비 중입니다.</p>
+{{- end }}
+{{ end }}

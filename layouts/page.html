@@ -22,9 +22,9 @@
     {{ .Content }}
   </div>
 
-  {{- /* 챕터 순서 → 챕터 안 weight(Day 번호) 순서로 이어지는 이전/다음 글 */ -}}
+  {{- /* 같은 탭 안에서 챕터 순서 → 챕터 안 weight(Day 번호) 순서로 이어지는 이전/다음 글 */ -}}
   {{- $all := slice }}
-  {{- range site.Home.Sections.ByWeight }}{{ range .RegularPages.ByWeight }}{{ $all = $all | append . }}{{ end }}{{ end }}
+  {{- range partial "tab-chapters.html" (partial "current-tab.html" . | default "infra") }}{{ range .RegularPages.ByWeight }}{{ $all = $all | append . }}{{ end }}{{ end }}
   {{- $prev := "" }}{{ $next := "" }}{{ $found := false }}
   {{- range $all }}
     {{- if $found }}{{ if not $next }}{{ $next = . }}{{ end }}
