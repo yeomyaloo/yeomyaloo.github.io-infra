@@ -19,9 +19,9 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
   # Giscus 댓글: https://giscus.app 에서 값을 받아 채우면 댓글이 켜집니다.
   [params.giscus]
     repo = "yeomyaloo/yeomyaloo.github.io-infra"
-    repoId = ""
-    category = "Comments"
-    categoryId = ""
+    repoId = "R_kgDOVua_cA"
+    category = "General"
+    categoryId = "DIC_kwDOVua_cM4DLIhy"
 
 # 글은 posts/ 에, 사이트 전용 페이지(전체 글 목록 등)는 content/ 에 둡니다.
 # posts/ 안의 이미지 같은 비-마크다운 파일은 assets 로도 마운트해서
