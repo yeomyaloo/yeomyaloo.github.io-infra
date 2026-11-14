@@ -6,7 +6,7 @@
 <body>
 <header class="topbar">
   <button class="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="목차 열기">☰</button>
-  <a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+  <a class="brand" href="{{ site.Home.RelPermalink }}"><span class="brand-full">{{ site.Title }}</span><span class="brand-short">{{ site.Params.shortTitle | default site.Title }}</span></a>
   <nav class="topnav" aria-label="주 메뉴">
     {{- range site.Menus.main }}
     <a href="{{ .URL }}">{{ .Name }}</a>

@@ -51,5 +51,6 @@
     document.documentElement.setAttribute('data-theme', t);
   })();
 </script>
-<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}">
+{{- /* CSS 는 내용 해시를 파일 이름에 붙여, 바뀌면 브라우저 캐시 없이 바로 반영되게 함 */ -}}
+{{- $css := slice (resources.Get "css/style.css") (resources.Get "css/syntax.css") | resources.Concat "css/site.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

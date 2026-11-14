@@ -2,5 +2,6 @@
 {{- with partial "resolve-image.html" (dict "page" .Page "src" .Destination) -}}
   {{- $src = .RelPermalink -}}
 {{- end -}}
-<img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+{{- /* 도식은 원본 링크로 감싸 탭하면 원본 크기로 열리고, 좁은 화면에서는 가로 스크롤로 읽을 수 있게 한다 */ -}}
+<span class="figure-scroll"><a class="figure-link" href="{{ $src | safeURL }}" target="_blank" rel="noopener" title="원본 크기로 보기"><img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy"></a></span>
 {{- /* chomp */ -}}
