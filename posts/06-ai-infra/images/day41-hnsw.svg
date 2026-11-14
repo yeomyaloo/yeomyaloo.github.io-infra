@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker>
+  </defs>
+  <rect width="960" height="530" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">HNSW: 여러 층의 그래프로 가까운 벡터 찾기</text>
+  <rect x="170" y="70" width="740" height="100" rx="12" fill="#f5f3ff" stroke="#7c3aed"/>
+  <text x="30" y="116" font-size="16" font-weight="700" fill="#0f172a">Layer 2</text>
+  <text x="30" y="138" font-size="12" fill="#64748b">노드 적음 · 먼 연결</text>
+  <rect x="170" y="200" width="740" height="110" rx="12" fill="#eff6ff" stroke="#2496ed"/>
+  <text x="30" y="251" font-size="16" font-weight="700" fill="#0f172a">Layer 1</text>
+  <text x="30" y="273" font-size="12" fill="#64748b">중간 밀도</text>
+  <rect x="170" y="340" width="740" height="130" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="30" y="401" font-size="16" font-weight="700" fill="#0f172a">Layer 0</text>
+  <text x="30" y="423" font-size="12" fill="#64748b">모든 벡터 · 촘촘함</text>
+  <g stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 4">
+    <line x1="260" y1="253" x2="260" y2="412"/>
+    <line x1="450" y1="278" x2="450" y2="387"/>
+    <line x1="570" y1="248" x2="570" y2="392"/>
+    <line x1="700" y1="283" x2="700" y2="382"/>
+    <line x1="820" y1="258" x2="820" y2="387"/>
+    <line x1="260" y1="128" x2="260" y2="237"/>
+    <line x1="700" y1="133" x2="700" y2="267"/>
+  </g>
+  <g stroke="#cbd5e1" stroke-width="1.5">
+    <line x1="200" y1="390" x2="260" y2="420"/>
+    <line x1="260" y1="420" x2="330" y2="385"/>
+    <line x1="330" y1="385" x2="390" y2="430"/>
+    <line x1="390" y1="430" x2="450" y2="395"/>
+    <line x1="450" y1="395" x2="510" y2="435"/>
+    <line x1="510" y1="435" x2="570" y2="400"/>
+    <line x1="570" y1="400" x2="630" y2="440"/>
+    <line x1="630" y1="440" x2="700" y2="390"/>
+    <line x1="700" y1="390" x2="760" y2="430"/>
+    <line x1="760" y1="430" x2="820" y2="395"/>
+    <line x1="820" y1="395" x2="860" y2="425"/>
+    <line x1="200" y1="390" x2="330" y2="385"/>
+    <line x1="260" y1="420" x2="390" y2="430"/>
+    <line x1="450" y1="395" x2="570" y2="400"/>
+    <line x1="510" y1="435" x2="630" y2="440"/>
+    <line x1="630" y1="440" x2="760" y2="430"/>
+    <line x1="700" y1="390" x2="820" y2="395"/>
+    <line x1="760" y1="430" x2="860" y2="425"/>
+    <line x1="330" y1="385" x2="450" y2="395"/>
+    <line x1="570" y1="400" x2="700" y2="390"/>
+  </g>
+  <g stroke="#93c5fd" stroke-width="1.5">
+    <line x1="260" y1="245" x2="450" y2="270"/>
+    <line x1="450" y1="270" x2="570" y2="240"/>
+    <line x1="570" y1="240" x2="700" y2="275"/>
+    <line x1="700" y1="275" x2="820" y2="250"/>
+    <line x1="260" y1="245" x2="570" y2="240"/>
+    <line x1="450" y1="270" x2="700" y2="275"/>
+  </g>
+  <g stroke="#c4b5fd" stroke-width="1.5">
+    <line x1="260" y1="120" x2="700" y2="125"/>
+  </g>
+  <g stroke="#7c3aed" stroke-width="3.5" fill="none">
+    <line x1="269" y1="120" x2="689" y2="125" marker-end="url(#aP)"/>
+    <line x1="700" y1="134" x2="700" y2="264" marker-end="url(#aP)" stroke-dasharray="6 4"/>
+    <line x1="691" y1="273" x2="581" y2="243" marker-end="url(#aP)"/>
+    <line x1="570" y1="249" x2="570" y2="389" marker-end="url(#aP)" stroke-dasharray="6 4"/>
+  </g>
+  <circle cx="200" cy="390" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="260" cy="420" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="330" cy="385" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="390" cy="430" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="450" cy="395" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="510" cy="435" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="570" cy="400" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="630" cy="440" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="700" cy="390" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="760" cy="430" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="820" cy="395" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="860" cy="425" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="260" cy="245" r="8" fill="#bfdbfe" stroke="#2496ed" stroke-width="1.5"/>
+  <circle cx="450" cy="270" r="8" fill="#bfdbfe" stroke="#2496ed" stroke-width="1.5"/>
+  <circle cx="570" cy="240" r="8" fill="#bfdbfe" stroke="#2496ed" stroke-width="1.5"/>
+  <circle cx="700" cy="275" r="8" fill="#bfdbfe" stroke="#2496ed" stroke-width="1.5"/>
+  <circle cx="820" cy="250" r="8" fill="#bfdbfe" stroke="#2496ed" stroke-width="1.5"/>
+  <circle cx="260" cy="120" r="8" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="700" cy="125" r="8" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="570" cy="400" r="13" fill="none" stroke="#16a34a" stroke-width="3"/>
+  <circle cx="630" cy="440" r="13" fill="none" stroke="#16a34a" stroke-width="3"/>
+  <text x="260" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="#4c1d95">진입점</text>
+  <path d="M605,363 L614,372 L605,381 L596,372 z" fill="#dc2626"/>
+  <text x="619" y="368" font-size="12" font-weight="700" fill="#b91c1c">Q (질문)</text>
+  <g font-size="13" font-weight="700" fill="#4c1d95">
+    <text x="480" y="108" text-anchor="middle">① 급행: 질문에 가까운 쪽으로 크게 이동</text>
+    <text x="712" y="224">② 내려와서 더 가까운 이웃으로</text>
+  </g>
+  <text x="720" y="366" font-size="13" font-weight="700" fill="#14532d">③ 주변을 넓게 훑어 top-k</text>
+  <rect x="170" y="486" width="740" height="34" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="540" y="508" text-anchor="middle" font-size="13" fill="#334155">전체를 다 비교하지 않고 위층→아래층으로 좁혀 가며 근사 top-k를 찾는다 · m(이웃 수)과 ef(후보 수)가 클수록 정확, 대신 느림</text>
+</svg>

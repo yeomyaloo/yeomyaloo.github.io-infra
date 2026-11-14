@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">LLM 요청 하나의 타임라인 — 지표는 구간의 길이</text>
+
+  <!-- phase labels -->
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <text x="155" y="82" fill="#475569">① 대기 (queue)</text>
+    <text x="305" y="82" fill="#92400e">② prefill</text>
+    <text x="620" y="82" fill="#5b21b6">③ decode — 토큰을 하나씩 생성</text>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#64748b">
+    <text x="155" y="100">GPU 자리를 기다림</text>
+    <text x="305" y="100">입력 전체를 한 번에 계산</text>
+    <text x="620" y="100">매 스텝 KV 캐시가 한 칸씩 늘어남</text>
+  </g>
+
+  <!-- bars -->
+  <rect x="80" y="115" width="150" height="50" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="155" y="145" text-anchor="middle" font-size="13" fill="#334155">waiting</text>
+  <rect x="230" y="115" width="150" height="50" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="305" y="145" text-anchor="middle" font-size="13" fill="#78350f">입력 512 토큰</text>
+  <g font-size="13" text-anchor="middle" fill="#ffffff" font-weight="700" font-family="Consolas,'D2Coding',monospace">
+    <rect x="390" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="412" y="145">t1</text>
+    <rect x="452" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="474" y="145">t2</text>
+    <rect x="514" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="536" y="145">t3</text>
+    <rect x="576" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="598" y="145">t4</text>
+    <rect x="638" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="660" y="145">t5</text>
+    <rect x="700" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="722" y="145">t6</text>
+    <rect x="762" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="784" y="145">…</text>
+    <rect x="824" y="115" width="44" height="50" rx="6" fill="#7c3aed"/><text x="846" y="145">tN</text>
+  </g>
+
+  <!-- time axis -->
+  <line x1="60" y1="190" x2="900" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="905" y="178" text-anchor="end" font-size="12" fill="#64748b">시간</text>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="80" y1="183" x2="80" y2="197"/>
+    <line x1="434" y1="183" x2="434" y2="197"/>
+    <line x1="868" y1="183" x2="868" y2="197"/>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#334155">
+    <text x="80" y="212">요청 도착</text>
+    <text x="434" y="212">첫 토큰 도착</text>
+    <text x="868" y="212">마지막 토큰</text>
+  </g>
+
+  <!-- measurement brackets -->
+  <g stroke-width="2" fill="none">
+    <!-- queue time -->
+    <line x1="80" y1="240" x2="230" y2="240" stroke="#64748b" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <!-- TTFT -->
+    <line x1="80" y1="285" x2="434" y2="285" stroke="#f59e0b" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <!-- ITL -->
+    <line x1="496" y1="240" x2="558" y2="240" stroke="#7c3aed"/>
+    <line x1="496" y1="232" x2="496" y2="248" stroke="#7c3aed"/>
+    <line x1="558" y1="232" x2="558" y2="248" stroke="#7c3aed"/>
+    <!-- TPOT -->
+    <line x1="434" y1="285" x2="868" y2="285" stroke="#7c3aed" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <!-- E2E -->
+    <line x1="80" y1="330" x2="868" y2="330" stroke="#334155" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="13" font-weight="700" text-anchor="middle">
+    <text x="155" y="232" fill="#475569">queue time</text>
+    <text x="257" y="277" fill="#b45309">TTFT (첫 토큰까지)</text>
+    <text x="527" y="226" fill="#5b21b6">ITL (토큰 간격)</text>
+    <text x="651" y="277" fill="#5b21b6">TPOT = (E2E − TTFT) ÷ (출력 토큰 − 1)</text>
+    <text x="474" y="322" fill="#0f172a">E2E latency (요청 전체)</text>
+  </g>
+
+  <!-- server-wide gauges -->
+  <rect x="40" y="360" width="880" height="122" rx="12" fill="#f5f3ff" stroke="#7c3aed"/>
+  <text x="60" y="386" font-size="15" font-weight="700" fill="#4c1d95">서버 전체로 보면 (동시에 수십 개 요청이 이 타임라인을 겹쳐서 진행)</text>
+  <g font-size="13">
+    <rect x="60" y="400" width="200" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="160" y="426" text-anchor="middle" font-weight="700" fill="#334155">① 상태 요청 수</text>
+    <text x="160" y="448" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">num_requests_waiting</text>
+
+    <rect x="276" y="400" width="200" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="376" y="426" text-anchor="middle" font-weight="700" fill="#334155">②③ 상태 요청 수</text>
+    <text x="376" y="448" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">num_requests_running</text>
+
+    <rect x="492" y="400" width="200" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="592" y="426" text-anchor="middle" font-weight="700" fill="#334155">초당 생성 토큰 (처리량)</text>
+    <text x="592" y="448" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">generation_tokens_total</text>
+
+    <rect x="708" y="400" width="196" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="806" y="426" text-anchor="middle" font-weight="700" fill="#334155">KV 캐시 점유율</text>
+    <text x="806" y="448" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">kv_cache_usage_perc</text>
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">벡터 검색의 두 경로: 색인과 검색</text>
+
+  <!-- row labels -->
+  <text x="30" y="76" font-size="15" font-weight="700" fill="#0f172a">① 색인 <tspan font-size="12" font-weight="400" fill="#64748b">(문서가 바뀔 때만)</tspan></text>
+  <text x="30" y="266" font-size="15" font-weight="700" fill="#0f172a">② 검색 <tspan font-size="12" font-weight="400" fill="#64748b">(질문마다)</tspan></text>
+
+  <!-- row 1 -->
+  <g font-size="14" text-anchor="middle">
+    <rect x="30" y="92" width="130" height="56" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="95" y="116" fill="#78350f" font-weight="700">문서</text>
+    <text x="95" y="136" font-size="12" fill="#78350f">위키 · PDF · README</text>
+    <rect x="200" y="92" width="120" height="56" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="260" y="116" fill="#78350f" font-weight="700">청크 분할</text>
+    <text x="260" y="136" font-size="12" fill="#78350f">(Day 42)</text>
+  </g>
+
+  <!-- row 2 -->
+  <g font-size="14" text-anchor="middle">
+    <rect x="30" y="282" width="130" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="95" y="306" fill="#0f172a" font-weight="700">질문</text>
+    <text x="95" y="326" font-size="12" fill="#334155">"GPU 메모리 부족"</text>
+  </g>
+
+  <!-- embedding model shared -->
+  <rect x="360" y="84" width="150" height="262" rx="10" fill="#7c3aed"/>
+  <text x="435" y="190" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">임베딩 모델</text>
+  <text x="435" y="212" text-anchor="middle" font-size="12" fill="#ede9fe" font-family="Consolas,'D2Coding',monospace">Ollama bge-m3</text>
+  <text x="435" y="246" text-anchor="middle" font-size="12" fill="#ede9fe">색인 · 검색에</text>
+  <text x="435" y="264" text-anchor="middle" font-size="12" fill="#ede9fe">반드시 같은 모델</text>
+
+  <!-- Qdrant -->
+  <rect x="580" y="60" width="350" height="300" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="755" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">Qdrant · collection "wiki"</text>
+  <text x="755" y="106" text-anchor="middle" font-size="12" fill="#64748b">size 1024 · distance Cosine</text>
+  <rect x="598" y="118" width="314" height="136" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+  <text x="612" y="140" font-size="13" font-weight="700" fill="#334155">Point</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="612" y="162">id:      1</text>
+    <text x="612" y="182">vector:  [0.02, -0.11, …]</text>
+    <text x="612" y="202">payload:</text>
+    <text x="628" y="222">category: "k8s"</text>
+    <text x="628" y="242">text: "OOMKilled 발생 시…"</text>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <rect x="598" y="266" width="152" height="34" rx="6" fill="#fecaca"/><text x="674" y="288" fill="#7f1d1d">HNSW 인덱스</text>
+    <rect x="760" y="266" width="152" height="34" rx="6" fill="#fecaca"/><text x="836" y="288" fill="#7f1d1d">payload 인덱스</text>
+  </g>
+  <text x="755" y="330" text-anchor="middle" font-size="12" fill="#64748b">vector로 유사도 검색 · payload로 필터</text>
+
+  <!-- result -->
+  <rect x="580" y="392" width="350" height="56" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="755" y="416" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">Top-k 결과 (score + payload)</text>
+  <text x="755" y="436" text-anchor="middle" font-size="12" fill="#14532d">→ Day 42에서 LLM 프롬프트에 삽입</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="160" y1="120" x2="196" y2="120" marker-end="url(#arrow)"/>
+    <line x1="320" y1="120" x2="356" y2="120" marker-end="url(#arrow)"/>
+    <line x1="160" y1="310" x2="356" y2="310" marker-end="url(#arrow)"/>
+    <line x1="510" y1="120" x2="576" y2="120" marker-end="url(#arrow)"/>
+    <line x1="510" y1="310" x2="576" y2="310" marker-end="url(#arrow)"/>
+    <line x1="755" y1="360" x2="755" y2="388" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" font-weight="700" fill="#334155" font-family="Consolas,'D2Coding',monospace" text-anchor="middle">
+    <text x="543" y="112">upsert</text>
+    <text x="543" y="302">query</text>
+    <text x="543" y="330" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-weight="400" fill="#64748b">+ filter</text>
+  </g>
+</svg>

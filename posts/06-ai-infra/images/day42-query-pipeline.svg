@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">질의 파이프라인 — 질문 하나가 답이 되기까지 (app.py /ask)</text>
+
+  <!-- 질문 -->
+  <rect x="20" y="70" width="165" height="110" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="102" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">사용자 질문</text>
+  <text x="102" y="122" text-anchor="middle" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">POST /ask</text>
+  <text x="102" y="145" text-anchor="middle" font-size="13" fill="#334155">"볼륨과 바인드</text>
+  <text x="102" y="163" text-anchor="middle" font-size="13" fill="#334155">마운트 차이는?"</text>
+
+  <!-- ① 임베딩 -->
+  <rect x="205" y="70" width="165" height="110" rx="10" fill="#7c3aed"/>
+  <text x="287" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">① 질문 임베딩</text>
+  <text x="287" y="125" text-anchor="middle" font-size="13" fill="#ffffff">bge-m3 (색인과 같은</text>
+  <text x="287" y="143" text-anchor="middle" font-size="13" fill="#ffffff">모델이어야 함)</text>
+  <text x="287" y="163" text-anchor="middle" font-size="13" fill="#ede9fe">→ 1024차원 벡터</text>
+
+  <!-- ② 검색 -->
+  <rect x="390" y="70" width="165" height="110" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="472" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">② top-k 검색</text>
+  <text x="472" y="125" text-anchor="middle" font-size="13" fill="#78350f" font-family="Consolas,'D2Coding',monospace">query_points</text>
+  <text x="472" y="145" text-anchor="middle" font-size="13" fill="#78350f">k=4 (리랭킹 시 16)</text>
+  <text x="472" y="165" text-anchor="middle" font-size="13" fill="#78350f">코사인 유사도 순</text>
+
+  <!-- ③ 리랭킹 (선택) -->
+  <rect x="575" y="70" width="165" height="110" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="657" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#4c1d95">③ 리랭킹 (선택)</text>
+  <text x="657" y="125" text-anchor="middle" font-size="13" fill="#4c1d95">크로스 인코더 재채점</text>
+  <text x="657" y="145" text-anchor="middle" font-size="12" fill="#4c1d95" font-family="Consolas,'D2Coding',monospace">bge-reranker-v2-m3</text>
+  <text x="657" y="165" text-anchor="middle" font-size="13" fill="#4c1d95">16개 → 상위 4개</text>
+
+  <!-- ④ 프롬프트 -->
+  <rect x="760" y="70" width="180" height="110" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="850" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">④ 프롬프트 구성</text>
+  <text x="850" y="125" text-anchor="middle" font-size="13" fill="#14532d">system: 답변 규칙</text>
+  <text x="850" y="145" text-anchor="middle" font-size="13" fill="#14532d">[1]~[4] 출처 + 본문</text>
+  <text x="850" y="165" text-anchor="middle" font-size="13" fill="#14532d">+ 사용자 질문</text>
+
+  <!-- ⑤ LLM -->
+  <rect x="575" y="230" width="365" height="120" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="757" y="256" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">⑤ LLM 생성 (stream=True)</text>
+  <text x="757" y="278" text-anchor="middle" font-size="13" fill="#1e3a8a">OpenAI 호환 클라이언트 — base_url만 바꾼다</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle">
+    <rect x="590" y="294" width="105" height="42" rx="6" fill="#2496ed"/>
+    <text x="642" y="312" fill="#ffffff" font-weight="700">Ollama</text>
+    <text x="642" y="328" fill="#ffffff">:11434/v1</text>
+    <rect x="705" y="294" width="105" height="42" rx="6" fill="#2496ed"/>
+    <text x="757" y="312" fill="#ffffff" font-weight="700">vLLM</text>
+    <text x="757" y="328" fill="#ffffff">:8000/v1</text>
+    <rect x="820" y="294" width="105" height="42" rx="6" fill="#2496ed"/>
+    <text x="872" y="312" fill="#ffffff" font-weight="700">LiteLLM</text>
+    <text x="872" y="328" fill="#ffffff">:4000/v1</text>
+  </g>
+
+  <!-- ⑥ 응답 -->
+  <rect x="205" y="230" width="335" height="120" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="372" y="256" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">⑥ 스트리밍 응답</text>
+  <text x="372" y="282" text-anchor="middle" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">StreamingResponse</text>
+  <text x="372" y="304" text-anchor="middle" font-size="13" fill="#334155">토큰이 생성되는 즉시 전송</text>
+  <text x="372" y="326" text-anchor="middle" font-size="13" fill="#334155">마지막에 출처 목록 [1]~[4] 첨부</text>
+
+  <!-- 브라우저 -->
+  <rect x="20" y="230" width="165" height="120" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="102" y="270" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">브라우저 / curl</text>
+  <text x="102" y="296" text-anchor="middle" font-size="13" fill="#334155">글자가 타이핑되듯</text>
+  <text x="102" y="316" text-anchor="middle" font-size="13" fill="#334155">나타남</text>
+
+  <!-- 화살표 -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="185" y1="125" x2="202" y2="125" marker-end="url(#arrow)"/>
+    <line x1="370" y1="125" x2="387" y2="125" marker-end="url(#arrow)"/>
+    <line x1="555" y1="125" x2="572" y2="125" marker-end="url(#arrow)"/>
+    <line x1="740" y1="125" x2="757" y2="125" marker-end="url(#arrow)"/>
+    <line x1="850" y1="180" x2="850" y2="227" marker-end="url(#arrow)"/>
+    <line x1="575" y1="290" x2="543" y2="290" marker-end="url(#arrow)"/>
+    <line x1="205" y1="290" x2="188" y2="290" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M472,180 L472,205 L800,205 L800,183" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="657" y="199" text-anchor="middle" font-size="12" fill="#64748b">리랭킹을 끄면 ② → ④ 바로</text>
+
+  <!-- 프롬프트 모양 -->
+  <rect x="20" y="375" width="920" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="398" font-size="14" font-weight="700" fill="#0f172a">LLM이 실제로 받는 메시지</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">
+    <text x="36" y="422">system: [문서]에 있는 내용만 근거로 답하고, 문장 끝에 [1], [2]처럼 근거 번호를 붙여라. 없으면 "찾을 수 없다".</text>
+    <text x="36" y="446">user  : [문서] [1] 출처: 01-docker/day04-volumes.md / 2. 세 가지 마운트 방식 비교 … [질문] 볼륨과 …</text>
+  </g>
+</svg>

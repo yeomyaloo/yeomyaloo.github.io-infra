@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">인덱싱 파이프라인 — 문서를 벡터로 바꿔 저장 (ingest.py)</text>
+
+  <!-- ① 로드 -->
+  <rect x="20" y="70" width="165" height="130" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="102" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">① 로드</text>
+  <g font-size="13" fill="#334155" text-anchor="middle">
+    <text x="102" y="130">infra 레포의 *.md</text>
+    <text x="102" y="150">rglob로 전부 읽기</text>
+    <text x="102" y="170">숨김 폴더 제외</text>
+  </g>
+
+  <!-- ② 청킹 -->
+  <rect x="205" y="70" width="165" height="130" rx="10" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="287" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#4c1d95">② 청킹</text>
+  <g font-size="13" fill="#4c1d95" text-anchor="middle">
+    <text x="287" y="130">##, ### 헤더 기준</text>
+    <text x="287" y="150">1000자 넘으면 분할</text>
+    <text x="287" y="170">150자 겹침(overlap)</text>
+  </g>
+
+  <!-- ③ 임베딩 -->
+  <rect x="390" y="70" width="165" height="130" rx="10" fill="#7c3aed"/>
+  <text x="472" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">③ 임베딩</text>
+  <g font-size="13" fill="#ffffff" text-anchor="middle">
+    <text x="472" y="130">제목 &gt; 섹션 + 본문</text>
+    <text x="472" y="150">bge-m3 → 1024차원</text>
+    <text x="472" y="170">16개씩 배치 요청</text>
+  </g>
+
+  <!-- ④ 저장 -->
+  <rect x="575" y="70" width="165" height="130" rx="10" fill="#eff6ff" stroke="#2496ed"/>
+  <text x="657" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">④ 저장</text>
+  <g font-size="13" fill="#1e3a8a" text-anchor="middle">
+    <text x="657" y="130">Qdrant upsert</text>
+    <text x="657" y="150">벡터 + payload</text>
+    <text x="657" y="170">재실행해도 같은 id</text>
+  </g>
+
+  <!-- Qdrant -->
+  <path d="M770,86 L770,186 A85,14 0 0 0 940,186 L940,86" fill="#fde68a" stroke="#f59e0b"/>
+  <ellipse cx="855" cy="86" rx="85" ry="14" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="855" y="128" text-anchor="middle" font-size="17" font-weight="700" fill="#78350f">Qdrant</text>
+  <text x="855" y="152" text-anchor="middle" font-size="13" fill="#78350f" font-family="Consolas,'D2Coding',monospace">infra_docs</text>
+  <text x="855" y="173" text-anchor="middle" font-size="13" fill="#78350f">Cosine · 1024차원</text>
+
+  <!-- 화살표 -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="185" y1="135" x2="202" y2="135" marker-end="url(#arrow)"/>
+    <line x1="370" y1="135" x2="387" y2="135" marker-end="url(#arrow)"/>
+    <line x1="555" y1="135" x2="572" y2="135" marker-end="url(#arrow)"/>
+    <line x1="740" y1="135" x2="767" y2="135" marker-end="url(#arrow)"/>
+  </g>
+  <text x="472" y="220" text-anchor="middle" font-size="12" fill="#64748b">OpenAI 호환 /v1/embeddings (Ollama · TEI · vLLM 어디든)</text>
+
+  <!-- 포인트 예시 -->
+  <rect x="20" y="240" width="560" height="175" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="264" font-size="14" font-weight="700" fill="#0f172a">Qdrant에 들어가는 점(point) 하나</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">
+    <text x="36" y="290">id: "5f0c2a…" (uuid5, 경로+번호로 결정)</text>
+    <text x="36" y="312">vector: [0.021, -0.113, …, 0.047]  ← 1024개</text>
+    <text x="36" y="334">payload: {</text>
+    <text x="60" y="354">"source" : "01-docker/day04-volumes.md",</text>
+    <text x="60" y="374">"section": "5. 실습 &gt; 5-1. Named Volume으로…",</text>
+    <text x="60" y="394">"title": "Day 04. …", "text": "원문 청크" }</text>
+  </g>
+
+  <!-- 왜 이렇게? -->
+  <rect x="600" y="240" width="340" height="175" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="616" y="264" font-size="14" font-weight="700" fill="#14532d">설계 포인트</text>
+  <g font-size="13" fill="#14532d">
+    <text x="616" y="290">• 헤더 경로를 함께 임베딩</text>
+    <text x="630" y="308">→ 짧은 청크도 문맥을 잃지 않음</text>
+    <text x="616" y="334">• overlap 150자</text>
+    <text x="630" y="352">→ 경계에서 잘린 문장도 한쪽에 온전히</text>
+    <text x="616" y="378">• payload에 원문·출처 저장</text>
+    <text x="630" y="396">→ 검색 결과로 바로 프롬프트·출처 구성</text>
+  </g>
+</svg>

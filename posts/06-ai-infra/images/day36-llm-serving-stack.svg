@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">LLM 서빙 스택 — 6개 층</text>
+
+  <!-- User -->
+  <rect x="250" y="54" width="420" height="40" rx="20" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="460" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">사용자 / 클라이언트 (브라우저 · 앱 · 에이전트)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="400" y1="94" x2="400" y2="126" marker-end="url(#arrow)"/>
+    <line x1="520" y1="126" x2="520" y2="96" marker-end="url(#arrow)"/>
+  </g>
+  <text x="390" y="116" text-anchor="end" font-size="12" font-weight="700" fill="#334155">요청</text>
+  <text x="530" y="116" font-size="12" font-weight="700" fill="#334155">토큰 스트림</text>
+
+  <!-- Day labels (left) -->
+  <g font-size="12" fill="#64748b" text-anchor="middle" font-weight="700">
+    <text x="60" y="169">Day 41~43</text>
+    <text x="60" y="253">Day 40</text>
+    <text x="60" y="337">Day 38~39</text>
+    <text x="60" y="421">Day 37 · 44</text>
+    <text x="60" y="505">Day 36</text>
+  </g>
+
+  <!-- Band 5: App / RAG -->
+  <rect x="120" y="130" width="640" height="70" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="140" y="160" font-size="16" font-weight="700" fill="#14532d">⑤ 앱 / RAG</text>
+  <text x="140" y="183" font-size="12" fill="#64748b">내 문서를 검색해 프롬프트에 붙여 답변</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#14532d">
+    <rect x="440" y="151" width="80" height="28" rx="14" fill="#ffffff" stroke="#16a34a"/><text x="480" y="170">FastAPI</text>
+    <rect x="528" y="151" width="80" height="28" rx="14" fill="#ffffff" stroke="#16a34a"/><text x="568" y="170">Qdrant</text>
+    <rect x="616" y="151" width="90" height="28" rx="14" fill="#ffffff" stroke="#16a34a"/><text x="661" y="170">pgvector</text>
+  </g>
+
+  <!-- Band 4: Gateway -->
+  <rect x="120" y="214" width="640" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="140" y="244" font-size="16" font-weight="700" fill="#78350f">④ 게이트웨이</text>
+  <text x="140" y="267" font-size="12" fill="#64748b">모델 라우팅 · API 키 · 사용량 · 폴백</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#78350f">
+    <rect x="440" y="235" width="86" height="28" rx="14" fill="#ffffff" stroke="#f59e0b"/><text x="483" y="254">LiteLLM</text>
+    <rect x="534" y="235" width="104" height="28" rx="14" fill="#ffffff" stroke="#f59e0b"/><text x="586" y="254">Gateway API</text>
+  </g>
+
+  <!-- Band 3: Serving engine -->
+  <rect x="120" y="298" width="640" height="70" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="1.5"/>
+  <text x="140" y="328" font-size="16" font-weight="700" fill="#1e3a8a">③ 서빙 엔진</text>
+  <text x="140" y="351" font-size="12" fill="#64748b">모델 로딩 · 요청 배칭 · KV 캐시 관리</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#1e3a8a">
+    <rect x="440" y="319" width="76" height="28" rx="14" fill="#ffffff" stroke="#2496ed"/><text x="478" y="338">Ollama</text>
+    <rect x="524" y="319" width="66" height="28" rx="14" fill="#ffffff" stroke="#2496ed"/><text x="557" y="338">vLLM</text>
+    <rect x="598" y="319" width="76" height="28" rx="14" fill="#ffffff" stroke="#2496ed"/><text x="636" y="338">SGLang</text>
+    <rect x="682" y="319" width="66" height="28" rx="14" fill="#ffffff" stroke="#2496ed"/><text x="715" y="338">TGI</text>
+  </g>
+
+  <!-- Band 2: Driver / runtime -->
+  <rect x="120" y="382" width="640" height="70" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="140" y="412" font-size="16" font-weight="700" fill="#334155">② 드라이버 / 런타임</text>
+  <text x="140" y="435" font-size="12" fill="#64748b">GPU를 OS와 컨테이너에 노출</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#334155">
+    <rect x="390" y="403" width="112" height="28" rx="14" fill="#ffffff" stroke="#64748b"/><text x="446" y="422">NVIDIA Driver</text>
+    <rect x="510" y="403" width="60" height="28" rx="14" fill="#ffffff" stroke="#64748b"/><text x="540" y="422">CUDA</text>
+    <rect x="578" y="403" width="170" height="28" rx="14" fill="#ffffff" stroke="#64748b"/><text x="663" y="422">Container Toolkit</text>
+  </g>
+
+  <!-- Band 1: Hardware -->
+  <rect x="120" y="466" width="640" height="70" rx="10" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+  <text x="140" y="496" font-size="16" font-weight="700" fill="#0f172a">① 하드웨어</text>
+  <text x="140" y="519" font-size="12" fill="#475569">VRAM 용량 · 메모리 대역폭 · 연산 성능</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#0f172a">
+    <rect x="440" y="487" width="70" height="28" rx="14" fill="#ffffff" stroke="#334155"/><text x="475" y="506">GPU</text>
+    <rect x="518" y="487" width="94" height="28" rx="14" fill="#ffffff" stroke="#334155"/><text x="565" y="506">CPU · RAM</text>
+    <rect x="620" y="487" width="70" height="28" rx="14" fill="#ffffff" stroke="#334155"/><text x="655" y="506">NVMe</text>
+  </g>
+
+  <!-- Observability -->
+  <rect x="806" y="130" width="134" height="406" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="873" y="160" text-anchor="middle" font-size="16" font-weight="700" fill="#4c1d95">⑥ 관측성</text>
+  <text x="873" y="180" text-anchor="middle" font-size="12" fill="#64748b">(Day 47)</text>
+  <g font-size="13" text-anchor="middle" fill="#4c1d95">
+    <text x="873" y="214">TTFT</text>
+    <text x="873" y="238">토큰/초</text>
+    <text x="873" y="262">KV 캐시 사용률</text>
+    <text x="873" y="286">GPU 사용률</text>
+    <text x="873" y="310">요청 대기열</text>
+    <text x="873" y="334">토큰 비용</text>
+  </g>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" text-anchor="middle" fill="#4c1d95">
+    <rect x="816" y="380" width="114" height="26" rx="13" fill="#ffffff" stroke="#7c3aed"/><text x="873" y="397">Prometheus</text>
+    <rect x="816" y="414" width="114" height="26" rx="13" fill="#ffffff" stroke="#7c3aed"/><text x="873" y="431">Grafana</text>
+    <rect x="816" y="448" width="114" height="26" rx="13" fill="#ffffff" stroke="#7c3aed"/><text x="873" y="465">DCGM Exporter</text>
+    <rect x="816" y="482" width="114" height="26" rx="13" fill="#ffffff" stroke="#7c3aed"/><text x="873" y="499">OpenTelemetry</text>
+  </g>
+
+  <!-- metrics links -->
+  <g stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4 3" fill="none">
+    <line x1="760" y1="165" x2="802" y2="165" marker-end="url(#arrowP)"/>
+    <line x1="760" y1="249" x2="802" y2="249" marker-end="url(#arrowP)"/>
+    <line x1="760" y1="333" x2="802" y2="333" marker-end="url(#arrowP)"/>
+    <line x1="760" y1="417" x2="802" y2="417" marker-end="url(#arrowP)"/>
+    <line x1="760" y1="501" x2="802" y2="501" marker-end="url(#arrowP)"/>
+  </g>
+
+  <text x="480" y="564" text-anchor="middle" font-size="13" fill="#475569">요청은 위에서 아래로 내려가고, 생성된 토큰은 아래에서 위로 스트리밍된다 · 모든 층의 지표는 ⑥으로 모인다</text>
+</svg>

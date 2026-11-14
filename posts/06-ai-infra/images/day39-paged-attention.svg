@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">KV 캐시 할당: 연속 예약 vs PagedAttention</text>
+
+  <!-- ===== Left panel: contiguous reservation ===== -->
+  <rect x="20" y="56" width="450" height="424" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="245" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">기존 방식: 최대 길이만큼 연속 예약</text>
+  <text x="245" y="108" text-anchor="middle" font-size="13" fill="#64748b">(한 칸 = 토큰 16개분 KV 캐시)</text>
+
+  <g font-size="14" font-weight="700" fill="#334155">
+    <text x="40" y="153">요청 A</text>
+    <text x="40" y="213">요청 B</text>
+    <text x="40" y="273">요청 C</text>
+  </g>
+  <!-- Request A: 3 used, 5 reserved -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="110" y="132" width="38" height="32" rx="4" fill="#c4b5fd" stroke="#7c3aed"/><text x="129" y="153" fill="#4c1d95">A0</text>
+    <rect x="152" y="132" width="38" height="32" rx="4" fill="#c4b5fd" stroke="#7c3aed"/><text x="171" y="153" fill="#4c1d95">A1</text>
+    <rect x="194" y="132" width="38" height="32" rx="4" fill="#c4b5fd" stroke="#7c3aed"/><text x="213" y="153" fill="#4c1d95">A2</text>
+    <rect x="236" y="132" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+    <rect x="278" y="132" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+    <rect x="320" y="132" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+    <rect x="362" y="132" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+    <rect x="404" y="132" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+
+    <!-- Request B: 5 used, 3 reserved -->
+    <rect x="110" y="192" width="38" height="32" rx="4" fill="#93c5fd" stroke="#2496ed"/><text x="129" y="213" fill="#1e3a8a">B0</text>
+    <rect x="152" y="192" width="38" height="32" rx="4" fill="#93c5fd" stroke="#2496ed"/><text x="171" y="213" fill="#1e3a8a">B1</text>
+    <rect x="194" y="192" width="38" height="32" rx="4" fill="#93c5fd" stroke="#2496ed"/><text x="213" y="213" fill="#1e3a8a">B2</text>
+    <rect x="236" y="192" width="38" height="32" rx="4" fill="#93c5fd" stroke="#2496ed"/><text x="255" y="213" fill="#1e3a8a">B3</text>
+    <rect x="278" y="192" width="38" height="32" rx="4" fill="#93c5fd" stroke="#2496ed"/><text x="297" y="213" fill="#1e3a8a">B4</text>
+    <rect x="320" y="192" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+    <rect x="362" y="192" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+    <rect x="404" y="192" width="38" height="32" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+  </g>
+  <!-- Request C: waiting -->
+  <rect x="110" y="252" width="332" height="32" rx="6" fill="#ffffff" stroke="#dc2626"/>
+  <text x="276" y="273" text-anchor="middle" font-size="13" fill="#b91c1c">연속된 빈 공간 8칸이 없음 → 대기열에서 기다림</text>
+
+  <!-- legend -->
+  <g font-size="13" fill="#334155">
+    <rect x="40" y="310" width="22" height="18" rx="3" fill="#c4b5fd" stroke="#7c3aed"/>
+    <text x="70" y="324">실제로 쓰는 칸</text>
+    <rect x="200" y="310" width="22" height="18" rx="3" fill="#fee2e2" stroke="#dc2626" stroke-dasharray="4 3"/>
+    <text x="230" y="324">예약만 하고 비어 있는 칸 (낭비)</text>
+  </g>
+  <g font-size="13" fill="#334155">
+    <text x="40" y="372">• 사용 8칸 / 예약 16칸 → 절반이 낭비</text>
+    <text x="40" y="398">• 생성이 언제 끝날지 몰라 최대 길이로 예약</text>
+    <text x="40" y="424">• 빈 곳이 있어도 연속이 아니면 쓸 수 없음</text>
+    <text x="40" y="456" font-weight="700" fill="#b91c1c">→ 동시에 올릴 수 있는 요청 수가 줄어든다</text>
+  </g>
+
+  <!-- ===== Right panel: PagedAttention ===== -->
+  <rect x="490" y="56" width="450" height="424" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="715" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#4c1d95">PagedAttention: 블록 단위로 필요할 때만</text>
+  <text x="715" y="108" text-anchor="middle" font-size="13" fill="#64748b">(블록 테이블 = OS의 페이지 테이블)</text>
+
+  <!-- block tables -->
+  <g font-size="12" fill="#334155">
+    <rect x="508" y="124" width="160" height="86" rx="6" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="588" y="143" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">요청 A 블록 테이블</text>
+    <text x="522" y="164">논리 0  →  물리 7</text>
+    <text x="522" y="183">논리 1  →  물리 1</text>
+    <text x="522" y="202">논리 2  →  물리 4</text>
+
+    <rect x="508" y="222" width="160" height="68" rx="6" fill="#ffffff" stroke="#2496ed"/>
+    <text x="588" y="241" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">요청 B 블록 테이블</text>
+    <text x="522" y="262">논리 0  →  물리 0</text>
+    <text x="522" y="281">논리 1  →  물리 5</text>
+
+    <rect x="508" y="302" width="160" height="68" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="588" y="321" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">요청 C 블록 테이블</text>
+    <text x="522" y="342">논리 0  →  물리 2</text>
+    <text x="522" y="361">논리 1  →  물리 9</text>
+  </g>
+
+  <!-- physical blocks grid 4 x 3 -->
+  <text x="811" y="143" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">물리 블록 (GPU 메모리)</text>
+  <g font-size="11" text-anchor="middle">
+    <!-- row 0: 0..3 -->
+    <rect x="700" y="156" width="48" height="48" rx="5" fill="#93c5fd" stroke="#2496ed"/><text x="709" y="168" text-anchor="start" fill="#475569">0</text><text x="724" y="190" font-size="13" fill="#1e3a8a">B0</text>
+    <rect x="754" y="156" width="48" height="48" rx="5" fill="#c4b5fd" stroke="#7c3aed"/><text x="763" y="168" text-anchor="start" fill="#475569">1</text><text x="778" y="190" font-size="13" fill="#4c1d95">A1</text>
+    <rect x="808" y="156" width="48" height="48" rx="5" fill="#86efac" stroke="#16a34a"/><text x="817" y="168" text-anchor="start" fill="#475569">2</text><text x="832" y="190" font-size="13" fill="#14532d">C0</text>
+    <rect x="862" y="156" width="48" height="48" rx="5" fill="#ffffff" stroke="#cbd5e1"/><text x="871" y="168" text-anchor="start" fill="#94a3b8">3</text>
+    <!-- row 1: 4..7 -->
+    <rect x="700" y="210" width="48" height="48" rx="5" fill="#c4b5fd" stroke="#7c3aed"/><text x="709" y="222" text-anchor="start" fill="#475569">4</text><text x="724" y="244" font-size="13" fill="#4c1d95">A2</text>
+    <rect x="754" y="210" width="48" height="48" rx="5" fill="#93c5fd" stroke="#2496ed"/><text x="763" y="222" text-anchor="start" fill="#475569">5</text><text x="778" y="244" font-size="13" fill="#1e3a8a">B1</text>
+    <rect x="808" y="210" width="48" height="48" rx="5" fill="#ffffff" stroke="#cbd5e1"/><text x="817" y="222" text-anchor="start" fill="#94a3b8">6</text>
+    <rect x="862" y="210" width="48" height="48" rx="5" fill="#c4b5fd" stroke="#7c3aed"/><text x="871" y="222" text-anchor="start" fill="#475569">7</text><text x="886" y="244" font-size="13" fill="#4c1d95">A0</text>
+    <!-- row 2: 8..11 -->
+    <rect x="700" y="264" width="48" height="48" rx="5" fill="#ffffff" stroke="#cbd5e1"/><text x="709" y="276" text-anchor="start" fill="#94a3b8">8</text>
+    <rect x="754" y="264" width="48" height="48" rx="5" fill="#86efac" stroke="#16a34a"/><text x="763" y="276" text-anchor="start" fill="#475569">9</text><text x="778" y="298" font-size="13" fill="#14532d">C1</text>
+    <rect x="808" y="264" width="48" height="48" rx="5" fill="#ffffff" stroke="#cbd5e1"/><text x="817" y="276" text-anchor="start" fill="#94a3b8">10</text>
+    <rect x="862" y="264" width="48" height="48" rx="5" fill="#ffffff" stroke="#cbd5e1"/><text x="871" y="276" text-anchor="start" fill="#94a3b8">11</text>
+  </g>
+  <text x="805" y="336" text-anchor="middle" font-size="12" fill="#64748b">흰 칸 = 아직 비어 있는 블록</text>
+  <text x="805" y="354" text-anchor="middle" font-size="12" fill="#64748b">(누구든 바로 가져다 씀)</text>
+
+  <g font-size="13" fill="#334155">
+    <text x="510" y="398">• 토큰 16개가 찰 때마다 블록 1개씩만 추가</text>
+    <text x="510" y="424">• 흩어져 있어도 블록 테이블로 찾아감</text>
+    <text x="510" y="456" font-weight="700" fill="#4c1d95">→ 낭비는 마지막 블록의 빈 칸뿐, C도 바로 입장</text>
+  </g>
+</svg>

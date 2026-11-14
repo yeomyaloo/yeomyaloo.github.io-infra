@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">컨테이너가 GPU를 쓰는 구조</text>
+
+  <!-- Host -->
+  <rect x="20" y="52" width="920" height="490" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="40" y="78" font-size="14" font-weight="700" fill="#334155">호스트 — Ubuntu 24.04 (Homelab 01 서버)</text>
+
+  <!-- Docker chain (left) -->
+  <g text-anchor="middle">
+    <rect x="40" y="96" width="250" height="32" rx="16" fill="#e2e8f0"/>
+    <text x="165" y="117" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">docker run --gpus all</text>
+
+    <rect x="40" y="144" width="250" height="32" rx="8" fill="#2496ed"/>
+    <text x="165" y="165" font-size="14" font-weight="700" fill="#ffffff">dockerd</text>
+
+    <rect x="40" y="192" width="250" height="32" rx="8" fill="#60a5fa"/>
+    <text x="165" y="213" font-size="14" font-weight="700" fill="#ffffff">containerd</text>
+
+    <rect x="40" y="240" width="250" height="56" rx="8" fill="#7c3aed"/>
+    <text x="165" y="262" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#ffffff">nvidia-container-runtime</text>
+    <text x="165" y="284" font-size="12" fill="#ede9fe">NVIDIA Container Toolkit</text>
+
+    <rect x="40" y="312" width="250" height="32" rx="8" fill="#93c5fd"/>
+    <text x="165" y="333" font-size="14" font-weight="700" fill="#1e3a8a">runc</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="165" y1="128" x2="165" y2="141" marker-end="url(#arrow)"/>
+    <line x1="165" y1="176" x2="165" y2="189" marker-end="url(#arrow)"/>
+    <line x1="165" y1="224" x2="165" y2="237" marker-end="url(#arrow)"/>
+    <line x1="165" y1="296" x2="165" y2="309" marker-end="url(#arrow)"/>
+  </g>
+  <text x="165" y="370" text-anchor="middle" font-size="12" fill="#64748b">runc 앞에서 GPU 정보를 끼워 넣음</text>
+
+  <!-- Driver user libs (middle) -->
+  <rect x="330" y="96" width="260" height="52" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="460" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">호스트에 CUDA Toolkit은</text>
+  <text x="460" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">설치하지 않아도 된다</text>
+
+  <rect x="330" y="166" width="260" height="190" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="460" y="192" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">드라이버 유저 라이브러리</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" text-anchor="middle" fill="#14532d">
+    <rect x="360" y="206" width="200" height="28" rx="6" fill="#ffffff" stroke="#16a34a"/><text x="460" y="225">libcuda.so.1</text>
+    <rect x="360" y="242" width="200" height="28" rx="6" fill="#ffffff" stroke="#16a34a"/><text x="460" y="261">libnvidia-ml.so.1</text>
+    <rect x="360" y="278" width="200" height="28" rx="6" fill="#ffffff" stroke="#16a34a"/><text x="460" y="297">nvidia-smi</text>
+  </g>
+  <text x="460" y="336" text-anchor="middle" font-size="12" fill="#475569">드라이버 패키지와 함께 설치됨</text>
+
+  <!-- Container (right) -->
+  <rect x="620" y="96" width="300" height="270" rx="10" fill="#ffffff" stroke="#2496ed" stroke-width="2"/>
+  <text x="770" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">컨테이너 (nvidia/cuda 계열 이미지)</text>
+  <rect x="640" y="132" width="260" height="34" rx="6" fill="#86efac"/>
+  <text x="770" y="154" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">앱 — PyTorch · vLLM · Ollama</text>
+  <rect x="640" y="174" width="260" height="50" rx="6" fill="#fde68a"/>
+  <text x="770" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">CUDA 런타임 (libcudart, cuBLAS …)</text>
+  <text x="770" y="214" text-anchor="middle" font-size="12" fill="#78350f">이미지에 포함 — 버전은 이미지 태그로 결정</text>
+  <rect x="640" y="234" width="260" height="122" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-dasharray="5 3"/>
+  <text x="770" y="254" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">Toolkit이 주입한 것</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#4c1d95">
+    <rect x="652" y="264" width="236" height="24" rx="5" fill="#ffffff" stroke="#c4b5fd"/><text x="770" y="281">/dev/nvidia0 · /dev/nvidiactl</text>
+    <rect x="652" y="294" width="236" height="24" rx="5" fill="#ffffff" stroke="#c4b5fd"/><text x="770" y="311">libcuda.so.1 · libnvidia-ml.so.1</text>
+    <rect x="652" y="324" width="236" height="24" rx="5" fill="#ffffff" stroke="#c4b5fd"/><text x="770" y="341">nvidia-smi</text>
+  </g>
+
+  <!-- arrows: runtime -> libs, libs -> container -->
+  <g stroke="#7c3aed" stroke-width="2" fill="none">
+    <line x1="290" y1="268" x2="327" y2="268" marker-end="url(#arrowP)"/>
+    <line x1="590" y1="300" x2="637" y2="300" marker-end="url(#arrowP)"/>
+  </g>
+  <text x="310" y="256" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">찾기</text>
+  <text x="614" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">마운트</text>
+
+  <!-- Kernel -->
+  <rect x="40" y="400" width="880" height="50" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="60" y="431" font-size="14" font-weight="700" fill="#0f172a">커널 공간: nvidia.ko · nvidia-uvm.ko (드라이버 커널 모듈 — ubuntu-drivers로 설치)</text>
+  <rect x="760" y="411" width="140" height="28" rx="6" fill="#ffffff" stroke="#64748b"/>
+  <text x="830" y="430" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">/dev/nvidia*</text>
+  <line x1="830" y1="411" x2="830" y2="352" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrowP)"/>
+  <text x="840" y="390" font-size="12" font-weight="700" fill="#7c3aed">장치 노출</text>
+
+  <!-- Hardware -->
+  <rect x="40" y="466" width="880" height="56" rx="8" fill="#334155"/>
+  <text x="480" y="500" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">GPU 하드웨어 (예: GeForce RTX 4060 Laptop · VRAM 8GB)</text>
+</svg>

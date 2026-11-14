@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RAG 평가 파이프라인 — 같은 시험지로 매번 채점</text>
+
+  <!-- golden set -->
+  <rect x="20" y="150" width="170" height="130" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="105" y="178" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">골든 셋</text>
+  <text x="105" y="198" text-anchor="middle" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">golden.jsonl</text>
+  <g font-size="12" fill="#78350f">
+    <text x="36" y="224">• question</text>
+    <text x="36" y="244">• relevant (정답 문서)</text>
+    <text x="36" y="264">• reference (모범 답)</text>
+  </g>
+
+  <!-- retrieval branch -->
+  <text x="240" y="82" font-size="14" font-weight="700" fill="#1e3a8a">A. 검색 평가 — LLM 없음 · 빠르고 무료</text>
+  <rect x="240" y="95" width="170" height="70" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="325" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">search(q, k)</text>
+  <text x="325" y="146" text-anchor="middle" font-size="12" fill="#1e40af">Day 42 검색 함수</text>
+
+  <rect x="450" y="95" width="170" height="70" rx="8" fill="#ffffff" stroke="#2496ed"/>
+  <text x="535" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">문서 순위</text>
+  <text x="535" y="146" text-anchor="middle" font-size="11" fill="#1e40af" font-family="Consolas,'D2Coding',monospace">[day17, day16, …]</text>
+
+  <rect x="660" y="95" width="160" height="70" rx="8" fill="#2496ed"/>
+  <text x="740" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">recall@k · MRR</text>
+  <text x="740" y="146" text-anchor="middle" font-size="12" fill="#ffffff">hit@k</text>
+
+  <!-- generation branch -->
+  <text x="240" y="282" font-size="14" font-weight="700" fill="#4c1d95">B. 생성 평가 — 평가용 LLM(judge) 필요</text>
+  <rect x="240" y="295" width="170" height="70" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="325" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">rag-api /ask</text>
+  <text x="325" y="346" text-anchor="middle" font-size="12" fill="#5b21b6">답변 + 검색 청크</text>
+
+  <rect x="450" y="295" width="170" height="70" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+  <text x="535" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">judge 모델</text>
+  <text x="535" y="346" text-anchor="middle" font-size="12" fill="#5b21b6">LiteLLM 경유 · Ragas</text>
+
+  <rect x="660" y="295" width="160" height="70" rx="8" fill="#7c3aed"/>
+  <text x="740" y="322" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">faithfulness</text>
+  <text x="740" y="346" text-anchor="middle" font-size="12" fill="#ffffff">context recall</text>
+
+  <!-- gate -->
+  <rect x="852" y="170" width="90" height="90" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="897" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">기준</text>
+  <text x="897" y="224" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">비교</text>
+  <text x="897" y="246" text-anchor="middle" font-size="11" fill="#166534">승인/반려</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <polyline points="190,190 215,190 215,130 237,130" marker-end="url(#arrow)"/>
+    <polyline points="190,240 215,240 215,330 237,330" marker-end="url(#arrow)"/>
+    <line x1="410" y1="130" x2="447" y2="130" marker-end="url(#arrow)"/>
+    <line x1="620" y1="130" x2="657" y2="130" marker-end="url(#arrow)"/>
+    <line x1="410" y1="330" x2="447" y2="330" marker-end="url(#arrow)"/>
+    <line x1="620" y1="330" x2="657" y2="330" marker-end="url(#arrow)"/>
+    <polyline points="820,130 836,130 836,195 849,195" marker-end="url(#arrow)"/>
+    <polyline points="820,330 836,330 836,235 849,235" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- feedback loop -->
+  <path d="M740,365 L740,430 L105,430 L105,283" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <rect x="270" y="414" width="400" height="32" rx="6" fill="#ffffff"/>
+  <text x="470" y="436" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">운영 트레이스(Langfuse)의 실패 사례로 골든 셋 보강</text>
+
+  <!-- triggers -->
+  <g font-size="12" fill="#64748b">
+    <text x="240" y="200">언제: 청킹 · 임베딩 · top-k 변경</text>
+    <text x="240" y="400">언제: 프롬프트 · 모델 변경</text>
+  </g>
+</svg>

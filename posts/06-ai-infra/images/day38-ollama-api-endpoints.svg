@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Ollama API — 하나의 포트, 두 갈래</text>
+
+  <!-- Clients -->
+  <text x="120" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">클라이언트</text>
+  <g font-size="13" text-anchor="middle" fill="#0f172a">
+    <rect x="20" y="96" width="200" height="36" rx="18" fill="#f1f5f9" stroke="#94a3b8"/><text x="120" y="119" font-family="Consolas,'D2Coding',monospace">curl</text>
+    <rect x="20" y="146" width="200" height="36" rx="18" fill="#f1f5f9" stroke="#94a3b8"/><text x="120" y="169">Python openai SDK</text>
+    <rect x="20" y="196" width="200" height="36" rx="18" fill="#f1f5f9" stroke="#94a3b8"/><text x="120" y="219">Open WebUI</text>
+    <rect x="20" y="246" width="200" height="36" rx="18" fill="#f1f5f9" stroke="#94a3b8"/><text x="120" y="269">FastAPI 앱 (Day 42)</text>
+    <rect x="20" y="296" width="200" height="36" rx="18" fill="#f1f5f9" stroke="#94a3b8"/><text x="120" y="319">LiteLLM (Day 40)</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="114" x2="257" y2="114" marker-end="url(#arrow)"/>
+    <line x1="220" y1="164" x2="257" y2="164" marker-end="url(#arrow)"/>
+    <line x1="220" y1="214" x2="257" y2="214" marker-end="url(#arrow)"/>
+    <line x1="220" y1="264" x2="257" y2="264" marker-end="url(#arrow)"/>
+    <line x1="220" y1="314" x2="257" y2="314" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Ollama server -->
+  <rect x="260" y="56" width="680" height="292" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="600" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Ollama 서버  ·  http://localhost:11434</text>
+
+  <!-- Native -->
+  <rect x="280" y="96" width="310" height="236" rx="10" fill="#ffffff" stroke="#2496ed"/>
+  <text x="435" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">네이티브 API  /api/*</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#1e3a8a">
+    <text x="296" y="150">/api/generate</text>
+    <text x="296" y="178">/api/chat</text>
+    <text x="296" y="206">/api/tags</text>
+    <text x="296" y="234">/api/ps</text>
+    <text x="296" y="262">/api/pull</text>
+    <text x="296" y="290">/api/embed</text>
+  </g>
+  <g font-size="12" fill="#475569">
+    <text x="420" y="150">프롬프트 → 응답</text>
+    <text x="420" y="178">메시지 배열로 대화</text>
+    <text x="420" y="206">받은 모델 목록</text>
+    <text x="420" y="234">메모리에 올라간 모델</text>
+    <text x="420" y="262">모델 받기</text>
+    <text x="420" y="290">임베딩 (Day 41)</text>
+  </g>
+  <text x="435" y="318" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">keep_alive · options · ns 단위 상세 통계</text>
+
+  <!-- OpenAI compatible -->
+  <rect x="610" y="96" width="310" height="236" rx="10" fill="#f5f3ff" stroke="#7c3aed"/>
+  <text x="765" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">OpenAI 호환 API  /v1/*</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#4c1d95">
+    <text x="626" y="150">/v1/chat/completions</text>
+    <text x="626" y="178">/v1/completions</text>
+    <text x="626" y="206">/v1/models</text>
+    <text x="626" y="234">/v1/embeddings</text>
+  </g>
+  <g font-size="12" fill="#475569">
+    <text x="800" y="150">채팅</text>
+    <text x="800" y="178">텍스트 완성</text>
+    <text x="800" y="206">모델 목록</text>
+    <text x="800" y="234">임베딩</text>
+  </g>
+  <text x="765" y="290" text-anchor="middle" font-size="12" fill="#4c1d95">OpenAI SDK · 생태계 도구를 그대로 사용</text>
+  <text x="765" y="318" text-anchor="middle" font-size="12" font-weight="700" fill="#4c1d95">api_key는 아무 값 (Ollama가 무시)</text>
+
+  <!-- Footer -->
+  <rect x="260" y="364" width="680" height="48" rx="10" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="600" y="385" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">/v1/* 로 짠 코드는 base_url과 모델 이름만 바꾸면</text>
+  <text x="600" y="403" text-anchor="middle" font-size="13" fill="#4c1d95">vLLM (Day 39) · LiteLLM 게이트웨이 (Day 40)로 그대로 옮겨 간다</text>
+</svg>

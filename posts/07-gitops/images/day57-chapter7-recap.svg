@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Chapter 7 회고 — 커밋 하나가 운영 트래픽이 되기까지</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#64748b">사람은 Git에 커밋하고 PR을 승인할 뿐, 나머지는 파이프라인과 조정 루프가 한다</text>
+
+  <!-- Row 1: app repo / CI -->
+  <text x="20" y="88" font-size="13" font-weight="700" fill="#334155">앱 레포 · CI</text>
+  <g text-anchor="middle">
+    <rect x="20" y="96" width="200" height="76" rx="10" fill="#f8fafc" stroke="#64748b"/>
+    <text x="120" y="126" font-size="15" font-weight="700" fill="#0f172a">① 코드 push</text>
+    <text x="120" y="150" font-size="12" fill="#64748b">gitops-demo-app · Day 50</text>
+
+    <rect x="260" y="96" width="200" height="76" rx="10" fill="#f8fafc" stroke="#64748b"/>
+    <text x="360" y="126" font-size="15" font-weight="700" fill="#0f172a">② 테스트 · 빌드</text>
+    <text x="360" y="150" font-size="12" fill="#64748b">GitHub Actions · Day 51</text>
+
+    <rect x="500" y="96" width="200" height="76" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="600" y="126" font-size="15" font-weight="700" fill="#78350f">③ 스캔 · SBOM · 서명</text>
+    <text x="600" y="150" font-size="12" fill="#78350f">Trivy · cosign · Day 57</text>
+
+    <rect x="740" y="96" width="200" height="76" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="840" y="126" font-size="15" font-weight="700" fill="#0f172a">④ 레지스트리</text>
+    <text x="840" y="150" font-size="12" fill="#64748b">GHCR (불변 태그) · Day 51</text>
+  </g>
+
+  <!-- Row 2: config repo / CD -->
+  <text x="20" y="226" font-size="13" font-weight="700" fill="#334155">설정 레포 · CD</text>
+  <g text-anchor="middle">
+    <rect x="740" y="234" width="200" height="76" rx="10" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="840" y="264" font-size="15" font-weight="700" fill="#9a3412">⑤ 태그 갱신 커밋</text>
+    <text x="840" y="288" font-size="12" fill="#9a3412">Image Updater · Day 54</text>
+
+    <rect x="500" y="234" width="200" height="76" rx="10" fill="#f8fafc" stroke="#64748b"/>
+    <text x="600" y="264" font-size="15" font-weight="700" fill="#0f172a">⑥ Kustomize 환경</text>
+    <text x="600" y="288" font-size="12" fill="#64748b">dev → prod PR 승격 · Day 52</text>
+
+    <rect x="260" y="234" width="200" height="76" rx="10" fill="#ef7b4d"/>
+    <text x="360" y="264" font-size="15" font-weight="700" fill="#ffffff">⑦ Argo CD sync</text>
+    <text x="360" y="288" font-size="12" fill="#ffffff">+ 시크릿 · Day 53 · 55</text>
+
+    <rect x="20" y="234" width="200" height="76" rx="10" fill="#326ce5"/>
+    <text x="120" y="264" font-size="15" font-weight="700" fill="#ffffff">⑧ 정책 검증</text>
+    <text x="120" y="288" font-size="12" fill="#ffffff">Kyverno · Day 57</text>
+  </g>
+
+  <!-- Row 3: runtime -->
+  <text x="20" y="364" font-size="13" font-weight="700" fill="#334155">런타임</text>
+  <g text-anchor="middle">
+    <rect x="20" y="372" width="200" height="76" rx="10" fill="#fff1eb" stroke="#ef7b4d" stroke-width="2"/>
+    <text x="120" y="402" font-size="15" font-weight="700" fill="#9a3412">⑨ Rollouts canary</text>
+    <text x="120" y="426" font-size="12" fill="#9a3412">20% → 50% → 100% · Day 56</text>
+
+    <rect x="260" y="372" width="200" height="76" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="360" y="402" font-size="15" font-weight="700" fill="#991b1b">⑩ 지표 분석</text>
+    <text x="360" y="426" font-size="12" fill="#991b1b">Prometheus · Day 17 · 56</text>
+
+    <rect x="500" y="372" width="200" height="76" rx="10" fill="#bbf7d0" stroke="#16a34a"/>
+    <text x="600" y="402" font-size="15" font-weight="700" fill="#14532d">⑪ 운영 트래픽</text>
+    <text x="600" y="426" font-size="12" fill="#14532d">Traefik · Gateway API</text>
+  </g>
+  <rect x="740" y="372" width="200" height="76" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="840" y="402" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">다음: SLO로 약속하기</text>
+  <text x="840" y="426" text-anchor="middle" font-size="12" fill="#64748b">Chapter 8 · Day 58~</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="134" x2="256" y2="134" marker-end="url(#arrow)"/>
+    <line x1="460" y1="134" x2="496" y2="134" marker-end="url(#arrow)"/>
+    <line x1="700" y1="134" x2="736" y2="134" marker-end="url(#arrow)"/>
+    <line x1="840" y1="172" x2="840" y2="230" marker-end="url(#arrow)"/>
+    <line x1="740" y1="272" x2="704" y2="272" marker-end="url(#arrow)"/>
+    <line x1="500" y1="272" x2="464" y2="272" marker-end="url(#arrow)"/>
+    <line x1="260" y1="272" x2="224" y2="272" marker-end="url(#arrow)"/>
+    <line x1="120" y1="310" x2="120" y2="368" marker-end="url(#arrow)"/>
+    <line x1="220" y1="400" x2="256" y2="400" marker-end="url(#arrow)"/>
+    <line x1="460" y1="410" x2="496" y2="410" marker-end="url(#arrow)"/>
+    <line x1="700" y1="410" x2="736" y2="410" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M256,428 L224,428" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="240" y="446" text-anchor="middle" font-size="10" fill="#dc2626">실패 시</text>
+  <text x="240" y="458" text-anchor="middle" font-size="10" fill="#dc2626">abort</text>
+  <text x="850" y="204" font-size="11" fill="#9a3412">새 digest 감지</text>
+  <text x="480" y="484" text-anchor="middle" font-size="12" fill="#64748b">③에서 막히면 서명이 없고, 서명이 없으면 ⑧에서 막힌다 — 각 단계가 다음 단계의 안전장치</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Chapter 6 로드맵 — 단일 서버에서 K8s 운영까지</text>
+
+  <!-- Stage headers -->
+  <g text-anchor="middle">
+    <rect x="20" y="56" width="210" height="58" rx="10" fill="#c4b5fd"/>
+    <text x="125" y="81" font-size="16" font-weight="700" fill="#2e1065">1. 단일 서버</text>
+    <text x="125" y="102" font-size="12" fill="#2e1065">Day 36 ~ 39</text>
+
+    <rect x="256" y="56" width="210" height="58" rx="10" fill="#a78bfa"/>
+    <text x="361" y="81" font-size="16" font-weight="700" fill="#ffffff">2. 서비스 만들기</text>
+    <text x="361" y="102" font-size="12" fill="#ffffff">Day 40 ~ 43</text>
+
+    <rect x="492" y="56" width="210" height="58" rx="10" fill="#7c3aed"/>
+    <text x="597" y="81" font-size="16" font-weight="700" fill="#ffffff">3. Kubernetes 운영</text>
+    <text x="597" y="102" font-size="12" fill="#ffffff">Day 44 ~ 48</text>
+
+    <rect x="728" y="56" width="210" height="58" rx="10" fill="#4c1d95"/>
+    <text x="833" y="81" font-size="16" font-weight="700" fill="#ffffff">4. 종합</text>
+    <text x="833" y="102" font-size="12" fill="#ffffff">Day 49</text>
+  </g>
+  <g stroke="#7c3aed" stroke-width="2.5" fill="none">
+    <line x1="232" y1="85" x2="252" y2="85" marker-end="url(#arrow)"/>
+    <line x1="468" y1="85" x2="488" y2="85" marker-end="url(#arrow)"/>
+    <line x1="704" y1="85" x2="724" y2="85" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Bodies -->
+  <g fill="#f5f3ff" stroke="#c4b5fd">
+    <rect x="20" y="124" width="210" height="214" rx="10"/>
+    <rect x="256" y="124" width="210" height="214" rx="10"/>
+    <rect x="492" y="124" width="210" height="214" rx="10"/>
+    <rect x="728" y="124" width="210" height="214" rx="10"/>
+  </g>
+
+  <g font-size="13" fill="#1e293b">
+    <!-- stage 1 -->
+    <g font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#7c3aed">
+      <text x="34" y="154">36</text><text x="34" y="182">37</text><text x="34" y="210">38</text><text x="34" y="238">39</text>
+      <text x="270" y="154">40</text><text x="270" y="182">41</text><text x="270" y="210">42</text><text x="270" y="238">43</text>
+      <text x="506" y="154">44</text><text x="506" y="182">45</text><text x="506" y="210">46</text><text x="506" y="238">47</text><text x="506" y="266">48</text>
+      <text x="742" y="154">49</text>
+    </g>
+    <text x="60" y="154">서빙 스택 · VRAM 계산</text>
+    <text x="60" y="182">GPU 드라이버 · CTK</text>
+    <text x="60" y="210">Ollama · Open WebUI</text>
+    <text x="60" y="238">vLLM 고성능 서빙</text>
+
+    <text x="296" y="154">LiteLLM 게이트웨이</text>
+    <text x="296" y="182">임베딩 · 벡터 DB</text>
+    <text x="296" y="210">RAG 파이프라인</text>
+    <text x="296" y="238">RAG Compose 통합</text>
+
+    <text x="532" y="154">GPU Operator · 공유</text>
+    <text x="532" y="182">K8s에 vLLM · KServe</text>
+    <text x="532" y="210">KEDA 오토스케일링</text>
+    <text x="532" y="238">LLM 관측성</text>
+    <text x="532" y="266">보안 · 가드레일 · 평가</text>
+
+    <text x="768" y="154">사내 문서 RAG 챗봇</text>
+    <text x="768" y="176" fill="#64748b" font-size="12">홈랩 K8s에서 운영</text>
+    <text x="768" y="198" fill="#64748b" font-size="12">게이트웨이 · 오토스케일</text>
+    <text x="768" y="220" fill="#64748b" font-size="12">관측성 · 가드레일 통합</text>
+  </g>
+
+  <!-- Results -->
+  <g font-size="12" font-weight="700" fill="#4c1d95" text-anchor="middle">
+    <rect x="34" y="294" width="182" height="30" rx="15" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="125" y="314">OpenAI 호환 API 서버</text>
+    <rect x="270" y="294" width="182" height="30" rx="15" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="361" y="314">RAG 서비스 (Compose)</text>
+    <rect x="506" y="294" width="182" height="30" rx="15" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="597" y="314">확장 · 관측 · 보호되는 LLM</text>
+    <rect x="742" y="294" width="182" height="30" rx="15" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="833" y="314">캡스톤 완성</text>
+  </g>
+
+  <!-- Reuse bar -->
+  <rect x="20" y="358" width="918" height="52" rx="10" fill="#eff6ff" stroke="#2496ed"/>
+  <text x="479" y="380" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">앞 챕터에서 다시 쓰는 것</text>
+  <text x="479" y="400" text-anchor="middle" font-size="12" fill="#1e3a8a">Homelab 01 서버 · Docker / Compose (Day 03 · 06) · kind / kubeadm (09 · 20) · Gateway API (15) · Helm (16) · Prometheus (17) · HPA (18)</text>
+</svg>

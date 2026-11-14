@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">방어 계층 — 모델이 속아도 피해가 번지지 않게</text>
+
+  <!-- user -->
+  <rect x="20" y="135" width="100" height="70" rx="10" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="70" y="166" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">사용자</text>
+  <text x="70" y="188" text-anchor="middle" font-size="11" fill="#1e40af">Open WebUI</text>
+
+  <!-- auth wall -->
+  <rect x="138" y="62" width="38" height="300" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="157" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f" transform="rotate(-90 157 212)">Tunnel + 인증 (Day 49)</text>
+
+  <!-- ns rag -->
+  <rect x="195" y="62" width="245" height="300" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <rect x="213" y="105" width="210" height="128" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="318" y="130" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">rag-api</text>
+  <g font-size="12" fill="#334155">
+    <text x="228" y="156">• 입력 PII 마스킹</text>
+    <text x="228" y="178">• 구분자 프롬프트</text>
+    <text x="228" y="200">• 출력 검증 (링크·출처)</text>
+    <text x="228" y="222">• 도구 없음 (권한 최소)</text>
+  </g>
+  <rect x="213" y="268" width="210" height="56" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="318" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">Qdrant</text>
+  <text x="318" y="312" text-anchor="middle" font-size="11" fill="#5b21b6">API 키 · 스캔된 문서만</text>
+  <text x="211" y="350" font-size="13" font-weight="700" fill="#166534">ns: rag</text>
+
+  <!-- ns gateway -->
+  <rect x="475" y="62" width="210" height="300" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <rect x="493" y="105" width="174" height="150" rx="8" fill="#ffffff" stroke="#4f46e5"/>
+  <text x="580" y="130" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">LiteLLM</text>
+  <g font-size="12" fill="#334155">
+    <text x="506" y="156">• 가상 키 · 허용 모델</text>
+    <text x="506" y="178">• max_budget</text>
+    <text x="506" y="200">• rpm / tpm 제한</text>
+    <text x="506" y="222">• 동시 요청 상한</text>
+    <text x="506" y="244">• Presidio 가드레일</text>
+  </g>
+  <text x="491" y="350" font-size="13" font-weight="700" fill="#3730a3">ns: gateway</text>
+
+  <!-- ns llm -->
+  <rect x="720" y="62" width="220" height="300" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="738" y="105" width="184" height="62" rx="8" fill="#7c3aed"/>
+  <text x="830" y="132" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">vLLM</text>
+  <text x="830" y="152" text-anchor="middle" font-size="11" fill="#ede9fe">:8000 · GPU</text>
+  <rect x="738" y="185" width="184" height="56" rx="8" fill="#a78bfa"/>
+  <text x="830" y="210" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">임베딩 (TEI)</text>
+  <text x="830" y="229" text-anchor="middle" font-size="11" fill="#ffffff">:8000</text>
+  <g font-size="12" fill="#4c1d95">
+    <text x="738" y="270">ingress 허용:</text>
+    <text x="738" y="290">gateway, monitoring 뿐</text>
+  </g>
+  <text x="736" y="350" font-size="13" font-weight="700" fill="#5b21b6">ns: llm</text>
+
+  <!-- allowed flows -->
+  <g stroke="#16a34a" stroke-width="2.5" fill="none">
+    <line x1="120" y1="170" x2="210" y2="170" marker-end="url(#arrowG)"/>
+    <line x1="423" y1="170" x2="490" y2="170" marker-end="url(#arrowG)"/>
+    <line x1="667" y1="136" x2="735" y2="136" marker-end="url(#arrowG)"/>
+    <line x1="667" y1="212" x2="735" y2="212" marker-end="url(#arrowG)"/>
+    <line x1="318" y1="233" x2="318" y2="265" marker-end="url(#arrowG)"/>
+    <line x1="830" y1="420" x2="830" y2="366" marker-end="url(#arrowG)"/>
+  </g>
+  <g font-size="11" font-weight="700" fill="#15803d">
+    <text x="457" y="188" text-anchor="middle" font-size="10">:4000</text>
+    <text x="350" y="254">:6333</text>
+  </g>
+
+  <!-- blocked flows -->
+  <path d="M400,105 C470,72 690,72 790,103" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrowR)"/>
+  <g stroke="#dc2626" stroke-width="3">
+    <line x1="582" y1="69" x2="598" y2="85"/>
+    <line x1="598" y1="69" x2="582" y2="85"/>
+  </g>
+  <text x="590" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">vLLM 직접 호출 차단</text>
+
+  <line x1="400" y1="233" x2="525" y2="400" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrowR)"/>
+  <g stroke="#dc2626" stroke-width="3">
+    <line x1="455" y1="304" x2="471" y2="320"/>
+    <line x1="471" y1="304" x2="455" y2="320"/>
+  </g>
+
+  <!-- outside boxes -->
+  <rect x="475" y="402" width="210" height="58" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="580" y="427" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">외부 인터넷</text>
+  <text x="580" y="447" text-anchor="middle" font-size="11" fill="#7f1d1d">데이터 반출 경로 차단 (egress)</text>
+
+  <rect x="738" y="422" width="184" height="46" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="830" y="450" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">Prometheus scrape</text>
+
+  <!-- legend -->
+  <g font-size="12" fill="#334155">
+    <line x1="30" y1="497" x2="70" y2="497" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="78" y="501">NetworkPolicy가 허용한 경로</text>
+    <line x1="280" y1="497" x2="320" y2="497" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="328" y="501">차단된 경로 (default deny + 화이트리스트)</text>
+  </g>
+</svg>

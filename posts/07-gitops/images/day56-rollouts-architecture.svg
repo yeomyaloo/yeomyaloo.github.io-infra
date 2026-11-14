@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ef7b4d"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Argo Rollouts 구성 — Canary 20% 진행 중</text>
+
+  <!-- Row 1: control -->
+  <rect x="20" y="70" width="180" height="70" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="110" y="96" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">설정 레포 (Git)</text>
+  <text x="110" y="118" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">Rollout · Service</text>
+  <text x="110" y="133" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">HTTPRoute</text>
+
+  <rect x="240" y="70" width="160" height="70" rx="10" fill="#fff1eb" stroke="#ef7b4d"/>
+  <text x="320" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#9a3412">Argo CD</text>
+  <text x="320" y="121" text-anchor="middle" font-size="12" fill="#334155">Git → 클러스터 동기화</text>
+
+  <rect x="440" y="70" width="250" height="70" rx="10" fill="#ef7b4d"/>
+  <text x="565" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Argo Rollouts 컨트롤러</text>
+  <text x="565" y="121" text-anchor="middle" font-size="12" fill="#ffffff">+ Gateway API 플러그인</text>
+
+  <rect x="760" y="70" width="180" height="70" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="850" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">Prometheus</text>
+  <text x="850" y="121" text-anchor="middle" font-size="12" fill="#334155">에러율 (AnalysisRun)</text>
+
+  <!-- Row 2: Rollout resource -->
+  <rect x="240" y="180" width="460" height="46" rx="8" fill="#fff1eb" stroke="#ef7b4d" stroke-width="2"/>
+  <text x="262" y="209" font-size="15" font-weight="700" fill="#9a3412">Rollout</text>
+  <text x="330" y="209" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">dev-demo-app</text>
+  <text x="680" y="209" text-anchor="end" font-size="13" fill="#334155">현재 단계: setWeight 20</text>
+
+  <!-- Row 3: ReplicaSets -->
+  <rect x="240" y="262" width="220" height="108" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="350" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">stable ReplicaSet (v1)</text>
+  <g font-size="12" text-anchor="middle" fill="#14532d">
+    <rect x="252" y="304" width="36" height="30" rx="5" fill="#86efac"/><text x="270" y="324">v1</text>
+    <rect x="293" y="304" width="36" height="30" rx="5" fill="#86efac"/><text x="311" y="324">v1</text>
+    <rect x="334" y="304" width="36" height="30" rx="5" fill="#86efac"/><text x="352" y="324">v1</text>
+    <rect x="375" y="304" width="36" height="30" rx="5" fill="#86efac"/><text x="393" y="324">v1</text>
+    <rect x="416" y="304" width="36" height="30" rx="5" fill="#86efac"/><text x="434" y="324">v1</text>
+  </g>
+  <text x="350" y="356" text-anchor="middle" font-size="11" fill="#64748b">Pod 5개 (100% 유지)</text>
+
+  <rect x="480" y="262" width="220" height="108" rx="10" fill="#fff7ed" stroke="#ef7b4d"/>
+  <text x="590" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">canary ReplicaSet (v2)</text>
+  <g font-size="12" text-anchor="middle" fill="#7c2d12">
+    <rect x="570" y="304" width="40" height="30" rx="5" fill="#fdba74"/><text x="590" y="324">v2</text>
+  </g>
+  <text x="590" y="356" text-anchor="middle" font-size="11" fill="#64748b">Pod 1개</text>
+
+  <!-- Row 4: Services -->
+  <rect x="240" y="400" width="220" height="40" rx="8" fill="#e2e8f0"/>
+  <text x="350" y="425" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">svc dev-demo-app</text>
+  <rect x="480" y="400" width="220" height="40" rx="8" fill="#e2e8f0"/>
+  <text x="590" y="425" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">svc dev-demo-app-canary</text>
+
+  <!-- Row 5: traffic -->
+  <rect x="20" y="478" width="130" height="50" rx="25" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="85" y="508" text-anchor="middle" font-size="14" fill="#0f172a">사용자 요청</text>
+  <rect x="185" y="478" width="170" height="50" rx="8" fill="#326ce5"/>
+  <text x="270" y="500" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Traefik Gateway</text>
+  <text x="270" y="518" text-anchor="middle" font-size="11" fill="#ffffff">localhost:30080 (Day 15)</text>
+  <rect x="400" y="478" width="300" height="50" rx="8" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="550" y="500" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">HTTPRoute</text>
+  <text x="550" y="518" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">weight stable 80 / canary 20</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="200" y1="105" x2="236" y2="105" marker-end="url(#arrow)"/>
+    <line x1="320" y1="140" x2="320" y2="176" marker-end="url(#arrow)"/>
+    <line x1="350" y1="226" x2="350" y2="258" marker-end="url(#arrow)"/>
+    <line x1="590" y1="226" x2="590" y2="258" marker-end="url(#arrow)"/>
+    <line x1="350" y1="400" x2="350" y2="374" marker-end="url(#arrow)"/>
+    <line x1="590" y1="400" x2="590" y2="374" marker-end="url(#arrow)"/>
+    <line x1="150" y1="503" x2="181" y2="503" marker-end="url(#arrow)"/>
+    <line x1="355" y1="503" x2="396" y2="503" marker-end="url(#arrow)"/>
+    <line x1="470" y1="478" x2="380" y2="444" marker-end="url(#arrow)"/>
+    <line x1="610" y1="478" x2="600" y2="444" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#ef7b4d" stroke-width="2" fill="none">
+    <line x1="565" y1="140" x2="565" y2="176" marker-end="url(#arrowO)"/>
+    <line x1="690" y1="95" x2="756" y2="95" marker-end="url(#arrowO)"/>
+    <path d="M690,125 L740,125 L740,503 L704,503" stroke-dasharray="6 4" marker-end="url(#arrowO)"/>
+  </g>
+  <g font-size="12" font-weight="700">
+    <text x="218" y="98" text-anchor="middle" fill="#334155">sync</text>
+    <text x="328" y="164" fill="#334155">apply</text>
+    <text x="573" y="164" fill="#9a3412">watch · 조정</text>
+    <text x="723" y="88" text-anchor="middle" fill="#9a3412">질의</text>
+    <text x="410" y="470" fill="#334155">80%</text>
+    <text x="616" y="466" fill="#9a3412">20%</text>
+    <text x="756" y="300" fill="#9a3412">weight</text>
+    <text x="756" y="316" fill="#9a3412">패치</text>
+  </g>
+  <text x="756" y="350" font-size="11" fill="#64748b">단계마다</text>
+  <text x="756" y="365" font-size="11" fill="#64748b">컨트롤러가</text>
+  <text x="756" y="380" font-size="11" fill="#64748b">HTTPRoute의</text>
+  <text x="756" y="395" font-size="11" fill="#64748b">가중치를 바꿈</text>
+</svg>

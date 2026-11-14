@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Canary vs Blue-Green</text>
+
+  <!-- Canary -->
+  <rect x="20" y="56" width="920" height="214" rx="12" fill="#fff7ed" stroke="#ef7b4d"/>
+  <text x="40" y="84" font-size="17" font-weight="700" fill="#9a3412">Canary — 트래픽을 조금씩 옮긴다</text>
+  <text x="920" y="84" text-anchor="end" font-size="12" fill="#64748b">막대 = 실제 사용자 트래픽 비율 (초록 v1 / 주황 v2)</text>
+
+  <g font-size="13">
+    <!-- step boxes: w170, x=40,215,390,565,740 -->
+    <rect x="40" y="100" width="160" height="125" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="120" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">① 시작</text>
+    <rect x="55" y="138" width="130" height="22" rx="4" fill="#86efac"/>
+    <text x="120" y="154" text-anchor="middle" font-size="12" fill="#14532d">v1 100%</text>
+    <text x="120" y="190" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">image: v2</text>
+    <text x="120" y="208" text-anchor="middle" font-size="12" fill="#334155">Git 커밋 → sync</text>
+
+    <rect x="215" y="100" width="160" height="125" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="295" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">② setWeight 20</text>
+    <rect x="230" y="138" width="104" height="22" rx="4" fill="#86efac"/>
+    <rect x="334" y="138" width="26" height="22" rx="4" fill="#fdba74"/>
+    <text x="282" y="154" text-anchor="middle" font-size="12" fill="#14532d">80%</text>
+    <text x="347" y="154" text-anchor="middle" font-size="11" fill="#7c2d12">20</text>
+    <text x="295" y="190" text-anchor="middle" font-size="12" fill="#334155">canary Pod 생성</text>
+    <text x="295" y="208" text-anchor="middle" font-size="12" fill="#334155">가중치 80:20</text>
+
+    <rect x="390" y="100" width="160" height="125" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+    <text x="470" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">③ pause: {}</text>
+    <rect x="405" y="138" width="104" height="22" rx="4" fill="#86efac"/>
+    <rect x="509" y="138" width="26" height="22" rx="4" fill="#fdba74"/>
+    <text x="457" y="154" text-anchor="middle" font-size="12" fill="#14532d">80%</text>
+    <text x="522" y="154" text-anchor="middle" font-size="11" fill="#7c2d12">20</text>
+    <text x="470" y="190" text-anchor="middle" font-size="12" fill="#92400e">사람이 확인 후</text>
+    <text x="470" y="208" text-anchor="middle" font-size="12" fill="#92400e" font-family="Consolas,'D2Coding',monospace">promote / abort</text>
+
+    <rect x="565" y="100" width="160" height="125" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="645" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">④ setWeight 50</text>
+    <rect x="580" y="138" width="65" height="22" rx="4" fill="#86efac"/>
+    <rect x="645" y="138" width="65" height="22" rx="4" fill="#fdba74"/>
+    <text x="612" y="154" text-anchor="middle" font-size="12" fill="#14532d">50</text>
+    <text x="677" y="154" text-anchor="middle" font-size="12" fill="#7c2d12">50</text>
+    <text x="645" y="190" text-anchor="middle" font-size="12" fill="#334155">pause 60s 동안</text>
+    <text x="645" y="208" text-anchor="middle" font-size="12" fill="#334155">에러율 자동 분석</text>
+
+    <rect x="740" y="100" width="180" height="125" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="830" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">⑤ 승격 완료</text>
+    <rect x="765" y="138" width="130" height="22" rx="4" fill="#fdba74"/>
+    <text x="830" y="154" text-anchor="middle" font-size="12" fill="#7c2d12">v2 100%</text>
+    <text x="830" y="190" text-anchor="middle" font-size="12" fill="#334155">v2가 새 stable</text>
+    <text x="830" y="208" text-anchor="middle" font-size="12" fill="#334155">v1 ReplicaSet 축소</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="200" y1="162" x2="212" y2="162" marker-end="url(#arrow)"/>
+    <line x1="375" y1="162" x2="387" y2="162" marker-end="url(#arrow)"/>
+    <line x1="550" y1="162" x2="562" y2="162" marker-end="url(#arrow)"/>
+    <line x1="725" y1="162" x2="737" y2="162" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="252" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">어느 단계든 abort / 분석 실패 → 트래픽 즉시 v1 100%로 복귀</text>
+
+  <!-- Blue-Green -->
+  <rect x="20" y="290" width="920" height="250" rx="12" fill="#eff6ff" stroke="#326ce5"/>
+  <text x="40" y="318" font-size="17" font-weight="700" fill="#1e3a8a">Blue-Green — 두 벌을 띄우고 한 번에 전환한다</text>
+
+  <!-- panel 1 -->
+  <text x="235" y="348" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">① 배포 중 (promote 전)</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="60" y="364" width="160" height="38" rx="8" fill="#e2e8f0"/>
+    <text x="140" y="381" fill="#0f172a" font-weight="700">activeService</text>
+    <text x="140" y="396" fill="#64748b">실사용자 트래픽</text>
+    <rect x="250" y="364" width="160" height="38" rx="8" fill="#e2e8f0"/>
+    <text x="330" y="381" fill="#0f172a" font-weight="700">previewService</text>
+    <text x="330" y="396" fill="#64748b">테스터·자동 검증</text>
+    <rect x="60" y="450" width="160" height="60" rx="8" fill="#bfdbfe" stroke="#2496ed"/>
+    <text x="140" y="476" fill="#1e3a8a" font-weight="700">Blue (v1)</text>
+    <text x="140" y="494" fill="#1e3a8a">Pod 3개</text>
+    <rect x="250" y="450" width="160" height="60" rx="8" fill="#bbf7d0" stroke="#16a34a"/>
+    <text x="330" y="476" fill="#14532d" font-weight="700">Green (v2)</text>
+    <text x="330" y="494" fill="#14532d">Pod 3개 (풀 사이즈)</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="140" y1="402" x2="140" y2="446" marker-end="url(#arrow)"/>
+    <line x1="330" y1="402" x2="330" y2="446" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- promote arrow -->
+  <g>
+    <line x1="440" y1="430" x2="510" y2="430" stroke="#ef7b4d" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="475" y="418" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">promote</text>
+    <text x="475" y="452" text-anchor="middle" font-size="11" fill="#64748b">selector 전환</text>
+  </g>
+
+  <!-- panel 2 -->
+  <text x="725" y="348" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">② promote 후</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="550" y="364" width="160" height="38" rx="8" fill="#e2e8f0"/>
+    <text x="630" y="381" fill="#0f172a" font-weight="700">activeService</text>
+    <text x="630" y="396" fill="#64748b">실사용자 트래픽</text>
+    <rect x="740" y="364" width="160" height="38" rx="8" fill="#e2e8f0"/>
+    <text x="820" y="381" fill="#0f172a" font-weight="700">previewService</text>
+    <text x="820" y="396" fill="#64748b">(같은 v2를 가리킴)</text>
+    <rect x="550" y="450" width="160" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="5 3"/>
+    <text x="630" y="476" fill="#64748b" font-weight="700">Blue (v1)</text>
+    <text x="630" y="494" fill="#64748b">30초 뒤 축소</text>
+    <rect x="740" y="450" width="160" height="60" rx="8" fill="#bbf7d0" stroke="#16a34a"/>
+    <text x="820" y="476" fill="#14532d" font-weight="700">Green (v2)</text>
+    <text x="820" y="494" fill="#14532d">새 active</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="660" y1="402" x2="790" y2="446" marker-end="url(#arrow)"/>
+    <line x1="820" y1="402" x2="820" y2="446" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="530" text-anchor="middle" font-size="12" fill="#334155">트래픽은 0% → 100% 한 번에. 대신 리소스가 잠시 2배 필요 (scaleDownDelaySeconds 기본 30초)</text>
+</svg>

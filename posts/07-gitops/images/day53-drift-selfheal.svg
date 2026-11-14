@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ef7b4d"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Drift 실험 — selfHeal이 수동 변경을 되돌리는 과정</text>
+
+  <!-- Git -->
+  <rect x="30" y="70" width="220" height="140" rx="12" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="140" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Git (원하는 상태)</text>
+  <text x="140" y="118" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">apps/demo-app/overlays/dev</text>
+  <rect x="55" y="134" width="170" height="56" rx="6" fill="#fde68a"/>
+  <text x="140" y="168" text-anchor="middle" font-size="16" fill="#78350f" font-family="Consolas,'D2Coding',monospace">replicas: 2</text>
+
+  <!-- Controller -->
+  <rect x="370" y="70" width="220" height="140" rx="12" fill="#fff1eb" stroke="#ef7b4d" stroke-width="2"/>
+  <text x="480" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#9a3412">application-controller</text>
+  <text x="480" y="128" text-anchor="middle" font-size="14" fill="#334155">비교: Git 2 ≠ live 5</text>
+  <rect x="405" y="146" width="150" height="44" rx="22" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="480" y="174" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">OutOfSync</text>
+
+  <!-- Live -->
+  <rect x="710" y="70" width="220" height="140" rx="12" fill="#eef2ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="820" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">클러스터 (live)</text>
+  <text x="820" y="118" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">demo-dev/dev-demo-app</text>
+  <rect x="735" y="134" width="170" height="56" rx="6" fill="#c7d2fe"/>
+  <text x="820" y="168" text-anchor="middle" font-size="16" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">replicas: 5 → 2</text>
+
+  <!-- Operator -->
+  <rect x="710" y="270" width="220" height="70" rx="12" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="820" y="297" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">운영자</text>
+  <text x="820" y="322" text-anchor="middle" font-size="13" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">kubectl edit (2 → 5)</text>
+
+  <!-- Arrows -->
+  <line x1="250" y1="140" x2="366" y2="140" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="308" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">① 읽기</text>
+
+  <line x1="820" y1="270" x2="820" y2="214" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowR)"/>
+  <text x="832" y="248" font-size="13" font-weight="700" fill="#dc2626">② 수동 변경</text>
+
+  <line x1="710" y1="112" x2="594" y2="112" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="652" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">③ watch 감지</text>
+
+  <line x1="590" y1="172" x2="706" y2="172" stroke="#ef7b4d" stroke-width="2.5" marker-end="url(#arrowO)"/>
+  <text x="648" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">④ selfHeal</text>
+  <text x="648" y="213" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">자동 Sync</text>
+
+  <!-- Status timeline -->
+  <rect x="30" y="250" width="640" height="190" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="50" y="278" font-size="15" font-weight="700" fill="#0f172a">Application 상태 변화</text>
+
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <rect x="50" y="296" width="130" height="40" rx="20" fill="#86efac"/>
+    <text x="115" y="321" fill="#14532d">Synced</text>
+    <rect x="250" y="296" width="130" height="40" rx="20" fill="#fde68a"/>
+    <text x="315" y="321" fill="#92400e">OutOfSync</text>
+    <rect x="450" y="296" width="130" height="40" rx="20" fill="#86efac"/>
+    <text x="515" y="321" fill="#14532d">Synced</text>
+  </g>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="180" y1="316" x2="246" y2="316" marker-end="url(#arrow)"/>
+    <line x1="380" y1="316" x2="446" y2="316" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="213" y="356">② 이후</text>
+    <text x="413" y="356">④ 몇 초 뒤</text>
+  </g>
+
+  <line x1="315" y1="336" x2="315" y2="384" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <rect x="50" y="388" width="600" height="40" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="350" y="413" text-anchor="middle" font-size="13" fill="#334155">selfHeal: false 이면 OutOfSync로 표시만 하고 멈춤 → 수동 Sync 필요</text>
+
+  <text x="820" y="380" text-anchor="middle" font-size="13" fill="#334155">Health는 내내 Healthy</text>
+  <text x="820" y="400" text-anchor="middle" font-size="13" fill="#334155">(Pod는 정상 동작 중)</text>
+  <text x="820" y="420" text-anchor="middle" font-size="12" fill="#64748b">Sync ≠ Health</text>
+</svg>

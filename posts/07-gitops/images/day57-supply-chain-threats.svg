@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">소프트웨어 공급망 — 어디가 공격받고, 무엇으로 막는가</text>
+
+  <!-- dependencies -->
+  <rect x="250" y="56" width="200" height="44" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="350" y="77" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">의존성</text>
+  <text x="350" y="93" text-anchor="middle" font-size="11" fill="#64748b">pip 패키지 · 베이스 이미지 · 액션</text>
+
+  <!-- chain -->
+  <g font-size="16" font-weight="700" text-anchor="middle">
+    <rect x="20" y="130" width="190" height="70" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="115" y="160" fill="#0f172a">① 소스</text>
+    <text x="115" y="184" font-size="12" font-weight="400" fill="#334155">개발자 · Git 레포</text>
+
+    <rect x="255" y="130" width="190" height="70" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="350" y="160" fill="#0f172a">② 빌드</text>
+    <text x="350" y="184" font-size="12" font-weight="400" fill="#334155">GitHub Actions 러너</text>
+
+    <rect x="490" y="130" width="190" height="70" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="585" y="160" fill="#0f172a">③ 패키지</text>
+    <text x="585" y="184" font-size="12" font-weight="400" fill="#334155">레지스트리 (GHCR)</text>
+
+    <rect x="725" y="130" width="215" height="70" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="832" y="160" fill="#0f172a">④ 배포</text>
+    <text x="832" y="184" font-size="12" font-weight="400" fill="#334155">Argo CD → 클러스터</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="350" y1="100" x2="350" y2="126" marker-end="url(#arrow)"/>
+    <line x1="210" y1="165" x2="251" y2="165" marker-end="url(#arrow)"/>
+    <line x1="445" y1="165" x2="486" y2="165" marker-end="url(#arrow)"/>
+    <line x1="680" y1="165" x2="721" y2="165" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- attacks -->
+  <text x="20" y="236" font-size="15" font-weight="700" fill="#991b1b">공격 지점</text>
+  <g font-size="12" fill="#7f1d1d">
+    <rect x="20" y="248" width="190" height="84" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="32" y="270">· 계정 탈취 후 악성 커밋</text>
+    <text x="32" y="292">· 리뷰 없는 main 푸시</text>
+    <text x="32" y="314">· 시크릿 커밋 유출</text>
+
+    <rect x="255" y="248" width="190" height="84" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="267" y="270">· 취약/악성 의존성</text>
+    <text x="267" y="292">· 액션 태그 바꿔치기</text>
+    <text x="279" y="314">(2026.3 trivy-action)</text>
+
+    <rect x="490" y="248" width="190" height="84" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="502" y="270">· 같은 태그에 다른 이미지</text>
+    <text x="502" y="292">· 레지스트리 토큰 유출로</text>
+    <text x="514" y="314">악성 이미지 푸시</text>
+
+    <rect x="725" y="248" width="215" height="84" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="737" y="270">· 출처 모를 이미지 실행</text>
+    <text x="737" y="292">· latest 태그로 몰래 교체</text>
+    <text x="737" y="314">· 알려진 CVE 그대로 배포</text>
+  </g>
+
+  <!-- defenses -->
+  <text x="20" y="368" font-size="15" font-weight="700" fill="#14532d">오늘의 방어</text>
+  <g font-size="12" fill="#14532d">
+    <rect x="20" y="380" width="190" height="84" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="32" y="402">· 브랜치 보호 · PR 리뷰</text>
+    <text x="32" y="424">· Trivy IaC/시크릿 스캔</text>
+    <text x="32" y="446">· SOPS/ESO (Day 55)</text>
+
+    <rect x="255" y="380" width="190" height="84" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="267" y="402">· Trivy 이미지 스캔 게이트</text>
+    <text x="267" y="424">· 액션을 커밋 SHA로 고정</text>
+    <text x="267" y="446">· SBOM · 빌드 출처(SLSA)</text>
+
+    <rect x="490" y="380" width="190" height="84" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="502" y="402">· cosign 키리스 서명</text>
+    <text x="502" y="424">· 다이제스트(@sha256)로</text>
+    <text x="514" y="446">서명 대상 고정</text>
+
+    <rect x="725" y="380" width="215" height="84" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="737" y="402">· Kyverno 서명 검증</text>
+    <text x="737" y="424">· latest 태그 금지 정책</text>
+    <text x="737" y="446">· 위반 Pod는 생성 거부</text>
+  </g>
+</svg>

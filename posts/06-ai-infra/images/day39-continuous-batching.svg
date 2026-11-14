@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 512" width="960" height="512" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="512" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Static batching vs Continuous batching</text>
+  <rect x="20" y="56" width="920" height="212" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="40" y="84" font-size="17" font-weight="700" fill="#0f172a">Static batching</text>
+  <text x="340" y="84" font-size="13" fill="#64748b">배치 전체가 끝나야 다음 배치 시작</text>
+  <g font-size="11" fill="#64748b" text-anchor="middle">
+    <text x="180" y="106">1</text>
+    <text x="240" y="106">2</text>
+    <text x="300" y="106">3</text>
+    <text x="360" y="106">4</text>
+    <text x="420" y="106">5</text>
+    <text x="480" y="106">6</text>
+    <text x="540" y="106">7</text>
+    <text x="600" y="106">8</text>
+    <text x="660" y="106">9</text>
+    <text x="720" y="106">10</text>
+    <text x="780" y="106">11</text>
+    <text x="840" y="106">12</text>
+  </g>
+  <text x="138" y="106" font-size="11" fill="#64748b" text-anchor="end">스텝</text>
+  <g font-size="13">
+    <text x="138" y="132" text-anchor="end" font-weight="700" fill="#334155">슬롯 1</text>
+    <rect x="152" y="114" width="176" height="26" rx="5" fill="#c4b5fd" stroke="#7c3aed"/><text x="240" y="132" text-anchor="middle" fill="#4c1d95">A</text>
+    <rect x="332" y="114" width="296" height="26" rx="5" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="4 3"/><text x="480" y="132" text-anchor="middle" fill="#64748b">유휴</text>
+    <rect x="632" y="114" width="236" height="26" rx="5" fill="#fde68a" stroke="#f59e0b"/><text x="750" y="132" text-anchor="middle" fill="#78350f">E</text>
+    <text x="138" y="162" text-anchor="end" font-weight="700" fill="#334155">슬롯 2</text>
+    <rect x="152" y="144" width="476" height="26" rx="5" fill="#93c5fd" stroke="#2496ed"/><text x="390" y="162" text-anchor="middle" fill="#1e3a8a">B</text>
+    <rect x="632" y="144" width="236" height="26" rx="5" fill="#c4b5fd" stroke="#7c3aed"/><text x="750" y="162" text-anchor="middle" fill="#4c1d95">F</text>
+    <text x="138" y="192" text-anchor="end" font-weight="700" fill="#334155">슬롯 3</text>
+    <rect x="152" y="174" width="296" height="26" rx="5" fill="#86efac" stroke="#16a34a"/><text x="300" y="192" text-anchor="middle" fill="#14532d">C</text>
+    <rect x="452" y="174" width="176" height="26" rx="5" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="4 3"/><text x="540" y="192" text-anchor="middle" fill="#64748b">유휴</text>
+    <rect x="632" y="174" width="236" height="26" rx="5" fill="#93c5fd" stroke="#2496ed"/><text x="750" y="192" text-anchor="middle" fill="#1e3a8a">G</text>
+    <text x="138" y="222" text-anchor="end" font-weight="700" fill="#334155">슬롯 4</text>
+    <rect x="152" y="204" width="356" height="26" rx="5" fill="#fde68a" stroke="#f59e0b"/><text x="330" y="222" text-anchor="middle" fill="#78350f">D</text>
+    <rect x="512" y="204" width="116" height="26" rx="5" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="4 3"/><text x="570" y="222" text-anchor="middle" fill="#64748b">유휴</text>
+    <rect x="632" y="204" width="236" height="26" rx="5" fill="#86efac" stroke="#16a34a"/><text x="750" y="222" text-anchor="middle" fill="#14532d">H</text>
+  </g>
+  <text x="40" y="256" font-size="13" font-weight="700" fill="#b91c1c">A·C·D가 일찍 끝나도 E~H는 스텝 9까지 대기 → 유휴 칸만큼 GPU 낭비</text>
+  <rect x="20" y="284" width="920" height="212" rx="12" fill="#f5f3ff" stroke="#7c3aed"/>
+  <text x="40" y="312" font-size="17" font-weight="700" fill="#0f172a">Continuous batching</text>
+  <text x="340" y="312" font-size="13" fill="#64748b">매 스텝마다 스케줄러가 배치를 재구성</text>
+  <g font-size="11" fill="#64748b" text-anchor="middle">
+    <text x="180" y="334">1</text>
+    <text x="240" y="334">2</text>
+    <text x="300" y="334">3</text>
+    <text x="360" y="334">4</text>
+    <text x="420" y="334">5</text>
+    <text x="480" y="334">6</text>
+    <text x="540" y="334">7</text>
+    <text x="600" y="334">8</text>
+    <text x="660" y="334">9</text>
+    <text x="720" y="334">10</text>
+    <text x="780" y="334">11</text>
+    <text x="840" y="334">12</text>
+  </g>
+  <text x="138" y="334" font-size="11" fill="#64748b" text-anchor="end">스텝</text>
+  <g font-size="13">
+    <text x="138" y="360" text-anchor="end" font-weight="700" fill="#334155">슬롯 1</text>
+    <rect x="152" y="342" width="176" height="26" rx="5" fill="#c4b5fd" stroke="#7c3aed"/><text x="240" y="360" text-anchor="middle" fill="#4c1d95">A</text>
+    <rect x="332" y="342" width="296" height="26" rx="5" fill="#fde68a" stroke="#f59e0b"/><text x="480" y="360" text-anchor="middle" fill="#78350f">E</text>
+    <rect x="632" y="342" width="236" height="26" rx="5" fill="#93c5fd" stroke="#2496ed"/><text x="750" y="360" text-anchor="middle" fill="#1e3a8a">I</text>
+    <text x="138" y="390" text-anchor="end" font-weight="700" fill="#334155">슬롯 2</text>
+    <rect x="152" y="372" width="476" height="26" rx="5" fill="#93c5fd" stroke="#2496ed"/><text x="390" y="390" text-anchor="middle" fill="#1e3a8a">B</text>
+    <rect x="632" y="372" width="236" height="26" rx="5" fill="#c4b5fd" stroke="#7c3aed"/><text x="750" y="390" text-anchor="middle" fill="#4c1d95">F</text>
+    <text x="138" y="420" text-anchor="end" font-weight="700" fill="#334155">슬롯 3</text>
+    <rect x="152" y="402" width="296" height="26" rx="5" fill="#86efac" stroke="#16a34a"/><text x="300" y="420" text-anchor="middle" fill="#14532d">C</text>
+    <rect x="452" y="402" width="356" height="26" rx="5" fill="#93c5fd" stroke="#2496ed"/><text x="630" y="420" text-anchor="middle" fill="#1e3a8a">G</text>
+    <rect x="812" y="402" width="56" height="26" rx="5" fill="#fde68a" stroke="#f59e0b"/><text x="840" y="420" text-anchor="middle" fill="#78350f">J</text>
+    <text x="138" y="450" text-anchor="end" font-weight="700" fill="#334155">슬롯 4</text>
+    <rect x="152" y="432" width="356" height="26" rx="5" fill="#fde68a" stroke="#f59e0b"/><text x="330" y="450" text-anchor="middle" fill="#78350f">D</text>
+    <rect x="512" y="432" width="356" height="26" rx="5" fill="#86efac" stroke="#16a34a"/><text x="690" y="450" text-anchor="middle" fill="#14532d">H</text>
+  </g>
+  <text x="40" y="484" font-size="13" font-weight="700" fill="#4c1d95">끝난 슬롯에 대기열의 요청(E, G, H …)이 바로 들어감 → 같은 시간에 더 많은 요청 완료</text>
+</svg>

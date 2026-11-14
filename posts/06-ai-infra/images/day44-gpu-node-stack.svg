@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">GPU 노드가 Kubernetes 자원이 되기까지</text>
+
+  <!-- Control plane -->
+  <rect x="20" y="70" width="260" height="300" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="150" y="98" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">control-plane</text>
+  <text x="150" y="118" text-anchor="middle" font-size="12" fill="#64748b">(경로 A: Day 20 kubeadm)</text>
+  <rect x="40" y="135" width="220" height="42" rx="8" fill="#326ce5"/>
+  <text x="150" y="162" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">kube-apiserver</text>
+  <rect x="40" y="192" width="220" height="42" rx="8" fill="#93c5fd"/>
+  <text x="150" y="219" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">kube-scheduler</text>
+  <rect x="40" y="249" width="220" height="56" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="150" y="272" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">GPU Operator</text>
+  <text x="150" y="292" text-anchor="middle" font-size="12" fill="#5b21b6" font-family="Consolas,'D2Coding',monospace">ClusterPolicy 감시</text>
+  <text x="150" y="335" text-anchor="middle" font-size="12" fill="#334155">스케줄러는 노드의</text>
+  <text x="150" y="353" text-anchor="middle" font-size="12" fill="#334155">nvidia.com/gpu 잔량을 본다</text>
+
+  <!-- GPU node -->
+  <rect x="340" y="60" width="600" height="420" rx="12" fill="#f8fafc" stroke="#16a34a" stroke-width="2"/>
+  <text x="640" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">gpu-node1 (홈랩 Ubuntu 24.04 + GPU)</text>
+
+  <!-- workload pod -->
+  <rect x="360" y="104" width="560" height="56" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="380" y="128" font-size="14" font-weight="700" fill="#5b21b6">워크로드 Pod (vLLM, CUDA 샘플 …)</text>
+  <text x="380" y="149" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">limits: nvidia.com/gpu: 1</text>
+
+  <!-- daemonsets -->
+  <text x="370" y="186" font-size="13" font-weight="700" fill="#5b21b6">Operator가 띄우는 DaemonSet</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="360" y="196" width="130" height="50" rx="8" fill="#ede9fe"/>
+    <text x="425" y="217" font-weight="700" fill="#5b21b6">device plugin</text>
+    <text x="425" y="236" font-size="11" fill="#334155">GPU 개수 등록</text>
+    <rect x="503" y="196" width="130" height="50" rx="8" fill="#ede9fe"/>
+    <text x="568" y="217" font-weight="700" fill="#5b21b6">GFD · NFD</text>
+    <text x="568" y="236" font-size="11" fill="#334155">노드 라벨</text>
+    <rect x="646" y="196" width="130" height="50" rx="8" fill="#ede9fe"/>
+    <text x="711" y="217" font-weight="700" fill="#5b21b6">DCGM exporter</text>
+    <text x="711" y="236" font-size="11" fill="#334155">:9400 메트릭</text>
+    <rect x="789" y="196" width="131" height="50" rx="8" fill="#ede9fe"/>
+    <text x="854" y="217" font-weight="700" fill="#5b21b6">toolkit · MIG</text>
+    <text x="854" y="236" font-size="11" fill="#334155">런타임 설정</text>
+  </g>
+
+  <!-- kubelet -->
+  <rect x="360" y="262" width="270" height="44" rx="8" fill="#326ce5"/>
+  <text x="495" y="290" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">kubelet</text>
+  <rect x="650" y="262" width="270" height="44" rx="8" fill="#60a5fa"/>
+  <text x="785" y="282" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">containerd</text>
+  <text x="785" y="299" text-anchor="middle" font-size="11" fill="#ffffff">CDI로 /dev/nvidia* 주입</text>
+
+  <!-- host layers -->
+  <rect x="360" y="322" width="560" height="44" rx="8" fill="#fde68a"/>
+  <text x="640" y="342" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">NVIDIA 드라이버 + Container Toolkit (호스트)</text>
+  <text x="640" y="359" text-anchor="middle" font-size="11" fill="#78350f">Day 37에서 설치 → driver.enabled=false</text>
+  <rect x="360" y="380" width="560" height="40" rx="8" fill="#334155"/>
+  <text x="640" y="406" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">GPU (예: RTX 3090 24GB)</text>
+  <text x="640" y="455" text-anchor="middle" font-size="12" fill="#64748b">테인트 nvidia.com/gpu=present:NoSchedule (선택)</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="425" y1="246" x2="425" y2="259" marker-end="url(#arrow)"/>
+    <line x1="630" y1="284" x2="647" y2="284" marker-end="url(#arrow)"/>
+    <path d="M360,284 L320,284 L320,156 L263,156" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#7c3aed" stroke-width="2" fill="none" stroke-dasharray="6 4">
+    <path d="M260,277 L300,277 L300,221 L357,221" marker-end="url(#arrowP)"/>
+  </g>
+  <text x="291" y="148" text-anchor="middle" font-size="11" fill="#334155" font-weight="700">상태 보고</text>
+
+  <!-- bottom legend -->
+  <rect x="20" y="400" width="300" height="140" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="36" y="426" font-size="14" font-weight="700" fill="#92400e">경로 B: k3s 단일 노드</text>
+  <text x="36" y="450" font-size="12" fill="#334155">control-plane과 gpu-node1이</text>
+  <text x="36" y="468" font-size="12" fill="#334155">같은 머신 한 대에 함께 있다</text>
+  <text x="36" y="492" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">--default-runtime nvidia</text>
+  <text x="36" y="512" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">driver/toolkit.enabled=false</text>
+  <text x="36" y="530" font-size="11" fill="#64748b">(점선: Operator가 DaemonSet 배포)</text>
+
+  <rect x="340" y="496" width="600" height="44" rx="10" fill="#ede9fe"/>
+  <text x="640" y="524" text-anchor="middle" font-size="13" fill="#5b21b6">① plugin 등록 → ② kubelet이 노드 상태 보고 → ③ 스케줄 → ④ containerd가 GPU 주입</text>
+</svg>

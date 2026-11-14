@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Chapter 0~6 회고 — 한 층씩 쌓아 올린 스택</text>
+
+  <!-- top cap -->
+  <rect x="20" y="62" width="560" height="50" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="300" y="93" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">Day 49 · 홈랩 K8s 위의 사내 문서 RAG 챗봇 (운영 중)</text>
+
+  <!-- Ch6 -->
+  <rect x="20" y="122" width="560" height="74" rx="10" fill="#7c3aed"/>
+  <text x="40" y="146" font-size="13" font-weight="700" fill="#ede9fe">Chapter 6 · Day 36–49</text>
+  <text x="40" y="168" font-size="16" font-weight="700" fill="#ffffff">AI 인프라</text>
+  <text x="40" y="187" font-size="12" fill="#ede9fe">GPU · vLLM · LiteLLM · 임베딩/Qdrant · RAG · K8s GPU · KEDA · 관측 · 보안 · 평가</text>
+
+  <!-- Ch5 -->
+  <rect x="20" y="206" width="560" height="74" rx="10" fill="#dcfce7"/>
+  <rect x="20" y="206" width="8" height="74" rx="4" fill="#16a34a"/>
+  <text x="40" y="230" font-size="13" font-weight="700" fill="#14532d">Chapter 5 · Day 34–35</text>
+  <text x="40" y="252" font-size="16" font-weight="700" fill="#0f172a">종합 프로젝트</text>
+  <text x="40" y="271" font-size="12" fill="#475569">OpenStack 위 Kubernetes · Terraform으로 인프라 코드화</text>
+
+  <!-- Ch3 | Ch4 -->
+  <rect x="20" y="290" width="272" height="74" rx="10" fill="#eef2ff"/>
+  <rect x="20" y="290" width="8" height="74" rx="4" fill="#4f46e5"/>
+  <text x="40" y="314" font-size="13" font-weight="700" fill="#312e81">Chapter 3 · Day 21–24</text>
+  <text x="40" y="336" font-size="16" font-weight="700" fill="#0f172a">가상화 &amp; 네트워크</text>
+  <text x="40" y="355" font-size="12" fill="#475569">KVM · bridge · VXLAN · OVS</text>
+
+  <rect x="308" y="290" width="272" height="74" rx="10" fill="#ffe4e6"/>
+  <rect x="308" y="290" width="8" height="74" rx="4" fill="#ed1944"/>
+  <text x="328" y="314" font-size="13" font-weight="700" fill="#9f1239">Chapter 4 · Day 25–33</text>
+  <text x="328" y="336" font-size="16" font-weight="700" fill="#0f172a">OpenStack</text>
+  <text x="328" y="355" font-size="12" fill="#475569">나만의 프라이빗 클라우드</text>
+
+  <!-- Ch2 -->
+  <rect x="20" y="374" width="560" height="74" rx="10" fill="#e0e7ff"/>
+  <rect x="20" y="374" width="8" height="74" rx="4" fill="#326ce5"/>
+  <text x="40" y="398" font-size="13" font-weight="700" fill="#1e3a8a">Chapter 2 · Day 08–20</text>
+  <text x="40" y="420" font-size="16" font-weight="700" fill="#0f172a">Kubernetes</text>
+  <text x="40" y="439" font-size="12" fill="#475569">Pod · Deployment · Service · Secret · PVC · Ingress · Helm · Prometheus · HPA · RBAC</text>
+
+  <!-- Ch1 -->
+  <rect x="20" y="458" width="560" height="74" rx="10" fill="#dbeafe"/>
+  <rect x="20" y="458" width="8" height="74" rx="4" fill="#2496ed"/>
+  <text x="40" y="482" font-size="13" font-weight="700" fill="#1e3a8a">Chapter 1 · Day 01–07</text>
+  <text x="40" y="504" font-size="16" font-weight="700" fill="#0f172a">Docker</text>
+  <text x="40" y="523" font-size="12" fill="#475569">이미지 · 레이어 · 볼륨 · 네트워크 · Compose · namespace/cgroup</text>
+
+  <!-- Ch0 -->
+  <rect x="20" y="542" width="560" height="62" rx="10" fill="#e2e8f0"/>
+  <rect x="20" y="542" width="8" height="62" rx="4" fill="#64748b"/>
+  <text x="40" y="566" font-size="13" font-weight="700" fill="#334155">Chapter 0 · H01–H03</text>
+  <text x="200" y="566" font-size="16" font-weight="700" fill="#0f172a">홈랩</text>
+  <text x="40" y="590" font-size="12" fill="#475569">남는 PC를 Ubuntu 서버로 · 포트포워딩 · Cloudflare Tunnel / Tailscale</text>
+
+  <!-- next season -->
+  <rect x="620" y="62" width="320" height="300" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="780" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">⏭️ 다음 시즌</text>
+  <text x="780" y="118" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">Chapter 7 · GitOps &amp; CI/CD</text>
+  <text x="780" y="140" text-anchor="middle" font-size="12" fill="#64748b">Day 50–57</text>
+  <g font-size="13" fill="#334155">
+    <rect x="640" y="156" width="280" height="34" rx="6" fill="#ffffff" stroke="#fde68a"/><text x="654" y="178">Push 배포 vs Pull 배포 (Day 50)</text>
+    <rect x="640" y="196" width="280" height="34" rx="6" fill="#ffffff" stroke="#fde68a"/><text x="654" y="218">GitHub Actions · Kustomize</text>
+    <rect x="640" y="236" width="280" height="34" rx="6" fill="#ffffff" stroke="#fde68a"/><text x="654" y="258">Argo CD — Git이 곧 원하는 상태</text>
+    <rect x="640" y="276" width="280" height="34" rx="6" fill="#ffffff" stroke="#fde68a"/><text x="654" y="298">Argo Rollouts — 카나리 · 자동 롤백</text>
+    <rect x="640" y="316" width="280" height="34" rx="6" fill="#ffffff" stroke="#fde68a"/><text x="654" y="338">공급망 보안</text>
+  </g>
+  <path d="M580,87 C600,87 600,110 617,110" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- long-term -->
+  <rect x="620" y="384" width="320" height="220" rx="12" fill="#f5f3ff" stroke="#c7d2fe"/>
+  <text x="640" y="412" font-size="14" font-weight="700" fill="#4c1d95">더 깊이 — 장기 학습 방향</text>
+  <g font-size="13" fill="#334155">
+    <text x="640" y="442">• 파인튜닝 · LoRA 어댑터 서빙</text>
+    <text x="640" y="470">• 멀티 GPU 분산 추론 (텐서 병렬)</text>
+    <text x="640" y="498">• MLOps — 모델 레지스트리 · 평가 자동화</text>
+    <text x="640" y="526">• 에이전트 인프라 — 도구 권한 · MCP</text>
+    <text x="640" y="554">• OpenStack GPU 패스스루로 확장</text>
+  </g>
+  <text x="640" y="588" font-size="11" fill="#64748b">토대: 오늘의 게이트웨이 · 관측 · 평가 체계</text>
+</svg>

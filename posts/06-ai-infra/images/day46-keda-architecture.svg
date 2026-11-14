@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">KEDA가 vLLM을 늘리고 줄이는 경로</text>
+
+  <!-- ScaledObject -->
+  <rect x="20" y="70" width="230" height="150" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="135" y="96" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">ScaledObject</text>
+  <g font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">
+    <text x="36" y="122">min 0~1 / max 3</text>
+    <text x="36" y="142">trigger: prometheus</text>
+    <text x="36" y="160">  waiting, threshold 5</text>
+    <text x="36" y="180">trigger: cron</text>
+    <text x="36" y="198">  09~22시, 1개</text>
+  </g>
+
+  <!-- KEDA ns -->
+  <rect x="300" y="60" width="330" height="250" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="465" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">ns: keda</text>
+  <rect x="320" y="100" width="290" height="70" rx="8" fill="#326ce5"/>
+  <text x="465" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">keda-operator</text>
+  <text x="465" y="152" text-anchor="middle" font-size="12" fill="#ffffff">HPA 생성 · 0 ↔ 1 활성화 직접 수행</text>
+  <rect x="360" y="200" width="250" height="90" rx="8" fill="#93c5fd"/>
+  <text x="485" y="226" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">metrics-apiserver</text>
+  <text x="485" y="248" text-anchor="middle" font-size="12" fill="#1e3a8a">External Metrics API 제공</text>
+  <text x="485" y="270" text-anchor="middle" font-size="11" fill="#1e3a8a">요청 시 PromQL 실행 → 값 반환</text>
+
+  <!-- Prometheus -->
+  <rect x="680" y="200" width="260" height="90" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="810" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">Prometheus</text>
+  <text x="810" y="252" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">vllm:num_requests_waiting</text>
+  <text x="810" y="272" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">vllm:kv_cache_usage_perc</text>
+
+  <!-- HPA -->
+  <rect x="300" y="350" width="330" height="70" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="465" y="378" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">HPA keda-hpa-vllm-qwen</text>
+  <text x="465" y="402" text-anchor="middle" font-size="12" fill="#334155">1 ↔ N 확장 · behavior로 속도 조절</text>
+
+  <!-- Deployment -->
+  <rect x="680" y="340" width="260" height="140" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="810" y="366" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">Deployment vllm-qwen</text>
+  <g font-size="12" text-anchor="middle" font-weight="700">
+    <rect x="696" y="382" width="72" height="40" rx="6" fill="#86efac"/><text x="732" y="407" fill="#14532d">Pod</text>
+    <rect x="774" y="382" width="72" height="40" rx="6" fill="#86efac"/><text x="810" y="407" fill="#14532d">Pod</text>
+    <rect x="852" y="382" width="72" height="40" rx="6" fill="#ffffff" stroke="#16a34a" stroke-dasharray="5 4"/><text x="888" y="407" fill="#64748b">+1</text>
+  </g>
+  <text x="810" y="452" text-anchor="middle" font-size="11" fill="#64748b">/metrics → ServiceMonitor</text>
+  <text x="810" y="468" text-anchor="middle" font-size="11" fill="#64748b">로 Prometheus에 수집</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="250" y1="135" x2="317" y2="135" marker-end="url(#arrow)"/>
+    <line x1="340" y1="170" x2="340" y2="347" marker-end="url(#arrow)"/>
+    <line x1="530" y1="347" x2="530" y2="293" marker-end="url(#arrow)"/>
+    <line x1="610" y1="245" x2="677" y2="245" marker-end="url(#arrow)"/>
+    <line x1="630" y1="385" x2="677" y2="395" marker-end="url(#arrow)"/>
+    <line x1="840" y1="337" x2="840" y2="293" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M610,120 L660,120 L660,330 L700,338" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowP)"/>
+
+  <g font-size="11" font-weight="700" fill="#334155">
+    <text x="258" y="126">감시</text>
+    <text x="348" y="330">생성</text>
+    <text x="538" y="324">지표 조회</text>
+    <text x="620" y="236">쿼리</text>
+    <text x="634" y="430">replicas</text>
+    <text x="848" y="318">scrape</text>
+  </g>
+  <text x="668" y="112" font-size="11" font-weight="700" fill="#7c3aed">0 ↔ 1</text>
+
+  <!-- legend -->
+  <rect x="20" y="250" width="250" height="230" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="276" font-size="13" font-weight="700" fill="#0f172a">두 단계로 나뉜다</text>
+  <text x="36" y="302" font-size="12" font-weight="700" fill="#7c3aed">활성화 (0 ↔ 1)</text>
+  <text x="36" y="322" font-size="11" fill="#334155">keda-operator가 pollingInterval</text>
+  <text x="36" y="338" font-size="11" fill="#334155">마다 판단, cooldownPeriod 적용</text>
+  <text x="36" y="368" font-size="12" font-weight="700" fill="#92400e">확장 (1 ↔ N)</text>
+  <text x="36" y="388" font-size="11" fill="#334155">HPA가 지표 ÷ threshold로 계산,</text>
+  <text x="36" y="404" font-size="11" fill="#334155">behavior.scaleUp / scaleDown 적용</text>
+  <text x="36" y="434" font-size="11" fill="#64748b">트리거가 여러 개면</text>
+  <text x="36" y="450" font-size="11" fill="#64748b">가장 큰 레플리카 수를 채택</text>
+</svg>

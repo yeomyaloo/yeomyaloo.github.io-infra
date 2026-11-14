@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">App of Apps vs ApplicationSet</text>
+
+  <!-- Left: App of Apps -->
+  <rect x="20" y="60" width="450" height="380" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="245" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">App of Apps</text>
+  <text x="245" y="108" text-anchor="middle" font-size="12" fill="#64748b">Application YAML 자체를 Git 폴더로 관리</text>
+
+  <rect x="145" y="124" width="200" height="46" rx="8" fill="#ef7b4d"/>
+  <text x="245" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Application: root</text>
+  <text x="245" y="163" text-anchor="middle" font-size="11" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">path: argocd-apps</text>
+
+  <rect x="120" y="198" width="250" height="40" rx="8" fill="#fde68a"/>
+  <text x="245" y="223" text-anchor="middle" font-size="13" fill="#78350f" font-family="Consolas,'D2Coding',monospace">gitops-demo-config/argocd-apps/</text>
+
+  <g font-size="12" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <rect x="35" y="276" width="130" height="40" rx="8" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="100" y="301" fill="#9a3412">gitops-demo-dev</text>
+    <rect x="180" y="276" width="130" height="40" rx="8" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="245" y="301" fill="#9a3412">gitops-demo-stage</text>
+    <rect x="325" y="276" width="130" height="40" rx="8" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="390" y="301" fill="#9a3412">rag-api-dev</text>
+  </g>
+  <g font-size="12" text-anchor="middle">
+    <rect x="35" y="350" width="130" height="34" rx="6" fill="#86efac"/><text x="100" y="372" fill="#14532d">demo-dev 리소스</text>
+    <rect x="180" y="350" width="130" height="34" rx="6" fill="#86efac"/><text x="245" y="372" fill="#14532d">demo-stage 리소스</text>
+    <rect x="325" y="350" width="130" height="34" rx="6" fill="#86efac"/><text x="390" y="372" fill="#14532d">rag-api 리소스</text>
+  </g>
+  <text x="245" y="418" text-anchor="middle" font-size="13" fill="#334155">새 앱 추가 = argocd-apps/ 에 YAML 하나 커밋</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="245" y1="170" x2="245" y2="194" marker-end="url(#arrow)"/>
+    <line x1="245" y1="238" x2="100" y2="272" marker-end="url(#arrow)"/>
+    <line x1="245" y1="238" x2="245" y2="272" marker-end="url(#arrow)"/>
+    <line x1="245" y1="238" x2="390" y2="272" marker-end="url(#arrow)"/>
+    <line x1="100" y1="316" x2="100" y2="346" marker-end="url(#arrow)"/>
+    <line x1="245" y1="316" x2="245" y2="346" marker-end="url(#arrow)"/>
+    <line x1="390" y1="316" x2="390" y2="346" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Right: ApplicationSet -->
+  <rect x="490" y="60" width="450" height="380" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="715" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">ApplicationSet</text>
+  <text x="715" y="108" text-anchor="middle" font-size="12" fill="#64748b">생성기(generator) × 템플릿 → Application N개</text>
+
+  <rect x="510" y="124" width="190" height="114" rx="8" fill="#ffffff" stroke="#4f46e5"/>
+  <text x="605" y="146" text-anchor="middle" font-size="14" font-weight="700" fill="#3730a3">generators: list</text>
+  <g font-size="13" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <rect x="530" y="156" width="150" height="22" rx="4" fill="#c7d2fe"/><text x="605" y="172" fill="#1e1b4b">env: dev</text>
+    <rect x="530" y="182" width="150" height="22" rx="4" fill="#c7d2fe"/><text x="605" y="198" fill="#1e1b4b">env: stage</text>
+    <rect x="530" y="208" width="150" height="22" rx="4" fill="#c7d2fe"/><text x="605" y="224" fill="#1e1b4b">env: prod</text>
+  </g>
+
+  <text x="715" y="186" text-anchor="middle" font-size="22" font-weight="700" fill="#334155">×</text>
+
+  <rect x="730" y="124" width="190" height="114" rx="8" fill="#ffffff" stroke="#4f46e5"/>
+  <text x="825" y="146" text-anchor="middle" font-size="14" font-weight="700" fill="#3730a3">template</text>
+  <g font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#1e1b4b">
+    <text x="742" y="168">name: gitops-demo-{{.env}}</text>
+    <text x="742" y="187">path: apps/demo-app/</text>
+    <text x="781" y="205">overlays/{{.env}}</text>
+    <text x="742" y="225">namespace: demo-{{.env}}</text>
+  </g>
+
+  <g font-size="12" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <rect x="505" y="276" width="135" height="40" rx="8" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="572" y="301" fill="#9a3412">gitops-demo-dev</text>
+    <rect x="648" y="276" width="135" height="40" rx="8" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="715" y="301" fill="#9a3412">gitops-demo-stage</text>
+    <rect x="791" y="276" width="135" height="40" rx="8" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="858" y="301" fill="#9a3412">gitops-demo-prod</text>
+  </g>
+  <g font-size="12" text-anchor="middle">
+    <rect x="505" y="350" width="135" height="34" rx="6" fill="#86efac"/><text x="572" y="372" fill="#14532d">overlays/dev</text>
+    <rect x="648" y="350" width="135" height="34" rx="6" fill="#86efac"/><text x="715" y="372" fill="#14532d">overlays/stage</text>
+    <rect x="791" y="350" width="135" height="34" rx="6" fill="#86efac"/><text x="858" y="372" fill="#14532d">overlays/prod</text>
+  </g>
+  <text x="715" y="418" text-anchor="middle" font-size="13" fill="#334155">새 환경 추가 = 생성기 목록에 한 줄 (git 생성기면 폴더만)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="715" y1="238" x2="572" y2="272" marker-end="url(#arrow)"/>
+    <line x1="715" y1="238" x2="715" y2="272" marker-end="url(#arrow)"/>
+    <line x1="715" y1="238" x2="858" y2="272" marker-end="url(#arrow)"/>
+    <line x1="572" y1="316" x2="572" y2="346" marker-end="url(#arrow)"/>
+    <line x1="715" y1="316" x2="715" y2="346" marker-end="url(#arrow)"/>
+    <line x1="858" y1="316" x2="858" y2="346" marker-end="url(#arrow)"/>
+  </g>
+</svg>

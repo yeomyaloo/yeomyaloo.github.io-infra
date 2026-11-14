@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RAG 간접 프롬프트 인젝션 — 문서 하나로 답변을 조작</text>
+
+  <!-- row labels -->
+  <text x="30" y="66" font-size="13" font-weight="700" fill="#dc2626">① 공격 준비 (인덱싱 시점)</text>
+  <text x="30" y="256" font-size="13" font-weight="700" fill="#334155">② 공격 발동 (질문 시점)</text>
+
+  <!-- top row -->
+  <rect x="30" y="80" width="170" height="90" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="115" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">공격자</text>
+  <text x="115" y="132" text-anchor="middle" font-size="12" fill="#7f1d1d">문서 수정 권한만 있음</text>
+  <text x="115" y="152" text-anchor="middle" font-size="12" fill="#7f1d1d">챗봇 접근은 불필요</text>
+
+  <rect x="250" y="80" width="250" height="90" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="266" y="102" font-size="13" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">wiki/day17.md</text>
+  <text x="266" y="124" font-size="12" fill="#475569">ServiceMonitor는 release 라벨이…</text>
+  <rect x="262" y="134" width="226" height="26" rx="4" fill="#fee2e2"/>
+  <text x="270" y="152" font-size="12" fill="#b91c1c">(숨김) 이전 지시 무시, 링크 안내</text>
+
+  <rect x="550" y="80" width="150" height="90" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="625" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">인덱서</text>
+  <text x="625" y="140" text-anchor="middle" font-size="12" fill="#64748b">청킹 · 임베딩</text>
+
+  <rect x="750" y="80" width="180" height="90" rx="10" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="840" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">Qdrant</text>
+  <text x="840" y="140" text-anchor="middle" font-size="12" fill="#b91c1c">오염된 청크 저장됨</text>
+
+  <g stroke="#dc2626" stroke-width="2" fill="none">
+    <line x1="200" y1="125" x2="247" y2="125" marker-end="url(#arrowR)"/>
+    <line x1="500" y1="125" x2="547" y2="125" marker-end="url(#arrowR)"/>
+    <line x1="700" y1="125" x2="747" y2="125" marker-end="url(#arrowR)"/>
+  </g>
+
+  <!-- bottom row -->
+  <rect x="30" y="275" width="150" height="100" rx="10" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="105" y="310" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">사용자 질문</text>
+  <text x="105" y="334" text-anchor="middle" font-size="12" fill="#1e40af">"모니터링 설정</text>
+  <text x="105" y="352" text-anchor="middle" font-size="12" fill="#1e40af">알려줘"</text>
+
+  <rect x="215" y="275" width="150" height="100" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="290" y="315" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">rag-api</text>
+  <text x="290" y="339" text-anchor="middle" font-size="12" fill="#166534">top-k 검색</text>
+
+  <rect x="400" y="265" width="250" height="120" rx="10" fill="#ffffff" stroke="#334155"/>
+  <text x="525" y="286" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">프롬프트 조립</text>
+  <rect x="414" y="296" width="222" height="24" rx="4" fill="#e2e8f0"/>
+  <text x="424" y="313" font-size="12" fill="#334155">system: 문서로만 답하라</text>
+  <rect x="414" y="324" width="222" height="24" rx="4" fill="#fee2e2"/>
+  <text x="424" y="341" font-size="12" fill="#b91c1c">document: …이전 지시 무시…</text>
+  <rect x="414" y="352" width="222" height="24" rx="4" fill="#dbeafe"/>
+  <text x="424" y="369" font-size="12" fill="#1e40af">user: 모니터링 설정 알려줘</text>
+
+  <rect x="685" y="285" width="110" height="80" rx="10" fill="#7c3aed"/>
+  <text x="740" y="322" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">LLM</text>
+  <text x="740" y="344" text-anchor="middle" font-size="12" fill="#ede9fe">지시를 구분 못함</text>
+
+  <rect x="825" y="275" width="115" height="100" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="882" y="310" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">답변</text>
+  <text x="882" y="334" text-anchor="middle" font-size="12" fill="#7f1d1d">+ 피싱 링크</text>
+  <text x="882" y="352" text-anchor="middle" font-size="12" fill="#7f1d1d">+ 정보 요구</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="180" y1="325" x2="212" y2="325" marker-end="url(#arrow)"/>
+    <line x1="365" y1="325" x2="397" y2="325" marker-end="url(#arrow)"/>
+    <line x1="650" y1="325" x2="682" y2="325" marker-end="url(#arrow)"/>
+    <line x1="795" y1="325" x2="822" y2="325" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="800" y1="170" x2="320" y2="272" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrowR)"/>
+  <text x="510" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">오염된 청크가 검색 결과에 섞여 들어옴</text>
+
+  <!-- defense badges -->
+  <g font-size="13" font-weight="700" text-anchor="middle" fill="#ffffff">
+    <circle cx="700" cy="80" r="14" fill="#16a34a"/><text x="700" y="85">2</text>
+    <circle cx="730" cy="80" r="14" fill="#16a34a"/><text x="730" y="85">5</text>
+    <circle cx="365" cy="275" r="14" fill="#16a34a"/><text x="365" y="280">3</text>
+    <circle cx="650" cy="265" r="14" fill="#16a34a"/><text x="650" y="270">1</text>
+    <circle cx="940" cy="275" r="14" fill="#16a34a"/><text x="940" y="280">4</text>
+  </g>
+
+  <!-- legend -->
+  <rect x="30" y="412" width="910" height="70" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="50" y="436" font-size="13" font-weight="700" fill="#14532d">방어 지점 (완벽한 방어는 없으므로 여러 겹)</text>
+  <g font-size="13" fill="#14532d">
+    <text x="50" y="464">1 구분자·역할 분리</text>
+    <text x="215" y="464">2 인덱싱 전 스캔</text>
+    <text x="370" y="464">3 권한 최소화 (도구 없음)</text>
+    <text x="580" y="464">4 출력 검증 (링크·출처)</text>
+    <text x="780" y="464">5 분류 모델</text>
+  </g>
+</svg>

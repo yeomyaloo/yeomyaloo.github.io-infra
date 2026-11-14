@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">vLLM을 Kubernetes에 올린 모습</text>
+
+  <!-- client -->
+  <rect x="20" y="90" width="150" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="95" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">클라이언트</text>
+  <text x="95" y="140" text-anchor="middle" font-size="11" fill="#64748b">openai SDK · curl</text>
+
+  <!-- traefik ns -->
+  <rect x="210" y="70" width="210" height="110" rx="10" fill="#eff6ff" stroke="#326ce5"/>
+  <text x="315" y="92" text-anchor="middle" font-size="12" fill="#1e3a8a">ns: traefik (운영자)</text>
+  <rect x="225" y="102" width="180" height="62" rx="8" fill="#326ce5"/>
+  <text x="315" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">traefik-gateway</text>
+  <text x="315" y="149" text-anchor="middle" font-size="11" fill="#ffffff">NodePort 30080</text>
+
+  <!-- llm ns -->
+  <rect x="460" y="56" width="480" height="464" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="700" y="80" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">ns: llm (개발자)</text>
+
+  <rect x="480" y="94" width="200" height="56" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+  <text x="580" y="117" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">HTTPRoute</text>
+  <text x="580" y="138" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">llm.example.test /v1</text>
+
+  <rect x="720" y="94" width="200" height="56" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+  <text x="820" y="117" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">Service vllm-qwen</text>
+  <text x="820" y="138" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">:8000 (ClusterIP)</text>
+
+  <!-- Pod -->
+  <rect x="480" y="176" width="440" height="200" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="500" y="200" font-size="14" font-weight="700" fill="#14532d">Pod (Deployment vllm-qwen, Recreate)</text>
+  <rect x="500" y="212" width="250" height="76" rx="8" fill="#86efac"/>
+  <text x="625" y="236" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">vllm serve</text>
+  <text x="625" y="256" text-anchor="middle" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">Qwen2.5-1.5B-Instruct</text>
+  <text x="625" y="276" text-anchor="middle" font-size="11" fill="#14532d" font-family="Consolas,'D2Coding',monospace">/v1 · /health · /metrics</text>
+
+  <rect x="766" y="212" width="138" height="76" rx="8" fill="#fde68a"/>
+  <text x="835" y="238" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Probe 3종</text>
+  <text x="835" y="258" text-anchor="middle" font-size="11" fill="#78350f">startup 10분</text>
+  <text x="835" y="276" text-anchor="middle" font-size="11" fill="#78350f">readiness · liveness</text>
+
+  <g font-size="11" text-anchor="middle">
+    <rect x="500" y="302" width="128" height="58" rx="6" fill="#e2e8f0"/>
+    <text x="564" y="324" fill="#0f172a" font-weight="700">/root/.cache/</text>
+    <text x="564" y="342" fill="#0f172a" font-weight="700">huggingface</text>
+    <rect x="638" y="302" width="128" height="58" rx="6" fill="#e2e8f0"/>
+    <text x="702" y="324" fill="#0f172a" font-weight="700">/dev/shm</text>
+    <text x="702" y="342" fill="#334155">2Gi 메모리</text>
+    <rect x="776" y="302" width="128" height="58" rx="6" fill="#e2e8f0"/>
+    <text x="840" y="324" fill="#0f172a" font-weight="700">env HF_TOKEN</text>
+    <text x="840" y="342" fill="#334155">optional</text>
+  </g>
+
+  <!-- backing objects -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="480" y="410" width="140" height="62" rx="8" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="550" y="436" font-weight="700" fill="#92400e">PVC hf-cache</text>
+    <text x="550" y="456" fill="#334155">30Gi local-path</text>
+    <rect x="630" y="410" width="140" height="62" rx="8" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="700" y="436" font-weight="700" fill="#92400e">emptyDir</text>
+    <text x="700" y="456" fill="#334155">medium: Memory</text>
+    <rect x="780" y="410" width="140" height="62" rx="8" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="850" y="436" font-weight="700" fill="#92400e">Secret hf-token</text>
+    <text x="850" y="456" fill="#334155">key: token</text>
+  </g>
+  <text x="700" y="500" text-anchor="middle" font-size="11" fill="#64748b">Job download-qwen이 같은 PVC를 미리 채워 둔다</text>
+
+  <!-- GPU -->
+  <rect x="210" y="236" width="210" height="70" rx="10" fill="#334155"/>
+  <text x="315" y="264" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">GPU (Day 44)</text>
+  <text x="315" y="286" text-anchor="middle" font-size="11" fill="#e2e8f0" font-family="Consolas,'D2Coding',monospace">nvidia.com/gpu: 1</text>
+
+  <!-- Prometheus -->
+  <rect x="210" y="350" width="210" height="70" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="315" y="378" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">Prometheus</text>
+  <text x="315" y="400" text-anchor="middle" font-size="11" fill="#334155">ServiceMonitor → /metrics</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="170" y1="125" x2="222" y2="130" marker-end="url(#arrow)"/>
+    <line x1="405" y1="122" x2="477" y2="122" marker-end="url(#arrow)"/>
+    <line x1="680" y1="122" x2="717" y2="122" marker-end="url(#arrow)"/>
+    <line x1="820" y1="150" x2="820" y2="173" marker-end="url(#arrow)"/>
+    <line x1="420" y1="271" x2="497" y2="252" marker-end="url(#arrow)"/>
+    <line x1="420" y1="378" x2="497" y2="300" marker-end="url(#arrow)"/>
+    <line x1="564" y1="407" x2="564" y2="363" marker-end="url(#arrow)"/>
+    <line x1="702" y1="407" x2="702" y2="363" marker-end="url(#arrow)"/>
+    <line x1="850" y1="407" x2="850" y2="363" marker-end="url(#arrow)"/>
+  </g>
+  <text x="440" y="408" font-size="11" fill="#334155" font-weight="700">scrape</text>
+</svg>

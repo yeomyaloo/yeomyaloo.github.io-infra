@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">청킹 — 헤더로 1차 분할, 긴 섹션은 길이로 2차 분할 + overlap</text>
+
+  <!-- 원본 문서 -->
+  <rect x="20" y="60" width="400" height="350" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="84" font-size="14" font-weight="700" fill="#0f172a">01-docker/day04-volumes.md</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13">
+    <text x="36" y="112" fill="#64748b"># Day 04. 데이터 영속성 — …</text>
+    <text x="36" y="140" fill="#4c1d95" font-weight="700">## 1. 왜 데이터 영속성이 필요한가?</text>
+    <text x="36" y="194" fill="#4c1d95" font-weight="700">## 2. 세 가지 마운트 방식 비교</text>
+    <text x="36" y="248" fill="#4c1d95" font-weight="700">### -v vs --mount 문법</text>
+    <text x="36" y="302" fill="#4c1d95" font-weight="700">## 5. 실습</text>
+    <text x="36" y="326" fill="#4c1d95" font-weight="700">### 5-1. Named Volume으로 …</text>
+  </g>
+  <g fill="#cbd5e1">
+    <rect x="36" y="150" width="330" height="7" rx="3"/>
+    <rect x="36" y="162" width="270" height="7" rx="3"/>
+    <rect x="36" y="204" width="340" height="7" rx="3"/>
+    <rect x="36" y="216" width="220" height="7" rx="3"/>
+    <rect x="36" y="258" width="300" height="7" rx="3"/>
+    <rect x="36" y="270" width="250" height="7" rx="3"/>
+    <rect x="36" y="336" width="360" height="7" rx="3"/>
+    <rect x="36" y="348" width="350" height="7" rx="3"/>
+    <rect x="36" y="360" width="365" height="7" rx="3"/>
+    <rect x="36" y="372" width="340" height="7" rx="3"/>
+    <rect x="36" y="384" width="290" height="7" rx="3"/>
+  </g>
+  <text x="404" y="392" text-anchor="end" font-size="12" fill="#dc2626">약 1,800자</text>
+  <text x="404" y="112" text-anchor="end" font-size="12" fill="#64748b">→ title</text>
+
+  <!-- 결과 청크 -->
+  <text x="470" y="84" font-size="14" font-weight="700" fill="#0f172a">결과 청크 (payload.section)</text>
+  <g font-size="13">
+    <rect x="470" y="120" width="470" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="484" y="145" fill="#4c1d95"><tspan font-weight="700">청크 1</tspan>  1. 왜 데이터 영속성이 필요한가?</text>
+    <rect x="470" y="174" width="470" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="484" y="199" fill="#4c1d95"><tspan font-weight="700">청크 2</tspan>  2. 세 가지 마운트 방식 비교</text>
+    <rect x="470" y="228" width="470" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="484" y="253" fill="#4c1d95"><tspan font-weight="700">청크 3</tspan>  2. 세 가지 마운트 방식 비교 &gt; -v vs --mount 문법</text>
+  </g>
+  <text x="470" y="300" font-size="12" fill="#64748b">### 섹션의 경로 = 상위 ## 헤더 + 자기 헤더 (예: 5. 실습 &gt; 5-1. …)</text>
+
+  <!-- 길이 분할 + overlap -->
+  <rect x="470" y="316" width="330" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="484" y="341" font-size="13" fill="#4c1d95"><tspan font-weight="700">청크 4</tspan>  5. 실습 &gt; 5-1 (앞 ~1000자)</text>
+  <rect x="720" y="366" width="220" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="870" y="391" text-anchor="middle" font-size="13" fill="#4c1d95"><tspan font-weight="700">청크 5</tspan> 뒷부분</text>
+  <rect x="720" y="316" width="80" height="90" fill="#fde68a" fill-opacity="0.75" stroke="#f59e0b" stroke-dasharray="4 3"/>
+  <text x="760" y="426" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">150자 겹침</text>
+
+  <!-- 연결선 -->
+  <g stroke="#7c3aed" stroke-width="1.5" fill="none">
+    <line x1="420" y1="152" x2="467" y2="140" marker-end="url(#arrow)"/>
+    <line x1="420" y1="206" x2="467" y2="194" marker-end="url(#arrow)"/>
+    <line x1="420" y1="260" x2="467" y2="248" marker-end="url(#arrow)"/>
+    <line x1="420" y1="350" x2="467" y2="336" marker-end="url(#arrow)"/>
+    <line x1="420" y1="370" x2="717" y2="386" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="20" y="445" font-size="13" fill="#334155">※ 코드 블록(```) 안의 "# 주석"은 헤더로 보지 않는다 · 길이로 자를 땐 가능하면 줄바꿈 위치에서 자른다</text>
+</svg>

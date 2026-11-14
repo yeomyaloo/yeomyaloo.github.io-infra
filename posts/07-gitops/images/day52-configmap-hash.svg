@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">configMapGenerator 해시 → 자동 롤링 업데이트</text>
+
+  <!-- step boxes -->
+  <rect x="20" y="64" width="200" height="140" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="120" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">① 설정 변경</text>
+  <text x="120" y="114" text-anchor="middle" font-size="12" fill="#334155">overlays/dev 커밋</text>
+  <rect x="32" y="128" width="176" height="56" rx="6" fill="#ffffff" stroke="#86efac"/>
+  <text x="120" y="150" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">APP_MESSAGE=</text>
+  <text x="120" y="170" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">hello from dev v2</text>
+
+  <rect x="260" y="64" width="200" height="140" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="360" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">② 해시가 바뀜</text>
+  <text x="360" y="114" text-anchor="middle" font-size="12" fill="#334155">내용이 다르면 이름도 다름</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" text-anchor="middle">
+    <text x="360" y="146" fill="#94a3b8" text-decoration="line-through">…-config-9t4fbm6c2h</text>
+    <text x="360" y="174" fill="#b45309" font-weight="700">…-config-k2h7d5g8bf</text>
+  </g>
+
+  <rect x="500" y="64" width="200" height="140" rx="10" fill="#eef2ff" stroke="#4f46e5"/>
+  <text x="600" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">③ 참조도 바뀜</text>
+  <text x="600" y="114" text-anchor="middle" font-size="12" fill="#334155">Deployment Pod 템플릿의</text>
+  <text x="600" y="132" text-anchor="middle" font-size="12" fill="#334155">envFrom.configMapRef.name</text>
+  <text x="600" y="164" text-anchor="middle" font-size="12" fill="#312e81" font-weight="700">= Pod 템플릿 변경</text>
+
+  <rect x="740" y="64" width="200" height="140" rx="10" fill="#eff6ff" stroke="#326ce5"/>
+  <text x="840" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">④ 롤링 업데이트</text>
+  <text x="840" y="114" text-anchor="middle" font-size="12" fill="#334155">Deployment 컨트롤러가</text>
+  <text x="840" y="132" text-anchor="middle" font-size="12" fill="#334155">새 ReplicaSet 생성 (Day 11)</text>
+  <text x="840" y="164" text-anchor="middle" font-size="12" fill="#1e3a8a" font-weight="700">rollout restart 불필요</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="134" x2="256" y2="134" marker-end="url(#arrow)"/>
+    <line x1="460" y1="134" x2="496" y2="134" marker-end="url(#arrow)"/>
+    <line x1="700" y1="134" x2="736" y2="134" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- cluster state -->
+  <rect x="20" y="230" width="920" height="170" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="40" y="256" font-size="14" font-weight="700" fill="#0f172a">kubectl apply -k 후 demo-dev 네임스페이스</text>
+
+  <rect x="40" y="272" width="420" height="112" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-dasharray="5 3"/>
+  <text x="250" y="294" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">이전 (남아 있음)</text>
+  <rect x="56" y="308" width="170" height="60" rx="6" fill="#e2e8f0"/>
+  <text x="141" y="332" text-anchor="middle" font-size="12" fill="#334155">ReplicaSet (구)</text>
+  <text x="141" y="352" text-anchor="middle" font-size="11" fill="#64748b">replicas: 0</text>
+  <rect x="270" y="308" width="174" height="60" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="357" y="332" text-anchor="middle" font-size="12" fill="#334155">ConfigMap</text>
+  <text x="357" y="352" text-anchor="middle" font-size="11" fill="#64748b" font-family="Consolas,'D2Coding',monospace">…-9t4fbm6c2h</text>
+  <line x1="226" y1="338" x2="266" y2="338" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="500" y="272" width="420" height="112" rx="10" fill="#ffffff" stroke="#16a34a"/>
+  <text x="710" y="294" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d">현재</text>
+  <rect x="516" y="308" width="170" height="60" rx="6" fill="#86efac"/>
+  <text x="601" y="332" text-anchor="middle" font-size="12" fill="#14532d">ReplicaSet (신)</text>
+  <text x="601" y="352" text-anchor="middle" font-size="11" fill="#14532d">replicas: 1</text>
+  <rect x="730" y="308" width="174" height="60" rx="6" fill="#fde68a"/>
+  <text x="817" y="332" text-anchor="middle" font-size="12" fill="#78350f">ConfigMap</text>
+  <text x="817" y="352" text-anchor="middle" font-size="11" fill="#78350f" font-family="Consolas,'D2Coding',monospace">…-k2h7d5g8bf</text>
+  <line x1="686" y1="338" x2="726" y2="338" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

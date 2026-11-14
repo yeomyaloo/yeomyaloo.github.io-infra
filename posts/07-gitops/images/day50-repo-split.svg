@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ef7b4d"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">앱 레포와 설정 레포 분리</text>
+
+  <!-- App repo -->
+  <rect x="30" y="64" width="280" height="330" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="170" y="94" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">앱 레포</text>
+  <text x="170" y="116" text-anchor="middle" font-size="13" fill="#64748b" font-family="Consolas,'D2Coding',monospace">gitops-demo-app</text>
+  <rect x="50" y="130" width="240" height="160" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <text x="64" y="156">app/main.py</text>
+    <text x="64" y="180">tests/test_main.py</text>
+    <text x="64" y="204">requirements.txt</text>
+    <text x="64" y="228">Dockerfile</text>
+    <text x="64" y="252">.github/workflows/</text>
+    <text x="84" y="276" fill="#64748b">ci.yaml (Day 51)</text>
+  </g>
+  <g font-size="13" fill="#334155">
+    <text x="50" y="320">바뀌는 이유: 기능 개발, 버그 수정</text>
+    <text x="50" y="344">결과물: 컨테이너 이미지</text>
+    <text x="50" y="368">주 사용자: 개발자</text>
+  </g>
+
+  <!-- CI -->
+  <rect x="370" y="84" width="220" height="96" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="480" y="114" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">GitHub Actions (CI)</text>
+  <text x="480" y="140" text-anchor="middle" font-size="13" fill="#334155">테스트 → 빌드 → 푸시</text>
+  <text x="480" y="162" text-anchor="middle" font-size="12" fill="#64748b">(Day 51)</text>
+
+  <!-- GHCR -->
+  <rect x="370" y="236" width="220" height="80" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="480" y="264" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">GHCR</text>
+  <text x="480" y="290" text-anchor="middle" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">gitops-demo-app:sha-1a2b3c4</text>
+
+  <!-- Config repo -->
+  <rect x="650" y="64" width="280" height="330" rx="12" fill="#fff1eb" stroke="#ef7b4d" stroke-width="2"/>
+  <text x="790" y="94" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">설정 레포</text>
+  <text x="790" y="116" text-anchor="middle" font-size="13" fill="#9a3412" font-family="Consolas,'D2Coding',monospace">gitops-demo-config</text>
+  <rect x="670" y="130" width="240" height="160" rx="8" fill="#ffffff" stroke="#fed7aa"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <text x="684" y="156">apps/demo-app/</text>
+    <text x="700" y="180">base/</text>
+    <text x="716" y="204">deployment.yaml</text>
+    <text x="716" y="228">service.yaml</text>
+    <text x="700" y="252">overlays/</text>
+    <text x="716" y="276" fill="#64748b">dev stage prod (Day 52)</text>
+  </g>
+  <g font-size="13" fill="#334155">
+    <text x="670" y="320">바뀌는 이유: 배포 버전, 레플리카</text>
+    <text x="670" y="344">결과물: 클러스터의 원하는 상태</text>
+    <text x="670" y="368">주 사용자: 운영 + 개발자(PR)</text>
+  </g>
+
+  <!-- Argo CD -->
+  <rect x="650" y="414" width="280" height="50" rx="10" fill="#ef7b4d"/>
+  <text x="790" y="445" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Argo CD가 읽어 감 (Day 53)</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="310" y1="140" x2="366" y2="134" marker-end="url(#arrow)"/>
+    <line x1="480" y1="180" x2="480" y2="232" marker-end="url(#arrow)"/>
+  </g>
+  <text x="338" y="126" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">push</text>
+  <text x="494" y="212" font-size="12" font-weight="700" fill="#334155">이미지</text>
+  <path d="M590,150 C620,150 620,200 646,200" stroke="#ef7b4d" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#arrowO)"/>
+  <text x="618" y="236" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">태그 갱신</text>
+  <text x="618" y="252" text-anchor="middle" font-size="11" fill="#c2410c">(Day 54)</text>
+  <line x1="790" y1="414" x2="790" y2="398" stroke="#ef7b4d" stroke-width="2" marker-end="url(#arrowO)"/>
+</svg>
