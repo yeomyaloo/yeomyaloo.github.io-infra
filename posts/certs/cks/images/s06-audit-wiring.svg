@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kube-apiserver 감사 로그 — 플래그 5개와 마운트 2쌍</text>
+
+  <!-- host -->
+  <rect x="20" y="64" width="320" height="270" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="180" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">k8s-cp 노드 (호스트 디스크)</text>
+
+  <rect x="36" y="112" width="288" height="78" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="50" y="136" font-size="13" font-weight="700" fill="#312e81">감사 정책 파일 (직접 작성)</text>
+  <text x="50" y="158" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">/etc/kubernetes/audit/</text>
+  <text x="63.2" y="176" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">policy.yaml</text>
+
+  <rect x="36" y="222" width="288" height="96" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="50" y="246" font-size="13" font-weight="700" fill="#14532d">감사 로그 디렉터리</text>
+  <text x="50" y="268" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">/var/log/kubernetes/audit/</text>
+  <text x="63.2" y="288" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">audit.log</text>
+  <text x="50" y="306" font-size="12" fill="#64748b">노드에서 jq로 조사하는 곳</text>
+
+  <!-- container -->
+  <rect x="470" y="64" width="470" height="270" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="705" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">kube-apiserver 컨테이너 (정적 Pod)</text>
+
+  <rect x="486" y="112" width="210" height="78" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="498" y="136" font-size="13" font-weight="700" fill="#312e81">volumeMount ①</text>
+  <text x="498" y="158" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">/etc/kubernetes/audit/</text>
+  <text x="511.2" y="176" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">policy.yaml</text>
+
+  <rect x="486" y="222" width="210" height="96" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="498" y="246" font-size="13" font-weight="700" fill="#14532d">volumeMount ②</text>
+  <text x="498" y="268" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">/var/log/kubernetes/</text>
+  <text x="511.2" y="286" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">audit/</text>
+
+  <!-- flags -->
+  <rect x="710" y="112" width="216" height="206" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="818" y="136" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">command 플래그</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="722" y="164">--audit-policy-file</text>
+    <text x="722" y="188">--audit-log-path</text>
+    <text x="722" y="220" fill="#b91c1c">--audit-log-maxage=10</text>
+    <text x="722" y="244" fill="#b91c1c">--audit-log-maxbackup=3</text>
+    <text x="722" y="268" fill="#b91c1c">--audit-log-maxsize=50</text>
+  </g>
+  <text x="818" y="300" text-anchor="middle" font-size="12" fill="#64748b">위 2개 필수 · 아래 3개 회전</text>
+
+  <!-- mounts arrows -->
+  <line x1="326" y1="151" x2="484" y2="151" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="405" y="136" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#312e81">type: File</text>
+  <text x="405" y="170" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#312e81">readOnly</text>
+
+  <line x1="484" y1="270" x2="326" y2="270" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="405" y="255" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">DirectoryOrCreate</text>
+  <text x="405" y="289" text-anchor="middle" font-size="11" fill="#14532d">쓰기 가능</text>
+
+  <!-- rotation band -->
+  <rect x="20" y="360" width="920" height="120" rx="10" fill="#fef9e7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="386" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">로그 회전 — 숫자의 단위가 다르다</text>
+  <rect x="44" y="404" width="210" height="56" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="149" y="428" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#78350f">audit.log</text>
+  <text x="149" y="448" text-anchor="middle" font-size="12" fill="#78350f">50MB 넘으면 회전 (maxsize)</text>
+  <rect x="356" y="404" width="250" height="56" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="481" y="428" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#78350f">audit-&lt;시각&gt;.log</text>
+  <text x="481" y="448" text-anchor="middle" font-size="12" fill="#78350f">최대 3개까지 보관 (maxbackup)</text>
+  <rect x="708" y="404" width="210" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="813" y="428" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">삭제</text>
+  <text x="813" y="448" text-anchor="middle" font-size="12" fill="#7f1d1d">10일 지난 파일 (maxage)</text>
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="256" y1="432" x2="354" y2="432"/>
+    <line x1="608" y1="432" x2="706" y2="432"/>
+  </g>
+</svg>

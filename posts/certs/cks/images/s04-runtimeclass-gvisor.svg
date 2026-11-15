@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="620" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">RuntimeClass로 gVisor 샌드박스 고르기</text>
+
+  <!-- pod spec -->
+  <rect x="30" y="60" width="244" height="112" rx="8" fill="#0f172a"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#e2e8f0">
+    <text x="44" y="84">kind: Pod</text>
+    <text x="44" y="104">spec:</text>
+    <text x="60" y="124"><tspan fill="#fde68a">runtimeClassName: gvisor</tspan></text>
+    <text x="60" y="144">containers: [...]</text>
+  </g>
+  <text x="40" y="164" font-size="11" fill="#94a3b8">Deployment면 spec.template.spec 아래</text>
+
+  <!-- runtimeclass -->
+  <rect x="300" y="60" width="346" height="112" rx="8" fill="#0f172a"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#e2e8f0">
+    <text x="312" y="84">kind: RuntimeClass</text>
+    <text x="312" y="104">metadata: {name: <tspan fill="#fde68a">gvisor</tspan>}</text>
+    <text x="312" y="124">handler: <tspan fill="#fca5a5">runsc</tspan></text>
+    <text x="312" y="144">scheduling:</text>
+    <text x="328" y="162">nodeSelector: {runtime/gvisor: "true"}</text>
+  </g>
+  <line x1="276" y1="116" x2="298" y2="116" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- admission note -->
+  <rect x="670" y="60" width="200" height="112" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="682" y="84" font-size="13" font-weight="bold" fill="#326ce5">RuntimeClass 어드미션</text>
+  <text x="682" y="106" font-size="12" fill="#334155">Pod의 nodeSelector에</text>
+  <text x="682" y="124" font-size="12" fill="#334155">runtime/gvisor=true 추가</text>
+  <text x="682" y="150" font-size="12" fill="#334155">→ 워커(w1·w2)에만 배치</text>
+  <line x1="648" y1="116" x2="668" y2="116" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- nodes -->
+  <rect x="30" y="200" width="400" height="404" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="46" y="226" font-size="15" font-weight="bold" fill="#334155">일반 Pod — 런타임 runc</text>
+  <rect x="470" y="200" width="400" height="404" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="486" y="226" font-size="15" font-weight="bold" fill="#b91c1c">runtimeClassName: gvisor — 런타임 runsc</text>
+
+  <!-- left stack -->
+  <g font-size="13" fill="#334155">
+    <rect x="70" y="244" width="320" height="40" rx="6" fill="#ffffff" stroke="#64748b"/>
+    <text x="230" y="269" text-anchor="middle">kubelet</text>
+    <rect x="70" y="300" width="320" height="40" rx="6" fill="#ffffff" stroke="#64748b"/>
+    <text x="230" y="325" text-anchor="middle">containerd → runtimes.runc</text>
+    <rect x="70" y="356" width="320" height="40" rx="6" fill="#ffffff" stroke="#64748b"/>
+    <text x="230" y="381" text-anchor="middle">runc (네임스페이스·cgroup만 설정)</text>
+    <rect x="70" y="412" width="320" height="56" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="230" y="436" text-anchor="middle" font-weight="bold">컨테이너 프로세스</text>
+    <text x="230" y="456" text-anchor="middle" font-size="12">syscall을 호스트 커널이 직접 처리</text>
+    <rect x="70" y="520" width="320" height="56" rx="6" fill="#334155"/>
+    <text x="230" y="545" text-anchor="middle" fill="#ffffff" font-weight="bold">호스트 커널 6.x</text>
+    <text x="230" y="565" text-anchor="middle" fill="#e2e8f0" font-size="12">커널 취약점 = 노드 전체 위험</text>
+  </g>
+  <line x1="230" y1="286" x2="230" y2="298" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="230" y1="342" x2="230" y2="354" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="230" y1="398" x2="230" y2="410" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="230" y1="470" x2="230" y2="518" stroke="#b91c1c" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="240" y="500" font-size="12" fill="#b91c1c">syscall 직행</text>
+
+  <!-- right stack -->
+  <g font-size="13" fill="#334155">
+    <rect x="510" y="244" width="320" height="40" rx="6" fill="#ffffff" stroke="#b91c1c"/>
+    <text x="670" y="269" text-anchor="middle">kubelet</text>
+    <rect x="510" y="300" width="320" height="40" rx="6" fill="#ffffff" stroke="#b91c1c"/>
+    <text x="670" y="325" text-anchor="middle">containerd → runtimes.runsc</text>
+    <rect x="510" y="356" width="320" height="40" rx="6" fill="#ffffff" stroke="#b91c1c"/>
+    <text x="670" y="381" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12">containerd-shim-runsc-v1</text>
+    <rect x="510" y="412" width="320" height="92" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="670" y="434" text-anchor="middle" font-weight="bold">컨테이너 프로세스</text>
+    <rect x="530" y="444" width="280" height="50" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+    <text x="670" y="465" text-anchor="middle" font-weight="bold">gVisor Sentry</text>
+    <text x="670" y="484" text-anchor="middle" font-size="12">사용자 공간 커널이 syscall을 대신 처리</text>
+    <rect x="510" y="532" width="320" height="56" rx="6" fill="#334155"/>
+    <text x="670" y="557" text-anchor="middle" fill="#ffffff" font-weight="bold">호스트 커널 6.x</text>
+    <text x="670" y="577" text-anchor="middle" fill="#e2e8f0" font-size="12">Sentry가 쓰는 좁은 syscall만 노출</text>
+  </g>
+  <line x1="670" y1="286" x2="670" y2="298" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="670" y1="342" x2="670" y2="354" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="670" y1="398" x2="670" y2="410" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="670" y1="506" x2="670" y2="530" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="680" y="523" font-size="12" fill="#16a34a">제한된 경로</text>
+
+</svg>

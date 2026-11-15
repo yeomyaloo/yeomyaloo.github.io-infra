@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="40" font-size="20" font-weight="700" fill="#334155">CKS 모의고사 실습 환경 — 어디서 무엇을 하는가</text>
+
+  <!-- work terminal -->
+  <rect x="30" y="70" width="250" height="300" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="46" y="98" font-size="15" font-weight="700" fill="#334155">작업 단말 (WSL Ubuntu)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="46" y="130">kubectl: cka-main / cka-aux</text>
+    <text x="46" y="156">trivy · bom · python3</text>
+    <text x="46" y="182">docker: kubesec/kubesec:v2</text>
+    <text x="46" y="208">~/cks/s07, ~/cks/s08</text>
+  </g>
+  <text x="46" y="240" font-size="13" fill="#64748b">답안 파일은 여기에 저장</text>
+  <text x="46" y="264" font-size="13" fill="#64748b">setup.sh · grade.sh 실행</text>
+  <rect x="46" y="292" width="218" height="58" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="56" y="316" font-size="12" fill="#326ce5" font-weight="700">문항마다 먼저</text>
+  <text x="56" y="338" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">kubectl config use-context</text>
+
+  <!-- cka-main region -->
+  <rect x="340" y="62" width="595" height="308" rx="12" fill="none" stroke="#326ce5" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="356" y="86" font-size="14" font-weight="700" fill="#326ce5">cka-main  (kubeadm v1.37.1, Cilium)</text>
+
+  <!-- k8s-cp -->
+  <rect x="356" y="100" width="180" height="255" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="368" y="124" font-size="14" font-weight="700" fill="#334155">k8s-cp  .10</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11.5" fill="#334155">
+    <text x="368" y="152">kube-apiserver.yaml</text>
+    <text x="368" y="198">etcd + etcdctl</text>
+    <text x="368" y="222">kube-bench</text>
+    <text x="368" y="246">/etc/kubernetes/enc</text>
+    <text x="368" y="270">/etc/kubernetes/audit</text>
+    <text x="368" y="294">/var/log/kubernetes</text>
+  </g>
+  <text x="368" y="172" font-size="12" fill="#b91c1c">암호화·감사·플래그 수정</text>
+  <text x="368" y="330" font-size="12" fill="#64748b">ssh k8s-cp → sudo -i</text>
+
+  <!-- k8s-w1 -->
+  <rect x="552" y="100" width="182" height="255" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="564" y="124" font-size="14" font-weight="700" fill="#334155">k8s-w1  .11</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11.5" fill="#334155">
+    <text x="564" y="152">kubelet config.yaml</text>
+    <text x="564" y="176">falco-modern-bpf</text>
+    <text x="564" y="200">/etc/apparmor.d/</text>
+    <text x="564" y="224">seccomp/profiles/</text>
+    <text x="564" y="248">runsc (gvisor=true)</text>
+    <text x="564" y="272">kube-bench</text>
+  </g>
+  <text x="564" y="330" font-size="12" fill="#64748b">ssh k8s-w1 → sudo -i</text>
+
+  <!-- k8s-w2 -->
+  <rect x="748" y="100" width="182" height="255" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="760" y="124" font-size="14" font-weight="700" fill="#334155">k8s-w2  .12</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11.5" fill="#334155">
+    <text x="760" y="152">kubelet config.yaml</text>
+    <text x="760" y="176">falco-modern-bpf</text>
+    <text x="760" y="200">/etc/apparmor.d/</text>
+    <text x="760" y="224">seccomp/profiles/</text>
+    <text x="760" y="248">runsc (gvisor=true)</text>
+    <text x="760" y="272">kube-bench</text>
+  </g>
+  <text x="760" y="304" font-size="12" fill="#b91c1c">프로파일·규칙은</text>
+  <text x="760" y="322" font-size="12" fill="#b91c1c">워커마다 따로 있다</text>
+  <text x="760" y="344" font-size="12" fill="#64748b">ssh k8s-w2 → sudo -i</text>
+
+  <!-- arrows terminal -> main -->
+  <line x1="280" y1="150" x2="352" y2="150" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="287" y="142" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">kubectl</text>
+  <line x1="280" y1="230" x2="352" y2="230" stroke="#334155" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+  <text x="287" y="222" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">ssh</text>
+
+  <!-- cka-aux -->
+  <rect x="340" y="400" width="285" height="95" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="356" y="426" font-size="14" font-weight="700" fill="#326ce5">cka-aux  (kind)</text>
+  <text x="356" y="452" font-size="12" fill="#334155">S08 Q8(PSA) 한 문항만 여기서</text>
+  <text x="356" y="476" font-size="12" fill="#b91c1c">같은 네임스페이스가 main에도 있다</text>
+
+  <path d="M155,370 L155,447 L334,447" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="165" y="438" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">kubectl (aux)</text>
+
+  <!-- callout -->
+  <rect x="645" y="400" width="290" height="95" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="661" y="426" font-size="13" font-weight="700" fill="#b91c1c">API 서버를 재시작시키는 문항</text>
+  <text x="661" y="452" font-size="12" fill="#334155">S07: Q8·Q13</text>
+  <text x="771" y="452" font-size="12" fill="#334155">S08: Q1·Q7·Q13</text>
+  <text x="661" y="476" font-size="12" fill="#334155">백업은 manifests 폴더 밖에 둘 것</text>
+</svg>

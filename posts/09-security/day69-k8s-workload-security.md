@@ -491,7 +491,7 @@ PSA가 **Pod**를 검사한다면, kube-bench는 **클러스터 구성 자체**�
 | `node` | 4.x | kubelet 설정 파일 권한, `--anonymous-auth`, `--read-only-port` |
 | `policies` | 5.x | RBAC 최소 권한, PSA, NetworkPolicy, Secret 사용 방식 (대부분 Manual) |
 
-kube-bench **v0.16.0** 기준으로 쿠버네티스 v1.34·v1.35는 **CIS 2.0** 벤치마크에 매핑됩니다. 매핑표에 없는 더 높은 버전(v1.36, v1.37)은 마이너 버전을 하나씩 내려가며 찾아 가장 가까운 `cis-2.0`을 씁니다. 명시하고 싶으면 `--benchmark cis-2.0`을 붙입니다.
+kube-bench **v0.16.0**의 버전 매핑표(`cfg/config.yaml`)는 쿠버네티스 v1.32~v1.34를 **`cis-1.12`** 벤치마크에 매핑하고, v1.35 이상은 표에 없습니다. 표에 없는 더 높은 버전(v1.35~v1.37)은 마이너 버전을 하나씩 내려가며 찾아 가장 가까운 `cis-1.12`를 씁니다. 명시하고 싶으면 `--benchmark cis-1.12`를 붙입니다. 새 CIS 벤치마크가 매핑된 kube-bench 릴리스가 나오면 그 값을 쓰세요.
 
 ### 9-2. kind에서 Job으로 실행
 
@@ -643,7 +643,7 @@ kubectl delete ns secure-demo
 | 라벨 변경 후 Helm 차트의 Pod만 거부 | 차트의 init 컨테이너·사이드카에 securityContext 없음 | 차트 values의 `podSecurityContext`·`securityContext`·`initContainers` 항목 설정 |
 | kube-bench Pod가 `Pending` | control-plane taint 미허용 / nodeSelector 오타 | tolerations·nodeSelector 확인, `kubectl describe pod` |
 | kube-bench Pod가 `Forbidden: violates PodSecurity` | 실행 네임스페이스에 baseline 이상 enforce | 전용 네임스페이스를 `enforce=privileged`로 |
-| kube-bench 로그에 `unable to find a matching Benchmark Version match for kubernetes version` | 버전 탐지·매핑 실패 | `--benchmark cis-2.0` 명시 |
+| kube-bench 로그에 `unable to find a matching Benchmark Version match for kubernetes version` | 버전 탐지·매핑 실패 | `--benchmark cis-1.12` 명시 (v0.16.0 기준 최신 매핑) |
 
 ---
 

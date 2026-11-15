@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="no" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">API 요청의 세 관문 — S02에서 손대는 설정</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">원리는 Day 19 3장 · 여기서는 kube-apiserver.yaml의 어느 줄을 고치는지에 집중</text>
+
+  <!-- clients -->
+  <rect x="20" y="90" width="150" height="230" rx="10" fill="#f8fafc" stroke="#334155"/>
+  <text x="95" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">요청 주체</text>
+  <rect x="32" y="128" width="126" height="40" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="95" y="146" text-anchor="middle" font-size="12" fill="#334155">사람 (X.509)</text>
+  <text x="95" y="161" text-anchor="middle" font-size="10" fill="#64748b">CN=사용자 O=그룹</text>
+  <rect x="32" y="176" width="126" height="40" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="95" y="194" text-anchor="middle" font-size="12" fill="#334155">ServiceAccount</text>
+  <text x="95" y="209" text-anchor="middle" font-size="10" fill="#64748b">만료 있는 토큰</text>
+  <rect x="32" y="224" width="126" height="40" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="95" y="242" text-anchor="middle" font-size="12" fill="#334155">kubelet</text>
+  <text x="95" y="257" text-anchor="middle" font-size="10" fill="#64748b">system:node:&lt;이름&gt;</text>
+  <rect x="32" y="272" width="126" height="40" rx="6" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="95" y="290" text-anchor="middle" font-size="12" fill="#7f1d1d">익명</text>
+  <text x="95" y="305" text-anchor="middle" font-size="10" fill="#7f1d1d">system:anonymous</text>
+
+  <line x1="172" y1="205" x2="200" y2="205" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- authn -->
+  <rect x="205" y="90" width="230" height="230" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="320" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">① 인증 — 누구인가</text>
+  <text x="217" y="140" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">--client-ca-file</text>
+  <text x="217" y="160" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">--authentication-config</text>
+  <text x="229" y="178" font-size="11" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">anonymous: 경로 제한</text>
+  <text x="217" y="198" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">--anonymous-auth=false</text>
+  <text x="229" y="216" font-size="11" fill="#64748b">(둘 중 하나만)</text>
+  <text x="217" y="240" font-size="11" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">--token-auth-file 제거</text>
+  <text x="217" y="270" font-size="12" fill="#334155">실패 → 401</text>
+  <text x="217" y="292" font-size="12" fill="#334155">과제 7·8·10</text>
+
+  <line x1="437" y1="205" x2="465" y2="205" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- authz -->
+  <rect x="470" y="90" width="220" height="230" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="580" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">② 인가 — 해도 되나</text>
+  <text x="482" y="140" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">--authorization-mode</text>
+  <text x="494" y="158" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">=Node,RBAC</text>
+  <text x="482" y="186" font-size="12" fill="#334155">RBAC 최소화</text>
+  <text x="482" y="206" font-size="12" fill="#334155">cluster-admin 바인딩,</text>
+  <text x="482" y="224" font-size="12" fill="#334155">*, escalate, bind 제거</text>
+  <text x="482" y="270" font-size="12" fill="#334155">실패 → 403</text>
+  <text x="482" y="292" font-size="12" fill="#334155">과제 1~5</text>
+
+  <line x1="692" y1="205" x2="720" y2="205" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- admission -->
+  <rect x="725" y="90" width="215" height="230" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="832" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">③ 어드미션</text>
+  <text x="737" y="140" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">--enable-admission-</text>
+  <text x="737" y="158" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace"> plugins=NodeRestriction</text>
+  <text x="737" y="186" font-size="12" fill="#334155">ValidatingAdmission-</text>
+  <text x="737" y="204" font-size="12" fill="#334155">Policy: default SA 금지</text>
+  <text x="737" y="232" font-size="12" fill="#334155">(SA 플러그인이 먼저</text>
+  <text x="737" y="250" font-size="12" fill="#334155"> default를 채움)</text>
+  <text x="737" y="276" font-size="12" fill="#334155">실패 → 403 등</text>
+  <text x="737" y="296" font-size="12" fill="#334155">과제 6·9</text>
+
+  <!-- anonymous detail -->
+  <rect x="20" y="345" width="920" height="155" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="40" y="372" font-size="15" font-weight="700" fill="#92400e">익명 요청을 헬스 체크로만 — AuthenticationConfiguration (v1.34 안정화)</text>
+  <rect x="40" y="388" width="200" height="40" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="140" y="413" text-anchor="middle" font-size="12" fill="#334155">kubelet 프로브 (인증 없음)</text>
+  <line x1="242" y1="408" x2="310" y2="408" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="315" y="388" width="250" height="40" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="440" y="413" text-anchor="middle" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">/livez /readyz /healthz → 200</text>
+  <rect x="40" y="442" width="200" height="40" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="140" y="467" text-anchor="middle" font-size="12" fill="#334155">익명 curl /version, /api</text>
+  <line x1="242" y1="462" x2="310" y2="462" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#no)"/>
+  <rect x="315" y="442" width="250" height="40" rx="6" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="440" y="467" text-anchor="middle" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">그 밖의 경로 → 401</text>
+  <text x="590" y="404" font-size="12" fill="#334155">--anonymous-auth=false로 통째로 끄면</text>
+  <text x="590" y="424" font-size="12" fill="#334155">프로브까지 401 → 재시작 반복 위험</text>
+  <text x="590" y="452" font-size="12" fill="#334155">설정 파일은 hostPath로 마운트:</text>
+  <text x="590" y="472" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">/etc/kubernetes/authn/</text>
+</svg>

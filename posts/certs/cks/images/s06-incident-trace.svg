@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">경보에서 Pod까지 거꾸로 — 조사와 조치</text>
+
+  <!-- step 1 -->
+  <rect x="20" y="64" width="210" height="150" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="125" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">① Falco 경보</text>
+  <text x="125" y="114" text-anchor="middle" font-size="12" fill="#7f1d1d">경보가 난 노드에서</text>
+  <text x="34" y="142" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">journalctl -u</text>
+  <text x="46.1" y="158" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">falco-modern-bpf</text>
+  <text x="34" y="186" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#b91c1c">container_id=</text>
+  <text x="46.1" y="202" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#b91c1c">5c2e9a1b7d03</text>
+
+  <!-- step 2 -->
+  <rect x="256" y="64" width="210" height="150" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="361" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">② crictl로 조회</text>
+  <text x="270" y="122" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">crictl ps --id &lt;ID&gt;</text>
+  <text x="270" y="146" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">crictl inspect &lt;ID&gt;</text>
+  <text x="282.1" y="162" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">| jq .status.labels</text>
+  <text x="361" y="196" text-anchor="middle" font-size="12" fill="#1e3a8a">컨테이너 ID → 라벨</text>
+
+  <!-- step 3 -->
+  <rect x="492" y="64" width="210" height="150" rx="10" fill="#eef0fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="597" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">③ Pod 식별</text>
+  <text x="506" y="122" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">io.kubernetes.pod.</text>
+  <text x="518.1" y="138" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">namespace = s06-rt</text>
+  <text x="506" y="160" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">io.kubernetes.pod.</text>
+  <text x="518.1" y="176" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">name = report-...</text>
+  <text x="597" y="202" text-anchor="middle" font-size="12" fill="#312e81">답안 파일에 기록</text>
+
+  <!-- step 4 -->
+  <rect x="728" y="64" width="212" height="150" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="834" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">④ 소유자 따라 조치</text>
+  <text x="834" y="120" text-anchor="middle" font-size="12" fill="#14532d">Pod → ReplicaSet</text>
+  <text x="834" y="140" text-anchor="middle" font-size="12" fill="#14532d">→ Deployment</text>
+  <text x="742" y="170" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">ownerReferences</text>
+  <text x="742" y="194" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">scale --replicas=0</text>
+
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="231" y1="139" x2="254" y2="139"/>
+    <line x1="467" y1="139" x2="490" y2="139"/>
+    <line x1="703" y1="139" x2="726" y2="139"/>
+  </g>
+
+  <!-- alt path: PID -->
+  <rect x="20" y="260" width="446" height="90" rx="10" fill="#fef9e7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="243" y="286" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">PID만 알 때 (ps, top에서 본 의심 프로세스)</text>
+  <text x="34" y="314" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">pgrep -x cks-miner → cat /proc/&lt;PID&gt;/cgroup</text>
+  <text x="34" y="336" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#78350f">.../cri-containerd-&lt;컨테이너 ID&gt;.scope</text>
+  <path d="M361,260 V216" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- warning -->
+  <rect x="492" y="260" width="448" height="90" rx="10" fill="#ffffff" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="716" y="286" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">⚠ 흔한 실수</text>
+  <text x="716" y="310" text-anchor="middle" font-size="12" fill="#334155">다른 노드에서 crictl → not found</text>
+  <text x="716" y="332" text-anchor="middle" font-size="12" fill="#334155">Pod만 삭제 → ReplicaSet이 다시 만든다</text>
+
+  <text x="480" y="392" text-anchor="middle" font-size="13" fill="#64748b">출력 형식에 Pod 이름이 없어도, 컨테이너 ID에서 출발하면 늘 같은 길로 도착한다</text>
+  <text x="480" y="414" text-anchor="middle" font-size="12" fill="#64748b">(컨테이너 ID 12자리만 있어도 crictl은 앞부분 일치로 찾는다)</text>
+</svg>

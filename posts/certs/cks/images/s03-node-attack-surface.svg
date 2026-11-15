@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" width="900" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="580" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">노드 공격 표면 줄이기 — 바깥 층부터 안쪽으로</text>
+  <text x="30" y="62" font-size="13" fill="#64748b">각 층마다 "무엇이 있나 확인 → 줄이기 → 다시 확인". 오른쪽 끝은 이 편의 과제 번호</text>
+
+  <!-- column headers -->
+  <text x="70" y="96" font-size="14" font-weight="bold" fill="#334155">층</text>
+  <text x="270" y="96" font-size="14" font-weight="bold" fill="#326ce5">확인 명령</text>
+  <text x="580" y="96" font-size="14" font-weight="bold" fill="#b91c1c">줄이는 법</text>
+
+  <!-- depth arrow -->
+  <line x1="42" y1="112" x2="42" y2="508" stroke="#b91c1c" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="34" y="530" font-size="12" fill="#b91c1c">안쪽</text>
+
+  <!-- rows: y start 108, height 62, gap 4 -->
+  <g font-size="14" fill="#334155">
+    <!-- row 1 -->
+    <rect x="60" y="108" width="190" height="60" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="74" y="134" font-weight="bold">① 네트워크 노출</text>
+    <text x="74" y="155" font-size="12" fill="#64748b">듣고 있는 포트</text>
+    <rect x="260" y="108" width="300" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="272" y="134" font-family="Consolas,'D2Coding',monospace" font-size="13">ss -tlnp / ss -ulnp</text>
+    <text x="272" y="155" font-family="Consolas,'D2Coding',monospace" font-size="13">ss -tlnp 'sport = :8888'</text>
+    <rect x="570" y="108" width="250" height="60" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="582" y="134" font-family="Consolas,'D2Coding',monospace" font-size="13">--bind 127.0.0.1</text>
+    <text x="582" y="155" font-size="12" fill="#64748b">끄면 안 되면 루프백에만</text>
+    <text x="832" y="143" font-size="13" fill="#b91c1c" font-weight="bold">과제 8</text>
+
+    <!-- row 2 -->
+    <rect x="60" y="174" width="190" height="60" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="74" y="200" font-weight="bold">② 서비스</text>
+    <text x="74" y="221" font-size="12" fill="#64748b">systemd 유닛·소켓</text>
+    <rect x="260" y="174" width="300" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="272" y="200" font-family="Consolas,'D2Coding',monospace" font-size="13">systemctl status &lt;PID&gt;</text>
+    <text x="272" y="221" font-family="Consolas,'D2Coding',monospace" font-size="13">systemctl list-units --type=socket</text>
+    <rect x="570" y="174" width="250" height="60" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="582" y="200" font-family="Consolas,'D2Coding',monospace" font-size="13">systemctl disable --now</text>
+    <text x="582" y="221" font-family="Consolas,'D2Coding',monospace" font-size="13">systemctl mask</text>
+    <text x="832" y="209" font-size="13" fill="#b91c1c" font-weight="bold">과제 1</text>
+
+    <!-- row 3 -->
+    <rect x="60" y="240" width="190" height="60" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="74" y="266" font-weight="bold">③ 패키지</text>
+    <text x="74" y="287" font-size="12" fill="#64748b">설치된 소프트웨어</text>
+    <rect x="260" y="240" width="300" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="272" y="266" font-family="Consolas,'D2Coding',monospace" font-size="13">dpkg -S $(readlink -f /proc/PID/exe)</text>
+    <text x="272" y="287" font-family="Consolas,'D2Coding',monospace" font-size="13">dpkg -l &lt;패키지&gt;</text>
+    <rect x="570" y="240" width="250" height="60" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="582" y="266" font-family="Consolas,'D2Coding',monospace" font-size="13">apt-get purge -y &lt;패키지&gt;</text>
+    <text x="582" y="287" font-size="12" fill="#64748b">remove는 설정 파일(rc)이 남음</text>
+    <text x="832" y="275" font-size="13" fill="#b91c1c" font-weight="bold">과제 2</text>
+
+    <!-- row 4 -->
+    <rect x="60" y="306" width="190" height="60" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="74" y="332" font-weight="bold">④ 계정·권한</text>
+    <text x="74" y="353" font-size="12" fill="#64748b">로그인·sudo·노드 IAM</text>
+    <rect x="260" y="306" width="300" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="272" y="332" font-family="Consolas,'D2Coding',monospace" font-size="13">awk -F: '$3==0' /etc/passwd</text>
+    <text x="272" y="353" font-family="Consolas,'D2Coding',monospace" font-size="13">getent group sudo</text>
+    <rect x="570" y="306" width="250" height="60" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="582" y="332" font-family="Consolas,'D2Coding',monospace" font-size="13">gpasswd -d &lt;user&gt; sudo</text>
+    <text x="582" y="353" font-family="Consolas,'D2Coding',monospace" font-size="13">usermod -L &lt;user&gt;</text>
+    <text x="832" y="341" font-size="13" fill="#b91c1c" font-weight="bold">과제 9</text>
+
+    <!-- row 5 -->
+    <rect x="60" y="372" width="190" height="60" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="74" y="398" font-weight="bold">⑤ 커널 모듈</text>
+    <text x="74" y="419" font-size="12" fill="#64748b">자동 적재되는 프로토콜</text>
+    <rect x="260" y="372" width="300" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="272" y="398" font-family="Consolas,'D2Coding',monospace" font-size="13">lsmod | grep sctp</text>
+    <text x="272" y="419" font-family="Consolas,'D2Coding',monospace" font-size="13">modprobe -n -v sctp</text>
+    <rect x="570" y="372" width="250" height="60" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="582" y="398" font-family="Consolas,'D2Coding',monospace" font-size="13">blacklist sctp</text>
+    <text x="582" y="419" font-family="Consolas,'D2Coding',monospace" font-size="13">install sctp /bin/false</text>
+    <text x="832" y="407" font-size="13" fill="#b91c1c" font-weight="bold">과제 7</text>
+
+    <!-- row 6 -->
+    <rect x="60" y="438" width="190" height="70" rx="6" fill="#326ce5" stroke="#326ce5"/>
+    <text x="74" y="465" font-weight="bold" fill="#ffffff">⑥ 컨테이너 ↔ 커널</text>
+    <text x="74" y="488" font-size="12" fill="#e8eefc">syscall·파일 접근</text>
+    <rect x="260" y="438" width="300" height="70" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="272" y="464" font-family="Consolas,'D2Coding',monospace" font-size="13">grep Seccomp /proc/1/status</text>
+    <text x="272" y="486" font-family="Consolas,'D2Coding',monospace" font-size="13">cat /proc/1/attr/current</text>
+    <text x="272" y="502" font-size="11" fill="#64748b">(k exec 로 컨테이너 안에서)</text>
+    <rect x="570" y="438" width="250" height="70" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="582" y="464" font-size="13">seccomp 프로파일 적용</text>
+    <text x="582" y="486" font-size="13">AppArmor 프로파일 적용</text>
+    <text x="832" y="477" font-size="13" fill="#b91c1c" font-weight="bold">과제 3~6</text>
+  </g>
+
+  <rect x="60" y="530" width="760" height="36" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="76" y="553" font-size="13" fill="#334155">⚠️ 재부팅 후에도 유지되나 확인: is-enabled, /etc/modprobe.d, /etc/apparmor.d</text>
+</svg>

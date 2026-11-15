@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="600" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">PSA 위반 메시지 → 고칠 필드</text>
+
+  <!-- warning strip -->
+  <rect x="30" y="54" width="840" height="34" rx="6" fill="#0f172a"/>
+  <text x="44" y="76" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#fde68a">Warning: would violate PodSecurity "restricted:v1.37": allowPrivilegeEscalation != false, ...</text>
+
+  <!-- headers -->
+  <text x="40" y="116" font-size="14" font-weight="bold" fill="#b91c1c">메시지에 보이는 말</text>
+  <text x="470" y="116" font-size="14" font-weight="bold" fill="#326ce5">넣거나 고칠 필드 (수준)</text>
+
+  <g font-size="13" fill="#334155">
+    <!-- row 1 -->
+    <rect x="30" y="126" width="70" height="48" rx="4" fill="#fde68a"/>
+    <text x="65" y="155" text-anchor="middle" font-size="11" font-weight="bold">restricted</text>
+    <rect x="106" y="126" width="314" height="48" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="118" y="155" font-family="Consolas,'D2Coding',monospace">allowPrivilegeEscalation != false</text>
+    <line x1="422" y1="150" x2="456" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="460" y="126" width="410" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="472" y="146" font-size="11" fill="#64748b">컨테이너</text>
+    <text x="472" y="165" font-family="Consolas,'D2Coding',monospace">allowPrivilegeEscalation: false</text>
+
+    <!-- row 2 -->
+    <rect x="30" y="180" width="70" height="48" rx="4" fill="#fde68a"/>
+    <text x="65" y="209" text-anchor="middle" font-size="11" font-weight="bold">restricted</text>
+    <rect x="106" y="180" width="314" height="48" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="118" y="209" font-family="Consolas,'D2Coding',monospace">unrestricted capabilities</text>
+    <line x1="422" y1="204" x2="456" y2="204" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="460" y="180" width="410" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="472" y="200" font-size="11" fill="#64748b">컨테이너 (추가는 NET_BIND_SERVICE만 허용)</text>
+    <text x="472" y="219" font-family="Consolas,'D2Coding',monospace">capabilities: {drop: ["ALL"]}</text>
+
+    <!-- row 3 -->
+    <rect x="30" y="234" width="70" height="48" rx="4" fill="#fde68a"/>
+    <text x="65" y="263" text-anchor="middle" font-size="11" font-weight="bold">restricted</text>
+    <rect x="106" y="234" width="314" height="48" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="118" y="263" font-family="Consolas,'D2Coding',monospace">runAsNonRoot != true</text>
+    <line x1="422" y1="258" x2="456" y2="258" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="460" y="234" width="410" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="472" y="254" font-size="11" fill="#64748b">Pod 또는 컨테이너 + 비root 이미지나 runAsUser</text>
+    <text x="472" y="273" font-family="Consolas,'D2Coding',monospace">runAsNonRoot: true</text>
+
+    <!-- row 4 -->
+    <rect x="30" y="288" width="70" height="48" rx="4" fill="#fde68a"/>
+    <text x="65" y="317" text-anchor="middle" font-size="11" font-weight="bold">restricted</text>
+    <rect x="106" y="288" width="314" height="48" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="118" y="317" font-family="Consolas,'D2Coding',monospace">seccompProfile</text>
+    <line x1="422" y1="312" x2="456" y2="312" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="460" y="288" width="410" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="472" y="308" font-size="11" fill="#64748b">Pod 또는 컨테이너 (미지정도 위반)</text>
+    <text x="472" y="327" font-family="Consolas,'D2Coding',monospace">seccompProfile: {type: RuntimeDefault}</text>
+
+    <!-- row 5 -->
+    <rect x="30" y="342" width="70" height="48" rx="4" fill="#fca5a5"/>
+    <text x="65" y="371" text-anchor="middle" font-size="11" font-weight="bold">baseline</text>
+    <rect x="106" y="342" width="314" height="48" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="118" y="371" font-family="Consolas,'D2Coding',monospace">privileged</text>
+    <line x1="422" y1="366" x2="456" y2="366" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="460" y="342" width="410" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="472" y="362" font-size="11" fill="#64748b">컨테이너 — 줄을 지우거나 false</text>
+    <text x="472" y="381" font-family="Consolas,'D2Coding',monospace">privileged: false</text>
+
+    <!-- row 6 -->
+    <rect x="30" y="396" width="70" height="48" rx="4" fill="#fca5a5"/>
+    <text x="65" y="425" text-anchor="middle" font-size="11" font-weight="bold">baseline</text>
+    <rect x="106" y="396" width="314" height="48" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="118" y="425" font-family="Consolas,'D2Coding',monospace">host namespaces</text>
+    <line x1="422" y1="420" x2="456" y2="420" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="460" y="396" width="410" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="472" y="416" font-size="11" fill="#64748b">Pod — 세 필드 모두 제거</text>
+    <text x="472" y="435" font-family="Consolas,'D2Coding',monospace">hostPID / hostIPC / hostNetwork</text>
+
+    <!-- row 7 -->
+    <rect x="30" y="450" width="70" height="48" rx="4" fill="#fde68a"/>
+    <text x="65" y="479" text-anchor="middle" font-size="11" font-weight="bold">restricted</text>
+    <rect x="106" y="450" width="314" height="48" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="118" y="479" font-family="Consolas,'D2Coding',monospace">restricted volume types</text>
+    <line x1="422" y1="474" x2="456" y2="474" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="460" y="450" width="410" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="472" y="470" font-size="11" fill="#64748b">Pod volumes — hostPath는 baseline에서도 위반</text>
+    <text x="472" y="489" font-family="Consolas,'D2Coding',monospace">emptyDir / configMap / secret / PVC</text>
+  </g>
+
+  <!-- bottom note -->
+  <rect x="30" y="514" width="840" height="70" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="46" y="538" font-size="14" font-weight="bold" fill="#334155">Deployment는 조용히 실패한다</text>
+  <text x="46" y="559" font-size="13" fill="#334155">거부 메시지는 Deployment가 아니라 ReplicaSet 이벤트(FailedCreate)에 있다</text>
+  <text x="46" y="576" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">k -n X describe rs -l app=Y | grep -A1 FailedCreate</text>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="no" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">기본 거부 + 선별 허용 — S01 과제 1~4의 트래픽</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">초록 = 허용 규칙으로 열린 길 · 빨강 점선 = 기본 거부로 막힌 길</text>
+
+  <!-- s01-shop namespace -->
+  <rect x="30" y="80" width="600" height="250" rx="12" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="50" y="106" font-size="15" font-weight="700" fill="#1e3a8a">ns s01-shop — default-deny-all (Ingress + Egress)</text>
+
+  <rect x="60" y="160" width="140" height="60" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="130" y="186" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">frontend</text>
+  <text x="130" y="206" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">app=frontend</text>
+
+  <rect x="270" y="160" width="140" height="60" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="340" y="186" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">backend</text>
+  <text x="340" y="206" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">app=backend</text>
+
+  <rect x="470" y="160" width="140" height="60" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="540" y="186" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">db</text>
+  <text x="540" y="206" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">app=db</text>
+
+  <line x1="200" y1="182" x2="266" y2="182" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ok)"/>
+  <text x="233" y="174" text-anchor="middle" font-size="11" fill="#16a34a">TCP 80</text>
+  <line x1="410" y1="182" x2="466" y2="182" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ok)"/>
+  <text x="438" y="174" text-anchor="middle" font-size="11" fill="#16a34a">TCP 80</text>
+
+  <path d="M130,222 C130,280 540,280 540,224" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#no)"/>
+  <text x="200" y="292" text-anchor="middle" font-size="12" fill="#dc2626">frontend → db 막힘</text>
+  <text x="300" y="320" text-anchor="middle" font-size="12" fill="#334155">보내는 쪽 egress + 받는 쪽 ingress를 둘 다 열어야 통과</text>
+
+  <!-- DNS -->
+  <rect x="660" y="80" width="270" height="110" rx="12" fill="#f8fafc" stroke="#334155"/>
+  <text x="675" y="106" font-size="15" font-weight="700" fill="#0f172a">ns kube-system</text>
+  <rect x="690" y="122" width="210" height="50" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="795" y="144" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">CoreDNS</text>
+  <text x="795" y="162" text-anchor="middle" font-size="11" fill="#64748b" font-family="Consolas,'D2Coding',monospace">k8s-app=kube-dns</text>
+  <line x1="612" y1="140" x2="686" y2="140" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ok)"/>
+  <text x="648" y="132" text-anchor="middle" font-size="11" fill="#16a34a">53</text>
+  <text x="795" y="212" text-anchor="middle" font-size="12" fill="#16a34a">allow-dns: UDP·TCP 53</text>
+
+  <!-- s01-mon -->
+  <rect x="660" y="230" width="270" height="100" rx="12" fill="#f8fafc" stroke="#334155"/>
+  <text x="675" y="254" font-size="15" font-weight="700" fill="#0f172a">ns s01-mon (정책 없음)</text>
+  <rect x="680" y="268" width="100" height="44" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="730" y="295" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">prom</text>
+  <rect x="810" y="268" width="100" height="44" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="860" y="295" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">other</text>
+  <path d="M680,290 C560,290 380,280 350,224" fill="none" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ok)"/>
+  <text x="560" y="306" text-anchor="middle" font-size="11" fill="#16a34a">ns AND pod → backend 80</text>
+
+  <!-- s01-apps -->
+  <rect x="30" y="355" width="900" height="165" rx="12" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="50" y="381" font-size="15" font-weight="700" fill="#92400e">ns s01-apps — deny-metadata (Egress만)</text>
+  <rect x="60" y="410" width="120" height="56" rx="10" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="120" y="443" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">app</text>
+
+  <line x1="182" y1="420" x2="392" y2="406" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ok)"/>
+  <rect x="396" y="390" width="240" height="32" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="408" y="411" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">namespaceSelector: {}  (Pod·DNS)</text>
+
+  <line x1="182" y1="440" x2="392" y2="446" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ok)"/>
+  <rect x="396" y="430" width="240" height="32" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="408" y="451" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">ipBlock 0.0.0.0/0  (인터넷)</text>
+
+  <line x1="182" y1="458" x2="392" y2="486" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#no)"/>
+  <rect x="396" y="472" width="240" height="32" rx="6" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="408" y="493" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">except 169.254.169.254/32</text>
+
+  <text x="660" y="410" font-size="13" fill="#334155">Cilium의 ipBlock은</text>
+  <text x="660" y="430" font-size="13" fill="#334155">클러스터 밖에만 매치한다.</text>
+  <text x="660" y="456" font-size="13" fill="#334155">클러스터 안은 셀렉터로,</text>
+  <text x="660" y="476" font-size="13" fill="#334155">밖은 ipBlock으로 나눠 쓴다.</text>
+</svg>

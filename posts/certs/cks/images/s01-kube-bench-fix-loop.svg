@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kube-bench FAIL을 고치는 순환 — 번호에서 파일까지</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">kube-bench v0.16.0 · --benchmark cis-1.12 · kubeadm v1.37 노드 기준</text>
+
+  <!-- step boxes -->
+  <rect x="30" y="85" width="200" height="110" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="130" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">① 점검</text>
+  <text x="42" y="134" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">kube-bench run</text>
+  <text x="42" y="152" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace"> --targets master</text>
+  <text x="42" y="170" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace"> --benchmark cis-1.12</text>
+  <text x="42" y="188" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace"> &gt; /root/bench.txt</text>
+
+  <line x1="232" y1="140" x2="262" y2="140" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="265" y="85" width="200" height="110" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="365" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">② FAIL 번호</text>
+  <text x="277" y="136" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">grep '^\[FAIL\]'</text>
+  <text x="277" y="158" font-size="12" fill="#334155">1.2.15 profiling</text>
+  <text x="277" y="178" font-size="12" fill="#334155">4.2.1 anonymous-auth</text>
+
+  <line x1="467" y1="140" x2="497" y2="140" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="500" y="85" width="200" height="110" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="600" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">③ Remediations</text>
+  <text x="512" y="136" font-size="12" fill="#334155">출력 아래쪽 조치 절에</text>
+  <text x="512" y="156" font-size="12" fill="#334155">고칠 파일·값이 적혀 있음</text>
+  <text x="512" y="180" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">grep -A6 '^1.2.15 '</text>
+
+  <line x1="702" y1="140" x2="732" y2="140" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="735" y="85" width="195" height="110" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="832" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">④ 수정 → 재점검</text>
+  <text x="747" y="136" font-size="12" fill="#334155">백업 → 편집 → 재기동</text>
+  <text x="747" y="160" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">--check 1.2.15,4.2.1</text>
+  <text x="747" y="182" font-size="12" fill="#16a34a" font-weight="700">[PASS] 확인</text>
+
+  <path d="M832,197 C832,232 130,232 130,199" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="480" y="250" text-anchor="middle" font-size="12" fill="#64748b">남은 FAIL이 있으면 다시 ②로</text>
+
+  <!-- file map -->
+  <text x="30" y="270" font-size="16" font-weight="700" fill="#0f172a">번호 → 노드 → 파일</text>
+
+  <rect x="30" y="285" width="440" height="235" rx="10" fill="#f8fafc" stroke="#326ce5"/>
+  <text x="45" y="310" font-size="15" font-weight="700" fill="#1e3a8a">k8s-cp — /etc/kubernetes/manifests/</text>
+  <text x="45" y="338" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">1.2.x  kube-apiserver.yaml</text>
+  <text x="45" y="358" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">1.3.x  kube-controller-manager.yaml</text>
+  <text x="45" y="378" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">1.4.x  kube-scheduler.yaml</text>
+  <text x="45" y="398" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">2.x    etcd.yaml</text>
+  <text x="45" y="418" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">1.1.x  파일 권한 chmod 600</text>
+  <text x="45" y="448" font-size="12" fill="#334155">플래그는 command: 목록에 한 줄 추가</text>
+  <text x="45" y="468" font-size="12" fill="#334155">kubelet이 파일 변경을 보고 Pod를 다시 띄움</text>
+  <text x="45" y="494" font-size="12" fill="#b91c1c" font-weight="700">백업은 manifests/ 폴더 밖에!</text>
+
+  <rect x="490" y="285" width="440" height="235" rx="10" fill="#f8fafc" stroke="#326ce5"/>
+  <text x="505" y="310" font-size="15" font-weight="700" fill="#1e3a8a">워커 — /var/lib/kubelet/config.yaml</text>
+  <text x="505" y="338" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">4.2.1  authentication.anonymous</text>
+  <text x="505" y="356" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">         .enabled: false</text>
+  <text x="505" y="376" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">4.2.2  authorization.mode: Webhook</text>
+  <text x="505" y="396" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">4.2.4  readOnlyPort: 0</text>
+  <text x="505" y="416" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">4.1.9  chmod 600 config.yaml</text>
+  <text x="505" y="448" font-size="12" fill="#334155">수정 후 systemctl restart kubelet</text>
+  <text x="505" y="468" font-size="12" fill="#334155">kubeadm-flags.env의 플래그가 파일보다 우선</text>
+  <text x="505" y="494" font-size="12" fill="#b91c1c" font-weight="700">감사 로그 1.2.16~19는 S06에서</text>
+</svg>

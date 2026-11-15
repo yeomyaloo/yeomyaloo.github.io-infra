@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">CKS 실습 환경 — 어느 호스트에 어떤 도구를 두나</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">CKA cka-clean(v1.37.1) 위에 보안 도구를 얹고 스냅샷 cks-clean</text>
+
+  <!-- base -->
+  <rect x="30" y="85" width="250" height="300" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="155" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">base — WSL2 Ubuntu 24.04</text>
+  <text x="155" y="132" text-anchor="middle" font-size="12" fill="#64748b">시험의 base 역할 · Docker Desktop</text>
+  <rect x="50" y="146" width="210" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="62" y="168" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">kubectl · helm · kind</text>
+  <rect x="50" y="190" width="210" height="34" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="62" y="212" font-size="13" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">trivy v0.76.2</text>
+  <rect x="50" y="234" width="210" height="34" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="62" y="256" font-size="13" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">bom v0.8.0</text>
+  <rect x="50" y="278" width="210" height="48" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="62" y="298" font-size="13" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">kubesec() 함수</text>
+  <text x="62" y="316" font-size="11" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">kubesec/kubesec:v2</text>
+  <text x="155" y="352" text-anchor="middle" font-size="12" fill="#334155">이미지·매니페스트 분석 도구</text>
+  <text x="155" y="370" text-anchor="middle" font-size="12" fill="#334155">작업 폴더 ~/cks/</text>
+
+  <!-- ssh arrows -->
+  <line x1="282" y1="170" x2="318" y2="170" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="300" y="160" text-anchor="middle" font-size="11" fill="#64748b">ssh</text>
+
+  <!-- cka-main cluster -->
+  <rect x="320" y="85" width="610" height="300" rx="12" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="625" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">context cka-main — kubeadm v1.37.1 · Cilium · containerd 1.7</text>
+
+  <!-- k8s-cp -->
+  <rect x="335" y="125" width="185" height="245" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="427" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-cp</text>
+  <text x="427" y="166" text-anchor="middle" font-size="12" fill="#64748b">192.168.56.10</text>
+  <rect x="347" y="178" width="161" height="28" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="357" y="197" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">kube-bench</text>
+  <rect x="347" y="212" width="161" height="28" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="357" y="231" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">etcdctl/etcdutl</text>
+  <rect x="347" y="246" width="161" height="28" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="357" y="265" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">apparmor-utils</text>
+  <rect x="347" y="280" width="161" height="44" rx="5" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="357" y="298" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">/etc/kubernetes/</text>
+  <text x="357" y="314" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">  manifests/*.yaml</text>
+  <text x="427" y="352" text-anchor="middle" font-size="12" fill="#334155">컨트롤 플레인</text>
+
+  <!-- k8s-w1 -->
+  <rect x="535" y="125" width="185" height="245" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="627" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-w1</text>
+  <text x="627" y="166" text-anchor="middle" font-size="12" fill="#64748b">192.168.56.11</text>
+  <rect x="547" y="178" width="161" height="28" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="557" y="197" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">kube-bench</text>
+  <rect x="547" y="212" width="161" height="28" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="557" y="231" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">apparmor-utils</text>
+  <rect x="547" y="246" width="161" height="44" rx="5" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="557" y="264" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">Falco 0.45.2</text>
+  <text x="557" y="281" font-size="11" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">falco-modern-bpf</text>
+  <rect x="547" y="296" width="161" height="44" rx="5" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="557" y="314" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">gVisor runsc</text>
+  <text x="557" y="331" font-size="11" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">handler: runsc</text>
+  <text x="627" y="360" text-anchor="middle" font-size="11" fill="#334155">runtime/gvisor=true</text>
+
+  <!-- k8s-w2 -->
+  <rect x="735" y="125" width="185" height="245" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="827" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-w2</text>
+  <text x="827" y="166" text-anchor="middle" font-size="12" fill="#64748b">192.168.56.12</text>
+  <rect x="747" y="178" width="161" height="28" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="757" y="197" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">kube-bench</text>
+  <rect x="747" y="212" width="161" height="28" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="757" y="231" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">apparmor-utils</text>
+  <rect x="747" y="246" width="161" height="44" rx="5" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="757" y="264" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">Falco 0.45.2</text>
+  <text x="757" y="281" font-size="11" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">falco-modern-bpf</text>
+  <rect x="747" y="296" width="161" height="44" rx="5" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="757" y="314" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">gVisor runsc</text>
+  <text x="757" y="331" font-size="11" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">handler: runsc</text>
+  <text x="827" y="360" text-anchor="middle" font-size="11" fill="#334155">runtime/gvisor=true</text>
+
+  <!-- cluster resources -->
+  <rect x="30" y="405" width="900" height="80" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="50" y="432" font-size="15" font-weight="700" fill="#0f172a">클러스터 리소스</text>
+  <rect x="50" y="444" width="270" height="30" rx="6" fill="#ffffff" stroke="#326ce5"/>
+  <text x="62" y="464" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">RuntimeClass gvisor → runsc</text>
+  <rect x="335" y="444" width="300" height="30" rx="6" fill="#ffffff" stroke="#326ce5"/>
+  <text x="347" y="464" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">Traefik 42.4.0 · Gateway API v1.6.3</text>
+  <rect x="650" y="444" width="265" height="30" rx="6" fill="#ffffff" stroke="#326ce5"/>
+  <text x="662" y="464" font-size="12" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">NodePort 30080 / 30443(TLS)</text>
+
+  <!-- snapshot -->
+  <rect x="30" y="500" width="900" height="62" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="50" y="526" font-size="15" font-weight="700" fill="#7f1d1d">스냅샷</text>
+  <text x="120" y="526" font-size="14" fill="#334155" font-family="Consolas,'D2Coding',monospace">k00-v136 → cka-clean → cks-clean</text>
+  <text x="50" y="549" font-size="13" fill="#334155">vagrant halt → snapshot save cks-clean · S01~S08은 모두 cks-clean 복원으로 시작 (cka-aux kind는 그대로 유지)</text>
+</svg>

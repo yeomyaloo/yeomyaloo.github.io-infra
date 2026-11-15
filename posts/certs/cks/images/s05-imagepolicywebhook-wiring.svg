@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">ImagePolicyWebhook 연결 구조 — 파일 세 개와 마운트 하나</text>
+
+  <!-- box 1: kube-apiserver.yaml -->
+  <rect x="20" y="64" width="300" height="200" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="170" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">① kube-apiserver.yaml (정적 Pod)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="34" y="120">--enable-admission-plugins=</text>
+    <text x="47.2" y="138" fill="#b91c1c">NodeRestriction,ImagePolicyWebhook</text>
+    <text x="34" y="162">--admission-control-config-file=</text>
+    <text x="47.2" y="180">/etc/kubernetes/policywebhook/</text>
+    <text x="47.2" y="198">admission-config.yaml</text>
+  </g>
+  <rect x="34" y="214" width="272" height="38" rx="6" fill="#ffffff" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="170" y="238" text-anchor="middle" font-size="13" fill="#1e3a8a">volume + volumeMount (hostPath)</text>
+
+  <!-- box 2: admission-config -->
+  <rect x="350" y="64" width="280" height="200" rx="10" fill="#eef0fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="490" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">② admission-config.yaml</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="364" y="120">kind: AdmissionConfiguration</text>
+    <text x="364" y="140">- name: ImagePolicyWebhook</text>
+    <text x="377.2" y="160">imagePolicy:</text>
+    <text x="390.4" y="180">kubeConfigFile: .../kubeconf</text>
+    <text x="390.4" y="200">allowTTL / denyTTL</text>
+    <text x="390.4" y="220">retryBackoff</text>
+    <text x="390.4" y="244" fill="#b91c1c" font-weight="700">defaultAllow: false</text>
+  </g>
+
+  <!-- box 3: kubeconf -->
+  <rect x="660" y="64" width="280" height="200" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="800" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">③ kubeconf (kubeconfig 형식)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="674" y="120">clusters[].cluster:</text>
+    <text x="687.2" y="140" fill="#b91c1c">server: https://.../image_policy</text>
+    <text x="687.2" y="160">certificate-authority: ca.pem</text>
+    <text x="674" y="186">users[].user:</text>
+    <text x="687.2" y="206">client-certificate</text>
+    <text x="687.2" y="226">client-key</text>
+  </g>
+  <text x="800" y="252" text-anchor="middle" font-size="12" fill="#64748b">server는 반드시 https</text>
+
+  <!-- arrows between files -->
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="321" y1="170" x2="348" y2="170"/>
+    <line x1="631" y1="170" x2="658" y2="170"/>
+  </g>
+
+  <!-- request -->
+  <rect x="20" y="300" width="300" height="76" rx="10" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+  <text x="170" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Pod 생성 요청</text>
+  <text x="170" y="354" text-anchor="middle" font-size="13" fill="#64748b">kubectl run, ReplicaSet, DaemonSet ...</text>
+  <line x1="170" y1="300" x2="170" y2="266" stroke="#326ce5" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- backend -->
+  <rect x="660" y="300" width="280" height="76" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="800" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">이미지 정책 백엔드 (HTTPS)</text>
+  <text x="800" y="354" text-anchor="middle" font-size="13" fill="#78350f">이미지 목록 → allowed: true / false</text>
+  <line x1="800" y1="266" x2="800" y2="298" stroke="#326ce5" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- fail open/closed -->
+  <rect x="350" y="300" width="280" height="76" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="490" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">백엔드가 응답하지 않으면?</text>
+  <text x="490" y="347" text-anchor="middle" font-size="13" fill="#7f1d1d">defaultAllow: false → 거부 (fail-closed)</text>
+  <text x="490" y="366" text-anchor="middle" font-size="13" fill="#7f1d1d">defaultAllow: true → 허용 (fail-open)</text>
+  <line x1="658" y1="338" x2="632" y2="338" stroke="#b91c1c" stroke-width="2" stroke-dasharray="5 4"/>
+
+  <!-- node filesystem band -->
+  <rect x="20" y="404" width="920" height="72" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="480" y="432" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">k8s-cp 노드 디스크: /etc/kubernetes/policywebhook/ (②, ③, 인증서)</text>
+  <text x="480" y="458" text-anchor="middle" font-size="13" fill="#64748b">hostPath로 마운트하지 않으면 API 서버 컨테이너에서 보이지 않아 시작 직후 종료된다</text>
+</svg>

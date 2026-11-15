@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">이미지 참조의 구조 — 태그는 움직이고, 다이제스트는 고정된다</text>
+
+  <!-- reference string, each segment with fixed length -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="22" font-weight="700">
+    <text x="202" y="96" textLength="109" fill="#326ce5">docker.io</text>
+    <text x="311" y="96" textLength="12" fill="#64748b">/</text>
+    <text x="323" y="96" textLength="157" fill="#4f46e5">library/nginx</text>
+    <text x="480" y="96" textLength="60" fill="#f59e0b">:1.27</text>
+    <text x="540" y="96" textLength="218" fill="#16a34a">@sha256:3f5a...e1c</text>
+  </g>
+
+  <!-- brackets -->
+  <g stroke-width="2" fill="none">
+    <path d="M202,108 v8 h109 v-8" stroke="#326ce5"/>
+    <path d="M323,108 v8 h157 v-8" stroke="#4f46e5"/>
+    <path d="M480,108 v8 h60 v-8" stroke="#f59e0b"/>
+    <path d="M540,108 v8 h218 v-8" stroke="#16a34a"/>
+  </g>
+  <text x="256" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#326ce5">레지스트리</text>
+  <text x="401" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#4f46e5">저장소 경로</text>
+  <text x="510" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">태그</text>
+  <text x="649" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#16a34a">다이제스트 (내용의 해시)</text>
+  <text x="256" y="160" text-anchor="middle" font-size="12" fill="#64748b">생략하면 docker.io</text>
+  <text x="401" y="160" text-anchor="middle" font-size="12" fill="#64748b">공식 이미지는 library/</text>
+  <text x="510" y="160" text-anchor="middle" font-size="12" fill="#64748b">생략하면 latest</text>
+  <text x="649" y="160" text-anchor="middle" font-size="12" fill="#64748b">있으면 태그보다 우선</text>
+
+  <!-- left: tag moves -->
+  <rect x="20" y="190" width="440" height="150" rx="10" fill="#fef9e7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="240" y="216" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">태그 nginx:1.27 — 움직이는 이름표</text>
+  <rect x="44" y="238" width="120" height="36" rx="6" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="104" y="262" text-anchor="middle" font-size="14" font-family="Consolas,'D2Coding',monospace" fill="#78350f">:1.27</text>
+  <rect x="292" y="232" width="150" height="30" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="367" y="252" text-anchor="middle" font-size="13" fill="#334155">오늘: 이미지 A</text>
+  <rect x="292" y="276" width="150" height="30" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="367" y="296" text-anchor="middle" font-size="13" fill="#7f1d1d">재푸시 후: 이미지 B</text>
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="166" y1="252" x2="290" y2="247"/>
+    <line x1="166" y1="260" x2="290" y2="290" stroke-dasharray="5 4"/>
+  </g>
+  <text x="240" y="328" text-anchor="middle" font-size="12" fill="#64748b">같은 매니페스트라도 노드마다 다른 이미지를 받을 수 있다</text>
+
+  <!-- right: digest fixed -->
+  <rect x="500" y="190" width="440" height="150" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="720" y="216" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">다이제스트 @sha256:3f5a... — 고정</text>
+  <rect x="524" y="238" width="150" height="36" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="599" y="262" text-anchor="middle" font-size="14" font-family="Consolas,'D2Coding',monospace" fill="#14532d">@sha256:3f5a</text>
+  <rect x="772" y="241" width="150" height="30" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="847" y="261" text-anchor="middle" font-size="13" fill="#334155">언제나 이미지 A</text>
+  <line x1="676" y1="256" x2="770" y2="256" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="720" y="306" text-anchor="middle" font-size="12" fill="#14532d">찾는 곳: kubectl get po -o jsonpath=</text>
+  <text x="720" y="326" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#14532d">.status.containerStatuses[].imageID</text>
+
+  <text x="480" y="378" text-anchor="middle" font-size="13" fill="#b91c1c">⚠ 어드미션(VAP·웹훅)은 사용자가 쓴 문자열 그대로를 본다</text>
+  <text x="480" y="400" text-anchor="middle" font-size="13" fill="#64748b">nginx:1.27 은 런타임이 docker.io/library/ 를 붙여 받지만, 정책 검사에는 짧은 이름 그대로 들어간다</text>
+</svg>

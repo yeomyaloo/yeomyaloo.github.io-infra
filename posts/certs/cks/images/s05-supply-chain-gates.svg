@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">공급망의 검문소 — 어느 단계에서 무엇으로 막는가</text>
+
+  <!-- stage 1 -->
+  <rect x="20" y="64" width="168" height="236" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="104" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">① 이미지 작성</text>
+  <text x="104" y="120" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#326ce5">Dockerfile</text>
+  <line x1="36" y1="134" x2="172" y2="134" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="104" y="160" text-anchor="middle" font-size="13" fill="#334155">작은 베이스 이미지</text>
+  <text x="104" y="184" text-anchor="middle" font-size="13" fill="#334155">태그 고정</text>
+  <text x="104" y="208" text-anchor="middle" font-size="13" fill="#334155">불필요 패키지 제거</text>
+  <text x="104" y="232" text-anchor="middle" font-size="13" fill="#334155">USER 숫자 UID</text>
+  <text x="104" y="256" text-anchor="middle" font-size="13" fill="#334155">비밀 값 삭제</text>
+  <rect x="64" y="270" width="80" height="22" rx="11" fill="#e8eefc"/>
+  <text x="104" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#326ce5">과제 1</text>
+
+  <!-- stage 2 -->
+  <rect x="208" y="64" width="168" height="236" rx="10" fill="#fef9e7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="292" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">② 취약점 스캔</text>
+  <text x="292" y="120" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#326ce5">trivy image</text>
+  <line x1="224" y1="134" x2="360" y2="134" stroke="#fde68a" stroke-width="1.5"/>
+  <text x="292" y="160" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">--severity</text>
+  <text x="292" y="180" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">HIGH,CRITICAL</text>
+  <text x="292" y="200" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">--exit-code 1</text>
+  <text x="292" y="232" text-anchor="middle" font-size="13" fill="#334155">취약 이미지를 쓰는</text>
+  <text x="292" y="256" text-anchor="middle" font-size="13" fill="#334155">Pod 찾아 삭제</text>
+  <rect x="252" y="270" width="80" height="22" rx="11" fill="#e8eefc"/>
+  <text x="292" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#326ce5">과제 2</text>
+
+  <!-- stage 3 -->
+  <rect x="396" y="64" width="168" height="236" rx="10" fill="#eef0fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="480" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">③ 목록·서명</text>
+  <text x="480" y="120" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#326ce5">bom generate</text>
+  <line x1="412" y1="134" x2="548" y2="134" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="480" y="160" text-anchor="middle" font-size="13" fill="#334155">SBOM: SPDX</text>
+  <text x="480" y="184" text-anchor="middle" font-size="13" fill="#334155">(CycloneDX는 trivy)</text>
+  <text x="480" y="208" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">trivy sbom</text>
+  <text x="480" y="232" text-anchor="middle" font-size="13" fill="#334155">cosign 서명</text>
+  <text x="480" y="256" text-anchor="middle" font-size="12" fill="#64748b">(개념은 Day 57)</text>
+  <rect x="440" y="270" width="80" height="22" rx="11" fill="#e8eefc"/>
+  <text x="480" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#326ce5">과제 3, 4</text>
+
+  <!-- stage 4 -->
+  <rect x="584" y="64" width="168" height="236" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="668" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">④ 정적 분석</text>
+  <text x="668" y="120" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#326ce5">kubesec scan</text>
+  <line x1="600" y1="134" x2="736" y2="134" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="668" y="160" text-anchor="middle" font-size="13" fill="#334155">매니페스트 점수</text>
+  <text x="668" y="184" text-anchor="middle" font-size="13" fill="#334155">critical 항목:</text>
+  <text x="668" y="208" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">privileged</text>
+  <text x="668" y="228" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">hostPID</text>
+  <text x="668" y="248" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">hostNetwork</text>
+  <rect x="628" y="270" width="80" height="22" rx="11" fill="#ffffff"/>
+  <text x="668" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#326ce5">과제 5</text>
+
+  <!-- stage 5 -->
+  <rect x="772" y="64" width="168" height="236" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="856" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">⑤ 클러스터 입구</text>
+  <text x="856" y="120" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="700">어드미션</text>
+  <line x1="788" y1="134" x2="924" y2="134" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="856" y="160" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">ImagePolicy</text>
+  <text x="856" y="178" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">Webhook</text>
+  <text x="856" y="200" text-anchor="middle" font-size="12" fill="#64748b">또는</text>
+  <text x="856" y="222" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">VAP (CEL)</text>
+  <text x="856" y="252" text-anchor="middle" font-size="13" fill="#334155">허용 레지스트리</text>
+  <rect x="816" y="270" width="80" height="22" rx="11" fill="#ffffff"/>
+  <text x="856" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">과제 6, 7</text>
+
+  <!-- arrows between stages -->
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="189" y1="110" x2="206" y2="110"/>
+    <line x1="377" y1="110" x2="394" y2="110"/>
+    <line x1="565" y1="110" x2="582" y2="110"/>
+    <line x1="753" y1="110" x2="770" y2="110"/>
+  </g>
+
+  <!-- run row -->
+  <line x1="856" y1="300" x2="856" y2="334" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <rect x="500" y="338" width="440" height="58" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="720" y="362" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">실행 중인 Pod — 이미지를 다이제스트로 고정</text>
+  <text x="720" y="384" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#14532d">image: docker.io/library/nginx@sha256:...  (과제 8)</text>
+
+  <rect x="20" y="338" width="440" height="58" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="240" y="362" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">S06 — 런타임 감시로 이어짐</text>
+  <text x="240" y="384" text-anchor="middle" font-size="13" fill="#64748b">막지 못한 것은 Falco·감사 로그로 잡는다</text>
+  <line x1="498" y1="367" x2="464" y2="367" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="480" y="432" text-anchor="middle" font-size="13" fill="#64748b">왼쪽일수록 싸게 막고, 오른쪽일수록 확실하게 막는다 — 시험은 단계마다 한 과제씩 낸다</text>
+</svg>
