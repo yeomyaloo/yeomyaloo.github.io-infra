@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">API 인가의 세 단위 — 기능 → 객체 → 속성</text>
+
+  <!-- request -->
+  <rect x="20" y="80" width="170" height="170" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="105" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">요청 (사용자 B)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="34" y="134">PATCH</text>
+    <text x="34" y="154">/api/orders/1002</text>
+    <text x="34" y="182">{"memo": "…",</text>
+    <text x="34" y="202"> "ownerId": 7}</text>
+  </g>
+  <text x="105" y="236" text-anchor="middle" font-size="11" fill="#64748b">ID는 경로·본문·쿼리 어디든</text>
+
+  <!-- gates -->
+  <rect x="230" y="80" width="220" height="170" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="340" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">① 기능 단위</text>
+  <text x="340" y="138" text-anchor="middle" font-size="13" fill="#7f1d1d">이 역할이 이 엔드포인트·</text>
+  <text x="340" y="158" text-anchor="middle" font-size="13" fill="#7f1d1d">메서드를 부를 수 있나?</text>
+  <text x="340" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">빠지면 BFLA</text>
+  <text x="340" y="216" text-anchor="middle" font-size="12" fill="#7f1d1d">(API5)</text>
+
+  <rect x="480" y="80" width="220" height="170" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="590" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">② 객체 단위</text>
+  <text x="590" y="138" text-anchor="middle" font-size="13" fill="#7f1d1d">주문 1002가</text>
+  <text x="590" y="158" text-anchor="middle" font-size="13" fill="#7f1d1d">B의 것인가?</text>
+  <text x="590" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">빠지면 BOLA</text>
+  <text x="590" y="216" text-anchor="middle" font-size="12" fill="#7f1d1d">(API1 · 해킹 05 IDOR)</text>
+
+  <rect x="730" y="80" width="210" height="170" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="835" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">③ 속성 단위</text>
+  <text x="835" y="138" text-anchor="middle" font-size="13" fill="#7f1d1d">ownerId를 쓸 수 있나?</text>
+  <text x="835" y="158" text-anchor="middle" font-size="13" fill="#7f1d1d">응답에 무엇을 보이나?</text>
+  <text x="835" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">빠지면 BOPLA</text>
+  <text x="835" y="216" text-anchor="middle" font-size="12" fill="#7f1d1d">(API3 · 노출 + 대량 할당)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="190" y1="165" x2="226" y2="165" marker-end="url(#arrow)"/>
+    <line x1="450" y1="165" x2="476" y2="165" marker-end="url(#arrow)"/>
+    <line x1="700" y1="165" x2="726" y2="165" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- fixes -->
+  <text x="30" y="296" font-size="14" font-weight="700" fill="#14532d">수정</text>
+  <g font-size="12">
+    <rect x="230" y="276" width="220" height="120" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="244" y="298" font-weight="700" fill="#14532d">규칙을 한곳에, 기본 거부</text>
+    <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#14532d">
+      <text x="244" y="322">.requestMatchers("/admin/**")</text>
+      <text x="244" y="340">  .hasRole("ADMIN")</text>
+      <text x="244" y="358">.anyRequest().denyAll()</text>
+    </g>
+    <text x="244" y="384" fill="#14532d">FastAPI: require_role() 의존성</text>
+
+    <rect x="480" y="276" width="220" height="120" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="494" y="298" font-weight="700" fill="#14532d">"내 것 중에서" 찾기</text>
+    <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#14532d">
+      <text x="494" y="322">findByIdAndOwnerId(id, me)</text>
+      <text x="494" y="340">@PreAuthorize("@orderAuthz…")</text>
+    </g>
+    <text x="494" y="364" fill="#14532d">없으면 404 + authz_denied 로그</text>
+    <text x="494" y="384" fill="#14532d">FastAPI: owner_id 조건 포함</text>
+
+    <rect x="730" y="276" width="210" height="120" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="744" y="298" font-weight="700" fill="#14532d">요청/응답 DTO 분리</text>
+    <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#14532d">
+      <text x="744" y="322">UpdateOrderRequest(memo)</text>
+      <text x="744" y="340">extra="forbid"</text>
+      <text x="744" y="358">response_model=OrderOut</text>
+    </g>
+    <text x="744" y="384" fill="#14532d">엔티티를 받지도 주지도 않기</text>
+  </g>
+
+  <!-- check & detect -->
+  <rect x="20" y="420" width="920" height="84" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="446" font-size="14" font-weight="700" fill="#0f172a">점검 · 탐지</text>
+  <text x="36" y="470" font-size="13" fill="#334155">교차 계정 매트릭스: 내 두 테스트 계정(A·B)과 비로그인으로 같은 요청 → 상태 코드 + 본문의 소유자 비교</text>
+  <text x="36" y="492" font-size="13" fill="#334155">탐지: 한 토큰의 서로 다른 객체 ID 다수 조회 · 사용자별 authz_denied 급증 · 일반 토큰의 관리 경로 요청</text>
+</svg>

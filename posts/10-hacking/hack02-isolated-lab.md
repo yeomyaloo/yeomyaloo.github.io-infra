@@ -5,6 +5,7 @@ weight: 2
 tags: ["hacking", "ethical-hacking"]
 summary: "[본인 소유 격리 실습장 전용] VirtualBox의 네트워크 모드(NAT, Bridged, Host-only, Internal)와 Docker 네트워크 드라이버를 격리 수준 관점에서 비교할 수 있다. 인터넷과 집 LAN에서 분리된 실습망 hacklab (10.10.10.0/24) 을 만든다."
 image: "./images/hack02-hacklab-topology.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★☆☆ | 예상 소요 2.5 ~ 3.5시간 (이미지 다운로드 시간 포함)

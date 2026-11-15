@@ -5,6 +5,7 @@ weight: 9
 tags: ["hacking", "ethical-hacking", "cloud-security"]
 summary: "[본인 소유 격리 실습장 전용] 클라우드 침해의 흔한 출발점인 IAM 설정 실수 네 가지(과도한 권한, 권한 상승 경로, 공개 S3, 메타데이터 SSRF)를 설명할 수 있다. iam:PassRole, 정책 버전 되돌리기 같은 권한 상승 경로가 왜 생기는지 원리 수준으로 이해한다."
 image: "./images/hack09-privesc-paths.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★★☆ | 예상 소요 2 ~ 2.5시간 (AWS 계정 준비 제외)

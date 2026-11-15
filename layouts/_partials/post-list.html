@@ -1,6 +1,13 @@
-{{- /* 입력: 페이지 목록. 날짜·제목·요약·태그를 보여줍니다. */ -}}
+{{- /* 입력: 페이지 목록. 날짜·제목·요약·태그를 보여줍니다.
+       글에 group(예: 해킹 탭의 "개발 보안")이 있으면 group 이 바뀔 때마다 소제목을 넣습니다. */ -}}
+{{- $group := "" -}}
 <ul class="post-list">
   {{- range . }}
+  {{- with .Params.group }}{{ if ne . $group }}{{ $group = . }}
+</ul>
+<h3 class="post-group">{{ . }}</h3>
+<ul class="post-list">
+  {{- end }}{{ end }}
   <li>
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
     <a class="post-title" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>

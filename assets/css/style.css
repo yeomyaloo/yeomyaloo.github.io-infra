@@ -191,3 +191,8 @@ pre { background: var(--code-bg); border: 1px solid var(--border); border-radius
   .tabstrip a, .tabstrip .soon { padding: 0 10px; font-size: 14.5px; }
   .tabstrip .soon small { display: none; }   /* 좁은 화면: 흐린 글씨로만 '준비 중' 표시 */
 }
+
+/* 탭 안 소제목 (예: 해킹 탭의 개발 보안 / 인프라 보안 심화) */
+.post-group { margin: 28px 0 0; padding-bottom: 6px; font-size: 16px; color: var(--muted); border-bottom: 2px solid var(--border); }
+.chapter li.side-group-label { margin: 10px 0 2px; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.chapter li.side-group-label:first-child { margin-top: 4px; }

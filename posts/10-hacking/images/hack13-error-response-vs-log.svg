@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">에러 한 건 — 사용자 응답과 서버 로그를 나눈다</text>
+
+  <!-- left column -->
+  <rect x="20" y="60" width="290" height="44" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <text x="165" y="88" text-anchor="middle" font-size="13" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">GET /api/orders/42</text>
+  <line x1="165" y1="104" x2="165" y2="128" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="20" y="132" width="290" height="64" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="165" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">예외 발생</text>
+  <text x="165" y="182" text-anchor="middle" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">java.sql.SQLException</text>
+
+  <text x="165" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">❌ 나쁜 예: 그대로 응답</text>
+  <rect x="20" y="242" width="290" height="150" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="34" y="268" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">HTTP 500</text>
+  <text x="34" y="290" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">SQLException: syntax error</text>
+  <text x="34" y="312" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">  at com.example.OrderRepo…</text>
+  <text x="34" y="334" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">SELECT … FROM orders …</text>
+  <text x="34" y="356" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">/opt/app/lib/…-6.4.2.jar</text>
+  <text x="34" y="380" font-size="11" fill="#991b1b">→ 구조 · 쿼리 · 경로 · 버전 노출</text>
+
+  <!-- arrows -->
+  <line x1="310" y1="156" x2="356" y2="122" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="310" y1="176" x2="356" y2="268" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- user response -->
+  <rect x="360" y="56" width="580" height="136" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="378" y="80" font-size="15" font-weight="700" fill="#14532d">✅ 사용자 응답 — 무엇을 하면 되는지만</text>
+  <text x="378" y="106" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">HTTP 500  Content-Type: application/problem+json</text>
+  <text x="378" y="128" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">{ "title": "Internal Server Error",</text>
+  <text x="378" y="148" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">  "detail": "일시적인 오류가 발생했습니다.",</text>
+  <text x="378" y="168" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">  "errorId": "7f3c2a…" }</text>
+
+  <!-- server log -->
+  <rect x="360" y="212" width="580" height="180" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+  <text x="378" y="236" font-size="15" font-weight="700" fill="#1e3a8a">✅ 서버 로그 (JSON) — 왜 났는지 자세히</text>
+  <text x="378" y="262" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">{"level":"ERROR","event":"unhandled_exception",</text>
+  <text x="378" y="282" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace"> "errorId":"7f3c2a…","path":"/api/orders/42",</text>
+  <text x="378" y="302" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace"> "user":"u-1029","trace_id":"4bf92f…",</text>
+  <text x="378" y="322" font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace"> "stack_trace":"java.sql.SQLException: …"}</text>
+  <rect x="378" y="338" width="546" height="40" rx="6" fill="#ffffff" stroke="#dc2626" stroke-dasharray="5 3"/>
+  <text x="651" y="363" text-anchor="middle" font-size="12" fill="#b91c1c">넣지 말 것: 비밀번호 · Authorization · 세션 ID · 요청 본문 전체 · 개인정보</text>
+
+  <!-- errorId link -->
+  <path d="M 925 168 C 950 190, 950 260, 925 282" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="900" y="206" text-anchor="end" font-size="12" font-weight="700" fill="#5b21b6">errorId로 연결</text>
+
+  <rect x="20" y="412" width="920" height="40" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="480" y="437" text-anchor="middle" font-size="13" fill="#78350f">Spring: ResponseEntityExceptionHandler + ProblemDetail, include-stacktrace=never · FastAPI: 422의 input 에코 제거, debug=False</text>
+</svg>

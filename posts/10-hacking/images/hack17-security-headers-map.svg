@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">보안 응답 헤더와 막는 위협</text>
+  <text x="205" y="64" text-anchor="middle" font-size="13" fill="#64748b">헤더 · 권장 시작값</text>
+  <text x="755" y="64" text-anchor="middle" font-size="13" fill="#64748b">막는 위협</text>
+
+  <!-- rows: y = 76 + i*62, h = 50 -->
+  <g>
+    <!-- 1 CSP -->
+    <rect x="40" y="76" width="330" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="54" y="97" font-size="14" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#14532d">Content-Security-Policy</text>
+    <text x="54" y="116" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">script-src 'self'; object-src 'none'</text>
+    <rect x="590" y="76" width="330" height="50" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="604" y="97" font-size="14" font-weight="700" fill="#7f1d1d">XSS 스크립트 실행 (2차 방어)</text>
+    <text x="604" y="116" font-size="12" fill="#7f1d1d">출력 인코딩이 뚫려도 실행을 막음</text>
+
+    <!-- 2 HSTS -->
+    <rect x="40" y="138" width="330" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="54" y="159" font-size="14" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#14532d">Strict-Transport-Security</text>
+    <text x="54" y="178" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">max-age=31536000; includeSubDomains</text>
+    <rect x="590" y="138" width="330" height="50" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="604" y="159" font-size="14" font-weight="700" fill="#7f1d1d">HTTPS → HTTP 다운그레이드</text>
+    <text x="604" y="178" font-size="12" fill="#7f1d1d">평문 구간에서 쿠키·토큰 노출 (해킹 22)</text>
+
+    <!-- 3 nosniff -->
+    <rect x="40" y="200" width="330" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="54" y="221" font-size="14" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#14532d">X-Content-Type-Options</text>
+    <text x="54" y="240" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">nosniff</text>
+    <rect x="590" y="200" width="330" height="50" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="604" y="221" font-size="14" font-weight="700" fill="#7f1d1d">MIME 추측</text>
+    <text x="604" y="240" font-size="12" fill="#7f1d1d">업로드 파일이 HTML·스크립트로 해석 (해킹 05)</text>
+
+    <!-- 4 frame-ancestors -->
+    <rect x="40" y="262" width="330" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="54" y="283" font-size="14" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#14532d">frame-ancestors / X-Frame-Options</text>
+    <text x="54" y="302" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">'none'  /  DENY</text>
+    <rect x="590" y="262" width="330" height="50" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="604" y="283" font-size="14" font-weight="700" fill="#7f1d1d">클릭재킹</text>
+    <text x="604" y="302" font-size="12" fill="#7f1d1d">내 페이지를 투명 iframe으로 덮어 클릭 유도</text>
+
+    <!-- 5 Referrer -->
+    <rect x="40" y="324" width="330" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="54" y="345" font-size="14" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#14532d">Referrer-Policy</text>
+    <text x="54" y="364" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">strict-origin-when-cross-origin</text>
+    <rect x="590" y="324" width="330" height="50" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="604" y="345" font-size="14" font-weight="700" fill="#7f1d1d">URL 정보 유출</text>
+    <text x="604" y="364" font-size="12" fill="#7f1d1d">경로·쿼리 속 토큰·ID가 외부 사이트로</text>
+
+    <!-- 6 Permissions -->
+    <rect x="40" y="386" width="330" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="54" y="407" font-size="14" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#14532d">Permissions-Policy</text>
+    <text x="54" y="426" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">camera=(), microphone=(), geolocation=()</text>
+    <rect x="590" y="386" width="330" height="50" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="604" y="407" font-size="14" font-weight="700" fill="#7f1d1d">브라우저 기능 오용</text>
+    <text x="604" y="426" font-size="12" fill="#7f1d1d">쓰지 않는 카메라·마이크·위치 권한</text>
+  </g>
+
+  <g stroke="#15803d" stroke-width="2" fill="none">
+    <line x1="370" y1="101" x2="586" y2="101" marker-end="url(#arrowGreen)"/>
+    <line x1="370" y1="163" x2="586" y2="163" marker-end="url(#arrowGreen)"/>
+    <line x1="370" y1="225" x2="586" y2="225" marker-end="url(#arrowGreen)"/>
+    <line x1="370" y1="287" x2="586" y2="287" marker-end="url(#arrowGreen)"/>
+    <line x1="370" y1="349" x2="586" y2="349" marker-end="url(#arrowGreen)"/>
+    <line x1="370" y1="411" x2="586" y2="411" marker-end="url(#arrowGreen)"/>
+  </g>
+  <text x="478" y="94" text-anchor="middle" font-size="12" fill="#15803d">막음</text>
+
+  <rect x="40" y="452" width="880" height="56" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="56" y="475" font-size="13" fill="#334155"><tspan font-weight="700">설정</tspan>  Spring headers() · FastAPI 미들웨어 · Traefik headers 미들웨어 (공통 헤더는 게이트웨이, CSP는 앱)</text>
+  <text x="56" y="497" font-size="13" fill="#334155"><tspan font-weight="700">점검</tspan>  curl -D - 로 응답 헤더 확인 · ZAP 패시브 스캔(해킹 20)   |   <tspan font-weight="700">탐지</tspan>  CSP 위반 보고 → Loki</text>
+</svg>

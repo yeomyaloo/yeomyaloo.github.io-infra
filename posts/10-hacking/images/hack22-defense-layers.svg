@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">ARP 스푸핑·중간자 — 계층별 방어</text>
+
+  <!-- Row 1: Application -->
+  <rect x="20" y="62" width="170" height="70" rx="10" fill="#16a34a"/>
+  <text x="105" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">애플리케이션</text>
+  <text x="105" y="116" text-anchor="middle" font-size="12" fill="#dcfce7">TLS · 헤더</text>
+  <rect x="200" y="62" width="740" height="70" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="218" y="92" font-size="15" font-weight="700" fill="#14532d">TLS 인증서 검증 · HSTS(+preload) · 쿠키 Secure · mTLS</text>
+  <text x="218" y="116" font-size="12" fill="#334155">L2가 뚫려도 내용은 안전 — 단, 검증을 끄면(-k, verify=False) 무력화</text>
+
+  <!-- Row 2: Tunnel -->
+  <rect x="20" y="142" width="170" height="70" rx="10" fill="#4f46e5"/>
+  <text x="105" y="174" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">터널</text>
+  <text x="105" y="196" text-anchor="middle" font-size="12" fill="#e0e7ff">VPN</text>
+  <rect x="200" y="142" width="740" height="70" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="218" y="172" font-size="15" font-weight="700" fill="#312e81">VPN — Tailscale exit node (Homelab 03)</text>
+  <text x="218" y="196" font-size="12" fill="#334155">카페·호텔 Wi-Fi처럼 내가 통제하지 못하는 망의 중간자를 무의미하게 만듦</text>
+
+  <!-- Row 3: Network design -->
+  <rect x="20" y="222" width="170" height="70" rx="10" fill="#2496ed"/>
+  <text x="105" y="254" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">망 설계</text>
+  <text x="105" y="276" text-anchor="middle" font-size="12" fill="#e0f2fe">브로드캐스트 도메인</text>
+  <rect x="200" y="222" width="740" height="70" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="218" y="252" font-size="15" font-weight="700" fill="#1e3a8a">VLAN 분리 (Day 23) · 게스트 Wi-Fi AP 격리</text>
+  <text x="218" y="276" font-size="12" fill="#334155">ARP는 같은 VLAN 안에서만 동작 → 피해 범위를 한 VLAN으로 한정, VLAN 사이는 L3 방화벽</text>
+
+  <!-- Row 4: Switch -->
+  <rect x="20" y="302" width="170" height="70" rx="10" fill="#f59e0b"/>
+  <text x="105" y="334" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">스위치 (L2)</text>
+  <text x="105" y="356" text-anchor="middle" font-size="12" fill="#fffbeb">관리형 장비</text>
+  <rect x="200" y="302" width="740" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="218" y="332" font-size="15" font-weight="700" fill="#78350f">DHCP snooping → DAI · 포트 보안 · 802.1X · RA Guard</text>
+  <text x="218" y="356" font-size="12" fill="#334155">바인딩 표와 다른 ARP를 출발 포트에서 버림 — 가장 근본적. 클라우드·Neutron은 포트 안티 스푸핑</text>
+
+  <!-- Row 5: Host -->
+  <rect x="20" y="382" width="170" height="70" rx="10" fill="#334155"/>
+  <text x="105" y="414" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">호스트</text>
+  <text x="105" y="436" text-anchor="middle" font-size="12" fill="#e2e8f0">캐시 보호 · 탐지</text>
+  <rect x="200" y="382" width="740" height="70" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="218" y="412" font-size="15" font-weight="700" fill="#0f172a">정적 ARP · nftables arp 테이블 · arpwatch / arpmon 탐지</text>
+  <text x="218" y="436" font-size="12" fill="#334155">소수의 중요 경로(게이트웨이·관리 서버) 보호 + 변경 탐지 — 대규모 관리는 어려움</text>
+
+  <text x="480" y="486" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">한 층이 뚫려도 다음 층이 막도록 — 마지막 방어선은 L2를 믿지 않는 TLS</text>
+  <text x="480" y="508" text-anchor="middle" font-size="12" fill="#64748b">아래층일수록 내 망에서만, 위층일수록 어떤 망에서도 통한다</text>
+</svg>

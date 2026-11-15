@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">하나의 사건, 네 곳의 탐지 지점</text>
+
+  <!-- Event -->
+  <rect x="300" y="58" width="360" height="68" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="480" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#b91c1c">사건: 10.10.10.30의 MAC이 바뀜</text>
+  <text x="480" y="110" text-anchor="middle" font-size="12" fill="#7f1d1d">ARP 스푸핑 · NIC 교체 · VM 재생성 — 같은 흔적</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <path d="M400,126 L127,186" marker-end="url(#arrow)"/>
+    <path d="M450,126 L362,186" marker-end="url(#arrow)"/>
+    <path d="M510,126 L597,186" marker-end="url(#arrow)"/>
+    <path d="M560,126 L832,186" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Box 1 -->
+  <rect x="20" y="190" width="215" height="180" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="127" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">호스트 ARP 캐시</text>
+  <text x="127" y="240" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">arpmon.sh · ip neigh</text>
+  <rect x="34" y="256" width="187" height="62" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-size="11" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">
+    <text x="42" y="280">CHANGED 10.10.10.30</text>
+    <text x="42" y="302">9d:4e:5f -&gt; aa:aa:30</text>
+  </g>
+  <text x="127" y="346" text-anchor="middle" font-size="12" fill="#334155">각 호스트 · 설치 쉬움</text>
+
+  <!-- Box 2 -->
+  <rect x="255" y="190" width="215" height="180" rx="10" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="362" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#15803d">arpwatch</text>
+  <text x="362" y="240" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">arpwatch@enp0s8</text>
+  <rect x="269" y="256" width="187" height="62" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-size="11" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">
+    <text x="277" y="280">changed ethernet address</text>
+    <text x="277" y="302">flip flop (반복 시)</text>
+  </g>
+  <text x="362" y="346" text-anchor="middle" font-size="12" fill="#334155">감시 호스트 · 망 단위 기록</text>
+
+  <!-- Box 3 -->
+  <rect x="490" y="190" width="215" height="180" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="597" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#4338ca">Wireshark</text>
+  <text x="597" y="240" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">tshark -Y</text>
+  <rect x="504" y="256" width="187" height="62" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-size="11" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">
+    <text x="512" y="280">arp.duplicate-</text>
+    <text x="512" y="302">  address-detected</text>
+  </g>
+  <text x="597" y="346" text-anchor="middle" font-size="12" fill="#334155">캡처 필요 · 사후 분석</text>
+
+  <!-- Box 4 -->
+  <rect x="725" y="190" width="215" height="180" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="832" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#b45309">관리형 스위치</text>
+  <text x="832" y="240" text-anchor="middle" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">DAI + DHCP snooping</text>
+  <rect x="739" y="256" width="187" height="62" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-size="12" fill="#b91c1c">
+    <text x="747" y="280">바인딩과 다른 ARP</text>
+    <text x="747" y="302">→ 차단 + 로그</text>
+  </g>
+  <text x="832" y="346" text-anchor="middle" font-size="12" fill="#334155">가장 근본적 · 막기까지 함</text>
+
+  <!-- Converge -->
+  <g stroke="#64748b" stroke-width="1.8" fill="none">
+    <path d="M127,370 L300,414" marker-end="url(#arrow)"/>
+    <path d="M362,370 L400,414" marker-end="url(#arrow)"/>
+    <path d="M597,370 L560,414" marker-end="url(#arrow)"/>
+    <path d="M832,370 L660,414" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="180" y="418" width="600" height="56" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="480" y="443" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">journal/syslog → Loki (Day 60) → Alertmanager (Day 62)</text>
+  <text x="480" y="463" text-anchor="middle" font-size="12" fill="#64748b">정상 변경 기록과 대조 → 런북(Day 65) · 해킹 10 탐지 매트릭스에 L2 행 추가</text>
+</svg>

@@ -5,6 +5,7 @@ weight: 7
 tags: ["hacking", "ethical-hacking", "container-security"]
 summary: "[본인 소유 격리 실습장 전용] 컨테이너 탈출이 대부분 \"격리를 스스로 풀어 준 설정\" 에서 시작한다는 것을 공격자 시각으로 설명할 수 있다."
 image: "./images/hack07-escape-surface.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★★☆ | 예상 소요 2 ~ 2.5시간

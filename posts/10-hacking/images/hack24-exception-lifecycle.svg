@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">예외의 수명 — 사유, 리뷰, 만료, 재검토</text>
+
+  <!-- flow -->
+  <rect x="20" y="70" width="150" height="70" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="95" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">스캐너 발견</text>
+  <text x="95" y="122" text-anchor="middle" font-size="12" fill="#334155">CKV_K8S_11 등</text>
+
+  <rect x="200" y="70" width="170" height="70" rx="12" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="285" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">고칠 수 있나?</text>
+  <text x="285" y="122" text-anchor="middle" font-size="12" fill="#334155">고칠 필요가 있나?</text>
+
+  <rect x="400" y="60" width="160" height="56" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="480" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">수정 (기본)</text>
+
+  <rect x="400" y="130" width="160" height="80" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="480" y="156" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">예외 기록</text>
+  <text x="480" y="178" text-anchor="middle" font-size="12" fill="#334155">리소스 단위 + 사유</text>
+  <text x="480" y="196" text-anchor="middle" font-size="12" fill="#334155">+ 만료일</text>
+
+  <rect x="590" y="130" width="160" height="80" rx="12" fill="#e0f2fe" stroke="#2496ed" stroke-width="2"/>
+  <text x="670" y="160" text-anchor="middle" font-size="15" font-weight="700" fill="#0c4a6e">PR 리뷰</text>
+  <text x="670" y="184" text-anchor="middle" font-size="12" fill="#334155">CODEOWNERS 승인</text>
+
+  <rect x="780" y="130" width="160" height="80" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="860" y="160" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">만료 · 분기 재검토</text>
+  <text x="860" y="184" text-anchor="middle" font-size="12" fill="#334155">다시 실패로 돌아옴</text>
+
+  <g stroke="#334155" stroke-width="2.5" fill="none">
+    <line x1="170" y1="105" x2="196" y2="105" marker-end="url(#arrow)"/>
+    <path d="M370,95 L384,95 L384,88 L396,88" marker-end="url(#arrow)"/>
+    <path d="M370,120 L384,120 L384,170 L396,170" marker-end="url(#arrow)"/>
+    <line x1="560" y1="170" x2="586" y2="170" marker-end="url(#arrow)"/>
+    <line x1="750" y1="170" x2="776" y2="170" marker-end="url(#arrow)"/>
+    <path d="M860,210 L860,236 L95,236 L95,144" marker-end="url(#arrow)"/>
+  </g>
+  <text x="387" y="80" font-size="11" fill="#64748b">예</text>
+  <text x="379" y="156" font-size="11" fill="#64748b" text-anchor="end">아니오</text>
+  <text x="480" y="254" text-anchor="middle" font-size="12" fill="#64748b">임시 예외가 영구 예외가 되지 않도록 순환한다</text>
+
+  <!-- syntax table -->
+  <rect x="20" y="276" width="920" height="168" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="40" y="304" font-size="15" font-weight="700" fill="#0f172a">도구별 예외 문법 (항상 사유를 함께)</text>
+  <text x="40" y="334" font-size="13" font-weight="700" fill="#334155">Checkov · Terraform</text>
+  <text x="250" y="334" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a"># checkov:skip=CKV_OPENSTACK_2: 사유   (리소스 블록 안)</text>
+  <text x="40" y="362" font-size="13" font-weight="700" fill="#334155">Checkov · K8s</text>
+  <text x="250" y="362" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">metadata.annotations: checkov.io/skip1: CKV_K8S_11=사유</text>
+  <text x="40" y="390" font-size="13" font-weight="700" fill="#334155">Trivy · Terraform</text>
+  <text x="250" y="390" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">#trivy:ignore:AVD-OPNSTK-0003:exp:2027-05-31   (리소스 바로 위)</text>
+  <text x="40" y="418" font-size="13" font-weight="700" fill="#334155">Trivy · K8s</text>
+  <text x="250" y="418" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">.trivyignore.yaml: id · paths · statement  (--ignorefile)</text>
+</svg>

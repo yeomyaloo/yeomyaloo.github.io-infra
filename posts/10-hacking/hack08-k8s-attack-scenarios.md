@@ -5,6 +5,7 @@ weight: 8
 tags: ["hacking", "ethical-hacking", "kubernetes"]
 summary: "[본인 소유 격리 실습장 전용] Kubernetes Goat가 무엇이고 왜 별도 VM의 일회용 kind 클러스터에 올려야 하는지 설명할 수 있다. Goat를 설치하고 외부에 노출되지 않게(127.0.0.1) 접속 환경을 만든다."
 image: "./images/hack08-goat-lab-topology.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★★☆ | 예상 소요 2.5 ~ 3시간

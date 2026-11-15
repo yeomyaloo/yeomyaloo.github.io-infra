@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">휘발성 순서와 증거 무결성 — 빨리 사라지는 것부터</text>
+
+  <!-- 왼쪽 축 -->
+  <line x1="50" y1="470" x2="50" y2="78" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="40" y="70" text-anchor="end" font-size="12" fill="#b91c1c" transform="rotate(0)">빠름</text>
+  <text x="40" y="486" text-anchor="end" font-size="12" fill="#64748b">느림</text>
+
+  <!-- 단계 막대 (위가 가장 휘발) -->
+  <g font-size="13">
+    <rect x="70" y="80" width="520" height="52" rx="8" fill="#fca5a5" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="88" y="104" font-weight="700" fill="#7f1d1d">① 메모리 · 프로세스 · 네트워크 연결 · ARP</text>
+    <text x="88" y="122" font-size="12" fill="#334155">ps · ss · ip neigh · 메모리 이미지(LiME · AVML) · checkpoint</text>
+
+    <rect x="70" y="142" width="520" height="52" rx="8" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="88" y="166" font-weight="700" fill="#7f1d1d">② 임시 파일 · 컨테이너 쓰기 레이어</text>
+    <text x="88" y="184" font-size="12" fill="#334155">/tmp · /dev/shm · docker diff · docker export · Pod 삭제 시 소멸</text>
+
+    <rect x="70" y="204" width="520" height="52" rx="8" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="88" y="228" font-weight="700" fill="#78350f">③ 디스크 · PV</text>
+    <text x="88" y="246" font-size="12" fill="#334155">디스크 이미지 · VM 스냅샷 · 원본은 읽기 전용</text>
+
+    <rect x="70" y="266" width="520" height="52" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="88" y="290" font-weight="700" fill="#78350f">④ 원격 로그 · 모니터링</text>
+    <text x="88" y="308" font-size="12" fill="#b91c1c">Loki · Falco · 감사 로그 — retention 만료 전에 logcli로 내보내기</text>
+
+    <rect x="70" y="328" width="520" height="52" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+    <text x="88" y="352" font-weight="700" fill="#14532d">⑤ 구성 · 토폴로지</text>
+    <text x="88" y="370" font-size="12" fill="#334155">인벤토리 · 네트워크 구성도 · 매니페스트(Git)</text>
+
+    <rect x="70" y="390" width="520" height="52" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+    <text x="88" y="414" font-weight="700" fill="#334155">⑥ 백업 · 아카이브</text>
+    <text x="88" y="432" font-size="12" fill="#334155">스냅샷 · 백업 매체</text>
+  </g>
+  <text x="330" y="470" text-anchor="middle" font-size="12" fill="#64748b">RFC 3227 순서를 실습장 기준으로 정리 (레지스터·캐시는 생략)</text>
+
+  <!-- 오른쪽: 무결성 흐름 -->
+  <rect x="630" y="80" width="300" height="362" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="780" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">수집할 때마다</text>
+
+  <rect x="650" y="124" width="260" height="56" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="780" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">별도 디스크에 쓰기</text>
+  <text x="780" y="168" text-anchor="middle" font-size="12" fill="#334155">조사 대상 디스크 덮어쓰기 금지</text>
+
+  <rect x="650" y="204" width="260" height="56" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="780" y="228" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">즉시 SHA-256</text>
+  <text x="780" y="248" font-family="Consolas,'D2Coding',monospace" text-anchor="middle" font-size="12" fill="#334155">sha256sum * &gt; SHA256SUMS</text>
+
+  <rect x="650" y="284" width="260" height="56" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="780" y="308" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">chain of custody 기록</text>
+  <text x="780" y="328" text-anchor="middle" font-size="12" fill="#334155">누가 · 언제 · 어떻게 · 어디에</text>
+
+  <rect x="650" y="364" width="260" height="56" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="780" y="388" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">사본으로 분석</text>
+  <text x="780" y="408" font-family="Consolas,'D2Coding',monospace" text-anchor="middle" font-size="12" fill="#334155">sha256sum -c SHA256SUMS</text>
+
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="780" y1="181" x2="780" y2="201"/>
+    <line x1="780" y1="261" x2="780" y2="281"/>
+    <line x1="780" y1="341" x2="780" y2="361"/>
+  </g>
+
+  <rect x="630" y="458" width="300" height="56" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="780" y="482" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">kubectl delete · 재부팅 금지</text>
+  <text x="780" y="502" text-anchor="middle" font-size="12" fill="#334155">①②가 한 번에 사라진다</text>
+</svg>

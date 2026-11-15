@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+    <marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">계층형 관리 모델 — 높은 권한은 낮은 곳에 내려가지 않는다</text>
+
+  <!-- 계층 띠 -->
+  <rect x="30" y="64" width="600" height="110" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="50" y="94" font-size="18" font-weight="700" fill="#991b1b">Tier 0 — 신원의 심장</text>
+  <text x="50" y="122" font-size="13" fill="#334155">DC01 · AD 자체 · AD CS · Entra Connect · 관리 전용 PC(PAW)</text>
+  <text x="50" y="148" font-size="13" fill="#334155">계정: t0-adm-*  (Protected Users · 인증 정책 사일로)</text>
+
+  <rect x="30" y="200" width="600" height="110" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="50" y="230" font-size="18" font-weight="700" fill="#78350f">Tier 1 — 서버와 앱</text>
+  <text x="50" y="258" font-size="13" fill="#334155">SRV01 · 업무 서버 · DB · 앱 서버</text>
+  <text x="50" y="284" font-size="13" fill="#334155">계정: t1-adm-*  · 서비스는 gMSA</text>
+
+  <rect x="30" y="336" width="600" height="110" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="50" y="366" font-size="18" font-weight="700" fill="#1e3a8a">Tier 2 — 사람의 PC</text>
+  <text x="50" y="394" font-size="13" fill="#334155">WS01 · 직원 PC · 프린터</text>
+  <text x="50" y="420" font-size="13" fill="#334155">계정: t2-adm-*(헬프데스크)  · 로컬 관리자는 LAPS</text>
+
+  <!-- 관리 방향 (위에서 아래로 관리 가능) — 오른쪽 열 -->
+  <g stroke="#15803d" stroke-width="2.5" fill="none" marker-end="url(#arrowg)">
+    <line x1="560" y1="176" x2="560" y2="196"/>
+    <line x1="560" y1="312" x2="560" y2="332"/>
+  </g>
+
+  <!-- 오른쪽 설명 -->
+  <rect x="660" y="64" width="270" height="174" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="795" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">금지</text>
+  <text x="795" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">상위 계정 → 하위 기기 로그온</text>
+  <line x1="700" y1="140" x2="890" y2="140" stroke="#b91c1c" stroke-width="2.5" marker-end="url(#arrowr)"/>
+  <text x="795" y="132" text-anchor="middle" font-size="12" fill="#991b1b">t0-adm → WS01 (RDP)</text>
+  <text x="795" y="166" text-anchor="middle" font-size="12" fill="#334155">감염된 PC 메모리에 Tier 0</text>
+  <text x="795" y="184" text-anchor="middle" font-size="12" fill="#334155">자격 증명이 남아 다리가 됨</text>
+  <text x="795" y="214" text-anchor="middle" font-size="12" fill="#b91c1c">감시: 4624(LogonType 10) · 4672</text>
+
+  <rect x="660" y="256" width="270" height="190" rx="12" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="795" y="284" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">막는 수단</text>
+  <text x="680" y="312" font-size="12" fill="#334155">• GPO "로컬·RDP 로그온 거부"</text>
+  <text x="680" y="336" font-size="12" fill="#334155">• Protected Users 그룹</text>
+  <text x="680" y="360" font-size="12" fill="#334155">• 인증 정책 · 사일로 (PAW만)</text>
+  <text x="680" y="384" font-size="12" fill="#334155">• "위임할 수 없음" 계정 속성</text>
+  <text x="680" y="408" font-size="12" fill="#334155">• 관리자 계정 분리 (adm-*)</text>
+  <text x="680" y="432" font-size="12" fill="#334155">• 계층별 OU · GPO 분리</text>
+
+  <!-- 범례 -->
+  <line x1="40" y1="478" x2="80" y2="478" stroke="#15803d" stroke-width="2.5" marker-end="url(#arrowg)"/>
+  <text x="90" y="483" font-size="13" fill="#334155">관리 방향 (위 계층이 아래를 관리할 때는 아래 계층 전용 계정 사용)</text>
+  <text x="480" y="508" text-anchor="middle" font-size="12" fill="#64748b">Microsoft는 클라우드까지 넓힌 같은 원칙을 "엔터프라이즈 액세스 모델"로 설명</text>
+</svg>

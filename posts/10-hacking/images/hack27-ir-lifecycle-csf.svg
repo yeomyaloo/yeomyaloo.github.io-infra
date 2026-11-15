@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">NIST SP 800-61 Rev. 3 — 사고 대응을 CSF 2.0 기능으로</text>
+  <text x="480" y="60" text-anchor="middle" font-size="13" fill="#64748b">2025-04 최종판 · Rev. 2의 4단계 순환을 대체</text>
+
+  <!-- 준비 묶음 -->
+  <rect x="30" y="84" width="420" height="250" rx="14" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+  <text x="240" y="112" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">준비 (Preparation)</text>
+
+  <rect x="50" y="128" width="380" height="54" rx="10" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="70" y="152" font-size="15" font-weight="700" fill="#3730a3">Govern (GV)</text>
+  <text x="70" y="172" font-size="12" fill="#334155">정책 · 역할 · 법적 의무 · RoE · SEV 기준</text>
+
+  <rect x="50" y="192" width="380" height="54" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="70" y="216" font-size="15" font-weight="700" fill="#1e3a8a">Identify (ID)</text>
+  <text x="70" y="236" font-size="12" fill="#334155">자산 인벤토리 · 위험 파악 · ID.IM 개선</text>
+
+  <rect x="50" y="256" width="380" height="54" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="70" y="280" font-size="15" font-weight="700" fill="#14532d">Protect (PR)</text>
+  <text x="70" y="300" font-size="12" fill="#334155">하드닝 · 최소 권한 · 백업 · 계층 모델</text>
+
+  <!-- 대응 묶음 -->
+  <rect x="510" y="84" width="420" height="250" rx="14" fill="#fff7ed" stroke="#b91c1c" stroke-width="2"/>
+  <text x="720" y="112" text-anchor="middle" font-size="17" font-weight="700" fill="#991b1b">사고 대응 (Incident Response)</text>
+
+  <rect x="530" y="128" width="380" height="54" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="550" y="152" font-size="15" font-weight="700" fill="#78350f">Detect (DE)</text>
+  <text x="550" y="172" font-size="12" fill="#334155">DE.CM 지속 모니터링 · DE.AE 이상 사건 분석</text>
+
+  <rect x="530" y="192" width="380" height="54" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="550" y="216" font-size="15" font-weight="700" fill="#991b1b">Respond (RS)</text>
+  <text x="550" y="236" font-size="12" fill="#334155">RS.MA 관리 · RS.AN 분석 · RS.CO 보고 · RS.MI 완화</text>
+
+  <rect x="530" y="256" width="380" height="54" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+  <text x="550" y="280" font-size="15" font-weight="700" fill="#115e59">Recover (RC)</text>
+  <text x="550" y="300" font-size="12" fill="#334155">RC.RP 복구 계획 실행 · RC.CO 복구 소통</text>
+
+  <!-- 준비 → 대응 -->
+  <line x1="452" y1="208" x2="506" y2="208" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- 교훈 고리 -->
+  <path d="M720,336 Q720,400 480,400 Q240,400 240,340" stroke="#15803d" stroke-width="2.5" fill="none" stroke-dasharray="8 5" marker-end="url(#arrowg)"/>
+  <rect x="330" y="384" width="300" height="34" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="480" y="406" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">교훈 → ID.IM(개선) → 다시 준비로</text>
+
+  <!-- 손이 움직이는 순서 -->
+  <text x="30" y="452" font-size="14" font-weight="700" fill="#0f172a">실무 순서</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="110" y="434" width="120" height="30" rx="6" fill="#fef3c7"/><text x="170" y="454" fill="#78350f">① 확인 · 선언</text>
+    <rect x="245" y="434" width="120" height="30" rx="6" fill="#fee2e2"/><text x="305" y="454" fill="#991b1b">② 격리</text>
+    <rect x="380" y="434" width="120" height="30" rx="6" fill="#fee2e2"/><text x="440" y="454" fill="#991b1b">③ 보존</text>
+    <rect x="515" y="434" width="120" height="30" rx="6" fill="#fee2e2"/><text x="575" y="454" fill="#991b1b">④ 분석</text>
+    <rect x="650" y="434" width="120" height="30" rx="6" fill="#ccfbf1"/><text x="710" y="454" fill="#115e59">⑤ 제거 · 복구</text>
+    <rect x="785" y="434" width="145" height="30" rx="6" fill="#dcfce7"/><text x="857" y="454" fill="#14532d">⑥ 보고 · 회고</text>
+  </g>
+  <g stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)">
+    <line x1="231" y1="449" x2="243" y2="449"/>
+    <line x1="366" y1="449" x2="378" y2="449"/>
+    <line x1="501" y1="449" x2="513" y2="449"/>
+    <line x1="636" y1="449" x2="648" y2="449"/>
+    <line x1="771" y1="449" x2="783" y2="449"/>
+  </g>
+  <text x="480" y="496" text-anchor="middle" font-size="12" fill="#64748b">침해사고는 "지우고 다시 띄우기" 전에 격리와 보존 — 증거는 휘발한다</text>
+</svg>

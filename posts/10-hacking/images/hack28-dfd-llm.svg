@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">LLM 요소를 더한 RAG 챗봇 DFD — Day 66 그림 + T15~T21</text>
+
+  <!-- 경계 1 -->
+  <rect x="178" y="80" width="144" height="100" rx="8" fill="none" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="97" text-anchor="middle" font-size="11" fill="#b91c1c">경계 1: 인터넷 → 엣지</text>
+
+  <!-- 경계 3: 클러스터 -->
+  <rect x="340" y="60" width="605" height="440" rx="10" fill="none" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="352" y="80" font-size="12" fill="#b91c1c">경계 3: K8s 클러스터 (H01)</text>
+
+  <!-- 외부 엔터티 -->
+  <rect x="20" y="110" width="140" height="52" rx="4" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="90" y="141" text-anchor="middle" font-size="13" fill="#0f172a">사용자 브라우저</text>
+
+  <rect x="20" y="350" width="140" height="56" rx="4" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="90" y="373" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">GitHub 공개 레포</text>
+  <text x="90" y="393" text-anchor="middle" font-size="11" fill="#4c1d95">문서 원천</text>
+
+  <rect x="20" y="440" width="140" height="52" rx="4" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="90" y="462" text-anchor="middle" font-size="12" fill="#0f172a">GitHub Actions</text>
+  <text x="90" y="480" text-anchor="middle" font-size="11" fill="#475569">→ GHCR 이미지</text>
+
+  <!-- 엣지 -->
+  <rect x="190" y="110" width="120" height="52" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="250" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">Cloudflare</text>
+  <text x="250" y="150" text-anchor="middle" font-size="11" fill="#78350f">Access · Tunnel</text>
+
+  <!-- 행 A -->
+  <rect x="370" y="110" width="150" height="52" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="445" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Open WebUI</text>
+  <text x="445" y="150" text-anchor="middle" font-size="11" fill="#475569">webui</text>
+
+  <rect x="580" y="110" width="150" height="52" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="655" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">rag-api</text>
+  <text x="655" y="150" text-anchor="middle" font-size="11" fill="#475569">rag · 출력 가드</text>
+
+  <rect x="790" y="110" width="130" height="52" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="855" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">LiteLLM</text>
+  <text x="855" y="150" text-anchor="middle" font-size="11" fill="#475569">gateway · 가상 키</text>
+
+  <!-- 행 B -->
+  <rect x="370" y="230" width="150" height="52" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <line x1="370" y1="236" x2="520" y2="236" stroke="#7c3aed"/>
+  <text x="445" y="257" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">시스템 프롬프트</text>
+  <text x="445" y="274" text-anchor="middle" font-size="11" fill="#4c1d95">(+ 카나리)</text>
+
+  <rect x="790" y="230" width="130" height="52" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="855" y="252" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">vLLM</text>
+  <text x="855" y="270" text-anchor="middle" font-size="11" fill="#475569">llm · GPU</text>
+
+  <!-- 행 C -->
+  <rect x="370" y="350" width="150" height="56" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="445" y="373" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">reindex CronJob</text>
+  <text x="445" y="393" text-anchor="middle" font-size="11" fill="#475569">rag · scan.py · pii.py</text>
+
+  <rect x="580" y="350" width="150" height="56" fill="#f8fafc" stroke="#2563eb"/>
+  <line x1="580" y1="357" x2="730" y2="357" stroke="#2563eb"/>
+  <text x="655" y="378" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Qdrant</text>
+  <text x="655" y="396" text-anchor="middle" font-size="11" fill="#475569">rag · 문서 청크</text>
+
+  <rect x="790" y="350" width="130" height="56" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="855" y="373" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">TEI</text>
+  <text x="855" y="393" text-anchor="middle" font-size="11" fill="#475569">llm · 임베딩</text>
+
+  <!-- 클러스터 밖: Langfuse -->
+  <rect x="790" y="520" width="130" height="44" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <line x1="790" y1="526" x2="920" y2="526" stroke="#7c3aed"/>
+  <text x="855" y="548" text-anchor="middle" font-size="12" font-weight="700" fill="#4c1d95">Langfuse (LAN)</text>
+
+  <!-- 기존 흐름 (검정) -->
+  <g stroke="#334155" stroke-width="1.6" fill="none">
+    <line x1="160" y1="136" x2="188" y2="136" marker-end="url(#arrow)"/>
+    <line x1="310" y1="136" x2="368" y2="136" marker-end="url(#arrow)"/>
+    <line x1="520" y1="124" x2="578" y2="124" marker-end="url(#arrow)"/>
+    <line x1="730" y1="124" x2="788" y2="124" marker-end="url(#arrow)"/>
+    <line x1="855" y1="162" x2="855" y2="228" marker-end="url(#arrow)"/>
+    <polyline points="920,140 936,140 936,378 922,378" marker-end="url(#arrow)"/>
+    <line x1="520" y1="378" x2="578" y2="378" marker-end="url(#arrow)"/>
+    <line x1="160" y1="466" x2="338" y2="466" marker-end="url(#arrow)"/>
+  </g>
+  <text x="549" y="117" text-anchor="middle" font-size="11" fill="#334155">질문</text>
+  <text x="759" y="117" text-anchor="middle" font-size="11" fill="#334155">요청</text>
+  <text x="549" y="398" text-anchor="middle" font-size="11" fill="#334155">적재</text>
+  <text x="250" y="458" text-anchor="middle" font-size="11" fill="#334155">컨테이너 이미지</text>
+
+  <!-- LLM 흐름 (보라) -->
+  <g stroke="#7c3aed" stroke-width="1.8" fill="none">
+    <line x1="580" y1="150" x2="522" y2="150" marker-end="url(#arrowP)"/>
+    <polyline points="520,256 600,256 600,164" marker-end="url(#arrowP)"/>
+    <line x1="655" y1="350" x2="655" y2="164" stroke-dasharray="6 4" marker-end="url(#arrowP)"/>
+    <line x1="160" y1="378" x2="368" y2="378" stroke-dasharray="6 4" marker-end="url(#arrowP)"/>
+    <polyline points="730,148 760,148 760,542 788,542" marker-end="url(#arrowP)"/>
+  </g>
+  <text x="540" y="180" text-anchor="middle" font-size="11" fill="#6d28d9">답변 = 모델 출력</text>
+  <text x="606" y="220" font-size="11" fill="#6d28d9">읽음</text>
+  <text x="664" y="292" font-size="11" fill="#6d28d9">검색 컨텍스트</text>
+  <text x="664" y="308" font-size="11" fill="#6d28d9">(신뢰 불가)</text>
+  <text x="264" y="370" text-anchor="middle" font-size="11" fill="#6d28d9">문서 (PR 병합 → 인덱싱)</text>
+  <text x="770" y="456" font-size="11" fill="#6d28d9">트레이스</text>
+  <text x="770" y="474" font-size="11" fill="#6d28d9">질문·답변 원문</text>
+
+  <!-- 위협 ID 배지 -->
+  <g font-size="10" font-weight="700" text-anchor="middle" fill="#ffffff">
+    <circle cx="264" cy="396" r="13" fill="#dc2626"/><text x="264" y="400">T15</text>
+    <circle cx="740" cy="346" r="13" fill="#dc2626"/><text x="740" y="350">T16</text>
+    <circle cx="520" cy="226" r="13" fill="#dc2626"/><text x="520" y="230">T17</text>
+    <circle cx="476" cy="176" r="13" fill="#dc2626"/><text x="476" y="180">T18</text>
+    <circle cx="730" cy="106" r="13" fill="#dc2626"/><text x="730" y="110">T19</text>
+    <circle cx="250" cy="484" r="13" fill="#dc2626"/><text x="250" y="488">T20</text>
+    <circle cx="790" cy="516" r="13" fill="#dc2626"/><text x="790" y="520">T21</text>
+  </g>
+
+  <!-- 범례 -->
+  <g font-size="12" fill="#334155">
+    <line x1="20" y1="592" x2="56" y2="592" stroke="#334155" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <text x="64" y="596">Day 66 흐름</text>
+    <line x1="160" y1="592" x2="196" y2="592" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#arrowP)"/>
+    <text x="204" y="596">LLM 요소 (오늘 추가)</text>
+    <line x1="350" y1="592" x2="386" y2="592" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="6 4"/>
+    <text x="394" y="596">신뢰할 수 없는 데이터</text>
+    <rect x="540" y="584" width="30" height="16" fill="none" stroke="#b91c1c" stroke-dasharray="6 4"/>
+    <text x="578" y="596">신뢰 경계</text>
+    <circle cx="672" cy="592" r="9" fill="#dc2626"/>
+    <text x="688" y="596">위협 ID (3-1 표)</text>
+  </g>
+</svg>

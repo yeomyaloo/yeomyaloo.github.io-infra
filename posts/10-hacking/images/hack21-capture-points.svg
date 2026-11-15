@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">어디서 캡처하느냐가 보이는 범위를 정한다</text>
+
+  <!-- hacklab boundary -->
+  <rect x="20" y="58" width="920" height="332" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="40" y="84" font-size="14" font-weight="700" fill="#334155">hacklab · 10.10.10.0/24 (인터넷·집 LAN과 분리)</text>
+
+  <!-- Switch -->
+  <rect x="380" y="180" width="200" height="72" rx="10" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+  <text x="480" y="210" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">가상 스위치</text>
+  <text x="480" y="234" text-anchor="middle" font-size="12" fill="#64748b">VirtualBox 내부 네트워크</text>
+
+  <!-- Kali -->
+  <rect x="50" y="160" width="230" height="112" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="165" y="190" text-anchor="middle" font-size="16" font-weight="700" fill="#15803d">Kali</text>
+  <text x="165" y="212" text-anchor="middle" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">10.10.10.5</text>
+  <text x="165" y="238" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d">eth1 ← ① 내 NIC</text>
+  <text x="165" y="260" text-anchor="middle" font-size="12" fill="#64748b">tshark · Wireshark</text>
+  <line x1="280" y1="216" x2="378" y2="216" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+
+  <!-- docker-targets -->
+  <rect x="680" y="96" width="240" height="160" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="800" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">docker-targets</text>
+  <text x="800" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">enp0s8 ← ② 대상 쪽 NIC</text>
+  <rect x="695" y="164" width="100" height="74" rx="8" fill="#ffffff" stroke="#2496ed" stroke-width="1.5"/>
+  <text x="745" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">DVWA</text>
+  <text x="745" y="216" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">10.10.10.20</text>
+  <rect x="805" y="164" width="100" height="74" rx="8" fill="#ffffff" stroke="#2496ed" stroke-width="1.5"/>
+  <text x="855" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">Juice Shop</text>
+  <text x="855" y="216" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">10.10.10.21</text>
+  <line x1="580" y1="200" x2="678" y2="176" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+
+  <!-- Metasploitable -->
+  <rect x="680" y="282" width="240" height="84" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="800" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#b91c1c">Metasploitable 2</text>
+  <text x="800" y="340" text-anchor="middle" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">10.10.10.30</text>
+  <line x1="580" y1="236" x2="678" y2="312" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+
+  <!-- Mirror port -->
+  <line x1="480" y1="254" x2="480" y2="296" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrowAmber)"/>
+  <text x="492" y="280" font-size="12" fill="#b45309">복사본</text>
+  <rect x="360" y="300" width="240" height="72" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="480" y="328" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">③ 미러 포트(SPAN) · TAP</text>
+  <text x="480" y="352" text-anchor="middle" font-size="12" fill="#92400e">IDS 센서 자리 · 승인 필요</text>
+
+  <!-- Legend -->
+  <g font-size="14" fill="#334155">
+    <text x="40" y="424"><tspan font-weight="700" fill="#15803d">①</tspan> 내 NIC — 내가 주고받는 패킷 + 브로드캐스트(ARP). <tspan font-weight="700">오늘의 기본</tspan></text>
+    <text x="40" y="450"><tspan font-weight="700" fill="#1d4ed8">②</tspan> 대상 쪽 NIC — 서버와 ipvlan 컨테이너로 오가는 패킷 (해킹 03의 방어자 자리)</text>
+    <text x="40" y="476"><tspan font-weight="700" fill="#b45309">③</tspan> 미러링 — 다른 포트의 트래픽까지 복사. 개념만 이해하고 실습에서는 켜지 않음</text>
+  </g>
+</svg>

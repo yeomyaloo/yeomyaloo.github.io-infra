@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">GitHub Actions OIDC — 장기 키 없이 단기 자격 증명 받기</text>
+
+  <!-- lifeline heads -->
+  <rect x="60" y="60" width="200" height="64" rx="12" fill="#e0f2fe" stroke="#2496ed" stroke-width="2"/>
+  <text x="160" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#0c4a6e">배포 Job (러너)</text>
+  <text x="160" y="110" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">id-token: write</text>
+
+  <rect x="380" y="60" width="200" height="64" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="480" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">GitHub OIDC 발급자</text>
+  <text x="480" y="110" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">token.actions.githubusercontent.com</text>
+
+  <rect x="700" y="60" width="200" height="64" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="800" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">클라우드 STS</text>
+  <text x="800" y="110" text-anchor="middle" font-size="12" fill="#334155">(AWS · GCP · Azure · OpenBao)</text>
+
+  <g stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5">
+    <line x1="160" y1="124" x2="160" y2="380"/>
+    <line x1="480" y1="124" x2="480" y2="380"/>
+    <line x1="800" y1="124" x2="800" y2="380"/>
+  </g>
+
+  <!-- messages -->
+  <line x1="164" y1="164" x2="474" y2="164" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="318" y="155" text-anchor="middle" font-size="13" fill="#0f172a">① 이 실행의 신원 토큰 요청</text>
+
+  <line x1="476" y1="214" x2="166" y2="214" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="318" y="205" text-anchor="middle" font-size="13" fill="#0f172a">② 서명된 JWT (수 분 유효)</text>
+  <text x="318" y="234" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#4338ca">sub=repo:&lt;user&gt;/gitops-demo-app:environment:prod</text>
+
+  <line x1="164" y1="274" x2="794" y2="274" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="478" y="265" text-anchor="middle" font-size="13" fill="#0f172a">③ AssumeRoleWithWebIdentity + JWT</text>
+
+  <rect x="812" y="258" width="138" height="66" rx="8" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="881" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">신뢰 정책 검사</text>
+  <text x="881" y="298" text-anchor="middle" font-size="11" fill="#334155">iss · aud 일치?</text>
+  <text x="881" y="314" text-anchor="middle" font-size="11" fill="#334155">sub = 레포+환경?</text>
+
+  <line x1="796" y1="344" x2="166" y2="344" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="478" y="335" text-anchor="middle" font-size="13" fill="#15803d">④ 임시 자격 증명 (짧은 만료) → 배포 후 사라짐</text>
+
+  <!-- footer -->
+  <rect x="20" y="396" width="440" height="58" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="240" y="422" text-anchor="middle" font-size="14" font-weight="700" fill="#15803d">레포 시크릿에 저장된 클라우드 키: 없음</text>
+  <text x="240" y="442" text-anchor="middle" font-size="12" fill="#14532d">유출될 장기 키 자체가 없다 (Day 57 cosign도 같은 토큰)</text>
+  <rect x="480" y="396" width="460" height="58" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="710" y="422" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">흔한 실수: sub = repo:&lt;user&gt;/*</text>
+  <text x="710" y="442" text-anchor="middle" font-size="12" fill="#7f1d1d">아무 레포 · 아무 브랜치 · 아무 PR이나 역할을 받는다</text>
+</svg>

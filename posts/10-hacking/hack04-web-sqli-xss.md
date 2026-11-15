@@ -5,6 +5,7 @@ weight: 4
 tags: ["hacking", "ethical-hacking", "web-security"]
 summary: "[본인 소유 격리 실습장 전용] Burp Suite Community의 Proxy와 Repeater가 무엇을 하는 도구인지 이해하고, 내 실습장 트래픽을 가로채 볼 수 있다. SQL Injection이 \"데이터가 코드로 해석되는\" 문제라는 것을 그림으로 설명하고, 파라미터 바인딩·ORM으로 막을 수 있다."
 image: "./images/hack04-burp-proxy-flow.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★☆☆ | 예상 소요 2.5 ~ 3시간

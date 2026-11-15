@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">템플릿은 코드, 입력은 데이터 — SSTI가 생기는 곳</text>
+
+  <!-- ===== unsafe ===== -->
+  <rect x="20" y="58" width="450" height="290" rx="12" fill="#fff5f5" stroke="#b91c1c" stroke-width="2"/>
+  <text x="245" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#7f1d1d">✗ 입력을 템플릿에 이어 붙임</text>
+
+  <rect x="40" y="104" width="130" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="105" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">사용자 입력</text>
+  <text x="105" y="148" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">name</text>
+
+  <rect x="200" y="104" width="250" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="325" y="128" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">템플릿 문자열 = 코드 + 입력</text>
+  <text x="325" y="148" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">"&lt;h1&gt;Hello " + name + "&lt;/h1&gt;"</text>
+
+  <rect x="200" y="190" width="250" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="325" y="214" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">템플릿 엔진이 컴파일</text>
+  <text x="325" y="234" text-anchor="middle" font-size="12" fill="#7f1d1d">입력 속 템플릿 문법까지 해석</text>
+
+  <rect x="40" y="276" width="410" height="56" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="245" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">서버에서 표현식 평가 → 내부 객체 접근</text>
+  <text x="245" y="320" text-anchor="middle" font-size="12" fill="#92400e">자동 이스케이프는 이 단계보다 늦어서 못 막음</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="170" y1="132" x2="196" y2="132" marker-end="url(#arrow)"/>
+    <line x1="325" y1="160" x2="325" y2="186" marker-end="url(#arrow)"/>
+    <line x1="325" y1="246" x2="325" y2="272" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- ===== safe ===== -->
+  <rect x="490" y="58" width="450" height="290" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="715" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">✓ 고정 템플릿 + 입력은 변수로</text>
+
+  <rect x="510" y="104" width="200" height="56" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="610" y="128" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">templates/hello.html (고정)</text>
+  <text x="610" y="148" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#14532d">&lt;h1&gt;Hello {{ name }}&lt;/h1&gt;</text>
+
+  <rect x="730" y="104" width="190" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="825" y="128" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">컨텍스트 (데이터)</text>
+  <text x="825" y="148" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">{"name": 입력}</text>
+
+  <rect x="590" y="190" width="250" height="56" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="715" y="214" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">엔진은 템플릿만 해석</text>
+  <text x="715" y="234" text-anchor="middle" font-size="12" fill="#14532d">입력은 값으로 끼워 넣기만</text>
+
+  <rect x="510" y="276" width="410" height="56" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="715" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">입력은 글자 그대로 출력 + HTML 이스케이프</text>
+  <text x="715" y="320" text-anchor="middle" font-size="12" fill="#14532d">SSTI도 XSS도 함께 막힘</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="610" y1="160" x2="680" y2="186" marker-end="url(#arrow)"/>
+    <line x1="825" y1="160" x2="752" y2="186" marker-end="url(#arrow)"/>
+    <line x1="715" y1="246" x2="715" y2="272" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- ===== ladder for user-defined templates ===== -->
+  <text x="20" y="380" font-size="15" font-weight="700" fill="#0f172a">사용자 정의 템플릿이 "기능"이라면 — 표현력을 줄일수록 안전</text>
+  <g font-size="12">
+    <rect x="20" y="394" width="218" height="96" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="34" y="418" font-size="13" font-weight="700" fill="#14532d">① 단순 치환</text>
+    <text x="34" y="440" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#14532d">string.Template</text>
+    <text x="34" y="458" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#14532d">.safe_substitute()</text>
+    <text x="34" y="480" fill="#14532d">변수 치환만 가능</text>
+
+    <rect x="254" y="394" width="218" height="96" rx="8" fill="#ecfccb" stroke="#65a30d"/>
+    <text x="268" y="418" font-size="13" font-weight="700" fill="#365314">② logic-less 엔진</text>
+    <text x="268" y="440" fill="#365314">Mustache 계열</text>
+    <text x="268" y="460" fill="#365314">반복·조건 정도</text>
+    <text x="268" y="480" fill="#365314">메서드 호출 없음</text>
+
+    <rect x="488" y="394" width="218" height="96" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="502" y="418" font-size="13" font-weight="700" fill="#92400e">③ 샌드박스</text>
+    <text x="502" y="440" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#92400e">SandboxedEnvironment</text>
+    <text x="502" y="460" fill="#92400e">FreeMarker 클래스 리졸버 제한</text>
+    <text x="502" y="480" fill="#92400e">위반 → SecurityError 로그</text>
+
+    <rect x="722" y="394" width="218" height="96" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="736" y="418" font-size="13" font-weight="700" fill="#7f1d1d">✗ 일반 템플릿 그대로</text>
+    <text x="736" y="440" fill="#7f1d1d">엔진의 전체 표현력을</text>
+    <text x="736" y="460" fill="#7f1d1d">편집자에게 넘김</text>
+    <text x="736" y="480" fill="#7f1d1d">→ 쓰지 않는다</text>
+  </g>
+  <text x="480" y="510" text-anchor="middle" font-size="12" fill="#334155">샌드박스는 2차 방어 — 객체 대신 문자열 값만 넘기고, 엔진 버전을 최신으로(해킹 19)</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">실패 기준 — rules.tsv로 규칙을 나누는 법</text>
+
+  <!-- three lanes -->
+  <rect x="20" y="60" width="290" height="210" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="165" y="92" text-anchor="middle" font-size="20" font-weight="700" fill="#7f1d1d">FAIL</text>
+  <text x="165" y="118" text-anchor="middle" font-size="13" fill="#0f172a">팀이 "반드시 지킨다"고 합의</text>
+  <text x="40" y="150" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">10021 X-Content-Type-Options</text>
+  <text x="40" y="172" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">10038 CSP Header Not Set</text>
+  <text x="40" y="194" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">10020 Anti-clickjacking</text>
+  <text x="165" y="236" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">→ 종료 코드 1, PR 차단</text>
+
+  <rect x="335" y="60" width="290" height="210" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="480" y="92" text-anchor="middle" font-size="20" font-weight="700" fill="#78350f">WARN</text>
+  <text x="480" y="118" text-anchor="middle" font-size="13" fill="#0f172a">관찰 중 · 정책 미정</text>
+  <text x="355" y="150" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">10063 Permissions Policy</text>
+  <text x="355" y="172" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">(-g 로 생성한 나머지 전부)</text>
+  <text x="480" y="236" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">→ -I 와 함께면 통과, 이슈로</text>
+
+  <rect x="650" y="60" width="290" height="210" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/>
+  <text x="795" y="92" text-anchor="middle" font-size="20" font-weight="700" fill="#334155">IGNORE / OUTOFSCOPE</text>
+  <text x="795" y="118" text-anchor="middle" font-size="13" fill="#0f172a">이 환경에서 의미 없음</text>
+  <text x="670" y="150" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">10035 HSTS (일회용은 HTTP)</text>
+  <text x="670" y="172" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">*  OUTOFSCOPE .*/healthz$</text>
+  <text x="795" y="236" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">→ 사유 주석이 없으면 거절</text>
+
+  <!-- rollout stages -->
+  <text x="480" y="310" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">기준을 올리는 순서</text>
+  <rect x="20" y="330" width="210" height="80" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="125" y="360" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">① 관찰</text>
+  <text x="125" y="384" text-anchor="middle" font-size="12" fill="#334155">전부 WARN · 이슈만</text>
+
+  <rect x="263" y="330" width="210" height="80" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="368" y="360" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">② 필수 항목 FAIL</text>
+  <text x="368" y="384" text-anchor="middle" font-size="12" fill="#334155">고치기 쉬운 헤더부터</text>
+
+  <rect x="506" y="330" width="210" height="80" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="611" y="360" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">③ 능동 High FAIL</text>
+  <text x="611" y="384" text-anchor="middle" font-size="12" fill="#334155">주입류 경고는 차단</text>
+
+  <rect x="749" y="330" width="191" height="80" rx="10" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="844" y="360" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">④ 새 경고 기본 FAIL</text>
+  <text x="844" y="384" text-anchor="middle" font-size="12" fill="#334155">기존 것은 이슈로 추적</text>
+
+  <g stroke="#334155" stroke-width="2.5" fill="none">
+    <line x1="230" y1="370" x2="259" y2="370" marker-end="url(#arrow)"/>
+    <line x1="473" y1="370" x2="502" y2="370" marker-end="url(#arrow)"/>
+    <line x1="716" y1="370" x2="745" y2="370" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="436" text-anchor="middle" font-size="13" fill="#64748b">fail_action: true + cmd_options "-I" = FAIL 규칙만 PR을 막는다</text>
+</svg>

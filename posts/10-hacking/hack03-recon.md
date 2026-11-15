@@ -5,6 +5,7 @@ weight: 3
 tags: ["hacking", "ethical-hacking"]
 summary: "[본인 소유 격리 실습장 전용] 모의해킹의 정보 수집 단계가 방어자의 공격 표면 조사(Day 66)와 같은 작업임을 이해한다. nmap으로 호스트 발견 → 포트 스캔 → 서비스 식별(-sV) → 기본 스크립트(-sC) 를 수행하고 결과를 파일로 저장한다."
 image: "./images/hack03-recon-defender-view.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★☆☆ | 예상 소요 2.5 ~ 3시간

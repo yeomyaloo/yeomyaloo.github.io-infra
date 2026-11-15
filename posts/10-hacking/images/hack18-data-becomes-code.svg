@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">데이터가 코드가 되는 세 경계 — 역직렬화 · XXE · SSTI</text>
+
+  <!-- panel frames -->
+  <rect x="20" y="56" width="296" height="420" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="332" y="56" width="296" height="420" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="644" y="56" width="296" height="420" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="168" y="84" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">안전하지 않은 역직렬화</text>
+  <text x="480" y="84" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">XXE</text>
+  <text x="792" y="84" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">SSTI</text>
+
+  <!-- step 1: input -->
+  <g font-size="13">
+    <rect x="36" y="100" width="264" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="168" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">입력: 바이트 스트림</text>
+    <text x="168" y="144" text-anchor="middle" font-size="12" fill="#334155">값 + 클래스 이름 + 객체 그래프</text>
+
+    <rect x="348" y="100" width="264" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="480" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">입력: XML 문서</text>
+    <text x="480" y="144" text-anchor="middle" font-size="12" fill="#334155">앞부분에 DTD · 엔티티 정의</text>
+
+    <rect x="660" y="100" width="264" height="56" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="792" y="124" text-anchor="middle" font-weight="700" fill="#0f172a">입력: 템플릿에 섞인 문자열</text>
+    <text x="792" y="144" text-anchor="middle" font-size="12" fill="#334155">"Hello " + 입력 → 템플릿</text>
+  </g>
+
+  <!-- step 2: interpreter (danger) -->
+  <g font-size="13">
+    <rect x="36" y="186" width="264" height="96" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="168" y="210" text-anchor="middle" font-weight="700" fill="#7f1d1d">해석기: ObjectInputStream · pickle</text>
+    <text x="168" y="236" text-anchor="middle" font-size="12" fill="#7f1d1d">입력이 정하는 것:</text>
+    <text x="168" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">어떤 클래스를 만들고</text>
+    <text x="168" y="272" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">어떤 콜백이 실행될지</text>
+
+    <rect x="348" y="186" width="264" height="96" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="480" y="210" text-anchor="middle" font-weight="700" fill="#7f1d1d">해석기: XML 파서의 DTD 처리</text>
+    <text x="480" y="236" text-anchor="middle" font-size="12" fill="#7f1d1d">입력이 정하는 것:</text>
+    <text x="480" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">파서가 어떤 파일·URL을</text>
+    <text x="480" y="272" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">읽어 올지</text>
+
+    <rect x="660" y="186" width="264" height="96" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="792" y="210" text-anchor="middle" font-weight="700" fill="#7f1d1d">해석기: 템플릿 엔진</text>
+    <text x="792" y="236" text-anchor="middle" font-size="12" fill="#7f1d1d">입력이 정하는 것:</text>
+    <text x="792" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">서버에서 어떤 표현식이</text>
+    <text x="792" y="272" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">평가될지</text>
+  </g>
+
+  <!-- step 3: result -->
+  <g font-size="12">
+    <rect x="36" y="312" width="264" height="56" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="168" y="334" text-anchor="middle" fill="#92400e">타입 확인(캐스팅)은 객체가</text>
+    <text x="168" y="354" text-anchor="middle" fill="#92400e">다 만들어진 뒤 — 이미 늦음</text>
+
+    <rect x="348" y="312" width="264" height="56" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="480" y="334" text-anchor="middle" fill="#92400e">서버 파일 노출 · 내부망 요청(SSRF)</text>
+    <text x="480" y="354" text-anchor="middle" fill="#92400e">엔티티 확장으로 메모리 폭증</text>
+
+    <rect x="660" y="312" width="264" height="56" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="792" y="334" text-anchor="middle" fill="#92400e">서버 객체 접근 → 엔진에 따라</text>
+    <text x="792" y="354" text-anchor="middle" fill="#92400e">코드 실행까지 (XSS와 달리 서버)</text>
+  </g>
+
+  <!-- step 4: safe alternative -->
+  <g font-size="12">
+    <rect x="36" y="394" width="264" height="68" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="168" y="416" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">JSON + DTO · Pydantic</text>
+    <text x="168" y="436" text-anchor="middle" fill="#14532d">타입은 코드가 정함</text>
+    <text x="168" y="454" text-anchor="middle" fill="#14532d">레거시: ObjectInputFilter 허용 목록</text>
+
+    <rect x="348" y="394" width="264" height="68" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="480" y="416" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">DTD 자체를 금지</text>
+    <text x="480" y="436" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#14532d">disallow-doctype-decl</text>
+    <text x="480" y="454" text-anchor="middle" fill="#14532d">Python: defusedxml</text>
+
+    <rect x="660" y="394" width="264" height="68" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="792" y="416" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">템플릿 고정 + 입력은 변수로</text>
+    <text x="792" y="436" text-anchor="middle" fill="#14532d">사용자 정의 템플릿은</text>
+    <text x="792" y="454" text-anchor="middle" fill="#14532d">단순 치환 · 샌드박스</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="168" y1="156" x2="168" y2="182" marker-end="url(#arrow)"/>
+    <line x1="480" y1="156" x2="480" y2="182" marker-end="url(#arrow)"/>
+    <line x1="792" y1="156" x2="792" y2="182" marker-end="url(#arrow)"/>
+    <line x1="168" y1="282" x2="168" y2="308" marker-end="url(#arrow)"/>
+    <line x1="480" y1="282" x2="480" y2="308" marker-end="url(#arrow)"/>
+    <line x1="792" y1="282" x2="792" y2="308" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#15803d" stroke-width="2" stroke-dasharray="5 4" fill="none">
+    <line x1="168" y1="368" x2="168" y2="392"/>
+    <line x1="480" y1="368" x2="480" y2="392"/>
+    <line x1="792" y1="368" x2="792" y2="392"/>
+  </g>
+
+  <rect x="20" y="490" width="920" height="54" rx="8" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="480" y="513" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">공통 원칙: 해석기에게 "형식"만 맡기고 "의미"는 맡기지 않는다</text>
+  <text x="480" y="533" text-anchor="middle" font-size="12" fill="#312e81">해킹 04 SQLi(데이터 → SQL) · 해킹 05 명령 주입(데이터 → 셸)과 같은 계열</text>
+</svg>

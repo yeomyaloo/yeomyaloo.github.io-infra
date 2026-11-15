@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">캡처 필터는 저장 전에, 디스플레이 필터는 저장 후에</text>
+
+  <!-- Stage boxes -->
+  <rect x="20" y="70" width="150" height="90" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="95" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">NIC (eth1)</text>
+  <text x="95" y="132" text-anchor="middle" font-size="12" fill="#64748b">도착한 모든 프레임</text>
+
+  <rect x="220" y="70" width="220" height="90" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="330" y="106" text-anchor="middle" font-size="16" font-weight="700" fill="#b45309">캡처 필터 (BPF)</text>
+  <text x="330" y="132" text-anchor="middle" font-size="12" fill="#92400e" font-family="Consolas,'D2Coding',monospace">tshark -f · dumpcap -f</text>
+
+  <rect x="490" y="70" width="150" height="90" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="565" y="106" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">.pcapng</text>
+  <text x="565" y="132" text-anchor="middle" font-size="12" fill="#64748b">저장된 원본</text>
+
+  <rect x="690" y="70" width="250" height="90" rx="10" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="815" y="106" text-anchor="middle" font-size="16" font-weight="700" fill="#4338ca">디스플레이 필터</text>
+  <text x="815" y="132" text-anchor="middle" font-size="12" fill="#3730a3">Wireshark 필터 바 · tshark -Y</text>
+
+  <g stroke="#334155" stroke-width="2.5">
+    <line x1="172" y1="115" x2="216" y2="115" marker-end="url(#arrow)"/>
+    <line x1="442" y1="115" x2="486" y2="115" marker-end="url(#arrow)"/>
+    <line x1="642" y1="115" x2="686" y2="115" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Detail boxes -->
+  <rect x="20" y="190" width="150" height="170" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g font-size="13" fill="#334155" text-anchor="middle">
+    <text x="95" y="226">내 트래픽</text>
+    <text x="95" y="250">+ 브로드캐스트</text>
+    <text x="95" y="290" fill="#64748b" font-size="12">필터가 없으면</text>
+    <text x="95" y="312" fill="#64748b" font-size="12">전부 저장됨</text>
+  </g>
+
+  <rect x="220" y="190" width="220" height="170" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="236" y="214" font-size="12" font-weight="700" fill="#b45309">예 (tcpdump와 같은 문법)</text>
+  <g font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">
+    <text x="236" y="242">net 10.10.10.0/24</text>
+    <text x="236" y="266">host 10.10.10.21</text>
+    <text x="236" y="290">  and tcp port 3000</text>
+    <text x="236" y="314">arp</text>
+    <text x="236" y="338">not port 22</text>
+  </g>
+
+  <rect x="490" y="190" width="150" height="170" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g font-size="13" fill="#334155" text-anchor="middle">
+    <text x="565" y="226">원본은 그대로</text>
+    <text x="565" y="250">필터를 바꿔</text>
+    <text x="565" y="274">몇 번이든</text>
+    <text x="565" y="298">다시 볼 수 있음</text>
+  </g>
+
+  <rect x="690" y="190" width="250" height="170" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="704" y="214" font-size="12" font-weight="700" fill="#4338ca">예 (프로토콜 필드 이름)</text>
+  <g font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">
+    <text x="704" y="240">ip.addr == 10.10.10.21</text>
+    <text x="704" y="262">tcp.port in {80 3000}</text>
+    <text x="704" y="284">http.request.method == "POST"</text>
+    <text x="704" y="306">tcp.flags.syn == 1 &amp;&amp;</text>
+    <text x="704" y="326">  tcp.flags.ack == 0</text>
+    <text x="704" y="348">arp.duplicate-address-detected</text>
+  </g>
+
+  <!-- Bottom notes -->
+  <text x="480" y="398" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">원칙: 캡처는 좁게(BPF로 크기·개인정보 ↓) — 보기는 정밀하게(필드로)</text>
+  <text x="480" y="430" text-anchor="middle" font-size="13" fill="#b91c1c">흔한 실수: 캡처 칸에 ip.addr == … / 디스플레이 칸에 host … → 입력란이 빨간색</text>
+</svg>

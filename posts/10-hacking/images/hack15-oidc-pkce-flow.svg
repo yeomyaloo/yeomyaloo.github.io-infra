@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OIDC Authorization Code + PKCE — 각 장치가 지키는 것</text>
+
+  <!-- actors -->
+  <rect x="80" y="54" width="160" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="160" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">브라우저</text>
+  <rect x="400" y="54" width="160" height="44" rx="8" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+  <text x="480" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">앱 (BFF)</text>
+  <rect x="720" y="54" width="160" height="44" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="800" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">Keycloak</text>
+
+  <line x1="160" y1="98" x2="160" y2="548" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="480" y1="98" x2="480" y2="548" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="800" y1="98" x2="800" y2="548" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <!-- 1 -->
+  <rect x="360" y="110" width="240" height="40" rx="6" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="480" y="128" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">① state · nonce · code_verifier 생성</text>
+  <text x="480" y="143" text-anchor="middle" font-size="11" fill="#1e3a8a">임시 저장 (서버 세션)</text>
+
+  <!-- 2 -->
+  <line x1="480" y1="172" x2="164" y2="172" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="166" text-anchor="middle" font-size="12" fill="#334155">302 리다이렉트</text>
+  <line x1="160" y1="204" x2="796" y2="204" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="262" y="185" width="436" height="17" fill="#ffffff"/>
+  <text x="480" y="198" text-anchor="middle" font-size="12" fill="#334155">② 인가 요청: client_id · redirect_uri · state · nonce · code_challenge (S256)</text>
+
+  <!-- 3 -->
+  <rect x="660" y="216" width="280" height="40" rx="6" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="800" y="234" text-anchor="middle" font-size="12" font-weight="700" fill="#4c1d95">③ 로그인 · MFA</text>
+  <text x="800" y="249" text-anchor="middle" font-size="11" fill="#4c1d95">redirect_uri가 등록 값과 정확히 같은가</text>
+
+  <!-- 4 -->
+  <line x1="800" y1="278" x2="164" y2="278" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="336" y="259" width="288" height="17" fill="#ffffff"/>
+  <text x="480" y="272" text-anchor="middle" font-size="12" fill="#334155">④ 302 → 등록된 redirect_uri ? code · state</text>
+  <line x1="160" y1="310" x2="476" y2="310" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="304" text-anchor="middle" font-size="12" fill="#334155">콜백 (code, state)</text>
+
+  <!-- 5 -->
+  <rect x="360" y="322" width="240" height="34" rx="6" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="480" y="344" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">⑤ state 비교 — 다르면 거부</text>
+
+  <!-- 6 -->
+  <line x1="480" y1="378" x2="796" y2="378" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="640" y="372" text-anchor="middle" font-size="12" fill="#334155">⑥ code + code_verifier (+ secret)</text>
+  <rect x="660" y="388" width="280" height="34" rx="6" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="800" y="410" text-anchor="middle" font-size="12" fill="#4c1d95">SHA-256(verifier) = challenge 인가</text>
+
+  <!-- 7 -->
+  <line x1="800" y1="444" x2="484" y2="444" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="640" y="438" text-anchor="middle" font-size="12" fill="#334155">⑦ ID 토큰 + 액세스 · 리프레시 토큰</text>
+  <rect x="340" y="454" width="280" height="34" rx="6" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="480" y="476" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">ID 토큰 서명 · iss · aud · nonce 확인</text>
+
+  <!-- 8 -->
+  <line x1="480" y1="510" x2="164" y2="510" stroke="#15803d" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="320" y="504" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">⑧ HttpOnly 세션 쿠키만</text>
+  <text x="640" y="530" text-anchor="middle" font-size="12" fill="#14532d">토큰은 서버에 보관 (BFF) — localStorage 금지</text>
+
+  <!-- legend -->
+  <rect x="20" y="558" width="920" height="34" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="480" y="580" text-anchor="middle" font-size="12" fill="#78350f">redirect_uri 정확 일치 = 코드 전달처 고정 · state = 로그인 CSRF · nonce = ID 토큰 재사용 · PKCE = 새어 나간 코드의 교환 차단</text>
+</svg>

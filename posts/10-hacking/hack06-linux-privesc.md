@@ -5,6 +5,7 @@ weight: 6
 tags: ["hacking", "ethical-hacking", "hardening", "privilege-escalation"]
 summary: "[본인 소유 격리 실습장 전용] 권한 상승(privilege escalation)이 왜 \"두 번째 사고\"인지, 대표 경로 네 가지(SUID, sudo, cron·PATH, 커널)를 그림으로 설명할 수 있다. SUID/SGID 파일과 file capabilities를 기준선과 비교하는 점검을 만들고 주기적으로 돌릴 수 있다."
 image: "./images/hack06-privesc-paths-defense.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★★☆ | 예상 소요 2.5 ~ 3시간

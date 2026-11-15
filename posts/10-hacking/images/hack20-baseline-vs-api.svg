@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Baseline(수동) 스캔 vs API(능동) 스캔</text>
+
+  <!-- Left panel: Baseline -->
+  <rect x="20" y="60" width="450" height="360" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="245" y="92" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">Baseline — zap-baseline.py</text>
+
+  <rect x="50" y="120" width="130" height="70" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="115" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">ZAP</text>
+  <text x="115" y="174" text-anchor="middle" font-size="12" fill="#334155">스파이더 1분</text>
+
+  <rect x="310" y="120" width="130" height="70" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="375" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">내 앱</text>
+  <text x="375" y="174" text-anchor="middle" font-size="12" fill="#334155">일회용 환경</text>
+
+  <line x1="180" y1="140" x2="306" y2="140" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="243" y="132" text-anchor="middle" font-size="12" fill="#334155">일반 GET</text>
+  <line x1="310" y1="172" x2="184" y2="172" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="243" y="190" text-anchor="middle" font-size="12" fill="#334155">응답 관찰</text>
+
+  <text x="50" y="236" font-size="14" fill="#0f172a">· 링크를 따라가며 페이지를 모은다</text>
+  <text x="50" y="262" font-size="14" fill="#0f172a">· 오가는 응답의 헤더·쿠키·본문만 검사</text>
+  <text x="50" y="288" font-size="14" fill="#0f172a">· 보안 헤더 누락, 쿠키 속성, 정보 노출</text>
+  <rect x="50" y="314" width="390" height="80" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="245" y="344" text-anchor="middle" font-size="15" font-weight="700" fill="#15803d">공격 요청 없음 · 수 분</text>
+  <text x="245" y="370" text-anchor="middle" font-size="14" fill="#14532d">→ 모든 PR에 붙인다</text>
+
+  <!-- Right panel: API -->
+  <rect x="490" y="60" width="450" height="360" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="715" y="92" text-anchor="middle" font-size="18" font-weight="700" fill="#7f1d1d">API — zap-api-scan.py</text>
+
+  <rect x="520" y="120" width="130" height="70" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="585" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">ZAP</text>
+  <text x="585" y="174" text-anchor="middle" font-size="12" fill="#334155">openapi.json 읽음</text>
+
+  <rect x="780" y="120" width="130" height="70" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="845" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">내 앱</text>
+  <text x="845" y="174" text-anchor="middle" font-size="12" fill="#334155">일회용 환경만</text>
+
+  <line x1="650" y1="140" x2="776" y2="140" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <text x="713" y="132" text-anchor="middle" font-size="12" fill="#b91c1c">주입 시도 등</text>
+  <line x1="780" y1="172" x2="654" y2="172" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="713" y="190" text-anchor="middle" font-size="12" fill="#334155">응답 분석</text>
+
+  <text x="520" y="236" font-size="14" fill="#0f172a">· 정의에 있는 모든 엔드포인트 등록</text>
+  <text x="520" y="262" font-size="14" fill="#0f172a">· 파라미터마다 변형 요청을 보낸다</text>
+  <text x="520" y="288" font-size="14" fill="#0f172a">· 정의에 없는 엔드포인트는 빠진다</text>
+  <rect x="520" y="314" width="390" height="80" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="715" y="344" text-anchor="middle" font-size="15" font-weight="700" fill="#b91c1c">공격과 같은 트래픽 · 데이터 변경 가능</text>
+  <text x="715" y="370" text-anchor="middle" font-size="14" fill="#7f1d1d">→ 버려도 되는 환경에서만</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">역직렬화 필터(JEP 290) — 객체가 만들어지기 전에 검사한다</text>
+
+  <!-- bytes -->
+  <rect x="20" y="96" width="170" height="90" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="105" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">신뢰할 수 없는</text>
+  <text x="105" y="144" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">바이트</text>
+  <text x="105" y="168" text-anchor="middle" font-size="11" fill="#334155">쿠키 · 큐 · 업로드</text>
+
+  <!-- readObject -->
+  <rect x="220" y="96" width="190" height="90" rx="10" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="315" y="126" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#312e81">readObject()</text>
+  <text x="315" y="150" text-anchor="middle" font-size="12" fill="#312e81">클래스 하나를 읽을</text>
+  <text x="315" y="168" text-anchor="middle" font-size="12" fill="#312e81">때마다 필터 호출</text>
+
+  <!-- filter -->
+  <rect x="440" y="70" width="250" height="150" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="565" y="96" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">ObjectInputFilter</text>
+  <text x="456" y="124" font-size="12" fill="#92400e">① 클래스가 허용 목록에 있나?</text>
+  <text x="456" y="146" font-size="12" fill="#92400e">② 그래프 깊이 · 참조 수</text>
+  <text x="456" y="168" font-size="12" fill="#92400e">③ 바이트 수 · 배열 크기 한도</text>
+  <text x="456" y="198" font-size="12" font-weight="700" fill="#92400e">목록 밖이면 !* 로 거부</text>
+
+  <!-- allowed / rejected -->
+  <rect x="730" y="70" width="210" height="66" rx="10" fill="#dcfce7" stroke="#15803d"/>
+  <text x="835" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">ALLOWED</text>
+  <text x="835" y="118" text-anchor="middle" font-size="12" fill="#14532d">객체 생성 → 앱으로</text>
+
+  <rect x="730" y="154" width="210" height="66" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="835" y="178" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">REJECTED</text>
+  <text x="835" y="200" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">InvalidClassException</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="190" y1="141" x2="216" y2="141" marker-end="url(#arrow)"/>
+    <line x1="410" y1="141" x2="436" y2="141" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="690" y1="112" x2="726" y2="104" stroke="#15803d" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="690" y1="176" x2="726" y2="186" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <line x1="835" y1="220" x2="835" y2="244" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <rect x="730" y="248" width="210" height="44" rx="8" fill="#ffffff" stroke="#b91c1c"/>
+  <text x="835" y="266" text-anchor="middle" font-size="12" fill="#7f1d1d">deserialization_rejected 로그</text>
+  <text x="835" y="284" text-anchor="middle" font-size="12" fill="#7f1d1d">→ Loki 알림 (Day 60·62)</text>
+
+  <!-- filter pattern -->
+  <rect x="20" y="248" width="690" height="70" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="270" font-size="12" font-weight="700" fill="#0f172a">필터 문법 예 (스트림 단위 · JVM 전체는 -Djdk.serialFilter)</text>
+  <text x="36" y="292" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">maxdepth=5;maxrefs=500;maxbytes=65536;maxarray=1000;</text>
+  <text x="36" y="310" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">com.example.legacy.Cart;java.lang.String;java.util.ArrayList;!*</text>
+
+  <!-- comparison -->
+  <g font-size="12">
+    <rect x="20" y="340" width="296" height="140" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="36" y="364" font-size="14" font-weight="700" fill="#7f1d1d">✗ 차단 목록</text>
+    <text x="36" y="388" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#7f1d1d">!위험클래스A;!위험클래스B;*</text>
+    <text x="36" y="414" fill="#7f1d1d">새로 발견되는 위험 클래스마다</text>
+    <text x="36" y="434" fill="#7f1d1d">목록을 고쳐야 함 → 늘 한 발 늦음</text>
+    <text x="36" y="460" fill="#7f1d1d">(해킹 05 블랙리스트와 같은 문제)</text>
+
+    <rect x="332" y="340" width="296" height="140" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="348" y="364" font-size="14" font-weight="700" fill="#92400e">△ 허용 목록 + !* + 한도</text>
+    <text x="348" y="388" fill="#92400e">레거시를 당장 못 바꿀 때의 조치</text>
+    <text x="348" y="414" fill="#92400e">정상 클래스 목록은 테스트 환경의</text>
+    <text x="348" y="434" fill="#92400e">JFR jdk.Deserialization 이벤트로 수집</text>
+    <text x="348" y="460" fill="#92400e">JEP 415(Java 17): 상황별 필터 팩토리</text>
+
+    <rect x="644" y="340" width="296" height="140" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="660" y="364" font-size="14" font-weight="700" fill="#14532d">✓ 1순위: JSON + DTO</text>
+    <text x="660" y="388" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#14532d">readValue(json, CartDto.class)</text>
+    <text x="660" y="414" fill="#14532d">타입을 코드가 정하므로</text>
+    <text x="660" y="434" fill="#14532d">이 필터 단계가 필요 없음</text>
+    <text x="660" y="460" fill="#14532d">+ Bean Validation · Pydantic</text>
+  </g>
+</svg>

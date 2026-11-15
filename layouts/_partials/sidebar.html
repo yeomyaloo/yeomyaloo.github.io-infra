@@ -12,7 +12,11 @@
   <details class="chapter"{{ if or (eq $cur $chapter) ($chapter.IsAncestor $cur) }} open{{ end }}>
     <summary><a href="{{ .RelPermalink }}"{{ if eq $cur $chapter }} class="active"{{ end }}>{{ .LinkTitle }}</a></summary>
     <ul>
+      {{- $group := "" }}
       {{- range .RegularPages.ByWeight }}
+      {{- with .Params.group }}{{ if ne . $group }}{{ $group = . }}
+      <li class="side-group-label">{{ . }}</li>
+      {{- end }}{{ end }}
       <li><a href="{{ .RelPermalink }}"{{ if eq $cur . }} class="active" aria-current="page"{{ end }}>{{ .LinkTitle }}</a></li>
       {{- end }}
     </ul>

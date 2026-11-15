@@ -5,6 +5,7 @@ weight: 5
 tags: ["hacking", "ethical-hacking", "web-security"]
 summary: "[본인 소유 격리 실습장 전용] OWASP Top 10:2025의 10개 범주를 2021판과 비교해 설명하고, 이 시리즈의 어느 Day가 각 범주를 다루는지 연결할 수 있다. 인증 실패와 세션 관리의 흔한 실수를 알고, 비밀번호 해시·세션 재발급·로그인 시도 제한을 코드로 적용할 수 있다."
 image: "./images/hack05-owasp-top10-2025-map.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★★☆ | 예상 소요 3 ~ 3.5시간

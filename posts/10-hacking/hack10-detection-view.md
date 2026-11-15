@@ -5,6 +5,7 @@ weight: 10
 tags: ["hacking", "ethical-hacking", "alerting", "falco", "detection"]
 summary: "[본인 소유 격리 실습장 전용] 퍼플팀이 무엇이고, 왜 \"공격 실습\"은 \"탐지 확인\"으로 끝나야 하는지 설명할 수 있다."
 image: "./images/hack10-purple-team-loop.svg"
+group: "화이트해커 입문"
 draft: false
 ---
 > **해킹 트랙 · 화이트해커 입문** | 난이도 ★★★★☆ | 예상 소요 2.5 ~ 3시간

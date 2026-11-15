@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">공유기·IoT 노출면 — 어디가 열려 있고, 무엇으로 닫나</text>
+
+  <!-- 인터넷 -->
+  <rect x="30" y="200" width="150" height="110" rx="14" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="105" y="244" text-anchor="middle" font-size="17" font-weight="700" fill="#334155">인터넷</text>
+  <text x="105" y="268" text-anchor="middle" font-size="12" fill="#64748b">봇 · 스캐너</text>
+  <text x="105" y="286" text-anchor="middle" font-size="12" fill="#64748b">(우리는 스캔 안 함)</text>
+
+  <!-- 공유기 -->
+  <rect x="300" y="150" width="240" height="210" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="420" y="180" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">공유기 192.168.0.1</text>
+  <text x="420" y="200" text-anchor="middle" font-size="12" fill="#334155">집 전체의 관문 (NAT · DNS · DHCP)</text>
+
+  <!-- 공유기 내부 노출면 배지 -->
+  <rect x="318" y="214" width="204" height="26" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="420" y="232" text-anchor="middle" font-size="12" fill="#991b1b">① WAN 원격 관리 → 끔</text>
+  <rect x="318" y="246" width="204" height="26" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="420" y="264" text-anchor="middle" font-size="12" fill="#991b1b">② 포트포워딩 · DMZ → 정리</text>
+  <rect x="318" y="278" width="204" height="26" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="420" y="296" text-anchor="middle" font-size="12" fill="#78350f">③ DNS 설정 → 변조 확인</text>
+  <rect x="318" y="310" width="204" height="26" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="420" y="328" text-anchor="middle" font-size="12" fill="#78350f">④ 펌웨어 · 관리자 계정</text>
+
+  <!-- 인터넷 → 공유기 -->
+  <line x1="182" y1="242" x2="296" y2="242" stroke="#b91c1c" stroke-width="2.5" marker-end="url(#arrowr)"/>
+  <text x="240" y="232" text-anchor="middle" font-size="12" fill="#991b1b">WAN 쪽</text>
+
+  <!-- Wi-Fi -->
+  <rect x="300" y="400" width="240" height="90" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="420" y="426" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">Wi-Fi</text>
+  <text x="420" y="450" text-anchor="middle" font-size="12" fill="#334155">⑤ WPS → 끔</text>
+  <text x="420" y="470" text-anchor="middle" font-size="12" fill="#334155">⑥ WPA3 (WEP·TKIP 금지)</text>
+  <line x1="420" y1="360" x2="420" y2="396" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- LAN 기기들 -->
+  <rect x="640" y="70" width="290" height="96" rx="12" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="785" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">홈랩 서버 192.168.0.10</text>
+  <text x="785" y="122" text-anchor="middle" font-size="12" fill="#334155">⑦ 0.0.0.0 바인딩된 관리 UI</text>
+  <text x="785" y="142" text-anchor="middle" font-size="12" fill="#334155">→ 127.0.0.1 · 터널(Homelab 03)</text>
+
+  <rect x="640" y="196" width="290" height="140" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="785" y="224" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">IoT 기기 (플러그 · 카메라)</text>
+  <text x="785" y="248" text-anchor="middle" font-size="12" fill="#334155">⑧ 기본 비밀번호 · 텔넷 · HTTP 관리</text>
+  <text x="785" y="270" text-anchor="middle" font-size="12" fill="#334155">⑨ UPnP로 스스로 포트 열기</text>
+  <text x="785" y="292" text-anchor="middle" font-size="12" fill="#334155">⑩ 업데이트 끊김 (EOL)</text>
+  <text x="785" y="318" text-anchor="middle" font-size="12" fill="#15803d">→ IoT VLAN 격리 · 교체 기준</text>
+
+  <rect x="640" y="366" width="290" height="80" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="785" y="394" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">가족 · 룸메이트 기기</text>
+  <text x="785" y="418" text-anchor="middle" font-size="12" fill="#b91c1c">같은 망이어도 점검 대상 아님</text>
+  <text x="785" y="436" text-anchor="middle" font-size="12" fill="#64748b">(범위 가드: owner=me 만)</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M540,200 Q590,130 636,118"/>
+    <path d="M540,260 L636,262"/>
+    <path d="M540,330 Q590,400 636,404"/>
+  </g>
+  <!-- UPnP 요청 화살표 (IoT → 공유기) -->
+  <path d="M640,300 Q590,300 544,288" stroke="#b91c1c" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#arrowr)"/>
+  <text x="592" y="318" text-anchor="middle" font-size="11" fill="#991b1b">UPnP 요청</text>
+
+  <text x="105" y="440" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">점검 원칙</text>
+  <text x="105" y="462" text-anchor="middle" font-size="12" fill="#334155">공유기 화면 · 인벤토리 먼저</text>
+  <text x="105" y="482" text-anchor="middle" font-size="12" fill="#334155">스캔은 내 기기 하나씩</text>
+</svg>

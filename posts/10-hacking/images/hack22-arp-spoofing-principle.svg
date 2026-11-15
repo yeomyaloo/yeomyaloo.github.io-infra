@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">ARP 스푸핑 — 인증 없는 응답 하나로 캐시가 바뀐다</text>
+
+  <!-- Panel 1: normal -->
+  <rect x="20" y="58" width="450" height="400" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="40" y="86" font-size="16" font-weight="700" fill="#15803d">① 정상</text>
+
+  <rect x="40" y="110" width="140" height="62" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="110" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">피해자 A</text>
+  <text x="110" y="157" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">.5 · MAC-A</text>
+
+  <rect x="310" y="110" width="140" height="62" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="380" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">상대 B</text>
+  <text x="380" y="157" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">.30 · MAC-B</text>
+
+  <line x1="184" y1="141" x2="306" y2="141" stroke="#16a34a" stroke-width="3" marker-start="url(#arrowGreen)" marker-end="url(#arrowGreen)"/>
+  <text x="245" y="131" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">직접 통신</text>
+
+  <rect x="175" y="240" width="140" height="62" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="245" y="265" text-anchor="middle" font-size="14" font-weight="700" fill="#64748b">호스트 M</text>
+  <text x="245" y="287" text-anchor="middle" font-size="11" fill="#64748b" font-family="Consolas,'D2Coding',monospace">MAC-M</text>
+  <text x="245" y="322" text-anchor="middle" font-size="12" fill="#64748b">같은 LAN에 있을 뿐</text>
+
+  <rect x="40" y="346" width="200" height="92" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="56" y="370" font-size="13" font-weight="700" fill="#334155">A의 ARP 캐시</text>
+  <text x="56" y="396" font-size="13" font-weight="700" fill="#15803d" font-family="Consolas,'D2Coding',monospace">.30 → MAC-B</text>
+  <text x="56" y="420" font-size="12" fill="#64748b">B가 직접 답한 값</text>
+
+  <rect x="260" y="346" width="190" height="92" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="276" y="370" font-size="13" font-weight="700" fill="#334155">B의 ARP 캐시</text>
+  <text x="276" y="396" font-size="13" font-weight="700" fill="#15803d" font-family="Consolas,'D2Coding',monospace">.5 → MAC-A</text>
+  <text x="276" y="420" font-size="12" fill="#64748b">A가 직접 답한 값</text>
+
+  <!-- Panel 2: poisoned -->
+  <rect x="490" y="58" width="450" height="400" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="510" y="86" font-size="16" font-weight="700" fill="#b91c1c">② 캐시 오염 후 — 중간자</text>
+
+  <rect x="510" y="110" width="140" height="62" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="580" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">피해자 A</text>
+  <text x="580" y="157" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">.5 · MAC-A</text>
+
+  <rect x="780" y="110" width="140" height="62" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="850" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">상대 B</text>
+  <text x="850" y="157" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">.30 · MAC-B</text>
+
+  <line x1="654" y1="141" x2="776" y2="141" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="715" y="131" text-anchor="middle" font-size="11" fill="#64748b">원래 경로</text>
+
+  <rect x="645" y="250" width="140" height="62" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="715" y="275" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">호스트 M</text>
+  <text x="715" y="297" text-anchor="middle" font-size="11" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">MAC-M</text>
+
+  <!-- forged reply -->
+  <line x1="652" y1="252" x2="566" y2="176" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="7 4" marker-end="url(#arrowRed)"/>
+  <text x="500" y="214" font-size="12" font-weight="700" fill="#dc2626">위조 ARP 응답</text>
+  <text x="500" y="232" font-size="11" fill="#dc2626" font-family="Consolas,'D2Coding',monospace">.30 = MAC-M</text>
+
+  <!-- traffic via M -->
+  <line x1="638" y1="176" x2="712" y2="246" stroke="#d97706" stroke-width="3" marker-end="url(#arrowAmber)"/>
+  <text x="690" y="204" font-size="12" font-weight="700" fill="#b45309">A→B 트래픽</text>
+  <line x1="772" y1="248" x2="838" y2="176" stroke="#d97706" stroke-width="3" marker-end="url(#arrowAmber)"/>
+  <text x="826" y="230" font-size="12" font-weight="700" fill="#b45309">그대로 전달</text>
+  <text x="715" y="332" text-anchor="middle" font-size="12" fill="#b91c1c">도청 · 변조 · 다운그레이드</text>
+
+  <rect x="510" y="346" width="210" height="92" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="526" y="370" font-size="13" font-weight="700" fill="#334155">A의 ARP 캐시</text>
+  <text x="526" y="396" font-size="13" font-weight="700" fill="#dc2626" font-family="Consolas,'D2Coding',monospace">.30 → MAC-M</text>
+  <text x="526" y="420" font-size="12" fill="#64748b">가짜인데 그대로 믿음</text>
+
+  <rect x="735" y="346" width="190" height="92" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="751" y="370" font-size="13" font-weight="700" fill="#334155">B의 ARP 캐시</text>
+  <text x="751" y="396" font-size="13" font-weight="700" fill="#dc2626" font-family="Consolas,'D2Coding',monospace">.5 → MAC-M</text>
+  <text x="751" y="420" font-size="12" fill="#64748b">양쪽 모두 속임</text>
+
+  <!-- Caption -->
+  <text x="480" y="492" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">ARP 응답에는 서명이 없고, 요청하지 않은 응답으로도 기존 캐시가 갱신될 수 있다</text>
+  <text x="480" y="520" text-anchor="middle" font-size="13" fill="#64748b">탐지의 핵심 흔적: 같은 IP(.30)의 MAC이 바뀜 (MAC-B → MAC-M) — 4장 arpwatch · Wireshark · arpmon</text>
+</svg>

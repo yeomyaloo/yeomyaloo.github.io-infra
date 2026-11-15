@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">같은 값, 다른 문맥, 다른 처리</text>
+
+  <!-- input value -->
+  <rect x="330" y="52" width="300" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="480" y="78" text-anchor="middle" font-size="15" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">v = O'Brien &lt;b&gt;</text>
+  <line x1="480" y1="92" x2="480" y2="110" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- header row -->
+  <rect x="20" y="114" width="920" height="34" fill="#334155"/>
+  <text x="110" y="137" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">출구 문맥</text>
+  <text x="345" y="137" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">처리 방법 (Spring / Python)</text>
+  <text x="725" y="137" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">해석기가 받는 모양</text>
+
+  <!-- rows: y start 148, height 44 -->
+  <rect x="20" y="148" width="920" height="44" fill="#f8fafc"/>
+  <text x="110" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">HTML 본문</text>
+  <text x="345" y="175" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">th:text · Jinja2 {{ v }}</text>
+  <text x="725" y="175" text-anchor="middle" font-size="13" fill="#14532d" font-family="Consolas,'D2Coding',monospace">O&amp;#39;Brien &amp;lt;b&amp;gt;</text>
+
+  <rect x="20" y="192" width="920" height="44" fill="#ffffff"/>
+  <text x="110" y="219" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">HTML 속성</text>
+  <text x="345" y="219" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">th:value · Encode.forHtmlAttribute</text>
+  <text x="725" y="219" text-anchor="middle" font-size="13" fill="#14532d" font-family="Consolas,'D2Coding',monospace">value="O&amp;#39;Brien &amp;lt;b&amp;gt;"</text>
+
+  <rect x="20" y="236" width="920" height="44" fill="#f8fafc"/>
+  <text x="110" y="263" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">JavaScript</text>
+  <text x="345" y="263" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">Jinja2 |tojson · th:inline [[${v}]]</text>
+  <text x="725" y="263" text-anchor="middle" font-size="13" fill="#14532d" font-family="Consolas,'D2Coding',monospace">"O&#92;u0027Brien &#92;u003cb&#92;u003e"</text>
+
+  <rect x="20" y="280" width="920" height="44" fill="#ffffff"/>
+  <text x="110" y="307" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">URL 파라미터</text>
+  <text x="345" y="307" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">UriComponentsBuilder · quote()</text>
+  <text x="725" y="307" text-anchor="middle" font-size="13" fill="#14532d" font-family="Consolas,'D2Coding',monospace">?q=O%27Brien%20%3Cb%3E</text>
+
+  <rect x="20" y="324" width="920" height="44" fill="#f8fafc"/>
+  <text x="110" y="351" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">SQL</text>
+  <text x="345" y="351" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">JdbcTemplate ? · JPA · :name</text>
+  <text x="725" y="351" text-anchor="middle" font-size="13" fill="#14532d">틀 "… = ?" + 값 목록 (인코딩이 아니라 분리)</text>
+
+  <rect x="20" y="368" width="920" height="44" fill="#ffffff"/>
+  <text x="110" y="395" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">로그</text>
+  <text x="345" y="395" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">log.info("x user={}", v) · JSON</text>
+  <text x="725" y="395" text-anchor="middle" font-size="13" fill="#14532d" font-family="Consolas,'D2Coding',monospace">{"user":"O'Brien &lt;b&gt;"}</text>
+
+  <line x1="200" y1="114" x2="200" y2="412" stroke="#cbd5e1"/>
+  <line x1="490" y1="114" x2="490" y2="412" stroke="#cbd5e1"/>
+  <rect x="20" y="114" width="920" height="298" fill="none" stroke="#94a3b8"/>
+
+  <rect x="20" y="428" width="920" height="38" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="480" y="452" text-anchor="middle" font-size="13" fill="#78350f">입력 때 미리 HTML 인코딩해 DB에 넣지 말 것 — 다른 출구에서 깨지고 이중 인코딩된다. 처리는 출구에서, 그 문맥에 맞게</text>
+</svg>
