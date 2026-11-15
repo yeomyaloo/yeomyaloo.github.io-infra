@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">SELinux 컨텍스트 흐름 — 접근 판단, 거부 기록, 라벨 복원</text>
+
+  <!-- process -->
+  <rect x="20" y="70" width="220" height="100" rx="12" fill="#ee0000"/>
+  <text x="130" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">프로세스 (도메인)</text>
+  <text x="130" y="126" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" fill="#ffffff">httpd → httpd_t</text>
+  <text x="130" y="152" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#fde8e8">ps -eZ | grep httpd</text>
+
+  <!-- policy -->
+  <rect x="300" y="70" width="240" height="100" rx="12" fill="#0f172a"/>
+  <text x="420" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">SELinux 정책 (커널)</text>
+  <text x="420" y="126" text-anchor="middle" font-size="13" fill="#cbd5e1">httpd_t 가 이 타입을</text>
+  <text x="420" y="146" text-anchor="middle" font-size="13" fill="#cbd5e1">읽어도 되는가? + 불리언</text>
+
+  <!-- allowed file -->
+  <rect x="610" y="60" width="330" height="70" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="626" y="86" font-size="14" font-weight="700" fill="#14532d">허용 — /srv/site/index.html</text>
+  <text x="626" y="112" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d">httpd_sys_content_t</text>
+  <!-- denied file -->
+  <rect x="610" y="146" width="330" height="70" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="626" y="172" font-size="14" font-weight="700" fill="#991b1b">거부 — /srv/site/report.html</text>
+  <text x="626" y="198" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#991b1b">user_home_t  (mv로 옮겨옴)</text>
+
+  <g stroke-width="2" fill="none">
+    <line x1="240" y1="120" x2="296" y2="120" stroke="#334155" marker-end="url(#arrow)"/>
+    <line x1="540" y1="105" x2="606" y2="95" stroke="#16a34a" marker-end="url(#arrowGreen)"/>
+    <line x1="540" y1="140" x2="606" y2="178" stroke="#dc2626" marker-end="url(#arrowRed)"/>
+  </g>
+  <text x="268" y="110" text-anchor="middle" font-size="11" fill="#334155">접근</text>
+
+  <!-- audit path -->
+  <rect x="610" y="260" width="330" height="90" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="626" y="286" font-size="14" font-weight="700" fill="#78350f">② 기록: /var/log/audit/audit.log</text>
+  <text x="626" y="310" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">avc: denied { getattr } comm="httpd"</text>
+  <text x="626" y="330" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">tcontext=…:user_home_t tclass=file</text>
+  <line x1="775" y1="216" x2="775" y2="256" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="785" y="242" font-size="12" fill="#dc2626">① 거부(403)</text>
+
+  <rect x="300" y="260" width="250" height="90" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="425" y="286" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">③ 원인 찾기</text>
+  <text x="425" y="312" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">ausearch -m AVC -ts recent</text>
+  <text x="425" y="332" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">sealert -a /var/log/audit/audit.log</text>
+  <line x1="610" y1="305" x2="554" y2="305" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- fix path -->
+  <text x="480" y="390" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">④ 고치기 — 정책 규칙을 등록하고, 실제 라벨에 적용</text>
+  <rect x="20" y="410" width="290" height="110" rx="10" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+  <text x="165" y="436" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">규칙 등록 (영구)</text>
+  <text x="34" y="462" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">semanage fcontext -a</text>
+  <text x="34" y="480" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">  -t httpd_sys_content_t</text>
+  <text x="34" y="498" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">  '/srv/site(/.*)?'</text>
+
+  <rect x="340" y="410" width="280" height="110" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="480" y="436" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">파일 컨텍스트 DB</text>
+  <text x="480" y="462" text-anchor="middle" font-size="12" fill="#64748b">경로 정규식 → 타입</text>
+  <text x="480" y="486" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">semanage fcontext -l -C</text>
+  <text x="480" y="506" text-anchor="middle" font-size="11" fill="#64748b">(chcon은 이 DB를 바꾸지 않음 → 임시)</text>
+
+  <rect x="650" y="410" width="290" height="110" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="795" y="436" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">라벨 적용</text>
+  <text x="795" y="462" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">restorecon -Rv /srv/site</text>
+  <text x="795" y="486" text-anchor="middle" font-size="12" fill="#14532d">user_home_t → httpd_sys_content_t</text>
+  <text x="795" y="506" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">ls -Z 로 확인</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="310" y1="465" x2="336" y2="465" marker-end="url(#arrow)"/>
+    <line x1="620" y1="465" x2="646" y2="465" marker-end="url(#arrow)"/>
+    <line x1="300" y1="320" x2="170" y2="320" />
+    <line x1="170" y1="320" x2="170" y2="406" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- side legend -->
+  <rect x="20" y="200" width="250" height="96" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="34" y="224" font-size="13" font-weight="700" fill="#0f172a">다른 해결 수단</text>
+  <text x="34" y="248" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">semanage port -a -t … -p tcp N</text>
+  <text x="34" y="270" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">setsebool -P 불리언 on</text>
+  <text x="34" y="288" font-size="11" fill="#64748b">tclass=tcp_socket이면 포트 문제</text>
+</svg>

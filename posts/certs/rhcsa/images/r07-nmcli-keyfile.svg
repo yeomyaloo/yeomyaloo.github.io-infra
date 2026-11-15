@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RHEL 10 네트워크 설정 흐름 — nmcli → keyfile → 장치</text>
+
+  <!-- tools -->
+  <rect x="20" y="70" width="200" height="150" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="120" y="98" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">관리 도구</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14" text-anchor="middle">
+    <rect x="40" y="114" width="160" height="36" rx="18" fill="#e2e8f0"/>
+    <text x="120" y="137" fill="#0f172a">nmcli</text>
+    <rect x="40" y="162" width="160" height="36" rx="18" fill="#e2e8f0"/>
+    <text x="120" y="185" fill="#0f172a">nmtui</text>
+  </g>
+
+  <!-- NM daemon -->
+  <rect x="280" y="70" width="400" height="60" rx="10" fill="#ee0000"/>
+  <text x="480" y="98" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">NetworkManager (데몬)</text>
+  <text x="480" y="119" text-anchor="middle" font-size="12" fill="#fde8e8">systemctl enable --now NetworkManager</text>
+
+  <!-- keyfile -->
+  <rect x="280" y="170" width="400" height="190" rx="10" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+  <text x="480" y="196" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">연결 프로필 = keyfile</text>
+  <text x="480" y="218" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">/etc/NetworkManager/system-connections/</text>
+  <rect x="300" y="230" width="360" height="116" rx="6" fill="#ffffff" stroke="#fca5a5"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="314" y="250" font-weight="700">lab-net.nmconnection  (권한 600)</text>
+    <text x="314" y="272">[ipv4] method=manual</text>
+    <text x="314" y="290">address1=192.168.56.11/24,192.168.56.1</text>
+    <text x="314" y="308">dns=192.168.56.12;</text>
+    <text x="314" y="330">[ipv6] address1=fd00:56::11/64</text>
+  </g>
+
+  <!-- ifcfg crossed -->
+  <rect x="20" y="270" width="200" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="5 4"/>
+  <text x="120" y="296" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#94a3b8">/etc/sysconfig/</text>
+  <text x="120" y="314" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#94a3b8">network-scripts/ifcfg-*</text>
+  <text x="120" y="342" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">RHEL 10: 무시됨</text>
+  <line x1="34" y1="292" x2="206" y2="292" stroke="#dc2626" stroke-width="2"/><line x1="34" y1="310" x2="206" y2="310" stroke="#dc2626" stroke-width="2"/>
+
+  <!-- device / outputs -->
+  <rect x="740" y="70" width="200" height="110" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="840" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">장치 (device)</text>
+  <text x="840" y="124" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d">eth1 / enp0s8</text>
+  <text x="840" y="148" text-anchor="middle" font-size="12" fill="#14532d">ip addr · ip route 에 반영</text>
+  <text x="840" y="166" text-anchor="middle" font-size="12" fill="#14532d">(활성 프로필은 1개)</text>
+
+  <rect x="740" y="220" width="200" height="90" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="840" y="248" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#78350f">/etc/resolv.conf</text>
+  <text x="840" y="272" text-anchor="middle" font-size="12" fill="#78350f">NetworkManager가 생성</text>
+  <text x="840" y="292" text-anchor="middle" font-size="12" fill="#dc2626">직접 편집 금지</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="220" y1="132" x2="276" y2="104" marker-end="url(#arrow)"/>
+    <line x1="480" y1="130" x2="480" y2="166" marker-end="url(#arrow)"/>
+    <line x1="680" y1="100" x2="736" y2="112" marker-end="url(#arrow)"/>
+    <line x1="680" y1="120" x2="736" y2="250" marker-end="url(#arrow)"/>
+  </g>
+  <text x="490" y="154" font-size="12" fill="#334155">저장 (modify / add)</text>
+  <text x="708" y="94" text-anchor="middle" font-size="12" fill="#334155">up</text>
+
+  <!-- bottom steps -->
+  <rect x="20" y="392" width="920" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g font-size="14" fill="#0f172a">
+    <text x="40" y="428"><tspan font-weight="700" fill="#ee0000">①</tspan> nmcli con modify</text>
+    <text x="250" y="428"><tspan font-weight="700" fill="#ee0000">②</tspan> nmcli con up</text>
+    <text x="430" y="428"><tspan font-weight="700" fill="#ee0000">③</tspan> ip -br addr / getent</text>
+    <text x="680" y="428"><tspan font-weight="700" fill="#ee0000">④</tspan> 재부팅 후 다시 확인</text>
+  </g>
+</svg>

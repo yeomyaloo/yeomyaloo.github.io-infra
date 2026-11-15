@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">비파괴적 확장 — VG에 PV를 더한다</text>
+
+  <!-- Before -->
+  <text x="160" y="74" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">확장 전</text>
+  <rect x="20" y="88" width="280" height="200" rx="10" fill="#fff5f5" stroke="#ee0000" stroke-width="2"/>
+  <text x="40" y="114" font-size="14" font-weight="700" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">vg_lab  (#PV 1)</text>
+  <rect x="40" y="128" width="240" height="40" rx="4" fill="#fca5a5"/>
+  <text x="160" y="153" text-anchor="middle" font-size="12" fill="#7f1d1d">lv_app · lv_logs · lv_swap</text>
+  <rect x="40" y="174" width="240" height="24" rx="4" fill="#e2e8f0"/>
+  <text x="160" y="191" text-anchor="middle" font-size="12" fill="#475569">VFree 약 88MiB — 부족!</text>
+  <rect x="40" y="220" width="240" height="48" rx="6" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="160" y="249" text-anchor="middle" font-size="13" font-weight="700" fill="#312e81" font-family="Consolas,'D2Coding',monospace">PV /dev/sdb1</text>
+
+  <!-- Steps -->
+  <rect x="340" y="88" width="280" height="200" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="480" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">데이터는 그대로, 마운트 상태로</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <rect x="356" y="128" width="248" height="30" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="368" y="148">1. lsblk /dev/sdc</text>
+    <rect x="356" y="164" width="248" height="30" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="368" y="184">2. parted … set 1 lvm on</text>
+    <rect x="356" y="200" width="248" height="30" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="368" y="220">3. pvcreate /dev/sdc1</text>
+    <rect x="356" y="236" width="248" height="30" rx="6" fill="#ffffff" stroke="#ee0000" stroke-width="2"/>
+    <text x="368" y="256">4. vgextend vg_lab /dev/sdc1</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="300" y1="188" x2="336" y2="188" marker-end="url(#arrow)"/>
+    <line x1="620" y1="188" x2="656" y2="188" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- After -->
+  <text x="800" y="74" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">확장 후</text>
+  <rect x="660" y="88" width="280" height="200" rx="10" fill="#fff5f5" stroke="#ee0000" stroke-width="2"/>
+  <text x="680" y="114" font-size="14" font-weight="700" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">vg_lab  (#PV 2)</text>
+  <rect x="680" y="128" width="240" height="40" rx="4" fill="#fca5a5"/>
+  <text x="800" y="153" text-anchor="middle" font-size="12" fill="#7f1d1d">기존 LV — 위치·데이터 그대로</text>
+  <rect x="680" y="174" width="240" height="24" rx="4" fill="#bbf7d0"/>
+  <text x="800" y="191" text-anchor="middle" font-size="12" fill="#14532d">VFree 약 1.08GiB</text>
+  <rect x="680" y="220" width="114" height="48" rx="6" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="737" y="249" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81" font-family="Consolas,'D2Coding',monospace">/dev/sdb1</text>
+  <rect x="806" y="220" width="114" height="48" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="863" y="249" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d" font-family="Consolas,'D2Coding',monospace">/dev/sdc1</text>
+
+  <!-- Bottom: next step -->
+  <rect x="20" y="320" width="920" height="110" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="40" y="348" font-size="15" font-weight="700" fill="#0f172a">늘어난 VFree를 쓰는 다음 단계 (R05)</text>
+  <g font-size="13" fill="#334155">
+    <text x="40" y="376" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">lvextend -r -L 1G /dev/vg_lab/lv_app</text>
+    <text x="440" y="376">LV 확장 + 파일 시스템 확장을 한 번에 (온라인)</text>
+    <text x="40" y="404" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">pvmove /dev/sdc1 → vgreduce</text>
+    <text x="440" y="404">반대로 디스크를 뺄 때: 데이터 이동 후 VG에서 제거</text>
+  </g>
+</svg>

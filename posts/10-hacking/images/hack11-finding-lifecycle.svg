@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">발견 사항 생애주기 — 보고서를 보낸 뒤가 진짜 시작</text>
+
+  <!-- 주 흐름 -->
+  <g text-anchor="middle">
+    <rect x="20" y="100" width="150" height="80" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="95" y="134" font-size="16" font-weight="700" fill="#991b1b">발견</text>
+    <text x="95" y="156" font-size="12" fill="#334155">허가된 범위 안</text>
+
+    <rect x="210" y="100" width="150" height="80" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="285" y="134" font-size="16" font-weight="700" fill="#14532d">보고</text>
+    <text x="285" y="156" font-size="12" fill="#334155">CVSS · 재현 · 조치</text>
+
+    <rect x="400" y="100" width="150" height="80" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="475" y="134" font-size="16" font-weight="700" fill="#1e3a8a">조치</text>
+    <text x="475" y="156" font-size="12" fill="#334155">근본 + 임시 완화</text>
+
+    <rect x="590" y="100" width="150" height="80" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="665" y="134" font-size="16" font-weight="700" fill="#4c1d95">재점검</text>
+    <text x="665" y="156" font-size="12" fill="#334155">같은 재현 절차로</text>
+
+    <rect x="780" y="100" width="160" height="80" rx="10" fill="#15803d"/>
+    <text x="860" y="134" font-size="16" font-weight="700" fill="#ffffff">종결 (해결)</text>
+    <text x="860" y="156" font-size="12" fill="#dcfce7">보고서 v1.1 반영</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="170" y1="140" x2="206" y2="140"/>
+    <line x1="360" y1="140" x2="396" y2="140"/>
+    <line x1="550" y1="140" x2="586" y2="140"/>
+    <line x1="740" y1="140" x2="776" y2="140"/>
+  </g>
+
+  <!-- 재점검 실패 루프 -->
+  <path d="M665,100 Q665,62 570,62 Q475,62 475,96" fill="none" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowr)"/>
+  <text x="570" y="54" text-anchor="middle" font-size="13" fill="#b91c1c">부분 해결 · 미해결 → 다시 조치</text>
+
+  <!-- 조치 아래 메모 -->
+  <text x="475" y="204" text-anchor="middle" font-size="12" fill="#1e3a8a">+ 탐지 규칙 추가 (해킹 10)</text>
+
+  <!-- 위험 수용 -->
+  <line x1="665" y1="180" x2="665" y2="232" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="580" y="236" width="170" height="62" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="665" y="262" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">위험 수용</text>
+  <text x="665" y="284" text-anchor="middle" font-size="12" fill="#334155">사유 · 승인자 · 재검토일</text>
+
+  <!-- 아래: 포스트모템 연계 -->
+  <line x1="95" y1="180" x2="95" y2="326" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrowr)"/>
+  <rect x="20" y="330" width="440" height="110" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="40" y="358" font-size="15" font-weight="700" fill="#991b1b">점검 중 이미 악용된 흔적을 발견하면</text>
+  <text x="40" y="384" font-size="13" fill="#334155">즉시 점검 중단 → 허가 문서의 연락 창구에 보고</text>
+  <text x="40" y="406" font-size="13" fill="#334155">→ 보안 사고 선언 (Day 65 SEV1, IC 지정)</text>
+  <text x="40" y="428" font-size="13" fill="#334155">→ 증거 보존</text>
+
+  <line x1="860" y1="180" x2="860" y2="326" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="500" y="330" width="440" height="110" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="520" y="358" font-size="15" font-weight="700" fill="#0f172a">High 이상 · 반복되는 유형이면</text>
+  <text x="520" y="384" font-size="13" fill="#334155">비난 없는 회고 (Day 65 포스트모템 템플릿)</text>
+  <text x="520" y="406" font-size="13" fill="#334155">"왜 배포까지 갔나? 왜 탐지되지 않았나?"</text>
+  <text x="520" y="428" font-size="13" fill="#334155">→ 액션 아이템: 예방 · 탐지 · 완화 · 프로세스</text>
+</svg>

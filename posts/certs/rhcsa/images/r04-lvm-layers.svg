@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">LVM 계층 — 디스크에서 마운트까지 (servera 예시)</text>
+
+  <!-- Layer labels -->
+  <g font-size="14" font-weight="700" fill="#334155">
+    <text x="20" y="92">파일 시스템</text>
+    <text x="20" y="182">LV</text>
+    <text x="20" y="276">VG</text>
+    <text x="20" y="390">PV</text>
+    <text x="20" y="484">디스크·파티션</text>
+  </g>
+  <g font-size="11" fill="#64748b">
+    <text x="20" y="110">mkfs / mkswap</text>
+    <text x="20" y="200">lvcreate</text>
+    <text x="20" y="294">vgcreate -s</text>
+    <text x="20" y="408">pvcreate</text>
+    <text x="20" y="502">parted (GPT)</text>
+  </g>
+
+  <!-- Row 1: filesystems -->
+  <g text-anchor="middle">
+    <rect x="170" y="64" width="230" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="285" y="88" font-size="14" font-weight="700" fill="#14532d">xfs → /srv/app</text>
+    <text x="285" y="108" font-size="12" fill="#14532d">fstab: UUID=…</text>
+    <rect x="420" y="64" width="230" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="535" y="88" font-size="14" font-weight="700" fill="#14532d">ext4 → /srv/logs</text>
+    <text x="535" y="108" font-size="12" fill="#14532d">fstab: LABEL=LOGS</text>
+    <rect x="670" y="64" width="270" height="56" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="805" y="88" font-size="14" font-weight="700" fill="#78350f">swap</text>
+    <text x="805" y="108" font-size="12" fill="#78350f">fstab: none swap · swapon -a</text>
+  </g>
+
+  <!-- Row 2: LVs -->
+  <g text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <rect x="170" y="154" width="230" height="56" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="285" y="178" font-size="14" font-weight="700" fill="#7f1d1d">lv_app</text>
+    <text x="285" y="198" font-size="12" fill="#334155">-l 75 → 600MiB</text>
+    <rect x="420" y="154" width="230" height="56" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="535" y="178" font-size="14" font-weight="700" fill="#7f1d1d">lv_logs</text>
+    <text x="535" y="198" font-size="12" fill="#334155">-L 200M → 25 PE</text>
+    <rect x="670" y="154" width="270" height="56" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="805" y="178" font-size="14" font-weight="700" fill="#7f1d1d">lv_swap</text>
+    <text x="805" y="198" font-size="12" fill="#334155">-L 128M → 16 PE</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="285" y1="154" x2="285" y2="124" marker-end="url(#arrow)"/>
+    <line x1="535" y1="154" x2="535" y2="124" marker-end="url(#arrow)"/>
+    <line x1="805" y1="154" x2="805" y2="124" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Row 3: VG with PE grid -->
+  <rect x="170" y="240" width="770" height="110" rx="10" fill="#fff5f5" stroke="#ee0000" stroke-width="2"/>
+  <text x="190" y="264" font-size="15" font-weight="700" fill="#7f1d1d">vg_lab</text>
+  <text x="555" y="338" text-anchor="middle" font-size="12" fill="#64748b">PE 8MiB 단위로 쪼갠 저장 풀 — LV는 PE를 떼어 받는다</text>
+  <g stroke="#ffffff" stroke-width="2">
+    <!-- 24 cells x 30px from x=190 -->
+    <rect x="190" y="278" width="300" height="40" fill="#fca5a5"/>
+    <rect x="490" y="278" width="100" height="40" fill="#fdba74"/>
+    <rect x="590" y="278" width="60" height="40" fill="#fde68a"/>
+    <rect x="650" y="278" width="270" height="40" fill="#e2e8f0"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="1">
+    <line x1="220" y1="278" x2="220" y2="318"/><line x1="250" y1="278" x2="250" y2="318"/><line x1="280" y1="278" x2="280" y2="318"/>
+    <line x1="310" y1="278" x2="310" y2="318"/><line x1="340" y1="278" x2="340" y2="318"/><line x1="370" y1="278" x2="370" y2="318"/>
+    <line x1="400" y1="278" x2="400" y2="318"/><line x1="430" y1="278" x2="430" y2="318"/><line x1="460" y1="278" x2="460" y2="318"/>
+    <line x1="520" y1="278" x2="520" y2="318"/><line x1="550" y1="278" x2="550" y2="318"/><line x1="620" y1="278" x2="620" y2="318"/>
+    <line x1="680" y1="278" x2="680" y2="318"/><line x1="710" y1="278" x2="710" y2="318"/><line x1="740" y1="278" x2="740" y2="318"/>
+    <line x1="770" y1="278" x2="770" y2="318"/><line x1="800" y1="278" x2="800" y2="318"/><line x1="830" y1="278" x2="830" y2="318"/>
+    <line x1="860" y1="278" x2="860" y2="318"/><line x1="890" y1="278" x2="890" y2="318"/>
+  </g>
+  <g font-size="12" text-anchor="middle" font-weight="700">
+    <text x="340" y="303" fill="#7f1d1d">lv_app의 PE</text>
+    <text x="540" y="303" fill="#7c2d12">lv_logs</text>
+    <text x="620" y="303" fill="#78350f">swap</text>
+    <text x="785" y="303" fill="#475569">Free PE (VFree)</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="285" y1="278" x2="285" y2="214" marker-end="url(#arrow)"/>
+    <line x1="535" y1="278" x2="535" y2="214" marker-end="url(#arrow)"/>
+    <path d="M620,278 L790,214" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Row 4: PVs -->
+  <g text-anchor="middle" font-family="Consolas,'D2Coding',monospace">
+    <rect x="190" y="366" width="300" height="50" rx="8" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="340" y="396" font-size="14" font-weight="700" fill="#312e81">PV /dev/sdb1</text>
+    <rect x="620" y="366" width="300" height="50" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-dasharray="6 4"/>
+    <text x="770" y="396" font-size="14" font-weight="700" fill="#312e81">PV /dev/sdc1 (R04 7장)</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="340" y1="366" x2="340" y2="354" marker-end="url(#arrow)"/>
+    <line x1="770" y1="366" x2="770" y2="354" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Row 5: disks -->
+  <rect x="170" y="452" width="420" height="60" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <g font-size="12" text-anchor="middle">
+    <rect x="180" y="462" width="110" height="40" rx="4" fill="#c7d2fe"/>
+    <text x="235" y="487" fill="#312e81" font-family="Consolas,'D2Coding',monospace">sdb1 1GiB</text>
+    <rect x="296" y="462" width="80" height="40" rx="4" fill="#fde68a"/>
+    <text x="336" y="487" fill="#78350f" font-family="Consolas,'D2Coding',monospace">sdb2 swap</text>
+    <rect x="382" y="462" width="198" height="40" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+    <text x="481" y="487" fill="#64748b">빈 공간 (R05에서 사용)</text>
+  </g>
+  <text x="380" y="532" text-anchor="middle" font-size="13" font-weight="700" fill="#334155" font-family="Consolas,'D2Coding',monospace">/dev/sdb  5GB</text>
+
+  <rect x="610" y="452" width="330" height="60" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <g font-size="12" text-anchor="middle">
+    <rect x="620" y="462" width="150" height="40" rx="4" fill="#c7d2fe"/>
+    <text x="695" y="487" fill="#312e81" font-family="Consolas,'D2Coding',monospace">sdc1 1GiB</text>
+    <rect x="776" y="462" width="154" height="40" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+    <text x="853" y="487" fill="#64748b">빈 공간</text>
+  </g>
+  <text x="775" y="532" text-anchor="middle" font-size="13" font-weight="700" fill="#334155" font-family="Consolas,'D2Coding',monospace">/dev/sdc  2GB</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="235" y1="462" x2="300" y2="420" marker-end="url(#arrow)"/>
+    <line x1="695" y1="462" x2="740" y2="420" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="564" text-anchor="middle" font-size="12" fill="#64748b">장치 이름은 예시 — 실제 이름은 lsblk로 확인</text>
+</svg>

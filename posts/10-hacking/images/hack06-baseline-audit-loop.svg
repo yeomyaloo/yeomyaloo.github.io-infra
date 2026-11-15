@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">기준선 비교 점검 — 달라진 것만 사람이 본다</text>
+
+  <!-- row 1 -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="20" y="70" width="180" height="76" rx="10" fill="#dcfce7" stroke="#15803d"/>
+    <text x="110" y="98" font-weight="700" fill="#14532d">① 기준선</text>
+    <text x="110" y="122" fill="#14532d" font-family="Consolas,'D2Coding',monospace" font-size="12">baseline.txt</text>
+
+    <rect x="240" y="70" width="180" height="76" rx="10" fill="#f8fafc" stroke="#64748b"/>
+    <text x="330" y="98" font-weight="700" fill="#0f172a">② 매일 03:30 타이머</text>
+    <text x="330" y="122" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">privesc-audit</text>
+
+    <rect x="460" y="70" width="180" height="76" rx="10" fill="#f8fafc" stroke="#64748b"/>
+    <text x="550" y="98" font-weight="700" fill="#0f172a">③ 현재 목록</text>
+    <text x="550" y="122" fill="#334155" font-size="12">SUID·SGID·해시·getcap</text>
+
+    <rect x="680" y="70" width="110" height="76" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="735" y="104" font-weight="700" fill="#78350f">④ diff</text>
+    <text x="735" y="126" fill="#78350f" font-size="12">기준선과 비교</text>
+
+    <rect x="830" y="70" width="110" height="76" rx="10" fill="#e2e8f0" stroke="#94a3b8"/>
+    <text x="885" y="100" fill="#334155" font-weight="700">변경 없음</text>
+    <text x="885" y="122" fill="#64748b" font-size="12">"no change"</text>
+  </g>
+
+  <!-- row 2 (right to left) -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="640" y="210" width="220" height="76" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="750" y="238" font-weight="700" fill="#7f1d1d">⑤ logger "CHANGED …"</text>
+    <text x="750" y="262" fill="#7f1d1d" font-size="12">journal → Alloy → Loki</text>
+
+    <rect x="370" y="210" width="220" height="76" rx="10" fill="#f8fafc" stroke="#64748b"/>
+    <text x="480" y="238" font-weight="700" fill="#0f172a">⑥ Loki 규칙 → Alertmanager</text>
+    <text x="480" y="262" fill="#334155" font-size="12">PrivescBaselineChanged (ticket)</text>
+
+    <rect x="80" y="210" width="240" height="76" rx="10" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="200" y="238" font-weight="700" fill="#312e81">⑦ 사람이 확인</text>
+    <text x="200" y="262" fill="#312e81" font-size="12">패키지 업데이트 때문인가?</text>
+  </g>
+
+  <!-- row 3 outcomes -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="20" y="340" width="260" height="70" rx="10" fill="#dcfce7" stroke="#15803d"/>
+    <text x="150" y="368" font-weight="700" fill="#14532d">예 — 승인된 변경</text>
+    <text x="150" y="391" fill="#14532d" font-size="12">current.txt → baseline.txt 갱신</text>
+
+    <rect x="320" y="340" width="300" height="70" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="470" y="368" font-weight="700" fill="#7f1d1d">아니오 — 설명 안 되는 변경</text>
+    <text x="470" y="391" fill="#7f1d1d" font-size="12">사고 대응 런북 (Day 65) · ausearch로 auid 추적</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="200" y1="108" x2="236" y2="108" marker-end="url(#arrow)"/>
+    <line x1="420" y1="108" x2="456" y2="108" marker-end="url(#arrow)"/>
+    <line x1="640" y1="108" x2="676" y2="108" marker-end="url(#arrow)"/>
+    <line x1="790" y1="108" x2="826" y2="108" marker-end="url(#arrow)"/>
+    <line x1="735" y1="146" x2="750" y2="206" marker-end="url(#arrow)"/>
+    <line x1="640" y1="248" x2="594" y2="248" marker-end="url(#arrow)"/>
+    <line x1="370" y1="248" x2="324" y2="248" marker-end="url(#arrow)"/>
+    <line x1="160" y1="286" x2="150" y2="336" marker-end="url(#arrow)"/>
+    <line x1="250" y1="286" x2="420" y2="336" marker-end="url(#arrow)"/>
+  </g>
+  <text x="752" y="184" font-size="12" font-weight="700" fill="#b91c1c">변경 있음</text>
+
+  <!-- loop back from approved to baseline -->
+  <path d="M 20 375 L 8 375 L 8 108 L 16 108" stroke="#15803d" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#arrowGreen)"/>
+
+  <!-- side note -->
+  <rect x="660" y="320" width="280" height="106" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g font-size="12" fill="#334155">
+    <text x="676" y="344" font-weight="700">함께 쓰면 좋은 것</text>
+    <text x="676" y="366">auditd perm_mod: 바뀐 순간·누가(auid)</text>
+    <text x="676" y="388">Falco: 실시간 SUID 설정 경보</text>
+    <text x="676" y="410">AIDE: 파일 시스템 전체 무결성</text>
+  </g>
+</svg>

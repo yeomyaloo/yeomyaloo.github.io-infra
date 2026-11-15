@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Kubernetes Goat 실습장 구성</text>
+
+  <!-- H01 -->
+  <rect x="15" y="54" width="930" height="452" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="32" y="76" font-size="13" fill="#64748b">홈랩 H01</text>
+
+  <!-- VM -->
+  <rect x="35" y="88" width="890" height="404" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="52" y="112" font-size="15" font-weight="700" fill="#14532d">실습 전용 Ubuntu 24.04 VM (스냅샷 · 언제든 폐기)</text>
+
+  <!-- Left column -->
+  <rect x="55" y="140" width="185" height="80" rx="10" fill="#ffffff" stroke="#334155"/>
+  <text x="147" y="170" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">브라우저 · kubectl</text>
+  <text x="147" y="194" text-anchor="middle" font-size="12" fill="#64748b">VM 안 또는 ssh -L</text>
+
+  <rect x="55" y="250" width="185" height="90" rx="10" fill="#ffffff" stroke="#2496ed"/>
+  <text x="147" y="278" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">port-forward</text>
+  <text x="147" y="302" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">127.0.0.1</text>
+  <text x="147" y="322" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">:1230 ~ :1236</text>
+
+  <rect x="55" y="370" width="185" height="96" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="147" y="398" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">외부 → VM 인바운드 차단</text>
+  <text x="147" y="420" text-anchor="middle" font-size="12" fill="#7f1d1d">0.0.0.0 바인딩 금지</text>
+  <text x="147" y="440" text-anchor="middle" font-size="12" fill="#7f1d1d">인터넷은 이미지</text>
+  <text x="147" y="456" text-anchor="middle" font-size="12" fill="#7f1d1d">받을 때만 허용</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="147" y1="220" x2="147" y2="246" marker-end="url(#arrow)"/>
+    <line x1="240" y1="295" x2="286" y2="295" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- kind cluster -->
+  <rect x="290" y="130" width="620" height="345" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="305" y="153" font-size="15" font-weight="700" fill="#1e3a8a">kind goat-lab</text>
+  <text x="895" y="153" text-anchor="end" font-size="12" fill="#b91c1c">노드 = VM 위 privileged 컨테이너</text>
+
+  <!-- default ns -->
+  <rect x="305" y="168" width="300" height="295" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="320" y="190" font-size="14" font-weight="700" fill="#334155">ns: default</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">
+    <text x="322" y="220">build-code</text><text x="590" y="220" text-anchor="end" fill="#64748b">:1230 · Sc.1</text>
+    <text x="322" y="252">health-check</text><text x="590" y="252" text-anchor="end" fill="#64748b">:1231 · Sc.2</text>
+    <text x="322" y="284">internal-proxy</text><text x="590" y="284" text-anchor="end" fill="#64748b">:1232 · Sc.3</text>
+    <text x="322" y="316" fill="#b91c1c">system-monitor</text><text x="590" y="316" text-anchor="end" fill="#64748b">:1233 · Sc.4</text>
+    <text x="322" y="348">goat-home</text><text x="590" y="348" text-anchor="end" fill="#64748b">:1234</text>
+    <text x="322" y="380">poor-registry</text><text x="590" y="380" text-anchor="end" fill="#64748b">:1235 · Sc.7</text>
+    <text x="322" y="412">metadata-db</text><text x="590" y="412" text-anchor="end" fill="#64748b" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">내부 전용</text>
+  </g>
+  <text x="455" y="446" text-anchor="middle" font-size="12" fill="#64748b">NetworkPolicy 없음 · PSA 없음</text>
+
+  <!-- big-monolith -->
+  <rect x="620" y="168" width="275" height="100" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="635" y="190" font-size="14" font-weight="700" fill="#334155">ns: big-monolith</text>
+  <text x="637" y="218" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">hunger-check :1236</text>
+  <text x="637" y="242" font-size="12" fill="#b91c1c">SA big-monolith-sa → Role</text>
+  <text x="637" y="258" font-size="12" fill="#b91c1c">resources: ["*"] (Sc.16)</text>
+
+  <!-- secure-middleware -->
+  <rect x="620" y="282" width="275" height="80" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="635" y="304" font-size="14" font-weight="700" fill="#334155">ns: secure-middleware</text>
+  <text x="637" y="330" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">cache-store (Redis 6379)</text>
+  <text x="637" y="350" font-size="12" fill="#b91c1c">인증 없음 · 정책 없음 (Sc.11)</text>
+
+  <!-- kube-system -->
+  <rect x="620" y="376" width="275" height="87" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="635" y="398" font-size="14" font-weight="700" fill="#334155">ns: kube-system</text>
+  <text x="637" y="424" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">SA superadmin</text>
+  <text x="637" y="446" font-size="12" fill="#b91c1c">→ cluster-admin 바인딩</text>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">정보 수집 4단계 — 점검자 · 방어자 · 조치</text>
+
+  <!-- Row labels -->
+  <g text-anchor="middle" font-weight="700">
+    <rect x="20" y="70" width="120" height="90" rx="10" fill="#f1f5f9" stroke="#334155"/>
+    <text x="80" y="110" font-size="15" fill="#0f172a">점검자</text>
+    <text x="80" y="132" font-size="12" font-weight="400" fill="#475569">Kali 10.10.10.5</text>
+
+    <rect x="20" y="200" width="120" height="100" rx="10" fill="#dbeafe" stroke="#326ce5"/>
+    <text x="80" y="244" font-size="15" fill="#1e3a8a">방어자가</text>
+    <text x="80" y="266" font-size="15" fill="#1e3a8a">보는 것</text>
+
+    <rect x="20" y="340" width="120" height="100" rx="10" fill="#dcfce7" stroke="#15803d"/>
+    <text x="80" y="396" font-size="15" fill="#14532d">조치</text>
+  </g>
+
+  <!-- Columns: x=160,360,560,760 w=180 -->
+  <g text-anchor="middle">
+    <!-- Row 1 -->
+    <rect x="160" y="70" width="180" height="90" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="250" y="102" font-size="15" font-weight="700" fill="#0f172a">① 호스트 발견</text>
+    <text x="250" y="130" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">nmap -sn</text>
+
+    <rect x="360" y="70" width="180" height="90" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="450" y="102" font-size="15" font-weight="700" fill="#0f172a">② 포트 스캔</text>
+    <text x="450" y="130" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">-sS / -sT / -p-</text>
+
+    <rect x="560" y="70" width="180" height="90" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="650" y="102" font-size="15" font-weight="700" fill="#0f172a">③ 서비스 식별</text>
+    <text x="650" y="130" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">-sV -sC -oA</text>
+
+    <rect x="760" y="70" width="180" height="90" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="850" y="102" font-size="15" font-weight="700" fill="#0f172a">④ 웹 정찰</text>
+    <text x="850" y="130" font-size="12" fill="#334155">헤더 · robots · 경로 탐색</text>
+
+    <!-- Row 2 -->
+    <rect x="160" y="200" width="180" height="100" rx="10" fill="#eff6ff" stroke="#326ce5"/>
+    <text x="250" y="232" font-size="13" font-weight="700" fill="#1e3a8a">ARP 요청 폭주</text>
+    <text x="250" y="256" font-size="12" fill="#1e40af">대역 전체를 순서대로</text>
+    <text x="250" y="278" font-size="12" fill="#1e40af">tcpdump arp · NIDS</text>
+
+    <rect x="360" y="200" width="180" height="100" rx="10" fill="#eff6ff" stroke="#326ce5"/>
+    <text x="450" y="232" font-size="13" font-weight="700" fill="#1e3a8a">1 출발지 → N 포트 SYN</text>
+    <text x="450" y="256" font-size="12" fill="#1e40af">방화벽 drop 로그</text>
+    <text x="450" y="278" font-size="12" fill="#1e40af">Suricata 임계값 규칙</text>
+
+    <rect x="560" y="200" width="180" height="100" rx="10" fill="#eff6ff" stroke="#326ce5"/>
+    <text x="650" y="232" font-size="13" font-weight="700" fill="#1e3a8a">배너 요청 · NSE UA</text>
+    <text x="650" y="256" font-size="12" fill="#1e40af">웹 접근 로그에 기록</text>
+    <text x="650" y="278" font-size="12" fill="#1e40af">ET SCAN 계열 규칙</text>
+
+    <rect x="760" y="200" width="180" height="100" rx="10" fill="#eff6ff" stroke="#326ce5"/>
+    <text x="850" y="232" font-size="13" font-weight="700" fill="#1e3a8a">짧은 시간 404 폭주</text>
+    <text x="850" y="256" font-size="12" fill="#1e40af">규칙적인 경로 순서</text>
+    <text x="850" y="278" font-size="12" fill="#1e40af">도구 기본 User-Agent</text>
+
+    <!-- Row 3 -->
+    <rect x="160" y="340" width="180" height="100" rx="10" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="250" y="372" font-size="13" font-weight="700" fill="#14532d">망 분리</text>
+    <text x="250" y="396" font-size="12" fill="#166534">VLAN (Day 23)</text>
+    <text x="250" y="418" font-size="12" fill="#166534">NetworkPolicy (Day 70)</text>
+
+    <rect x="360" y="340" width="180" height="100" rx="10" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="450" y="372" font-size="13" font-weight="700" fill="#14532d">서비스 끄기</text>
+    <text x="450" y="396" font-size="12" fill="#166534">nftables 출발지 제한</text>
+    <text x="450" y="418" font-size="12" fill="#166534">(Day 67 · H01)</text>
+
+    <rect x="560" y="340" width="180" height="100" rx="10" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="650" y="372" font-size="13" font-weight="700" fill="#14532d">패치 우선</text>
+    <text x="650" y="396" font-size="12" fill="#166534">배너 최소화는 보조</text>
+    <text x="650" y="418" font-size="12" fill="#166534">ServerTokens Prod</text>
+
+    <rect x="760" y="340" width="180" height="100" rx="10" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="850" y="372" font-size="13" font-weight="700" fill="#14532d">웹 루트 정리</text>
+    <text x="850" y="396" font-size="12" fill="#166534">Options -Indexes</text>
+    <text x="850" y="418" font-size="12" fill="#166534">출발지별 속도 제한</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2">
+    <line x1="340" y1="115" x2="356" y2="115" marker-end="url(#arrow)"/>
+    <line x1="540" y1="115" x2="556" y2="115" marker-end="url(#arrow)"/>
+    <line x1="740" y1="115" x2="756" y2="115" marker-end="url(#arrow)"/>
+    <line x1="250" y1="160" x2="250" y2="196" marker-end="url(#arrow)"/>
+    <line x1="450" y1="160" x2="450" y2="196" marker-end="url(#arrow)"/>
+    <line x1="650" y1="160" x2="650" y2="196" marker-end="url(#arrow)"/>
+    <line x1="850" y1="160" x2="850" y2="196" marker-end="url(#arrow)"/>
+    <line x1="250" y1="300" x2="250" y2="336" marker-end="url(#arrow)"/>
+    <line x1="450" y1="300" x2="450" y2="336" marker-end="url(#arrow)"/>
+    <line x1="650" y1="300" x2="650" y2="336" marker-end="url(#arrow)"/>
+    <line x1="850" y1="300" x2="850" y2="336" marker-end="url(#arrow)"/>
+  </g>
+
+  <rect x="20" y="460" width="920" height="42" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-dasharray="6 4"/>
+  <text x="480" y="487" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">대상은 hacklab 10.10.10.0/24 안의 IP뿐 — in_scope 가드 통과 후 실행 · 탐지 회피 옵션 사용 안 함</text>
+</svg>

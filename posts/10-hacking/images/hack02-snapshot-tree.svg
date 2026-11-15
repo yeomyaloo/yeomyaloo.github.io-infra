@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">스냅샷 운영 — 언제든 깨끗한 처음으로</text>
+
+  <!-- restore curve -->
+  <path d="M 860 140 C 760 90, 360 90, 270 136" fill="none" stroke="#15803d" stroke-width="2.5" stroke-dasharray="8 5" marker-end="url(#arrowGreen)"/>
+  <text x="565" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#15803d">문제가 생기면 restore (VM 꺼진 상태) → 00-clean</text>
+
+  <!-- timeline -->
+  <line x1="100" y1="160" x2="846" y2="160" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <g>
+    <circle cx="100" cy="160" r="14" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <circle cx="260" cy="160" r="16" fill="#86efac" stroke="#15803d" stroke-width="2.5"/>
+    <circle cx="420" cy="160" r="14" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+    <circle cx="580" cy="160" r="14" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+    <circle cx="740" cy="160" r="14" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+    <circle cx="870" cy="160" r="12" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="100" y="198" fill="#334155" font-weight="700">설치 · 업데이트</text>
+    <text x="100" y="218" fill="#64748b">(업데이트 모드)</text>
+
+    <text x="260" y="198" fill="#14532d" font-weight="700" font-family="Consolas,'D2Coding',monospace">00-clean</text>
+    <text x="260" y="218" fill="#166534">실습 전 기준점</text>
+
+    <text x="420" y="198" fill="#3730a3" font-weight="700" font-family="Consolas,'D2Coding',monospace">day76-before</text>
+    <text x="420" y="218" fill="#4338ca">그 Day 실습 직전</text>
+
+    <text x="580" y="198" fill="#3730a3" font-weight="700" font-family="Consolas,'D2Coding',monospace">day79-before</text>
+    <text x="580" y="218" fill="#4338ca">점검 전</text>
+
+    <text x="740" y="198" fill="#92400e" font-weight="700" font-family="Consolas,'D2Coding',monospace">day79-after</text>
+    <text x="740" y="218" fill="#92400e">조치 후 — 비교용</text>
+
+    <text x="870" y="198" fill="#b91c1c" font-weight="700">현재</text>
+    <text x="870" y="218" fill="#b91c1c">설정 꼬임</text>
+  </g>
+
+  <!-- Bottom boxes -->
+  <rect x="30" y="250" width="500" height="140" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="50" y="278" font-size="15" font-weight="700" fill="#334155">VM (Kali · docker-targets · Metasploitable 2)</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">
+    <text x="50" y="308">VBoxManage snapshot kali take 00-clean</text>
+    <text x="50" y="332">VBoxManage snapshot kali list</text>
+    <text x="50" y="356">VBoxManage snapshot kali restore 00-clean</text>
+  </g>
+  <text x="50" y="378" font-size="12" fill="#64748b">오래된 스냅샷은 delete로 정리 (디스크 사용량)</text>
+
+  <rect x="550" y="250" width="380" height="140" rx="10" fill="#eff6ff" stroke="#2496ed"/>
+  <text x="570" y="278" font-size="15" font-weight="700" fill="#1e3a8a">컨테이너 (DVWA · Juice Shop)</text>
+  <g font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">
+    <text x="570" y="308">docker compose down -v</text>
+    <text x="570" y="332">docker compose up -d</text>
+  </g>
+  <text x="570" y="358" font-size="13" fill="#1e40af">스냅샷 대신 "다시 만들기"</text>
+  <text x="570" y="378" font-size="12" fill="#64748b">-v: DVWA DB 볼륨까지 삭제 → 초기 상태</text>
+</svg>

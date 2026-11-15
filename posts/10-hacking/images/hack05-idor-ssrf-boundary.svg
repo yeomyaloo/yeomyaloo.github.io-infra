@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">IDOR와 SSRF — 둘 다 "접근 제어 실패"(A01)</text>
+
+  <!-- ============ IDOR panel ============ -->
+  <rect x="20" y="58" width="450" height="380" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="245" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">IDOR — 객체 단위 인가 누락</text>
+
+  <rect x="36" y="120" width="104" height="64" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="88" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">사용자 B</text>
+  <text x="88" y="170" text-anchor="middle" font-size="12" fill="#64748b">로그인 상태</text>
+
+  <rect x="180" y="114" width="118" height="76" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="239" y="142" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">① 인증</text>
+  <text x="239" y="164" text-anchor="middle" font-size="12" fill="#14532d">로그인했나?</text>
+  <text x="239" y="181" text-anchor="middle" font-size="12" fill="#14532d" font-weight="700">통과</text>
+
+  <rect x="330" y="114" width="124" height="76" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="392" y="142" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">② 객체 인가</text>
+  <text x="392" y="164" text-anchor="middle" font-size="12" fill="#7f1d1d">B의 주문인가?</text>
+  <text x="392" y="181" text-anchor="middle" font-size="12" fill="#7f1d1d" font-weight="700">빠지면 IDOR</text>
+
+  <text x="88" y="110" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">GET /orders/1001</text>
+
+  <rect x="150" y="248" width="300" height="110" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="300" y="272" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">orders 테이블</text>
+  <rect x="166" y="284" width="268" height="30" rx="5" fill="#fca5a5"/>
+  <text x="178" y="304" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">1001  owner = A</text>
+  <text x="422" y="304" text-anchor="end" font-size="12" fill="#7f1d1d" font-weight="700">남의 것 → 404</text>
+  <rect x="166" y="320" width="268" height="30" rx="5" fill="#86efac"/>
+  <text x="178" y="340" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">1002  owner = B</text>
+  <text x="422" y="340" text-anchor="end" font-size="12" fill="#14532d" font-weight="700">내 것 → 200</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="140" y1="152" x2="176" y2="152" marker-end="url(#arrow)"/>
+    <line x1="298" y1="152" x2="326" y2="152" marker-end="url(#arrow)"/>
+    <line x1="392" y1="190" x2="392" y2="244" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="245" y="392" text-anchor="middle" font-size="13" fill="#14532d" font-weight="700">조치: WHERE id = :id AND owner_id = :현재사용자</text>
+  <text x="245" y="416" text-anchor="middle" font-size="12" fill="#334155">중앙 authorize() · 기본 거부 · authz_denied 로그</text>
+
+  <!-- ============ SSRF panel ============ -->
+  <rect x="490" y="58" width="450" height="380" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="715" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">SSRF — 서버를 시켜 내부로</text>
+
+  <rect x="506" y="120" width="100" height="64" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="556" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">사용자</text>
+  <text x="556" y="170" text-anchor="middle" font-size="12" fill="#64748b">(인터넷)</text>
+
+  <!-- internal network boundary -->
+  <rect x="636" y="104" width="290" height="320" rx="10" fill="#fff7ed" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="916" y="122" text-anchor="end" font-size="12" font-weight="700" fill="#92400e">내부망 (방화벽 안쪽)</text>
+
+  <rect x="652" y="132" width="150" height="64" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="727" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">앱 서버</text>
+  <text x="727" y="180" text-anchor="middle" font-size="12" fill="#312e81">URL 미리보기 기능</text>
+
+  <text x="556" y="204" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">GET /preview?url=…</text>
+
+  <g font-size="12">
+    <rect x="652" y="232" width="258" height="50" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="664" y="252" fill="#7f1d1d" font-weight="700" font-family="Consolas,'D2Coding',monospace">169.254.169.254</text>
+    <text x="664" y="272" fill="#7f1d1d">메타데이터 → IAM 임시 자격 증명</text>
+
+    <rect x="652" y="290" width="258" height="50" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="664" y="310" fill="#7f1d1d" font-weight="700" font-family="Consolas,'D2Coding',monospace">10.0.0.0/8 · ClusterIP</text>
+    <text x="664" y="330" fill="#7f1d1d">내부 전용 서비스·관리 화면</text>
+
+    <rect x="652" y="348" width="258" height="50" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="664" y="368" fill="#7f1d1d" font-weight="700" font-family="Consolas,'D2Coding',monospace">127.0.0.1:관리 포트</text>
+    <text x="664" y="388" fill="#7f1d1d">인증 없이 열어 둔 API</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="606" y1="152" x2="648" y2="160" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#b91c1c" stroke-width="2" fill="none">
+    <line x1="727" y1="196" x2="727" y2="228" marker-end="url(#arrowRed)"/>
+  </g>
+  <text x="737" y="218" font-size="12" fill="#b91c1c" font-weight="700">서버가 대신 요청</text>
+
+  <!-- defense list -->
+  <g font-size="13">
+    <rect x="490" y="452" width="450" height="76" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="506" y="474" fill="#14532d"><tspan font-weight="700">① 코드</tspan> 호스트 허용 목록 · 해석 IP 검사 · 리다이렉트 금지</text>
+    <text x="506" y="496" fill="#14532d"><tspan font-weight="700">② 네트워크</tspan> egress NetworkPolicy로 사설·링크 로컬 차단</text>
+    <text x="506" y="518" fill="#14532d"><tspan font-weight="700">③ 클라우드</tspan> IMDSv2 강제 (PUT 토큰 · hop limit 1) → 해킹 09</text>
+
+    <rect x="20" y="452" width="450" height="76" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="36" y="474" fill="#334155"><tspan font-weight="700">탐지</tspan></text>
+    <text x="36" y="496" fill="#334155">IDOR: 사용자별 authz_denied 급증, 연속 ID 조회</text>
+    <text x="36" y="518" fill="#334155">SSRF: 메타데이터 연결(Falco) · ssrf_blocked 로그</text>
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">작업 예약 3가지 — at / cron / systemd timer</text>
+
+  <!-- at -->
+  <rect x="20" y="60" width="290" height="400" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="20" y="60" width="290" height="46" rx="12" fill="#e2e8f0"/>
+  <text x="165" y="90" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">at — 한 번만</text>
+  <text x="40" y="134" font-size="14" fill="#334155">데몬: <tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">atd</tspan></text>
+  <text x="40" y="160" font-size="14" fill="#334155">큐: <tspan font-family="Consolas,'D2Coding',monospace">/var/spool/at/</tspan></text>
+  <rect x="40" y="178" width="250" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <text x="52" y="200">echo 'cmd' |</text>
+    <text x="52" y="219">  at now + 5 minutes</text>
+    <text x="52" y="238">atq / atrm 2</text>
+  </g>
+  <!-- timeline at -->
+  <line x1="45" y1="300" x2="285" y2="300" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="160" cy="300" r="9" fill="#ee0000"/>
+  <text x="160" y="330" text-anchor="middle" font-size="13" fill="#334155">지정 시각에 1회 실행</text>
+  <text x="270" y="290" text-anchor="end" font-size="12" fill="#64748b">시간</text>
+  <text x="40" y="380" font-size="13" fill="#334155">• 실행 후 큐에서 사라짐</text>
+  <text x="40" y="404" font-size="13" fill="#334155">• 접근 제어: at.allow / at.deny</text>
+  <text x="40" y="428" font-size="13" fill="#334155">• 패키지: at</text>
+
+  <!-- cron -->
+  <rect x="335" y="60" width="290" height="400" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="335" y="60" width="290" height="46" rx="12" fill="#e2e8f0"/>
+  <text x="480" y="90" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">cron — 주기 실행</text>
+  <text x="355" y="134" font-size="14" fill="#334155">데몬: <tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">crond</tspan></text>
+  <text x="355" y="160" font-size="14" fill="#334155">위치: 사용자 crontab, /etc/cron.d/</text>
+  <rect x="355" y="178" width="250" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <text x="367" y="200">crontab -e -u dev1</text>
+    <text x="367" y="219"># /etc/cron.d/ 파일:</text>
+    <text x="367" y="238">0 3 * * 0 root cmd</text>
+  </g>
+  <line x1="360" y1="300" x2="600" y2="300" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="395" cy="300" r="8" fill="#ee0000"/>
+  <circle cx="455" cy="300" r="8" fill="#ee0000"/>
+  <circle cx="515" cy="300" r="8" fill="#fca5a5" stroke="#dc2626" stroke-dasharray="3 2"/>
+  <circle cx="575" cy="300" r="8" fill="#ee0000"/>
+  <text x="515" y="330" text-anchor="middle" font-size="13" fill="#dc2626">꺼져 있던 시각은 건너뜀</text>
+  <text x="355" y="380" font-size="13" fill="#334155">• 사용자 crontab: 필드 5개 + 명령</text>
+  <text x="355" y="404" font-size="13" fill="#334155">• /etc/cron.d: 5개 + <tspan font-weight="700">사용자</tspan> + 명령</text>
+  <text x="355" y="428" font-size="13" fill="#334155">• 패키지: cronie</text>
+
+  <!-- timer -->
+  <rect x="650" y="60" width="290" height="400" rx="12" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+  <rect x="650" y="60" width="290" height="46" rx="12" fill="#ee0000"/>
+  <text x="795" y="90" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">systemd timer</text>
+  <text x="670" y="134" font-size="14" fill="#334155">관리: <tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">systemd</tspan> 자체</text>
+  <text x="670" y="160" font-size="14" fill="#334155">위치: /etc/systemd/system/</text>
+  <rect x="670" y="178" width="115" height="44" rx="8" fill="#ffffff" stroke="#ee0000"/>
+  <text x="727" y="205" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">X.timer</text>
+  <rect x="805" y="178" width="115" height="44" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="862" y="205" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">X.service</text>
+  <line x1="785" y1="200" x2="801" y2="200" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="795" y="242" text-anchor="middle" font-size="12" fill="#64748b">타이머가 같은 이름의 서비스를 실행</text>
+  <line x1="675" y1="300" x2="915" y2="300" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="710" cy="300" r="8" fill="#ee0000"/>
+  <rect x="745" y="288" width="70" height="24" rx="4" fill="#e2e8f0"/>
+  <text x="780" y="305" text-anchor="middle" font-size="11" fill="#334155">전원 꺼짐</text>
+  <circle cx="840" cy="300" r="8" fill="#16a34a"/>
+  <circle cx="890" cy="300" r="8" fill="#ee0000"/>
+  <text x="840" y="330" text-anchor="middle" font-size="13" fill="#16a34a">부팅 후 1회 보충</text>
+  <text x="840" y="348" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#16a34a">Persistent=true</text>
+  <text x="670" y="380" font-size="13" fill="#334155">• enable 대상은 <tspan font-weight="700">.timer</tspan></text>
+  <text x="670" y="404" font-size="13" fill="#334155">• 검증: systemctl list-timers</text>
+  <text x="670" y="428" font-size="13" fill="#334155">• 문법: systemd-analyze calendar</text>
+</svg>

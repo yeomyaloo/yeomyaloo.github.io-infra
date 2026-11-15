@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">허가에서 보고까지 — 모의해킹 수행 흐름</text>
+
+  <!-- Steps -->
+  <g text-anchor="middle">
+    <rect x="30" y="70" width="156" height="110" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="108" y="102" font-size="16" font-weight="700" fill="#14532d">① 사전 합의</text>
+    <text x="108" y="130" font-size="13" fill="#14532d">서면 허가서(RoE)</text>
+    <text x="108" y="152" font-size="13" fill="#14532d">범위 · 기간 · 금지</text>
+
+    <rect x="216" y="70" width="156" height="110" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="294" y="102" font-size="16" font-weight="700" fill="#0f172a">② 수행</text>
+    <text x="294" y="130" font-size="13" fill="#334155">범위 안에서만</text>
+    <text x="294" y="152" font-size="13" fill="#334155">모든 행위 기록</text>
+
+    <rect x="402" y="70" width="156" height="110" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="480" y="102" font-size="16" font-weight="700" fill="#0f172a">③ 보고</text>
+    <text x="480" y="130" font-size="13" fill="#334155">재현 절차 · CVSS</text>
+    <text x="480" y="152" font-size="13" fill="#334155">조치 권고</text>
+
+    <rect x="588" y="70" width="156" height="110" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="666" y="102" font-size="16" font-weight="700" fill="#0f172a">④ 재점검</text>
+    <text x="666" y="130" font-size="13" fill="#334155">조치가 효과 있나</text>
+    <text x="666" y="152" font-size="13" fill="#334155">다시 측정 · 비교</text>
+
+    <rect x="774" y="70" width="156" height="110" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="852" y="102" font-size="16" font-weight="700" fill="#0f172a">⑤ 자료 파기</text>
+    <text x="852" y="130" font-size="13" fill="#334155">수집 자료 · 계정</text>
+    <text x="852" y="152" font-size="13" fill="#334155">합의한 기한에 폐기</text>
+  </g>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="186" y1="125" x2="212" y2="125" marker-end="url(#arrow)"/>
+    <line x1="372" y1="125" x2="398" y2="125" marker-end="url(#arrow)"/>
+    <line x1="558" y1="125" x2="584" y2="125" marker-end="url(#arrow)"/>
+    <line x1="744" y1="125" x2="770" y2="125" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Exceptions -->
+  <g stroke-width="2" fill="none">
+    <line x1="270" y1="182" x2="160" y2="246" stroke="#f59e0b" marker-end="url(#arrow)"/>
+    <line x1="300" y1="182" x2="460" y2="246" stroke="#b91c1c" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+    <line x1="330" y1="182" x2="790" y2="246" stroke="#f59e0b" marker-end="url(#arrow)"/>
+  </g>
+
+  <g text-anchor="middle">
+    <rect x="30" y="250" width="250" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="155" y="280" font-size="15" font-weight="700" fill="#78350f">범위 밖 자산 발견</text>
+    <text x="155" y="306" font-size="13" fill="#78350f">접근하지 않고</text>
+    <text x="155" y="328" font-size="13" fill="#78350f">발견 사실만 보고</text>
+
+    <rect x="300" y="250" width="360" height="100" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="480" y="280" font-size="15" font-weight="700" fill="#7f1d1d">비상 중단 조건 발생</text>
+    <text x="480" y="306" font-size="13" fill="#7f1d1d">서비스 장애 징후 · 범위 밖 접근 · 실제 침해 흔적</text>
+    <text x="480" y="328" font-size="13" fill="#7f1d1d">→ 즉시 전체 중지 → 연락 → 서면 재개 승인 대기</text>
+
+    <rect x="680" y="250" width="250" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="805" y="280" font-size="15" font-weight="700" fill="#78350f">개인정보 발견</text>
+    <text x="805" y="306" font-size="13" fill="#78350f">열람 중단 · 마스킹 증거만</text>
+    <text x="805" y="328" font-size="13" fill="#78350f">즉시 담당자 통보</text>
+  </g>
+
+  <text x="480" y="392" text-anchor="middle" font-size="13" fill="#64748b">② 수행 중 예외 상황은 RoE에 미리 적어 둔 절차대로 — 판단을 미루지 않는다</text>
+</svg>

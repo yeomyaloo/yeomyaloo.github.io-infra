@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">표준 스트림과 리다이렉션</text>
+
+  <!-- top: basic model -->
+  <rect x="40" y="70" width="160" height="56" rx="10" fill="#e2e8f0"/>
+  <text x="120" y="96" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">키보드 / 파일</text>
+  <text x="120" y="116" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">&lt; input.txt</text>
+
+  <rect x="340" y="62" width="200" height="140" rx="12" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+  <text x="440" y="122" text-anchor="middle" font-size="18" font-weight="700" fill="#991b1b">프로세스</text>
+  <text x="440" y="146" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" fill="#334155">find /etc …</text>
+
+  <rect x="700" y="62" width="220" height="56" rx="10" fill="#86efac"/>
+  <text x="810" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">화면 또는 파일</text>
+  <text x="810" y="108" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#14532d">&gt; out.txt   &gt;&gt; out.txt</text>
+
+  <rect x="700" y="146" width="220" height="56" rx="10" fill="#fca5a5"/>
+  <text x="810" y="172" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">화면 또는 파일</text>
+  <text x="810" y="192" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#7f1d1d">2&gt; err.txt   2&gt;/dev/null</text>
+
+  <line x1="200" y1="98" x2="336" y2="98" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="268" y="88" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">0 stdin</text>
+  <line x1="540" y1="90" x2="696" y2="90" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrowG)"/>
+  <text x="618" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#16a34a">1 stdout</text>
+  <line x1="540" y1="174" x2="696" y2="174" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowR)"/>
+  <text x="618" y="164" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">2 stderr</text>
+
+  <!-- bottom: pipe -->
+  <text x="40" y="250" font-size="16" font-weight="700" fill="#0f172a">파이프: 앞 명령의 stdout만 다음 명령의 stdin으로</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14" text-anchor="middle">
+    <rect x="40" y="268" width="180" height="46" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="130" y="296" fill="#0f172a">grep -v '^#'</text>
+    <rect x="290" y="268" width="180" height="46" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="380" y="296" fill="#0f172a">cut -d: -f1</text>
+    <rect x="540" y="268" width="140" height="46" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="610" y="296" fill="#0f172a">sort</text>
+    <rect x="750" y="268" width="170" height="46" rx="8" fill="#86efac"/>
+    <text x="835" y="296" fill="#14532d">&gt; result.txt</text>
+  </g>
+  <g stroke="#16a34a" stroke-width="2.5">
+    <line x1="220" y1="291" x2="286" y2="291" marker-end="url(#arrowG)"/>
+    <line x1="470" y1="291" x2="536" y2="291" marker-end="url(#arrowG)"/>
+    <line x1="680" y1="291" x2="746" y2="291" marker-end="url(#arrowG)"/>
+  </g>
+  <line x1="130" y1="314" x2="130" y2="350" stroke="#dc2626" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowR)"/>
+  <text x="142" y="344" font-size="12" fill="#dc2626">stderr는 파이프를 타지 않고 화면으로</text>
+
+  <!-- order box -->
+  <rect x="40" y="378" width="880" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="60" y="404" font-size="15" font-weight="700" fill="#92400e">⚠ 2&gt;&amp;1 은 순서가 중요 — 왼쪽부터 처리</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14">
+    <text x="60" y="432" fill="#14532d">cmd &gt; all.txt 2&gt;&amp;1</text>
+    <text x="60" y="458" fill="#7f1d1d">cmd 2&gt;&amp;1 &gt; all.txt</text>
+  </g>
+  <g font-size="13">
+    <text x="300" y="432" fill="#14532d">1번을 파일로 → 2번을 "지금의 1번(파일)"으로 = 둘 다 파일 ✔ (= cmd &amp;&gt; all.txt)</text>
+    <text x="300" y="458" fill="#7f1d1d">2번을 "지금의 1번(화면)"으로 → 1번만 파일로 = 에러는 화면에 ✘</text>
+  </g>
+</svg>

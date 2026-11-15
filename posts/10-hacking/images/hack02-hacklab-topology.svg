@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">hacklab 격리 실습장 네트워크 구성</text>
+
+  <!-- Host -->
+  <rect x="20" y="50" width="920" height="420" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="40" y="76" font-size="15" font-weight="700" fill="#334155">실습 호스트 PC — VirtualBox 7.2</text>
+
+  <!-- NAT -->
+  <rect x="60" y="90" width="610" height="40" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="365" y="115" text-anchor="middle" font-size="14" fill="#78350f">VirtualBox NAT — 업데이트 모드에서만 케이블 연결</text>
+
+  <g stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4">
+    <line x1="175" y1="130" x2="175" y2="170"/>
+    <line x1="500" y1="130" x2="500" y2="170"/>
+  </g>
+  <g font-size="11" fill="#92400e">
+    <text x="183" y="155">NIC1</text>
+    <text x="508" y="155">NIC1</text>
+  </g>
+
+  <!-- Kali -->
+  <rect x="60" y="170" width="230" height="130" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="196" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Kali Linux (VM)</text>
+  <text x="175" y="221" text-anchor="middle" font-size="15" font-weight="700" fill="#15803d" font-family="Consolas,'D2Coding',monospace">10.10.10.5</text>
+  <text x="175" y="244" text-anchor="middle" font-size="12" fill="#475569">nmap · gobuster · ffuf · Burp</text>
+  <text x="175" y="264" text-anchor="middle" font-size="12" fill="#475569">범위 가드 in_scope</text>
+  <text x="175" y="286" text-anchor="middle" font-size="11" fill="#64748b">kali-linux-2026.3 (공식 이미지)</text>
+
+  <!-- docker-targets -->
+  <rect x="330" y="170" width="340" height="130" rx="10" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="500" y="192" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">docker-targets (Ubuntu 24.04 VM)</text>
+  <text x="500" y="210" text-anchor="middle" font-size="12" fill="#1e40af">관리 IP 10.10.10.10 · Docker Engine</text>
+  <g text-anchor="middle">
+    <rect x="342" y="220" width="100" height="68" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="392" y="246" font-size="13" font-weight="700" fill="#14532d">DVWA</text>
+    <text x="392" y="270" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">.20 :80</text>
+
+    <rect x="450" y="220" width="110" height="68" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="505" y="246" font-size="13" font-weight="700" fill="#14532d">Juice Shop</text>
+    <text x="505" y="270" font-size="12" fill="#14532d" font-family="Consolas,'D2Coding',monospace">.21 :3000</text>
+
+    <rect x="568" y="220" width="92" height="68" rx="6" fill="#ffffff" stroke="#64748b" stroke-dasharray="5 3"/>
+    <text x="614" y="246" font-size="12" font-weight="700" fill="#334155">mariadb</text>
+    <text x="614" y="270" font-size="11" fill="#475569">backend 전용</text>
+  </g>
+
+  <!-- Metasploitable -->
+  <rect x="710" y="170" width="200" height="130" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="810" y="196" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">Metasploitable 2 (VM)</text>
+  <text x="810" y="221" text-anchor="middle" font-size="15" font-weight="700" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">10.10.10.30</text>
+  <text x="810" y="246" text-anchor="middle" font-size="12" fill="#7f1d1d">의도적 취약 서비스 다수</text>
+  <text x="810" y="272" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">NIC 1개 — NAT 없음</text>
+
+  <!-- Links to hacklab -->
+  <g stroke="#15803d" stroke-width="3">
+    <line x1="175" y1="300" x2="175" y2="360"/>
+    <line x1="392" y1="288" x2="392" y2="360"/>
+    <line x1="505" y1="288" x2="505" y2="360"/>
+    <line x1="810" y1="300" x2="810" y2="360"/>
+  </g>
+  <g font-size="11" fill="#14532d">
+    <text x="183" y="336">NIC2 · eth1</text>
+    <text x="518" y="336">ipvlan L2 · parent enp0s8</text>
+    <text x="818" y="336">NIC1 · eth0</text>
+  </g>
+
+  <!-- hacklab bar -->
+  <rect x="60" y="360" width="850" height="44" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="485" y="388" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">Internal Network  hacklab  ·  10.10.10.0/24  ·  게이트웨이(라우터) 없음</text>
+
+  <text x="480" y="444" text-anchor="middle" font-size="13" fill="#334155">ports: 미사용 · 실습 모드에서는 NIC1 케이블 분리 → 실습망에서 밖으로 나가는 경로 0개</text>
+
+  <!-- Outside -->
+  <rect x="20" y="490" width="920" height="50" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="480" y="521" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">집 LAN (192.168.0.0/24) · 공유기 · 인터넷 — hacklab과 연결 없음 (Bridged 금지)</text>
+</svg>

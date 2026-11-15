@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">IAM 권한 상승 경로와 차단 지점</text>
+
+  <!-- User -->
+  <rect x="30" y="190" width="180" height="90" rx="12" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="120" y="226" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">저권한 신원</text>
+  <text x="120" y="252" text-anchor="middle" font-size="13" fill="#64748b">유출된 키 · 앱 역할</text>
+
+  <!-- Paths -->
+  <rect x="275" y="70" width="400" height="90" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="290" y="96" font-size="14" font-weight="700" fill="#7f1d1d">A. 역할 넘기기</text>
+  <text x="290" y="120" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">iam:PassRole + ec2:RunInstances</text>
+  <text x="290" y="144" font-size="13" fill="#334155">→ 강한 역할로 실행되는 EC2 · Lambda</text>
+
+  <rect x="275" y="190" width="400" height="90" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="290" y="216" font-size="14" font-weight="700" fill="#7f1d1d">B. 정책 버전 바꾸기</text>
+  <text x="290" y="240" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">iam:SetDefaultPolicyVersion</text>
+  <text x="290" y="264" font-size="13" fill="#334155">→ 예전(넓은) 정책 버전으로 되돌리기</text>
+
+  <rect x="275" y="310" width="400" height="90" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="290" y="336" font-size="14" font-weight="700" fill="#7f1d1d">C. 자기에게 정책 붙이기</text>
+  <text x="290" y="360" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">iam:AttachUserPolicy · PutUserPolicy</text>
+  <text x="290" y="384" font-size="13" fill="#334155">→ 자기 자신에게 관리자 정책</text>
+
+  <!-- Admin -->
+  <rect x="760" y="190" width="170" height="90" rx="12" fill="#b91c1c"/>
+  <text x="845" y="226" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">관리자 수준</text>
+  <text x="845" y="252" text-anchor="middle" font-size="13" fill="#fee2e2">계정 전체</text>
+
+  <!-- Arrows -->
+  <g stroke="#b91c1c" stroke-width="2" fill="none">
+    <line x1="210" y1="225" x2="271" y2="118" marker-end="url(#arrow)"/>
+    <line x1="210" y1="235" x2="271" y2="235" marker-end="url(#arrow)"/>
+    <line x1="210" y1="245" x2="271" y2="352" marker-end="url(#arrow)"/>
+    <line x1="675" y1="115" x2="756" y2="222" marker-end="url(#arrow)"/>
+    <line x1="675" y1="235" x2="756" y2="235" marker-end="url(#arrow)"/>
+    <line x1="675" y1="355" x2="756" y2="248" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Defense box -->
+  <rect x="30" y="424" width="900" height="84" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="48" y="452" font-size="14" font-weight="700" fill="#14532d">차단</text>
+  <text x="100" y="452" font-size="13" fill="#334155">A: PassRole을 역할 ARN + iam:PassedToService로 제한  |  B·C: IAM 쓰기 권한은 관리자 역할만, 안 쓰는 버전 삭제</text>
+  <text x="48" y="482" font-size="14" font-weight="700" fill="#14532d">상한</text>
+  <text x="100" y="482" font-size="13" fill="#334155">Permissions boundary · SCP   |   사전 검사: Access Analyzer   |   탐지: CloudTrail 이벤트 → 알림 · GuardDuty</text>
+</svg>

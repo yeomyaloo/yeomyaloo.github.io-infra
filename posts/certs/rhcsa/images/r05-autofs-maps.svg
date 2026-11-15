@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">autofs — 마스터 항목 → 맵 파일 → NFS export</text>
+
+  <!-- column frames -->
+  <rect x="20" y="56" width="610" height="350" rx="12" fill="#fff5f5" stroke="#ee0000" stroke-width="2"/>
+  <text x="40" y="82" font-size="16" font-weight="700" fill="#7f1d1d">servera (192.168.56.11) — autofs 클라이언트</text>
+  <rect x="680" y="56" width="260" height="350" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="700" y="82" font-size="16" font-weight="700" fill="#1e3a8a">serverb (.12) — NFS</text>
+
+  <g font-size="12" fill="#64748b">
+    <text x="40" y="106">/etc/auto.master.d/*.autofs</text>
+    <text x="340" y="106">맵 파일 (키  옵션  위치)</text>
+    <text x="700" y="106">/etc/exports.d/r05.exports</text>
+  </g>
+
+  <!-- Row: direct -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13">
+    <rect x="40" y="118" width="270" height="70" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="52" y="140" font-size="12" fill="#64748b">direct.autofs</text>
+    <text x="52" y="168" fill="#0f172a">/-  /etc/auto.direct</text>
+
+    <rect x="330" y="118" width="280" height="70" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="342" y="140" font-size="12" fill="#64748b">/etc/auto.direct</text>
+    <text x="342" y="168" font-size="12" fill="#0f172a">/shares/docs -ro,sync serverb:…/docs</text>
+
+    <rect x="700" y="118" width="220" height="70" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="712" y="146" fill="#1e3a8a">/exports/docs</text>
+    <text x="712" y="170" font-size="12" fill="#64748b">ro</text>
+  </g>
+
+  <!-- Row: indirect -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13">
+    <rect x="40" y="208" width="270" height="70" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="52" y="230" font-size="12" fill="#64748b">remote.autofs</text>
+    <text x="52" y="258" fill="#0f172a">/remote  /etc/auto.remote</text>
+
+    <rect x="330" y="208" width="280" height="70" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="342" y="230" font-size="12" fill="#64748b">/etc/auto.remote</text>
+    <text x="342" y="258" font-size="12" fill="#0f172a">share -rw,sync serverb:…/share</text>
+
+    <rect x="700" y="208" width="220" height="70" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="712" y="236" fill="#1e3a8a">/exports/share</text>
+    <text x="712" y="260" font-size="12" fill="#64748b">rw, 1777</text>
+  </g>
+
+  <!-- Row: wildcard -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13">
+    <rect x="40" y="298" width="270" height="90" rx="8" fill="#ffffff" stroke="#ee0000" stroke-width="2"/>
+    <text x="52" y="320" font-size="12" fill="#64748b">guests.autofs</text>
+    <text x="52" y="346" fill="#0f172a">/home/guests</text>
+    <text x="52" y="368" fill="#0f172a">  /etc/auto.guests</text>
+
+    <rect x="330" y="298" width="280" height="90" rx="8" fill="#ffffff" stroke="#ee0000" stroke-width="2"/>
+    <text x="342" y="320" font-size="12" fill="#64748b">/etc/auto.guests</text>
+    <text x="342" y="346" fill="#0f172a">*  -rw,sync</text>
+    <text x="342" y="368" fill="#0f172a">serverb:/exports/home/&amp;</text>
+
+    <rect x="700" y="298" width="220" height="90" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="712" y="324" fill="#1e3a8a">/exports/home/</text>
+    <text x="712" y="348" fill="#1e3a8a">  guest1  (2001)</text>
+    <text x="712" y="370" fill="#1e3a8a">  guest2  (2002)</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="310" y1="153" x2="326" y2="153" marker-end="url(#arrow)"/>
+    <line x1="310" y1="243" x2="326" y2="243" marker-end="url(#arrow)"/>
+    <line x1="310" y1="343" x2="326" y2="343" marker-end="url(#arrow)"/>
+    <line x1="610" y1="153" x2="696" y2="153" marker-end="url(#arrow)"/>
+    <line x1="610" y1="243" x2="696" y2="243" marker-end="url(#arrow)"/>
+    <line x1="610" y1="343" x2="696" y2="343" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="11" font-weight="700" fill="#334155" text-anchor="middle">
+    <text x="657" y="144">direct</text>
+    <text x="657" y="234">indirect</text>
+    <text x="657" y="334">wildcard</text>
+  </g>
+
+  <!-- Bottom: access flow -->
+  <rect x="20" y="426" width="920" height="118" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="40" y="454" font-size="15" font-weight="700" fill="#0f172a">접근하는 순간 마운트 (wildcard 예)</text>
+  <g font-size="13">
+    <rect x="40" y="470" width="220" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="150" y="494" text-anchor="middle" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">cd /home/guests/guest1</text>
+    <text x="150" y="514" text-anchor="middle" fill="#64748b" font-size="12">키 = guest1</text>
+
+    <rect x="300" y="470" width="300" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="450" y="494" text-anchor="middle" fill="#0f172a">* 가 guest1에 맞고 &amp; → guest1</text>
+    <text x="450" y="514" text-anchor="middle" fill="#64748b" font-size="12" font-family="Consolas,'D2Coding',monospace">serverb:/exports/home/guest1</text>
+
+    <rect x="640" y="470" width="280" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="780" y="494" text-anchor="middle" fill="#14532d" font-weight="700">nfs4로 자동 마운트</text>
+    <text x="780" y="514" text-anchor="middle" fill="#14532d" font-size="12">안 쓰면 일정 시간 후 자동 해제</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="260" y1="498" x2="296" y2="498" marker-end="url(#arrow)"/>
+    <line x1="600" y1="498" x2="636" y2="498" marker-end="url(#arrow)"/>
+  </g>
+</svg>

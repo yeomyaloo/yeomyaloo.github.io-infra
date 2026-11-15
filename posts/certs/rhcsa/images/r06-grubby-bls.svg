@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="490" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RHEL 10 부트로더 — grubby와 BLS 엔트리</text>
+
+  <!-- left: tools -->
+  <text x="150" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">관리자가 쓰는 도구</text>
+  <rect x="20" y="86" width="260" height="140" rx="10" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+  <text x="150" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">grubby (커널 인자·기본 커널)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="34" y="140">--update-kernel=ALL</text>
+    <text x="58" y="158">--args="audit=1"</text>
+    <text x="34" y="180">--remove-args="rhgb"</text>
+    <text x="34" y="202">--set-default=/boot/vmlinuz-…</text>
+  </g>
+
+  <rect x="20" y="270" width="260" height="150" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="150" y="296" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">/etc/default/grub (전역)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="34" y="324">GRUB_TIMEOUT=10</text>
+    <text x="34" y="344">GRUB_CMDLINE_LINUX="…"</text>
+  </g>
+  <rect x="34" y="360" width="232" height="46" rx="6" fill="#e2e8f0"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a" text-anchor="middle">
+    <text x="150" y="379">grub2-mkconfig -o</text>
+    <text x="150" y="397">/boot/grub2/grub.cfg</text>
+  </g>
+
+  <!-- middle: files -->
+  <text x="480" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">/boot 안의 파일</text>
+  <rect x="330" y="86" width="300" height="170" rx="10" fill="#ffffff" stroke="#ee0000" stroke-width="2"/>
+  <text x="480" y="110" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#991b1b">/boot/loader/entries/</text>
+  <rect x="345" y="122" width="270" height="56" rx="6" fill="#fde8e8"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="355" y="142">…-6.12.0-A.conf (최신)</text>
+    <text x="355" y="164">options … audit=1</text>
+  </g>
+  <rect x="345" y="186" width="270" height="56" rx="6" fill="#f1f5f9"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="355" y="206">…-6.12.0-B.conf (이전)</text>
+    <text x="355" y="228">options … audit=1</text>
+  </g>
+
+  <rect x="330" y="290" width="300" height="80" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="480" y="318" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#334155">/boot/grub2/grub.cfg</text>
+  <text x="480" y="344" text-anchor="middle" font-size="12" fill="#64748b">메뉴 동작 · BLS 엔트리를 읽어 메뉴 구성</text>
+  <text x="480" y="362" text-anchor="middle" font-size="12" fill="#64748b">(BIOS·UEFI 모두 같은 경로)</text>
+
+  <!-- right: boot -->
+  <text x="810" y="72" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">부팅 결과</text>
+  <rect x="680" y="86" width="260" height="120" rx="10" fill="#0f172a"/>
+  <text x="810" y="112" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">GRUB 메뉴</text>
+  <rect x="696" y="124" width="228" height="26" rx="4" fill="#ee0000"/>
+  <text x="706" y="142" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#ffffff">▶ RHEL (6.12.0-A) 기본</text>
+  <text x="706" y="172" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#cbd5e1">  RHEL (6.12.0-B)</text>
+  <text x="706" y="194" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#cbd5e1">  RHEL (0-rescue)</text>
+
+  <rect x="680" y="290" width="260" height="80" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="810" y="318" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">재부팅 후 검증</text>
+  <text x="810" y="344" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">cat /proc/cmdline</text>
+  <text x="810" y="362" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#14532d">grubby --default-kernel</text>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="280" y1="156" x2="326" y2="156" marker-end="url(#arrow)"/>
+    <line x1="280" y1="383" x2="326" y2="340" marker-end="url(#arrow)"/>
+    <line x1="480" y1="290" x2="480" y2="260" marker-end="url(#arrow)"/>
+    <line x1="630" y1="160" x2="676" y2="150" marker-end="url(#arrow)"/>
+    <line x1="810" y1="206" x2="810" y2="286" marker-end="url(#arrow)"/>
+  </g>
+  <text x="303" y="146" text-anchor="middle" font-size="11" fill="#334155">수정</text>
+  <text x="318" y="392" text-anchor="middle" font-size="11" fill="#334155">생성</text>
+  <text x="490" y="280" font-size="11" fill="#334155">읽음</text>
+
+  <text x="480" y="450" text-anchor="middle" font-size="13" fill="#991b1b">⚠ grub2-mkconfig만으로는 BLS의 options가 바뀌지 않는다 → 커널 인자는 grubby로</text>
+  <text x="480" y="472" text-anchor="middle" font-size="12" fill="#64748b">(--update-bls-cmdline 을 붙이면 GRUB_CMDLINE_LINUX로 BLS options를 덮어씀)</text>
+</svg>

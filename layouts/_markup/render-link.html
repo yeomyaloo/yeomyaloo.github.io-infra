@@ -1,0 +1,21 @@
+{{- /* 글 안의 상대 .md 링크(./r01-x.md, ../hacking/hack01-x.md#절)를 블로그 페이지 주소로 바꿉니다.
+       infra 레포와 블로그의 폴더 이름이 다른 경우는 hugo.toml 의 params.linkPathMap 으로 맞춥니다. */ -}}
+{{- $dest := .Destination -}}
+{{- $u := urls.Parse .Destination -}}
+{{- if and (not $u.IsAbs) (not (strings.HasPrefix .Destination "/")) (strings.HasSuffix $u.Path ".md") -}}
+  {{- with .Page.File -}}
+    {{- $p := path.Join (replace .Dir "\\" "/") $u.Path -}}
+    {{- $parts := split $p "/" -}}
+    {{- with index (site.Params.linkPathMap | default dict) (index $parts 0) -}}
+      {{- $p = printf "%s/%s" . (delimit (after 1 $parts) "/") -}}
+    {{- end -}}
+    {{- with site.GetPage (printf "/%s" (strings.TrimSuffix ".md" $p)) -}}
+      {{- $dest = .RelPermalink -}}
+      {{- with $u.Fragment }}{{ $dest = printf "%s#%s" $dest . }}{{ end -}}
+    {{- else -}}
+      {{- warnf "render-link: %q 에서 %q 를 찾지 못함" $.Page.File.Path $.Destination -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $u.IsAbs }} rel="noopener"{{ end }}>{{ .Text }}</a>
+{{- /* chomp */ -}}

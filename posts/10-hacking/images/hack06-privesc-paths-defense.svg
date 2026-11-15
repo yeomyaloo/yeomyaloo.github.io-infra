@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="510" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">권한 상승의 네 가지 다리와 방어 통제</text>
+
+  <!-- low privilege -->
+  <rect x="20" y="186" width="170" height="110" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="105" y="222" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">낮은 권한</text>
+  <text x="105" y="248" text-anchor="middle" font-size="13" fill="#78350f" font-family="Consolas,'D2Coding',monospace">www-data</text>
+  <text x="105" y="270" text-anchor="middle" font-size="12" fill="#92400e">웹 취약점의 발판</text>
+
+  <!-- root -->
+  <rect x="770" y="186" width="170" height="110" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="855" y="230" text-anchor="middle" font-size="20" font-weight="700" fill="#7f1d1d">root</text>
+  <text x="855" y="258" text-anchor="middle" font-size="12" fill="#7f1d1d">서버 전체 · 비밀</text>
+  <text x="855" y="276" text-anchor="middle" font-size="12" fill="#7f1d1d">감사 로그 · SSH 키</text>
+
+  <!-- column headers -->
+  <text x="340" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">다리 (경로)</text>
+  <text x="580" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">방어 통제 (점검 · 하드닝)</text>
+
+  <!-- lanes: x 240..720; left 240..440 red, right 440..720 green -->
+  <g font-size="13">
+    <!-- 1 -->
+    <rect x="240" y="76" width="200" height="70" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="340" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">SUID / SGID</text>
+    <text x="340" y="127" text-anchor="middle" fill="#7f1d1d">capabilities</text>
+    <rect x="440" y="76" width="280" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="580" y="105" text-anchor="middle" fill="#14532d">기준선 비교 · 패키지 소유 확인</text>
+    <text x="580" y="127" text-anchor="middle" fill="#14532d">nosuid 마운트 · dpkg-statoverride</text>
+
+    <!-- 2 -->
+    <rect x="240" y="164" width="200" height="70" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="340" y="193" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">sudo 설정 실수</text>
+    <text x="340" y="215" text-anchor="middle" fill="#7f1d1d">NOPASSWD · 와일드카드</text>
+    <rect x="440" y="164" width="280" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="580" y="193" text-anchor="middle" fill="#14532d">정확한 인자 · root 소유 래퍼</text>
+    <text x="580" y="215" text-anchor="middle" fill="#14532d">sudoedit · secure_path · env_reset</text>
+
+    <!-- 3 -->
+    <rect x="240" y="252" width="200" height="70" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="340" y="281" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">cron · 타이머 · PATH</text>
+    <text x="340" y="303" text-anchor="middle" fill="#7f1d1d">남이 고칠 수 있는 파일</text>
+    <rect x="440" y="252" width="280" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="580" y="281" text-anchor="middle" fill="#14532d">namei -l 경로 전체 root 소유</text>
+    <text x="580" y="303" text-anchor="middle" fill="#14532d">절대 경로 · 고정 PATH · * 금지</text>
+
+    <!-- 4 -->
+    <rect x="240" y="340" width="200" height="70" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="340" y="369" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">커널 취약점</text>
+    <text x="340" y="391" text-anchor="middle" fill="#7f1d1d">패치 안 된 실행 중 커널</text>
+    <rect x="440" y="340" width="280" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="580" y="369" text-anchor="middle" fill="#14532d">자동 보안 업데이트 · 재부팅 창</text>
+    <text x="580" y="391" text-anchor="middle" fill="#14532d">needrestart -k · Livepatch · kured</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#b91c1c" stroke-width="2" fill="none">
+    <line x1="190" y1="230" x2="236" y2="111" marker-end="url(#arrow)"/>
+    <line x1="190" y1="236" x2="236" y2="199" marker-end="url(#arrow)"/>
+    <line x1="190" y1="246" x2="236" y2="287" marker-end="url(#arrow)"/>
+    <line x1="190" y1="252" x2="236" y2="375" marker-end="url(#arrow)"/>
+    <line x1="720" y1="111" x2="766" y2="228" marker-end="url(#arrow)"/>
+    <line x1="720" y1="199" x2="766" y2="236" marker-end="url(#arrow)"/>
+    <line x1="720" y1="287" x2="766" y2="248" marker-end="url(#arrow)"/>
+    <line x1="720" y1="375" x2="766" y2="254" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- detection -->
+  <rect x="20" y="436" width="920" height="60" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="480" y="460" text-anchor="middle" font-size="13" fill="#334155"><tspan font-weight="700">탐지 (다리를 새로 놓으면)</tspan>  auditd 키 perm_mod · setuid_exec · cron · modules (Day 67)</text>
+  <text x="480" y="482" text-anchor="middle" font-size="13" fill="#334155">Falco SUID 설정 · cron 쓰기 룰 (Day 72) → Loki · Alertmanager (Day 60·62)</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">레드팀 · 블루팀 · 퍼플팀, 그리고 진단과 모의해킹</text>
+
+  <!-- Red team -->
+  <rect x="30" y="70" width="280" height="220" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="170" y="104" text-anchor="middle" font-size="18" font-weight="700" fill="#7f1d1d">레드팀 (공격 모사)</text>
+  <g font-size="14" fill="#7f1d1d" text-anchor="middle">
+    <text x="170" y="144">목표 중심 · 실제 공격자 TTP 모사</text>
+    <text x="170" y="174">방어팀에 미리 알리지 않음</text>
+    <text x="170" y="204">질문: 탐지 · 대응할 수 있나?</text>
+    <text x="170" y="234">기간: 수주 ~ 수개월</text>
+  </g>
+  <text x="170" y="270" text-anchor="middle" font-size="12" fill="#991b1b">RoE에 합의된 범위 안에서만</text>
+
+  <!-- Purple team -->
+  <rect x="355" y="95" width="250" height="170" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="480" y="128" text-anchor="middle" font-size="18" font-weight="700" fill="#4c1d95">퍼플팀 (함께 개선)</text>
+  <g font-size="14" fill="#4c1d95" text-anchor="middle">
+    <text x="480" y="160">기법 1개 실행</text>
+    <text x="480" y="184">→ 탐지되었나 확인</text>
+    <text x="480" y="208">→ 규칙 · 설정 개선 → 반복</text>
+  </g>
+  <text x="480" y="244" text-anchor="middle" font-size="13" font-weight="700" fill="#6d28d9">공통 언어: MITRE ATT&amp;CK</text>
+
+  <!-- Blue team -->
+  <rect x="650" y="70" width="280" height="220" rx="12" fill="#dbeafe" stroke="#326ce5" stroke-width="2"/>
+  <text x="790" y="104" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">블루팀 (방어)</text>
+  <g font-size="14" fill="#1e3a8a" text-anchor="middle">
+    <text x="790" y="144">보안관제(SOC) · CERT</text>
+    <text x="790" y="174">탐지 규칙 · 사고 대응 · 하드닝</text>
+    <text x="790" y="204">질문: 지금 공격받고 있나?</text>
+    <text x="790" y="234">상시 운영</text>
+  </g>
+  <text x="790" y="270" text-anchor="middle" font-size="12" fill="#1e40af">Day 60 · 62 · 72 · 73의 도구들</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="312" y1="165" x2="351" y2="165" marker-end="url(#arrow)"/>
+    <line x1="351" y1="195" x2="312" y2="195" marker-end="url(#arrow)"/>
+    <line x1="607" y1="165" x2="646" y2="165" marker-end="url(#arrow)"/>
+    <line x1="646" y1="195" x2="607" y2="195" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Bottom: assessment vs pentest -->
+  <rect x="30" y="315" width="440" height="66" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="250" y="341" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">취약점 진단 — 넓게</text>
+  <text x="250" y="366" text-anchor="middle" font-size="13" fill="#475569">체크리스트 · 스캐너로 알려진 약점을 폭넓게 확인</text>
+
+  <rect x="490" y="315" width="440" height="66" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="710" y="341" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">모의해킹 — 깊게</text>
+  <text x="710" y="366" text-anchor="middle" font-size="13" fill="#475569">정해진 대상에서 약점이 실제로 어디까지 이어지나 검증</text>
+
+  <!-- Banner -->
+  <rect x="30" y="400" width="900" height="48" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="480" y="430" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">모든 활동의 전제: 자산 소유자의 서면 허가(RoE) + 구체적 범위 + 비상 중단 조건</text>
+</svg>

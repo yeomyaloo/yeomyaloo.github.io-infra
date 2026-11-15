@@ -4,6 +4,15 @@
 {{ with .RegularPages.ByWeight }}
   {{ partial "post-list.html" . }}
 {{ else }}
+  {{- /* 하위 시리즈만 있는 섹션(예: 자격증 준비 → RHCSA) */ -}}
+  {{ with .Sections.ByWeight }}
+    {{ range . }}
+    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    {{ with .Description }}<p class="muted">{{ . }}</p>{{ end }}
+    {{ partial "post-list.html" .RegularPages.ByWeight }}
+    {{ end }}
+  {{ else }}
   <p class="muted">아직 글이 없습니다.</p>
+  {{ end }}
 {{ end }}
 {{ end }}

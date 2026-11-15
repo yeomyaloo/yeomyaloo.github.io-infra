@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">파일 업로드와 OS 명령 주입 — 방어 파이프라인</text>
+
+  <!-- Upload pipeline -->
+  <text x="20" y="72" font-size="15" font-weight="700" fill="#14532d">파일 업로드 — 이름도 형식도 서버가 정하고, 서버가 확인한다</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="20" y="86" width="112" height="70" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="76" y="116" fill="#0f172a" font-weight="700">업로드 요청</text>
+    <text x="76" y="136" fill="#64748b">filename·type은</text>
+    <text x="76" y="150" fill="#64748b">클라이언트 값</text>
+
+    <rect x="152" y="86" width="112" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="208" y="116" fill="#14532d" font-weight="700">① 확장자</text>
+    <text x="208" y="138" fill="#14532d">허용 목록</text>
+
+    <rect x="284" y="86" width="112" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="340" y="116" fill="#14532d" font-weight="700">② 크기 제한</text>
+    <text x="340" y="138" fill="#14532d">프록시 + 앱</text>
+
+    <rect x="416" y="86" width="112" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="472" y="116" fill="#14532d" font-weight="700">③ 내용 확인</text>
+    <text x="472" y="138" fill="#14532d">매직 바이트</text>
+
+    <rect x="548" y="86" width="112" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="604" y="116" fill="#14532d" font-weight="700">④ 재인코딩</text>
+    <text x="604" y="138" fill="#14532d">덧붙은 데이터 제거</text>
+
+    <rect x="680" y="86" width="112" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="736" y="116" fill="#14532d" font-weight="700">⑤ 무작위 이름</text>
+    <text x="736" y="138" fill="#14532d">uuid4 + 고정 확장자</text>
+
+    <rect x="812" y="86" width="128" height="70" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+    <text x="876" y="112" fill="#312e81" font-weight="700">저장·제공</text>
+    <text x="876" y="131" fill="#312e81">웹 루트 밖·noexec</text>
+    <text x="876" y="148" fill="#312e81">nosniff·별도 도메인</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="132" y1="121" x2="148" y2="121" marker-end="url(#arrow)"/>
+    <line x1="264" y1="121" x2="280" y2="121" marker-end="url(#arrow)"/>
+    <line x1="396" y1="121" x2="412" y2="121" marker-end="url(#arrow)"/>
+    <line x1="528" y1="121" x2="544" y2="121" marker-end="url(#arrow)"/>
+    <line x1="660" y1="121" x2="676" y2="121" marker-end="url(#arrow)"/>
+    <line x1="792" y1="121" x2="808" y2="121" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="180" text-anchor="middle" font-size="12" fill="#b91c1c">어느 단계든 실패하면 거부하고 upload_rejected 이벤트를 남긴다 (fail-closed)</text>
+
+  <!-- Command injection -->
+  <text x="20" y="218" font-size="15" font-weight="700" fill="#14532d">OS 명령 주입 — 셸을 빼면 메타 문자는 그냥 글자</text>
+
+  <!-- left: shell=True -->
+  <rect x="20" y="230" width="450" height="160" rx="12" fill="#fff5f5" stroke="#b91c1c" stroke-width="2"/>
+  <text x="245" y="256" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">shell=True + 문자열 조립</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="34" y="272" width="130" height="88" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="99" y="304" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">f"ping {host}"</text>
+    <text x="99" y="330" fill="#7f1d1d">입력이 붙은</text>
+    <text x="99" y="346" fill="#7f1d1d">문자열 하나</text>
+
+    <rect x="180" y="272" width="130" height="88" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="245" y="304" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">/bin/sh -c</text>
+    <text x="245" y="330" fill="#7f1d1d">셸이 문자열</text>
+    <text x="245" y="346" fill="#7f1d1d">전체를 해석</text>
+
+    <rect x="326" y="272" width="130" height="88" rx="8" fill="#fca5a5" stroke="#dc2626"/>
+    <text x="391" y="304" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">;  |  &amp;&amp;  $( )</text>
+    <text x="391" y="330" fill="#7f1d1d" font-weight="700">명령 구분자로</text>
+    <text x="391" y="346" fill="#7f1d1d" font-weight="700">해석됨</text>
+  </g>
+  <g stroke="#b91c1c" stroke-width="2" fill="none">
+    <line x1="164" y1="316" x2="176" y2="316" marker-end="url(#arrow)"/>
+    <line x1="310" y1="316" x2="322" y2="316" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- right: shell=False -->
+  <rect x="490" y="230" width="450" height="160" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="715" y="256" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">shell=False + 인자 배열 + 허용 목록</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="504" y="272" width="130" height="88" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="569" y="298" fill="#14532d" font-family="Consolas,'D2Coding',monospace" font-size="11">["ping","-c","1",</text>
+    <text x="569" y="314" fill="#14532d" font-family="Consolas,'D2Coding',monospace" font-size="11"> "--", host]</text>
+    <text x="569" y="340" fill="#14532d">검증된 host만</text>
+
+    <rect x="650" y="272" width="130" height="88" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="715" y="304" fill="#14532d" font-family="Consolas,'D2Coding',monospace">execve 직접</text>
+    <text x="715" y="330" fill="#14532d">셸 없음</text>
+    <text x="715" y="346" fill="#14532d">절대 경로·timeout</text>
+
+    <rect x="796" y="272" width="130" height="88" rx="8" fill="#86efac" stroke="#16a34a"/>
+    <text x="861" y="304" fill="#14532d" font-weight="700">host = 인자 1개</text>
+    <text x="861" y="330" fill="#14532d">메타 문자도</text>
+    <text x="861" y="346" fill="#14532d">그냥 글자</text>
+  </g>
+  <g stroke="#15803d" stroke-width="2" fill="none">
+    <line x1="634" y1="316" x2="646" y2="316" marker-end="url(#arrow)"/>
+    <line x1="780" y1="316" x2="792" y2="316" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="480" y="414" text-anchor="middle" font-size="13" fill="#334155">가장 좋은 조치는 외부 명령 대신 라이브러리(pathlib · Pillow · zipfile · socket)를 쓰는 것</text>
+
+  <!-- detection strip -->
+  <rect x="20" y="428" width="920" height="40" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="480" y="453" text-anchor="middle" font-size="13" fill="#334155"><tspan font-weight="700">탐지</tspan>  auditd execve (웹·앱 계정 UID) · Falco "웹 앱 부모의 셸 실행" · auditd 업로드·웹 루트 쓰기 감시 → Alertmanager</text>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">행위 → 흔적 → 저장소 → 알림</text>
+
+  <!-- 열 제목 -->
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <text x="125" y="68" fill="#b91c1c">실습 행위 (앞 Day)</text>
+    <text x="475" y="68" fill="#1e3a8a">흔적이 남는 원천</text>
+    <text x="820" y="68" fill="#15803d">저장 · 알림</text>
+  </g>
+
+  <!-- 왼쪽: 행위 -->
+  <g font-size="14" text-anchor="middle">
+    <rect x="20" y="84" width="210" height="52" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="125" y="115" fill="#7f1d1d">정보 수집 (해킹 03)</text>
+    <rect x="20" y="164" width="210" height="52" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="125" y="195" fill="#7f1d1d">SQLi/XSS 시도 (해킹 04)</text>
+    <rect x="20" y="244" width="210" height="52" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="125" y="275" fill="#7f1d1d">컨테이너 셸 (해킹 07·08)</text>
+    <rect x="20" y="324" width="210" height="52" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="125" y="355" fill="#7f1d1d">권한 상승 점검 (해킹 06)</text>
+    <rect x="20" y="404" width="210" height="52" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="125" y="435" fill="#7f1d1d">K8s API 남용 (해킹 08)</text>
+  </g>
+
+  <!-- 가운데: 원천 -->
+  <rect x="360" y="90" width="230" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="475" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">웹 접근 로그</text>
+  <text x="475" y="138" text-anchor="middle" font-size="12" fill="#475569">HTTP 층 · DVWA Apache</text>
+
+  <rect x="360" y="190" width="230" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="475" y="216" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">auditd</text>
+  <text x="475" y="238" text-anchor="middle" font-size="12" fill="#475569">호스트 층 · root 실행, 설정 변경</text>
+
+  <rect x="360" y="290" width="230" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="475" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Falco</text>
+  <text x="475" y="338" text-anchor="middle" font-size="12" fill="#475569">커널 층 · 프로세스·파일·연결</text>
+
+  <rect x="360" y="390" width="230" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="475" y="416" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">K8s 감사 로그</text>
+  <text x="475" y="438" text-anchor="middle" font-size="12" fill="#475569">API 층 · 누가 무엇에 어떤 verb</text>
+
+  <!-- 행위 → 원천 -->
+  <g stroke="#b91c1c" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
+    <line x1="230" y1="110" x2="356" y2="118"/>
+    <line x1="230" y1="190" x2="356" y2="130"/>
+    <line x1="230" y1="270" x2="356" y2="318"/>
+    <line x1="230" y1="276" x2="356" y2="410"/>
+    <line x1="230" y1="344" x2="356" y2="228"/>
+    <line x1="230" y1="430" x2="356" y2="426"/>
+    <line x1="230" y1="424" x2="356" y2="336"/>
+  </g>
+  <line x1="230" y1="356" x2="356" y2="324" stroke="#b91c1c" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+
+  <!-- 오른쪽: 저장 · 알림 -->
+  <rect x="700" y="90" width="240" height="70" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="820" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">관측 구역 Loki</text>
+  <text x="820" y="140" text-anchor="middle" font-size="12" fill="#475569">docker-targets VM (실습망 안)</text>
+
+  <rect x="720" y="186" width="200" height="44" rx="8" fill="#f8fafc" stroke="#15803d"/>
+  <text x="820" y="213" text-anchor="middle" font-size="13" fill="#14532d">Grafana Alerting</text>
+
+  <rect x="700" y="300" width="240" height="70" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="820" y="328" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">infra-lab Loki</text>
+  <text x="820" y="350" text-anchor="middle" font-size="12" fill="#475569">Day 60 · Falcosidekick · Alloy</text>
+
+  <rect x="720" y="396" width="200" height="44" rx="8" fill="#f8fafc" stroke="#15803d"/>
+  <text x="820" y="423" text-anchor="middle" font-size="13" fill="#14532d">Alertmanager (Day 62)</text>
+
+  <!-- 원천 → 저장 -->
+  <g stroke="#334155" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
+    <line x1="590" y1="122" x2="696" y2="120"/>
+    <line x1="590" y1="222" x2="696" y2="136"/>
+    <line x1="590" y1="322" x2="696" y2="330"/>
+    <line x1="590" y1="422" x2="696" y2="346"/>
+    <line x1="820" y1="160" x2="820" y2="182"/>
+    <line x1="820" y1="370" x2="820" y2="392"/>
+  </g>
+
+  <!-- 하단: 보이지 않는 것 -->
+  <rect x="20" y="482" width="920" height="80" rx="10" fill="#fef2f2" stroke="#b91c1c"/>
+  <text x="40" y="508" font-size="14" font-weight="700" fill="#b91c1c">어디에도 남지 않는 것 (공백)</text>
+  <text x="40" y="532" font-size="13" fill="#334155">POST 본문 · 열리지 않은 포트로 온 스캔 · Metasploitable 내부 · DB에서 실제 실행된 쿼리</text>
+  <text x="40" y="552" font-size="12" fill="#64748b">점선 = 해당 호스트에 Falco를 설치해야 보임 (실습장 VM은 별도 설치 필요)</text>
+</svg>

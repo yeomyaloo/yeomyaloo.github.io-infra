@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Goat 시나리오 사슬과 끊는 지점</text>
+
+  <!-- Row labels -->
+  <g font-size="12" fill="#64748b" font-weight="700">
+    <text x="30" y="64">공격 단계 (개념)</text>
+    <text x="30" y="222">수정 — 사슬을 끊는 방어</text>
+    <text x="30" y="386">탐지 — 끊지 못했을 때 알아채기</text>
+  </g>
+
+  <!-- Attack row -->
+  <g text-anchor="middle">
+    <rect x="30" y="74" width="205" height="116" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="132" y="102" font-size="17" font-weight="700" fill="#7f1d1d">① 진입</text>
+    <text x="132" y="124" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#64748b">Scenario 3 · 1</text>
+    <text x="132" y="150" font-size="13" fill="#334155">SSRF로 내부 요청</text>
+    <text x="132" y="172" font-size="13" fill="#334155">이미지 속 하드코딩 키</text>
+
+    <rect x="265" y="74" width="205" height="116" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="367" y="102" font-size="17" font-weight="700" fill="#7f1d1d">② 횡이동</text>
+    <text x="367" y="124" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#64748b">Scenario 11</text>
+    <text x="367" y="150" font-size="13" fill="#334155">다른 네임스페이스의</text>
+    <text x="367" y="172" font-size="13" fill="#334155">Redis에 그냥 접속</text>
+
+    <rect x="500" y="74" width="205" height="116" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="602" y="102" font-size="17" font-weight="700" fill="#7f1d1d">③ 권한 확대</text>
+    <text x="602" y="124" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#64748b">Scenario 16</text>
+    <text x="602" y="150" font-size="13" fill="#334155">SA 토큰으로</text>
+    <text x="602" y="172" font-size="13" fill="#334155">Secret 전부 열람</text>
+
+    <rect x="735" y="74" width="205" height="116" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="837" y="102" font-size="17" font-weight="700" fill="#7f1d1d">④ 노드 장악</text>
+    <text x="837" y="124" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#64748b">Scenario 4</text>
+    <text x="837" y="150" font-size="13" fill="#334155">privileged + 호스트 /</text>
+    <text x="837" y="172" font-size="13" fill="#334155">→ 노드 자격 증명</text>
+  </g>
+  <g stroke="#b91c1c" stroke-width="2.5" fill="none">
+    <line x1="235" y1="132" x2="261" y2="132" marker-end="url(#arrow)"/>
+    <line x1="470" y1="132" x2="496" y2="132" marker-end="url(#arrow)"/>
+    <line x1="705" y1="132" x2="731" y2="132" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Fix row -->
+  <g font-size="13" text-anchor="middle" fill="#14532d">
+    <rect x="30" y="232" width="205" height="130" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="132" y="262">URL 허용 목록 (해킹 05)</text>
+    <text x="132" y="290">egress 기본 거부 (Day 70)</text>
+    <text x="132" y="318">Trivy 비밀 스캔 (Day 57)</text>
+    <text x="132" y="346">유출 키 즉시 폐기</text>
+
+    <rect x="265" y="232" width="205" height="130" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="367" y="262">NetworkPolicy 기본 거부</text>
+    <text x="367" y="290">(Day 19 · 70)</text>
+    <text x="367" y="318">서비스 자체 인증</text>
+    <text x="367" y="346">(Redis ACL · TLS)</text>
+
+    <rect x="500" y="232" width="205" height="130" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="602" y="262">와일드카드 Role 제거</text>
+    <text x="602" y="290">SA 토큰 미마운트 (Day 69)</text>
+    <text x="602" y="318">cluster-admin 바인딩 점검</text>
+    <text x="602" y="346">(Day 19)</text>
+
+    <rect x="735" y="232" width="205" height="130" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="837" y="262">PSA baseline 이상 (Day 69)</text>
+    <text x="837" y="290">privileged·hostPath 제거</text>
+    <text x="837" y="318">해킹 07 점검</text>
+    <text x="837" y="346">체크리스트</text>
+  </g>
+
+  <!-- Detect row -->
+  <g font-size="12" text-anchor="middle" fill="#1e3a8a">
+    <rect x="30" y="396" width="205" height="104" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+    <text x="132" y="426">앱 로그: 요청한 URL</text>
+    <text x="132" y="452">Falco: 메타데이터 접근</text>
+    <text x="132" y="478">접근 로그: /.git 요청</text>
+
+    <rect x="265" y="396" width="205" height="104" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+    <text x="367" y="426">Falco: 스캐너 실행</text>
+    <text x="367" y="452">흐름 로그: 새 NS 간 연결</text>
+    <text x="367" y="478">Redis 접속 로그</text>
+
+    <rect x="500" y="396" width="205" height="104" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+    <text x="602" y="426">Falco: K8s API 접근</text>
+    <text x="602" y="452">감사 로그: SA의</text>
+    <text x="602" y="478">secrets list (Day 73)</text>
+
+    <rect x="735" y="396" width="205" height="104" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+    <text x="837" y="426">Falco: privileged 시작</text>
+    <text x="837" y="452">Falco: 민감 파일 읽기</text>
+    <text x="837" y="478">감사 로그: Pod 생성자</text>
+  </g>
+</svg>

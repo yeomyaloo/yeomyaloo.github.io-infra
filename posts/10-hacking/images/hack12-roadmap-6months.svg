@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">6개월 학습 로드맵 (주 6~8시간)</text>
+
+  <!-- 단계 띠 -->
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <rect x="20" y="58" width="300" height="32" rx="6" fill="#dbeafe"/>
+    <text x="170" y="80" fill="#1e3a8a">기초 다지기</text>
+    <rect x="330" y="58" width="300" height="32" rx="6" fill="#fef3c7"/>
+    <text x="480" y="80" fill="#78350f">실전 감각</text>
+    <rect x="640" y="58" width="300" height="32" rx="6" fill="#dcfce7"/>
+    <text x="790" y="80" fill="#14532d">확장 · 종합</text>
+  </g>
+
+  <!-- 시간 축 -->
+  <line x1="20" y1="118" x2="936" y2="118" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <g fill="#15803d">
+    <circle cx="90" cy="118" r="7"/><circle cx="245" cy="118" r="7"/><circle cx="400" cy="118" r="7"/>
+    <circle cx="555" cy="118" r="7"/><circle cx="710" cy="118" r="7"/><circle cx="865" cy="118" r="7"/>
+  </g>
+
+  <!-- 월별 카드 -->
+  <g text-anchor="middle">
+    <rect x="20" y="138" width="140" height="210" rx="10" fill="#f8fafc" stroke="#2563eb"/>
+    <text x="90" y="166" font-size="16" font-weight="700" fill="#1e3a8a">1개월</text>
+    <text x="90" y="190" font-size="13" font-weight="700" fill="#0f172a">리눅스·네트워크</text>
+    <text x="90" y="220" font-size="12" fill="#334155">OverTheWire</text>
+    <text x="90" y="238" font-size="12" fill="#334155">Bandit</text>
+    <text x="90" y="262" font-size="12" fill="#334155">TryHackMe 입문</text>
+    <text x="90" y="286" font-size="12" fill="#334155">Day 07·22 복습</text>
+    <text x="90" y="330" font-size="12" fill="#15803d">→ 명령어 노트</text>
+
+    <rect x="175" y="138" width="140" height="210" rx="10" fill="#f8fafc" stroke="#2563eb"/>
+    <text x="245" y="166" font-size="16" font-weight="700" fill="#1e3a8a">2개월</text>
+    <text x="245" y="190" font-size="13" font-weight="700" fill="#0f172a">웹 보안</text>
+    <text x="245" y="220" font-size="12" fill="#334155">PortSwigger</text>
+    <text x="245" y="238" font-size="12" fill="#334155">Academy 랩</text>
+    <text x="245" y="262" font-size="12" fill="#334155">해킹 04·05 복습</text>
+    <text x="245" y="330" font-size="12" fill="#15803d">→ 원인·조치 정리</text>
+
+    <rect x="330" y="138" width="140" height="210" rx="10" fill="#f8fafc" stroke="#f59e0b"/>
+    <text x="400" y="166" font-size="16" font-weight="700" fill="#78350f">3개월</text>
+    <text x="400" y="190" font-size="13" font-weight="700" fill="#0f172a">CTF 데뷔</text>
+    <text x="400" y="220" font-size="12" fill="#334155">picoCTF</text>
+    <text x="400" y="238" font-size="12" fill="#334155">드림핵 Div.2</text>
+    <text x="400" y="262" font-size="12" fill="#334155">입문 대회 1회</text>
+    <text x="400" y="330" font-size="12" fill="#15803d">→ write-up 3개</text>
+
+    <rect x="485" y="138" width="140" height="210" rx="10" fill="#f8fafc" stroke="#f59e0b"/>
+    <text x="555" y="166" font-size="16" font-weight="700" fill="#78350f">4개월</text>
+    <text x="555" y="190" font-size="13" font-weight="700" fill="#0f172a">시스템·권한</text>
+    <text x="555" y="220" font-size="12" fill="#334155">HTB Academy</text>
+    <text x="555" y="238" font-size="12" fill="#334155">리눅스 모듈</text>
+    <text x="555" y="262" font-size="12" fill="#334155">홈랩 하드닝</text>
+    <text x="555" y="330" font-size="12" fill="#15803d">→ Lynis 전후 비교</text>
+
+    <rect x="640" y="138" width="140" height="210" rx="10" fill="#f8fafc" stroke="#15803d"/>
+    <text x="710" y="166" font-size="16" font-weight="700" fill="#14532d">5개월</text>
+    <text x="710" y="190" font-size="13" font-weight="700" fill="#0f172a">클라우드·K8s</text>
+    <text x="710" y="220" font-size="12" fill="#334155">Kubernetes Goat</text>
+    <text x="710" y="238" font-size="12" fill="#334155">CloudGoat</text>
+    <text x="710" y="262" font-size="12" fill="#334155">탐지 룰 확장</text>
+    <text x="710" y="330" font-size="12" fill="#15803d">→ 커버리지 표 v2</text>
+
+    <rect x="795" y="138" width="145" height="210" rx="10" fill="#f8fafc" stroke="#15803d"/>
+    <text x="867" y="166" font-size="16" font-weight="700" fill="#14532d">6개월</text>
+    <text x="867" y="190" font-size="13" font-weight="700" fill="#0f172a">종합</text>
+    <text x="867" y="220" font-size="12" fill="#334155">실습장 보고서</text>
+    <text x="867" y="238" font-size="12" fill="#334155">자격증 목표</text>
+    <text x="867" y="262" font-size="12" fill="#334155">버그바운티</text>
+    <text x="867" y="280" font-size="12" fill="#334155">정책 정독</text>
+    <text x="867" y="330" font-size="12" fill="#15803d">→ 포트폴리오</text>
+  </g>
+
+  <!-- 매달 규칙 -->
+  <rect x="20" y="368" width="920" height="52" rx="10" fill="#15803d"/>
+  <text x="480" y="400" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">매달 결과물 규칙: 공격(이해) 하나 + 탐지 하나 + 조치 하나</text>
+</svg>

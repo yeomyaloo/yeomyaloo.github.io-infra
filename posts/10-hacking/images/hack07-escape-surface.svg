@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">컨테이너 격리를 푸는 다섯 가지 설정</text>
+
+  <!-- Container -->
+  <rect x="30" y="64" width="300" height="392" rx="12" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="180" y="94" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">컨테이너</text>
+  <text x="180" y="114" text-anchor="middle" font-size="13" fill="#15803d">(공격자가 셸을 얻은 지점)</text>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14" text-anchor="middle" fill="#7f1d1d">
+    <rect x="50" y="130" width="260" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="180" y="158">① --privileged</text>
+    <rect x="50" y="195" width="260" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="180" y="223">② docker.sock mount</text>
+    <rect x="50" y="260" width="260" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="180" y="288">③ hostPID · hostNetwork</text>
+    <rect x="50" y="325" width="260" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="180" y="353">④ SYS_ADMIN · SYS_PTRACE …</text>
+    <rect x="50" y="390" width="260" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="180" y="418">⑤ hostPath: / · /etc · kubelet</text>
+  </g>
+
+  <!-- Isolation boundary -->
+  <line x1="445" y1="100" x2="445" y2="450" stroke="#64748b" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="445" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">격리 경계</text>
+
+  <!-- Host -->
+  <rect x="560" y="64" width="370" height="392" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="745" y="94" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">호스트 / 노드</text>
+  <text x="745" y="114" text-anchor="middle" font-size="13" fill="#64748b">(설정이 열어 주는 것)</text>
+
+  <g font-size="14" text-anchor="middle" fill="#78350f">
+    <rect x="580" y="130" width="330" height="46" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="745" y="158">모든 capability + 호스트 장치 노출</text>
+    <rect x="580" y="195" width="330" height="46" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="745" y="223">dockerd에 API 요청 → 새 컨테이너 생성</text>
+    <rect x="580" y="260" width="330" height="46" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="745" y="288">호스트 프로세스 · 루프백 전용 포트</text>
+    <rect x="580" y="325" width="330" height="46" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="745" y="353">mount · ptrace · 커널 모듈 적재</text>
+    <rect x="580" y="390" width="330" height="46" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="745" y="418">호스트 파일 · 노드 토큰 · kubeconfig</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="#b91c1c" stroke-width="2" fill="none">
+    <line x1="310" y1="153" x2="576" y2="153" marker-end="url(#arrow)"/>
+    <line x1="310" y1="218" x2="576" y2="218" marker-end="url(#arrow)"/>
+    <line x1="310" y1="283" x2="576" y2="283" marker-end="url(#arrow)"/>
+    <line x1="310" y1="348" x2="576" y2="348" marker-end="url(#arrow)"/>
+    <line x1="310" y1="413" x2="576" y2="413" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Footer -->
+  <rect x="30" y="470" width="900" height="38" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="480" y="494" text-anchor="middle" font-size="14" fill="#334155">모두 ATT&amp;CK T1611 (Escape to Host) · 예방 Day 68·69 · 탐지 Day 72 Falco</text>
+</svg>

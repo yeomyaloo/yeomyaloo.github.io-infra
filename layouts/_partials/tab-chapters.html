@@ -1,7 +1,14 @@
-{{- /* 입력: 탭 key. 그 탭에 속한 챕터(섹션)를 weight 순으로 돌려줍니다. */ -}}
+{{- /* 입력: 탭 key. 그 탭에 속한 챕터(섹션)를 weight 순으로 돌려줍니다.
+       하위 시리즈가 있는 섹션(예: certs/ 아래 rhcsa/)은 하위 시리즈들을 챕터로 펼칩니다. */ -}}
 {{- $key := . -}}
 {{- $out := slice -}}
 {{- range site.Home.Sections.ByWeight -}}
-  {{- if eq (.Params.tab | default "infra") $key -}}{{- $out = $out | append . -}}{{- end -}}
+  {{- if eq (.Params.tab | default "infra") $key -}}
+    {{- if and (not .RegularPages) .Sections -}}
+      {{- range .Sections.ByWeight }}{{ $out = $out | append . }}{{ end -}}
+    {{- else -}}
+      {{- $out = $out | append . -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 {{- return $out -}}

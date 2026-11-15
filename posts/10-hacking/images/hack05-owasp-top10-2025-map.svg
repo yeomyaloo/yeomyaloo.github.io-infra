@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OWASP Top 10:2025 — 범주와 이 시리즈의 연결</text>
+
+  <!-- header -->
+  <rect x="20" y="54" width="920" height="32" rx="6" fill="#334155"/>
+  <g font-size="13" font-weight="700" fill="#ffffff">
+    <text x="55" y="75" text-anchor="middle">순위</text>
+    <text x="105" y="75">범주</text>
+    <text x="440" y="75">한 줄 설명</text>
+    <text x="715" y="75" text-anchor="middle">2021 → 2025</text>
+    <text x="867" y="75" text-anchor="middle">다루는 Day</text>
+  </g>
+
+  <!-- rows: y start 92, height 42, gap 4 -->
+  <g font-size="13">
+    <!-- A01 -->
+    <rect x="20" y="92" width="920" height="42" rx="6" fill="#dcfce7" stroke="#15803d"/>
+    <rect x="28" y="99" width="56" height="28" rx="5" fill="#15803d"/>
+    <text x="56" y="118" text-anchor="middle" fill="#ffffff" font-weight="700">A01</text>
+    <text x="105" y="118" font-weight="700" fill="#0f172a">Broken Access Control</text>
+    <text x="440" y="118" fill="#334155">권한 없는 접근 (SSRF 포함)</text>
+    <text x="715" y="118" text-anchor="middle" fill="#334155" font-size="12">1위 유지 · SSRF 흡수</text>
+    <text x="867" y="118" text-anchor="middle" fill="#14532d" font-size="12" font-weight="700">78 · 19 · 69</text>
+
+    <!-- A02 -->
+    <rect x="20" y="138" width="920" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="28" y="145" width="56" height="28" rx="5" fill="#64748b"/>
+    <text x="56" y="164" text-anchor="middle" fill="#ffffff" font-weight="700">A02</text>
+    <text x="105" y="164" font-weight="700" fill="#0f172a">Security Misconfiguration</text>
+    <text x="440" y="164" fill="#334155">기본값·과한 권한·노출된 설정</text>
+    <text x="715" y="164" text-anchor="middle" fill="#334155" font-size="12">5위 → 2위</text>
+    <text x="867" y="164" text-anchor="middle" fill="#334155" font-size="12">67~69 · 82</text>
+
+    <!-- A03 -->
+    <rect x="20" y="184" width="920" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="28" y="191" width="56" height="28" rx="5" fill="#64748b"/>
+    <text x="56" y="210" text-anchor="middle" fill="#ffffff" font-weight="700">A03</text>
+    <text x="105" y="210" font-weight="700" fill="#0f172a">Software Supply Chain Failures</text>
+    <text x="440" y="210" fill="#334155">의존성·빌드·배포 전체의 무결성</text>
+    <text x="715" y="210" text-anchor="middle" fill="#334155" font-size="12">구성 요소 → 공급망 확장</text>
+    <text x="867" y="210" text-anchor="middle" fill="#334155" font-size="12">57</text>
+
+    <!-- A04 -->
+    <rect x="20" y="230" width="920" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="28" y="237" width="56" height="28" rx="5" fill="#64748b"/>
+    <text x="56" y="256" text-anchor="middle" fill="#ffffff" font-weight="700">A04</text>
+    <text x="105" y="256" font-weight="700" fill="#0f172a">Cryptographic Failures</text>
+    <text x="440" y="256" fill="#334155">평문 전송·약한 암호·키 관리</text>
+    <text x="715" y="256" text-anchor="middle" fill="#334155" font-size="12">2위 → 4위</text>
+    <text x="867" y="256" text-anchor="middle" fill="#334155" font-size="12">71</text>
+
+    <!-- A05 -->
+    <rect x="20" y="276" width="920" height="42" rx="6" fill="#dcfce7" stroke="#15803d"/>
+    <rect x="28" y="283" width="56" height="28" rx="5" fill="#15803d"/>
+    <text x="56" y="302" text-anchor="middle" fill="#ffffff" font-weight="700">A05</text>
+    <text x="105" y="302" font-weight="700" fill="#0f172a">Injection</text>
+    <text x="440" y="302" fill="#334155">SQLi · XSS · OS 명령 주입</text>
+    <text x="715" y="302" text-anchor="middle" fill="#334155" font-size="12">3위 → 5위</text>
+    <text x="867" y="302" text-anchor="middle" fill="#14532d" font-size="12" font-weight="700">77 · 78</text>
+
+    <!-- A06 -->
+    <rect x="20" y="322" width="920" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="28" y="329" width="56" height="28" rx="5" fill="#64748b"/>
+    <text x="56" y="348" text-anchor="middle" fill="#ffffff" font-weight="700">A06</text>
+    <text x="105" y="348" font-weight="700" fill="#0f172a">Insecure Design</text>
+    <text x="440" y="348" fill="#334155">설계 단계에서 빠진 보안 통제</text>
+    <text x="715" y="348" text-anchor="middle" fill="#334155" font-size="12">4위 → 6위</text>
+    <text x="867" y="348" text-anchor="middle" fill="#334155" font-size="12">66</text>
+
+    <!-- A07 -->
+    <rect x="20" y="368" width="920" height="42" rx="6" fill="#dcfce7" stroke="#15803d"/>
+    <rect x="28" y="375" width="56" height="28" rx="5" fill="#15803d"/>
+    <text x="56" y="394" text-anchor="middle" fill="#ffffff" font-weight="700">A07</text>
+    <text x="105" y="394" font-weight="700" fill="#0f172a">Authentication Failures</text>
+    <text x="440" y="394" fill="#334155">약한 인증·세션 관리 실수</text>
+    <text x="715" y="394" text-anchor="middle" fill="#334155" font-size="12">7위 유지 · 이름 간소화</text>
+    <text x="867" y="394" text-anchor="middle" fill="#14532d" font-size="12" font-weight="700">78 · 73</text>
+
+    <!-- A08 -->
+    <rect x="20" y="414" width="920" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="28" y="421" width="56" height="28" rx="5" fill="#64748b"/>
+    <text x="56" y="440" text-anchor="middle" fill="#ffffff" font-weight="700">A08</text>
+    <text x="105" y="440" font-weight="700" fill="#0f172a">Software or Data Integrity Failures</text>
+    <text x="440" y="440" fill="#334155">검증 없는 업데이트·역직렬화·CI/CD</text>
+    <text x="715" y="440" text-anchor="middle" fill="#334155" font-size="12">8위 유지</text>
+    <text x="867" y="440" text-anchor="middle" fill="#334155" font-size="12">51 · 57</text>
+
+    <!-- A09 -->
+    <rect x="20" y="460" width="920" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="28" y="467" width="56" height="28" rx="5" fill="#64748b"/>
+    <text x="56" y="486" text-anchor="middle" fill="#ffffff" font-weight="700">A09</text>
+    <text x="105" y="486" font-weight="700" fill="#0f172a">Security Logging and Alerting Failures</text>
+    <text x="440" y="486" fill="#334155">기록하지 않거나, 알리지 않음</text>
+    <text x="715" y="486" text-anchor="middle" fill="#334155" font-size="12">9위 유지 · Alerting으로</text>
+    <text x="867" y="486" text-anchor="middle" fill="#334155" font-size="12">60 · 62 · 72 · 83</text>
+
+    <!-- A10 -->
+    <rect x="20" y="506" width="920" height="42" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+    <rect x="28" y="513" width="56" height="28" rx="5" fill="#f59e0b"/>
+    <text x="56" y="532" text-anchor="middle" fill="#ffffff" font-weight="700">A10</text>
+    <text x="105" y="532" font-weight="700" fill="#0f172a">Mishandling of Exceptional Conditions</text>
+    <text x="440" y="532" fill="#334155">예외·오류 처리 실패, fail-open</text>
+    <text x="715" y="532" text-anchor="middle" fill="#92400e" font-size="12" font-weight="700">신규</text>
+    <text x="867" y="532" text-anchor="middle" fill="#334155" font-size="12">77 · 78</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="12" fill="#334155">
+    <rect x="20" y="558" width="14" height="14" rx="3" fill="#dcfce7" stroke="#15803d"/>
+    <text x="40" y="570">해킹 04·78에서 직접 다루는 범주</text>
+    <rect x="260" y="558" width="14" height="14" rx="3" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="280" y="570">2025판 신규 범주</text>
+    <text x="940" y="570" text-anchor="end" fill="#64748b">출처: OWASP Top 10:2025 (2025-11 발표)</text>
+  </g>
+</svg>

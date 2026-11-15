@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">해킹 트랙 회고 — 공격마다 탐지와 조치를 짝으로</text>
+
+  <!-- 기반 -->
+  <rect x="20" y="54" width="920" height="46" rx="10" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="480" y="83" text-anchor="middle" font-size="15" fill="#0f172a"><tspan font-weight="700">기반</tspan>  해킹 01 법·허가·범위  ·  해킹 02 격리 실습장 hacklab (10.10.10.0/24)</text>
+
+  <!-- 공격 이해 행 -->
+  <g text-anchor="middle">
+    <rect x="21" y="116" width="126" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="84" y="139" font-size="13" font-weight="700" fill="#991b1b">해킹 03</text>
+    <text x="84" y="160" font-size="12" fill="#334155">정보 수집</text>
+    <rect x="153" y="116" width="126" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="216" y="139" font-size="13" font-weight="700" fill="#991b1b">해킹 04</text>
+    <text x="216" y="160" font-size="12" fill="#334155">SQLi · XSS</text>
+    <rect x="285" y="116" width="126" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="348" y="139" font-size="13" font-weight="700" fill="#991b1b">해킹 05</text>
+    <text x="348" y="160" font-size="12" fill="#334155">OWASP Top 10</text>
+    <rect x="417" y="116" width="126" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="480" y="139" font-size="13" font-weight="700" fill="#991b1b">해킹 06</text>
+    <text x="480" y="160" font-size="12" fill="#334155">권한 상승 점검</text>
+    <rect x="549" y="116" width="126" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="612" y="139" font-size="13" font-weight="700" fill="#991b1b">해킹 07</text>
+    <text x="612" y="160" font-size="12" fill="#334155">컨테이너 탈출</text>
+    <rect x="681" y="116" width="126" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="744" y="139" font-size="13" font-weight="700" fill="#991b1b">해킹 08</text>
+    <text x="744" y="160" font-size="12" fill="#334155">K8s Goat</text>
+    <rect x="813" y="116" width="126" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="876" y="139" font-size="13" font-weight="700" fill="#991b1b">해킹 09</text>
+    <text x="876" y="160" font-size="12" fill="#334155">클라우드 IAM</text>
+  </g>
+
+  <!-- 탐지 행 -->
+  <g text-anchor="middle" font-size="12">
+    <rect x="21" y="182" width="126" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="84" y="209" fill="#1e3a8a">404 급증</text>
+    <rect x="153" y="182" width="126" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="216" y="209" fill="#1e3a8a">쿼리 패턴</text>
+    <rect x="285" y="182" width="126" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="348" y="209" fill="#1e3a8a">웹 서버 밑 셸</text>
+    <rect x="417" y="182" width="126" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="480" y="209" fill="#1e3a8a">auditd root-cmd</text>
+    <rect x="549" y="182" width="126" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="612" y="209" fill="#1e3a8a">Falco 탈출 룰</text>
+    <rect x="681" y="182" width="126" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="744" y="209" fill="#1e3a8a">K8s 감사 로그</text>
+    <rect x="813" y="182" width="126" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="876" y="209" fill="#1e3a8a">클라우드 감사</text>
+  </g>
+
+  <!-- 조치 행 -->
+  <g text-anchor="middle" font-size="12">
+    <rect x="21" y="236" width="126" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="84" y="263" fill="#14532d">노출 최소화</text>
+    <rect x="153" y="236" width="126" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="216" y="263" fill="#14532d">바인딩 · 인코딩</text>
+    <rect x="285" y="236" width="126" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="348" y="263" fill="#14532d">서버 측 권한 검사</text>
+    <rect x="417" y="236" width="126" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="480" y="263" fill="#14532d">최소 권한 · Lynis</text>
+    <rect x="549" y="236" width="126" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="612" y="263" fill="#14532d">Day 68 하드닝</text>
+    <rect x="681" y="236" width="126" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="744" y="263" fill="#14532d">RBAC · PSA</text>
+    <rect x="813" y="236" width="126" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="876" y="263" fill="#14532d">IAM 최소 권한</text>
+  </g>
+
+  <!-- 범례 -->
+  <g font-size="12">
+    <rect x="300" y="296" width="14" height="14" rx="3" fill="#fee2e2" stroke="#b91c1c"/><text x="320" y="308" fill="#334155">공격 원리 이해</text>
+    <rect x="430" y="296" width="14" height="14" rx="3" fill="#dbeafe" stroke="#2563eb"/><text x="450" y="308" fill="#334155">탐지</text>
+    <rect x="510" y="296" width="14" height="14" rx="3" fill="#dcfce7" stroke="#15803d"/><text x="530" y="308" fill="#334155">조치 (안전한 코드·설정)</text>
+  </g>
+
+  <!-- 마무리 3일 -->
+  <g text-anchor="middle">
+    <rect x="60" y="336" width="240" height="76" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="180" y="366" font-size="16" font-weight="700" fill="#4c1d95">해킹 10 탐지 관점</text>
+    <text x="180" y="390" font-size="12" fill="#334155">커버리지 표 · 공백 분석</text>
+
+    <rect x="360" y="336" width="240" height="76" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="480" y="366" font-size="16" font-weight="700" fill="#4c1d95">해킹 11 보고서</text>
+    <text x="480" y="390" font-size="12" fill="#334155">CVSS v4.0 · 조치 권고 · 재점검</text>
+
+    <rect x="660" y="336" width="240" height="76" rx="12" fill="#15803d"/>
+    <text x="780" y="366" font-size="16" font-weight="700" fill="#ffffff">해킹 12 다음 단계</text>
+    <text x="780" y="390" font-size="12" fill="#dcfce7">플랫폼 · CTF · 버그바운티 · 자격증</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="300" y1="374" x2="356" y2="374"/>
+    <line x1="600" y1="374" x2="656" y2="374"/>
+  </g>
+
+  <text x="480" y="456" text-anchor="middle" font-size="16" font-weight="700" fill="#15803d">공격을 배운 이유는 막고, 보고, 고치기 위해서다</text>
+  <text x="480" y="482" text-anchor="middle" font-size="12" fill="#64748b">모든 실습은 허가된 격리 실습장 또는 연습용 대상에서만</text>
+</svg>

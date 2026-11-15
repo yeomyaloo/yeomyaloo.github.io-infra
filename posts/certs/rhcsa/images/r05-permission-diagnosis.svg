@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">공유 디렉터리 권한 읽기와 진단 순서</text>
+
+  <!-- Left panel: ls -ld breakdown -->
+  <rect x="20" y="56" width="470" height="464" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="40" y="84" font-size="16" font-weight="700" fill="#0f172a">ls -ld /srv/team 읽는 법</text>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-size="22" text-anchor="middle">
+    <rect x="40" y="104" width="30" height="40" rx="4" fill="#e2e8f0"/><text x="55" y="132" fill="#334155">d</text>
+    <rect x="74" y="104" width="90" height="40" rx="4" fill="#dbeafe"/><text x="119" y="132" fill="#1e3a8a">rwx</text>
+    <rect x="168" y="104" width="90" height="40" rx="4" fill="#dcfce7"/><text x="198" y="132" fill="#14532d">rw</text>
+    <text x="236" y="132" fill="#ee0000" font-weight="700">s</text>
+    <rect x="262" y="104" width="90" height="40" rx="4" fill="#fef3c7"/><text x="292" y="132" fill="#78350f">--</text>
+    <text x="330" y="132" fill="#ee0000" font-weight="700">T</text>
+    <rect x="356" y="104" width="30" height="40" rx="4" fill="#fde8e8"/><text x="371" y="132" fill="#ee0000" font-weight="700">+</text>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#334155">
+    <text x="119" y="162">소유자 root</text>
+    <text x="213" y="162">그룹 devteam</text>
+    <text x="307" y="162">other</text>
+    <text x="371" y="162">ACL</text>
+  </g>
+
+  <g font-size="13">
+    <rect x="40" y="182" width="430" height="76" rx="8" fill="#ffffff" stroke="#ee0000"/>
+    <text x="56" y="206" font-weight="700" fill="#b91c1c">s = SGID (2000)</text>
+    <text x="56" y="228" fill="#334155">새 파일이 디렉터리 그룹(devteam)을 상속</text>
+    <text x="56" y="248" fill="#64748b" font-size="12">없으면 각자 개인 그룹으로 생겨 동료가 못 씀</text>
+
+    <rect x="40" y="268" width="430" height="76" rx="8" fill="#ffffff" stroke="#ee0000"/>
+    <text x="56" y="292" font-weight="700" fill="#b91c1c">T = sticky (1000)</text>
+    <text x="56" y="314" fill="#334155">파일 소유자만 삭제·이름 변경 가능</text>
+    <text x="56" y="334" fill="#64748b" font-size="12">소문자 t = other에 x 있음, 대문자 T = 없음</text>
+
+    <rect x="40" y="354" width="430" height="150" rx="8" fill="#ffffff" stroke="#ee0000"/>
+    <text x="56" y="378" font-weight="700" fill="#b91c1c">+ = ACL 있음 → getfacl로 확인</text>
+    <text x="56" y="404" fill="#0f172a" font-family="Consolas,'D2Coding',monospace" font-size="12">user:auditor:rw-   #effective:r--</text>
+    <text x="56" y="424" fill="#0f172a" font-family="Consolas,'D2Coding',monospace" font-size="12">mask::r--</text>
+    <text x="56" y="450" fill="#334155">ls -l의 그룹 자리 = 실제로는 mask</text>
+    <text x="56" y="472" fill="#334155">chmod g-w 하면 mask가 줄어 ACL 권한도 깎임</text>
+    <text x="56" y="494" fill="#64748b" font-size="12">복구: setfacl -m m::rw 파일</text>
+  </g>
+
+  <!-- Right panel: diagnosis steps -->
+  <text x="720" y="84" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">"접근이 안 돼요" 진단 순서</text>
+  <g font-size="13">
+    <rect x="520" y="100" width="420" height="52" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="536" y="122" font-weight="700" fill="#7f1d1d">1. 경로의 모든 상위 디렉터리에 x?</text>
+    <text x="536" y="142" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">namei -l /srv/project/notes/todo.txt</text>
+
+    <rect x="520" y="170" width="420" height="52" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="536" y="192" font-weight="700" fill="#7f1d1d">2. 그룹 소속 (새 그룹은 재로그인 후)</text>
+    <text x="536" y="212" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">id alice</text>
+
+    <rect x="520" y="240" width="420" height="52" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="536" y="262" font-weight="700" fill="#7f1d1d">3. 소유자·그룹·other, 특수 비트</text>
+    <text x="536" y="282" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">ls -ld, stat</text>
+
+    <rect x="520" y="310" width="420" height="52" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+    <text x="536" y="332" font-weight="700" fill="#7f1d1d">4. ACL과 mask로 깎인 실효 권한</text>
+    <text x="536" y="352" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">getfacl  (#effective 확인)</text>
+
+    <rect x="520" y="380" width="420" height="52" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="536" y="402" font-weight="700" fill="#334155">5. 읽기 전용 마운트? VFAT?</text>
+    <text x="536" y="422" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">findmnt -no OPTIONS,FSTYPE -T 경로</text>
+
+    <rect x="520" y="450" width="420" height="52" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="536" y="472" font-weight="700" fill="#334155">6. SELinux 거부? (R09)</text>
+    <text x="536" y="492" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">ls -Z, ausearch -m avc -ts recent</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="730" y1="152" x2="730" y2="166" marker-end="url(#arrow)"/>
+    <line x1="730" y1="222" x2="730" y2="236" marker-end="url(#arrow)"/>
+    <line x1="730" y1="292" x2="730" y2="306" marker-end="url(#arrow)"/>
+    <line x1="730" y1="362" x2="730" y2="376" marker-end="url(#arrow)"/>
+    <line x1="730" y1="432" x2="730" y2="446" marker-end="url(#arrow)"/>
+  </g>
+</svg>

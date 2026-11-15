@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ee0000"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RHEL 부팅 과정과 끼어들 수 있는 지점</text>
+
+  <!-- Stage boxes -->
+  <g text-anchor="middle">
+    <rect x="20" y="70" width="160" height="96" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="100" y="102" font-size="16" font-weight="700" fill="#0f172a">① 펌웨어</text>
+    <text x="100" y="126" font-size="13" fill="#334155">UEFI / BIOS</text>
+    <text x="100" y="148" font-size="12" fill="#64748b">하드웨어 점검</text>
+
+    <rect x="210" y="70" width="160" height="96" rx="10" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+    <text x="290" y="102" font-size="16" font-weight="700" fill="#7f1d1d">② GRUB2</text>
+    <text x="290" y="126" font-size="13" fill="#334155">커널·initramfs 선택</text>
+    <text x="290" y="148" font-size="12" fill="#64748b">커널 명령줄 전달</text>
+
+    <rect x="400" y="70" width="160" height="96" rx="10" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+    <text x="480" y="102" font-size="16" font-weight="700" fill="#7f1d1d">③ 커널 + initramfs</text>
+    <text x="480" y="126" font-size="13" fill="#334155">dracut, 드라이버 로드</text>
+    <text x="480" y="148" font-size="12" fill="#64748b">루트를 /sysroot에 ro</text>
+
+    <rect x="590" y="70" width="160" height="96" rx="10" fill="#fde8e8" stroke="#ee0000" stroke-width="2"/>
+    <text x="670" y="102" font-size="16" font-weight="700" fill="#7f1d1d">④ systemd</text>
+    <text x="670" y="126" font-size="13" fill="#334155">PID 1, switch_root 후</text>
+    <text x="670" y="148" font-size="12" fill="#64748b">유닛 병렬 기동</text>
+
+    <rect x="780" y="70" width="160" height="96" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="860" y="102" font-size="16" font-weight="700" fill="#14532d">⑤ 타깃 도달</text>
+    <text x="860" y="126" font-size="13" fill="#334155">default.target</text>
+    <text x="860" y="148" font-size="12" fill="#64748b">로그인 프롬프트</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="180" y1="118" x2="206" y2="118" marker-end="url(#arrow)"/>
+    <line x1="370" y1="118" x2="396" y2="118" marker-end="url(#arrow)"/>
+    <line x1="560" y1="118" x2="586" y2="118" marker-end="url(#arrow)"/>
+    <line x1="750" y1="118" x2="776" y2="118" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Interrupt points -->
+  <g stroke="#ee0000" stroke-width="2" fill="none" stroke-dasharray="5 4">
+    <line x1="290" y1="166" x2="290" y2="206" marker-end="url(#arrowRed)"/>
+    <line x1="480" y1="166" x2="480" y2="206" marker-end="url(#arrowRed)"/>
+    <line x1="670" y1="166" x2="670" y2="206" marker-end="url(#arrowRed)"/>
+  </g>
+
+  <g text-anchor="middle">
+    <rect x="205" y="210" width="170" height="104" rx="8" fill="#ffffff" stroke="#ee0000"/>
+    <text x="290" y="234" font-size="14" font-weight="700" fill="#b91c1c">메뉴에서 e 키</text>
+    <text x="290" y="258" font-size="12" fill="#334155">linux 줄을 이번 부팅만</text>
+    <text x="290" y="276" font-size="12" fill="#334155">임시 편집, Ctrl+x로 부팅</text>
+    <text x="290" y="300" font-size="12" fill="#64748b">(영구 변경은 grubby, R06)</text>
+
+    <rect x="395" y="210" width="170" height="104" rx="8" fill="#ffffff" stroke="#ee0000"/>
+    <text x="480" y="234" font-size="14" font-weight="700" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">rd.break</text>
+    <text x="480" y="258" font-size="12" fill="#334155">switch_root 직전 셸</text>
+    <text x="480" y="276" font-size="12" fill="#334155">실제 루트 = /sysroot</text>
+    <text x="480" y="300" font-size="12" fill="#64748b">root 비밀번호 복구</text>
+
+    <rect x="585" y="210" width="170" height="104" rx="8" fill="#ffffff" stroke="#ee0000"/>
+    <text x="670" y="234" font-size="13" font-weight="700" fill="#b91c1c" font-family="Consolas,'D2Coding',monospace">systemd.unit=</text>
+    <text x="670" y="258" font-size="12" fill="#334155">rescue.target</text>
+    <text x="670" y="276" font-size="12" fill="#334155">emergency.target</text>
+    <text x="670" y="300" font-size="12" fill="#64748b">root 비밀번호 필요</text>
+  </g>
+
+  <!-- Targets table -->
+  <rect x="20" y="344" width="920" height="156" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="40" y="372" font-size="15" font-weight="700" fill="#0f172a">systemd 타깃</text>
+  <g font-size="13">
+    <rect x="40" y="388" width="205" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="142" y="412" text-anchor="middle" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">graphical</text>
+    <text x="142" y="436" text-anchor="middle" fill="#334155">GUI 로그인</text>
+    <text x="142" y="460" text-anchor="middle" fill="#64748b">옛 runlevel 5</text>
+
+    <rect x="260" y="388" width="205" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="362" y="412" text-anchor="middle" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">multi-user</text>
+    <text x="362" y="436" text-anchor="middle" fill="#334155">텍스트 로그인 + 네트워크</text>
+    <text x="362" y="460" text-anchor="middle" fill="#64748b">옛 runlevel 3</text>
+
+    <rect x="480" y="388" width="205" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="582" y="412" text-anchor="middle" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">rescue</text>
+    <text x="582" y="436" text-anchor="middle" fill="#334155">단일 사용자, 기본 FS만</text>
+    <text x="582" y="460" text-anchor="middle" fill="#64748b">옛 runlevel 1</text>
+
+    <rect x="700" y="388" width="220" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="810" y="412" text-anchor="middle" font-weight="700" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">emergency</text>
+    <text x="810" y="436" text-anchor="middle" fill="#334155">루트 읽기 전용, 최소 셸</text>
+    <text x="810" y="460" text-anchor="middle" fill="#64748b">fstab 고장 복구용</text>
+  </g>
+</svg>

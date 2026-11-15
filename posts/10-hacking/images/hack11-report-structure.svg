@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">모의해킹 보고서 구조 — 위에서 아래로 갈수록 자세해진다</text>
+
+  <!-- 왼쪽 상세도 화살표 -->
+  <line x1="34" y1="72" x2="34" y2="450" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="48" y="90" font-size="13" fill="#64748b">짧고</text>
+  <text x="48" y="108" font-size="13" fill="#64748b">결정용</text>
+  <text x="48" y="366" font-size="13" fill="#64748b">길고</text>
+  <text x="48" y="384" font-size="13" fill="#64748b">근거용</text>
+
+  <!-- 막대 -->
+  <g text-anchor="middle">
+    <rect x="260" y="70" width="280" height="54" rx="8" fill="#15803d"/>
+    <text x="400" y="93" font-size="15" font-weight="700" fill="#ffffff">1. 경영진 요약</text>
+    <text x="400" y="113" font-size="12" fill="#dcfce7">한 쪽 · 위험 수준 · 할 일 3개</text>
+
+    <rect x="220" y="136" width="360" height="54" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="400" y="159" font-size="15" font-weight="700" fill="#14532d">2·3. 범위 · 방법론</text>
+    <text x="400" y="179" font-size="12" fill="#334155">대상 · 제외 대상 · 허가 근거 · 기준 · 도구</text>
+
+    <rect x="180" y="202" width="440" height="54" rx="8" fill="#dcfce7" stroke="#15803d"/>
+    <text x="400" y="225" font-size="15" font-weight="700" fill="#14532d">4·6. 발견 사항 요약표 · 위험도 기준</text>
+    <text x="400" y="245" font-size="12" fill="#334155">ID · 제목 · 위험도 · CVSS 벡터 · 상태</text>
+
+    <rect x="140" y="268" width="520" height="54" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="400" y="291" font-size="15" font-weight="700" fill="#991b1b">5. 발견 사항 상세 (발견마다 반복)</text>
+    <text x="400" y="311" font-size="12" fill="#334155">설명 · 영향 · 재현 절차 · 증거 · 조치 권고 · 탐지</text>
+
+    <rect x="100" y="334" width="600" height="54" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+    <text x="400" y="357" font-size="15" font-weight="700" fill="#0f172a">7·8. 조치 로드맵 · 재점검 결과</text>
+    <text x="400" y="377" font-size="12" fill="#334155">즉시 / 30일 / 90일 · 해결 · 부분 해결 · 미해결 · 위험 수용</text>
+
+    <rect x="60" y="400" width="680" height="54" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="400" y="423" font-size="15" font-weight="700" fill="#0f172a">부록</text>
+    <text x="400" y="443" font-size="12" fill="#334155">도구·버전 · 탐지 커버리지 표(해킹 10) · 증거 파일 SHA-256 · 용어집</text>
+  </g>
+
+  <!-- 오른쪽: 독자 -->
+  <text x="855" y="62" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">주 독자</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="770" y="80" width="170" height="34" rx="17" fill="#fde68a"/>
+    <text x="855" y="102" fill="#78350f">경영진 (3분)</text>
+    <rect x="770" y="146" width="170" height="34" rx="17" fill="#e2e8f0"/>
+    <text x="855" y="168" fill="#334155">감사 · 전체</text>
+    <rect x="770" y="212" width="170" height="34" rx="17" fill="#e2e8f0"/>
+    <text x="855" y="234" fill="#334155">전체</text>
+    <rect x="770" y="278" width="170" height="34" rx="17" fill="#c7d2fe"/>
+    <text x="855" y="300" fill="#312e81">개발 · 운영</text>
+    <rect x="770" y="344" width="170" height="34" rx="17" fill="#e2e8f0"/>
+    <text x="855" y="366" fill="#334155">경영진 · 운영</text>
+    <rect x="770" y="410" width="170" height="34" rx="17" fill="#e2e8f0"/>
+    <text x="855" y="432" fill="#334155">보안팀</text>
+  </g>
+
+  <text x="480" y="496" text-anchor="middle" font-size="13" fill="#64748b">표지에는 문서 등급(대외비)·버전 이력·배포 대상 목록 — 범위에는 "시험하지 않은 것"까지</text>
+</svg>

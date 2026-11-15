@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">XSS 3종 — 입력이 머무는 곳과 방어 계층</text>
+
+  <!-- Reflected -->
+  <rect x="20" y="58" width="300" height="236" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="170" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">Reflected</text>
+  <g font-size="13" fill="#334155">
+    <rect x="36" y="100" width="268" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="48" y="123">① 조작된 링크 클릭 (URL 파라미터)</text>
+    <rect x="36" y="144" width="268" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="48" y="167">② 서버가 그 응답에 그대로 출력</text>
+    <rect x="36" y="188" width="268" height="36" rx="6" fill="#fca5a5"/>
+    <text x="48" y="211" fill="#7f1d1d">③ 피해자 브라우저에서 실행</text>
+  </g>
+  <text x="170" y="252" text-anchor="middle" font-size="12" fill="#64748b">서버 접근 로그: 남음</text>
+  <text x="170" y="274" text-anchor="middle" font-size="12" fill="#64748b">피해 대상: 링크를 연 사람</text>
+
+  <!-- Stored -->
+  <rect x="330" y="58" width="300" height="236" rx="12" fill="#f8fafc" stroke="#b91c1c" stroke-width="2"/>
+  <text x="480" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#7f1d1d">Stored</text>
+  <g font-size="13" fill="#334155">
+    <rect x="346" y="100" width="268" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="358" y="123">① 게시글·댓글·프로필로 저장</text>
+    <rect x="346" y="144" width="268" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="358" y="167">② DB → 다른 사용자 화면에 출력</text>
+    <rect x="346" y="188" width="268" height="36" rx="6" fill="#fca5a5"/>
+    <text x="358" y="211" fill="#7f1d1d">③ 보는 모든 사람의 브라우저에서</text>
+  </g>
+  <text x="480" y="252" text-anchor="middle" font-size="12" fill="#64748b">서버 로그: 저장 요청에 남음</text>
+  <text x="480" y="274" text-anchor="middle" font-size="12" fill="#b91c1c" font-weight="700">피해 범위가 가장 큼</text>
+
+  <!-- DOM -->
+  <rect x="640" y="58" width="300" height="236" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="790" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">DOM-based</text>
+  <g font-size="13" fill="#334155">
+    <rect x="656" y="100" width="268" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="668" y="123">① URL # 조각 등 클라이언트 입력</text>
+    <rect x="656" y="144" width="268" height="36" rx="6" fill="#e2e8f0"/>
+    <text x="668" y="167">② 프런트 JS가 innerHTML로 씀</text>
+    <rect x="656" y="188" width="268" height="36" rx="6" fill="#fca5a5"/>
+    <text x="668" y="211" fill="#7f1d1d">③ 서버를 거치지 않고 실행</text>
+  </g>
+  <text x="790" y="252" text-anchor="middle" font-size="12" fill="#64748b">서버 로그: 안 남을 수 있음</text>
+  <text x="790" y="274" text-anchor="middle" font-size="12" fill="#64748b">탐지: CSP 위반 보고</text>
+
+  <!-- Defense layers -->
+  <text x="20" y="328" font-size="16" font-weight="700" fill="#14532d">방어 계층 (위에서부터 차례로 쌓는다)</text>
+  <g font-size="13">
+    <rect x="20" y="340" width="920" height="38" rx="6" fill="#86efac" stroke="#16a34a"/>
+    <text x="36" y="364" font-weight="700" fill="#14532d">1차 · 출력 인코딩</text>
+    <text x="220" y="364" fill="#14532d">템플릿 자동 이스케이프 (|safe 금지) · html.escape · 속성은 따옴표 · JS 문맥은 tojson · DOM은 textContent</text>
+
+    <rect x="20" y="386" width="920" height="38" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="36" y="410" font-weight="700" fill="#14532d">2차 · CSP</text>
+    <text x="220" y="410" fill="#14532d">script-src 'self' · object-src 'none' · Report-Only로 시작 → 강제 모드</text>
+
+    <rect x="20" y="432" width="920" height="38" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="36" y="456" font-weight="700" fill="#14532d">3차 · 쿠키 속성</text>
+    <text x="220" y="456" fill="#14532d">HttpOnly (JS로 못 읽음) · Secure (HTTPS만) · SameSite=Lax (교차 사이트 요청 제한)</text>
+
+    <rect x="20" y="478" width="920" height="34" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="36" y="500" font-weight="700" fill="#334155">탐지</text>
+    <text x="220" y="500" fill="#334155">접근 로그(%3Cscript 등) · WAF CRS 941xxx 규칙 · CSP 위반 보고 → Loki → Alertmanager</text>
+  </g>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">docker.sock 마운트가 위험한 이유</text>
+
+  <!-- Host frame -->
+  <rect x="15" y="56" width="930" height="210" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="30" y="78" font-size="13" fill="#64748b">Docker 호스트</text>
+
+  <!-- Container A -->
+  <rect x="30" y="100" width="200" height="110" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="130" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">컨테이너 A</text>
+  <text x="130" y="152" text-anchor="middle" font-size="13" fill="#14532d">non-root · drop ALL</text>
+  <text x="130" y="172" text-anchor="middle" font-size="13" fill="#14532d">read-only</text>
+  <text x="130" y="196" text-anchor="middle" font-size="12" fill="#15803d">(하드닝 완료)</text>
+
+  <!-- Socket -->
+  <rect x="280" y="125" width="170" height="60" rx="30" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="365" y="152" text-anchor="middle" font-size="14" font-family="Consolas,'D2Coding',monospace" fill="#7f1d1d">docker.sock</text>
+  <text x="365" y="172" text-anchor="middle" font-size="12" fill="#7f1d1d">(마운트됨)</text>
+
+  <!-- dockerd -->
+  <rect x="500" y="110" width="180" height="90" rx="10" fill="#2496ed"/>
+  <text x="590" y="146" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">dockerd</text>
+  <text x="590" y="172" text-anchor="middle" font-size="13" fill="#ffffff">호스트 root로 실행</text>
+
+  <!-- Container B -->
+  <rect x="730" y="100" width="200" height="110" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="830" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#7f1d1d">새 컨테이너 B</text>
+  <text x="830" y="152" text-anchor="middle" font-size="13" fill="#7f1d1d">privileged</text>
+  <text x="830" y="172" text-anchor="middle" font-size="13" fill="#7f1d1d">+ 호스트 / 마운트</text>
+  <text x="830" y="196" text-anchor="middle" font-size="12" fill="#b91c1c">= 호스트 root</text>
+
+  <!-- Arrows -->
+  <g stroke-width="2" fill="none">
+    <line x1="230" y1="155" x2="276" y2="155" stroke="#334155" marker-end="url(#arrow)"/>
+    <line x1="450" y1="155" x2="496" y2="155" stroke="#334155" marker-end="url(#arrow)"/>
+    <line x1="680" y1="155" x2="726" y2="155" stroke="#b91c1c" marker-end="url(#arrowRed)"/>
+  </g>
+  <g font-size="12" fill="#334155" text-anchor="middle" font-weight="700">
+    <text x="253" y="145">연결</text>
+    <text x="473" y="145">API</text>
+    <text x="703" y="145" fill="#b91c1c">생성</text>
+  </g>
+
+  <text x="480" y="244" text-anchor="middle" font-size="14" fill="#b91c1c" font-weight="700">컨테이너 A의 하드닝은 이 경로를 막지 못한다 — 위험은 소켓 너머 데몬의 권한에서 온다</text>
+
+  <!-- Defenses -->
+  <text x="480" y="298" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">대안과 탐지</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="314" width="210" height="96" rx="10" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="135" y="342" font-weight="700" fill="#14532d">마운트 금지</text>
+    <text x="135" y="366" fill="#334155">PSA baseline이</text>
+    <text x="135" y="386" fill="#334155">hostPath 자체를 거부</text>
+
+    <rect x="260" y="314" width="210" height="96" rx="10" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="365" y="342" font-weight="700" fill="#14532d">소켓 프록시</text>
+    <text x="365" y="366" fill="#334155">필요한 읽기 API만</text>
+    <text x="365" y="386" fill="#334155">허용하고 나머지 거부</text>
+
+    <rect x="490" y="314" width="210" height="96" rx="10" fill="#f0fdf4" stroke="#15803d"/>
+    <text x="595" y="342" font-weight="700" fill="#14532d">rootless Docker</text>
+    <text x="595" y="366" fill="#334155">뺏겨도 데몬 권한이</text>
+    <text x="595" y="386" fill="#334155">일반 사용자까지 (Day 68)</text>
+
+    <rect x="720" y="314" width="210" height="96" rx="10" fill="#eff6ff" stroke="#2496ed"/>
+    <text x="825" y="342" font-weight="700" fill="#1e3a8a">Falco 탐지</text>
+    <text x="825" y="366" fill="#334155">컨테이너 → 런타임</text>
+    <text x="825" y="386" fill="#334155">소켓 connect 경보</text>
+  </g>
+</svg>

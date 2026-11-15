@@ -34,11 +34,16 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
   [[params.tabs]]
     key = "hacking"
     name = "해킹"
-    description = "화이트해커 트랙"
+    description = "화이트해커 트랙 — 본인 소유 격리 실습장에서만"
   [[params.tabs]]
     key = "cert"
     name = "자격증 준비"
     description = "RHCSA(EX200) 등 자격증 대비"
+
+  # 글 안의 .md 링크를 블로그 주소로 바꿀 때, infra 폴더 이름 → 블로그 폴더 이름
+  # (해킹 트랙은 /hacking/ 탭 주소와 겹치지 않게 posts/10-hacking/ 에 둠)
+  [params.linkPathMap]
+    hacking = "10-hacking"
 
   # Giscus 댓글: https://giscus.app 에서 값을 받아 채우면 댓글이 켜집니다.
   [params.giscus]

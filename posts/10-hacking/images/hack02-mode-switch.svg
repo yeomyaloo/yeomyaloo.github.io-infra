@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">업데이트 모드 ↔ 실습 모드</text>
+
+  <!-- Left panel -->
+  <rect x="30" y="65" width="400" height="290" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="230" y="97" text-anchor="middle" font-size="18" font-weight="700" fill="#78350f">업데이트 모드</text>
+  <g font-size="14" fill="#334155">
+    <text x="50" y="140">Kali NIC1 (NAT)</text>
+    <text x="50" y="185">docker-targets NIC1</text>
+    <text x="50" y="230">Metasploitable 2</text>
+    <text x="50" y="275">DVWA · Juice Shop</text>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="700">
+    <rect x="290" y="120" width="120" height="30" rx="15" fill="#fde68a"/><text x="350" y="140" fill="#78350f">연결</text>
+    <rect x="290" y="165" width="120" height="30" rx="15" fill="#fde68a"/><text x="350" y="185" fill="#78350f">연결</text>
+    <rect x="290" y="210" width="120" height="30" rx="15" fill="#e2e8f0"/><text x="350" y="230" fill="#334155">전원 꺼짐</text>
+    <rect x="290" y="255" width="120" height="30" rx="15" fill="#e2e8f0"/><text x="350" y="275" fill="#334155">중지</text>
+  </g>
+  <text x="230" y="325" text-anchor="middle" font-size="13" fill="#78350f">하는 일: apt upgrade, docker compose pull</text>
+
+  <!-- Right panel -->
+  <rect x="530" y="65" width="400" height="290" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="730" y="97" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">실습 모드</text>
+  <g font-size="14" fill="#334155">
+    <text x="550" y="140">Kali NIC1 (NAT)</text>
+    <text x="550" y="185">docker-targets NIC1</text>
+    <text x="550" y="230">Metasploitable 2</text>
+    <text x="550" y="275">DVWA · Juice Shop</text>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="700">
+    <rect x="790" y="120" width="120" height="30" rx="15" fill="#fca5a5"/><text x="850" y="140" fill="#7f1d1d">분리</text>
+    <rect x="790" y="165" width="120" height="30" rx="15" fill="#fca5a5"/><text x="850" y="185" fill="#7f1d1d">분리</text>
+    <rect x="790" y="210" width="120" height="30" rx="15" fill="#86efac"/><text x="850" y="230" fill="#14532d">켜짐</text>
+    <rect x="790" y="255" width="120" height="30" rx="15" fill="#86efac"/><text x="850" y="275" fill="#14532d">실행</text>
+  </g>
+  <text x="730" y="325" text-anchor="middle" font-size="13" fill="#14532d">하는 일: 스캔 · 실습 (해킹 03~)</text>
+
+  <!-- Middle arrows -->
+  <g stroke="#334155" stroke-width="2">
+    <line x1="436" y1="150" x2="524" y2="150" marker-end="url(#arrow)"/>
+    <line x1="524" y1="260" x2="436" y2="260" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#334155">
+    <text x="480" y="174">체크리스트</text>
+    <text x="480" y="192">실행 후 전환</text>
+    <text x="480" y="284">대상을</text>
+    <text x="480" y="302">먼저 끄고</text>
+  </g>
+
+  <!-- Banner -->
+  <rect x="30" y="372" width="900" height="44" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="480" y="400" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">원칙: 인터넷 연결과 실습 대상이 동시에 존재하지 않는다</text>
+</svg>

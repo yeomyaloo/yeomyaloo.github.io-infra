@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">위험 설정을 닫는 순환 — 점검 → 수정 → 예방 → 탐지</text>
+
+  <!-- 점검 (top-left) -->
+  <rect x="60" y="70" width="340" height="120" rx="12" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="230" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">① 점검 (해킹 07 9장)</text>
+  <text x="230" y="130" text-anchor="middle" font-size="14" fill="#334155">docker inspect 포맷 · kubectl + jq</text>
+  <text x="230" y="154" text-anchor="middle" font-size="14" fill="#334155">kubectl auth can-i · PSA dry-run</text>
+  <text x="230" y="176" text-anchor="middle" font-size="12" fill="#15803d">"지금 열린 문은 어디인가"</text>
+
+  <!-- 수정 (top-right) -->
+  <rect x="560" y="70" width="340" height="120" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="730" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#78350f">② 수정 (Day 68)</text>
+  <text x="730" y="130" text-anchor="middle" font-size="14" fill="#334155">privileged · hostPath 제거, drop ALL</text>
+  <text x="730" y="154" text-anchor="middle" font-size="14" fill="#334155">소켓 프록시 · rootless · userns</text>
+  <text x="730" y="176" text-anchor="middle" font-size="12" fill="#92400e">"찾은 문을 닫는다"</text>
+
+  <!-- 예방 (bottom-right) -->
+  <rect x="560" y="290" width="340" height="120" rx="12" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="730" y="320" text-anchor="middle" font-size="18" font-weight="700" fill="#312e81">③ 예방 (Day 69 · 57)</text>
+  <text x="730" y="350" text-anchor="middle" font-size="14" fill="#334155">PSA baseline / restricted 강제</text>
+  <text x="730" y="374" text-anchor="middle" font-size="14" fill="#334155">Kyverno로 예외 경로까지 차단</text>
+  <text x="730" y="396" text-anchor="middle" font-size="12" fill="#4338ca">"다시 열리지 않게"</text>
+
+  <!-- 탐지 (bottom-left) -->
+  <rect x="60" y="290" width="340" height="120" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="230" y="320" text-anchor="middle" font-size="18" font-weight="700" fill="#7f1d1d">④ 탐지 (Day 72 · 73 · 83)</text>
+  <text x="230" y="350" text-anchor="middle" font-size="14" fill="#334155">Falco: privileged 시작 · 소켓 연결</text>
+  <text x="230" y="374" text-anchor="middle" font-size="14" fill="#334155">감사 로그: 누가 만들었나</text>
+  <text x="230" y="396" text-anchor="middle" font-size="12" fill="#b91c1c">"그래도 열렸다면 바로 안다"</text>
+
+  <!-- Arrows -->
+  <g stroke="#334155" stroke-width="2.5" fill="none">
+    <line x1="400" y1="130" x2="556" y2="130" marker-end="url(#arrow)"/>
+    <line x1="730" y1="190" x2="730" y2="286" marker-end="url(#arrow)"/>
+    <line x1="560" y1="350" x2="404" y2="350" marker-end="url(#arrow)"/>
+    <line x1="230" y1="290" x2="230" y2="194" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Center -->
+  <circle cx="480" cy="240" r="58" fill="#f8fafc" stroke="#64748b" stroke-dasharray="5 4"/>
+  <text x="480" y="236" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">열린 문</text>
+  <text x="480" y="256" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">닫기</text>
+
+  <text x="480" y="440" text-anchor="middle" font-size="13" fill="#64748b">탐지 결과는 다음 점검의 입력이 된다 — 경보가 반복되면 설정(②·③)을 고칠 신호</text>
+</svg>

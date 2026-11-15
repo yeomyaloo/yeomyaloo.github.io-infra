@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" width="960" height="660" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="660" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">EX200 공식 목표 10개 그룹 → 이 시리즈의 편</text>
+  <text x="250" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">공식 목표 그룹 (RHEL 10 기준)</text>
+  <text x="780" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">이 시리즈</text>
+  <rect x="30" y="74" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="100" font-size="17" font-weight="700" fill="#ee0000">①</text>
+  <text x="78" y="91" font-size="14" font-weight="700" fill="#0f172a">필수 도구</text>
+  <text x="78" y="108" font-size="11" fill="#64748b">Understand and use essential tools</text>
+  <line x1="470" y1="94" x2="616" y2="94" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="74" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="100" font-size="16" font-weight="700" fill="#ee0000">R01</text>
+  <text x="690" y="99" font-size="13" fill="#334155">필수 도구</text>
+  <rect x="30" y="122" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="148" font-size="17" font-weight="700" fill="#ee0000">②</text>
+  <text x="78" y="139" font-size="14" font-weight="700" fill="#0f172a">소프트웨어 관리 (RPM·Flatpak)</text>
+  <text x="78" y="156" font-size="11" fill="#64748b">Manage software</text>
+  <line x1="470" y1="142" x2="616" y2="142" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="30" y="170" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="196" font-size="17" font-weight="700" fill="#ee0000">③</text>
+  <text x="78" y="187" font-size="14" font-weight="700" fill="#0f172a">간단한 셸 스크립트</text>
+  <text x="78" y="204" font-size="11" fill="#64748b">Create simple shell scripts</text>
+  <line x1="470" y1="190" x2="616" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="30" y="218" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="244" font-size="17" font-weight="700" fill="#ee0000">④</text>
+  <text x="78" y="235" font-size="14" font-weight="700" fill="#0f172a">실행 중인 시스템 운영</text>
+  <text x="78" y="252" font-size="11" fill="#64748b">Operate running systems</text>
+  <line x1="470" y1="238" x2="616" y2="238" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="218" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="244" font-size="16" font-weight="700" fill="#ee0000">R03</text>
+  <text x="690" y="243" font-size="13" fill="#334155">부팅·프로세스·journal</text>
+  <rect x="30" y="266" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="292" font-size="17" font-weight="700" fill="#ee0000">⑤</text>
+  <text x="78" y="283" font-size="14" font-weight="700" fill="#0f172a">로컬 스토리지</text>
+  <text x="78" y="300" font-size="11" fill="#64748b">Configure local storage</text>
+  <line x1="470" y1="286" x2="616" y2="286" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="266" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="292" font-size="16" font-weight="700" fill="#ee0000">R04</text>
+  <text x="690" y="291" font-size="13" fill="#334155">GPT·LVM·swap</text>
+  <rect x="30" y="314" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="340" font-size="17" font-weight="700" fill="#ee0000">⑥</text>
+  <text x="78" y="331" font-size="14" font-weight="700" fill="#0f172a">파일 시스템</text>
+  <text x="78" y="348" font-size="11" fill="#64748b">Create and configure file systems</text>
+  <line x1="470" y1="334" x2="616" y2="334" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="314" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="340" font-size="16" font-weight="700" fill="#ee0000">R05</text>
+  <text x="690" y="339" font-size="13" fill="#334155">XFS·NFS·autofs</text>
+  <rect x="30" y="362" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="388" font-size="17" font-weight="700" fill="#ee0000">⑦</text>
+  <text x="78" y="379" font-size="14" font-weight="700" fill="#0f172a">시스템 배포·유지</text>
+  <text x="78" y="396" font-size="11" fill="#64748b">Deploy, configure, and maintain</text>
+  <line x1="470" y1="382" x2="616" y2="382" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="362" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="388" font-size="16" font-weight="700" fill="#ee0000">R06</text>
+  <text x="690" y="387" font-size="13" fill="#334155">스케줄·서비스·부트로더 (+R02)</text>
+  <rect x="30" y="410" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="436" font-size="17" font-weight="700" fill="#ee0000">⑧</text>
+  <text x="78" y="427" font-size="14" font-weight="700" fill="#0f172a">기본 네트워킹</text>
+  <text x="78" y="444" font-size="11" fill="#64748b">Manage basic networking</text>
+  <line x1="470" y1="430" x2="616" y2="430" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="410" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="436" font-size="16" font-weight="700" fill="#ee0000">R07</text>
+  <text x="690" y="435" font-size="13" fill="#334155">nmcli·호스트명·firewalld</text>
+  <rect x="30" y="458" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="484" font-size="17" font-weight="700" fill="#ee0000">⑨</text>
+  <text x="78" y="475" font-size="14" font-weight="700" fill="#0f172a">사용자·그룹</text>
+  <text x="78" y="492" font-size="11" fill="#64748b">Manage users and groups</text>
+  <line x1="470" y1="478" x2="616" y2="478" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="458" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="484" font-size="16" font-weight="700" fill="#ee0000">R08</text>
+  <text x="690" y="483" font-size="13" fill="#334155">계정·에이징·sudo</text>
+  <rect x="30" y="506" width="440" height="40" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="532" font-size="17" font-weight="700" fill="#ee0000">⑩</text>
+  <text x="78" y="523" font-size="14" font-weight="700" fill="#0f172a">보안</text>
+  <text x="78" y="540" font-size="11" fill="#64748b">Manage security</text>
+  <line x1="470" y1="526" x2="616" y2="526" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="620" y="506" width="320" height="40" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="532" font-size="16" font-weight="700" fill="#ee0000">R09</text>
+  <text x="690" y="531" font-size="13" fill="#334155">SELinux·SSH 키·umask</text>
+  <rect x="620" y="122" width="320" height="88" rx="8" fill="#fde8e8" stroke="#ee0000"/>
+  <text x="640" y="172" font-size="16" font-weight="700" fill="#ee0000">R02</text>
+  <text x="690" y="160" font-size="13" fill="#334155">.repo·dnf·Flatpak</text>
+  <text x="690" y="182" font-size="13" fill="#334155">if·for·인자·종료 코드</text>
+  <rect x="30" y="566" width="440" height="72" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="250" y="594" text-anchor="middle" font-size="14" font-weight="700" fill="#64748b" text-decoration="line-through">Manage containers (podman)</text>
+  <text x="250" y="620" text-anchor="middle" font-size="12" fill="#64748b">RHEL 9 기준 목표에 있었고, RHEL 10 목표에서는 빠짐</text>
+  <rect x="620" y="566" width="320" height="72" rx="8" fill="#ee0000"/>
+  <text x="780" y="596" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">R10 · R11 모의고사</text>
+  <text x="780" y="620" text-anchor="middle" font-size="12" fill="#ffffff">전 목표 종합, 제한 시간, 재부팅 후 채점</text>
+  <text x="545" y="606" text-anchor="middle" font-size="12" fill="#64748b">전 범위</text>
+  <line x1="500" y1="614" x2="616" y2="614" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

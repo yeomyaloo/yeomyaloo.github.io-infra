@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">스캔이 남기는 흔적과 탐지 지점</text>
+
+  <!-- Kali -->
+  <rect x="20" y="190" width="150" height="90" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="95" y="224" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Kali</text>
+  <text x="95" y="250" text-anchor="middle" font-size="13" fill="#15803d" font-family="Consolas,'D2Coding',monospace">10.10.10.5</text>
+
+  <!-- Switch -->
+  <rect x="200" y="205" width="140" height="60" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="270" y="231" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">hacklab</text>
+  <text x="270" y="252" text-anchor="middle" font-size="11" fill="#166534">Internal Network</text>
+
+  <!-- VM -->
+  <rect x="370" y="60" width="400" height="360" rx="14" fill="#f8fafc" stroke="#2496ed" stroke-width="2"/>
+  <text x="570" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">docker-targets VM</text>
+
+  <rect x="390" y="205" width="100" height="60" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="440" y="231" text-anchor="middle" font-size="13" font-weight="700" fill="#334155" font-family="Consolas,'D2Coding',monospace">enp0s8</text>
+  <text x="440" y="252" text-anchor="middle" font-size="11" fill="#475569">실습망 NIC</text>
+
+  <!-- detection boxes -->
+  <rect x="530" y="100" width="220" height="80" rx="10" fill="#dbeafe" stroke="#326ce5" stroke-width="2"/>
+  <text x="640" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">① Suricata (af-packet)</text>
+  <text x="640" y="150" text-anchor="middle" font-size="12" fill="#1e40af">패킷 전체: 스캔 · UA · 404</text>
+  <text x="640" y="169" text-anchor="middle" font-size="11" fill="#1e40af" font-family="Consolas,'D2Coding',monospace">fast.log · eve.json</text>
+
+  <rect x="530" y="200" width="220" height="80" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="640" y="228" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">② nftables input</text>
+  <text x="640" y="250" text-anchor="middle" font-size="12" fill="#92400e">VM 자신으로 오는 연결</text>
+  <text x="640" y="269" text-anchor="middle" font-size="11" fill="#92400e" font-family="Consolas,'D2Coding',monospace">journalctl -k labfw-drop</text>
+
+  <rect x="530" y="300" width="220" height="100" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="640" y="328" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">③ DVWA 컨테이너</text>
+  <text x="640" y="350" text-anchor="middle" font-size="12" fill="#166534">ipvlan .20 · Apache 접근 로그</text>
+  <text x="640" y="370" text-anchor="middle" font-size="11" fill="#166534" font-family="Consolas,'D2Coding',monospace">docker logs</text>
+  <text x="640" y="389" text-anchor="middle" font-size="11" fill="#166534">UA · 404 · 요청 경로</text>
+
+  <!-- Flow arrows -->
+  <g stroke="#334155" stroke-width="2">
+    <line x1="170" y1="235" x2="196" y2="235" marker-end="url(#arrow)"/>
+    <line x1="340" y1="235" x2="386" y2="235" marker-end="url(#arrow)"/>
+    <line x1="490" y1="235" x2="526" y2="240" marker-end="url(#arrow)"/>
+    <line x1="490" y1="250" x2="526" y2="340" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="490" y1="220" x2="526" y2="145" stroke="#326ce5" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowBlue)"/>
+  <text x="470" y="160" text-anchor="middle" font-size="11" fill="#326ce5">복사본 관찰</text>
+
+  <!-- Collection -->
+  <rect x="800" y="150" width="140" height="170" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="870" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">수집 · 알림</text>
+  <g font-size="12" fill="#5b21b6" text-anchor="middle">
+    <text x="870" y="212">Day 60</text>
+    <text x="870" y="230">Alloy → Loki</text>
+    <text x="870" y="260">Day 62 알림</text>
+    <text x="870" y="290">해킹 10 종합</text>
+  </g>
+  <g stroke="#7c3aed" stroke-width="2">
+    <line x1="750" y1="140" x2="796" y2="190" marker-end="url(#arrow)"/>
+    <line x1="750" y1="240" x2="796" y2="240" marker-end="url(#arrow)"/>
+    <line x1="750" y1="350" x2="796" y2="290" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="480" y="452" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">-sS 포트 스캔은 ①②에, -sV · -sC · 디렉터리 탐색은 ①③에 남는다</text>
+</svg>

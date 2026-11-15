@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">탐지 커버리지 매트릭스 — 해킹 트랙 실습장 기준</text>
+
+  <!-- 헤더 -->
+  <rect x="20" y="60" width="330" height="44" fill="#334155"/>
+  <text x="185" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">ATT&amp;CK 기법</text>
+  <g font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">
+    <rect x="352" y="60" width="114" height="44" fill="#2563eb"/>
+    <text x="409" y="88">웹 로그</text>
+    <rect x="468" y="60" width="114" height="44" fill="#2563eb"/>
+    <text x="525" y="88">auditd</text>
+    <rect x="584" y="60" width="114" height="44" fill="#2563eb"/>
+    <text x="641" y="88">Falco</text>
+    <rect x="700" y="60" width="114" height="44" fill="#2563eb"/>
+    <text x="757" y="88">감사 로그</text>
+    <rect x="816" y="60" width="124" height="44" fill="#15803d"/>
+    <text x="878" y="88">종합</text>
+  </g>
+
+  <!-- 행 라벨 -->
+  <g font-size="13" fill="#0f172a">
+    <rect x="20" y="106" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="131">T1595 Active Scanning</text>
+    <rect x="20" y="148" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="173">T1595.003 Wordlist Scanning</text>
+    <rect x="20" y="190" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="215">T1190 Exploit Public-Facing App</text>
+    <rect x="20" y="232" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="257">T1059.004 Unix Shell</text>
+    <rect x="20" y="274" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="299">T1609 Container Admin Command</text>
+    <rect x="20" y="316" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="341">T1548 Setuid/Sudo 악용</text>
+    <rect x="20" y="358" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="383">T1053.003 Cron</text>
+    <rect x="20" y="400" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="425">T1613 Container/Resource Discovery</text>
+    <rect x="20" y="442" width="330" height="40" fill="#f8fafc"/>
+    <text x="32" y="467">T1528 Steal App Access Token</text>
+  </g>
+
+  <!-- 셀: 색 정의 none=#fca5a5 log=#fde68a search=#fed7aa alert=#86efac na=#f1f5f9 -->
+  <g font-size="13" text-anchor="middle">
+    <!-- T1595 -->
+    <rect x="352" y="106" width="114" height="40" fill="#fde68a"/><text x="409" y="131" fill="#78350f">기록만</text>
+    <rect x="468" y="106" width="114" height="40" fill="#f1f5f9"/><text x="525" y="131" fill="#94a3b8">해당 없음</text>
+    <rect x="584" y="106" width="114" height="40" fill="#fca5a5"/><text x="641" y="131" fill="#7f1d1d">없음</text>
+    <rect x="700" y="106" width="114" height="40" fill="#f1f5f9"/><text x="757" y="131" fill="#94a3b8">해당 없음</text>
+    <rect x="816" y="106" width="124" height="40" fill="#fde68a"/><text x="878" y="131" fill="#78350f">기록만</text>
+    <!-- T1595.003 -->
+    <rect x="352" y="148" width="114" height="40" fill="#86efac"/><text x="409" y="173" fill="#14532d">알림</text>
+    <rect x="468" y="148" width="114" height="40" fill="#f1f5f9"/><text x="525" y="173" fill="#94a3b8">해당 없음</text>
+    <rect x="584" y="148" width="114" height="40" fill="#f1f5f9"/><text x="641" y="173" fill="#94a3b8">해당 없음</text>
+    <rect x="700" y="148" width="114" height="40" fill="#f1f5f9"/><text x="757" y="173" fill="#94a3b8">해당 없음</text>
+    <rect x="816" y="148" width="124" height="40" fill="#86efac"/><text x="878" y="173" fill="#14532d">알림</text>
+    <!-- T1190 -->
+    <rect x="352" y="190" width="114" height="40" fill="#fed7aa"/><text x="409" y="215" fill="#7c2d12">GET만 검색</text>
+    <rect x="468" y="190" width="114" height="40" fill="#f1f5f9"/><text x="525" y="215" fill="#94a3b8">해당 없음</text>
+    <rect x="584" y="190" width="114" height="40" fill="#fca5a5"/><text x="641" y="215" fill="#7f1d1d">미설치</text>
+    <rect x="700" y="190" width="114" height="40" fill="#f1f5f9"/><text x="757" y="215" fill="#94a3b8">해당 없음</text>
+    <rect x="816" y="190" width="124" height="40" fill="#fed7aa"/><text x="878" y="215" fill="#7c2d12">검색 가능</text>
+    <!-- T1059.004 -->
+    <rect x="352" y="232" width="114" height="40" fill="#f1f5f9"/><text x="409" y="257" fill="#94a3b8">해당 없음</text>
+    <rect x="468" y="232" width="114" height="40" fill="#f1f5f9"/><text x="525" y="257" fill="#94a3b8">해당 없음</text>
+    <rect x="584" y="232" width="114" height="40" fill="#86efac"/><text x="641" y="257" fill="#14532d">알림 (K8s)</text>
+    <rect x="700" y="232" width="114" height="40" fill="#fca5a5"/><text x="757" y="257" fill="#7f1d1d">없음</text>
+    <rect x="816" y="232" width="124" height="40" fill="#fed7aa"/><text x="878" y="257" fill="#7c2d12">K8s만 알림</text>
+    <!-- T1609 -->
+    <rect x="352" y="274" width="114" height="40" fill="#f1f5f9"/><text x="409" y="299" fill="#94a3b8">해당 없음</text>
+    <rect x="468" y="274" width="114" height="40" fill="#f1f5f9"/><text x="525" y="299" fill="#94a3b8">해당 없음</text>
+    <rect x="584" y="274" width="114" height="40" fill="#86efac"/><text x="641" y="299" fill="#14532d">알림</text>
+    <rect x="700" y="274" width="114" height="40" fill="#fed7aa"/><text x="757" y="299" fill="#7c2d12">검색 가능</text>
+    <rect x="816" y="274" width="124" height="40" fill="#86efac"/><text x="878" y="299" fill="#14532d">알림</text>
+    <!-- T1548 -->
+    <rect x="352" y="316" width="114" height="40" fill="#f1f5f9"/><text x="409" y="341" fill="#94a3b8">해당 없음</text>
+    <rect x="468" y="316" width="114" height="40" fill="#fed7aa"/><text x="525" y="341" fill="#7c2d12">검색 가능</text>
+    <rect x="584" y="316" width="114" height="40" fill="#fde68a"/><text x="641" y="341" fill="#78350f">룰 꺼짐</text>
+    <rect x="700" y="316" width="114" height="40" fill="#f1f5f9"/><text x="757" y="341" fill="#94a3b8">해당 없음</text>
+    <rect x="816" y="316" width="124" height="40" fill="#fed7aa"/><text x="878" y="341" fill="#7c2d12">검색 가능</text>
+    <!-- T1053.003 -->
+    <rect x="352" y="358" width="114" height="40" fill="#f1f5f9"/><text x="409" y="383" fill="#94a3b8">해당 없음</text>
+    <rect x="468" y="358" width="114" height="40" fill="#86efac"/><text x="525" y="383" fill="#14532d">알림</text>
+    <rect x="584" y="358" width="114" height="40" fill="#fde68a"/><text x="641" y="383" fill="#78350f">룰 꺼짐</text>
+    <rect x="700" y="358" width="114" height="40" fill="#f1f5f9"/><text x="757" y="383" fill="#94a3b8">해당 없음</text>
+    <rect x="816" y="358" width="124" height="40" fill="#86efac"/><text x="878" y="383" fill="#14532d">알림</text>
+    <!-- T1613 -->
+    <rect x="352" y="400" width="114" height="40" fill="#f1f5f9"/><text x="409" y="425" fill="#94a3b8">해당 없음</text>
+    <rect x="468" y="400" width="114" height="40" fill="#f1f5f9"/><text x="525" y="425" fill="#94a3b8">해당 없음</text>
+    <rect x="584" y="400" width="114" height="40" fill="#fed7aa"/><text x="641" y="425" fill="#7c2d12">NOTICE 기록</text>
+    <rect x="700" y="400" width="114" height="40" fill="#86efac"/><text x="757" y="425" fill="#14532d">알림</text>
+    <rect x="816" y="400" width="124" height="40" fill="#86efac"/><text x="878" y="425" fill="#14532d">알림</text>
+    <!-- T1528 -->
+    <rect x="352" y="442" width="114" height="40" fill="#f1f5f9"/><text x="409" y="467" fill="#94a3b8">해당 없음</text>
+    <rect x="468" y="442" width="114" height="40" fill="#f1f5f9"/><text x="525" y="467" fill="#94a3b8">해당 없음</text>
+    <rect x="584" y="442" width="114" height="40" fill="#86efac"/><text x="641" y="467" fill="#14532d">알림 (커스텀)</text>
+    <rect x="700" y="442" width="114" height="40" fill="#fed7aa"/><text x="757" y="467" fill="#7c2d12">검색 가능</text>
+    <rect x="816" y="442" width="124" height="40" fill="#86efac"/><text x="878" y="467" fill="#14532d">알림</text>
+  </g>
+
+  <!-- 범례 -->
+  <g font-size="13">
+    <rect x="20" y="504" width="22" height="22" rx="4" fill="#fca5a5"/><text x="50" y="520" fill="#334155">보이지 않음</text>
+    <rect x="160" y="504" width="22" height="22" rx="4" fill="#fde68a"/><text x="190" y="520" fill="#334155">기록만 됨</text>
+    <rect x="290" y="504" width="22" height="22" rx="4" fill="#fed7aa"/><text x="320" y="520" fill="#334155">검색 가능</text>
+    <rect x="420" y="504" width="22" height="22" rx="4" fill="#86efac"/><text x="450" y="520" fill="#334155">알림</text>
+    <rect x="510" y="504" width="22" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/><text x="540" y="520" fill="#334155">원천과 무관</text>
+  </g>
+  <text x="940" y="520" text-anchor="end" font-size="12" fill="#64748b">종합 = 가장 좋은 원천 기준</text>
+  <text x="480" y="548" text-anchor="middle" font-size="12" fill="#64748b">빨강·노랑 칸이 7장 공백 목록의 출발점 — 수집 / 룰 / 라우팅 / 품질로 분류해 고친다</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">IMDSv1과 IMDSv2 — SSRF 요청이 막히는 지점</text>
+
+  <!-- Lane v1 -->
+  <rect x="15" y="56" width="930" height="160" rx="12" fill="#fff7f7" stroke="#fca5a5"/>
+  <text x="32" y="82" font-size="16" font-weight="700" fill="#b91c1c">IMDSv1 (HttpTokens=optional)</text>
+
+  <rect x="30" y="106" width="140" height="80" rx="10" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="100" y="142" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">외부 사용자</text>
+  <text x="100" y="164" text-anchor="middle" font-size="12" fill="#64748b">URL 입력</text>
+
+  <rect x="230" y="106" width="180" height="80" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="320" y="142" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">취약 앱 (EC2)</text>
+  <text x="320" y="164" text-anchor="middle" font-size="12" fill="#7f1d1d">서버가 대신 요청</text>
+
+  <rect x="520" y="106" width="210" height="80" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="625" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">IMDS</text>
+  <text x="625" y="164" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#78350f">169.254.169.254</text>
+
+  <rect x="790" y="106" width="140" height="80" rx="10" fill="#b91c1c"/>
+  <text x="860" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">역할 자격 증명</text>
+  <text x="860" y="162" text-anchor="middle" font-size="13" fill="#ffffff">→ 외부로 유출</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="170" y1="146" x2="226" y2="146" marker-end="url(#arrow)"/>
+    <line x1="410" y1="146" x2="516" y2="146" marker-end="url(#arrow)"/>
+    <line x1="730" y1="146" x2="786" y2="146" marker-end="url(#arrow)"/>
+  </g>
+  <text x="463" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">GET 한 번</text>
+  <text x="463" y="203" text-anchor="middle" font-size="12" fill="#b91c1c">헤더·토큰 없이 응답</text>
+
+  <!-- Lane v2 -->
+  <rect x="15" y="232" width="930" height="160" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="32" y="258" font-size="16" font-weight="700" fill="#15803d">IMDSv2 (HttpTokens=required)</text>
+
+  <rect x="30" y="282" width="140" height="80" rx="10" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="100" y="318" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">외부 사용자</text>
+  <text x="100" y="340" text-anchor="middle" font-size="12" fill="#64748b">URL 입력</text>
+
+  <rect x="230" y="282" width="180" height="80" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="320" y="318" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">취약 앱 (EC2)</text>
+  <text x="320" y="340" text-anchor="middle" font-size="12" fill="#7f1d1d">여전히 SSRF 있음</text>
+
+  <rect x="520" y="282" width="210" height="80" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="625" y="308" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">IMDS</text>
+  <text x="625" y="330" text-anchor="middle" font-size="12" fill="#78350f">① PUT으로 토큰 발급</text>
+  <text x="625" y="350" text-anchor="middle" font-size="12" fill="#78350f">② GET + 토큰 헤더 필수</text>
+
+  <rect x="790" y="282" width="140" height="80" rx="10" fill="#15803d"/>
+  <text x="860" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">401 거부</text>
+  <text x="860" y="338" text-anchor="middle" font-size="13" fill="#ffffff">자격 증명 없음</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="170" y1="322" x2="226" y2="322" marker-end="url(#arrow)"/>
+    <line x1="410" y1="322" x2="516" y2="322" marker-end="url(#arrow)"/>
+    <line x1="730" y1="322" x2="786" y2="322" marker-end="url(#arrow)"/>
+  </g>
+  <text x="463" y="312" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">GET만 가능</text>
+  <text x="463" y="380" text-anchor="middle" font-size="12" fill="#15803d">메서드·헤더를 못 정함</text>
+
+  <!-- Notes -->
+  <rect x="15" y="406" width="930" height="82" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <g font-size="13" fill="#334155">
+    <text x="32" y="430">• 프록시를 거친 PUT(X-Forwarded-For 포함)은 토큰 발급 거부</text>
+    <text x="32" y="452">• hop limit 1: 토큰 응답이 컨테이너·다른 호스트까지 못 감 (컨테이너가 IMDS를 써야 하면 2)</text>
+    <text x="32" y="474" fill="#b91c1c">• IMDSv2는 SSRF를 고치지 않는다 — 앱 검증(해킹 05) + egress 제한(해킹 08)과 함께</text>
+  </g>
+</svg>
