@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">etcd 스냅샷 — 저장은 etcdctl, 검사·복원은 etcdutl</text>
+  <text x="480" y="60" text-anchor="middle" font-size="14" fill="#64748b">k8s-cp 기준 · etcd 3.6부터 etcdctl snapshot status/restore 제거</text>
+
+  <!-- SAVE side -->
+  <rect x="30" y="80" width="400" height="300" rx="12" fill="#f8fafc" stroke="#64748b"/>
+  <text x="50" y="108" font-size="16" font-weight="700" fill="#334155">백업 (네트워크로 접속)</text>
+
+  <rect x="50" y="124" width="160" height="70" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="130" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">etcd Pod</text>
+  <text x="130" y="174" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">127.0.0.1:2379</text>
+
+  <rect x="250" y="124" width="160" height="70" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="330" y="152" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">etcd-snap.db</text>
+  <text x="330" y="174" text-anchor="middle" font-size="12" fill="#64748b">/opt/cka/</text>
+  <line x1="210" y1="159" x2="246" y2="159" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="50" y="222">etcdctl --endpoints=https://127.0.0.1:2379</text>
+    <text x="50" y="242">  --cacert=…/pki/etcd/ca.crt</text>
+    <text x="50" y="262">  --cert=…/pki/etcd/server.crt</text>
+    <text x="50" y="282">  --key=…/pki/etcd/server.key</text>
+    <text x="50" y="302">  snapshot save /opt/cka/etcd-snap.db</text>
+    <text x="50" y="336" fill="#166534">etcdutl snapshot status etcd-snap.db</text>
+  </g>
+  <text x="50" y="362" font-size="12" fill="#64748b">경로는 etcd.yaml의 --*-file 플래그에서 확인</text>
+
+  <!-- RESTORE side -->
+  <rect x="460" y="80" width="470" height="300" rx="12" fill="#f8fafc" stroke="#326ce5"/>
+  <text x="480" y="108" font-size="16" font-weight="700" fill="#1e3a8a">복원 (파일을 직접 다룸)</text>
+
+  <g font-size="13" fill="#0f172a">
+    <rect x="480" y="122" width="430" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="494" y="147">① kube-apiserver.yaml을 manifests 밖으로 (API 서버 정지)</text>
+
+    <rect x="480" y="172" width="430" height="40" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="494" y="197">② <tspan font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#1e3a8a">etcdutl … restore --data-dir /var/lib/etcd-restore</tspan></text>
+
+    <rect x="480" y="222" width="430" height="40" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+    <text x="494" y="247">③ etcd.yaml의 <tspan font-weight="700">volumes.hostPath.path</tspan>만 새 경로로</text>
+
+    <rect x="480" y="272" width="430" height="40" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="494" y="297">④ etcd 재기동 확인 (crictl ps --name etcd)</text>
+
+    <rect x="480" y="322" width="430" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="494" y="347">⑤ kube-apiserver.yaml 복귀 → kubelet 재시작</text>
+  </g>
+  <g stroke="#334155" stroke-width="1.5">
+    <line x1="695" y1="162" x2="695" y2="171" marker-end="url(#arrow)"/>
+    <line x1="695" y1="212" x2="695" y2="221" marker-end="url(#arrow)"/>
+    <line x1="695" y1="262" x2="695" y2="271" marker-end="url(#arrow)"/>
+    <line x1="695" y1="312" x2="695" y2="321" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- hostPath mount detail -->
+  <rect x="30" y="400" width="900" height="180" rx="12" fill="#ffffff" stroke="#64748b"/>
+  <text x="50" y="428" font-size="15" font-weight="700" fill="#334155">③이 왜 hostPath 하나뿐인가 — 호스트 디렉터리를 컨테이너의 같은 경로에 끼워 넣을 뿐</text>
+
+  <rect x="50" y="448" width="250" height="110" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="175" y="474" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">노드(k8s-cp) 디스크</text>
+  <text x="175" y="502" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#94a3b8" text-decoration="line-through">/var/lib/etcd</text>
+  <text x="175" y="530" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#1e3a8a">/var/lib/etcd-restore</text>
+
+  <line x1="300" y1="525" x2="396" y2="525" stroke="#326ce5" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="348" y="514" text-anchor="middle" font-size="12" fill="#326ce5">hostPath</text>
+
+  <rect x="400" y="448" width="250" height="110" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="525" y="474" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">etcd 컨테이너 안</text>
+  <text x="525" y="502" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">mountPath /var/lib/etcd</text>
+  <text x="525" y="530" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">--data-dir=/var/lib/etcd</text>
+
+  <g font-size="13" fill="#334155">
+    <text x="672" y="474">• mountPath·--data-dir는</text>
+    <text x="684" y="494">그대로 둔다</text>
+    <text x="672" y="520">• kubeadm-config의</text>
+    <text x="684" y="540">etcd.local.dataDir도 갱신</text>
+  </g>
+</svg>

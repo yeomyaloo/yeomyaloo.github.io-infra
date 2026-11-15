@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="500" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">Service 호출이 Pod에 닿기까지 — 이름, 대역, EndpointSlice</text>
+
+  <!-- client -->
+  <rect x="30" y="150" width="200" height="110" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="130" y="178" font-size="15" font-weight="bold" fill="#326ce5" text-anchor="middle">client Pod (k04)</text>
+  <text x="130" y="202" font-size="12" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">10.244.1.40</text>
+  <text x="130" y="226" font-size="11" fill="#64748b" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">nameserver 10.96.0.10</text>
+  <text x="130" y="244" font-size="11" fill="#64748b" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">search k04.svc.cluster.local</text>
+
+  <!-- coredns -->
+  <rect x="330" y="60" width="260" height="104" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="460" y="86" font-size="15" font-weight="bold" fill="#334155" text-anchor="middle">CoreDNS (kube-system)</text>
+  <text x="460" y="110" font-size="12" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">Service kube-dns 10.96.0.10</text>
+  <text x="460" y="132" font-size="12" fill="#64748b" text-anchor="middle">ConfigMap coredns 의 Corefile</text>
+  <text x="460" y="152" font-size="12" fill="#64748b" text-anchor="middle">외부 이름은 forward → 노드 resolv.conf</text>
+
+  <path d="M190,150 L328,96" fill="none" stroke="#326ce5" stroke-width="2" marker-end="url(#arrb)"/>
+  <text x="150" y="104" font-size="12" fill="#326ce5">① api.k04 조회</text>
+  <path d="M330,146 L234,178" fill="none" stroke="#326ce5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrb)"/>
+  <text x="246" y="194" font-size="12" fill="#326ce5">② 10.104.20.15</text>
+
+  <!-- service -->
+  <rect x="330" y="230" width="260" height="100" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="460" y="256" font-size="15" font-weight="bold" fill="#326ce5" text-anchor="middle">Service api (ClusterIP)</text>
+  <text x="460" y="280" font-size="12" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">10.104.20.15 port 8080</text>
+  <text x="460" y="300" font-size="12" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">targetPort 80</text>
+  <text x="460" y="320" font-size="12" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">selector app=api</text>
+
+  <line x1="230" y1="244" x2="328" y2="272" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="232" y="290" font-size="12" fill="#334155">③ :8080 접속</text>
+
+  <!-- endpointslice -->
+  <rect x="640" y="230" width="230" height="100" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="755" y="256" font-size="15" font-weight="bold" fill="#334155" text-anchor="middle">EndpointSlice</text>
+  <text x="755" y="280" font-size="12" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">10.244.1.31:80</text>
+  <text x="755" y="300" font-size="12" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">10.244.2.18:80</text>
+  <text x="755" y="320" font-size="11" fill="#64748b" text-anchor="middle">비어 있으면 selector·Ready 확인</text>
+  <line x1="590" y1="280" x2="638" y2="280" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- pods -->
+  <rect x="640" y="352" width="108" height="52" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="694" y="374" font-size="12" fill="#334155" text-anchor="middle">api Pod</text>
+  <text x="694" y="394" font-size="11" fill="#64748b" text-anchor="middle">k8s-w1</text>
+  <rect x="762" y="352" width="108" height="52" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="816" y="374" font-size="12" fill="#334155" text-anchor="middle">api Pod</text>
+  <text x="816" y="394" font-size="11" fill="#64748b" text-anchor="middle">k8s-w2</text>
+  <path d="M460,330 L460,378 L636,378" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrg)"/>
+  <text x="290" y="362" font-size="12" fill="#16a34a">④ kube-proxy·Cilium이</text>
+  <text x="290" y="380" font-size="12" fill="#16a34a">Pod IP:80 으로 변환(DNAT)</text>
+
+  <!-- ranges -->
+  <rect x="30" y="424" width="270" height="58" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <text x="165" y="447" font-size="13" font-weight="bold" fill="#334155" text-anchor="middle">노드 192.168.56.0/24</text>
+  <text x="165" y="469" font-size="12" fill="#64748b" text-anchor="middle">cp .10 · w1 .11 · w2 .12 (NodePort)</text>
+  <rect x="315" y="424" width="270" height="58" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="450" y="447" font-size="13" font-weight="bold" fill="#334155" text-anchor="middle">Pod 10.244.0.0/16</text>
+  <text x="450" y="469" font-size="12" fill="#64748b" text-anchor="middle">노드별 /24 · --cluster-cidr</text>
+  <rect x="600" y="424" width="270" height="58" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="735" y="447" font-size="13" font-weight="bold" fill="#334155" text-anchor="middle">Service 10.96.0.0/12</text>
+  <text x="735" y="469" font-size="12" fill="#64748b" text-anchor="middle">k get servicecidr · .1 API · .10 DNS</text>
+</svg>

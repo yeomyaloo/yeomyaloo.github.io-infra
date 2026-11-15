@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 530" width="900" height="530" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="530" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#334155">CKA 모의고사 실습 환경 — 작업 단말 하나, 클러스터 둘</text>
+
+  <!-- work terminal -->
+  <rect x="30" y="70" width="230" height="340" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="145" y="98" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">작업 단말</text>
+  <text x="145" y="118" text-anchor="middle" font-size="12" fill="#64748b">(K00의 작업 셸)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="48" y="148">~/cka/</text>
+    <text x="62" y="168">k07-setup.sh</text>
+    <text x="62" y="186">k08-setup.sh</text>
+    <text x="62" y="204">grade.sh</text>
+    <text x="62" y="222">k07/  k08/</text>
+  </g>
+  <text x="62" y="240" font-size="11" fill="#64748b">└ 답안 파일·차트</text>
+  <rect x="45" y="258" width="200" height="72" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="58" y="278" font-size="12" font-weight="700" fill="#326ce5">kubeconfig contexts</text>
+  <text x="58" y="298" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">● cka-main</text>
+  <text x="58" y="318" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">● cka-aux</text>
+  <text x="58" y="358" font-size="12" fill="#334155">노드 작업:</text>
+  <text x="58" y="378" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">ssh &lt;노드&gt;</text>
+  <text x="58" y="396" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">→ sudo -i</text>
+
+  <!-- arrows terminal -> clusters -->
+  <line x1="262" y1="150" x2="378" y2="150" stroke="#326ce5" stroke-width="2" marker-end="url(#arrb)"/>
+  <text x="320" y="128" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="10" fill="#326ce5">kubectl</text>
+  <text x="320" y="141" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="10" fill="#326ce5">--context</text>
+  <line x1="262" y1="232" x2="378" y2="232" stroke="#334155" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arr)"/>
+  <text x="320" y="223" text-anchor="middle" font-size="11" fill="#334155">ssh (노드)</text>
+  <line x1="262" y1="350" x2="378" y2="350" stroke="#326ce5" stroke-width="2" marker-end="url(#arrb)"/>
+  <text x="320" y="328" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="10" fill="#326ce5">kubectl</text>
+  <text x="320" y="341" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="10" fill="#326ce5">--context</text>
+
+  <!-- cka-main -->
+  <rect x="380" y="70" width="500" height="200" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="396" y="96" font-size="15" font-weight="700" fill="#326ce5">cka-main</text>
+  <text x="472" y="96" font-size="12" fill="#334155">kubeadm 3노드 · Cilium · K07 v1.37 / K08 v1.36에서 시작</text>
+
+  <rect x="395" y="112" width="145" height="118" rx="8" fill="#ffffff" stroke="#326ce5"/>
+  <text x="467" y="136" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#334155">k8s-cp</text>
+  <text x="467" y="156" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#64748b">192.168.56.10</text>
+  <text x="467" y="180" text-anchor="middle" font-size="12" fill="#334155">컨트롤 플레인</text>
+  <text x="467" y="199" text-anchor="middle" font-size="11" fill="#334155">정적 Pod · etcd</text>
+  <text x="467" y="217" text-anchor="middle" font-size="11" fill="#dc2626">K08 Q1·Q2·Q4</text>
+
+  <rect x="555" y="112" width="145" height="118" rx="8" fill="#ffffff" stroke="#326ce5"/>
+  <text x="627" y="136" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#334155">k8s-w1</text>
+  <text x="627" y="156" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#64748b">192.168.56.11</text>
+  <text x="627" y="180" text-anchor="middle" font-size="12" fill="#334155">워커</text>
+  <text x="627" y="199" text-anchor="middle" font-size="11" fill="#334155">kubelet · containerd</text>
+  <text x="627" y="217" text-anchor="middle" font-size="11" fill="#dc2626">K07 Q14 · K08 Q16</text>
+
+  <rect x="715" y="112" width="145" height="118" rx="8" fill="#ffffff" stroke="#326ce5"/>
+  <text x="787" y="136" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#334155">k8s-w2</text>
+  <text x="787" y="156" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#64748b">192.168.56.12</text>
+  <text x="787" y="180" text-anchor="middle" font-size="12" fill="#334155">워커</text>
+  <text x="787" y="199" text-anchor="middle" font-size="11" fill="#334155">kubelet · containerd</text>
+  <text x="787" y="217" text-anchor="middle" font-size="11" fill="#dc2626">K08 Q3</text>
+
+  <text x="396" y="254" font-size="11" fill="#64748b">빨간 글자 = 사전 준비 스크립트가 일부러 고장 내는 곳(문항 번호)</text>
+
+  <!-- cka-aux -->
+  <rect x="380" y="290" width="500" height="120" rx="10" fill="#f8fafc" stroke="#4f46e5" stroke-width="2"/>
+  <text x="396" y="316" font-size="15" font-weight="700" fill="#4f46e5">cka-aux</text>
+  <text x="464" y="316" font-size="12" fill="#334155">kind · 노드 = Docker 컨테이너 · K07 Q4·Q13, K08 Q12·Q15</text>
+  <rect x="395" y="330" width="230" height="48" rx="8" fill="#ffffff" stroke="#4f46e5"/>
+  <text x="510" y="359" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">cka-aux-control-plane</text>
+  <rect x="640" y="330" width="220" height="48" rx="8" fill="#ffffff" stroke="#4f46e5"/>
+  <text x="750" y="359" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">cka-aux-worker</text>
+  <text x="396" y="399" font-size="11" fill="#64748b">기본 StorageClass: standard (local-path 프로비저너)</text>
+
+  <!-- flow -->
+  <rect x="30" y="440" width="190" height="62" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="125" y="466" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">① setup.sh</text>
+  <text x="125" y="486" text-anchor="middle" font-size="11" fill="#334155">문제 상황 만들기</text>
+  <rect x="246" y="440" width="190" height="62" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="341" y="466" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">② 2시간 풀이</text>
+  <text x="341" y="486" text-anchor="middle" font-size="11" fill="#334155">문항마다 use-context</text>
+  <rect x="462" y="440" width="190" height="62" rx="8" fill="#86efac" stroke="#16a34a"/>
+  <text x="557" y="466" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">③ grade.sh</text>
+  <text x="557" y="486" text-anchor="middle" font-size="11" fill="#334155">jsonpath로 PASS/FAIL</text>
+  <rect x="678" y="440" width="190" height="62" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="773" y="466" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">④ 결과 해석</text>
+  <text x="773" y="486" text-anchor="middle" font-size="11" fill="#334155">다시 볼 편 K01~K06</text>
+  <line x1="221" y1="471" x2="244" y2="471" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="437" y1="471" x2="460" y2="471" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="653" y1="471" x2="676" y2="471" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">쿠버네티스 확장 지점 — API를 늘리는 CRD, 노드를 꽂는 CRI·CNI·CSI</text>
+
+  <!-- Control plane -->
+  <rect x="30" y="60" width="900" height="200" rx="12" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="50" y="88" font-size="16" font-weight="700" fill="#1e3a8a">컨트롤 플레인 — API 확장 (CRD + 오퍼레이터)</text>
+
+  <rect x="50" y="106" width="220" height="130" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="160" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">CRD</text>
+  <text x="160" y="158" text-anchor="middle" font-size="13" fill="#334155">새 종류(kind)를 API에 등록</text>
+  <text x="160" y="186" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">k get crd</text>
+  <text x="160" y="208" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">k explain &lt;kind&gt;.spec</text>
+
+  <rect x="350" y="106" width="220" height="130" rx="10" fill="#326ce5"/>
+  <text x="460" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">kube-apiserver</text>
+  <text x="460" y="168" text-anchor="middle" font-size="13" fill="#e8eefc">CR 저장 (etcd)</text>
+  <text x="460" y="196" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">Certificate, Backup …</text>
+
+  <rect x="650" y="106" width="260" height="130" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="780" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">오퍼레이터 (컨트롤러 Pod)</text>
+  <text x="780" y="158" text-anchor="middle" font-size="13" fill="#334155">CR을 watch → 실제 리소스를</text>
+  <text x="780" y="178" text-anchor="middle" font-size="13" fill="#334155">원하는 상태로 맞춤</text>
+  <text x="780" y="208" text-anchor="middle" font-size="12" fill="#64748b">예: cert-manager → Secret 생성</text>
+
+  <line x1="270" y1="171" x2="344" y2="171" stroke="#326ce5" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="307" y="160" text-anchor="middle" font-size="12" fill="#326ce5">등록</text>
+  <line x1="644" y1="150" x2="576" y2="150" stroke="#326ce5" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="610" y="140" text-anchor="middle" font-size="12" fill="#326ce5">watch</text>
+  <line x1="576" y1="196" x2="644" y2="196" stroke="#326ce5" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="610" y="216" text-anchor="middle" font-size="12" fill="#326ce5">갱신</text>
+
+  <!-- Node -->
+  <rect x="30" y="280" width="900" height="300" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="50" y="308" font-size="16" font-weight="700" fill="#334155">워커 노드 (예: k8s-w1) — kubelet이 표준 인터페이스로 플러그인을 부른다</text>
+
+  <rect x="360" y="326" width="240" height="64" rx="10" fill="#334155"/>
+  <text x="480" y="355" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">kubelet</text>
+  <text x="480" y="377" text-anchor="middle" font-size="12" fill="#e2e8f0">/var/lib/kubelet/config.yaml</text>
+
+  <!-- CRI -->
+  <rect x="50" y="430" width="270" height="130" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="66" y="456" font-size="15" font-weight="700" fill="#166534">CRI — 컨테이너 런타임</text>
+  <text x="66" y="480" font-size="13" fill="#334155">containerd (gRPC 소켓)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#166534">
+    <text x="66" y="506">k get nodes -o wide</text>
+    <text x="66" y="526">sudo crictl version</text>
+    <text x="66" y="546">containerRuntimeEndpoint</text>
+  </g>
+
+  <!-- CNI -->
+  <rect x="345" y="430" width="270" height="130" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="361" y="456" font-size="15" font-weight="700" fill="#92400e">CNI — Pod 네트워크</text>
+  <text x="361" y="480" font-size="13" fill="#334155">Cilium (kind는 kindnet)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#92400e">
+    <text x="361" y="506">ls /etc/cni/net.d/</text>
+    <text x="361" y="526">ls /opt/cni/bin/</text>
+    <text x="361" y="546">k -n kube-system get ds</text>
+  </g>
+
+  <!-- CSI -->
+  <rect x="640" y="430" width="270" height="130" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="656" y="456" font-size="15" font-weight="700" fill="#3730a3">CSI — 스토리지 드라이버</text>
+  <text x="656" y="480" font-size="13" fill="#334155">cka-main 기본 상태: 없음</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#3730a3">
+    <text x="656" y="506">k get csidrivers</text>
+    <text x="656" y="526">k get csinodes</text>
+    <text x="656" y="546">k get sc  # PROVISIONER</text>
+  </g>
+
+  <line x1="400" y1="390" x2="200" y2="424" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="480" y1="390" x2="480" y2="424" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="560" y1="390" x2="770" y2="424" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="250" y="400" font-size="12" fill="#64748b">컨테이너 실행</text>
+  <text x="680" y="400" font-size="12" fill="#64748b">볼륨 연결</text>
+  <text x="490" y="414" font-size="12" fill="#64748b">IP 할당</text>
+</svg>

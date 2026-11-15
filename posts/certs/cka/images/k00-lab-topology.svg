@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">CKA 실습 환경 — base 터미널 1개, 클러스터 2개(context 2개)</text>
+
+  <!-- Windows host -->
+  <rect x="20" y="54" width="920" height="530" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="40" y="82" font-size="16" font-weight="700" fill="#334155">Windows 10/11 Home 호스트</text>
+
+  <!-- base WSL -->
+  <rect x="40" y="100" width="300" height="250" rx="12" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="190" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">base — WSL2 Ubuntu 24.04</text>
+  <text x="190" y="150" text-anchor="middle" font-size="13" fill="#64748b">시험의 base 호스트 역할</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">
+    <text x="58" y="180">kubectl v1.37 · helm · kind</text>
+    <text x="58" y="202">alias k=kubectl</text>
+    <text x="58" y="224">export do="--dry-run=client -o yaml"</text>
+  </g>
+  <rect x="58" y="240" width="264" height="94" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="70" y="262" font-size="13" font-weight="700" fill="#1e3a8a">~/.kube/config</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <text x="70" y="288">context cka-main</text>
+    <text x="70" y="312">context cka-aux</text>
+  </g>
+  <text x="222" y="288" font-size="12" fill="#64748b">→ kubeadm</text>
+  <text x="222" y="312" font-size="12" fill="#64748b">→ kind</text>
+
+  <!-- VirtualBox host-only network -->
+  <rect x="400" y="100" width="520" height="290" rx="12" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="420" y="126" font-size="15" font-weight="700" fill="#334155">VirtualBox + Vagrant (C:\lab\k8s) — Day 20 클러스터</text>
+  <text x="420" y="148" font-size="13" fill="#64748b">Host-only 192.168.56.0/24 · Ubuntu 24.04 · containerd · Cilium</text>
+
+  <rect x="420" y="166" width="480" height="30" rx="6" fill="#326ce5"/>
+  <text x="660" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">context cka-main · v1.36 (K00) → v1.37 (K01 이후)</text>
+
+  <rect x="420" y="212" width="150" height="120" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="495" y="238" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-cp</text>
+  <text x="495" y="260" text-anchor="middle" font-size="13" fill="#334155">control-plane</text>
+  <text x="495" y="282" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">192.168.56.10</text>
+  <text x="495" y="304" text-anchor="middle" font-size="12" fill="#64748b">API :6443 · etcd</text>
+  <text x="495" y="322" text-anchor="middle" font-size="12" fill="#64748b">2 vCPU / 4 GB</text>
+
+  <rect x="585" y="212" width="150" height="120" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="660" y="238" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-w1</text>
+  <text x="660" y="260" text-anchor="middle" font-size="13" fill="#334155">worker</text>
+  <text x="660" y="282" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">192.168.56.11</text>
+  <text x="660" y="322" text-anchor="middle" font-size="12" fill="#64748b">2 vCPU / 2 GB</text>
+
+  <rect x="750" y="212" width="150" height="120" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="825" y="238" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">k8s-w2</text>
+  <text x="825" y="260" text-anchor="middle" font-size="13" fill="#334155">worker</text>
+  <text x="825" y="282" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">192.168.56.12</text>
+  <text x="825" y="322" text-anchor="middle" font-size="12" fill="#64748b">2 vCPU / 2 GB</text>
+
+  <text x="420" y="370" font-size="13" fill="#334155">스냅샷: <tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">k00-v136</tspan> (v1.36) · <tspan font-family="Consolas,'D2Coding',monospace" font-weight="700">cka-clean</tspan> (v1.37, K02~K08 초기화)</text>
+
+  <!-- Docker Desktop kind -->
+  <rect x="400" y="410" width="520" height="160" rx="12" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="420" y="436" font-size="15" font-weight="700" fill="#334155">Docker Desktop (WSL2) — kind v0.33.0</text>
+  <rect x="420" y="450" width="480" height="30" rx="6" fill="#64748b"/>
+  <text x="660" y="470" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">context cka-aux · kindest/node:v1.37.0 · kindnet</text>
+  <rect x="420" y="494" width="230" height="60" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="535" y="520" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">cka-aux-control-plane</text>
+  <text x="535" y="542" text-anchor="middle" font-size="12" fill="#64748b">노드 = 컨테이너</text>
+  <rect x="670" y="494" width="230" height="60" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="785" y="520" text-anchor="middle" font-size="13" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">cka-aux-worker</text>
+  <text x="785" y="542" text-anchor="middle" font-size="12" fill="#64748b">초기화 = 지우고 재생성</text>
+
+  <!-- arrows from base -->
+  <line x1="340" y1="288" x2="414" y2="190" stroke="#326ce5" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="300" y="380" font-size="12" fill="#326ce5" text-anchor="end">kubectl → 192.168.56.10:6443</text>
+  <line x1="340" y1="312" x2="414" y2="464" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="300" y="400" font-size="12" fill="#64748b" text-anchor="end">kubectl → 127.0.0.1:&lt;port&gt;</text>
+
+  <!-- ssh -->
+  <rect x="40" y="440" width="300" height="130" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="58" y="466" font-size="14" font-weight="700" fill="#92400e">노드 접속 (시험처럼)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">
+    <text x="58" y="492">ssh k8s-cp | k8s-w1 | k8s-w2</text>
+    <text x="58" y="514">sudo -i</text>
+    <text x="58" y="536">exit   # base로 복귀</text>
+  </g>
+  <text x="58" y="558" font-size="12" fill="#92400e">사용자 vagrant · 키는 ~/.ssh/cka/</text>
+</svg>

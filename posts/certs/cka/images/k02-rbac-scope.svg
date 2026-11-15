@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RBAC 네 가지 조합 — 권한은 어디까지 미치나</text>
+  <text x="480" y="60" text-anchor="middle" font-size="14" fill="#64748b">행 = 규칙을 정의한 오브젝트, 열 = 바인딩 오브젝트</text>
+
+  <!-- headers -->
+  <rect x="250" y="80" width="330" height="44" rx="8" fill="#334155"/>
+  <text x="415" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">RoleBinding (ns 안)</text>
+  <rect x="600" y="80" width="330" height="44" rx="8" fill="#326ce5"/>
+  <text x="765" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">ClusterRoleBinding</text>
+
+  <rect x="30" y="140" width="200" height="190" rx="8" fill="#334155"/>
+  <text x="130" y="226" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">Role</text>
+  <text x="130" y="252" text-anchor="middle" font-size="13" fill="#e2e8f0">ns 하나에 속함</text>
+
+  <rect x="30" y="346" width="200" height="190" rx="8" fill="#326ce5"/>
+  <text x="130" y="432" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">ClusterRole</text>
+  <text x="130" y="458" text-anchor="middle" font-size="13" fill="#e8eefc">ns 없음 (재사용 가능)</text>
+
+  <!-- cell: Role + RB -->
+  <rect x="250" y="140" width="330" height="190" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="270" y="170" font-size="16" font-weight="700" fill="#166534">✔ 그 네임스페이스만</text>
+  <rect x="270" y="186" width="130" height="60" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="335" y="222" text-anchor="middle" font-size="14" font-weight="700" fill="#166534">ns apps</text>
+  <rect x="420" y="186" width="70" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+  <text x="455" y="222" text-anchor="middle" font-size="12" fill="#94a3b8">ns b</text>
+  <rect x="500" y="186" width="60" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+  <text x="530" y="222" text-anchor="middle" font-size="12" fill="#94a3b8">nodes</text>
+  <text x="270" y="276" font-size="13" fill="#334155">가장 흔한 형태. Role과 바인딩은</text>
+  <text x="270" y="296" font-size="13" fill="#334155">같은 네임스페이스에 둔다</text>
+  <text x="270" y="318" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#166534">create role / create rolebinding --role</text>
+
+  <!-- cell: Role + CRB -->
+  <rect x="600" y="140" width="330" height="190" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="620" y="170" font-size="16" font-weight="700" fill="#b91c1c">✘ 불가능한 조합</text>
+  <text x="620" y="206" font-size="14" fill="#334155">ClusterRoleBinding의 roleRef는</text>
+  <text x="620" y="228" font-size="14" fill="#334155">ClusterRole만 가리킬 수 있다</text>
+  <text x="620" y="268" font-size="13" fill="#64748b">클러스터 전체가 필요하면 규칙부터</text>
+  <text x="620" y="288" font-size="13" fill="#64748b">ClusterRole로 만든다</text>
+
+  <!-- cell: ClusterRole + RB -->
+  <rect x="250" y="346" width="330" height="190" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="270" y="376" font-size="16" font-weight="700" fill="#166534">✔ 바인딩한 네임스페이스만</text>
+  <rect x="270" y="392" width="130" height="60" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="335" y="428" text-anchor="middle" font-size="14" font-weight="700" fill="#166534">ns apps</text>
+  <rect x="420" y="392" width="70" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+  <text x="455" y="428" text-anchor="middle" font-size="12" fill="#94a3b8">ns b</text>
+  <rect x="500" y="392" width="60" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+  <text x="530" y="428" text-anchor="middle" font-size="12" fill="#94a3b8">nodes</text>
+  <text x="270" y="482" font-size="13" fill="#334155">view·edit 같은 공용 규칙을 ns별로 재사용.</text>
+  <text x="270" y="502" font-size="13" fill="#334155">nodes 같은 클러스터 리소스는 안 됨</text>
+  <text x="270" y="524" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#166534">create rolebinding --clusterrole=view</text>
+
+  <!-- cell: ClusterRole + CRB -->
+  <rect x="600" y="346" width="330" height="190" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="620" y="376" font-size="16" font-weight="700" fill="#1e3a8a">✔ 클러스터 전체</text>
+  <rect x="620" y="392" width="130" height="60" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="685" y="428" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">ns apps</text>
+  <rect x="770" y="392" width="70" height="60" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="805" y="428" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">ns b</text>
+  <rect x="850" y="392" width="60" height="60" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="880" y="428" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">nodes</text>
+  <text x="620" y="482" font-size="13" fill="#334155">모든 ns + nodes·PV·namespaces 같은</text>
+  <text x="620" y="502" font-size="13" fill="#334155">클러스터 범위 리소스</text>
+  <text x="620" y="524" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">create clusterrolebinding</text>
+
+  <text x="480" y="566" text-anchor="middle" font-size="13" fill="#64748b">검증: kubectl auth can-i &lt;동사&gt; &lt;리소스&gt; -n &lt;ns&gt; --as=system:serviceaccount:&lt;ns&gt;:&lt;이름&gt;</text>
+</svg>

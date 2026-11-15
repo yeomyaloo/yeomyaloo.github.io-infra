@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">PVC가 PV를 찾는 과정 — 정적 바인딩 vs 동적 프로비저닝</text>
+
+  <!-- PVC -->
+  <rect x="30" y="64" width="230" height="176" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="46" y="90" font-size="15" font-weight="bold" fill="#326ce5">PVC 생성</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="46" y="116">storageClassName</text>
+    <text x="46" y="138">accessModes</text>
+    <text x="46" y="160">requests.storage</text>
+    <text x="46" y="182">volumeMode</text>
+    <text x="46" y="204">selector / volumeName</text>
+  </g>
+  <text x="46" y="228" font-size="11" fill="#b45309">클래스 생략 → 기본 SC가 채워짐</text>
+
+  <line x1="260" y1="150" x2="318" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Q1 -->
+  <rect x="320" y="90" width="260" height="120" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="116" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">조건이 모두 맞는 PV가 있나?</text>
+  <text x="336" y="142" font-size="12" fill="#334155">· 같은 클래스 · 접근 모드 포함</text>
+  <text x="336" y="162" font-size="12" fill="#334155">· PV 용량 ≥ 요청 · volumeMode 일치</text>
+  <text x="336" y="182" font-size="12" fill="#334155">· selector 라벨 · 다른 PVC 예약 없음</text>
+  <text x="336" y="200" font-size="11" fill="#64748b">(claimRef가 있으면 그 PVC만)</text>
+
+  <!-- yes static -->
+  <rect x="640" y="64" width="230" height="96" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="755" y="92" font-size="15" font-weight="bold" fill="#16a34a" text-anchor="middle">정적 PV와 Bound</text>
+  <text x="755" y="116" font-size="12" fill="#334155" text-anchor="middle">PV CLAIM 열 = ns/pvc</text>
+  <text x="755" y="138" font-size="12" fill="#334155" text-anchor="middle">남는 용량은 그대로 낭비</text>
+  <path d="M580,120 L638,110" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="590" y="102" font-size="13" font-weight="bold" fill="#16a34a">예</text>
+
+  <!-- Q2 -->
+  <line x1="450" y1="210" x2="450" y2="266" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="460" y="244" font-size="13" font-weight="bold" fill="#dc2626">아니오</text>
+  <rect x="320" y="268" width="260" height="96" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="294" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">그 이름의 SC가 있고</text>
+  <text x="450" y="316" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">프로비저너가 동작하나?</text>
+  <text x="450" y="342" font-size="11" fill="#64748b" text-anchor="middle">no-provisioner · 클래스 "" 는 동적 생성 없음</text>
+
+  <!-- yes dynamic -->
+  <rect x="640" y="210" width="230" height="160" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="755" y="236" font-size="15" font-weight="bold" fill="#326ce5" text-anchor="middle">동적 프로비저닝</text>
+  <text x="656" y="262" font-size="12" fill="#334155">Immediate</text>
+  <text x="669.2" y="280" font-size="12" fill="#64748b">→ 바로 PV 생성·Bound</text>
+  <text x="656" y="306" font-size="12" fill="#334155">WaitForFirstConsumer</text>
+  <text x="669.2" y="324" font-size="12" fill="#64748b">→ Pod 스케줄 전 Pending(정상)</text>
+  <text x="669.2" y="342" font-size="12" fill="#64748b">→ 노드 정해지면 PV 생성</text>
+  <text x="656" y="360" font-size="11" fill="#326ce5">local-path는 이쪽</text>
+  <path d="M580,300 L638,292" fill="none" stroke="#326ce5" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="590" y="286" font-size="13" font-weight="bold" fill="#326ce5">예</text>
+
+  <!-- no -> pending -->
+  <line x1="450" y1="364" x2="450" y2="408" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="460" y="392" font-size="13" font-weight="bold" fill="#dc2626">아니오</text>
+  <rect x="200" y="410" width="500" height="92" rx="8" fill="#fde8e8" stroke="#dc2626" stroke-width="2"/>
+  <text x="450" y="436" font-size="15" font-weight="bold" fill="#dc2626" text-anchor="middle">PVC Pending — k describe pvc 의 Events</text>
+  <text x="216" y="462" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">no persistent volumes available for this claim ...</text>
+  <text x="216" y="484" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">storageclass.storage.k8s.io "x" not found</text>
+</svg>

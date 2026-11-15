@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">PV 생명주기와 반환 정책 — Retain vs Delete</text>
+
+  <!-- states -->
+  <rect x="30" y="150" width="170" height="80" rx="40" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="115" y="186" font-size="16" font-weight="bold" fill="#334155" text-anchor="middle">Available</text>
+  <text x="115" y="208" font-size="12" fill="#64748b" text-anchor="middle">묶일 PVC 대기</text>
+
+  <rect x="260" y="150" width="170" height="80" rx="40" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="345" y="186" font-size="16" font-weight="bold" fill="#326ce5" text-anchor="middle">Bound</text>
+  <text x="345" y="208" font-size="12" fill="#64748b" text-anchor="middle">PVC 1개와 1:1</text>
+
+  <line x1="200" y1="190" x2="258" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="229" y="214" font-size="11" fill="#334155" text-anchor="middle">PVC 바인딩</text>
+
+  <!-- pvc delete branch -->
+  <text x="566" y="214" font-size="12" font-weight="bold" fill="#334155">PVC 삭제 시 persistentVolumeReclaimPolicy</text>
+  <line x1="430" y1="180" x2="560" y2="108" stroke="#16a34a" stroke-width="2" marker-end="url(#arrg)"/>
+  <line x1="430" y1="200" x2="560" y2="290" stroke="#dc2626" stroke-width="2" marker-end="url(#arrr)"/>
+
+  <rect x="562" y="62" width="308" height="104" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="578" y="88" font-size="15" font-weight="bold" fill="#16a34a">Retain → Released</text>
+  <text x="578" y="112" font-size="12" fill="#334155">PV 오브젝트와 데이터 모두 남음</text>
+  <text x="578" y="132" font-size="12" fill="#334155">claimRef가 옛 PVC를 가리킨 채 대기</text>
+  <text x="578" y="152" font-size="12" fill="#b45309">새 PVC에 자동으로 묶이지 않음</text>
+
+  <rect x="562" y="250" width="308" height="96" rx="8" fill="#fde8e8" stroke="#dc2626" stroke-width="2"/>
+  <text x="578" y="276" font-size="15" font-weight="bold" fill="#dc2626">Delete → PV 삭제</text>
+  <text x="578" y="300" font-size="12" fill="#334155">프로비저너가 실제 저장소도 삭제</text>
+  <text x="578" y="320" font-size="12" fill="#334155">동적 SC의 기본값 (local-path 포함)</text>
+  <text x="578" y="338" font-size="11" fill="#64748b">no-provisioner local PV는 Failed로 남을 수 있음</text>
+
+  <!-- reuse loop -->
+  <path d="M560,108 L115,108 L115,146" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrg)"/>
+  <rect x="160" y="54" width="340" height="46" rx="6" fill="#ffffff" stroke="#16a34a"/>
+  <text x="330" y="74" font-size="12" fill="#16a34a" text-anchor="middle">데이터 확인·정리 후 claimRef 제거 → 다시 Available</text>
+  <text x="330" y="92" font-size="11" fill="#334155" text-anchor="middle" font-family="Consolas,'D2Coding',monospace">k patch pv X --type=json (remove /spec/claimRef)</text>
+
+  <!-- bottom notes -->
+  <rect x="30" y="370" width="410" height="54" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="46" y="393" font-size="13" fill="#334155">정책 변경: k patch pv X -p '{"spec":</text>
+  <text x="46" y="412" font-size="13" fill="#334155">{"persistentVolumeReclaimPolicy":"Retain"}}'</text>
+  <rect x="460" y="370" width="410" height="54" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="476" y="393" font-size="13" fill="#334155">SC의 reclaimPolicy는 새로 만들어지는 PV에만,</text>
+  <text x="476" y="412" font-size="13" fill="#334155">이미 있는 PV는 PV를 직접 patch</text>
+</svg>

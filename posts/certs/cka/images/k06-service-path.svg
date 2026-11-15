@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Service 트래픽 경로 — 왼쪽부터 한 칸씩 확인</text>
+
+  <!-- top boxes: x = 19 + i*134, w=118 -->
+  <rect x="19" y="60" width="118" height="60" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="78" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">client Pod</text>
+  <text x="78" y="107" text-anchor="middle" font-size="12" fill="#64748b">출발점</text>
+
+  <rect x="153" y="60" width="118" height="60" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="212" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">① DNS</text>
+  <text x="212" y="107" text-anchor="middle" font-size="12" fill="#1e3a8a">CoreDNS</text>
+
+  <rect x="287" y="60" width="118" height="60" rx="10" fill="#326ce5" stroke="#1e40af" stroke-width="2"/>
+  <text x="346" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">② Service</text>
+  <text x="346" y="107" text-anchor="middle" font-size="12" fill="#ffffff">ClusterIP</text>
+
+  <rect x="421" y="60" width="118" height="60" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="480" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">③ Endpoint</text>
+  <text x="480" y="107" text-anchor="middle" font-size="12" fill="#1e3a8a">Slice</text>
+
+  <rect x="555" y="60" width="118" height="60" rx="10" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="614" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">④ 전달 규칙</text>
+  <text x="614" y="107" text-anchor="middle" font-size="12" fill="#312e81">kube-proxy·CNI</text>
+
+  <rect x="689" y="60" width="118" height="60" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="748" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">⑤ 정책</text>
+  <text x="748" y="107" text-anchor="middle" font-size="12" fill="#78350f">NetworkPolicy</text>
+
+  <rect x="823" y="60" width="118" height="60" rx="10" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+  <text x="882" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">⑥ 백엔드 Pod</text>
+  <text x="882" y="107" text-anchor="middle" font-size="12" fill="#14532d">컨테이너 포트</text>
+
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="137" y1="90" x2="151" y2="90"/>
+    <line x1="271" y1="90" x2="285" y2="90"/>
+    <line x1="405" y1="90" x2="419" y2="90"/>
+    <line x1="539" y1="90" x2="553" y2="90"/>
+    <line x1="673" y1="90" x2="687" y2="90"/>
+    <line x1="807" y1="90" x2="821" y2="90"/>
+  </g>
+
+  <!-- check cards -->
+  <g fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5">
+    <rect x="19" y="136" width="118" height="190" rx="8"/>
+    <rect x="153" y="136" width="118" height="190" rx="8"/>
+    <rect x="287" y="136" width="118" height="190" rx="8"/>
+    <rect x="421" y="136" width="118" height="190" rx="8"/>
+    <rect x="555" y="136" width="118" height="190" rx="8"/>
+    <rect x="689" y="136" width="118" height="190" rx="8"/>
+    <rect x="823" y="136" width="118" height="190" rx="8"/>
+  </g>
+  <!-- questions -->
+  <g font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">
+    <text x="78" y="160">어디서 시험?</text>
+    <text x="212" y="160">이름 → IP?</text>
+    <text x="346" y="160">selector·포트</text>
+    <text x="480" y="160">Pod IP가 있나?</text>
+    <text x="614" y="160">ClusterIP 동작?</text>
+    <text x="748" y="160">허용 규칙?</text>
+    <text x="882" y="160">Ready? 포트?</text>
+  </g>
+  <!-- commands -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="10.5" fill="#334155">
+    <text x="27" y="188">exec client --</text>
+    <text x="27" y="206">wget -qO- -T 3</text>
+    <text x="27" y="224">cat resolv.conf</text>
+
+    <text x="161" y="188">nslookup NAME</text>
+    <text x="161" y="206">pods -l k8s-app</text>
+    <text x="161" y="224">  =kube-dns</text>
+    <text x="161" y="242">svc kube-dns</text>
+
+    <text x="295" y="188">get svc -o yaml</text>
+    <text x="295" y="206">spec.selector</text>
+    <text x="295" y="224">port</text>
+    <text x="295" y="242">→ targetPort</text>
+
+    <text x="429" y="188">get</text>
+    <text x="429" y="206">endpointslices</text>
+    <text x="429" y="224">-l kubernetes.io</text>
+    <text x="429" y="242">/service-name=X</text>
+
+    <text x="563" y="188">ds kube-proxy</text>
+    <text x="563" y="206">pods -l k8s-app</text>
+    <text x="563" y="224">  =cilium</text>
+    <text x="563" y="242">wget ClusterIP</text>
+
+    <text x="697" y="188">get netpol</text>
+    <text x="697" y="206">podSelector</text>
+    <text x="697" y="224">from · ports</text>
+    <text x="697" y="242">policyTypes</text>
+
+    <text x="831" y="188">get pods -o wide</text>
+    <text x="831" y="206">readinessProbe</text>
+    <text x="831" y="224">containerPort</text>
+    <text x="831" y="242">wget PodIP:포트</text>
+  </g>
+  <!-- what goes wrong -->
+  <g font-size="12" fill="#dc2626" text-anchor="middle">
+    <text x="78" y="282">다른 네임스페이스</text>
+    <text x="78" y="300">에서 시험</text>
+    <text x="212" y="282">CoreDNS 0개</text>
+    <text x="212" y="300">Corefile 오류</text>
+    <text x="346" y="282">라벨 오타</text>
+    <text x="346" y="300">targetPort 오류</text>
+    <text x="480" y="282">비어 있음</text>
+    <text x="480" y="300">= selector·Ready</text>
+    <text x="614" y="282">kube-proxy 중단</text>
+    <text x="614" y="300">CNI Pod 장애</text>
+    <text x="748" y="282">default-deny</text>
+    <text x="748" y="300">라벨 불일치</text>
+    <text x="882" y="282">probe 실패</text>
+    <text x="882" y="300">포트 불일치</text>
+  </g>
+  <line x1="27" y1="262" x2="933" y2="262" stroke="#e2e8f0" stroke-dasharray="4 4"/>
+
+  <!-- symptom mapping -->
+  <rect x="19" y="346" width="922" height="96" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="480" y="370" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">증상으로 출발 칸 고르기</text>
+  <g font-size="13" fill="#0f172a">
+    <text x="40" y="396">IP로는 되고 이름으로만 실패 → ①</text>
+    <text x="500" y="396">엔드포인트가 비어 있음 → ③ 다음 ②의 selector, ⑥ Ready</text>
+    <text x="40" y="424">connection refused → ②의 targetPort, ⑥ 포트</text>
+    <text x="500" y="424">timeout → ⑤ 정책, ④ CNI</text>
+  </g>
+</svg>
