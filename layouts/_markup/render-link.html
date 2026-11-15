@@ -9,7 +9,9 @@
     {{- with index (site.Params.linkPathMap | default dict) (index $parts 0) -}}
       {{- $p = printf "%s/%s" . (delimit (after 1 $parts) "/") -}}
     {{- end -}}
-    {{- with site.GetPage (printf "/%s" (strings.TrimSuffix ".md" $p)) -}}
+    {{- /* 레포 루트 README(전체 로드맵)는 블로그 홈으로 */ -}}
+    {{- $target := cond (eq $p "README.md") site.Home (site.GetPage (printf "/%s" (strings.TrimSuffix ".md" $p))) -}}
+    {{- with $target -}}
       {{- $dest = .RelPermalink -}}
       {{- with $u.Fragment }}{{ $dest = printf "%s#%s" $dest . }}{{ end -}}
     {{- else -}}
