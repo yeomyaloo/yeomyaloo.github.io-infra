@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">클러스터엔 수집기만, 저장·평가·시각화는 관리형 서비스로</text>
+
+  <!-- EKS -->
+  <rect x="20" y="56" width="400" height="460" rx="14" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="40" y="82" font-size="15" font-weight="700" fill="#1e3a8a">infra-cloud-eks</text>
+
+  <rect x="38" y="96" width="364" height="76" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="52" y="116" font-size="12" font-weight="700" fill="#1e3a8a">namespace demo-dev</text>
+  <rect x="52" y="126" width="336" height="36" rx="6" fill="#c7d2fe"/>
+  <text x="220" y="149" text-anchor="middle" font-size="12" fill="#312e81">dev-demo-app Pod — /metrics (Day 58) · stdout 로그</text>
+
+  <rect x="38" y="190" width="364" height="108" rx="10" fill="#ffffff" stroke="#0d9488"/>
+  <text x="52" y="210" font-size="12" font-weight="700" fill="#0f766e">namespace monitoring (kube-prometheus-stack)</text>
+  <rect x="52" y="220" width="150" height="30" rx="6" fill="#e2e8f0"/>
+  <text x="127" y="240" text-anchor="middle" font-size="11" fill="#0f172a">node-exporter</text>
+  <rect x="52" y="256" width="150" height="30" rx="6" fill="#e2e8f0"/>
+  <text x="127" y="276" text-anchor="middle" font-size="11" fill="#0f172a">kube-state-metrics</text>
+  <rect x="212" y="220" width="176" height="66" rx="6" fill="#ccfbf1" stroke="#0d9488"/>
+  <text x="300" y="244" text-anchor="middle" font-size="13" font-weight="700" fill="#134e4a">Prometheus agent</text>
+  <text x="300" y="262" text-anchor="middle" font-size="11" fill="#134e4a">ServiceMonitor 그대로 선택</text>
+  <text x="300" y="278" text-anchor="middle" font-size="11" fill="#134e4a">저장·규칙 평가 없음</text>
+
+  <rect x="38" y="316" width="364" height="96" rx="10" fill="#ffffff" stroke="#ff9900"/>
+  <text x="52" y="336" font-size="12" font-weight="700" fill="#9a3412">namespace amazon-cloudwatch (Observability 애드온)</text>
+  <rect x="52" y="346" width="160" height="54" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="132" y="368" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">CloudWatch agent</text>
+  <text x="132" y="388" text-anchor="middle" font-size="11" fill="#9a3412">노드·Pod 지표</text>
+  <rect x="228" y="346" width="160" height="54" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="308" y="368" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">Fluent Bit</text>
+  <text x="308" y="388" text-anchor="middle" font-size="11" fill="#9a3412">컨테이너 로그</text>
+
+  <rect x="38" y="430" width="364" height="70" rx="10" fill="#f8fafc" stroke="#64748b" stroke-dasharray="6 4"/>
+  <text x="220" y="452" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">자격 증명: EKS Pod Identity</text>
+  <text x="220" y="472" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">infra-cloud-amp-ingest</text>
+  <text x="220" y="488" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">infra-cloud-cloudwatch-agent</text>
+
+  <!-- ALB -->
+  <rect x="470" y="60" width="220" height="56" rx="10" fill="#ffffff" stroke="#ff9900" stroke-width="1.5"/>
+  <text x="580" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">ALB (클라우드 07)</text>
+  <text x="580" y="104" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#9a3412">AWS/ApplicationELB 지표</text>
+
+  <!-- AMP -->
+  <rect x="470" y="150" width="220" height="160" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="580" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#134e4a">Amazon Managed Prometheus</text>
+  <text x="580" y="192" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#134e4a">infra-cloud-amp</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="486" y="202" width="188" height="28" rx="6" fill="#ccfbf1"/><text x="580" y="221" fill="#134e4a">저장 · PromQL 쿼리</text>
+    <rect x="486" y="236" width="188" height="28" rx="6" fill="#ccfbf1"/><text x="580" y="255" fill="#134e4a">규칙: demo-app-sli / slo-alerts</text>
+    <rect x="486" y="270" width="188" height="28" rx="6" fill="#ccfbf1"/><text x="580" y="289" fill="#134e4a">Alertmanager (수신자 = SNS만)</text>
+  </g>
+
+  <!-- CloudWatch -->
+  <rect x="470" y="340" width="220" height="160" rx="12" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="580" y="364" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">Amazon CloudWatch</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="486" y="374" width="188" height="28" rx="6" fill="#fed7aa"/><text x="580" y="393" fill="#7c2d12">Container Insights 지표</text>
+    <rect x="486" y="408" width="188" height="28" rx="6" fill="#fed7aa"/><text x="580" y="427" fill="#7c2d12">Logs (보관 7일) · Logs Insights</text>
+    <rect x="486" y="442" width="188" height="44" rx="6" fill="#fed7aa"/><text x="580" y="461" fill="#7c2d12">ALB 5xx 비율 알람 5m·1h</text><text x="580" y="478" fill="#7c2d12">→ 복합 알람 (AND)</text>
+  </g>
+
+  <!-- AMG -->
+  <rect x="736" y="150" width="204" height="110" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="838" y="176" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">Amazon Managed Grafana</text>
+  <text x="838" y="196" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#4c1d95">infra-cloud-grafana</text>
+  <text x="838" y="220" text-anchor="middle" font-size="11" fill="#4c1d95">SLO 대시보드 (Day 58 패널)</text>
+  <text x="838" y="240" text-anchor="middle" font-size="11" fill="#4c1d95">로그인: IAM Identity Center</text>
+
+  <!-- SNS -->
+  <rect x="736" y="340" width="204" height="100" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="838" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">Amazon SNS</text>
+  <text x="838" y="386" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#7f1d1d">infra-cloud-slo-alerts</text>
+  <text x="838" y="410" text-anchor="middle" font-size="11" fill="#7f1d1d">→ 이메일 ([PAGE] / [TICKET])</text>
+  <text x="838" y="428" text-anchor="middle" font-size="11" fill="#7f1d1d">(Slack 등은 구독으로 연결)</text>
+
+  <!-- arrows -->
+  <line x1="388" y1="250" x2="468" y2="236" stroke="#0d9488" stroke-width="2.5" marker-end="url(#arrowT)"/>
+  <text x="436" y="268" text-anchor="middle" font-size="10" fill="#0d9488">remote_write</text>
+  <text x="436" y="281" text-anchor="middle" font-size="10" fill="#0d9488">(SigV4)</text>
+  <line x1="388" y1="373" x2="468" y2="400" stroke="#c2410c" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M690,88 L712,88 L712,464 L692,464" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <line x1="690" y1="220" x2="734" y2="210" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="690" y1="390" x2="734" y2="240" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="742" y="290" font-size="11" fill="#6d28d9">쿼리</text>
+  <line x1="674" y1="284" x2="734" y2="360" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowR)"/>
+  <line x1="690" y1="470" x2="734" y2="420" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowR)"/>
+  <text x="838" y="470" text-anchor="middle" font-size="11" fill="#dc2626">알림은 모두 SNS로 모임</text>
+</svg>

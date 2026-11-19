@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="530" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">공동 책임 모델 — 서비스마다 경계가 다르다</text>
+
+  <!-- header row -->
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="20" y="62" width="240" height="36" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="140" y="86" fill="#334155">계층</text>
+    <rect x="275" y="62" width="210" height="36" rx="6" fill="#334155"/>
+    <text x="380" y="86" fill="#ffffff">EC2 (IaaS)</text>
+    <rect x="500" y="62" width="210" height="36" rx="6" fill="#334155"/>
+    <text x="605" y="86" fill="#ffffff">EKS (관리형 K8s)</text>
+    <rect x="725" y="62" width="210" height="36" rx="6" fill="#334155"/>
+    <text x="830" y="86" fill="#ffffff">Bedrock (관리형 AI)</text>
+  </g>
+
+  <!-- row labels -->
+  <g font-size="14" fill="#0f172a">
+    <rect x="20" y="110" width="240" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="32" y="134">물리·하드웨어·하이퍼바이저</text>
+    <rect x="20" y="156" width="240" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="32" y="180">OS 패치 (인스턴스·노드)</text>
+    <rect x="20" y="202" width="240" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="32" y="226">컨트롤 플레인·서빙 인프라</text>
+    <rect x="20" y="248" width="240" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="32" y="272">워크로드·이미지·모델</text>
+    <rect x="20" y="304" width="240" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="32" y="328">IAM (누가 호출하나)</text>
+    <rect x="20" y="350" width="240" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="32" y="374">데이터·암호화 키</text>
+    <rect x="20" y="396" width="240" height="38" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="32" y="420">네트워크 노출 설정</text>
+  </g>
+
+  <!-- AWS cells (orange) -->
+  <g font-size="14" font-weight="700" text-anchor="middle" fill="#9a3412">
+    <rect x="275" y="110" width="210" height="38" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="380" y="134">AWS</text>
+    <rect x="500" y="110" width="210" height="38" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="605" y="134">AWS</text>
+    <rect x="725" y="110" width="210" height="38" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="830" y="134">AWS</text>
+    <rect x="725" y="156" width="210" height="38" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="830" y="180">AWS</text>
+    <rect x="500" y="202" width="210" height="38" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="605" y="226">AWS</text>
+    <rect x="725" y="202" width="210" height="38" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="830" y="226">AWS</text>
+    <rect x="725" y="248" width="210" height="38" rx="6" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="830" y="272">AWS (모델 운영)</text>
+  </g>
+
+  <!-- N/A cell -->
+  <rect x="275" y="202" width="210" height="38" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+  <text x="380" y="226" text-anchor="middle" font-size="14" fill="#64748b">해당 없음</text>
+
+  <!-- customer cells (blue) -->
+  <g font-size="14" font-weight="700" text-anchor="middle" fill="#1e3a8a">
+    <rect x="275" y="156" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="380" y="180">고객</text>
+    <rect x="500" y="156" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="605" y="180">고객 (노드 AMI 업데이트)</text>
+    <rect x="275" y="248" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="380" y="272">고객</text>
+    <rect x="500" y="248" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="605" y="272">고객 (Pod·이미지)</text>
+  </g>
+
+  <!-- always-customer band -->
+  <rect x="268" y="298" width="674" height="142" rx="10" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 4"/>
+  <g font-size="14" font-weight="700" text-anchor="middle" fill="#1e3a8a">
+    <rect x="275" y="304" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="380" y="328">고객</text>
+    <rect x="500" y="304" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="605" y="328">고객</text>
+    <rect x="725" y="304" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="830" y="328">고객</text>
+    <rect x="275" y="350" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="380" y="374">고객</text>
+    <rect x="500" y="350" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="605" y="374">고객</text>
+    <rect x="725" y="350" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="830" y="374">고객 (프롬프트 내용)</text>
+    <rect x="275" y="396" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="380" y="420">고객 (SG)</text>
+    <rect x="500" y="396" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="605" y="420">고객 (API 엔드포인트)</text>
+    <rect x="725" y="396" width="210" height="38" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="830" y="420">고객 (VPC 엔드포인트)</text>
+  </g>
+  <text x="605" y="462" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">빨간 점선 안 = 어떤 서비스를 써도 항상 고객 몫 (클라우드 09의 실습 범위)</text>
+
+  <!-- legend -->
+  <rect x="160" y="484" width="22" height="18" rx="4" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="190" y="498" font-size="14" fill="#334155">AWS 책임 — 클라우드 "의" 보안</text>
+  <rect x="520" y="484" width="22" height="18" rx="4" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="550" y="498" font-size="14" fill="#334155">고객 책임 — 클라우드 "안"의 보안</text>
+</svg>

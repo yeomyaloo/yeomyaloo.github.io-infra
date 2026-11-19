@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">개발자 셀프서비스 플랫폼 데모 — alice의 inventory-api</text>
+  <text x="20" y="62" font-size="13" font-weight="700" fill="#4c1d95">alice가 하는 일 (Backstage · GitHub)</text>
+
+  <!-- top cards -->
+  <g text-anchor="middle">
+    <rect x="20" y="72" width="172" height="84" rx="10" fill="#6d28d9"/>
+    <text x="106" y="98" font-size="15" font-weight="700" fill="#ffffff">① 서비스 생성</text>
+    <text x="106" y="122" font-size="12" fill="#ede9fe">Spring Boot 서비스</text>
+    <text x="106" y="140" font-size="12" fill="#ede9fe">템플릿 실행</text>
+
+    <rect x="208" y="72" width="172" height="84" rx="10" fill="#6d28d9"/>
+    <text x="294" y="98" font-size="15" font-weight="700" fill="#ffffff">② DB 요청</text>
+    <text x="294" y="122" font-size="12" fill="#ede9fe">PostgreSQL 템플릿</text>
+    <text x="294" y="140" font-size="12" fill="#ede9fe">dev small · prod medium</text>
+
+    <rect x="396" y="72" width="172" height="84" rx="10" fill="#6d28d9"/>
+    <text x="482" y="98" font-size="15" font-weight="700" fill="#ffffff">③ 배포</text>
+    <text x="482" y="122" font-size="12" fill="#ede9fe">두 PR 리뷰·머지</text>
+    <text x="482" y="140" font-size="12" fill="#ede9fe">(그 외 할 일 없음)</text>
+
+    <rect x="584" y="72" width="172" height="84" rx="10" fill="#6d28d9"/>
+    <text x="670" y="98" font-size="15" font-weight="700" fill="#ffffff">④ 비용 확인</text>
+    <text x="670" y="122" font-size="12" fill="#ede9fe">서비스 페이지의</text>
+    <text x="670" y="140" font-size="12" fill="#ede9fe">비용 링크</text>
+
+    <rect x="772" y="72" width="168" height="84" rx="10" fill="#6d28d9"/>
+    <text x="856" y="98" font-size="15" font-weight="700" fill="#ffffff">⑤ SLO 확인</text>
+    <text x="856" y="122" font-size="12" fill="#ede9fe">서비스 페이지의</text>
+    <text x="856" y="140" font-size="12" fill="#ede9fe">SLO 링크</text>
+  </g>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="192" y1="114" x2="206" y2="114" marker-end="url(#arrow)"/>
+    <line x1="380" y1="114" x2="394" y2="114" marker-end="url(#arrow)"/>
+    <line x1="568" y1="114" x2="582" y2="114" marker-end="url(#arrow)"/>
+    <line x1="756" y1="114" x2="770" y2="114" marker-end="url(#arrow)"/>
+    <line x1="106" y1="156" x2="106" y2="186" marker-end="url(#arrow)"/>
+    <line x1="294" y1="156" x2="294" y2="186" marker-end="url(#arrow)"/>
+    <line x1="482" y1="156" x2="482" y2="186" marker-end="url(#arrow)"/>
+    <line x1="670" y1="156" x2="670" y2="186" marker-end="url(#arrow)"/>
+    <line x1="856" y1="156" x2="856" y2="186" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- bottom boxes -->
+  <g>
+    <rect x="20" y="188" width="172" height="200" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <rect x="208" y="188" width="172" height="200" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <rect x="396" y="188" width="172" height="200" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <rect x="584" y="188" width="172" height="200" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <rect x="772" y="188" width="168" height="200" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  </g>
+  <g font-size="13" font-weight="700" text-anchor="middle" fill="#0f172a">
+    <text x="106" y="212">Backstage Scaffolder</text>
+    <text x="294" y="212">Crossplane</text>
+    <text x="482" y="212">Argo CD</text>
+    <text x="670" y="212">OpenCost</text>
+    <text x="856" y="212">Prometheus · Grafana</text>
+  </g>
+  <g font-size="11" fill="#334155">
+    <text x="32" y="240">• GitHub 레포</text>
+    <text x="44" y="256" font-family="Consolas,'D2Coding',monospace">inventory-api</text>
+    <text x="32" y="280">• config 레포 PR</text>
+    <text x="44" y="296" font-family="Consolas,'D2Coding',monospace">overlays/dev, prod</text>
+    <text x="32" y="320">• team 라벨 (2판)</text>
+    <text x="32" y="344">• 카탈로그 등록</text>
+    <text x="44" y="360">비용·SLO 링크 포함</text>
+
+    <text x="220" y="240">• PR 하나 추가</text>
+    <text x="232" y="256" font-family="Consolas,'D2Coding',monospace">apps/inventory-api-db</text>
+    <text x="220" y="280">• XR PostgreSQLInstance</text>
+    <text x="220" y="304">• Composition →</text>
+    <text x="232" y="320">CNPG Cluster + Secret</text>
+    <text x="220" y="344">• 클러스터마다</text>
+    <text x="232" y="360">platform-apis 애드온</text>
+
+    <text x="408" y="240">• dev-apps</text>
+    <text x="420" y="256">→ platform-lab 샌드박스</text>
+    <text x="408" y="280">• cluster-apps (matrix)</text>
+    <text x="420" y="296">→ dev-1 · prod-1</text>
+    <text x="408" y="320">• overlay가 있는</text>
+    <text x="420" y="336">환경에만 배포</text>
+    <text x="408" y="360">• 선택: RollingSync</text>
+
+    <text x="596" y="240">• 사용자 정의 단가</text>
+    <text x="608" y="256">(감가상각 + 전기료)</text>
+    <text x="596" y="280">• aggregate=</text>
+    <text x="608" y="296" font-family="Consolas,'D2Coding',monospace">label:team</text>
+    <text x="596" y="320">• 효율 낮으면</text>
+    <text x="608" y="336">Goldilocks 추천</text>
+    <text x="608" y="352">→ requests PR</text>
+
+    <text x="784" y="240">• 에이전트 수집</text>
+    <text x="796" y="256">cluster 라벨 부착</text>
+    <text x="784" y="280">• remote write</text>
+    <text x="796" y="296">→ platform-lab</text>
+    <text x="784" y="320">• 중앙 recording rule</text>
+    <text x="796" y="336">by cluster, namespace</text>
+    <text x="784" y="360">• 대시보드 platform-slo</text>
+  </g>
+
+  <rect x="20" y="404" width="920" height="80" rx="10" fill="#ede9fe" stroke="#6d28d9"/>
+  <text x="480" y="430" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">도구를 잇는 것은 규약</text>
+  <text x="480" y="452" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#1e1b4b">apps/&lt;앱&gt;/overlays/&lt;env&gt;  ·  라벨 env / team / provisioner  ·  &lt;이름&gt;-kubeconfig, dev-&lt;이름&gt;-db-app</text>
+  <text x="480" y="472" text-anchor="middle" font-size="12" fill="#64748b">플랫폼 팀(bob)이 오늘 처리한 티켓: 0건</text>
+</svg>

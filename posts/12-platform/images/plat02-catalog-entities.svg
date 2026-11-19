@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">gitops-demo 카탈로그 — 엔터티와 관계</text>
+
+  <!-- Row 1: users and groups -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="30" y="64" width="140" height="62" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="100" y="82" fill="#854d0e">User</text>
+    <text x="100" y="102" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#422006">alice</text>
+    <text x="100" y="118" fill="#854d0e">alice@infra.test</text>
+
+    <rect x="230" y="64" width="200" height="62" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="330" y="82" fill="#92400e">Group (type: team)</text>
+    <text x="330" y="104" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#78350f">team-a-devs</text>
+
+    <rect x="560" y="64" width="210" height="62" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="665" y="82" fill="#92400e">Group (type: team)</text>
+    <text x="665" y="104" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#78350f">platform-admins</text>
+
+    <rect x="830" y="64" width="110" height="62" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="885" y="82" fill="#854d0e">User</text>
+    <text x="885" y="102" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#422006">bob</text>
+    <text x="885" y="118" fill="#854d0e">bob@infra.test</text>
+  </g>
+  <line x1="172" y1="95" x2="226" y2="95" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="199" y="88" text-anchor="middle" font-size="11" fill="#334155">memberOf</text>
+  <line x1="828" y1="95" x2="774" y2="95" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="801" y="88" text-anchor="middle" font-size="11" fill="#334155">memberOf</text>
+
+  <!-- Row 2: system -->
+  <rect x="330" y="206" width="220" height="62" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="440" y="226" text-anchor="middle" font-size="12" fill="#166534">System</text>
+  <text x="440" y="248" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="15" font-weight="700" fill="#14532d">gitops-demo</text>
+  <line x1="410" y1="204" x2="350" y2="130" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="352" y="172" font-size="11" fill="#334155">ownedBy</text>
+
+  <!-- Row 3: components and template -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="40" y="350" width="240" height="64" rx="8" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+    <text x="160" y="368" fill="#5b21b6">Component (service)</text>
+    <text x="160" y="389" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#4c1d95">gitops-demo-app</text>
+    <text x="160" y="406" fill="#5b21b6">owner: team-a-devs · 플랫폼 02</text>
+
+    <rect x="360" y="350" width="200" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-dasharray="6 4"/>
+    <text x="460" y="368" fill="#5b21b6">Component (service)</text>
+    <text x="460" y="389" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#4c1d95">orders-api</text>
+    <text x="460" y="406" fill="#5b21b6">템플릿이 생성 · 플랫폼 03</text>
+
+    <rect x="640" y="350" width="280" height="64" rx="8" fill="#fff1eb" stroke="#ef7b4d" stroke-dasharray="6 4"/>
+    <text x="780" y="368" fill="#9a3412">Template</text>
+    <text x="780" y="389" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#7c2d12">spring-boot-service</text>
+    <text x="780" y="406" fill="#9a3412">owner: platform-admins · 플랫폼 03</text>
+  </g>
+  <line x1="200" y1="348" x2="372" y2="272" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="262" y="300" font-size="11" fill="#334155">partOf</text>
+  <line x1="460" y1="348" x2="460" y2="272" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="468" y="314" font-size="11" fill="#334155">partOf</text>
+  <line x1="760" y1="348" x2="680" y2="130" stroke="#334155" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="742" y="240" font-size="11" fill="#334155">ownedBy</text>
+
+  <!-- Row 4: API and resource -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="40" y="466" width="240" height="62" rx="8" fill="#dbeafe" stroke="#326ce5"/>
+    <text x="160" y="484" fill="#1e40af">API (openapi)</text>
+    <text x="160" y="506" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#1e3a8a">gitops-demo-app-api</text>
+
+    <rect x="360" y="466" width="200" height="62" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-dasharray="6 4"/>
+    <text x="460" y="484" fill="#475569">Resource (database)</text>
+    <text x="460" y="506" font-family="Consolas,'D2Coding',monospace" font-size="14" font-weight="700" fill="#334155">orders-db</text>
+    <text x="460" y="522" fill="#475569">Crossplane XR · 플랫폼 04</text>
+  </g>
+  <line x1="160" y1="416" x2="160" y2="462" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="168" y="444" font-size="11" fill="#334155">providesApi</text>
+  <line x1="460" y1="416" x2="460" y2="462" stroke="#334155" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="468" y="444" font-size="11" fill="#334155">dependsOn</text>
+
+  <!-- Location note -->
+  <rect x="610" y="452" width="330" height="92" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="626" y="474" font-size="13" font-weight="700" fill="#0f172a">Location platform-catalog (all.yaml)</text>
+  <g font-size="12" fill="#475569">
+    <text x="626" y="494">→ org.yaml (Group · User), systems.yaml</text>
+    <text x="626" y="512">→ templates/…/template.yaml (03)</text>
+    <text x="626" y="530">→ gitops-demo-app/catalog-info.yaml</text>
+  </g>
+
+  <text x="30" y="548" font-size="11" fill="#64748b">실선: 오늘 등록 · 점선: 이후 편</text>
+</svg>

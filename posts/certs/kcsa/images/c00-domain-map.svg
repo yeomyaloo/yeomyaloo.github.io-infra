@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">KCSA 커리큘럼 — 6개 도메인 비중과 이 탭의 편</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">2026-11-19 LF KCSA 페이지 · cncf/curriculum "KCSA Curriculum.pdf" 확인 · 막대 길이 = 비중 (1% = 14px)</text>
+
+  <text x="40" y="100" font-size="14" font-weight="700" fill="#334155">도메인</text>
+  <text x="330" y="100" font-size="14" font-weight="700" fill="#334155">비중</text>
+  <text x="740" y="100" font-size="14" font-weight="700" fill="#334155">다루는 편</text>
+
+  <!-- 1. Overview 14 -->
+  <text x="40" y="133" font-size="15" font-weight="700" fill="#0f172a">Overview of Cloud Native</text>
+  <text x="40" y="152" font-size="15" font-weight="700" fill="#0f172a">Security</text>
+  <rect x="330" y="122" width="196" height="30" rx="6" fill="#326ce5"/>
+  <text x="536" y="143" font-size="16" font-weight="700" fill="#326ce5">14%</text>
+  <line x1="580" y1="137" x2="726" y2="137" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="734" y="120" width="196" height="34" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="746" y="142" font-size="14" font-weight="700" fill="#1e3a8a">C01</text>
+  <text x="784" y="142" font-size="12" fill="#334155">4C·공유 책임·격리</text>
+
+  <!-- 2. Cluster Component 22 -->
+  <text x="40" y="197" font-size="15" font-weight="700" fill="#0f172a">Kubernetes Cluster</text>
+  <text x="40" y="216" font-size="15" font-weight="700" fill="#0f172a">Component Security</text>
+  <rect x="330" y="186" width="308" height="30" rx="6" fill="#326ce5"/>
+  <text x="648" y="207" font-size="16" font-weight="700" fill="#326ce5">22%</text>
+  <line x1="692" y1="201" x2="726" y2="201" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="734" y="184" width="196" height="34" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="746" y="206" font-size="14" font-weight="700" fill="#1e3a8a">C02</text>
+  <text x="784" y="206" font-size="12" fill="#334155">컴포넌트별 보안</text>
+
+  <!-- 3. Security Fundamentals 22 -->
+  <text x="40" y="261" font-size="15" font-weight="700" fill="#0f172a">Kubernetes Security</text>
+  <text x="40" y="280" font-size="15" font-weight="700" fill="#0f172a">Fundamentals</text>
+  <rect x="330" y="250" width="308" height="30" rx="6" fill="#b91c1c"/>
+  <text x="648" y="271" font-size="16" font-weight="700" fill="#b91c1c">22%</text>
+  <line x1="692" y1="265" x2="726" y2="280" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 4. Threat Model 16 -->
+  <text x="40" y="325" font-size="15" font-weight="700" fill="#0f172a">Kubernetes Threat Model</text>
+  <rect x="330" y="314" width="224" height="30" rx="6" fill="#b91c1c"/>
+  <text x="564" y="335" font-size="16" font-weight="700" fill="#b91c1c">16%</text>
+  <line x1="608" y1="329" x2="726" y2="306" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="734" y="256" width="196" height="70" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="746" y="283" font-size="14" font-weight="700" fill="#7f1d1d">C03</text>
+  <text x="784" y="283" font-size="12" fill="#334155">PSS·인증·Secret·감사</text>
+  <text x="784" y="305" font-size="12" fill="#334155">STRIDE·MITRE</text>
+
+  <!-- 5. Platform 16 -->
+  <text x="40" y="389" font-size="15" font-weight="700" fill="#0f172a">Platform Security</text>
+  <rect x="330" y="378" width="224" height="30" rx="6" fill="#4f46e5"/>
+  <text x="564" y="399" font-size="16" font-weight="700" fill="#4f46e5">16%</text>
+  <line x1="608" y1="393" x2="726" y2="408" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 6. Compliance 10 -->
+  <text x="40" y="453" font-size="15" font-weight="700" fill="#0f172a">Compliance and Security</text>
+  <text x="40" y="472" font-size="15" font-weight="700" fill="#0f172a">Frameworks</text>
+  <rect x="330" y="442" width="140" height="30" rx="6" fill="#4f46e5"/>
+  <text x="480" y="463" font-size="16" font-weight="700" fill="#4f46e5">10%</text>
+  <line x1="524" y1="457" x2="726" y2="434" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="734" y="384" width="196" height="70" rx="8" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="746" y="411" font-size="14" font-weight="700" fill="#312e81">C04</text>
+  <text x="784" y="411" font-size="12" fill="#334155">공급망·메시·PKI</text>
+  <text x="784" y="433" font-size="12" fill="#334155">CIS·NIST·PCI</text>
+
+  <!-- footer -->
+  <rect x="40" y="500" width="890" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="485" y="525" text-anchor="middle" font-size="13" fill="#334155">종합 C05 모의고사 60문항 · 90분 · 합격 75% · 파랑 = 개념·컴포넌트 36% · 빨강 = 기본·위협 38% · 보라 = 플랫폼·규정 26%</text>
+</svg>

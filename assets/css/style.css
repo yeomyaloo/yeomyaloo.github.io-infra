@@ -196,3 +196,8 @@ pre { background: var(--code-bg); border: 1px solid var(--border); border-radius
 .post-group { margin: 28px 0 0; padding-bottom: 6px; font-size: 16px; color: var(--muted); border-bottom: 2px solid var(--border); }
 .chapter li.side-group-label { margin: 10px 0 2px; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
 .chapter li.side-group-label:first-child { margin-top: 4px; }
+@media (max-width: 860px) {
+  /* 탭이 많아 가로로 넘칠 때 오른쪽 끝을 흐리게 해서 더 있다는 것을 알림 */
+  .tabstrip { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+  .tabstrip.at-end { -webkit-mask-image: none; mask-image: none; }
+}

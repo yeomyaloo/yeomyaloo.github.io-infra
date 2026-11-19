@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">디렉터리마다 state 키 하나 — S3 원격 상태와 네이티브 잠금</text>
+
+  <!-- Git repo -->
+  <rect x="30" y="64" width="320" height="330" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="190" y="92" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">~/infra-cloud/terraform (Git 레포)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="14">
+    <rect x="50" y="108" width="280" height="42" rx="8" fill="#e2e8f0"/>
+    <text x="64" y="134" fill="#0f172a">bootstrap/</text>
+    <rect x="50" y="160" width="280" height="42" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="64" y="186" fill="#0f172a">network/</text>
+    <rect x="50" y="212" width="280" height="42" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="64" y="238" fill="#0f172a">app/</text>
+    <rect x="50" y="264" width="280" height="42" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="64" y="290" fill="#0f172a">eks/  (클라우드 06)</text>
+    <rect x="50" y="316" width="280" height="42" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+    <text x="64" y="342" fill="#475569">modules/network/</text>
+  </g>
+  <text x="318" y="134" text-anchor="end" font-size="12" fill="#64748b">로컬 state</text>
+  <text x="318" y="342" text-anchor="end" font-size="12" fill="#64748b">state 없음</text>
+  <text x="190" y="382" text-anchor="middle" font-size="12" fill="#64748b">모듈은 코드만, state는 스택 디렉터리가 가짐</text>
+
+  <!-- arrows -->
+  <line x1="330" y1="181" x2="436" y2="131" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="330" y1="233" x2="436" y2="231" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="330" y1="285" x2="436" y2="283" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="384" y="208" text-anchor="middle" font-size="12" fill="#334155">init</text>
+
+  <!-- S3 bucket -->
+  <rect x="440" y="64" width="490" height="330" rx="12" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
+  <rect x="440" y="64" width="490" height="40" rx="12" fill="#ff9900"/>
+  <rect x="440" y="92" width="490" height="12" fill="#ff9900"/>
+  <text x="685" y="90" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">S3 버킷 infra-cloud-tfstate-123456789012 · 서울</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13">
+    <rect x="458" y="114" width="454" height="34" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="470" y="136" fill="#0f172a">network/terraform.tfstate</text>
+    <rect x="458" y="156" width="454" height="34" rx="6" fill="#fff4e5" stroke="#ff9900" stroke-dasharray="6 4"/>
+    <text x="470" y="178" fill="#9a3412">network/terraform.tfstate.tflock</text>
+    <rect x="458" y="214" width="454" height="34" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="470" y="236" fill="#0f172a">app/terraform.tfstate</text>
+    <rect x="458" y="266" width="454" height="34" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="470" y="288" fill="#0f172a">eks/terraform.tfstate</text>
+  </g>
+  <text x="900" y="206" text-anchor="end" font-size="12" fill="#9a3412">↑ plan·apply 동안만 존재하는 잠금 객체</text>
+  <!-- chips -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="458" y="322" width="104" height="30" rx="15" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="510" y="342" fill="#14532d">버전 관리</text>
+    <rect x="572" y="322" width="104" height="30" rx="15" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="624" y="342" fill="#14532d">SSE 암호화</text>
+    <rect x="686" y="322" width="110" height="30" rx="15" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="741" y="342" fill="#14532d">퍼블릭 차단</text>
+    <rect x="806" y="322" width="106" height="30" rx="15" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="859" y="342" fill="#14532d">prevent_destroy</text>
+  </g>
+  <text x="685" y="378" text-anchor="middle" font-size="12" fill="#64748b">state가 깨지면 이전 객체 버전으로 되돌릴 수 있게</text>
+
+  <!-- bottom comparison -->
+  <rect x="30" y="414" width="440" height="66" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="50" y="440" font-size="14" font-weight="700" fill="#14532d">✔ use_lockfile = true  (현재 권장)</text>
+  <text x="50" y="464" font-size="13" fill="#166534">같은 버킷에 .tflock 조건부 쓰기 · Terraform 1.10+</text>
+  <rect x="490" y="414" width="440" height="66" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="510" y="440" font-size="14" font-weight="700" fill="#64748b">✖ dynamodb_table  (deprecated)</text>
+  <text x="510" y="464" font-size="13" fill="#64748b">별도 테이블 필요 · 향후 마이너 버전에서 제거 예정</text>
+</svg>

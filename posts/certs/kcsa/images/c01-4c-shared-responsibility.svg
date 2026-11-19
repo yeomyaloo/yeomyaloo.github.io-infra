@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">4C 계층과 공유 책임 모델</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">바깥 계층이 뚫리면 안쪽 통제는 우회된다 · 누가 어느 계층을 책임지는지는 서비스 모델마다 다르다</text>
+
+  <!-- 4C nested -->
+  <rect x="40" y="90" width="360" height="400" rx="14" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="60" y="118" font-size="17" font-weight="700" fill="#334155">Cloud</text>
+  <text x="60" y="138" font-size="12" fill="#64748b">IAM · 네트워크 · 메타데이터 API · 물리 보안</text>
+  <rect x="70" y="155" width="300" height="320" rx="12" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="90" y="182" font-size="17" font-weight="700" fill="#1e3a8a">Cluster</text>
+  <text x="90" y="202" font-size="12" fill="#334155">API 서버 · etcd · RBAC · 어드미션</text>
+  <rect x="100" y="218" width="240" height="242" rx="10" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="120" y="245" font-size="17" font-weight="700" fill="#312e81">Container</text>
+  <text x="120" y="265" font-size="12" fill="#334155">이미지 · 런타임 · 커널 격리</text>
+  <rect x="130" y="282" width="180" height="162" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="150" y="310" font-size="17" font-weight="700" fill="#7f1d1d">Code</text>
+  <text x="150" y="332" font-size="12" fill="#334155">입력 검증 · 의존성</text>
+  <text x="150" y="352" font-size="12" fill="#334155">TLS · 비밀 하드코딩 금지</text>
+  <text x="150" y="384" font-size="12" fill="#7f1d1d">공격자가 처음</text>
+  <text x="150" y="402" font-size="12" fill="#7f1d1d">닿는 곳이 대부분</text>
+  <text x="150" y="420" font-size="12" fill="#7f1d1d">여기</text>
+
+  <!-- table -->
+  <text x="430" y="110" font-size="15" font-weight="700" fill="#334155">책임 계층</text>
+  <text x="652" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">자체 구축</text>
+  <text x="652" y="121" text-anchor="middle" font-size="11" fill="#64748b">(IaaS 위 kubeadm)</text>
+  <text x="760" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">관리형 K8s</text>
+  <text x="760" y="121" text-anchor="middle" font-size="11" fill="#64748b">(EKS·GKE·AKS)</text>
+  <text x="868" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">서버리스</text>
+  <text x="868" y="121" text-anchor="middle" font-size="11" fill="#64748b">(Fargate 등)</text>
+
+  <g font-size="13">
+    <!-- row1 -->
+    <text x="430" y="160" fill="#0f172a">물리 · 하이퍼바이저</text>
+    <rect x="602" y="138" width="100" height="34" rx="6" fill="#326ce5"/><text x="652" y="160" text-anchor="middle" fill="#ffffff">클라우드</text>
+    <rect x="710" y="138" width="100" height="34" rx="6" fill="#326ce5"/><text x="760" y="160" text-anchor="middle" fill="#ffffff">클라우드</text>
+    <rect x="818" y="138" width="100" height="34" rx="6" fill="#326ce5"/><text x="868" y="160" text-anchor="middle" fill="#ffffff">클라우드</text>
+    <!-- row2 -->
+    <text x="430" y="208" fill="#0f172a">컨트롤 플레인 · etcd</text>
+    <rect x="602" y="186" width="100" height="34" rx="6" fill="#b91c1c"/><text x="652" y="208" text-anchor="middle" fill="#ffffff">고객</text>
+    <rect x="710" y="186" width="100" height="34" rx="6" fill="#326ce5"/><text x="760" y="208" text-anchor="middle" fill="#ffffff">클라우드</text>
+    <rect x="818" y="186" width="100" height="34" rx="6" fill="#326ce5"/><text x="868" y="208" text-anchor="middle" fill="#ffffff">클라우드</text>
+    <!-- row3 -->
+    <text x="430" y="256" fill="#0f172a">워커 노드 OS · 패치</text>
+    <rect x="602" y="234" width="100" height="34" rx="6" fill="#b91c1c"/><text x="652" y="256" text-anchor="middle" fill="#ffffff">고객</text>
+    <rect x="710" y="234" width="100" height="34" rx="6" fill="#fde68a" stroke="#f59e0b"/><text x="760" y="256" text-anchor="middle" fill="#78350f">공유</text>
+    <rect x="818" y="234" width="100" height="34" rx="6" fill="#326ce5"/><text x="868" y="256" text-anchor="middle" fill="#ffffff">클라우드</text>
+    <!-- row4 -->
+    <text x="430" y="304" fill="#0f172a">워크로드 설정 · 이미지</text>
+    <rect x="602" y="282" width="100" height="34" rx="6" fill="#b91c1c"/><text x="652" y="304" text-anchor="middle" fill="#ffffff">고객</text>
+    <rect x="710" y="282" width="100" height="34" rx="6" fill="#b91c1c"/><text x="760" y="304" text-anchor="middle" fill="#ffffff">고객</text>
+    <rect x="818" y="282" width="100" height="34" rx="6" fill="#b91c1c"/><text x="868" y="304" text-anchor="middle" fill="#ffffff">고객</text>
+    <!-- row5 -->
+    <text x="430" y="344" fill="#0f172a">코드 · 데이터 ·</text>
+    <text x="430" y="362" fill="#0f172a">접근 권한(IAM·RBAC)</text>
+    <rect x="602" y="330" width="100" height="34" rx="6" fill="#b91c1c"/><text x="652" y="352" text-anchor="middle" fill="#ffffff">고객</text>
+    <rect x="710" y="330" width="100" height="34" rx="6" fill="#b91c1c"/><text x="760" y="352" text-anchor="middle" fill="#ffffff">고객</text>
+    <rect x="818" y="330" width="100" height="34" rx="6" fill="#b91c1c"/><text x="868" y="352" text-anchor="middle" fill="#ffffff">고객</text>
+  </g>
+
+  <rect x="430" y="392" width="490" height="98" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="448" y="420" font-size="13" font-weight="700" fill="#334155">읽는 법</text>
+  <text x="448" y="444" font-size="13" fill="#334155">· 관리형으로 갈수록 파랑(클라우드)이 아래에서부터 늘어난다</text>
+  <text x="448" y="466" font-size="13" fill="#334155">· 어떤 모델이든 코드·데이터·권한 설정은 끝까지 고객 몫</text>
+  <text x="448" y="484" font-size="11" fill="#64748b">세부 경계는 사업자·상품마다 다르다(예: 관리형 노드 그룹의 패치 적용 주체)</text>
+</svg>

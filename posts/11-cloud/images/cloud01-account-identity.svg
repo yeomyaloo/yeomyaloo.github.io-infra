@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">AWS 계정의 주체와 로그인 흐름</text>
+
+  <!-- Root user -->
+  <rect x="20" y="64" width="250" height="330" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="145" y="94" text-anchor="middle" font-size="18" font-weight="700" fill="#991b1b">루트 사용자</text>
+  <text x="145" y="116" text-anchor="middle" font-size="13" fill="#7f1d1d">권한 축소 불가 · 만능 열쇠</text>
+  <g font-size="14" fill="#0f172a">
+    <rect x="40" y="134" width="210" height="38" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="145" y="158" text-anchor="middle">이메일 + 비밀번호</text>
+    <rect x="40" y="182" width="210" height="38" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="145" y="206" text-anchor="middle">MFA 2개 (패스키 / 앱)</text>
+    <rect x="40" y="230" width="210" height="38" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="145" y="254" text-anchor="middle">루트 액세스 키 0개</text>
+    <rect x="40" y="278" width="210" height="38" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="145" y="302" text-anchor="middle">결제 · 계정 해지 때만</text>
+  </g>
+  <rect x="60" y="334" width="170" height="40" rx="20" fill="#dc2626"/>
+  <text x="145" y="359" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">잠가서 금고에 보관</text>
+
+  <!-- Identity Center -->
+  <rect x="300" y="64" width="330" height="330" rx="12" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="465" y="94" text-anchor="middle" font-size="18" font-weight="700" fill="#7c4a03">IAM Identity Center</text>
+  <text x="465" y="116" text-anchor="middle" font-size="13" fill="#92400e">홈 리전 ap-northeast-2 · 조직 인스턴스</text>
+
+  <rect x="330" y="134" width="270" height="52" rx="10" fill="#ffffff" stroke="#ff9900"/>
+  <text x="465" y="157" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">사용자 hong (+MFA)</text>
+  <text x="465" y="177" text-anchor="middle" font-size="12" fill="#64748b">사람 = Identity Center 사용자</text>
+
+  <line x1="465" y1="188" x2="465" y2="212" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="330" y="214" width="270" height="52" rx="10" fill="#ffffff" stroke="#ff9900"/>
+  <text x="465" y="237" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">권한 세트 AdministratorAccess</text>
+  <text x="465" y="257" text-anchor="middle" font-size="12" fill="#64748b">세션 시간 4시간</text>
+
+  <line x1="465" y1="268" x2="465" y2="292" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="330" y="294" width="270" height="80" rx="10" fill="#ffffff" stroke="#ff9900"/>
+  <text x="465" y="318" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">AWS 계정 111122223333</text>
+  <text x="465" y="340" text-anchor="middle" font-size="12" fill="#64748b">할당하면 계정에 IAM 역할이 생김</text>
+  <text x="465" y="360" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#7c4a03">AWSReservedSSO_Admin...</text>
+
+  <!-- CLI flow -->
+  <rect x="660" y="64" width="280" height="330" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="800" y="94" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">CLI 로그인 흐름</text>
+  <g font-size="13">
+    <rect x="680" y="112" width="240" height="50" rx="8" fill="#e2e8f0"/>
+    <text x="692" y="133" fill="#0f172a" font-weight="700">① aws sso login</text>
+    <text x="692" y="152" fill="#64748b">브라우저 로그인 (PKCE)</text>
+    <line x1="800" y1="162" x2="800" y2="178" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="680" y="180" width="240" height="50" rx="8" fill="#e2e8f0"/>
+    <text x="692" y="201" fill="#0f172a" font-weight="700">② SSO 토큰 캐시</text>
+    <text x="692" y="220" fill="#64748b" font-family="Consolas,'D2Coding',monospace">~/.aws/sso/cache</text>
+    <line x1="800" y1="230" x2="800" y2="246" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="680" y="248" width="240" height="50" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="692" y="269" fill="#14532d" font-weight="700">③ STS 임시 자격 증명</text>
+    <text x="692" y="288" fill="#166534">ASIA... + 세션 토큰, 만료 있음</text>
+    <line x1="800" y1="298" x2="800" y2="314" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="680" y="316" width="240" height="58" rx="8" fill="#e2e8f0"/>
+    <text x="692" y="337" fill="#0f172a" font-weight="700">④ API 호출</text>
+    <text x="692" y="357" fill="#64748b">CloudTrail에 .../hong 기록</text>
+  </g>
+
+  <line x1="602" y1="330" x2="676" y2="272" stroke="#ff9900" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+
+  <!-- Keystone mapping -->
+  <rect x="20" y="414" width="920" height="50" rx="10" fill="#eff6ff" stroke="#c7d2fe"/>
+  <text x="480" y="436" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Day 27 Keystone 대응</text>
+  <text x="480" y="455" text-anchor="middle" font-size="13" fill="#334155">사용자 ↔ Identity Center 사용자 · 프로젝트 ↔ AWS 계정 · 역할 할당 ↔ 권한 세트 할당 · 토큰 ↔ STS 임시 자격 증명</text>
+</svg>

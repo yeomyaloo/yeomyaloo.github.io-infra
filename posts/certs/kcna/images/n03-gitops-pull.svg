@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="530" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Push 배포 vs Pull 배포(GitOps)</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">CI는 둘 다 있다 — 다른 것은 "누가 클러스터에 적용하는가"</text>
+
+  <!-- lane 1 -->
+  <rect x="20" y="80" width="920" height="140" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
+  <text x="36" y="104" font-size="14" font-weight="700" fill="#991b1b">Push 배포 — CI가 직접 적용</text>
+  <rect x="40" y="122" width="110" height="60" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="95" y="157" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">개발자</text>
+  <rect x="190" y="122" width="140" height="60" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="260" y="148" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">코드 저장소</text>
+  <text x="260" y="168" text-anchor="middle" font-size="12" fill="#64748b">Git</text>
+  <rect x="370" y="122" width="170" height="60" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="455" y="148" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">CI 파이프라인</text>
+  <text x="455" y="168" text-anchor="middle" font-size="12" fill="#64748b">빌드 · 테스트 · 이미지</text>
+  <rect x="760" y="122" width="160" height="60" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="840" y="157" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">클러스터</text>
+  <line x1="150" y1="152" x2="186" y2="152" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="330" y1="152" x2="366" y2="152" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="540" y1="152" x2="756" y2="152" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="648" y="142" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#991b1b">kubectl apply · helm upgrade</text>
+  <text x="648" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">⚠️ 클러스터 자격 증명이 CI에 · 드리프트 감지 없음</text>
+
+  <!-- lane 2 -->
+  <rect x="20" y="240" width="920" height="230" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+  <text x="36" y="264" font-size="14" font-weight="700" fill="#15803d">Pull 배포 — 클러스터 안 에이전트가 당겨 옴 (GitOps)</text>
+  <rect x="40" y="290" width="110" height="60" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="95" y="325" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">개발자</text>
+  <rect x="190" y="290" width="140" height="60" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="260" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">코드 저장소</text>
+  <text x="260" y="336" text-anchor="middle" font-size="12" fill="#64748b">gitops-demo-app</text>
+  <rect x="370" y="290" width="170" height="60" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="455" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">CI 파이프라인</text>
+  <text x="455" y="336" text-anchor="middle" font-size="12" fill="#64748b">빌드 · 테스트 · 푸시</text>
+  <rect x="575" y="290" width="140" height="60" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="645" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">레지스트리</text>
+  <text x="645" y="336" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#64748b">app:v1.4.2</text>
+  <rect x="370" y="390" width="170" height="60" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="455" y="416" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">매니페스트 저장소</text>
+  <text x="455" y="436" text-anchor="middle" font-size="12" fill="#64748b">gitops-demo-config</text>
+
+  <line x1="150" y1="320" x2="186" y2="320" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="330" y1="320" x2="366" y2="320" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="540" y1="320" x2="571" y2="320" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="455" y1="350" x2="455" y2="386" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="464" y="374" font-size="12" fill="#334155">태그만 커밋</text>
+
+  <!-- cluster -->
+  <rect x="745" y="280" width="180" height="175" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="757" y="300" font-size="13" font-weight="700" fill="#1e3a8a">클러스터</text>
+  <rect x="760" y="310" width="150" height="44" rx="6" fill="#ffffff" stroke="#326ce5"/>
+  <text x="835" y="337" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">워크로드</text>
+  <rect x="760" y="390" width="150" height="50" rx="6" fill="#326ce5"/>
+  <text x="835" y="420" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Argo CD / Flux</text>
+  <line x1="835" y1="390" x2="835" y2="358" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowg)"/>
+  <text x="842" y="379" font-size="11" font-weight="700" fill="#16a34a">조정</text>
+  <line x1="540" y1="420" x2="756" y2="420" stroke="#16a34a" stroke-width="2.5" marker-start="url(#arrowg)"/>
+  <text x="648" y="410" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">에이전트가 pull (감시)</text>
+  <line x1="715" y1="332" x2="756" y2="332" stroke="#334155" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+  <text x="480" y="500" text-anchor="middle" font-size="13" fill="#334155">수동 변경(드리프트) → 에이전트가 감지해 Git 상태로 되돌림 · 롤백 = git revert · 자격 증명은 클러스터 안에만</text>
+</svg>

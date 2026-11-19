@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kubectl apply부터 컨테이너 실행까지 — 컴포넌트가 하는 일</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">모든 컴포넌트는 API 서버를 통해서만 대화한다 (watch = 변경 감시)</text>
+
+  <!-- kubectl -->
+  <rect x="40" y="110" width="160" height="64" rx="8" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="120" y="139" text-anchor="middle" font-size="15" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">kubectl apply</text>
+  <text x="120" y="160" text-anchor="middle" font-size="12" fill="#64748b">Deployment YAML</text>
+
+  <!-- control plane -->
+  <rect x="240" y="84" width="680" height="230" rx="12" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="256" y="106" font-size="14" font-weight="700" fill="#326ce5">컨트롤 플레인</text>
+
+  <rect x="270" y="120" width="220" height="64" rx="8" fill="#326ce5"/>
+  <text x="380" y="148" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">kube-apiserver</text>
+  <text x="380" y="170" text-anchor="middle" font-size="12" fill="#e8eefc">인증 · 인가 · 어드미션</text>
+
+  <rect x="660" y="120" width="220" height="64" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="770" y="148" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">etcd</text>
+  <text x="770" y="170" text-anchor="middle" font-size="12" fill="#334155">원하는 상태(spec) 저장</text>
+
+  <line x1="200" y1="142" x2="266" y2="142" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="233" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">①</text>
+  <line x1="490" y1="152" x2="656" y2="152" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="573" y="144" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">② 저장</text>
+
+  <rect x="270" y="224" width="270" height="70" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="405" y="252" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">kube-controller-manager</text>
+  <text x="405" y="276" text-anchor="middle" font-size="12" fill="#334155">③ Deployment → ReplicaSet → Pod 생성</text>
+
+  <rect x="590" y="224" width="290" height="70" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="735" y="252" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">kube-scheduler</text>
+  <text x="735" y="276" text-anchor="middle" font-size="12" fill="#334155">④ Pod에 노드 선택 → nodeName 기록</text>
+
+  <line x1="405" y1="222" x2="405" y2="188" stroke="#326ce5" stroke-width="2" stroke-dasharray="6 4" marker-start="url(#arrowb)" marker-end="url(#arrowb)"/>
+  <text x="414" y="210" font-size="12" fill="#326ce5">watch</text>
+  <line x1="640" y1="222" x2="494" y2="186" stroke="#326ce5" stroke-width="2" stroke-dasharray="6 4" marker-start="url(#arrowb)" marker-end="url(#arrowb)"/>
+  <text x="572" y="196" font-size="12" fill="#326ce5">watch</text>
+
+  <!-- API to kubelet -->
+  <path d="M270,176 L230,176 L230,396" fill="none" stroke="#326ce5" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowb)"/>
+  <text x="238" y="334" font-size="12" font-weight="700" fill="#326ce5">⑤ watch: 내 노드에 배정된 Pod</text>
+
+  <!-- node -->
+  <rect x="40" y="350" width="880" height="180" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="56" y="372" font-size="14" font-weight="700" fill="#334155">워커 노드</text>
+
+  <rect x="70" y="400" width="200" height="70" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="170" y="428" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">kubelet</text>
+  <text x="170" y="452" text-anchor="middle" font-size="12" fill="#334155">PodSpec 실행 · probe</text>
+
+  <rect x="330" y="400" width="210" height="70" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="435" y="428" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">containerd / CRI-O</text>
+  <text x="435" y="452" text-anchor="middle" font-size="12" fill="#334155">컨테이너 런타임</text>
+
+  <rect x="600" y="400" width="140" height="70" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="670" y="428" text-anchor="middle" font-size="15" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">runc</text>
+  <text x="670" y="452" text-anchor="middle" font-size="12" fill="#334155">OCI 런타임</text>
+
+  <rect x="790" y="400" width="110" height="70" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="845" y="428" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">컨테이너</text>
+  <text x="845" y="452" text-anchor="middle" font-size="12" fill="#334155">Pod 안</text>
+
+  <line x1="270" y1="435" x2="326" y2="435" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="298" y="427" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">CRI</text>
+  <line x1="540" y1="435" x2="596" y2="435" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="740" y1="435" x2="786" y2="435" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="70" y="508" font-size="13" fill="#334155">⑥ kubelet이 Pod status를 API 서버에 보고 → 컨트롤러는 status와 spec을 비교해 계속 맞춘다(reconciliation)</text>
+</svg>

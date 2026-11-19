@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">핵심 워크플로 — 명령마다 무엇을 읽고 무엇을 쓰나</text>
+
+  <!-- step boxes -->
+  <g font-size="16" font-weight="700" text-anchor="middle">
+    <rect x="30" y="70" width="130" height="56" rx="10" fill="#f8fafc" stroke="#334155"/>
+    <text x="95" y="104" fill="#0f172a">Write</text>
+    <rect x="186" y="70" width="130" height="56" rx="10" fill="#7b42bc"/>
+    <text x="251" y="104" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">init</text>
+    <rect x="342" y="70" width="130" height="56" rx="10" fill="#f3ebfb" stroke="#7b42bc"/>
+    <text x="407" y="96" fill="#4c1d95" font-family="Consolas,'D2Coding',monospace" font-size="14">fmt</text>
+    <text x="407" y="116" fill="#4c1d95" font-family="Consolas,'D2Coding',monospace" font-size="14">validate</text>
+    <rect x="498" y="70" width="130" height="56" rx="10" fill="#7b42bc"/>
+    <text x="563" y="104" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">plan</text>
+    <rect x="654" y="70" width="130" height="56" rx="10" fill="#7b42bc"/>
+    <text x="719" y="104" fill="#ffffff" font-family="Consolas,'D2Coding',monospace">apply</text>
+    <rect x="810" y="70" width="130" height="56" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="875" y="104" fill="#991b1b" font-family="Consolas,'D2Coding',monospace">destroy</text>
+  </g>
+  <g stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)">
+    <line x1="160" y1="98" x2="182" y2="98"/>
+    <line x1="316" y1="98" x2="338" y2="98"/>
+    <line x1="472" y1="98" x2="494" y2="98"/>
+    <line x1="628" y1="98" x2="650" y2="98"/>
+    <line x1="784" y1="98" x2="806" y2="98"/>
+  </g>
+
+  <!-- detail cards -->
+  <g font-size="12" fill="#334155">
+    <rect x="30" y="140" width="130" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="40" y="162" font-weight="700" fill="#0f172a">쓰는 것</text>
+    <text x="40" y="182">*.tf 파일</text>
+    <text x="40" y="200">디렉터리의 .tf를</text>
+    <text x="40" y="216">모두 합쳐 읽음</text>
+    <text x="40" y="236">= 루트 모듈</text>
+
+    <rect x="186" y="140" width="130" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="196" y="162" font-weight="700" fill="#0f172a">쓰는 것</text>
+    <text x="196" y="182" font-family="Consolas,'D2Coding',monospace">.terraform/</text>
+    <text x="196" y="198">provider·모듈 설치</text>
+    <text x="194" y="218" font-size="11" font-family="Consolas,'D2Coding',monospace">.terraform.lock.hcl</text>
+    <text x="196" y="234">provider 버전·해시</text>
+    <text x="196" y="254">backend 초기화</text>
+    <text x="196" y="274">여러 번 실행해도 안전</text>
+
+    <rect x="342" y="140" width="130" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="352" y="162" font-weight="700" fill="#0f172a">검사만</text>
+    <text x="352" y="182">fmt: 스타일 정렬</text>
+    <text x="352" y="198">(-check 는 수정 X)</text>
+    <text x="352" y="218">validate: 문법·참조</text>
+    <text x="352" y="234">원격 API·state</text>
+    <text x="352" y="250">접근 없음</text>
+    <text x="352" y="270">init 이 먼저 필요</text>
+
+    <rect x="498" y="140" width="130" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="508" y="162" font-weight="700" fill="#0f172a">읽는 것</text>
+    <text x="508" y="182">state + refresh</text>
+    <text x="508" y="198">(실제 인프라 조회)</text>
+    <text x="508" y="218">→ 코드와 diff</text>
+    <text x="508" y="238">인프라는 안 바꿈</text>
+    <text x="508" y="258" font-family="Consolas,'D2Coding',monospace">-out=tfplan</text>
+    <text x="508" y="274">으로 저장 가능</text>
+
+    <rect x="654" y="140" width="130" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="664" y="162" font-weight="700" fill="#0f172a">쓰는 것</text>
+    <text x="664" y="182">provider가 API 호출</text>
+    <text x="664" y="202">결과를 state에 기록</text>
+    <text x="664" y="222" font-family="Consolas,'D2Coding',monospace">terraform.tfstate</text>
+    <text x="664" y="242">plan 파일을 주면</text>
+    <text x="664" y="258">승인 질문 없이 실행</text>
+
+    <rect x="810" y="140" width="130" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="820" y="162" font-weight="700" fill="#0f172a">지우는 것</text>
+    <text x="820" y="182">state의 리소스 전부</text>
+    <text x="820" y="202">의존성 역순으로</text>
+    <text x="820" y="222">= apply -destroy</text>
+    <text x="820" y="242">미리보기:</text>
+    <text x="820" y="258" font-family="Consolas,'D2Coding',monospace">plan -destroy</text>
+  </g>
+
+  <!-- loop -->
+  <path d="M719,290 L719,326 L95,326 L95,294" stroke="#7b42bc" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="407" y="318" text-anchor="middle" font-size="13" fill="#7b42bc">운영 중에는 Write → plan → apply 를 반복 (init 은 provider·모듈·backend가 바뀔 때)</text>
+
+  <!-- plan symbols -->
+  <rect x="30" y="352" width="910" height="128" rx="10" fill="#f8fafc" stroke="#334155"/>
+  <text x="50" y="380" font-size="15" font-weight="700" fill="#0f172a">plan 출력 기호</text>
+  <g font-size="14">
+    <text x="50" y="412" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#16a34a">+</text>
+    <text x="74" y="412" fill="#334155">create — 새로 만듦</text>
+    <text x="280" y="412" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#b45309">~</text>
+    <text x="304" y="412" fill="#334155">update in-place — 그 자리에서 수정</text>
+    <text x="600" y="412" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#dc2626">-</text>
+    <text x="624" y="412" fill="#334155">destroy — 삭제</text>
+    <text x="50" y="448" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#dc2626">-/+</text>
+    <text x="90" y="448" fill="#334155">replace — 지우고 다시 만듦 (기본 순서)</text>
+    <text x="440" y="448" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#dc2626">+/-</text>
+    <text x="480" y="448" fill="#334155">create_before_destroy 일 때 — 먼저 만들고 지움</text>
+    <text x="50" y="470" font-size="12" fill="#64748b">data 소스를 apply 시점에 읽어야 하면 &lt;= read 로 표시됩니다</text>
+  </g>
+</svg>

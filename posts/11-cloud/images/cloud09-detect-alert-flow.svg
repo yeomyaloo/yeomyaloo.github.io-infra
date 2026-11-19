@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">막기 · 기록 · 탐지 · 점검 · 알리기</text>
+
+  <!-- Prevent column -->
+  <rect x="20" y="60" width="210" height="370" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="125" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">막기 (예방)</text>
+  <g text-anchor="middle">
+    <rect x="35" y="104" width="180" height="62" rx="8" fill="#ffffff" stroke="#86efac"/>
+    <text x="125" y="130" font-size="15" font-weight="700" fill="#0f172a">SCP</text>
+    <text x="125" y="152" font-size="12" fill="#64748b">조직 단위 금지 목록</text>
+    <rect x="35" y="176" width="180" height="62" rx="8" fill="#ffffff" stroke="#86efac"/>
+    <text x="125" y="202" font-size="15" font-weight="700" fill="#0f172a">S3 퍼블릭 차단</text>
+    <text x="125" y="224" font-size="12" fill="#64748b">계정 수준 4개 옵션</text>
+    <rect x="35" y="248" width="180" height="62" rx="8" fill="#ffffff" stroke="#86efac"/>
+    <text x="125" y="274" font-size="15" font-weight="700" fill="#0f172a">IMDSv2 기본값</text>
+    <text x="125" y="296" font-size="12" fill="#64748b">리전 기본값 required</text>
+    <rect x="35" y="320" width="180" height="62" rx="8" fill="#ffffff" stroke="#86efac"/>
+    <text x="125" y="346" font-size="15" font-weight="700" fill="#0f172a">KMS 키 정책</text>
+    <text x="125" y="368" font-size="12" fill="#64748b">키에 붙는 리소스 정책</text>
+  </g>
+  <text x="125" y="412" text-anchor="middle" font-size="12" fill="#14532d">실수를 처음부터 못 하게</text>
+
+  <!-- Middle column -->
+  <g text-anchor="middle">
+    <rect x="270" y="60" width="300" height="74" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+    <text x="420" y="86" font-size="13" fill="#9a3412">기록</text>
+    <text x="420" y="108" font-size="16" font-weight="700" fill="#0f172a">CloudTrail 멀티 리전 트레일</text>
+    <text x="420" y="126" font-size="12" fill="#64748b">S3 infra-cloud-audit 버킷 · KMS 암호화 · 로그 검증</text>
+
+    <rect x="270" y="156" width="300" height="82" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+    <text x="420" y="180" font-size="13" fill="#9a3412">탐지</text>
+    <text x="420" y="202" font-size="16" font-weight="700" fill="#0f172a">GuardDuty</text>
+    <text x="420" y="224" font-size="12" fill="#64748b">EKS 감사 로그 · Runtime Monitoring</text>
+
+    <rect x="270" y="260" width="300" height="82" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+    <text x="420" y="284" font-size="13" fill="#9a3412">점검·집계</text>
+    <text x="420" y="306" font-size="16" font-weight="700" fill="#0f172a">Security Hub CSPM</text>
+    <text x="420" y="328" font-size="12" fill="#64748b">AWS FSBP + CIS v5.0.0 · 전제: AWS Config</text>
+
+    <rect x="270" y="364" width="300" height="66" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+    <text x="420" y="388" font-size="13" fill="#9a3412">권한 분석</text>
+    <text x="420" y="412" font-size="16" font-weight="700" fill="#0f172a">IAM Access Analyzer</text>
+  </g>
+  <!-- CloudTrail feeds GuardDuty -->
+  <line x1="420" y1="134" x2="420" y2="154" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- GuardDuty findings into CSPM -->
+  <path d="M570,214 C600,230 600,280 572,296" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+  <!-- EventBridge -->
+  <rect x="630" y="170" width="170" height="150" rx="12" fill="#ede9fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="715" y="206" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">EventBridge</text>
+  <g font-size="12" fill="#334155">
+    <text x="642" y="234">• GuardDuty 심각도 ≥ 7</text>
+    <text x="642" y="256">• 보안 장치 해제 API</text>
+    <text x="642" y="278">• CSPM CRITICAL·HIGH</text>
+    <text x="642" y="300">• 외부 공개 리소스</text>
+  </g>
+
+  <!-- arrows to EventBridge -->
+  <line x1="570" y1="97" x2="628" y2="196" stroke="#c2410c" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <line x1="570" y1="197" x2="628" y2="226" stroke="#c2410c" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <line x1="570" y1="301" x2="628" y2="268" stroke="#c2410c" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <line x1="570" y1="397" x2="628" y2="300" stroke="#c2410c" stroke-width="2" marker-end="url(#arrowOrange)"/>
+
+  <!-- SNS -->
+  <rect x="820" y="200" width="120" height="90" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="880" y="238" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">SNS</text>
+  <text x="880" y="256" text-anchor="middle" font-size="11" fill="#78350f">infra-cloud-</text><text x="880" y="270" text-anchor="middle" font-size="11" fill="#78350f">security-alerts</text>
+  <line x1="800" y1="245" x2="818" y2="245" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- email -->
+  <rect x="820" y="330" width="120" height="56" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="880" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">이메일</text>
+  <text x="880" y="375" text-anchor="middle" font-size="11" fill="#64748b">구독 확인 필수</text>
+  <line x1="880" y1="290" x2="880" y2="328" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- footer -->
+  <rect x="20" y="448" width="920" height="36" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="480" y="471" text-anchor="middle" font-size="13" fill="#334155">홈랩 대응: Kyverno·하드닝(막기) · K8s 감사 로그(기록) · Falco(탐지) · Lynis/CIS(점검) · Alertmanager(알림)</text>
+</svg>

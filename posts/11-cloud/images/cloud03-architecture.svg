@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="1000" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="580" fill="#ffffff"/>
+  <text x="500" y="30" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">클라우드 03 구성 — ALB + Auto Scaling + SSM</text>
+
+  <!-- User -->
+  <rect x="20" y="78" width="150" height="56" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="95" y="102" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">사용자</text>
+  <text x="95" y="122" text-anchor="middle" font-size="12" fill="#64748b">curl http://ALB_DNS/</text>
+
+  <!-- VPC -->
+  <rect x="190" y="48" width="570" height="516" rx="14" fill="#fffaf2" stroke="#ff9900" stroke-width="2"/>
+  <text x="206" y="70" font-size="13" font-weight="700" fill="#7c4a03">infra-cloud-vpc 10.20.0.0/16</text>
+
+  <!-- Public band with ALB -->
+  <rect x="206" y="80" width="538" height="100" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="218" y="98" font-size="12" font-weight="700" fill="#14532d">pub-a · pub-c (alb-sg: 80 ← 0.0.0.0/0)</text>
+  <rect x="236" y="108" width="478" height="60" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="475" y="132" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">ALB infra-cloud-alb</text>
+  <text x="475" y="154" text-anchor="middle" font-size="12" fill="#334155">리스너 HTTP:80 → 대상 그룹 infra-cloud-tg (HTTP:8080)</text>
+  <line x1="172" y1="112" x2="232" y2="128" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ASG -->
+  <rect x="206" y="212" width="538" height="214" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="218" y="232" font-size="13" font-weight="700" fill="#9a3412">Auto Scaling 그룹 infra-cloud-asg — min 2 / desired 2 / max 4 · 헬스 체크 ELB</text>
+
+  <rect x="220" y="244" width="252" height="168" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="460" y="262" text-anchor="end" font-size="12" font-weight="700" fill="#312e81">priv-a 10.20.10.0/24</text>
+  <rect x="478" y="244" width="252" height="168" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="490" y="262" font-size="12" font-weight="700" fill="#312e81">priv-c 10.20.11.0/24</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="236" y="274" width="220" height="62" rx="8" fill="#ffffff" stroke="#4f46e5"/>
+    <text x="346" y="296" font-weight="700" fill="#0f172a">EC2 t3.micro (app-sg)</text>
+    <text x="346" y="316" fill="#334155">Spring Boot :8080</text>
+    <text x="346" y="331" fill="#64748b" font-size="11">/actuator/health</text>
+    <rect x="236" y="344" width="220" height="56" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-dasharray="5 4"/>
+    <text x="346" y="368" fill="#4f46e5">스케일 아웃 시 추가</text>
+    <text x="346" y="386" fill="#64748b" font-size="11">(최대 4대, AZ 균형)</text>
+
+    <rect x="494" y="274" width="220" height="62" rx="8" fill="#ffffff" stroke="#4f46e5"/>
+    <text x="604" y="296" font-weight="700" fill="#0f172a">EC2 t3.micro (app-sg)</text>
+    <text x="604" y="316" fill="#334155">Spring Boot :8080</text>
+    <text x="604" y="331" fill="#64748b" font-size="11">/actuator/health</text>
+    <rect x="494" y="344" width="220" height="56" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-dasharray="5 4"/>
+    <text x="604" y="368" fill="#4f46e5">스케일 아웃 시 추가</text>
+    <text x="604" y="386" fill="#64748b" font-size="11">(최대 4대, AZ 균형)</text>
+  </g>
+  <line x1="300" y1="170" x2="300" y2="270" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="660" y1="170" x2="660" y2="270" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="475" y="200" text-anchor="middle" font-size="12" fill="#166534">8080 (app-sg ← alb-sg) · healthy 대상에만</text>
+
+  <!-- egress row -->
+  <rect x="220" y="446" width="252" height="102" rx="10" fill="#ffffff" stroke="#c2410c"/>
+  <text x="346" y="470" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">NAT Gateway (pub-a)</text>
+  <text x="346" y="492" text-anchor="middle" font-size="12" fill="#334155">SSM Agent → SSM 서비스</text>
+  <text x="346" y="512" text-anchor="middle" font-size="12" fill="#334155">(에이전트가 밖으로 연결,</text>
+  <text x="346" y="530" text-anchor="middle" font-size="12" fill="#334155">인바운드 포트 없음)</text>
+  <rect x="478" y="446" width="252" height="102" rx="10" fill="#ffffff" stroke="#16a34a"/>
+  <text x="604" y="470" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">S3 게이트웨이 엔드포인트</text>
+  <text x="604" y="492" text-anchor="middle" font-size="12" fill="#334155">user data: dnf 저장소,</text>
+  <text x="604" y="512" text-anchor="middle" font-size="12" fill="#334155">aws s3 cp cloud-demo.jar</text>
+  <text x="604" y="530" text-anchor="middle" font-size="12" fill="#166534">무료 경로</text>
+  <line x1="346" y1="412" x2="346" y2="442" stroke="#c2410c" stroke-width="2" marker-end="url(#arrowO)"/>
+  <line x1="604" y1="412" x2="604" y2="442" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- right column -->
+  <rect x="780" y="78" width="200" height="104" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="880" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">시작 템플릿</text>
+  <text x="880" y="120" text-anchor="middle" font-size="12" fill="#334155">infra-cloud-lt</text>
+  <text x="880" y="138" text-anchor="middle" font-size="11" fill="#64748b">AL2023 (resolve:ssm)</text>
+  <text x="880" y="155" text-anchor="middle" font-size="11" fill="#64748b">t3.micro · IMDSv2 필수</text>
+  <text x="880" y="172" text-anchor="middle" font-size="11" fill="#64748b">user data (base64)</text>
+
+  <rect x="780" y="196" width="200" height="80" rx="10" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="880" y="218" text-anchor="middle" font-size="14" font-weight="700" fill="#7c4a03">IAM 역할</text>
+  <text x="880" y="238" text-anchor="middle" font-size="11" fill="#334155">infra-cloud-ec2-role</text>
+  <text x="880" y="256" text-anchor="middle" font-size="11" fill="#64748b">SSM Core + s3:GetObject</text>
+
+  <rect x="780" y="290" width="200" height="80" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="880" y="312" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">CloudWatch 경보</text>
+  <text x="880" y="332" text-anchor="middle" font-size="11" fill="#334155">대상 추적: CPU 평균 40%</text>
+  <text x="880" y="350" text-anchor="middle" font-size="11" fill="#64748b">AlarmHigh / AlarmLow</text>
+
+  <rect x="780" y="384" width="200" height="72" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="880" y="406" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">내 PC</text>
+  <text x="880" y="426" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">aws ssm start-session</text>
+  <text x="880" y="444" text-anchor="middle" font-size="11" fill="#64748b">포트 22 · 키페어 불필요</text>
+
+  <rect x="780" y="470" width="200" height="78" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="880" y="494" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">S3 버킷</text>
+  <text x="880" y="514" text-anchor="middle" font-size="11" fill="#334155">infra-cloud-artifacts-</text>
+  <text x="880" y="530" text-anchor="middle" font-size="11" fill="#334155">&lt;계정ID&gt;/cloud-demo.jar</text>
+
+  <g stroke-width="2" fill="none">
+    <path d="M 778 140 C 760 160 752 200 746 228" stroke="#334155" marker-end="url(#arrow)"/>
+    <line x1="778" y1="236" x2="748" y2="290" stroke="#ff9900" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+    <line x1="778" y1="330" x2="748" y2="330" stroke="#f59e0b" marker-end="url(#arrow)"/>
+    <line x1="734" y1="508" x2="776" y2="508" stroke="#16a34a" marker-end="url(#arrow)"/>
+  </g>
+</svg>

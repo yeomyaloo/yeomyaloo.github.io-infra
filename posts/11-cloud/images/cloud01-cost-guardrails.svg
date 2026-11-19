@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">비용 가드레일 — 알림은 사후, 삭제는 직접</text>
+
+  <!-- 5 steps -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="20" y="70" width="166" height="110" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+    <text x="103" y="98" font-size="15" font-weight="700" fill="#7c4a03">① 리소스 생성</text>
+    <text x="103" y="122" fill="#334155">태그 부착</text>
+    <text x="103" y="142" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">Project=</text>
+    <text x="103" y="160" fill="#334155" font-family="Consolas,'D2Coding',monospace" font-size="12">infra-study</text>
+
+    <rect x="210" y="70" width="166" height="110" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="293" y="98" font-size="15" font-weight="700" fill="#0f172a">② 사용량 측정</text>
+    <text x="293" y="122" fill="#334155">시간 · GB · 요청 수</text>
+    <text x="293" y="142" fill="#64748b">NAT $0.059/h</text>
+    <text x="293" y="160" fill="#64748b">ALB $0.0225/h ...</text>
+
+    <rect x="400" y="70" width="166" height="110" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="483" y="98" font-size="15" font-weight="700" fill="#0f172a">③ Cost Explorer</text>
+    <text x="483" y="122" fill="#334155">비용 할당 태그로</text>
+    <text x="483" y="142" fill="#334155">Project별 집계</text>
+    <text x="483" y="160" fill="#64748b">(활성화 필요)</text>
+
+    <rect x="590" y="70" width="166" height="110" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="673" y="98" font-size="15" font-weight="700" fill="#78350f">④ Budgets</text>
+    <text x="673" y="122" fill="#334155">zero spend</text>
+    <text x="673" y="142" fill="#334155">월 $20 (80% / 예측 100%)</text>
+    <text x="673" y="160" fill="#92400e">하루 몇 차례 갱신</text>
+
+    <rect x="780" y="70" width="160" height="110" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+    <text x="860" y="98" font-size="15" font-weight="700" fill="#991b1b">⑤ 이메일 알림</text>
+    <text x="860" y="122" fill="#334155">이미 돈이</text>
+    <text x="860" y="142" fill="#334155">나간 뒤에 도착</text>
+    <text x="860" y="160" fill="#991b1b">자동 차단 아님</text>
+  </g>
+  <g stroke="#334155" stroke-width="2">
+    <line x1="188" y1="125" x2="206" y2="125" marker-end="url(#arrow)"/>
+    <line x1="378" y1="125" x2="396" y2="125" marker-end="url(#arrow)"/>
+    <line x1="568" y1="125" x2="586" y2="125" marker-end="url(#arrow)"/>
+    <line x1="758" y1="125" x2="776" y2="125" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- real guardrail -->
+  <rect x="120" y="232" width="720" height="110" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="480" y="262" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">진짜 가드레일: 실습이 끝나면 바로 삭제하고 확인</text>
+  <text x="480" y="290" text-anchor="middle" font-size="14" fill="#166534" font-family="Consolas,'D2Coding',monospace">./app-down.sh → ./data-down.sh → ./vpc-down.sh</text>
+  <text x="480" y="318" text-anchor="middle" font-size="14" fill="#166534">각 편 끝 "완전 삭제 체크리스트"의 확인 명령이 모두 빈 결과인지</text>
+
+  <path d="M 860 182 C 860 210 840 230 842 236" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M 120 287 C 60 287 103 220 103 186" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="30" y="372" font-size="13" fill="#64748b">리전은 항상 ap-northeast-2 · 태그 Project / Env / Owner / ManagedBy · 이름 접두사 infra-cloud-</text>
+</svg>

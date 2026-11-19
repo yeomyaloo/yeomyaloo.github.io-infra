@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">웹 요청 경로 위에 취약점 놓기 — 어디서 해석되는가</text>
+
+  <!-- components -->
+  <rect x="30" y="80" width="170" height="120" rx="10" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="115" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">브라우저</text>
+  <text x="115" y="136" text-anchor="middle" font-size="12" fill="#334155">HTML·JS 실행</text>
+  <text x="115" y="156" text-anchor="middle" font-size="12" fill="#334155">쿠키 자동 첨부</text>
+
+  <rect x="260" y="80" width="150" height="120" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="335" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">WAF·웹 서버</text>
+  <text x="335" y="136" text-anchor="middle" font-size="12" fill="#334155">Apache · nginx</text>
+  <text x="335" y="156" text-anchor="middle" font-size="12" fill="#334155">정적 파일 · 설정</text>
+
+  <rect x="470" y="80" width="190" height="120" rx="10" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="565" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">애플리케이션(WAS)</text>
+  <text x="565" y="136" text-anchor="middle" font-size="12" fill="#334155">인증·인가 · 세션</text>
+  <text x="565" y="156" text-anchor="middle" font-size="12" fill="#334155">파일 · 외부 호출</text>
+
+  <rect x="720" y="64" width="210" height="64" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="825" y="102" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">DB</text>
+  <rect x="720" y="150" width="210" height="64" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="825" y="180" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">OS 셸 · 파일 시스템</text>
+  <text x="825" y="200" text-anchor="middle" font-size="12" fill="#334155">내부망 · 메타데이터</text>
+
+  <line x1="200" y1="140" x2="256" y2="140" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="410" y1="140" x2="466" y2="140" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="660" y1="120" x2="716" y2="98" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="660" y1="160" x2="716" y2="180" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- vuln cards -->
+  <rect x="30" y="232" width="170" height="180" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="115" y="258" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">브라우저에서 터짐</text>
+  <text x="46" y="286" font-size="13" fill="#0f172a">XSS (저장·반사·DOM)</text>
+  <text x="46" y="310" font-size="13" fill="#0f172a">CSRF</text>
+  <text x="46" y="334" font-size="13" fill="#0f172a">쿠키 탈취</text>
+  <text x="46" y="370" font-size="12" fill="#16a34a">출력 인코딩 · CSP</text>
+  <text x="46" y="392" font-size="12" fill="#16a34a">토큰 · SameSite · HttpOnly</text>
+
+  <rect x="220" y="232" width="190" height="180" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="315" y="258" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">설정 문제</text>
+  <text x="236" y="286" font-size="13" fill="#0f172a">디렉터리 인덱싱</text>
+  <text x="236" y="310" font-size="13" fill="#0f172a">버전 정보 노출</text>
+  <text x="236" y="334" font-size="13" fill="#0f172a">TRACE 등 불필요 메서드</text>
+  <text x="236" y="370" font-size="12" fill="#16a34a">-Indexes · ServerTokens Prod</text>
+  <text x="236" y="392" font-size="12" fill="#16a34a">TraceEnable Off</text>
+
+  <rect x="430" y="232" width="250" height="180" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="555" y="258" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">앱 로직</text>
+  <text x="446" y="286" font-size="13" fill="#0f172a">IDOR·불충분한 인가</text>
+  <text x="446" y="310" font-size="13" fill="#0f172a">세션 고정 · 약한 인증</text>
+  <text x="446" y="334" font-size="13" fill="#0f172a">파일 업로드 · 경로 조작</text>
+  <text x="446" y="370" font-size="12" fill="#16a34a">객체 단위 권한 검사</text>
+  <text x="446" y="392" font-size="12" fill="#16a34a">로그인 시 세션 ID 재발급</text>
+
+  <rect x="700" y="232" width="230" height="180" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="815" y="258" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">뒤쪽 해석기에서 터짐</text>
+  <text x="716" y="286" font-size="13" fill="#0f172a">SQL 삽입 → DB</text>
+  <text x="716" y="310" font-size="13" fill="#0f172a">명령 삽입 → 셸</text>
+  <text x="716" y="334" font-size="13" fill="#0f172a">SSRF → 내부망</text>
+  <text x="716" y="370" font-size="12" fill="#16a34a">매개변수화 쿼리</text>
+  <text x="716" y="392" font-size="12" fill="#16a34a">API 호출 · 목적지 허용 목록</text>
+
+  <rect x="30" y="432" width="900" height="68" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="480" y="460" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">인젝션의 공통 원리: 데이터가 다른 해석기(SQL · HTML/JS · 셸)에서 "코드"로 읽힌다</text>
+  <text x="480" y="484" text-anchor="middle" font-size="13" fill="#334155">대책의 공통 원리: 그 해석기 기준으로 데이터와 코드를 분리 (바인딩 · 인코딩 · 인자 배열)</text>
+</svg>

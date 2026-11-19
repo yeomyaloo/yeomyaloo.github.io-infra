@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RAG 챗봇 이전 — ① GPU 노드 + vLLM vs ② Bedrock</text>
+
+  <!-- Left panel -->
+  <rect x="20" y="56" width="450" height="410" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="245" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">① EKS GPU 노드그룹 + vLLM</text>
+
+  <!-- Right panel -->
+  <rect x="490" y="56" width="450" height="410" rx="14" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="715" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#9a3412">② Bedrock + 같은 rag-api (실습)</text>
+
+  <!-- common boxes left -->
+  <g text-anchor="middle">
+    <rect x="40" y="102" width="280" height="40" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="180" y="127" font-size="14" font-weight="700" fill="#1e3a8a">rag-api (이미지 변경 없음)</text>
+    <rect x="40" y="164" width="280" height="40" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="180" y="189" font-size="14" font-weight="700" fill="#1e3a8a">LiteLLM 게이트웨이</text>
+    <rect x="40" y="226" width="280" height="40" rx="8" fill="#ede9fe" stroke="#4f46e5"/>
+    <text x="180" y="251" font-size="14" font-weight="700" fill="#312e81">vLLM + TEI (Day 45 매니페스트)</text>
+    <rect x="40" y="280" width="280" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="180" y="305" font-size="14" font-weight="700" fill="#7f1d1d">GPU 노드 g6.xlarge (L4 24GiB)</text>
+    <rect x="335" y="102" width="120" height="64" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="395" y="128" font-size="14" font-weight="700" fill="#14532d">Qdrant</text>
+    <text x="395" y="150" font-size="12" fill="#14532d">EBS gp3 PVC</text>
+  </g>
+  <line x1="180" y1="142" x2="180" y2="162" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="180" y1="204" x2="180" y2="224" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="320" y1="122" x2="333" y2="122" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- right boxes -->
+  <g text-anchor="middle">
+    <rect x="510" y="102" width="280" height="40" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="650" y="127" font-size="14" font-weight="700" fill="#1e3a8a">rag-api (이미지 변경 없음)</text>
+    <rect x="510" y="164" width="280" height="40" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="650" y="189" font-size="14" font-weight="700" fill="#1e3a8a">LiteLLM (Pod Identity)</text>
+    <rect x="510" y="226" width="280" height="40" rx="8" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
+    <text x="650" y="251" font-size="13" font-weight="700" fill="#9a3412">Nova Lite (apac. 교차 리전 추론)</text>
+    <rect x="510" y="280" width="280" height="40" rx="8" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
+    <text x="650" y="305" font-size="13" font-weight="700" fill="#9a3412">Titan Embeddings V2 (서울 리전 내)</text>
+    <rect x="805" y="102" width="120" height="64" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="865" y="128" font-size="14" font-weight="700" fill="#14532d">Qdrant</text>
+    <text x="865" y="150" font-size="12" fill="#14532d">EBS gp3 PVC</text>
+  </g>
+  <line x1="650" y1="142" x2="650" y2="162" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="650" y1="204" x2="650" y2="224" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="790" y1="122" x2="803" y2="122" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M510,190 C495,210 495,285 508,298" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- facts -->
+  <line x1="40" y1="340" x2="450" y2="340" stroke="#cbd5e1"/>
+  <line x1="510" y1="340" x2="920" y2="340" stroke="#cbd5e1"/>
+  <g font-size="14" fill="#0f172a">
+    <text x="40" y="368"><tspan font-weight="700">비용</tspan>  $0.9896/시간 (24h ≈ $722/월)</text>
+    <text x="40" y="398"><tspan font-weight="700">운영</tspan>  드라이버·쿼터·모델 캐시·콜드 스타트</text>
+    <text x="40" y="428"><tspan font-weight="700">데이터</tspan>  전부 서울 VPC 안</text>
+    <text x="40" y="454" font-size="12" fill="#b91c1c">새 계정은 G 계열 vCPU 쿼터 0 → 증가 요청</text>
+
+    <text x="510" y="368"><tspan font-weight="700">비용</tspan>  입력 $0.071 / 출력 $0.284 (1M 토큰)</text>
+    <text x="510" y="398"><tspan font-weight="700">운영</tspan>  모델 ID·토큰 쿼터 관리</text>
+    <text x="510" y="428"><tspan font-weight="700">데이터</tspan>  임베딩은 서울, 생성은 APAC 리전</text>
+    <text x="510" y="454" font-size="12" fill="#9a3412">Day 49 사용량 가정 시 모델 비용 ≈ $7/월</text>
+  </g>
+
+  <text x="480" y="496" text-anchor="middle" font-size="13" fill="#64748b">서울(ap-northeast-2) 가격 · 2026-11-19 조회 · 변동 가능 · EKS·NAT·ALB 고정비는 양쪽 동일</text>
+</svg>

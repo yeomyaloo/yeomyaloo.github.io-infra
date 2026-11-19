@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">방화벽 구축 형태 — 방어선이 몇 겹인가</text>
+
+  <!-- Panel A: screening router -->
+  <rect x="20" y="56" width="450" height="150" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="80" font-size="15" font-weight="700" fill="#0f172a">① 스크리닝 라우터</text>
+  <text x="454" y="80" text-anchor="end" font-size="12" fill="#64748b">방어선 1겹 · 패킷 필터</text>
+  <rect x="40" y="110" width="90" height="50" rx="25" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="85" y="140" text-anchor="middle" font-size="13" fill="#0f172a">인터넷</text>
+  <rect x="190" y="110" width="110" height="50" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="245" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">라우터</text>
+  <text x="245" y="151" text-anchor="middle" font-size="11" fill="#334155">ACL</text>
+  <rect x="360" y="110" width="90" height="50" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="405" y="140" text-anchor="middle" font-size="13" fill="#0f172a">내부망</text>
+  <line x1="130" y1="135" x2="186" y2="135" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="300" y1="135" x2="356" y2="135" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="245" y="190" text-anchor="middle" font-size="12" fill="#64748b">싸고 빠름 · 뚫리면 바로 내부</text>
+
+  <!-- Panel B: dual-homed -->
+  <rect x="490" y="56" width="450" height="150" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="506" y="80" font-size="15" font-weight="700" fill="#0f172a">② 듀얼 홈드 게이트웨이</text>
+  <text x="924" y="80" text-anchor="end" font-size="12" fill="#64748b">NIC 2개 · 라우팅 끔</text>
+  <rect x="510" y="110" width="90" height="50" rx="25" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="555" y="140" text-anchor="middle" font-size="13" fill="#0f172a">인터넷</text>
+  <rect x="650" y="100" width="140" height="70" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="720" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">게이트웨이</text>
+  <text x="720" y="148" text-anchor="middle" font-size="11" fill="#334155">프록시로만 중계</text>
+  <circle cx="650" cy="135" r="6" fill="#b91c1c"/>
+  <circle cx="790" cy="135" r="6" fill="#b91c1c"/>
+  <rect x="830" y="110" width="90" height="50" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="875" y="140" text-anchor="middle" font-size="13" fill="#0f172a">내부망</text>
+  <line x1="600" y1="135" x2="642" y2="135" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="796" y1="135" x2="826" y2="135" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="715" y="190" text-anchor="middle" font-size="12" fill="#64748b">외부↔내부 직접 패킷 전달 없음</text>
+
+  <!-- Panel C: screened host -->
+  <rect x="20" y="222" width="450" height="160" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="246" font-size="15" font-weight="700" fill="#0f172a">③ 스크린드 호스트</text>
+  <text x="454" y="246" text-anchor="end" font-size="12" fill="#64748b">라우터 + 배스천 호스트</text>
+  <rect x="40" y="280" width="90" height="50" rx="25" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="85" y="310" text-anchor="middle" font-size="13" fill="#0f172a">인터넷</text>
+  <rect x="170" y="280" width="100" height="50" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="220" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">라우터</text>
+  <rect x="300" y="266" width="160" height="104" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="380" y="286" text-anchor="middle" font-size="12" fill="#334155">내부망</text>
+  <rect x="316" y="296" width="128" height="40" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="380" y="321" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">배스천 호스트</text>
+  <text x="380" y="358" text-anchor="middle" font-size="11" fill="#334155">외부 연결은 배스천으로만</text>
+  <line x1="130" y1="305" x2="166" y2="305" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="270" y1="312" x2="312" y2="314" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Panel D: screened subnet -->
+  <rect x="490" y="222" width="450" height="160" rx="10" fill="#f0f9ff" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="506" y="246" font-size="15" font-weight="700" fill="#1e3a8a">④ 스크린드 서브넷 (DMZ)</text>
+  <text x="924" y="246" text-anchor="end" font-size="12" fill="#1e3a8a">가장 안전 · 비용 큼</text>
+  <rect x="502" y="282" width="70" height="46" rx="23" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="537" y="310" text-anchor="middle" font-size="12" fill="#0f172a">인터넷</text>
+  <rect x="592" y="282" width="70" height="46" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="627" y="302" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">외부</text>
+  <text x="627" y="318" text-anchor="middle" font-size="11" fill="#0f172a">라우터</text>
+  <rect x="682" y="266" width="120" height="100" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-dasharray="5 3"/>
+  <text x="742" y="286" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">DMZ</text>
+  <text x="742" y="310" text-anchor="middle" font-size="11" fill="#334155">배스천 호스트</text>
+  <text x="742" y="328" text-anchor="middle" font-size="11" fill="#334155">웹 · 메일 · DNS</text>
+  <text x="742" y="346" text-anchor="middle" font-size="11" fill="#334155">(공개 서버)</text>
+  <rect x="822" y="282" width="56" height="46" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="850" y="302" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">내부</text>
+  <text x="850" y="318" text-anchor="middle" font-size="11" fill="#0f172a">라우터</text>
+  <rect x="886" y="282" width="48" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="910" y="310" text-anchor="middle" font-size="11" fill="#0f172a">내부</text>
+  <line x1="572" y1="305" x2="588" y2="305" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="662" y1="305" x2="678" y2="305" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="802" y1="305" x2="818" y2="305" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="878" y1="305" x2="884" y2="305" stroke="#334155" stroke-width="2"/>
+
+  <!-- bottom: firewall types -->
+  <rect x="20" y="400" width="920" height="140" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="36" y="424" font-size="15" font-weight="700" fill="#0f172a">방화벽 종류 — 아래로 갈수록 깊게 보지만 느려진다</text>
+  <g font-size="13">
+    <rect x="36" y="438" width="210" height="88" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+    <text x="141" y="462" text-anchor="middle" font-weight="700" fill="#0f172a">패킷 필터링</text>
+    <text x="141" y="484" text-anchor="middle" fill="#334155">L3~4 · IP·포트</text>
+    <text x="141" y="504" text-anchor="middle" fill="#334155">상태 없음 · 빠름</text>
+    <rect x="262" y="438" width="210" height="88" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="367" y="462" text-anchor="middle" font-weight="700" fill="#0f172a">상태 추적</text>
+    <text x="367" y="484" text-anchor="middle" fill="#334155">연결 상태 테이블</text>
+    <text x="367" y="504" text-anchor="middle" fill="#334155">응답 패킷 자동 허용</text>
+    <rect x="488" y="438" width="210" height="88" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+    <text x="593" y="462" text-anchor="middle" font-weight="700" fill="#0f172a">서킷 게이트웨이</text>
+    <text x="593" y="484" text-anchor="middle" fill="#334155">L5 · 세션 중계</text>
+    <text x="593" y="504" text-anchor="middle" fill="#334155">SOCKS</text>
+    <rect x="714" y="438" width="210" height="88" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="819" y="462" text-anchor="middle" font-weight="700" fill="#0f172a">애플리케이션 게이트웨이</text>
+    <text x="819" y="484" text-anchor="middle" fill="#334155">L7 · 프록시</text>
+    <text x="819" y="504" text-anchor="middle" fill="#334155">내용 검사 · 느림</text>
+  </g>
+</svg>

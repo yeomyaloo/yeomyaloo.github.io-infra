@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">SET 이중 서명 — 각자 필요한 것만 보고, 하나의 거래임은 확인</text>
+
+  <!-- left: creation -->
+  <text x="240" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#64748b">카드 소지자가 만드는 과정</text>
+  <rect x="40" y="84" width="160" height="46" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="120" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">PI 지불 정보</text>
+  <text x="120" y="123" text-anchor="middle" font-size="11" fill="#334155">카드 번호 등</text>
+  <rect x="280" y="84" width="160" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="360" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">OI 주문 정보</text>
+  <text x="360" y="123" text-anchor="middle" font-size="11" fill="#334155">상품·수량</text>
+
+  <line x1="120" y1="130" x2="120" y2="160" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="360" y1="130" x2="360" y2="160" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="132" y="150" font-size="11" fill="#64748b">H</text>
+  <text x="372" y="150" font-size="11" fill="#64748b">H</text>
+
+  <rect x="50" y="164" width="140" height="38" rx="6" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="120" y="188" text-anchor="middle" font-size="13" fill="#0f172a">PIMD</text>
+  <rect x="290" y="164" width="140" height="38" rx="6" fill="#ffffff" stroke="#1e3a8a"/>
+  <text x="360" y="188" text-anchor="middle" font-size="13" fill="#0f172a">OIMD</text>
+
+  <line x1="120" y1="202" x2="215" y2="236" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="360" y1="202" x2="265" y2="236" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="150" y="240" width="180" height="38" rx="6" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="240" y="264" text-anchor="middle" font-size="13" fill="#0f172a">PIMD ‖ OIMD → H</text>
+  <line x1="240" y1="278" x2="240" y2="302" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="170" y="306" width="140" height="38" rx="6" fill="#ffffff" stroke="#64748b"/>
+  <text x="240" y="330" text-anchor="middle" font-size="13" fill="#0f172a">POMD</text>
+  <line x1="240" y1="344" x2="240" y2="368" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="252" y="362" font-size="11" fill="#64748b">카드 소지자 개인 키로 서명</text>
+  <rect x="150" y="372" width="180" height="44" rx="8" fill="#1e3a8a"/>
+  <text x="240" y="400" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">DS 이중 서명</text>
+
+  <!-- divider -->
+  <line x1="480" y1="60" x2="480" y2="430" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- right: recipients -->
+  <text x="720" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#64748b">받는 쪽이 보는 것</text>
+  <rect x="510" y="84" width="420" height="150" rx="10" fill="#f8fafc" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="530" y="112" font-size="16" font-weight="700" fill="#1e3a8a">상점</text>
+  <text x="530" y="140" font-size="13" fill="#0f172a">받음: OI + PIMD + DS</text>
+  <text x="530" y="164" font-size="13" fill="#0f172a">검증: H( PIMD ‖ H(OI) ) = DS를 공개 키로 푼 값?</text>
+  <text x="530" y="190" font-size="13" fill="#16a34a">주문 내용 확인 가능</text>
+  <text x="530" y="214" font-size="13" fill="#b91c1c">카드 번호(PI)는 볼 수 없음</text>
+
+  <rect x="510" y="250" width="420" height="166" rx="10" fill="#f8fafc" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="530" y="278" font-size="16" font-weight="700" fill="#b45309">지불 게이트웨이(은행)</text>
+  <text x="530" y="306" font-size="13" fill="#0f172a">받음: PI(전자 봉투로 암호화) + OIMD + DS</text>
+  <text x="530" y="330" font-size="13" fill="#0f172a">검증: H( H(PI) ‖ OIMD ) = DS를 공개 키로 푼 값?</text>
+  <text x="530" y="356" font-size="13" fill="#16a34a">지불 정보 확인 가능</text>
+  <text x="530" y="380" font-size="13" fill="#b91c1c">무엇을 샀는지(OI)는 볼 수 없음</text>
+  <text x="530" y="404" font-size="12" fill="#64748b">전자 봉투: 대칭키로 암호화, 그 키는 게이트웨이 공개 키로</text>
+
+  <rect x="40" y="446" width="890" height="56" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="485" y="470" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">핵심: 두 정보의 해시를 묶어 한 번 서명 → 정보 분리(프라이버시) + 거래 연결성 + 부인 방지</text>
+  <text x="485" y="492" text-anchor="middle" font-size="12" fill="#334155">PIMD = H(PI), OIMD = H(OI), POMD = H(PIMD ‖ OIMD), DS = Sign(카드 소지자 개인 키, POMD)</text>
+</svg>

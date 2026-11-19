@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1e3a8a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">SPF · DKIM · DMARC — 수신 서버가 DNS에 묻는 세 가지</text>
+
+  <!-- sender -->
+  <rect x="30" y="80" width="210" height="110" rx="10" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="135" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">발신 메일 서버</text>
+  <text x="135" y="132" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">192.0.2.10</text>
+  <text x="135" y="154" text-anchor="middle" font-size="12" fill="#334155">From: news@example.com</text>
+  <text x="135" y="176" text-anchor="middle" font-size="12" fill="#334155">+ DKIM-Signature 헤더</text>
+
+  <!-- receiver -->
+  <rect x="720" y="80" width="210" height="110" rx="10" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="825" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">수신 메일 서버</text>
+  <text x="825" y="138" text-anchor="middle" font-size="12" fill="#334155">① ② ③ 순서로 확인</text>
+  <text x="825" y="160" text-anchor="middle" font-size="12" fill="#334155">→ 받은편지함 / 스팸 / 거부</text>
+
+  <line x1="240" y1="135" x2="716" y2="135" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="478" y="126" text-anchor="middle" font-size="13" fill="#334155">SMTP (TCP 25)</text>
+
+  <!-- DNS box -->
+  <rect x="300" y="200" width="360" height="40" rx="20" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="480" y="226" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">example.com의 DNS (TXT 레코드)</text>
+
+  <!-- three checks -->
+  <rect x="30" y="270" width="290" height="170" rx="10" fill="#f8fafc" stroke="#1e3a8a"/>
+  <text x="50" y="298" font-size="16" font-weight="700" fill="#1e3a8a">① SPF</text>
+  <text x="50" y="322" font-size="13" fill="#0f172a">보낸 서버 IP가 허용 목록에 있나?</text>
+  <text x="50" y="348" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">v=spf1 ip4:192.0.2.10 -all</text>
+  <text x="50" y="378" font-size="12" fill="#64748b">검사 대상: 봉투 발신자(Return-Path)</text>
+  <text x="50" y="400" font-size="12" fill="#64748b">약점: 전달(forward) 시 깨짐</text>
+  <text x="50" y="422" font-size="12" fill="#64748b">보이는 From 사칭은 못 막음</text>
+
+  <rect x="335" y="270" width="290" height="170" rx="10" fill="#f8fafc" stroke="#1e3a8a"/>
+  <text x="355" y="298" font-size="16" font-weight="700" fill="#1e3a8a">② DKIM</text>
+  <text x="355" y="322" font-size="13" fill="#0f172a">헤더 서명을 공개 키로 검증</text>
+  <text x="355" y="348" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">sel1._domainkey  p=공개키</text>
+  <text x="355" y="378" font-size="12" fill="#64748b">확인: 전송 중 변조 없음</text>
+  <text x="355" y="400" font-size="12" fill="#64748b">서명 도메인(d=)이 From과</text>
+  <text x="355" y="422" font-size="12" fill="#64748b">다를 수 있음</text>
+
+  <rect x="640" y="270" width="290" height="170" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="660" y="298" font-size="16" font-weight="700" fill="#b91c1c">③ DMARC</text>
+  <text x="660" y="322" font-size="13" fill="#0f172a">①·② 통과 도메인 = From 도메인?</text>
+  <text x="660" y="348" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">_dmarc  p=quarantine; rua=...</text>
+  <text x="660" y="378" font-size="12" fill="#64748b">정렬(alignment) 확인</text>
+  <text x="660" y="400" font-size="12" fill="#64748b">실패 시 정책: none·quarantine·reject</text>
+  <text x="660" y="422" font-size="12" fill="#64748b">집계 보고서를 도메인 소유자에게</text>
+
+  <line x1="400" y1="240" x2="200" y2="266" stroke="#1e3a8a" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrowb)"/>
+  <line x1="480" y1="240" x2="480" y2="266" stroke="#1e3a8a" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrowb)"/>
+  <line x1="560" y1="240" x2="760" y2="266" stroke="#1e3a8a" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrowb)"/>
+
+  <text x="480" y="476" text-anchor="middle" font-size="13" fill="#334155">외우는 법: SPF = IP, DKIM = 서명, DMARC = From 정렬 + 정책 + 보고 (메일 내용 암호화는 PGP·S/MIME의 몫)</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">정보보안기사 실기 — 배점 100점과 180분 배분</text>
+
+  <!-- Score bar: 60..900, 8.4 px per point -->
+  <text x="60" y="80" font-size="15" font-weight="700" fill="#0f172a">배점 (필답형, 100점 만점)</text>
+  <rect x="60" y="92" width="302" height="56" fill="#93c5fd"/>
+  <rect x="362" y="92" width="403" height="56" fill="#2496ed"/>
+  <rect x="765" y="92" width="135" height="56" fill="#4f46e5"/>
+  <text x="211" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">단답형 36점</text>
+  <text x="211" y="138" text-anchor="middle" font-size="13" fill="#0f172a">12문항 × 3점</text>
+  <text x="463" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">서술형 48점</text>
+  <text x="463" y="138" text-anchor="middle" font-size="13" fill="#ffffff">4문항 × 12점</text>
+  <text x="832" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">실무형 16점</text>
+  <text x="832" y="138" text-anchor="middle" font-size="12" fill="#ffffff">2문항 중 1 선택</text>
+  <line x1="564" y1="84" x2="564" y2="160" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="564" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">합격선 60점</text>
+
+  <!-- Time bar: 60..900, 4.667 px per minute -->
+  <text x="60" y="230" font-size="15" font-weight="700" fill="#0f172a">시간 배분 제안 (180분, 이 시리즈의 권장안)</text>
+  <rect x="60" y="242" width="47" height="56" fill="#e2e8f0"/>
+  <rect x="107" y="242" width="140" height="56" fill="#93c5fd"/>
+  <rect x="247" y="242" width="420" height="56" fill="#2496ed"/>
+  <rect x="667" y="242" width="163" height="56" fill="#4f46e5"/>
+  <rect x="830" y="242" width="70" height="56" fill="#fde68a"/>
+  <text x="177" y="275" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">단답 30분</text>
+  <text x="457" y="275" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">서술 90분 (문항당 약 20분)</text>
+  <text x="748" y="275" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">실무 35분</text>
+  <text x="83" y="318" text-anchor="middle" font-size="12" fill="#334155">훑기 10분</text>
+  <text x="865" y="318" text-anchor="middle" font-size="12" fill="#334155">검토 15분</text>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="60" y="338">0</text><text x="247" y="338">40</text><text x="667" y="338">130</text><text x="900" y="338">180</text>
+  </g>
+
+  <rect x="60" y="360" width="840" height="64" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="80" y="386" font-size="14" fill="#334155">• 서술형이 절반 가까운 48점 — 시간을 가장 많이 준다 · 실무형은 두 문제를 먼저 다 읽고 고른다</text>
+  <text x="80" y="410" font-size="14" fill="#334155">• 값은 2026-11-19 여러 안내 자료가 일치하는 기준 — 응시 전 KCA 공고로 재확인</text>
+</svg>

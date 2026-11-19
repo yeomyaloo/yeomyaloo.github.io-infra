@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">HCP Terraform — 조직 구조와 한 번의 run</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#64748b">2024-04-22 Terraform Cloud → HCP Terraform 으로 이름 변경 · 자체 호스팅판은 Terraform Enterprise</text>
+
+  <!-- organization -->
+  <rect x="30" y="76" width="430" height="464" rx="12" fill="#f3ebfb" stroke="#7b42bc" stroke-width="2"/>
+  <text x="48" y="104" font-size="16" font-weight="700" fill="#4c1d95">Organization (예: tfa-study-org)</text>
+
+  <rect x="48" y="118" width="394" height="196" rx="10" fill="#ffffff" stroke="#7b42bc"/>
+  <text x="64" y="142" font-size="14" font-weight="700" fill="#4c1d95">Project: tfa-lab</text>
+  <rect x="64" y="154" width="170" height="92" rx="8" fill="#f8fafc" stroke="#334155"/>
+  <text x="76" y="176" font-size="13" font-weight="700" fill="#0f172a">Workspace</text>
+  <text x="76" y="196" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">tfa-cli</text>
+  <text x="76" y="216" font-size="12" fill="#334155">CLI 기반 워크플로</text>
+  <text x="76" y="234" font-size="11" fill="#64748b">state · 변수 · run 기록</text>
+  <rect x="254" y="154" width="170" height="92" rx="8" fill="#f8fafc" stroke="#334155"/>
+  <text x="266" y="176" font-size="13" font-weight="700" fill="#0f172a">Workspace</text>
+  <text x="266" y="196" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">tfa-vcs</text>
+  <text x="266" y="216" font-size="12" fill="#334155">VCS 기반 워크플로</text>
+  <text x="266" y="234" font-size="11" fill="#64748b">브랜치 push → run</text>
+  <rect x="64" y="258" width="360" height="44" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="76" y="285" font-size="13" fill="#0f172a"><tspan font-weight="700">Variable set</tspan> — 프로젝트·전역에 한 번 붙여 공유</text>
+
+  <rect x="48" y="328" width="190" height="96" rx="10" fill="#ffffff" stroke="#334155"/>
+  <text x="62" y="352" font-size="14" font-weight="700" fill="#0f172a">Teams · 권한</text>
+  <text x="62" y="374" font-size="12" fill="#334155">조직·프로젝트·</text>
+  <text x="62" y="392" font-size="12" fill="#334155">워크스페이스 단위로</text>
+  <text x="62" y="410" font-size="12" fill="#334155">read / plan / write …</text>
+
+  <rect x="252" y="328" width="190" height="96" rx="10" fill="#ffffff" stroke="#334155"/>
+  <text x="266" y="352" font-size="14" font-weight="700" fill="#0f172a">Private registry</text>
+  <text x="266" y="374" font-size="12" fill="#334155">조직 전용 모듈·provider</text>
+  <text x="266" y="394" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">app.terraform.io/</text>
+  <text x="266" y="410" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">ORG/NAME/PROVIDER</text>
+
+  <rect x="48" y="436" width="394" height="94" rx="10" fill="#ffffff" stroke="#dc2626"/>
+  <text x="62" y="460" font-size="14" font-weight="700" fill="#991b1b">Policy set — Sentinel 또는 OPA</text>
+  <text x="62" y="482" font-size="12" fill="#334155">plan 결과를 규칙으로 검사해 apply 를 막거나 경고</text>
+  <text x="62" y="502" font-size="12" fill="#334155">Sentinel: advisory · soft-mandatory · hard-mandatory</text>
+  <text x="62" y="520" font-size="12" fill="#334155">OPA: advisory · mandatory</text>
+
+  <!-- run pipeline -->
+  <text x="500" y="104" font-size="16" font-weight="700" fill="#0f172a">run 의 단계 (원격 실행)</text>
+  <g font-size="13">
+    <rect x="500" y="118" width="430" height="58" rx="10" fill="#f8fafc" stroke="#334155"/>
+    <text x="516" y="142" font-weight="700" fill="#0f172a">트리거</text>
+    <text x="516" y="162" fill="#334155">VCS push·PR / CLI terraform plan·apply / API</text>
+
+    <rect x="500" y="196" width="430" height="44" rx="10" fill="#7b42bc"/>
+    <text x="516" y="223" font-weight="700" fill="#ffffff">Plan — HCP 의 러너가 실행, state 는 HCP 에</text>
+
+    <rect x="500" y="260" width="430" height="44" rx="10" fill="#ede9fe" stroke="#7b42bc"/>
+    <text x="516" y="287" fill="#4c1d95">Cost estimation (지원 provider) · Run task</text>
+
+    <rect x="500" y="324" width="430" height="44" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="516" y="351" font-weight="700" fill="#991b1b">Policy check — Sentinel / OPA</text>
+
+    <rect x="500" y="388" width="430" height="58" rx="10" fill="#7b42bc"/>
+    <text x="516" y="412" font-weight="700" fill="#ffffff">Apply — 사람이 Confirm (또는 Auto-apply)</text>
+    <text x="516" y="432" font-size="12" fill="#ede9fe">새 state 버전이 워크스페이스에 저장</text>
+  </g>
+  <g stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)">
+    <line x1="715" y1="176" x2="715" y2="192"/>
+    <line x1="715" y1="240" x2="715" y2="256"/>
+    <line x1="715" y1="304" x2="715" y2="320"/>
+    <line x1="715" y1="368" x2="715" y2="384"/>
+  </g>
+  <rect x="500" y="466" width="430" height="58" rx="10" fill="#ffffff" stroke="#334155" stroke-dasharray="6 4"/>
+  <text x="516" y="490" font-size="13" font-weight="700" fill="#0f172a">PR 의 speculative plan</text>
+  <text x="516" y="510" font-size="12" fill="#334155">plan 만 하고 apply 는 할 수 없음 → 결과를 PR 에 표시</text>
+</svg>

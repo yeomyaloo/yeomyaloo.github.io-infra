@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">같은 API, 다른 구현 — PostgreSQLInstance 요청 흐름</text>
+
+  <rect x="30" y="54" width="900" height="44" rx="8" fill="#6d28d9"/>
+  <text x="480" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">XRD PostgreSQLInstance (platform.infra.test/v1alpha1) — 개발자가 보는 API는 하나</text>
+
+  <!-- dev row -->
+  <rect x="30" y="120" width="270" height="140" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="44" y="144" font-size="14" font-weight="700" fill="#78350f">dev 요청 (ns demo-dev)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">
+    <text x="44" y="170">kind: PostgreSQLInstance</text>
+    <text x="44" y="188">metadata:</text>
+    <text x="58" y="206">name: orders-db</text>
+    <text x="44" y="224">spec:</text>
+    <text x="58" y="242">size: small</text>
+  </g>
+  <line x1="302" y1="190" x2="356" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="330" y="180" text-anchor="middle" font-size="11" fill="#334155">기본값</text>
+
+  <rect x="360" y="140" width="260" height="100" rx="10" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+  <text x="490" y="164" text-anchor="middle" font-size="12" fill="#5b21b6">Composition (label provider: cnpg)</text>
+  <text x="490" y="186" text-anchor="middle" font-size="13" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#4c1d95">postgresqlinstance-cnpg</text>
+  <text x="490" y="208" text-anchor="middle" font-size="12" fill="#5b21b6">XRD의 defaultCompositionRef</text>
+  <text x="490" y="226" text-anchor="middle" font-size="12" fill="#5b21b6">go-templating → CNPG Cluster</text>
+  <line x1="622" y1="190" x2="656" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="660" y="120" width="270" height="140" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="674" y="144" font-size="14" font-weight="700" fill="#14532d">kind platform-lab · demo-dev</text>
+  <g font-size="12" fill="#166534">
+    <text x="674" y="170">CNPG Cluster orders-db</text>
+    <text x="674" y="190">small → instances 1 · 1Gi</text>
+    <text x="674" y="210">Secret orders-db-app (uri, jdbc-uri)</text>
+    <text x="674" y="230">status.secretName 으로 안내</text>
+    <text x="674" y="250" font-weight="700">클라우드 비용 0원 · 오늘 실습</text>
+  </g>
+
+  <!-- prod row -->
+  <rect x="30" y="290" width="270" height="160" rx="10" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="44" y="314" font-size="14" font-weight="700" fill="#78350f">prod 요청 (ns demo-prod)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">
+    <text x="44" y="340">spec:</text>
+    <text x="58" y="358">size: medium</text>
+    <text x="58" y="376">crossplane:</text>
+    <text x="73" y="394">compositionSelector:</text>
+    <text x="87" y="412">matchLabels:</text>
+    <text x="102" y="430">provider: aws</text>
+  </g>
+  <line x1="302" y1="370" x2="356" y2="370" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="330" y="360" text-anchor="middle" font-size="11" fill="#334155">선택자</text>
+
+  <rect x="360" y="320" width="260" height="100" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="490" y="344" text-anchor="middle" font-size="12" fill="#9a3412">Composition (label provider: aws)</text>
+  <text x="490" y="366" text-anchor="middle" font-size="13" font-weight="700" font-family="Consolas,'D2Coding',monospace" fill="#7c2d12">postgresqlinstance-aws-rds</text>
+  <text x="490" y="388" text-anchor="middle" font-size="12" fill="#9a3412">provider-aws-rds (개념 예시)</text>
+  <text x="490" y="406" text-anchor="middle" font-size="12" fill="#9a3412">go-templating → RDS Instance</text>
+  <line x1="622" y1="370" x2="656" y2="370" stroke="#334155" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+  <rect x="660" y="290" width="270" height="160" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-dasharray="6 4"/>
+  <text x="674" y="314" font-size="14" font-weight="700" fill="#7c2d12">AWS ap-northeast-2</text>
+  <g font-size="12" fill="#9a3412">
+    <text x="674" y="340">RDS Instance (rds.aws.m.upbound.io)</text>
+    <text x="674" y="360">medium → db.t4g.small · Multi-AZ</text>
+    <text x="674" y="380">서브넷·암호화·백업·태그는</text>
+    <text x="674" y="400">Composition이 정책으로 고정</text>
+    <text x="674" y="430" font-weight="700">실행하지 않음 · 시간당 과금</text>
+  </g>
+
+  <text x="480" y="482" text-anchor="middle" font-size="13" fill="#4c1d95">개발자 YAML은 거의 같고, 플랫폼 팀이 환경별 Composition만 교체한다</text>
+</svg>

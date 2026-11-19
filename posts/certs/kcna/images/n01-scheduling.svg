@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">kube-scheduler — 필터링 → 점수 매기기 → 바인딩</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">맞는 노드가 0개면 Pod는 Pending, 이벤트에 FailedScheduling 사유가 남는다</text>
+
+  <!-- pod -->
+  <rect x="30" y="150" width="190" height="156" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="125" y="178" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">새 Pod (Pending)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="46" y="204">requests:</text>
+    <text x="62" y="222">cpu: 500m</text>
+    <text x="46" y="244">nodeSelector:</text>
+    <text x="62" y="262">disk: ssd</text>
+    <text x="46" y="286">tolerations: gpu</text>
+  </g>
+  <line x1="220" y1="228" x2="256" y2="228" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- filter -->
+  <text x="425" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">① 필터링 (Filter)</text>
+  <rect x="260" y="110" width="330" height="56" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="276" y="133" font-size="14" font-weight="700" fill="#991b1b">node-a  ✕</text>
+  <text x="276" y="154" font-size="12" fill="#334155">남은 CPU 300m &lt; requests 500m</text>
+
+  <rect x="260" y="176" width="330" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="276" y="199" font-size="14" font-weight="700" fill="#14532d">node-b  ✓</text>
+  <text x="276" y="220" font-size="12" fill="#334155">disk=ssd, taint gpu:NoSchedule ← toleration 있음</text>
+
+  <rect x="260" y="242" width="330" height="56" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="276" y="265" font-size="14" font-weight="700" fill="#991b1b">node-c  ✕</text>
+  <text x="276" y="286" font-size="12" fill="#334155">레이블 disk=ssd 없음 (nodeSelector 불일치)</text>
+
+  <rect x="260" y="308" width="330" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="276" y="331" font-size="14" font-weight="700" fill="#14532d">node-d  ✓</text>
+  <text x="276" y="352" font-size="12" fill="#334155">disk=ssd, taint 없음, 자원 충분</text>
+
+  <!-- score -->
+  <text x="715" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">② 점수 (Score)</text>
+  <rect x="640" y="176" width="150" height="56" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="715" y="210" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">node-b · 72점</text>
+  <rect x="640" y="308" width="150" height="56" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="715" y="342" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">node-d · 85점</text>
+  <text x="715" y="262" text-anchor="middle" font-size="12" fill="#64748b">선호 affinity · 분산 ·</text>
+  <text x="715" y="280" text-anchor="middle" font-size="12" fill="#64748b">자원 균형 점수 합산</text>
+  <line x1="590" y1="204" x2="636" y2="204" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="590" y1="336" x2="636" y2="336" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- bind -->
+  <text x="880" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">③ 바인딩</text>
+  <rect x="826" y="296" width="110" height="80" rx="8" fill="#326ce5"/>
+  <text x="881" y="326" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">node-d</text>
+  <text x="881" y="350" text-anchor="middle" font-size="11" fill="#e8eefc">nodeName 기록</text>
+  <line x1="790" y1="336" x2="822" y2="336" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- legend -->
+  <rect x="30" y="392" width="906" height="112" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="50" y="420" font-size="13" font-weight="700" fill="#991b1b">필터링(탈락 여부)</text>
+  <text x="190" y="420" font-size="13" fill="#334155">requests · nodeSelector · required affinity · taint(NoSchedule/NoExecute) · 포트 충돌</text>
+  <text x="50" y="448" font-size="13" font-weight="700" fill="#1e3a8a">점수(순위)</text>
+  <text x="190" y="448" font-size="13" fill="#334155">preferred affinity · PreferNoSchedule · 고른 분산 · 이미지가 이미 있는 노드</text>
+  <text x="50" y="484" font-size="13" font-weight="700" fill="#b45309">⚠️ toleration은 "허락"일 뿐 — node-b로 끌어당기지 않는다. 특정 노드로 보내려면 nodeSelector/affinity를 함께.</text>
+</svg>

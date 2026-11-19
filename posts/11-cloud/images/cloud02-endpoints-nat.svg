@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">프라이빗 서브넷에서 밖으로 나가는 세 갈래 길</text>
+
+  <!-- VPC -->
+  <rect x="20" y="56" width="560" height="380" rx="14" fill="#fffaf2" stroke="#ff9900" stroke-width="2"/>
+  <text x="36" y="80" font-size="14" font-weight="700" fill="#7c4a03">VPC 10.20.0.0/16</text>
+
+  <!-- private instance -->
+  <rect x="40" y="190" width="170" height="110" rx="10" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="125" y="222" text-anchor="middle" font-size="13" fill="#3730a3">priv-a</text>
+  <text x="125" y="246" text-anchor="middle" font-size="16" font-weight="700" fill="#312e81">앱 EC2</text>
+  <text x="125" y="270" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#334155">10.20.10.37</text>
+
+  <!-- NAT path -->
+  <rect x="290" y="96" width="170" height="64" rx="10" fill="#ffffff" stroke="#c2410c" stroke-width="2"/>
+  <text x="375" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">NAT Gateway</text>
+  <text x="375" y="144" text-anchor="middle" font-size="12" fill="#64748b">pub-a + EIP</text>
+  <rect x="480" y="108" width="80" height="40" rx="8" fill="#ff9900"/>
+  <text x="520" y="133" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">IGW</text>
+  <path d="M 150 188 C 160 140 220 128 286 128" fill="none" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arrowO)"/>
+  <line x1="462" y1="128" x2="476" y2="128" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arrowO)"/>
+  <line x1="562" y1="128" x2="636" y2="128" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arrowO)"/>
+
+  <!-- Gateway endpoint path -->
+  <rect x="290" y="210" width="170" height="70" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="375" y="236" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">게이트웨이 엔드포인트</text>
+  <text x="375" y="258" text-anchor="middle" font-size="12" fill="#64748b">라우팅 테이블의 pl-(S3)</text>
+  <line x1="212" y1="245" x2="286" y2="245" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrowG)"/>
+  <line x1="462" y1="245" x2="636" y2="245" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrowG)"/>
+
+  <!-- Interface endpoint path -->
+  <rect x="290" y="330" width="170" height="80" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="375" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">인터페이스 엔드포인트</text>
+  <text x="375" y="376" text-anchor="middle" font-size="12" fill="#64748b">서브넷 안 ENI (사설 IP)</text>
+  <text x="375" y="396" text-anchor="middle" font-size="12" fill="#64748b">프라이빗 DNS로 이름 해석</text>
+  <path d="M 150 302 C 160 350 220 370 286 370" fill="none" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#arrowP)"/>
+  <line x1="462" y1="370" x2="636" y2="370" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#arrowP)"/>
+
+  <!-- Destinations -->
+  <rect x="640" y="92" width="300" height="80" rx="10" fill="#fff7ed" stroke="#c2410c"/>
+  <text x="790" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3412">인터넷 전체</text>
+  <text x="790" y="140" text-anchor="middle" font-size="12" fill="#334155">$0.059/시간 + $0.059/GB 처리</text>
+  <text x="790" y="160" text-anchor="middle" font-size="12" fill="#334155">+ EIP $0.005/시간</text>
+
+  <rect x="640" y="206" width="300" height="80" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="790" y="232" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">S3 · DynamoDB 만</text>
+  <text x="790" y="254" text-anchor="middle" font-size="12" fill="#334155">엔드포인트 요금 없음 (무료)</text>
+  <text x="790" y="274" text-anchor="middle" font-size="12" fill="#334155">AL2023 dnf 저장소도 S3</text>
+
+  <rect x="640" y="330" width="300" height="80" rx="10" fill="#eef2ff" stroke="#4f46e5"/>
+  <text x="790" y="356" text-anchor="middle" font-size="15" font-weight="700" fill="#312e81">SSM · ECR · STS · Secrets 등</text>
+  <text x="790" y="378" text-anchor="middle" font-size="12" fill="#334155">$0.013/시간/AZ + $0.01/GB</text>
+  <text x="790" y="398" text-anchor="middle" font-size="12" fill="#334155">SSM 3종 × 2AZ ≈ $0.078/시간</text>
+
+  <text x="480" y="452" text-anchor="middle" font-size="12" fill="#64748b">가격: 서울 리전, 2026-11-19 확인, 변동 가능</text>
+</svg>

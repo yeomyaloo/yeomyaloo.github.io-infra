@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">STRIDE를 쿠버네티스에 대입하기</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">위협 이름 → 깨지는 보안 속성 → 클러스터에서의 모습 → 먼저 떠올릴 통제</text>
+
+  <g font-size="13" font-weight="700" fill="#334155">
+    <text x="50" y="96">위협</text>
+    <text x="250" y="96">깨지는 속성</text>
+    <text x="390" y="96">쿠버네티스에서의 예</text>
+    <text x="700" y="96">대표 통제</text>
+  </g>
+
+  <!-- S -->
+  <rect x="40" y="108" width="190" height="62" rx="8" fill="#326ce5"/>
+  <text x="56" y="135" font-size="15" font-weight="700" fill="#ffffff">S · Spoofing</text>
+  <text x="56" y="157" font-size="12" fill="#ffffff">위장</text>
+  <rect x="240" y="108" width="680" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="250" y="144" font-size="13" font-weight="700" fill="#1e3a8a">인증</text>
+  <text x="390" y="134" font-size="12" fill="#334155">훔친 SA 토큰 · 유출된 kubeconfig로</text>
+  <text x="390" y="152" font-size="12" fill="#334155">다른 주체인 척 API 호출</text>
+  <text x="700" y="134" font-size="12" fill="#334155">짧은 수명 바운드 토큰, OIDC</text>
+  <text x="700" y="152" font-size="12" fill="#334155">mTLS(워크로드 아이덴티티)</text>
+
+  <!-- T -->
+  <rect x="40" y="178" width="190" height="62" rx="8" fill="#326ce5"/>
+  <text x="56" y="205" font-size="15" font-weight="700" fill="#ffffff">T · Tampering</text>
+  <text x="56" y="227" font-size="12" fill="#ffffff">변조</text>
+  <rect x="240" y="178" width="680" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="250" y="214" font-size="13" font-weight="700" fill="#1e3a8a">무결성</text>
+  <text x="390" y="204" font-size="12" fill="#334155">레지스트리 이미지 바꿔치기 · 실행 중</text>
+  <text x="390" y="222" font-size="12" fill="#334155">컨테이너 파일 수정 · etcd 직접 쓰기</text>
+  <text x="700" y="204" font-size="12" fill="#334155">이미지 서명·다이제스트 고정</text>
+  <text x="700" y="222" font-size="12" fill="#334155">readOnlyRootFilesystem</text>
+
+  <!-- R -->
+  <rect x="40" y="248" width="190" height="62" rx="8" fill="#4f46e5"/>
+  <text x="56" y="275" font-size="15" font-weight="700" fill="#ffffff">R · Repudiation</text>
+  <text x="56" y="297" font-size="12" fill="#ffffff">부인</text>
+  <rect x="240" y="248" width="680" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="250" y="284" font-size="13" font-weight="700" fill="#312e81">부인 방지</text>
+  <text x="390" y="274" font-size="12" fill="#334155">공유 admin 계정으로 Secret 삭제 →</text>
+  <text x="390" y="292" font-size="12" fill="#334155">"누가 했는지" 증명 불가</text>
+  <text x="700" y="274" font-size="12" fill="#334155">개인별 계정 · 감사 로그</text>
+  <text x="700" y="292" font-size="12" fill="#334155">로그를 클러스터 밖에 보관</text>
+
+  <!-- I -->
+  <rect x="40" y="318" width="190" height="62" rx="8" fill="#4f46e5"/>
+  <text x="56" y="345" font-size="15" font-weight="700" fill="#ffffff">I · Information</text>
+  <text x="56" y="367" font-size="12" fill="#ffffff">Disclosure · 정보 노출</text>
+  <rect x="240" y="318" width="680" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="250" y="354" font-size="13" font-weight="700" fill="#312e81">기밀성</text>
+  <text x="390" y="344" font-size="12" fill="#334155">base64일 뿐인 Secret, 평문 etcd 백업,</text>
+  <text x="390" y="362" font-size="12" fill="#334155">클라우드 메타데이터 API 조회</text>
+  <text x="700" y="344" font-size="12" fill="#334155">저장 데이터 암호화 · RBAC로</text>
+  <text x="700" y="362" font-size="12" fill="#334155">Secret 읽기 제한 · egress 차단</text>
+
+  <!-- D -->
+  <rect x="40" y="388" width="190" height="62" rx="8" fill="#b91c1c"/>
+  <text x="56" y="415" font-size="15" font-weight="700" fill="#ffffff">D · Denial of</text>
+  <text x="56" y="437" font-size="12" fill="#ffffff">Service · 서비스 거부</text>
+  <rect x="240" y="388" width="680" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="250" y="424" font-size="13" font-weight="700" fill="#7f1d1d">가용성</text>
+  <text x="390" y="414" font-size="12" fill="#334155">limits 없는 Pod가 노드 자원 독점,</text>
+  <text x="390" y="432" font-size="12" fill="#334155">API 서버에 요청 폭주</text>
+  <text x="700" y="414" font-size="12" fill="#334155">requests·limits · ResourceQuota</text>
+  <text x="700" y="432" font-size="12" fill="#334155">LimitRange · API 우선순위·공정성</text>
+
+  <!-- E -->
+  <rect x="40" y="458" width="190" height="62" rx="8" fill="#b91c1c"/>
+  <text x="56" y="485" font-size="15" font-weight="700" fill="#ffffff">E · Elevation of</text>
+  <text x="56" y="507" font-size="12" fill="#ffffff">Privilege · 권한 상승</text>
+  <rect x="240" y="458" width="680" height="62" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="250" y="494" font-size="13" font-weight="700" fill="#7f1d1d">인가</text>
+  <text x="390" y="484" font-size="12" fill="#334155">privileged·hostPath Pod로 노드 장악,</text>
+  <text x="390" y="502" font-size="12" fill="#334155">Pod 생성 권한 → 강한 SA 빌려 쓰기</text>
+  <text x="700" y="484" font-size="12" fill="#334155">PSS restricted · 최소 RBAC</text>
+  <text x="700" y="502" font-size="12" fill="#334155">escalate·bind 동사 통제</text>
+
+  <text x="480" y="546" text-anchor="middle" font-size="12" fill="#64748b">STRIDE는 마이크로소프트에서 나온 위협 분류 · 본편 Day 66 3-2절의 표를 쿠버네티스 쪽으로 옮긴 것</text>
+</svg>

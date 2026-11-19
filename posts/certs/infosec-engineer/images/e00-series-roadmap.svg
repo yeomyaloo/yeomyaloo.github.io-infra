@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">시리즈 지도 — 이 레포에서 해 본 것 → 시험 과목</text>
+
+  <text x="130" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">이 레포 (실습)</text>
+  <text x="480" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">이 시리즈 (필기)</text>
+  <text x="820" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">마무리</text>
+
+  <!-- 실습 박스 -->
+  <rect x="20" y="82" width="220" height="62" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="34" y="106" font-size="13" font-weight="700" fill="#0f172a">Day 07·67·68</text>
+  <text x="34" y="128" font-size="12" fill="#64748b">해킹 06·25, RHCSA R08·R09</text>
+
+  <rect x="20" y="158" width="220" height="62" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="34" y="182" font-size="13" font-weight="700" fill="#0f172a">Day 22~24·70, 홈랩 03</text>
+  <text x="34" y="204" font-size="12" fill="#64748b">해킹 03·21·22</text>
+
+  <rect x="20" y="234" width="220" height="62" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="34" y="258" font-size="13" font-weight="700" fill="#0f172a">해킹 04·05</text>
+  <text x="34" y="280" font-size="12" fill="#64748b">해킹 13~18 (개발 보안)</text>
+
+  <rect x="20" y="310" width="220" height="62" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="34" y="334" font-size="13" font-weight="700" fill="#0f172a">Day 19·71·73</text>
+  <text x="34" y="356" font-size="12" fill="#64748b">해킹 15 (인증·인가)</text>
+
+  <rect x="20" y="386" width="220" height="62" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="34" y="410" font-size="13" font-weight="700" fill="#0f172a">Day 65·66</text>
+  <text x="34" y="432" font-size="12" fill="#64748b">해킹 01·27 (법·사고 대응)</text>
+
+  <!-- 시리즈 박스 -->
+  <rect x="330" y="82" width="300" height="62" rx="8" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="348" y="110" font-size="16" font-weight="700" fill="#1e3a8a">E01</text>
+  <text x="392" y="110" font-size="14" font-weight="700" fill="#0f172a">① 시스템 보안</text>
+  <text x="392" y="130" font-size="12" fill="#334155">계정·권한·로그·악성코드·점검</text>
+
+  <rect x="330" y="158" width="300" height="62" rx="8" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="348" y="186" font-size="16" font-weight="700" fill="#1e3a8a">E02</text>
+  <text x="392" y="186" font-size="14" font-weight="700" fill="#0f172a">② 네트워크 보안</text>
+  <text x="392" y="206" font-size="12" fill="#334155">TCP/IP·공격 원리·보안 장비·무선</text>
+
+  <rect x="330" y="234" width="300" height="62" rx="8" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="348" y="262" font-size="16" font-weight="700" fill="#1e3a8a">E03</text>
+  <text x="392" y="262" font-size="14" font-weight="700" fill="#0f172a">③ 애플리케이션 보안</text>
+  <text x="392" y="282" font-size="12" fill="#334155">웹·DB·메일·전자상거래·시큐어 코딩</text>
+
+  <rect x="330" y="310" width="300" height="62" rx="8" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="348" y="338" font-size="16" font-weight="700" fill="#1e3a8a">E04</text>
+  <text x="392" y="338" font-size="14" font-weight="700" fill="#0f172a">④ 정보보안 일반</text>
+  <text x="392" y="358" font-size="12" fill="#334155">암호·인증·접근통제·PKI</text>
+
+  <rect x="330" y="386" width="300" height="62" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="348" y="414" font-size="16" font-weight="700" fill="#b91c1c">E05</text>
+  <text x="392" y="414" font-size="14" font-weight="700" fill="#0f172a">⑤ 관리·법규 (과락 주의)</text>
+  <text x="392" y="434" font-size="12" fill="#334155">ISMS-P·위험관리·사고대응·법령</text>
+
+  <!-- 연결 화살표 -->
+  <line x1="240" y1="113" x2="326" y2="113" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="240" y1="189" x2="326" y2="189" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="240" y1="265" x2="326" y2="265" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="240" y1="341" x2="326" y2="341" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="240" y1="417" x2="326" y2="417" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 마무리 -->
+  <rect x="710" y="120" width="220" height="110" rx="10" fill="#1e3a8a"/>
+  <text x="820" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">E06 실기 유형</text>
+  <text x="820" y="186" text-anchor="middle" font-size="12" fill="#dbeafe">단답 · 서술 · 실무형</text>
+  <text x="820" y="206" text-anchor="middle" font-size="12" fill="#dbeafe">답안 쓰는 법</text>
+
+  <rect x="710" y="290" width="220" height="110" rx="10" fill="#1e3a8a"/>
+  <text x="820" y="330" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">E07 모의고사</text>
+  <text x="820" y="356" text-anchor="middle" font-size="12" fill="#dbeafe">필기 100문항 축약판</text>
+  <text x="820" y="376" text-anchor="middle" font-size="12" fill="#dbeafe">+ 실기 · 채점표</text>
+
+  <line x1="630" y1="265" x2="706" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="630" y1="341" x2="706" y2="345" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="820" y1="230" x2="820" y2="286" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 하단 주차 바 -->
+  <text x="20" y="490" font-size="13" font-weight="700" fill="#0f172a">8주안</text>
+  <rect x="90" y="476" width="105" height="20" fill="#dbeafe" stroke="#1e3a8a"/>
+  <rect x="195" y="476" width="105" height="20" fill="#dbeafe" stroke="#1e3a8a"/>
+  <rect x="300" y="476" width="105" height="20" fill="#dbeafe" stroke="#1e3a8a"/>
+  <rect x="405" y="476" width="105" height="20" fill="#dbeafe" stroke="#1e3a8a"/>
+  <rect x="510" y="476" width="105" height="20" fill="#fee2e2" stroke="#b91c1c"/>
+  <rect x="615" y="476" width="105" height="20" fill="#fde68a" stroke="#f59e0b"/>
+  <rect x="720" y="476" width="210" height="20" fill="#1e3a8a"/>
+  <text x="142" y="491" text-anchor="middle" font-size="11" fill="#0f172a">E00·E01</text>
+  <text x="247" y="491" text-anchor="middle" font-size="11" fill="#0f172a">E02</text>
+  <text x="352" y="491" text-anchor="middle" font-size="11" fill="#0f172a">E03</text>
+  <text x="457" y="491" text-anchor="middle" font-size="11" fill="#0f172a">E04</text>
+  <text x="562" y="491" text-anchor="middle" font-size="11" fill="#0f172a">E05</text>
+  <text x="667" y="491" text-anchor="middle" font-size="11" fill="#0f172a">필기 모의</text>
+  <text x="825" y="491" text-anchor="middle" font-size="11" fill="#ffffff">E06·E07 실기</text>
+
+  <rect x="90" y="510" width="840" height="20" rx="4" fill="#fee2e2" stroke="#b91c1c" stroke-dasharray="4 3"/>
+  <text x="510" y="525" text-anchor="middle" font-size="11" fill="#b91c1c">⑤ 관리·법규 매일 20~30분 — 1주차부터 끝까지</text>
+  <text x="20" y="524" font-size="11" fill="#64748b">병행</text>
+</svg>

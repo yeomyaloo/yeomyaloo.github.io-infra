@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">버전 제약은 "범위", 잠금 파일은 "선택된 한 버전"</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#64748b">버전 번호는 설명용 예시입니다</text>
+
+  <!-- versions.tf -->
+  <rect x="30" y="80" width="280" height="190" rx="10" fill="#f8fafc" stroke="#334155"/>
+  <text x="46" y="106" font-size="15" font-weight="700" fill="#0f172a">versions.tf (사람이 씀)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#0f172a">
+    <text x="46" y="136">required_providers {</text>
+    <text x="62" y="156">random = {</text>
+    <text x="78" y="176">source  = "hashicorp/random"</text>
+    <text x="78" y="196" fill="#7b42bc" font-weight="700">version = "~&gt; 3.6"</text>
+    <text x="62" y="216">}</text>
+    <text x="46" y="236">}</text>
+  </g>
+  <text x="46" y="260" font-size="12" fill="#64748b">&gt;= 3.6, &lt; 4.0 를 허용</text>
+
+  <!-- registry -->
+  <rect x="350" y="80" width="240" height="190" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="366" y="106" font-size="15" font-weight="700" fill="#0f172a">레지스트리의 버전들</text>
+  <g font-size="13">
+    <text x="372" y="136" font-family="Consolas,'D2Coding',monospace" fill="#94a3b8">3.5.1</text>
+    <text x="440" y="136" fill="#94a3b8">범위 밖</text>
+    <text x="372" y="160" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">3.6.0</text>
+    <text x="440" y="160" fill="#16a34a">허용</text>
+    <text x="372" y="184" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">3.7.2</text>
+    <text x="440" y="184" fill="#16a34a">허용</text>
+    <rect x="364" y="192" width="214" height="26" rx="6" fill="#f3ebfb" stroke="#7b42bc"/>
+    <text x="372" y="210" font-family="Consolas,'D2Coding',monospace" font-weight="700" fill="#4c1d95">3.9.1</text>
+    <text x="440" y="210" font-weight="700" fill="#4c1d95">허용 중 최신 → 선택</text>
+    <text x="372" y="240" font-family="Consolas,'D2Coding',monospace" fill="#94a3b8">4.0.0</text>
+    <text x="440" y="240" fill="#94a3b8">메이저 변경, 범위 밖</text>
+  </g>
+
+  <!-- lock file -->
+  <rect x="630" y="80" width="300" height="190" rx="10" fill="#f3ebfb" stroke="#7b42bc"/>
+  <text x="646" y="106" font-size="15" font-weight="700" fill="#4c1d95">.terraform.lock.hcl (init이 씀)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="646" y="136">provider "registry.terraform.io/</text>
+    <text x="646" y="154">          hashicorp/random" {</text>
+    <text x="662" y="176" font-weight="700" fill="#7b42bc">version     = "3.9.1"</text>
+    <text x="662" y="196">constraints = "~&gt; 3.6"</text>
+    <text x="662" y="216">hashes      = [ "h1:…", "zh:…" ]</text>
+    <text x="646" y="236">}</text>
+  </g>
+  <text x="646" y="260" font-size="12" fill="#334155">Git에 커밋 · 모듈 버전은 기록 안 함</text>
+
+  <line x1="310" y1="175" x2="346" y2="175" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="590" y1="205" x2="626" y2="176" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- scenarios -->
+  <rect x="30" y="296" width="900" height="186" rx="10" fill="#f8fafc" stroke="#334155"/>
+  <text x="50" y="322" font-size="15" font-weight="700" fill="#0f172a">3.10.0 이 새로 나온 뒤에는?</text>
+  <g font-size="14">
+    <text x="50" y="356" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">terraform init</text>
+    <text x="270" y="356" fill="#334155">잠금 파일의 3.9.1 을 그대로 설치 → 팀원·CI 모두 같은 버전</text>
+    <text x="50" y="390" font-family="Consolas,'D2Coding',monospace" fill="#7b42bc" font-weight="700">terraform init -upgrade</text>
+    <text x="270" y="390" fill="#334155">제약 범위 안 최신(3.10.0)을 골라 잠금 파일을 갱신</text>
+    <text x="50" y="424" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">version = "~&gt; 3.6.0"</text>
+    <text x="270" y="424" fill="#334155">&gt;= 3.6.0, &lt; 3.7.0 — 패치만 허용 (오른쪽 끝 자리만 올라감)</text>
+    <text x="50" y="458" font-family="Consolas,'D2Coding',monospace" fill="#dc2626">잠금과 맞지 않는 제약</text>
+    <text x="270" y="458" fill="#334155">init 이 오류로 멈춤 → 제약을 고치거나 init -upgrade 로 다시 고름</text>
+  </g>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">결합도 낮추기 — 세 가지 기본 패턴</text>
+  <text x="480" y="54" text-anchor="middle" font-size="13" fill="#64748b">보내는 쪽은 받는 쪽이 살아 있는지, 몇 개인지, 얼마나 빠른지 몰라도 된다</text>
+
+  <!-- Panel 1: SQS -->
+  <rect x="16" y="70" width="296" height="410" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="32" y="96" font-size="15" font-weight="700" fill="#0f172a">① SQS 버퍼 (pull · 1그룹)</text>
+  <rect x="94" y="112" width="140" height="40" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="164" y="137" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">주문 서비스</text>
+  <line x1="164" y1="152" x2="164" y2="178" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="64" y="182" width="200" height="52" rx="8" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="164" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">SQS 큐</text>
+  <text x="164" y="224" text-anchor="middle" font-size="11" fill="#78350f">보존 기본 4일 · 최대 14일</text>
+  <line x1="164" y1="234" x2="164" y2="262" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="172" y="254" font-size="11" fill="#334155">가시성 제한 시간</text>
+  <rect x="40" y="266" width="76" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="78" y="291" text-anchor="middle" font-size="12" fill="#166534">워커 1</text>
+  <rect x="126" y="266" width="76" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="164" y="291" text-anchor="middle" font-size="12" fill="#166534">워커 2</text>
+  <rect x="212" y="266" width="76" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="250" y="291" text-anchor="middle" font-size="12" fill="#166534">워커 3</text>
+  <text x="40" y="328" font-size="11" fill="#64748b">한 메시지는 워커 하나만 처리</text>
+  <rect x="40" y="342" width="248" height="44" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="164" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">DLQ (배달 못한 편지 큐)</text>
+  <text x="164" y="378" text-anchor="middle" font-size="11" fill="#991b1b">maxReceiveCount 초과 메시지 격리</text>
+  <text x="32" y="414" font-size="12" font-weight="700" fill="#0f172a">순서·중복 없음이 필요하면</text>
+  <text x="32" y="434" font-size="12" fill="#334155">FIFO 큐 + 메시지 그룹 ID</text>
+  <text x="32" y="460" font-size="12" font-weight="700" fill="#0f172a">신호: 버퍼 · 급증 흡수 · 비동기</text>
+
+  <!-- Panel 2: SNS fanout -->
+  <rect x="332" y="70" width="296" height="410" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="348" y="96" font-size="15" font-weight="700" fill="#0f172a">② SNS → SQS 팬아웃 (1:N)</text>
+  <rect x="410" y="112" width="140" height="40" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="480" y="137" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">가입 서비스</text>
+  <line x1="480" y1="152" x2="480" y2="178" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="380" y="182" width="200" height="52" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="480" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">SNS 토픽</text>
+  <text x="480" y="224" text-anchor="middle" font-size="11" fill="#9a3412">push · 구독 필터 정책</text>
+  <line x1="420" y1="234" x2="394" y2="262" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="480" y1="234" x2="480" y2="262" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="540" y1="234" x2="566" y2="262" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="356" y="266" width="76" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="394" y="291" text-anchor="middle" font-size="12" fill="#78350f">큐 A</text>
+  <rect x="442" y="266" width="76" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="480" y="291" text-anchor="middle" font-size="12" fill="#78350f">큐 B</text>
+  <rect x="528" y="266" width="76" height="40" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="566" y="291" text-anchor="middle" font-size="12" fill="#78350f">큐 C</text>
+  <line x1="394" y1="306" x2="394" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="480" y1="306" x2="480" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="566" y1="306" x2="566" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="356" y="334" width="76" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="394" y="359" text-anchor="middle" font-size="12" fill="#166534">이메일</text>
+  <rect x="442" y="334" width="76" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="480" y="359" text-anchor="middle" font-size="12" fill="#166534">포인트</text>
+  <rect x="528" y="334" width="76" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="566" y="359" text-anchor="middle" font-size="12" fill="#166534">분석</text>
+  <text x="348" y="414" font-size="12" font-weight="700" fill="#0f172a">소비자마다 자기 큐 = 독립 처리</text>
+  <text x="348" y="434" font-size="12" fill="#334155">한 서비스가 멈춰도 그 큐에 보관</text>
+  <text x="348" y="460" font-size="12" font-weight="700" fill="#0f172a">신호: 하나의 이벤트 → 여러 시스템</text>
+
+  <!-- Panel 3: EventBridge -->
+  <rect x="648" y="70" width="296" height="410" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="664" y="96" font-size="15" font-weight="700" fill="#0f172a">③ EventBridge (내용 라우팅)</text>
+  <rect x="664" y="112" width="84" height="40" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="706" y="137" text-anchor="middle" font-size="12" fill="#0f172a">AWS 서비스</text>
+  <rect x="754" y="112" width="84" height="40" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="796" y="137" text-anchor="middle" font-size="12" fill="#0f172a">SaaS 파트너</text>
+  <rect x="844" y="112" width="84" height="40" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="886" y="137" text-anchor="middle" font-size="12" fill="#0f172a">내 앱</text>
+  <line x1="706" y1="152" x2="760" y2="178" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="796" y1="152" x2="796" y2="178" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="886" y1="152" x2="832" y2="178" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="696" y="182" width="200" height="52" rx="8" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="796" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">이벤트 버스</text>
+  <text x="796" y="224" text-anchor="middle" font-size="11" fill="#312e81">아카이브 · 재생 · 스케줄러</text>
+  <line x1="796" y1="234" x2="796" y2="262" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="672" y="266" width="248" height="40" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-dasharray="5 3"/>
+  <text x="796" y="291" text-anchor="middle" font-size="12" font-family="Consolas,'D2Coding',monospace" fill="#312e81">규칙: "state": ["stopped"]</text>
+  <line x1="726" y1="306" x2="710" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="796" y1="306" x2="796" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="866" y1="306" x2="882" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="664" y="334" width="84" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="706" y="359" text-anchor="middle" font-size="12" fill="#166534">Lambda</text>
+  <rect x="754" y="334" width="84" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="796" y="359" text-anchor="middle" font-size="11" fill="#166534">Step Functions</text>
+  <rect x="844" y="334" width="84" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="886" y="359" text-anchor="middle" font-size="12" fill="#166534">SQS</text>
+  <text x="664" y="414" font-size="12" font-weight="700" fill="#0f172a">이벤트 내용으로 대상 선택</text>
+  <text x="664" y="434" font-size="12" fill="#334155">폴링 코드 없이 상태 변화에 반응</text>
+  <text x="664" y="460" font-size="12" font-weight="700" fill="#0f172a">신호: SaaS·AWS 이벤트 · 일정</text>
+
+  <!-- bottom -->
+  <rect x="16" y="496" width="928" height="70" rx="10" fill="#334155"/>
+  <text x="36" y="518" font-size="14" font-weight="700" fill="#ffffff">그 밖의 선택지</text>
+  <text x="36" y="538" font-size="12" fill="#e2e8f0">여러 단계·분기·재시도 = Step Functions  ·  재생 가능한 실시간 스트림·여러 소비자 = Kinesis Data Streams</text>
+  <text x="36" y="557" font-size="12" fill="#e2e8f0">기존 JMS/AMQP 앱을 코드 변경 없이 = Amazon MQ</text>
+</svg>

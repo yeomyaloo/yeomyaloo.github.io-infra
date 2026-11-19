@@ -34,6 +34,15 @@
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
+    // 좁은 화면에서 탭 줄이 넘치면 현재 탭이 보이도록 가로 스크롤
+    var strip = document.querySelector('.tabstrip');
+    var act = strip && strip.querySelector('.active');
+    if (act && strip.scrollWidth > strip.clientWidth) {
+      strip.scrollLeft = act.offsetLeft - (strip.clientWidth - act.offsetWidth) / 2;
+    }
+    function edge() { if (strip) strip.classList.toggle('at-end', strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 2); }
+    if (strip) { strip.addEventListener('scroll', edge, { passive: true }); edge(); }
+
     // 다크 모드 전환 + Giscus 댓글 테마 동기화
     var root = document.documentElement;
     document.querySelector('.theme-toggle').addEventListener('click', function () {

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">스토리지 선택 결정 트리</text>
+  <text x="480" y="54" text-anchor="middle" font-size="13" fill="#64748b">먼저 접근 방식(블록·파일·오브젝트)을 고르고, 그다음 문제의 조건 키워드로 좁힌다</text>
+
+  <rect x="330" y="68" width="300" height="40" rx="20" fill="#334155"/>
+  <text x="480" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">데이터에 어떻게 접근하나?</text>
+  <line x1="400" y1="108" x2="164" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="480" y1="108" x2="480" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="560" y1="108" x2="796" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- BLOCK column -->
+  <rect x="16" y="134" width="296" height="48" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="164" y="156" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3412">블록 — 인스턴스 1대의 디스크</text>
+  <text x="164" y="174" text-anchor="middle" font-size="11" fill="#9a3412">EBS는 한 AZ에 종속</text>
+
+  <rect x="16" y="196" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="26" y="222" font-size="12" fill="#334155">사라져도 됨 · 최고 속도</text>
+  <line x1="166" y1="217" x2="184" y2="217" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="188" y="196" width="124" height="42" rx="8" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
+  <text x="250" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">인스턴스 스토어</text>
+
+  <rect x="16" y="248" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="26" y="274" font-size="12" fill="#334155">8만 IOPS 초과 · 지속</text>
+  <line x1="166" y1="269" x2="184" y2="269" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="188" y="248" width="124" height="42" rx="8" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
+  <text x="250" y="274" text-anchor="middle" font-size="11" font-weight="700" fill="#9a3412">io2 Block Express</text>
+
+  <rect x="16" y="300" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="26" y="326" font-size="12" fill="#334155">대용량 순차 처리량</text>
+  <line x1="166" y1="321" x2="184" y2="321" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="188" y="300" width="124" height="42" rx="8" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
+  <text x="250" y="326" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">st1 (HDD)</text>
+
+  <rect x="16" y="352" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="26" y="378" font-size="12" fill="#334155">가끔 · 최저 비용</text>
+  <line x1="166" y1="373" x2="184" y2="373" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="188" y="352" width="124" height="42" rx="8" fill="#ffffff" stroke="#ff9900" stroke-width="2"/>
+  <text x="250" y="378" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">sc1 (HDD)</text>
+
+  <rect x="16" y="404" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="26" y="430" font-size="12" fill="#334155">그 밖의 대부분 · 부팅</text>
+  <line x1="166" y1="425" x2="184" y2="425" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="188" y="404" width="124" height="42" rx="8" fill="#ff9900"/>
+  <text x="250" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">gp3 (기본값)</text>
+
+  <!-- FILE column -->
+  <rect x="332" y="134" width="296" height="48" rx="10" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="480" y="156" text-anchor="middle" font-size="15" font-weight="700" fill="#3730a3">파일 — 여러 인스턴스가 공유</text>
+  <text x="480" y="174" text-anchor="middle" font-size="11" fill="#3730a3">POSIX · 동시 마운트</text>
+
+  <rect x="332" y="196" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="342" y="222" font-size="12" fill="#334155">Linux NFS · 다중 AZ</text>
+  <line x1="482" y1="217" x2="500" y2="217" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="504" y="196" width="124" height="42" rx="8" fill="#4f46e5"/>
+  <text x="566" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">EFS</text>
+
+  <rect x="332" y="248" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="342" y="274" font-size="12" fill="#334155">Windows SMB · AD</text>
+  <line x1="482" y1="269" x2="500" y2="269" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="504" y="248" width="124" height="42" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="566" y="274" text-anchor="middle" font-size="12" font-weight="700" fill="#3730a3">FSx for Windows</text>
+
+  <rect x="332" y="300" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="342" y="326" font-size="12" fill="#334155">HPC · ML · S3 연동</text>
+  <line x1="482" y1="321" x2="500" y2="321" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="504" y="300" width="124" height="42" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="566" y="326" text-anchor="middle" font-size="12" font-weight="700" fill="#3730a3">FSx for Lustre</text>
+
+  <rect x="332" y="352" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="342" y="378" font-size="12" fill="#334155">NetApp · 멀티 프로토콜</text>
+  <line x1="482" y1="373" x2="500" y2="373" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="504" y="352" width="124" height="42" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="566" y="378" text-anchor="middle" font-size="12" font-weight="700" fill="#3730a3">FSx for ONTAP</text>
+
+  <rect x="332" y="404" width="150" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="342" y="430" font-size="12" fill="#334155">ZFS 이전 · 클론</text>
+  <line x1="482" y1="425" x2="500" y2="425" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="504" y="404" width="124" height="42" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="566" y="430" text-anchor="middle" font-size="12" font-weight="700" fill="#3730a3">FSx for OpenZFS</text>
+
+  <!-- OBJECT column -->
+  <rect x="648" y="134" width="296" height="48" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="796" y="156" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">오브젝트 — S3 (HTTP · 무제한)</text>
+  <text x="796" y="174" text-anchor="middle" font-size="11" fill="#166534">접근 빈도와 꺼내는 속도로 클래스 선택</text>
+
+  <rect x="648" y="196" width="136" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="658" y="218" font-size="12" fill="#334155">자주 접근</text>
+  <line x1="784" y1="213" x2="800" y2="213" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="804" y="196" width="140" height="34" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="874" y="218" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Standard</text>
+
+  <rect x="648" y="238" width="136" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="658" y="260" font-size="12" fill="#334155">패턴을 모름</text>
+  <line x1="784" y1="255" x2="800" y2="255" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="804" y="238" width="140" height="34" rx="8" fill="#16a34a"/>
+  <text x="874" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Intelligent-Tiering</text>
+
+  <rect x="648" y="280" width="136" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="658" y="302" font-size="12" fill="#334155">월 1회쯤 · 즉시</text>
+  <line x1="784" y1="297" x2="800" y2="297" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="804" y="280" width="140" height="34" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="874" y="302" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Standard-IA</text>
+
+  <rect x="648" y="322" width="136" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="658" y="344" font-size="12" fill="#334155">위 + 재생성 가능</text>
+  <line x1="784" y1="339" x2="800" y2="339" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="804" y="322" width="140" height="34" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="874" y="344" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">One Zone-IA</text>
+
+  <rect x="648" y="364" width="136" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="658" y="386" font-size="12" fill="#334155">분기 1회 · 밀리초</text>
+  <line x1="784" y1="381" x2="800" y2="381" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="804" y="364" width="140" height="34" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="874" y="386" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Glacier Instant</text>
+
+  <rect x="648" y="406" width="136" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="658" y="428" font-size="12" fill="#334155">연 1~2회 · 몇 시간 OK</text>
+  <line x1="784" y1="423" x2="800" y2="423" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="804" y="406" width="140" height="34" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="874" y="428" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Glacier Flexible</text>
+
+  <rect x="648" y="448" width="136" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="658" y="470" font-size="12" fill="#334155">수년 보관 · 최저가</text>
+  <line x1="784" y1="465" x2="800" y2="465" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="804" y="448" width="140" height="34" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <text x="874" y="470" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Deep Archive</text>
+
+  <!-- bottom: hybrid -->
+  <rect x="16" y="500" width="928" height="84" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="32" y="524" font-size="14" font-weight="700" fill="#0f172a">온프레미스와 섞일 때 (하이브리드·전송)</text>
+  <text x="32" y="548" font-size="12" fill="#334155">NFS/SMB로 S3 쓰기 + 로컬 캐시 = Storage Gateway S3 File Gateway  ·  NAS → S3/EFS/FSx 온라인 대량 전송 = DataSync</text>
+  <text x="32" y="570" font-size="12" fill="#334155">네트워크로는 너무 큰 데이터 = Snow Family  ·  파트너의 SFTP 업로드 = Transfer Family  ·  먼 곳에서 S3 업로드 = Transfer Acceleration</text>
+</svg>

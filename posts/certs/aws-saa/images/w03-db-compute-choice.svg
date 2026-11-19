@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">DB · 컴퓨팅 선택 — 접근 패턴과 실행 형태로 고른다</text>
+  <text x="480" y="54" text-anchor="middle" font-size="13" fill="#64748b">왼쪽: 데이터 모델 → 데이터베이스 · 오른쪽: 실행 시간·관리 범위 → 컴퓨팅</text>
+
+  <!-- DB panel -->
+  <rect x="16" y="70" width="456" height="440" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="32" y="96" font-size="16" font-weight="700" fill="#312e81">데이터베이스</text>
+
+  <rect x="32" y="110" width="200" height="30" rx="15" fill="#4f46e5"/>
+  <text x="132" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">관계형 (SQL · 조인 · 트랜잭션)</text>
+  <rect x="32" y="148" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="170" font-size="12" fill="#334155">기존 엔진 그대로 · 리프트</text>
+  <line x1="242" y1="165" x2="268" y2="165" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="272" y="148" width="184" height="34" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="364" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81">RDS (OS 필요 시 Custom)</text>
+
+  <rect x="32" y="188" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="210" font-size="12" fill="#334155">고성능 · 복제본 15개 · 3 AZ</text>
+  <line x1="242" y1="205" x2="268" y2="205" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="272" y="188" width="184" height="34" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="364" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81">Aurora</text>
+
+  <rect x="32" y="228" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="250" font-size="12" fill="#334155">간헐적·예측 불가 부하</text>
+  <line x1="242" y1="245" x2="268" y2="245" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="272" y="228" width="184" height="34" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="364" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81">Aurora Serverless v2</text>
+
+  <rect x="32" y="268" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="290" font-size="12" fill="#334155">대규모 분석 SQL (OLAP)</text>
+  <line x1="242" y1="285" x2="268" y2="285" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="272" y="268" width="184" height="34" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="364" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81">Redshift (S3면 Athena)</text>
+
+  <rect x="32" y="318" width="200" height="30" rx="15" fill="#334155"/>
+  <text x="132" y="338" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">비관계형 (NoSQL · 목적형)</text>
+  <rect x="32" y="356" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="378" font-size="12" fill="#334155">키-값 · 무제한 확장 · 서버리스</text>
+  <line x1="242" y1="373" x2="268" y2="373" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="272" y="356" width="184" height="34" rx="8" fill="#e2e8f0" stroke="#334155"/>
+  <text x="364" y="378" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">DynamoDB (+ DAX)</text>
+
+  <rect x="32" y="396" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="418" font-size="12" fill="#334155">MongoDB 호환 문서</text>
+  <line x1="242" y1="413" x2="268" y2="413" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="272" y="396" width="184" height="34" rx="8" fill="#e2e8f0" stroke="#334155"/>
+  <text x="364" y="418" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">DocumentDB</text>
+
+  <rect x="32" y="436" width="210" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="42" y="458" font-size="12" fill="#334155">관계 그래프 · 사기 탐지</text>
+  <line x1="242" y1="453" x2="268" y2="453" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="272" y="436" width="184" height="34" rx="8" fill="#e2e8f0" stroke="#334155"/>
+  <text x="364" y="458" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Neptune</text>
+
+  <text x="32" y="494" font-size="11" fill="#64748b">검색·로그·벡터 = OpenSearch · Cassandra = Keyspaces</text>
+
+  <!-- Compute panel -->
+  <rect x="488" y="70" width="456" height="440" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="504" y="96" font-size="16" font-weight="700" fill="#9a3412">컴퓨팅</text>
+
+  <rect x="504" y="110" width="210" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="514" y="128" font-size="12" fill="#334155">이벤트 기반 · 15분 이내</text>
+  <text x="514" y="146" font-size="11" fill="#64748b">느리면 메모리↑ (CPU 비례)</text>
+  <line x1="714" y1="132" x2="740" y2="132" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="744" y="110" width="184" height="44" rx="8" fill="#ff9900"/>
+  <text x="836" y="137" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Lambda</text>
+
+  <rect x="504" y="162" width="210" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="514" y="180" font-size="12" fill="#334155">컨테이너 · 서버 관리 안 함</text>
+  <text x="514" y="198" font-size="11" fill="#64748b">15분 넘는 작업도 가능</text>
+  <line x1="714" y1="184" x2="740" y2="184" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="744" y="162" width="184" height="44" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="836" y="189" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">ECS/EKS on Fargate</text>
+
+  <rect x="504" y="214" width="210" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="514" y="232" font-size="12" fill="#334155">쿠버네티스 API·생태계 필요</text>
+  <text x="514" y="250" font-size="11" fill="#64748b">본편 Chapter 2·7과 연결</text>
+  <line x1="714" y1="236" x2="740" y2="236" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="744" y="214" width="184" height="44" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="836" y="241" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">EKS</text>
+
+  <rect x="504" y="266" width="210" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="514" y="284" font-size="12" fill="#334155">OS·드라이버·GPU · 장시간</text>
+  <text x="514" y="302" font-size="11" fill="#64748b">코드 변경 불가 리프트 앤 시프트</text>
+  <line x1="714" y1="288" x2="740" y2="288" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="744" y="266" width="184" height="44" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="836" y="293" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">EC2 + ASG</text>
+
+  <rect x="504" y="318" width="210" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="514" y="336" font-size="12" fill="#334155">대량 배치 작업 큐 · Spot</text>
+  <text x="514" y="354" font-size="11" fill="#64748b">Spark·Hadoop이면 EMR</text>
+  <line x1="714" y1="340" x2="740" y2="340" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="744" y="318" width="184" height="44" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="836" y="345" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">AWS Batch · EMR</text>
+
+  <!-- placement groups -->
+  <text x="504" y="392" font-size="13" font-weight="700" fill="#0f172a">EC2 배치 그룹</text>
+  <rect x="504" y="402" width="134" height="92" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="571" y="424" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">클러스터</text>
+  <text x="571" y="444" text-anchor="middle" font-size="11" fill="#334155">한 AZ에 가까이</text>
+  <text x="571" y="462" text-anchor="middle" font-size="11" fill="#334155">초저지연 · HPC</text>
+  <text x="571" y="480" text-anchor="middle" font-size="11" fill="#334155">+ EFA</text>
+  <rect x="646" y="402" width="134" height="92" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="713" y="424" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">분산 (Spread)</text>
+  <text x="713" y="444" text-anchor="middle" font-size="11" fill="#334155">서로 다른 하드웨어</text>
+  <text x="713" y="462" text-anchor="middle" font-size="11" fill="#334155">AZ당 최대 7개</text>
+  <text x="713" y="480" text-anchor="middle" font-size="11" fill="#334155">핵심 소수 인스턴스</text>
+  <rect x="788" y="402" width="140" height="92" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="858" y="424" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">파티션</text>
+  <text x="858" y="444" text-anchor="middle" font-size="11" fill="#334155">랙 단위로 묶음</text>
+  <text x="858" y="462" text-anchor="middle" font-size="11" fill="#334155">HDFS · Kafka</text>
+  <text x="858" y="480" text-anchor="middle" font-size="11" fill="#334155">· Cassandra</text>
+
+  <!-- bottom -->
+  <rect x="16" y="524" width="928" height="44" rx="10" fill="#334155"/>
+  <text x="480" y="551" text-anchor="middle" font-size="12" fill="#ffffff">읽기 위주 관계형 → 읽기 전용 복제본 · ElastiCache  |  쓰기 폭증 · 키 기반 접근 → DynamoDB  |  Lambda → DB 연결 고갈 → RDS Proxy</text>
+</svg>

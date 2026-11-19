@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">리눅스 로그 — 어떤 사건이 어느 파일에, 무엇으로 읽나</text>
+
+  <text x="140" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">사건</text>
+  <text x="480" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">파일 (형식)</text>
+  <text x="820" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">확인 명령</text>
+
+  <!-- rows: y start 82, step 62 -->
+  <g font-size="14">
+    <rect x="30" y="82" width="220" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="140" y="110" text-anchor="middle" fill="#0f172a">지금 로그인 중</text>
+    <rect x="330" y="82" width="300" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="480" y="104" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">/var/run/utmp</text>
+    <text x="480" y="121" text-anchor="middle" font-size="11" fill="#64748b">바이너리 · u = 현재</text>
+    <rect x="710" y="82" width="220" height="46" rx="8" fill="#1e3a8a"/>
+    <text x="820" y="110" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">who · w · users</text>
+
+    <rect x="30" y="144" width="220" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="140" y="172" text-anchor="middle" fill="#0f172a">로그인·재부팅 이력</text>
+    <rect x="330" y="144" width="300" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="480" y="166" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">/var/log/wtmp</text>
+    <text x="480" y="183" text-anchor="middle" font-size="11" fill="#64748b">바이너리 · w = 이력</text>
+    <rect x="710" y="144" width="220" height="46" rx="8" fill="#1e3a8a"/>
+    <text x="820" y="172" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">last</text>
+
+    <rect x="30" y="206" width="220" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="140" y="234" text-anchor="middle" fill="#0f172a">로그인 실패</text>
+    <rect x="330" y="206" width="300" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="480" y="228" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#b91c1c">/var/log/btmp</text>
+    <text x="480" y="245" text-anchor="middle" font-size="11" fill="#64748b">바이너리 · b = 실패</text>
+    <rect x="710" y="206" width="220" height="46" rx="8" fill="#b91c1c"/>
+    <text x="820" y="234" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">lastb</text>
+
+    <rect x="30" y="268" width="220" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="140" y="296" text-anchor="middle" fill="#0f172a">사용자별 마지막 로그인</text>
+    <rect x="330" y="268" width="300" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="480" y="290" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">/var/log/lastlog</text>
+    <text x="480" y="307" text-anchor="middle" font-size="11" fill="#64748b">바이너리</text>
+    <rect x="710" y="268" width="220" height="46" rx="8" fill="#1e3a8a"/>
+    <text x="820" y="296" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">lastlog</text>
+
+    <rect x="30" y="330" width="220" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="140" y="358" text-anchor="middle" fill="#0f172a">실행한 명령</text>
+    <rect x="330" y="330" width="300" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="480" y="352" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#1e3a8a">/var/account/pacct</text>
+    <text x="480" y="369" text-anchor="middle" font-size="11" fill="#64748b">바이너리 · psacct/acct 필요</text>
+    <rect x="710" y="330" width="220" height="46" rx="8" fill="#1e3a8a"/>
+    <text x="820" y="358" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">lastcomm · sa</text>
+
+    <rect x="30" y="392" width="220" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="140" y="420" text-anchor="middle" fill="#0f172a">인증 · sudo · sshd</text>
+    <rect x="330" y="392" width="300" height="46" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+    <text x="480" y="414" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">secure / auth.log</text>
+    <text x="480" y="431" text-anchor="middle" font-size="11" fill="#64748b">텍스트 · RHEL / Debian·Ubuntu</text>
+    <rect x="710" y="392" width="220" height="46" rx="8" fill="#475569"/>
+    <text x="820" y="420" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">grep · less</text>
+
+    <rect x="30" y="454" width="220" height="46" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="140" y="482" text-anchor="middle" fill="#0f172a">시스템 전반</text>
+    <rect x="330" y="454" width="300" height="46" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+    <text x="480" y="476" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#0f172a">messages / syslog</text>
+    <text x="480" y="493" text-anchor="middle" font-size="11" fill="#64748b">텍스트 · rsyslog가 기록</text>
+    <rect x="710" y="454" width="220" height="46" rx="8" fill="#475569"/>
+    <text x="820" y="482" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" fill="#ffffff">journalctl · dmesg</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="1.8">
+    <line x1="250" y1="105" x2="326" y2="105" marker-end="url(#arrow)"/>
+    <line x1="630" y1="105" x2="706" y2="105" marker-end="url(#arrow)"/>
+    <line x1="250" y1="167" x2="326" y2="167" marker-end="url(#arrow)"/>
+    <line x1="630" y1="167" x2="706" y2="167" marker-end="url(#arrow)"/>
+    <line x1="250" y1="229" x2="326" y2="229" marker-end="url(#arrow)"/>
+    <line x1="630" y1="229" x2="706" y2="229" marker-end="url(#arrow)"/>
+    <line x1="250" y1="291" x2="326" y2="291" marker-end="url(#arrow)"/>
+    <line x1="630" y1="291" x2="706" y2="291" marker-end="url(#arrow)"/>
+    <line x1="250" y1="353" x2="326" y2="353" marker-end="url(#arrow)"/>
+    <line x1="630" y1="353" x2="706" y2="353" marker-end="url(#arrow)"/>
+    <line x1="250" y1="415" x2="326" y2="415" marker-end="url(#arrow)"/>
+    <line x1="630" y1="415" x2="706" y2="415" marker-end="url(#arrow)"/>
+    <line x1="250" y1="477" x2="326" y2="477" marker-end="url(#arrow)"/>
+    <line x1="630" y1="477" x2="706" y2="477" marker-end="url(#arrow)"/>
+  </g>
+  <text x="480" y="536" text-anchor="middle" font-size="12" fill="#64748b">외우는 법: u = 지금(utmp), w = 이력(wtmp), b = 실패(btmp) · 원격 로그 서버로 사본을 남겨 변조에 대비</text>
+</svg>

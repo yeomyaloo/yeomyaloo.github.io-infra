@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">텔레메트리 신호의 흐름 — 소스 → 수집 → 저장 → 활용</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">Prometheus는 pull, OTel·로그 에이전트는 보내는(push) 쪽 · 저장소와 시각화는 별개</text>
+
+  <g font-size="15" font-weight="700" fill="#334155" text-anchor="middle">
+    <text x="115" y="96">① 소스</text>
+    <text x="350" y="96">② 수집</text>
+    <text x="595" y="96">③ 저장·질의</text>
+    <text x="835" y="96">④ 활용</text>
+  </g>
+
+  <!-- metrics row -->
+  <rect x="30" y="110" width="170" height="80" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="115" y="140" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">메트릭</text>
+  <text x="115" y="164" text-anchor="middle" font-size="12" fill="#334155">앱 /metrics · exporter</text>
+  <rect x="250" y="110" width="200" height="80" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="350" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Prometheus 스크레이프</text>
+  <text x="350" y="164" text-anchor="middle" font-size="12" fill="#334155">pull · 서비스 디스커버리</text>
+  <rect x="500" y="110" width="190" height="80" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="595" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Prometheus TSDB</text>
+  <text x="595" y="164" text-anchor="middle" font-size="12" fill="#334155">레이블 · PromQL</text>
+  <line x1="246" y1="150" x2="204" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="225" y="142" text-anchor="middle" font-size="10" font-weight="700" fill="#326ce5">pull</text>
+  <line x1="450" y1="150" x2="496" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- traces row -->
+  <rect x="30" y="230" width="170" height="80" rx="8" fill="#ede9fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="115" y="260" text-anchor="middle" font-size="15" font-weight="700" fill="#3730a3">트레이스</text>
+  <text x="115" y="284" text-anchor="middle" font-size="12" fill="#334155">앱 + OTel SDK</text>
+  <rect x="250" y="230" width="200" height="80" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="350" y="260" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">OTel Collector</text>
+  <text x="350" y="284" text-anchor="middle" font-size="11" fill="#334155">receiver → processor → exporter</text>
+  <rect x="500" y="230" width="190" height="80" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="595" y="260" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Jaeger · Tempo</text>
+  <text x="595" y="284" text-anchor="middle" font-size="12" fill="#334155">trace = span의 트리</text>
+  <line x1="200" y1="270" x2="246" y2="270" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="223" y="262" text-anchor="middle" font-size="10" font-weight="700" fill="#4f46e5">OTLP</text>
+  <line x1="450" y1="270" x2="496" y2="270" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- logs row -->
+  <rect x="30" y="350" width="170" height="80" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="115" y="380" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">로그</text>
+  <text x="115" y="404" text-anchor="middle" font-size="12" fill="#334155">컨테이너 stdout/stderr</text>
+  <rect x="250" y="350" width="200" height="80" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="350" y="380" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Fluent Bit · Alloy</text>
+  <text x="350" y="404" text-anchor="middle" font-size="12" fill="#334155">노드마다 DaemonSet</text>
+  <rect x="500" y="350" width="190" height="80" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="595" y="380" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Loki · Elasticsearch</text>
+  <text x="595" y="404" text-anchor="middle" font-size="12" fill="#334155">레이블 · 전문 검색</text>
+  <line x1="200" y1="390" x2="246" y2="390" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="390" x2="496" y2="390" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- use -->
+  <rect x="740" y="110" width="190" height="200" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="835" y="196" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">Grafana</text>
+  <text x="835" y="222" text-anchor="middle" font-size="12" fill="#334155">대시보드 · 탐색</text>
+  <text x="835" y="242" text-anchor="middle" font-size="11" fill="#64748b">(CNCF 프로젝트 아님)</text>
+  <rect x="740" y="350" width="190" height="80" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="835" y="380" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">Alertmanager</text>
+  <text x="835" y="404" text-anchor="middle" font-size="12" fill="#334155">중복 제거 · 그룹 · 라우팅</text>
+  <line x1="690" y1="150" x2="736" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="690" y1="270" x2="736" y2="270" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M690,390 C715,390 715,300 736,290" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M690,176 C720,200 712,330 736,370" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="700" y="334" font-size="11" font-weight="700" fill="#dc2626" text-anchor="end">알림 규칙</text>
+
+  <!-- footer -->
+  <rect x="30" y="452" width="900" height="54" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="46" y="474" font-size="12" fill="#334155">metrics-server: kubectl top · HPA용 "현재 값"만 메모리에 보관 — 장기 저장·PromQL 없음</text>
+  <text x="46" y="494" font-size="12" fill="#334155">OTel Collector는 메트릭·로그도 받을 수 있지만 저장소가 아니다 · 짧은 배치 작업 메트릭은 Pushgateway</text>
+</svg>

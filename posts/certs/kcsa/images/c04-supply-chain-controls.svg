@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">소프트웨어 공급망 — 단계마다 걸 수 있는 통제</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">"무엇이 들어 있나(SBOM)" · "어디서 어떻게 만들었나(출처 증명)" · "바뀌지 않았나(서명)"를 배포 직전에 확인</text>
+
+  <g font-size="12">
+    <rect x="30" y="90" width="140" height="70" rx="10" fill="#326ce5"/>
+    <text x="100" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">소스</text>
+    <text x="100" y="142" text-anchor="middle" fill="#ffffff">Git 저장소</text>
+    <line x1="172" y1="125" x2="186" y2="125" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="188" y="90" width="140" height="70" rx="10" fill="#326ce5"/>
+    <text x="258" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">빌드</text>
+    <text x="258" y="142" text-anchor="middle" fill="#ffffff">CI 파이프라인</text>
+    <line x1="330" y1="125" x2="344" y2="125" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="346" y="90" width="140" height="70" rx="10" fill="#4f46e5"/>
+    <text x="416" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">아티팩트</text>
+    <text x="416" y="142" text-anchor="middle" fill="#ffffff">이미지 + 메타데이터</text>
+    <line x1="488" y1="125" x2="502" y2="125" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="504" y="90" width="140" height="70" rx="10" fill="#4f46e5"/>
+    <text x="574" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">레지스트리</text>
+    <text x="574" y="142" text-anchor="middle" fill="#ffffff">이미지 저장소</text>
+    <line x1="646" y1="125" x2="660" y2="125" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="662" y="90" width="140" height="70" rx="10" fill="#b91c1c"/>
+    <text x="732" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">배포</text>
+    <text x="732" y="142" text-anchor="middle" fill="#ffffff">어드미션 관문</text>
+    <line x1="804" y1="125" x2="818" y2="125" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="820" y="90" width="110" height="70" rx="10" fill="#b91c1c"/>
+    <text x="875" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">런타임</text>
+    <text x="875" y="142" text-anchor="middle" fill="#ffffff">클러스터</text>
+
+    <!-- controls -->
+    <rect x="30" y="176" width="140" height="150" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="42" y="200" fill="#1e3a8a">브랜치 보호 · 리뷰</text>
+    <text x="42" y="222" fill="#1e3a8a">커밋 서명</text>
+    <text x="42" y="244" fill="#1e3a8a">의존성 고정</text>
+    <text x="42" y="266" fill="#1e3a8a">비밀 스캔</text>
+    <text x="42" y="300" fill="#64748b">위협: 악성 커밋,</text>
+    <text x="42" y="316" fill="#64748b">타이포스쿼팅</text>
+
+    <rect x="188" y="176" width="140" height="150" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="200" y="200" fill="#1e3a8a">격리된 임시 빌더</text>
+    <text x="200" y="222" fill="#1e3a8a">출처 증명 생성</text>
+    <text x="200" y="244" fill="#1e3a8a">(SLSA provenance)</text>
+    <text x="200" y="266" fill="#1e3a8a">최소 베이스 이미지</text>
+    <text x="200" y="300" fill="#64748b">위협: 빌드 서버</text>
+    <text x="200" y="316" fill="#64748b">침해</text>
+
+    <rect x="346" y="176" width="140" height="150" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="358" y="200" fill="#312e81">SBOM 생성</text>
+    <text x="358" y="222" fill="#312e81">(SPDX · CycloneDX)</text>
+    <text x="358" y="244" fill="#312e81">서명 (cosign)</text>
+    <text x="358" y="266" fill="#312e81">in-toto 증명</text>
+    <text x="358" y="300" fill="#64748b">위협: 변조된</text>
+    <text x="358" y="316" fill="#64748b">아티팩트</text>
+
+    <rect x="504" y="176" width="140" height="150" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="516" y="200" fill="#312e81">취약점 스캔</text>
+    <text x="516" y="222" fill="#312e81">(Trivy 등) 재스캔</text>
+    <text x="516" y="244" fill="#312e81">접근 제어 · 비공개</text>
+    <text x="516" y="266" fill="#312e81">태그 불변 설정</text>
+    <text x="516" y="300" fill="#64748b">위협: 태그</text>
+    <text x="516" y="316" fill="#64748b">바꿔치기</text>
+
+    <rect x="662" y="176" width="140" height="150" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="674" y="200" fill="#7f1d1d">서명 검증</text>
+    <text x="674" y="222" fill="#7f1d1d">허용 레지스트리만</text>
+    <text x="674" y="244" fill="#7f1d1d">다이제스트(@sha256)</text>
+    <text x="674" y="266" fill="#7f1d1d">PSS · 정책 엔진</text>
+    <text x="674" y="300" fill="#64748b">위협: 출처 모를</text>
+    <text x="674" y="316" fill="#64748b">이미지 실행</text>
+
+    <rect x="820" y="176" width="110" height="150" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="830" y="200" fill="#7f1d1d">Falco 탐지</text>
+    <text x="830" y="222" fill="#7f1d1d">감사 로그</text>
+    <text x="830" y="244" fill="#7f1d1d">새 CVE 재스캔</text>
+    <text x="830" y="300" fill="#64748b">위협: 제로데이</text>
+  </g>
+
+  <rect x="30" y="346" width="900" height="96" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="48" y="372" font-size="14" font-weight="700" fill="#334155">용어 짝 맞추기</text>
+  <text x="48" y="396" font-size="13" fill="#334155">SBOM = 재료 목록(무엇이 들어 있나) · Provenance = 제조 이력(누가 어디서 어떻게 빌드) · 서명 = 봉인(바뀌지 않았나)</text>
+  <text x="48" y="418" font-size="13" fill="#334155">Sigstore: cosign(서명 도구) · Fulcio(짧은 수명 인증서 발급) · Rekor(투명성 로그) — 키 없는(keyless) 서명</text>
+  <text x="48" y="436" font-size="12" fill="#64748b">본편 Day 57 · CKS S05에서 실제 명령으로 다룬다</text>
+</svg>

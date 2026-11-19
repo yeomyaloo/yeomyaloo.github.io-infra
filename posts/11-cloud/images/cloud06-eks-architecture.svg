@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">infra-cloud-eks 구조 — 컨트롤 플레인은 AWS, 노드는 내 프라이빗 서브넷</text>
+
+  <!-- control plane -->
+  <rect x="24" y="60" width="270" height="180" rx="12" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="159" y="88" text-anchor="middle" font-size="16" font-weight="700" fill="#9a3412">EKS 컨트롤 플레인</text>
+  <text x="159" y="108" text-anchor="middle" font-size="12" fill="#9a3412">AWS가 운영하는 VPC · 여러 AZ</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="44" y="120" width="230" height="30" rx="6" fill="#ffffff" stroke="#fdba74"/>
+    <text x="159" y="140" fill="#7c2d12">API 서버 (kubernetes 1.37)</text>
+    <rect x="44" y="156" width="230" height="30" rx="6" fill="#ffffff" stroke="#fdba74"/>
+    <text x="159" y="176" fill="#7c2d12">etcd · 스케줄러 · 컨트롤러</text>
+  </g>
+  <rect x="94" y="198" width="130" height="28" rx="14" fill="#ff9900"/>
+  <text x="159" y="217" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">$0.10 / 시간</text>
+
+  <!-- kubectl -->
+  <rect x="24" y="420" width="270" height="110" rx="12" fill="#e2e8f0"/>
+  <text x="159" y="448" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">내 PC — kubectl</text>
+  <text x="159" y="472" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">exec: aws eks get-token</text>
+  <text x="159" y="494" text-anchor="middle" font-size="12" fill="#475569">IAM 서명 토큰(15분)으로 인증</text>
+  <text x="159" y="514" text-anchor="middle" font-size="12" fill="#475569">→ access entry로 권한 결정</text>
+  <line x1="159" y1="418" x2="159" y2="244" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="62" y="306" width="194" height="52" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="159" y="328" text-anchor="middle" font-size="12" fill="#334155">퍼블릭 엔드포인트</text>
+  <text x="159" y="346" text-anchor="middle" font-size="12" fill="#334155">허용 CIDR = 내 IP/32</text>
+
+  <!-- VPC -->
+  <rect x="320" y="60" width="620" height="480" rx="14" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="340" y="86" font-size="15" font-weight="700" fill="#0f172a">infra-cloud-vpc  10.20.0.0/16  (ap-northeast-2)</text>
+  <rect x="800" y="68" width="120" height="26" rx="13" fill="#334155"/>
+  <text x="860" y="86" text-anchor="middle" font-size="12" fill="#ffffff">인터넷 게이트웨이</text>
+
+  <!-- AZ a -->
+  <rect x="336" y="104" width="290" height="424" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="481" y="124" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">ap-northeast-2a</text>
+  <rect x="350" y="134" width="262" height="78" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="364" y="154" font-size="12" fill="#14532d">infra-cloud-pub-a 10.20.0.0/24</text>
+  <rect x="450" y="162" width="148" height="38" rx="6" fill="#ffffff" stroke="#c2410c"/>
+  <text x="524" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">infra-cloud-nat-a</text>
+
+  <rect x="350" y="226" width="262" height="290" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="364" y="246" font-size="12" fill="#1e3a8a">infra-cloud-priv-a 10.20.10.0/24</text>
+  <rect x="364" y="256" width="234" height="190" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="481" y="278" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">노드 t3.medium (관리형 노드그룹)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle">
+    <rect x="376" y="290" width="104" height="44" rx="6" fill="#c7d2fe"/>
+    <text x="428" y="309" fill="#312e81">Pod</text>
+    <text x="428" y="326" fill="#312e81">10.20.10.71</text>
+    <rect x="484" y="290" width="104" height="44" rx="6" fill="#c7d2fe"/>
+    <text x="536" y="309" fill="#312e81">Pod</text>
+    <text x="536" y="326" fill="#312e81">10.20.10.88</text>
+  </g>
+  <text x="481" y="354" text-anchor="middle" font-size="11" fill="#475569">Pod가 VPC IP를 그대로 받음 (VPC CNI)</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="376" y="364" width="66" height="26" rx="5" fill="#e2e8f0"/><text x="409" y="381" fill="#0f172a">aws-node</text>
+    <rect x="446" y="364" width="70" height="26" rx="5" fill="#e2e8f0"/><text x="481" y="381" fill="#0f172a">kube-proxy</text>
+    <rect x="520" y="364" width="68" height="26" rx="5" fill="#e2e8f0"/><text x="554" y="381" fill="#0f172a">ebs-csi</text>
+    <rect x="376" y="396" width="212" height="26" rx="5" fill="#e2e8f0"/><text x="482" y="413" fill="#0f172a">eks-pod-identity-agent (169.254.170.23)</text>
+  </g>
+  <text x="481" y="438" text-anchor="middle" font-size="11" fill="#64748b">EBS gp3 볼륨 (같은 AZ)</text>
+  <rect x="364" y="458" width="234" height="44" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="481" y="477" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">EKS 교차 계정 ENI</text>
+  <text x="481" y="494" text-anchor="middle" font-size="11" fill="#9a3412">프라이빗 엔드포인트 통로</text>
+
+  <!-- AZ c -->
+  <rect x="640" y="104" width="290" height="424" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="785" y="124" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">ap-northeast-2c</text>
+  <rect x="654" y="134" width="262" height="78" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="668" y="154" font-size="12" fill="#14532d">infra-cloud-pub-c 10.20.1.0/24</text>
+  <rect x="754" y="162" width="148" height="38" rx="6" fill="#ffffff" stroke="#16a34a" stroke-dasharray="5 3"/>
+  <text x="828" y="186" text-anchor="middle" font-size="12" fill="#14532d">ALB (클라우드 07)</text>
+
+  <rect x="654" y="226" width="262" height="290" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="668" y="246" font-size="12" fill="#1e3a8a">infra-cloud-priv-c 10.20.11.0/24</text>
+  <rect x="668" y="256" width="234" height="120" rx="8" fill="#ffffff" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="785" y="278" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">노드 t3.medium</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle">
+    <rect x="680" y="290" width="104" height="44" rx="6" fill="#c7d2fe"/>
+    <text x="732" y="309" fill="#312e81">CoreDNS</text>
+    <text x="732" y="326" fill="#312e81">10.20.11.14</text>
+    <rect x="788" y="290" width="104" height="44" rx="6" fill="#c7d2fe"/>
+    <text x="840" y="309" fill="#312e81">Pod</text>
+    <text x="840" y="326" fill="#312e81">10.20.11.52</text>
+  </g>
+  <text x="785" y="358" text-anchor="middle" font-size="11" fill="#475569">데몬셋은 노드마다 동일</text>
+  <rect x="668" y="390" width="234" height="58" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="785" y="412" text-anchor="middle" font-size="12" fill="#92400e">NAT가 2a에만 있음 (single_nat)</text>
+  <text x="785" y="432" text-anchor="middle" font-size="12" fill="#92400e">→ AZ 간 전송 요금 · 2a 장애에 취약</text>
+  <rect x="668" y="458" width="234" height="44" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="785" y="477" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">EKS 교차 계정 ENI</text>
+  <text x="785" y="494" text-anchor="middle" font-size="11" fill="#9a3412">프라이빗 엔드포인트 통로</text>
+
+  <!-- arrows -->
+  <path d="M294,180 C320,180 330,470 362,476" fill="none" stroke="#ff9900" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <line x1="590" y1="256" x2="560" y2="204" stroke="#c2410c" stroke-width="2" marker-end="url(#arrowO)"/>
+  <text x="553" y="223" text-anchor="end" font-size="11" fill="#c2410c">이미지 pull</text>
+</svg>

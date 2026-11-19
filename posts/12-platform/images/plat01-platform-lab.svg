@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="530" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">플랫폼 탭 실습 환경 — kind platform-lab</text>
+
+  <!-- Browser -->
+  <rect x="20" y="70" width="220" height="200" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="130" y="96" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">브라우저 / curl</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="34" y="126">argocd.localhost:31080</text>
+    <text x="34" y="150">backstage.localhost:31080</text>
+    <text x="34" y="174">dev.demo.example.test</text>
+    <text x="34" y="198">dev.orders-api.example.test</text>
+  </g>
+  <text x="130" y="232" text-anchor="middle" font-size="12" fill="#64748b">*.example.test 는</text>
+  <text x="130" y="250" text-anchor="middle" font-size="12" fill="#64748b">curl --connect-to 로 31080에</text>
+
+  <line x1="244" y1="150" x2="286" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="265" y="170" text-anchor="middle" font-size="11" font-family="Consolas,'D2Coding',monospace" fill="#334155">:31080</text>
+
+  <!-- Cluster -->
+  <rect x="290" y="56" width="420" height="370" rx="12" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="500" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">kind platform-lab (kindest/node:v1.37.0)</text>
+  <text x="500" y="100" text-anchor="middle" font-size="12" fill="#1e40af">control-plane (31080→30080, docker.sock 마운트) + worker 1</text>
+
+  <g font-size="12" text-anchor="middle">
+    <!-- row 1 -->
+    <rect x="306" y="112" width="190" height="64" rx="8" fill="#ffffff" stroke="#64748b"/>
+    <text x="401" y="130" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#0f172a">traefik</text>
+    <text x="401" y="148" fill="#334155">Traefik NodePort 30080</text>
+    <text x="401" y="165" fill="#334155">Gateway traefik-gateway</text>
+    <rect x="504" y="112" width="190" height="64" rx="8" fill="#fff1eb" stroke="#ef7b4d"/>
+    <text x="599" y="130" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#7c2d12">argocd</text>
+    <text x="599" y="148" fill="#7c2d12">Argo CD v3.6.2</text>
+    <text x="599" y="165" fill="#7c2d12">ApplicationSet dev-apps</text>
+    <!-- row 2 -->
+    <rect x="306" y="186" width="190" height="64" rx="8" fill="#ede9fe" stroke="#6d28d9"/>
+    <text x="401" y="204" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#4c1d95">crossplane-system</text>
+    <text x="401" y="222" fill="#5b21b6">Crossplane v2.4.3</text>
+    <text x="401" y="239" fill="#5b21b6">provider-helm (04)</text>
+    <rect x="504" y="186" width="190" height="64" rx="8" fill="#ede9fe" stroke="#6d28d9"/>
+    <text x="599" y="204" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#4c1d95">backstage</text>
+    <text x="599" y="222" fill="#5b21b6">Backstage 1.57</text>
+    <text x="599" y="239" fill="#5b21b6">+ PostgreSQL 18 (02)</text>
+    <!-- row 3 -->
+    <rect x="306" y="260" width="190" height="64" rx="8" fill="#ede9fe" stroke="#6d28d9"/>
+    <text x="401" y="278" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#4c1d95">cnpg-system</text>
+    <text x="401" y="296" fill="#5b21b6">CloudNativePG 1.30</text>
+    <text x="401" y="313" fill="#5b21b6">PostgreSQL 오퍼레이터 (04)</text>
+    <rect x="504" y="260" width="190" height="64" rx="8" fill="#ede9fe" stroke="#6d28d9"/>
+    <text x="599" y="278" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#4c1d95">capi-system 등</text>
+    <text x="599" y="296" fill="#5b21b6">Cluster API + CAPD</text>
+    <text x="599" y="313" fill="#5b21b6">워크로드 클러스터 (05~06)</text>
+    <!-- row 4 -->
+    <rect x="306" y="334" width="388" height="76" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="500" y="354" font-family="Consolas,'D2Coding',monospace" font-size="13" font-weight="700" fill="#14532d">demo-dev</text>
+    <text x="500" y="374" fill="#166534">dev-demo-app (Ch7) · dev-orders-api (03)</text>
+    <text x="500" y="394" fill="#166534">orders-db: PostgreSQLInstance → CNPG Cluster (04)</text>
+  </g>
+
+  <!-- GitHub -->
+  <rect x="740" y="70" width="200" height="250" rx="10" fill="#f8fafc" stroke="#334155"/>
+  <text x="840" y="96" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">GitHub / GHCR</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="754" y="126">gitops-demo-app</text>
+    <text x="754" y="142" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="11" fill="#64748b">  Ch7 앱 레포</text>
+    <text x="754" y="166">gitops-demo-config</text>
+    <text x="754" y="182" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="11" fill="#64748b">  apps/*/overlays/dev</text>
+    <text x="754" y="206">platform-catalog</text>
+    <text x="754" y="222" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="11" fill="#64748b">  엔터티·템플릿 (02~03)</text>
+    <text x="754" y="246">orders-api</text>
+    <text x="754" y="262" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="11" fill="#64748b">  템플릿이 생성 (03)</text>
+    <text x="754" y="292">ghcr.io/&lt;user&gt;/*</text>
+  </g>
+  <line x1="696" y1="144" x2="736" y2="166" stroke="#ef7b4d" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="716" y="138" text-anchor="middle" font-size="11" fill="#7c2d12">Git pull</text>
+  <line x1="696" y1="218" x2="736" y2="208" stroke="#6d28d9" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="718" y="236" text-anchor="middle" font-size="11" fill="#4c1d95">API</text>
+
+  <!-- Host -->
+  <rect x="20" y="442" width="920" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="480" y="470" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">Windows + WSL2 Ubuntu 24.04 · Docker Desktop (메모리 8GB 이상 권장)</text>
+  <text x="480" y="494" text-anchor="middle" font-size="13" fill="#475569">Chapter 7~9의 infra-lab(호스트 30080)과 포트가 겹치지 않아 동시 실행 가능 · 클라우드 비용 0원</text>
+</svg>

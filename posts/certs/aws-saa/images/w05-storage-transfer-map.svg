@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="600" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text x="480" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#334155">저장할 곳과 옮기는 방법 — 질문 하나로 가르기</text>
+
+  <!-- ================= LEFT: where to store ================= -->
+  <rect x="24" y="58" width="440" height="40" rx="8" fill="#334155"/>
+  <text x="244" y="84" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">데이터를 어떤 방식으로 읽고 쓰나?</text>
+
+  <g stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+    <line x1="80" y1="98" x2="80" y2="124"/>
+    <line x1="244" y1="98" x2="244" y2="124"/>
+    <line x1="408" y1="98" x2="408" y2="124"/>
+  </g>
+
+  <rect x="24" y="126" width="112" height="34" rx="6" fill="#f8fafc" stroke="#334155"/>
+  <text x="80" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">블록</text>
+  <rect x="146" y="126" width="196" height="34" rx="6" fill="#f8fafc" stroke="#334155"/>
+  <text x="244" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">파일 (공유 디렉터리)</text>
+  <rect x="352" y="126" width="112" height="34" rx="6" fill="#f8fafc" stroke="#334155"/>
+  <text x="408" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">객체 (HTTP API)</text>
+
+  <g stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+    <line x1="80" y1="160" x2="80" y2="180"/>
+    <line x1="244" y1="160" x2="244" y2="180"/>
+    <line x1="408" y1="160" x2="408" y2="180"/>
+  </g>
+
+  <!-- EBS -->
+  <rect x="24" y="182" width="112" height="140" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="1.8"/>
+  <text x="80" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">EBS</text>
+  <g font-size="11" fill="#334155">
+    <text x="34" y="230">인스턴스 1대</text>
+    <text x="34" y="248">같은 AZ 안</text>
+    <text x="34" y="266">gp3 · io2 · st1</text>
+    <text x="34" y="290" fill="#c2410c">Multi-Attach는</text>
+    <text x="34" y="308" fill="#c2410c">같은 AZ io1·io2</text>
+  </g>
+
+  <!-- S3 -->
+  <rect x="352" y="182" width="112" height="140" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="1.8"/>
+  <text x="408" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">S3</text>
+  <g font-size="11" fill="#334155">
+    <text x="362" y="230">용량 제한 없음</text>
+    <text x="362" y="248">리전 · 여러 AZ</text>
+    <text x="362" y="266">계층 · 수명 주기</text>
+    <text x="362" y="290" fill="#c2410c">파일 시스템</text>
+    <text x="362" y="308" fill="#c2410c">아님 (객체 단위)</text>
+  </g>
+
+  <!-- file options -->
+  <g font-size="11" fill="#334155">
+    <rect x="146" y="182" width="196" height="46" rx="6" fill="#ffffff" stroke="#ff9900" stroke-width="1.5"/>
+    <text x="156" y="200" font-size="13" font-weight="700">EFS</text>
+    <text x="156" y="218">NFS · Linux · 여러 AZ · 자동 확장</text>
+
+    <rect x="146" y="234" width="196" height="46" rx="6" fill="#ffffff" stroke="#ff9900" stroke-width="1.5"/>
+    <text x="156" y="252" font-size="13" font-weight="700">FSx for Windows</text>
+    <text x="156" y="270">SMB · Active Directory · NTFS</text>
+
+    <rect x="146" y="286" width="196" height="46" rx="6" fill="#ffffff" stroke="#ff9900" stroke-width="1.5"/>
+    <text x="156" y="304" font-size="13" font-weight="700">FSx for NetApp ONTAP</text>
+    <text x="156" y="322">NFS+SMB+iSCSI · SnapMirror</text>
+
+    <rect x="146" y="338" width="196" height="46" rx="6" fill="#ffffff" stroke="#ff9900" stroke-width="1.5"/>
+    <text x="156" y="356" font-size="13" font-weight="700">FSx for Lustre</text>
+    <text x="156" y="374">HPC·ML · S3 연결 · 초고처리량</text>
+
+    <rect x="146" y="390" width="196" height="46" rx="6" fill="#ffffff" stroke="#ff9900" stroke-width="1.5"/>
+    <text x="156" y="408" font-size="13" font-weight="700">FSx for OpenZFS</text>
+    <text x="156" y="426">NFS · ZFS 스냅숏·클론 · 저지연</text>
+  </g>
+
+  <text x="24" y="470" font-size="12" fill="#334155">공유가 필요 없고 서버 1대 → <tspan font-weight="700">EBS</tspan></text>
+  <text x="24" y="490" font-size="12" fill="#334155">여러 서버가 같은 파일 → <tspan font-weight="700">EFS / FSx</tspan> (프로토콜로 고름)</text>
+  <text x="24" y="510" font-size="12" fill="#334155">앱이 API로 읽고 씀, 대용량·저비용 → <tspan font-weight="700">S3</tspan></text>
+
+  <!-- divider -->
+  <line x1="484" y1="60" x2="484" y2="520" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- ================= RIGHT: how to move ================= -->
+  <rect x="504" y="58" width="432" height="40" rx="8" fill="#334155"/>
+  <text x="720" y="84" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">데이터를 어떻게 AWS로 옮기나?</text>
+
+  <g font-size="12" fill="#334155">
+    <rect x="504" y="116" width="276" height="56" rx="6" fill="#f8fafc" stroke="#64748b"/>
+    <text x="516" y="139">외부 파트너가 SFTP·FTPS·AS2로</text>
+    <text x="516" y="158">보내고, 프로토콜은 못 바꿈</text>
+
+    <rect x="504" y="186" width="276" height="56" rx="6" fill="#f8fafc" stroke="#64748b"/>
+    <text x="516" y="209">내 NAS·HDFS·객체 → S3·EFS·FSx</text>
+    <text x="516" y="228">온라인 · 검증 · 증분 · 예약 실행</text>
+
+    <rect x="504" y="256" width="276" height="56" rx="6" fill="#f8fafc" stroke="#64748b"/>
+    <text x="516" y="279">사내 앱은 계속 NFS·SMB로 쓰고</text>
+    <text x="516" y="298">데이터는 S3에 (하이브리드)</text>
+
+    <rect x="504" y="326" width="276" height="56" rx="6" fill="#f8fafc" stroke="#64748b"/>
+    <text x="516" y="349">데이터베이스 이전 · 변경분 복제</text>
+    <text x="516" y="368">(동종·이종 엔진)</text>
+
+    <rect x="504" y="396" width="276" height="56" rx="6" fill="#f8fafc" stroke="#64748b"/>
+    <text x="516" y="419">회선으로는 기한 안에 불가능한 양</text>
+    <text x="516" y="438">(수백 TB ~ PB, 느린 회선)</text>
+  </g>
+
+  <g stroke="#ff9900" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <line x1="780" y1="144" x2="804" y2="144"/>
+    <line x1="780" y1="214" x2="804" y2="214"/>
+    <line x1="780" y1="284" x2="804" y2="284"/>
+    <line x1="780" y1="354" x2="804" y2="354"/>
+    <line x1="780" y1="424" x2="804" y2="424"/>
+  </g>
+
+  <g font-size="13" font-weight="700" fill="#334155" text-anchor="middle">
+    <rect x="806" y="124" width="130" height="40" rx="6" fill="#fff4e5" stroke="#ff9900" stroke-width="1.8"/>
+    <text x="871" y="149">Transfer Family</text>
+    <rect x="806" y="194" width="130" height="40" rx="6" fill="#fff4e5" stroke="#ff9900" stroke-width="1.8"/>
+    <text x="871" y="219">DataSync</text>
+    <rect x="806" y="264" width="130" height="40" rx="6" fill="#fff4e5" stroke="#ff9900" stroke-width="1.8"/>
+    <text x="871" y="289">Storage Gateway</text>
+    <rect x="806" y="334" width="130" height="40" rx="6" fill="#fff4e5" stroke="#ff9900" stroke-width="1.8"/>
+    <text x="871" y="359">AWS DMS</text>
+    <rect x="806" y="404" width="130" height="40" rx="6" fill="#fff4e5" stroke="#ff9900" stroke-width="1.8"/>
+    <text x="871" y="429">Snow Family *</text>
+  </g>
+
+  <rect x="504" y="466" width="432" height="48" rx="6" fill="#fef9c3" stroke="#f59e0b"/>
+  <text x="516" y="486" font-size="12" fill="#334155">계산 감각: 1Gbps를 꽉 채우면 하루 약 10.8TB (이론값)</text>
+  <text x="516" y="505" font-size="12" fill="#334155">→ 100TB면 약 9~10일, 1PB면 약 3개월 이상</text>
+
+  <text x="24" y="552" font-size="11" fill="#64748b">* AWS 문서: Snowball Edge는 2025-11-07부터 신규 고객에게 제공되지 않음(기존 고객은 사용 가능). 대안으로 DataSync, AWS Data Transfer Terminal, 파트너 솔루션을 안내.</text>
+  <text x="24" y="572" font-size="11" fill="#64748b">  SAA-C03 시험 가이드(2026-10 개정)의 범위 서비스 목록에는 Snow Family가 남아 있으므로 시험에서는 "오프라인 대량 전송"의 답으로 본다.</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">Day 58·62의 SLO를 클라우드로 — 무엇이 어디로 가나</text>
+
+  <rect x="30" y="54" width="360" height="34" rx="8" fill="#ccfbf1"/>
+  <text x="210" y="77" text-anchor="middle" font-size="14" font-weight="700" fill="#134e4a">홈랩 kind infra-lab (Chapter 8)</text>
+  <rect x="570" y="54" width="360" height="34" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="750" y="77" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">infra-cloud-eks (클라우드 08)</text>
+
+  <g font-size="12">
+    <!-- row 1 -->
+    <rect x="30" y="100" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="44" y="127" fill="#0f172a">Prometheus가 ServiceMonitor로 수집·저장</text>
+    <rect x="570" y="100" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="584" y="127" fill="#0f172a">Prometheus agent(같은 ServiceMonitor) → AMP</text>
+    <!-- row 2 -->
+    <rect x="30" y="154" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="44" y="181" fill="#0f172a">PrometheusRule demo-app-slo (recording, Day 58)</text>
+    <rect x="570" y="154" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="584" y="181" fill="#0f172a">AMP 규칙 네임스페이스 demo-app-sli</text>
+    <!-- row 3 -->
+    <rect x="30" y="208" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="44" y="235" fill="#0f172a">PrometheusRule slo-alerts (번 레이트, Day 62)</text>
+    <rect x="570" y="208" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="584" y="235" fill="#0f172a">AMP 규칙 네임스페이스 demo-app-slo-alerts</text>
+    <!-- row 4 -->
+    <rect x="30" y="262" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="44" y="289" fill="#0f172a">Alertmanager → 웹훅 (alert-echo)</text>
+    <rect x="570" y="262" width="360" height="44" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="584" y="289" fill="#7f1d1d">AMP Alertmanager → SNS → 이메일</text>
+    <!-- row 5 -->
+    <rect x="30" y="316" width="360" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="44" y="343" fill="#0f172a">Grafana (Day 17) SLO 패널</text>
+    <rect x="570" y="316" width="360" height="44" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="584" y="343" fill="#4c1d95">Managed Grafana — 같은 PromQL 패널</text>
+    <!-- row 6 -->
+    <rect x="30" y="370" width="360" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-dasharray="5 4"/>
+    <text x="44" y="397" fill="#64748b">(가장자리 SLI 없음 — Traefik 지표 미사용)</text>
+    <rect x="570" y="370" width="360" height="44" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="584" y="397" fill="#9a3412">ALB 5xx 비율 5m·1h → CloudWatch 복합 알람</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="2">
+    <line x1="392" y1="122" x2="566" y2="122" marker-end="url(#arrow)"/>
+    <line x1="392" y1="176" x2="566" y2="176" marker-end="url(#arrow)"/>
+    <line x1="392" y1="230" x2="566" y2="230" marker-end="url(#arrow)"/>
+    <line x1="392" y1="284" x2="566" y2="284" marker-end="url(#arrow)"/>
+    <line x1="392" y1="338" x2="566" y2="338" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="392" y1="392" x2="566" y2="392" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <g font-size="11" text-anchor="middle">
+    <text x="479" y="114" fill="#334155">agentMode: true</text>
+    <text x="479" y="168" font-family="Consolas,'D2Coding',monospace" fill="#0f766e">yq '.spec'</text>
+    <text x="479" y="222" font-family="Consolas,'D2Coding',monospace" fill="#0f766e">yq '.spec'</text>
+    <text x="479" y="276" fill="#334155">수신자는 SNS만</text>
+    <text x="479" y="330" fill="#334155">데이터 소스만 AMP로</text>
+    <text x="479" y="384" fill="#334155">새로 추가</text>
+  </g>
+
+  <rect x="30" y="426" width="900" height="34" rx="8" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="480" y="448" text-anchor="middle" font-size="13" fill="#134e4a">원본은 그대로 설정 레포의 PrometheusRule (Git) — 메트릭 이름·job 라벨이 같아서 PromQL을 고치지 않는다</text>
+</svg>

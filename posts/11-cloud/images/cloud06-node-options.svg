@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">노드를 누가 고르고 누가 관리하나 — 세 가지 방식</text>
+
+  <!-- MNG -->
+  <rect x="24" y="56" width="292" height="330" rx="12" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="170" y="84" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">관리형 노드그룹</text>
+  <text x="170" y="104" text-anchor="middle" font-size="12" fill="#475569">오늘 실습 · ASG 하나 = 타입 고정</text>
+  <rect x="44" y="118" width="252" height="96" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <text x="56" y="136" font-size="12" fill="#475569">Auto Scaling 그룹 (min 1 / max 3)</text>
+  <g font-size="12" text-anchor="middle">
+    <rect x="56" y="148" width="70" height="52" rx="6" fill="#dbeafe" stroke="#326ce5"/><text x="91" y="179" fill="#1e3a8a">t3.medium</text>
+    <rect x="134" y="148" width="70" height="52" rx="6" fill="#dbeafe" stroke="#326ce5"/><text x="169" y="179" fill="#1e3a8a">t3.medium</text>
+    <rect x="212" y="148" width="70" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="4 3"/><text x="247" y="179" fill="#94a3b8">(빈 자리)</text>
+  </g>
+  <text x="44" y="240" font-size="13" font-weight="700" fill="#0f172a">내가 하는 일</text>
+  <g font-size="12" fill="#334155">
+    <text x="44" y="262">· 인스턴스 타입·크기 결정</text>
+    <text x="44" y="282">· AMI 버전 올리기(노드 롤링)</text>
+    <text x="44" y="302">· 확장은 CA 추가 설치 필요</text>
+    <text x="44" y="322">· 애드온 버전 관리</text>
+  </g>
+  <rect x="44" y="340" width="252" height="32" rx="16" fill="#dcfce7"/>
+  <text x="170" y="361" text-anchor="middle" font-size="13" fill="#14532d">추가 요금 없음 (EC2만)</text>
+
+  <!-- Karpenter -->
+  <rect x="334" y="56" width="292" height="330" rx="12" fill="#f8fafc" stroke="#4f46e5" stroke-width="2"/>
+  <text x="480" y="84" text-anchor="middle" font-size="17" font-weight="700" fill="#312e81">Karpenter</text>
+  <text x="480" y="104" text-anchor="middle" font-size="12" fill="#475569">Pending Pod를 보고 맞는 EC2를 바로</text>
+  <rect x="350" y="122" width="74" height="46" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="387" y="141" text-anchor="middle" font-size="12" fill="#92400e">Pending</text>
+  <text x="387" y="158" text-anchor="middle" font-size="12" fill="#92400e">Pod (4 vCPU)</text>
+  <line x1="426" y1="145" x2="450" y2="145" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="452" y="122" width="78" height="46" rx="6" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="491" y="141" text-anchor="middle" font-size="12" fill="#312e81">NodePool</text>
+  <text x="491" y="158" text-anchor="middle" font-size="12" fill="#312e81">요구 조건</text>
+  <line x1="532" y1="145" x2="552" y2="145" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="554" y="122" width="62" height="46" rx="6" fill="#dbeafe" stroke="#326ce5"/>
+  <text x="585" y="141" text-anchor="middle" font-size="11" fill="#1e3a8a">c7i.xl</text>
+  <text x="585" y="158" text-anchor="middle" font-size="11" fill="#1e3a8a">Spot</text>
+  <text x="480" y="196" text-anchor="middle" font-size="12" fill="#475569">빈 노드는 consolidation으로 합쳐 줄임</text>
+  <text x="354" y="240" font-size="13" font-weight="700" fill="#0f172a">내가 하는 일</text>
+  <g font-size="12" fill="#334155">
+    <text x="354" y="262">· 컨트롤러·IAM·SQS 설치</text>
+    <text x="354" y="282">· NodePool·EC2NodeClass 작성</text>
+    <text x="354" y="302">· limits로 총 vCPU 상한(비용)</text>
+    <text x="354" y="322">· AMI 선택·애드온 관리</text>
+  </g>
+  <rect x="354" y="340" width="252" height="32" rx="16" fill="#dcfce7"/>
+  <text x="480" y="361" text-anchor="middle" font-size="13" fill="#14532d">추가 요금 없음 · Spot로 절감</text>
+
+  <!-- Auto Mode -->
+  <rect x="644" y="56" width="292" height="330" rx="12" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="790" y="84" text-anchor="middle" font-size="17" font-weight="700" fill="#9a3412">EKS Auto Mode</text>
+  <text x="790" y="104" text-anchor="middle" font-size="12" fill="#7c2d12">Karpenter 기반 · AWS가 운영</text>
+  <rect x="660" y="118" width="260" height="96" rx="8" fill="#ffffff" stroke="#ff9900" stroke-dasharray="5 4"/>
+  <text x="672" y="136" font-size="12" fill="#9a3412">AWS 관리 범위</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="672" y="146" width="74" height="26" rx="5" fill="#fed7aa"/><text x="709" y="163" fill="#7c2d12">노드·AMI</text>
+    <rect x="752" y="146" width="74" height="26" rx="5" fill="#fed7aa"/><text x="789" y="163" fill="#7c2d12">VPC CNI</text>
+    <rect x="832" y="146" width="76" height="26" rx="5" fill="#fed7aa"/><text x="870" y="163" fill="#7c2d12">CoreDNS</text>
+    <rect x="672" y="178" width="74" height="26" rx="5" fill="#fed7aa"/><text x="709" y="195" fill="#7c2d12">EBS CSI</text>
+    <rect x="752" y="178" width="74" height="26" rx="5" fill="#fed7aa"/><text x="789" y="195" fill="#7c2d12">LB 기능</text>
+    <rect x="832" y="178" width="76" height="26" rx="5" fill="#fed7aa"/><text x="870" y="195" fill="#7c2d12">Pod Identity</text>
+  </g>
+  <text x="664" y="240" font-size="13" font-weight="700" fill="#0f172a">내가 하는 일</text>
+  <g font-size="12" fill="#334155">
+    <text x="664" y="262">· compute_config 켜기</text>
+    <text x="664" y="282">· (필요하면) 추가 NodePool</text>
+    <text x="664" y="302">· 노드 SSH/SSM 불가 · 21일마다 교체</text>
+    <text x="664" y="322">· 앱과 PDB에 집중</text>
+  </g>
+  <rect x="664" y="340" width="252" height="32" rx="16" fill="#fee2e2"/>
+  <text x="790" y="361" text-anchor="middle" font-size="13" fill="#7f1d1d">EC2 + 인스턴스별 관리 요금</text>
+
+  <!-- bottom scale -->
+  <line x1="60" y1="420" x2="900" y2="420" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="60" y="446" font-size="13" fill="#334155">내가 운영하는 범위 큼 · 세밀한 통제</text>
+  <text x="900" y="446" text-anchor="end" font-size="13" fill="#334155">AWS에 맡기는 범위 큼 · 운영 부담 적음</text>
+</svg>

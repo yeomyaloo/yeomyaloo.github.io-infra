@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="460" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">N05 모의고사 — 90분 시간 배분과 점수 목표</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">60문항 · 90분 · 합격 75% (공식 객관식 안내 기준, 2026-11-19 확인)</text>
+
+  <!-- time bar: 60..900 = 90 min -->
+  <text x="60" y="100" font-size="15" font-weight="700" fill="#334155">시간 (분)</text>
+  <rect x="60" y="112" width="513" height="48" rx="6" fill="#326ce5"/>
+  <text x="316" y="134" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">1회독 55분</text>
+  <text x="316" y="152" text-anchor="middle" font-size="12" fill="#e8eefc">문항당 약 55초 · 30초 넘게 막히면 찍고 Flag</text>
+  <rect x="573" y="112" width="233" height="48" fill="#fde68a"/>
+  <text x="690" y="134" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">Flag 재검토 25분</text>
+  <text x="690" y="152" text-anchor="middle" font-size="12" fill="#92400e">Review 화면 · 소거법</text>
+  <rect x="806" y="112" width="94" height="48" rx="6" fill="#86efac"/>
+  <text x="853" y="134" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">마무리</text>
+  <text x="853" y="152" text-anchor="middle" font-size="12" fill="#14532d">10분</text>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="60" y="180">0</text>
+    <text x="573" y="180">55</text>
+    <text x="806" y="180">80</text>
+    <text x="900" y="180">90</text>
+  </g>
+  <text x="60" y="204" font-size="12" fill="#64748b">빈 문항 없이 제출 · Pause해도 타이머는 멈추지 않음</text>
+
+  <!-- domain stacked bar: 60..900 = 60 questions (14px each) -->
+  <text x="60" y="246" font-size="15" font-weight="700" fill="#334155">문항 구성 (공식 비중 환산)</text>
+  <rect x="60" y="258" width="364" height="40" fill="#326ce5"/>
+  <text x="242" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">① Fundamentals 26 (Q1~26)</text>
+  <rect x="424" y="258" width="238" height="40" fill="#6d8fe8"/>
+  <text x="543" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">② Orchestration 17</text>
+  <rect x="662" y="258" width="140" height="40" fill="#a5bdf3"/>
+  <text x="732" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">③ Delivery 10</text>
+  <rect x="802" y="258" width="98" height="40" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="851" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">④ Arch 7</text>
+
+  <!-- score bar -->
+  <text x="60" y="340" font-size="15" font-weight="700" fill="#334155">점수 (맞힌 문항 수)</text>
+  <rect x="60" y="352" width="840" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <rect x="60" y="352" width="630" height="28" rx="6" fill="#fee2e2"/>
+  <rect x="690" y="352" width="70" height="28" fill="#fef3c7"/>
+  <rect x="760" y="352" width="140" height="28" rx="6" fill="#dcfce7"/>
+  <line x1="690" y1="344" x2="690" y2="392" stroke="#dc2626" stroke-width="3"/>
+  <line x1="760" y1="344" x2="760" y2="392" stroke="#16a34a" stroke-width="3"/>
+  <text x="375" y="371" text-anchor="middle" font-size="13" fill="#991b1b">44 이하 — 해당 편 복습 후 재도전</text>
+  <text x="725" y="371" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">45~49</text>
+  <text x="830" y="371" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">50+ 응시</text>
+  <text x="690" y="410" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">합격선 45 (75%)</text>
+  <text x="790" y="410" font-size="12" font-weight="700" fill="#16a34a">목표 50</text>
+  <text x="60" y="440" font-size="12" fill="#64748b">실제 시험의 도메인별 문항 수와 배점은 공개되지 않음 — 위 구성은 공식 비중(44/28/16/12)을 60문항에 환산한 연습용</text>
+</svg>

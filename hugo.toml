@@ -11,7 +11,7 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
 
 [params]
   shortTitle = "Infra Study"   # 좁은 화면 상단에 쓰는 짧은 제목
-  description = "인프라·AI·보안·해킹·자격증 — 하루 한 주제씩 쌓는 학습 기록"
+  description = "인프라·AI·보안·해킹·클라우드·플랫폼·자격증 — 하루 한 주제씩 쌓는 학습 기록"
   author = "yeomyaloo"
   github = "https://github.com/yeomyaloo"
   # 글에 image 가 없을 때 쓰는 대표 이미지 (static/ 기준)
@@ -36,14 +36,24 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
     name = "해킹"
     description = "화이트해커 트랙 — 본인 소유 격리 실습장에서만"
   [[params.tabs]]
+    key = "cloud"
+    name = "클라우드"
+    description = "홈랩에서 만든 것을 AWS에 다시 세우기 — 본인 AWS 계정, 비용 발생 가능"
+  [[params.tabs]]
+    key = "platform"
+    name = "플랫폼 엔지니어링"
+    description = "개발자가 스스로 쓰는 내부 플랫폼 — Backstage, Crossplane, Cluster API (kind 기반, 비용 없음)"
+  [[params.tabs]]
     key = "cert"
     name = "자격증 준비"
-    description = "RHCSA(EX200) 등 자격증 대비"
+    description = "RHCSA · CKA · CKS · CKAD · 정보보안기사 · KCNA · KCSA · AWS SAA · Terraform — 직접 만든 연습 문제"
 
   # 글 안의 .md 링크를 블로그 주소로 바꿀 때, infra 폴더 이름 → 블로그 폴더 이름
-  # (해킹 트랙은 /hacking/ 탭 주소와 겹치지 않게 posts/10-hacking/ 에 둠)
+  # (해킹·클라우드·플랫폼은 탭 주소 /hacking/ /cloud/ /platform/ 과 겹치지 않게 번호 붙은 폴더에 둠)
   [params.linkPathMap]
     hacking = "10-hacking"
+    cloud = "11-cloud"
+    platform = "12-platform"
 
   # Giscus 댓글: https://giscus.app 에서 값을 받아 채우면 댓글이 켜집니다.
   [params.giscus]

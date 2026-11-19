@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">CAPI 롤링 업그레이드 — 노드를 고치지 않고 갈아 끼운다</text>
+  <text x="480" y="56" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#6d28d9">spec.topology.version: v1.36.4 → v1.37.0</text>
+
+  <!-- stage boxes -->
+  <g>
+    <rect x="20" y="74" width="210" height="250" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+    <rect x="257" y="74" width="210" height="250" rx="10" fill="#f8fafc" stroke="#6d28d9"/>
+    <rect x="494" y="74" width="210" height="250" rx="10" fill="#f8fafc" stroke="#6d28d9"/>
+    <rect x="731" y="74" width="210" height="250" rx="10" fill="#f8fafc" stroke="#16a34a"/>
+  </g>
+  <g font-size="15" font-weight="700" text-anchor="middle" fill="#0f172a">
+    <text x="125" y="100">① 시작</text>
+    <text x="362" y="100">② 컨트롤 플레인 교체</text>
+    <text x="599" y="100">③ 워커 교체</text>
+    <text x="836" y="100">④ 완료</text>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#64748b">
+    <text x="125" y="120">CP 1대, 워커 1대</text>
+    <text x="362" y="120">maxSurge 1 → 잠시 2대</text>
+    <text x="599" y="120">CP가 끝난 뒤에 시작</text>
+    <text x="836" y="120">모두 v1.37.0</text>
+  </g>
+
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle">
+    <!-- stage 1 -->
+    <rect x="35" y="140" width="180" height="40" rx="6" fill="#326ce5"/>
+    <text x="125" y="165" fill="#ffffff">CP v1.36.4</text>
+    <rect x="35" y="250" width="180" height="40" rx="6" fill="#86efac"/>
+    <text x="125" y="275" fill="#14532d">worker v1.36.4</text>
+
+    <!-- stage 2 -->
+    <rect x="272" y="140" width="180" height="48" rx="6" fill="#e2e8f0" stroke="#64748b" stroke-dasharray="5 3"/>
+    <text x="362" y="160" fill="#334155">CP v1.36.4</text>
+    <text x="362" y="178" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="11" fill="#dc2626">drain → 삭제</text>
+    <rect x="272" y="196" width="180" height="40" rx="6" fill="#6d28d9"/>
+    <text x="362" y="221" fill="#ffffff">CP v1.37.0 (새로)</text>
+    <rect x="272" y="250" width="180" height="40" rx="6" fill="#86efac"/>
+    <text x="362" y="275" fill="#14532d">worker v1.36.4</text>
+
+    <!-- stage 3 -->
+    <rect x="509" y="140" width="180" height="40" rx="6" fill="#6d28d9"/>
+    <text x="599" y="165" fill="#ffffff">CP v1.37.0</text>
+    <rect x="509" y="196" width="180" height="40" rx="6" fill="#c4b5fd"/>
+    <text x="599" y="221" fill="#1e1b4b">worker v1.37.0 (새로)</text>
+    <rect x="509" y="250" width="180" height="48" rx="6" fill="#e2e8f0" stroke="#64748b" stroke-dasharray="5 3"/>
+    <text x="599" y="270" fill="#334155">worker v1.36.4</text>
+    <text x="599" y="288" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="11" fill="#dc2626">drain → 삭제</text>
+
+    <!-- stage 4 -->
+    <rect x="746" y="140" width="180" height="40" rx="6" fill="#6d28d9"/>
+    <text x="836" y="165" fill="#ffffff">CP v1.37.0</text>
+    <rect x="746" y="250" width="180" height="40" rx="6" fill="#c4b5fd"/>
+    <text x="836" y="275" fill="#1e1b4b">worker v1.37.0</text>
+  </g>
+
+  <line x1="230" y1="199" x2="255" y2="199" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="467" y1="199" x2="492" y2="199" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="704" y1="199" x2="729" y2="199" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="340" width="921" height="44" rx="8" fill="#ede9fe"/>
+  <text x="480" y="358" text-anchor="middle" font-size="13" fill="#4c1d95">KCP: 새 CP Machine 추가 → etcd 합류 확인 → 옛 CP 삭제 · MachineDeployment: 새 MachineSet으로 롤링 교체</text>
+  <text x="480" y="376" text-anchor="middle" font-size="12" fill="#64748b">Day 20의 kubeadm upgrade(노드 안에서 패키지 업그레이드)와 달리 노드 자체를 새 버전 이미지로 교체</text>
+</svg>

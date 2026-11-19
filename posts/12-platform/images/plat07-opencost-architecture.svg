@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">OpenCost 구조 — Prometheus 메트릭 × 사용자 정의 단가</text>
+
+  <!-- sources -->
+  <rect x="20" y="60" width="200" height="300" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="120" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">수집 대상 (platform-lab)</text>
+  <g text-anchor="middle">
+    <rect x="36" y="102" width="168" height="66" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="120" y="128" font-size="13" font-weight="700" fill="#1e3a8a">cAdvisor (kubelet)</text>
+    <text x="120" y="150" font-size="12" fill="#334155">실제 CPU·메모리 사용량</text>
+    <rect x="36" y="182" width="168" height="66" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="120" y="208" font-size="13" font-weight="700" fill="#1e3a8a">kube-state-metrics</text>
+    <text x="120" y="230" font-size="12" fill="#334155">requests · limits · 라벨</text>
+    <rect x="36" y="262" width="168" height="66" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="120" y="288" font-size="13" font-weight="700" fill="#1e3a8a">노드 · PV</text>
+    <text x="120" y="310" font-size="12" fill="#334155">용량, 디스크 크기</text>
+  </g>
+  <line x1="204" y1="135" x2="258" y2="185" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="204" y1="215" x2="258" y2="215" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="204" y1="295" x2="258" y2="245" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Prometheus -->
+  <rect x="260" y="150" width="200" height="130" rx="10" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="360" y="180" text-anchor="middle" font-size="16" font-weight="700" fill="#7c2d12">Prometheus</text>
+  <text x="360" y="204" text-anchor="middle" font-size="12" fill="#7c2d12">Day 17 kube-prometheus-stack</text>
+  <text x="360" y="224" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#7c2d12">release: monitoring</text>
+  <text x="360" y="244" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#7c2d12">ns monitoring :9090</text>
+
+  <!-- OpenCost -->
+  <rect x="510" y="60" width="210" height="300" rx="10" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+  <text x="615" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">OpenCost (ns opencost)</text>
+  <rect x="526" y="100" width="178" height="60" rx="6" fill="#6d28d9"/>
+  <text x="615" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">exporter / cost model</text>
+  <text x="615" y="146" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#ede9fe">API :9003</text>
+  <rect x="526" y="172" width="178" height="98" rx="6" fill="#ffffff" stroke="#6d28d9" stroke-dasharray="4 3"/>
+  <text x="615" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#4c1d95">custom pricing (원/시간)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#1e1b4b">
+    <text x="542" y="214">CPU      3.42</text>
+    <text x="542" y="234">RAM      0.86</text>
+    <text x="542" y="254">storage  0.0038</text>
+  </g>
+  <rect x="526" y="282" width="178" height="62" rx="6" fill="#c7d2fe"/>
+  <text x="615" y="304" text-anchor="middle" font-size="12" fill="#1e1b4b">비용 메트릭 내보내기</text>
+  <text x="615" y="324" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#1e1b4b">node_cpu_hourly_cost …</text>
+
+  <!-- prom <-> opencost -->
+  <line x1="460" y1="190" x2="524" y2="140" stroke="#334155" stroke-width="2" marker-start="url(#arrow)"/>
+  <text x="478" y="150" text-anchor="middle" font-size="11" fill="#64748b">PromQL</text>
+  <text x="478" y="164" text-anchor="middle" font-size="11" fill="#64748b">질의</text>
+  <line x1="524" y1="312" x2="460" y2="250" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="480" y="300" text-anchor="middle" font-size="11" fill="#64748b">ServiceMonitor</text>
+  <text x="480" y="314" text-anchor="middle" font-size="11" fill="#64748b">수집</text>
+
+  <!-- consumers -->
+  <g text-anchor="middle">
+    <rect x="760" y="60" width="180" height="62" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="850" y="86" font-size="13" font-weight="700" fill="#0f172a">OpenCost UI</text>
+    <text x="850" y="106" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">:9090</text>
+    <rect x="760" y="136" width="180" height="62" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="850" y="162" font-size="13" font-weight="700" fill="#0f172a">Allocation API</text>
+    <text x="850" y="182" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">aggregate=label:team</text>
+    <rect x="760" y="212" width="180" height="62" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="850" y="238" font-size="13" font-weight="700" fill="#0f172a">Grafana</text>
+    <text x="850" y="258" font-size="12" fill="#334155">Prometheus 직접 질의</text>
+    <rect x="760" y="288" width="180" height="62" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="850" y="314" font-size="13" font-weight="700" fill="#0f172a">Backstage</text>
+    <text x="850" y="334" font-size="12" fill="#334155">서비스 페이지의 비용</text>
+  </g>
+  <line x1="720" y1="120" x2="758" y2="91" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="720" y1="140" x2="758" y2="167" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="720" y1="312" x2="758" y2="319" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="378" width="920" height="56" rx="8" fill="#ede9fe"/>
+  <text x="480" y="401" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">비용 ≈ max(requests, 사용량) × 시간 × 단가     ·     효율 = 사용량 ÷ requests</text>
+  <text x="480" y="422" text-anchor="middle" font-size="12" fill="#64748b">kind 노드는 호스트 전체 용량을 보고하므로 클러스터 총액·idle은 부풀려진다 — 상대 비교와 효율 위주로 해석</text>
+</svg>

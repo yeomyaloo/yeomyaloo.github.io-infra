@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="510" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">장기 키 없는 Terraform CI — 이벤트마다 다른 역할을 OIDC로 맡기</text>
+
+  <!-- Lane 1 -->
+  <rect x="20" y="56" width="930" height="166" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="80" font-size="14" font-weight="700" fill="#334155">① pull_request — 읽기 전용 plan</text>
+
+  <rect x="30" y="96" width="130" height="96" rx="10" fill="#e2e8f0"/>
+  <text x="95" y="132" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">PR 열기</text>
+  <text x="95" y="156" text-anchor="middle" font-size="12" fill="#475569">network/**, eks/** 등</text>
+  <text x="95" y="174" text-anchor="middle" font-size="12" fill="#475569">변경 시</text>
+
+  <rect x="185" y="96" width="140" height="96" rx="10" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="255" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">plan Job</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#1e3a8a">
+    <text x="255" y="150">id-token: write</text>
+    <text x="255" y="170">contents: read</text>
+  </g>
+
+  <rect x="350" y="96" width="210" height="96" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="455" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">GitHub OIDC 토큰(JWT)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#334155">
+    <text x="455" y="150">aud=sts.amazonaws.com</text>
+    <text x="455" y="170">sub=…:pull_request</text>
+  </g>
+
+  <rect x="585" y="96" width="140" height="96" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="655" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3412">AWS STS</text>
+  <text x="655" y="148" text-anchor="middle" font-size="12" fill="#9a3412">AssumeRoleWith</text>
+  <text x="655" y="164" text-anchor="middle" font-size="12" fill="#9a3412">WebIdentity</text>
+  <text x="655" y="182" text-anchor="middle" font-size="12" fill="#9a3412">aud·sub 검사</text>
+
+  <rect x="750" y="96" width="190" height="96" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="845" y="122" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" font-weight="700" fill="#14532d">infra-cloud-gha-plan</text>
+  <text x="845" y="146" text-anchor="middle" font-size="12" fill="#166534">ReadOnlyAccess</text>
+  <text x="845" y="164" text-anchor="middle" font-size="12" fill="#166534">+ state 읽기 · .tflock 쓰기</text>
+  <text x="845" y="182" text-anchor="middle" font-size="12" fill="#166534">1시간짜리 임시 자격 증명</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="160" y1="144" x2="182" y2="144" marker-end="url(#arrow)"/>
+    <line x1="325" y1="144" x2="347" y2="144" marker-end="url(#arrow)"/>
+    <line x1="560" y1="144" x2="582" y2="144" marker-end="url(#arrow)"/>
+    <line x1="725" y1="144" x2="747" y2="144" marker-end="url(#arrow)"/>
+  </g>
+  <text x="845" y="212" text-anchor="middle" font-size="12" fill="#334155">→ plan 결과를 Job Summary에</text>
+
+  <!-- Lane 2 -->
+  <rect x="20" y="236" width="930" height="166" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="260" font-size="14" font-weight="700" fill="#334155">② main 병합 — 승인 후 apply (오늘은 로컬에서 사람이 apply)</text>
+
+  <rect x="30" y="276" width="130" height="96" rx="10" fill="#e2e8f0"/>
+  <text x="95" y="314" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">main push</text>
+  <text x="95" y="338" text-anchor="middle" font-size="12" fill="#475569">PR 리뷰·병합 후</text>
+
+  <rect x="185" y="276" width="140" height="96" rx="10" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="255" y="302" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">apply Job</text>
+  <text x="255" y="326" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#1e3a8a">environment: lab</text>
+  <text x="255" y="346" text-anchor="middle" font-size="12" fill="#1e3a8a">필수 리뷰어 승인</text>
+  <text x="255" y="362" text-anchor="middle" font-size="12" fill="#1e3a8a">main 브랜치만</text>
+
+  <rect x="350" y="276" width="210" height="96" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="455" y="304" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">GitHub OIDC 토큰(JWT)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#334155">
+    <text x="455" y="330">aud=sts.amazonaws.com</text>
+    <text x="455" y="350">sub=…:environment:lab</text>
+  </g>
+
+  <rect x="585" y="276" width="140" height="96" rx="10" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="655" y="304" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3412">AWS STS</text>
+  <text x="655" y="328" text-anchor="middle" font-size="12" fill="#9a3412">다른 신뢰 정책</text>
+  <text x="655" y="346" text-anchor="middle" font-size="12" fill="#9a3412">sub가 다르면 거부</text>
+
+  <rect x="750" y="276" width="190" height="96" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="845" y="302" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" font-weight="700" fill="#7f1d1d">infra-cloud-gha-apply</text>
+  <text x="845" y="326" text-anchor="middle" font-size="12" fill="#7f1d1d">리소스 생성·삭제 권한</text>
+  <text x="845" y="344" text-anchor="middle" font-size="12" fill="#7f1d1d">+ state 쓰기</text>
+  <text x="845" y="362" text-anchor="middle" font-size="12" fill="#7f1d1d">승인된 Job만 맡음</text>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <line x1="160" y1="324" x2="182" y2="324" marker-end="url(#arrow)"/>
+    <line x1="325" y1="324" x2="347" y2="324" marker-end="url(#arrow)"/>
+    <line x1="560" y1="324" x2="582" y2="324" marker-end="url(#arrow)"/>
+    <line x1="725" y1="324" x2="747" y2="324" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- footer -->
+  <rect x="20" y="418" width="930" height="78" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="40" y="444" font-size="14" font-weight="700" fill="#92400e">⚠ 신뢰 정책의 sub는 StringEquals로 정확히 고정 — repo:&lt;user&gt;/* 같은 와일드카드 금지 (해킹 23 7장)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#78350f">
+    <text x="40" y="466">plan : repo:&lt;user&gt;/infra-cloud-terraform:pull_request</text>
+    <text x="40" y="484">apply: repo:&lt;user&gt;/infra-cloud-terraform:environment:lab</text>
+  </g>
+  <text x="930" y="484" text-anchor="end" font-size="12" fill="#92400e">fork PR에는 id-token 발급 안 함</text>
+</svg>

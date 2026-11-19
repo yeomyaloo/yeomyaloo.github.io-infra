@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">허브-스포크 멀티 클러스터 GitOps</text>
+
+  <!-- Git -->
+  <rect x="20" y="60" width="240" height="150" rx="10" fill="#fff7ed" stroke="#f59e0b"/>
+  <text x="140" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#7c2d12">설정 레포 (Git)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#7c2d12">
+    <text x="36" y="112">gitops-demo-config/</text>
+    <text x="36" y="132">├ apps/demo-app/base</text>
+    <text x="36" y="152">├ apps/demo-app/overlays/</text>
+    <text x="36" y="172">│   dev · stage · prod</text>
+    <text x="36" y="192">└ platform/appset-*.yaml</text>
+  </g>
+
+  <!-- label mapping -->
+  <rect x="20" y="230" width="240" height="160" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="140" y="256" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">라벨 → 경로 · 네임스페이스</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="36" y="284">env=dev</text>
+    <text x="52" y="304" fill="#6d28d9">→ overlays/dev</text>
+    <text x="52" y="322" fill="#6d28d9">→ ns demo-dev</text>
+    <text x="36" y="346">env=prod</text>
+    <text x="52" y="366" fill="#6d28d9">→ overlays/prod</text>
+    <text x="52" y="384" fill="#6d28d9">→ ns demo-prod</text>
+  </g>
+
+  <!-- Hub -->
+  <rect x="300" y="60" width="340" height="330" rx="10" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+  <text x="470" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#4c1d95">platform-lab (허브)</text>
+  <rect x="320" y="98" width="300" height="36" rx="6" fill="#ef7b4d"/>
+  <text x="470" y="121" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Argo CD application-controller</text>
+  <rect x="320" y="142" width="300" height="36" rx="6" fill="#fff1eb" stroke="#ef7b4d"/>
+  <text x="470" y="165" text-anchor="middle" font-size="13" fill="#7c2d12">ApplicationSet: cluster-addons · demo-app</text>
+  <rect x="320" y="188" width="300" height="122" rx="6" fill="#ffffff" stroke="#6d28d9" stroke-dasharray="4 3"/>
+  <text x="470" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">클러스터 Secret (라벨 = 배포 정책)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12">
+    <text x="336" y="234" fill="#0f172a">cluster-dev-1    env=dev</text>
+    <text x="336" y="258" fill="#0f172a">cluster-prod-1   env=prod</text>
+    <text x="336" y="282" fill="#64748b">cluster-dev-2    env=dev</text>
+    <text x="336" y="300" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="11" fill="#64748b">(7장 실험에서 추가)</text>
+  </g>
+  <rect x="320" y="320" width="300" height="56" rx="6" fill="#c7d2fe"/>
+  <text x="470" y="342" text-anchor="middle" font-size="13" font-weight="700" fill="#1e1b4b">Cluster API (플랫폼 05)</text>
+  <text x="470" y="362" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#1e1b4b">&lt;name&gt;-kubeconfig → register-cluster.sh</text>
+  <line x1="470" y1="320" x2="470" y2="312" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Git -> hub -->
+  <text x="280" y="124" text-anchor="middle" font-size="11" fill="#64748b">Pull</text>
+  <line x1="260" y1="135" x2="318" y2="135" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- spokes -->
+  <rect x="690" y="60" width="250" height="100" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="815" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">dev-1 (env=dev)</text>
+  <text x="815" y="110" text-anchor="middle" font-size="12" fill="#334155">애드온: Gateway API · Prom CRD</text>
+  <text x="815" y="132" text-anchor="middle" font-size="12" fill="#334155">demo-dev · dev-demo-app ×1</text>
+
+  <rect x="690" y="180" width="250" height="100" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="815" y="206" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">prod-1 (env=prod)</text>
+  <text x="815" y="230" text-anchor="middle" font-size="12" fill="#334155">애드온: Gateway API · Prom CRD</text>
+  <text x="815" y="252" text-anchor="middle" font-size="12" fill="#334155">demo-prod · prod-demo-app ×3</text>
+
+  <rect x="690" y="300" width="250" height="90" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="815" y="326" text-anchor="middle" font-size="15" font-weight="700" fill="#64748b">dev-2 (env=dev)</text>
+  <text x="815" y="350" text-anchor="middle" font-size="12" fill="#64748b">Secret만 만들면</text>
+  <text x="815" y="370" text-anchor="middle" font-size="12" fill="#64748b">애드온·앱이 자동 배포</text>
+
+  <line x1="640" y1="116" x2="688" y2="110" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="640" y1="230" x2="688" y2="230" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="640" y1="290" x2="688" y2="340" stroke="#334155" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="664" y="176" text-anchor="middle" font-size="11" fill="#64748b">원격</text>
+  <text x="664" y="190" text-anchor="middle" font-size="11" fill="#64748b">API</text>
+
+  <rect x="20" y="410" width="920" height="52" rx="8" fill="#ede9fe"/>
+  <text x="480" y="432" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">새 클러스터 = Secret 1개 → ApplicationSet이 애드온 · 앱 Application을 자동 생성</text>
+  <text x="480" y="452" text-anchor="middle" font-size="12" fill="#64748b">허브가 멈춰도 배포된 앱은 계속 동작 — 멈추는 것은 새 변경 반영과 selfHeal</text>
+</svg>

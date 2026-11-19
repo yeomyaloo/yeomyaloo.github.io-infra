@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">리눅스 권한 12비트 — 특수 비트와 umask</text>
+
+  <!-- 12 bit boxes -->
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#64748b">8진수 4자리 = 특수(1자리) + 소유자 + 그룹 + 기타</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="20" font-weight="700" text-anchor="middle">
+    <rect x="80" y="100" width="180" height="50" rx="6" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="110" y="133" fill="#b91c1c">4</text><text x="170" y="133" fill="#b91c1c">2</text><text x="230" y="133" fill="#b91c1c">1</text>
+    <rect x="280" y="100" width="180" height="50" rx="6" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="310" y="133" fill="#1e3a8a">r</text><text x="370" y="133" fill="#1e3a8a">w</text><text x="430" y="133" fill="#1e3a8a">x</text>
+    <rect x="480" y="100" width="180" height="50" rx="6" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="510" y="133" fill="#1e3a8a">r</text><text x="570" y="133" fill="#1e3a8a">w</text><text x="630" y="133" fill="#1e3a8a">x</text>
+    <rect x="680" y="100" width="180" height="50" rx="6" fill="#dbeafe" stroke="#1e3a8a"/>
+    <text x="710" y="133" fill="#1e3a8a">r</text><text x="770" y="133" fill="#1e3a8a">w</text><text x="830" y="133" fill="#1e3a8a">x</text>
+  </g>
+  <text x="170" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">특수 비트</text>
+  <text x="370" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">소유자 (u)</text>
+  <text x="570" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">그룹 (g)</text>
+  <text x="770" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">기타 (o)</text>
+
+  <!-- mapping arrows: special bit shows on x position -->
+  <path d="M110,150 C110,196 430,196 430,156" fill="none" stroke="#b91c1c" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  <path d="M170,150 C170,208 630,208 630,156" fill="none" stroke="#b91c1c" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  <path d="M230,150 C230,220 830,220 830,156" fill="none" stroke="#b91c1c" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+
+  <!-- three cards -->
+  <rect x="30" y="232" width="290" height="140" rx="10" fill="#f8fafc" stroke="#b91c1c"/>
+  <text x="50" y="260" font-size="16" font-weight="700" fill="#b91c1c">SUID 4000</text>
+  <text x="50" y="284" font-size="13" fill="#334155">실행 중 파일 소유자 권한</text>
+  <text x="50" y="306" font-size="13" fill="#334155">예: /usr/bin/passwd</text>
+  <text x="50" y="336" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">-rwsr-xr-x</text>
+  <text x="50" y="358" font-size="12" fill="#64748b">x 없으면 대문자 S</text>
+
+  <rect x="335" y="232" width="290" height="140" rx="10" fill="#f8fafc" stroke="#b91c1c"/>
+  <text x="355" y="260" font-size="16" font-weight="700" fill="#b91c1c">SGID 2000</text>
+  <text x="355" y="284" font-size="13" fill="#334155">파일: 실행 중 그룹 권한</text>
+  <text x="355" y="306" font-size="13" fill="#334155">디렉터리: 새 파일이 그룹 상속</text>
+  <text x="355" y="336" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">drwxrws---</text>
+  <text x="355" y="358" font-size="12" fill="#64748b">x 없으면 대문자 S</text>
+
+  <rect x="640" y="232" width="290" height="140" rx="10" fill="#f8fafc" stroke="#b91c1c"/>
+  <text x="660" y="260" font-size="16" font-weight="700" fill="#b91c1c">스티키 1000</text>
+  <text x="660" y="284" font-size="13" fill="#334155">디렉터리: 소유자만 자기 파일</text>
+  <text x="660" y="306" font-size="13" fill="#334155">삭제·이름 변경 (예: /tmp)</text>
+  <text x="660" y="336" font-size="14" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">drwxrwxrwt</text>
+  <text x="660" y="358" font-size="12" fill="#64748b">x 없으면 대문자 T</text>
+
+  <!-- umask -->
+  <rect x="30" y="392" width="900" height="110" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="50" y="420" font-size="16" font-weight="700" fill="#0f172a">umask — 최대값에서 해당 비트를 끈다</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="15" fill="#0f172a">
+    <text x="50" y="452">파일   666 (rw-rw-rw-)  − umask 027  →  640 (rw-r-----)</text>
+    <text x="50" y="482">디렉터리 777 (rwxrwxrwx)  − umask 027  →  750 (rwxr-x---)</text>
+  </g>
+  <text x="910" y="452" text-anchor="end" font-size="12" fill="#64748b">새 파일엔 x가 붙지 않음</text>
+  <text x="910" y="482" text-anchor="end" font-size="12" fill="#64748b">점검: find / -perm -4000</text>
+</svg>

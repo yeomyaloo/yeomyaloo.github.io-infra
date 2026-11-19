@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7b42bc"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">상태 관련 명령·블록 — 세 곳 중 어디를 바꾸나</text>
+
+  <!-- column headers -->
+  <rect x="300" y="56" width="200" height="40" rx="8" fill="#f8fafc" stroke="#334155"/>
+  <text x="400" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">코드 (.tf)</text>
+  <rect x="520" y="56" width="200" height="40" rx="8" fill="#7b42bc"/>
+  <text x="620" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">state</text>
+  <rect x="740" y="56" width="190" height="40" rx="8" fill="#e0f2fe" stroke="#2496ed"/>
+  <text x="835" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#075985">실제 인프라</text>
+
+  <!-- row backgrounds -->
+  <g fill="#f8fafc">
+    <rect x="30" y="106" width="900" height="64" rx="6"/>
+    <rect x="30" y="242" width="900" height="64" rx="6"/>
+    <rect x="30" y="378" width="900" height="64" rx="6"/>
+  </g>
+
+  <!-- row 1 import -->
+  <text x="44" y="132" font-size="15" font-weight="700" fill="#0f172a">import 블록 / 명령</text>
+  <text x="44" y="154" font-size="12" fill="#64748b">이미 있는 것을 관리 대상으로</text>
+  <text x="400" y="134" text-anchor="middle" font-size="12" fill="#334155">resource 블록 필요</text>
+  <text x="400" y="152" text-anchor="middle" font-size="12" fill="#334155">(-generate-config-out 로 초안)</text>
+  <path d="M790,138 L676,138" stroke="#7b42bc" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="620" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">추가됨</text>
+  <text x="835" y="156" text-anchor="middle" font-size="12" fill="#334155">그대로 (읽기만)</text>
+
+  <!-- row 2 moved -->
+  <text x="44" y="200" font-size="15" font-weight="700" fill="#0f172a">moved 블록 / state mv</text>
+  <text x="44" y="222" font-size="12" fill="#64748b">이름·주소만 바꾸기</text>
+  <text x="400" y="204" text-anchor="middle" font-size="12" fill="#334155">새 주소로 코드 수정</text>
+  <text x="620" y="198" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">주소만 변경</text>
+  <text x="620" y="218" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">a.old → a.new</text>
+  <text x="835" y="210" text-anchor="middle" font-size="12" fill="#334155">그대로 (재생성 없음)</text>
+
+  <!-- row 3 removed -->
+  <text x="44" y="268" font-size="15" font-weight="700" fill="#0f172a">removed 블록 / state rm</text>
+  <text x="44" y="290" font-size="12" fill="#64748b">관리만 그만두기</text>
+  <text x="400" y="272" text-anchor="middle" font-size="12" fill="#334155">resource 블록 삭제</text>
+  <text x="400" y="290" text-anchor="middle" font-size="12" fill="#334155">(+ removed 블록)</text>
+  <text x="620" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">빠짐</text>
+  <text x="835" y="272" text-anchor="middle" font-size="12" fill="#334155">남아 있음</text>
+  <text x="835" y="290" text-anchor="middle" font-size="11" fill="#64748b">(destroy = false 일 때)</text>
+
+  <!-- row 4 refresh-only -->
+  <text x="44" y="336" font-size="15" font-weight="700" fill="#0f172a">apply -refresh-only</text>
+  <text x="44" y="358" font-size="12" fill="#64748b">state를 현실에 맞추기</text>
+  <text x="400" y="346" text-anchor="middle" font-size="12" fill="#334155">그대로</text>
+  <path d="M790,342 L676,342" stroke="#7b42bc" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="620" y="338" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">갱신됨</text>
+  <text x="835" y="362" text-anchor="middle" font-size="12" fill="#334155">그대로 (읽기만)</text>
+
+  <!-- row 5 replace -->
+  <text x="44" y="404" font-size="15" font-weight="700" fill="#0f172a">apply -replace=주소</text>
+  <text x="44" y="426" font-size="12" fill="#64748b">코드 변경 없이 다시 만들기</text>
+  <text x="400" y="414" text-anchor="middle" font-size="12" fill="#334155">그대로</text>
+  <text x="620" y="414" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">새 ID로 갱신</text>
+  <text x="835" y="404" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">삭제 후 재생성</text>
+  <text x="835" y="424" text-anchor="middle" font-size="11" fill="#64748b">(옛 taint 대체)</text>
+
+  <!-- row 6 drift -->
+  <text x="44" y="472" font-size="15" font-weight="700" fill="#0f172a">drift (누가 손으로 바꿈)</text>
+  <text x="44" y="494" font-size="12" fill="#64748b">다음 plan 이 알아챔</text>
+  <text x="400" y="482" text-anchor="middle" font-size="12" fill="#334155">진실의 원천</text>
+  <text x="620" y="476" text-anchor="middle" font-size="12" fill="#334155">refresh 후 차이 발견</text>
+  <text x="620" y="494" text-anchor="middle" font-size="12" fill="#334155">→ 코드대로 되돌리는 plan</text>
+  <text x="835" y="482" text-anchor="middle" font-size="13" font-weight="700" fill="#b45309">코드와 달라짐</text>
+
+  <text x="480" y="528" text-anchor="middle" font-size="12" fill="#64748b">블록(import·moved·removed)은 plan 으로 미리 보고 코드 리뷰를 거친다 · 명령(state mv/rm, terraform import)은 즉시 state 를 바꾼다</text>
+</svg>

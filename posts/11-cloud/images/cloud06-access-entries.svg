@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">IAM 주체 → Kubernetes 권한 — access entries(권장) vs aws-auth(deprecated)</text>
+
+  <!-- principals -->
+  <text x="130" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">IAM 주체</text>
+  <g font-size="12">
+    <rect x="24" y="82" width="212" height="54" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="130" y="104" text-anchor="middle" font-weight="700" fill="#9a3412">SSO 관리자 역할</text>
+    <text x="130" y="124" text-anchor="middle" fill="#9a3412">(클러스터 생성자)</text>
+    <rect x="24" y="148" width="212" height="54" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="130" y="170" text-anchor="middle" font-weight="700" fill="#9a3412">infra-cloud-eks-viewer 역할</text>
+    <text x="130" y="190" text-anchor="middle" fill="#9a3412">(읽기 전용 사용자)</text>
+    <rect x="24" y="214" width="212" height="54" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+    <text x="130" y="236" text-anchor="middle" font-weight="700" fill="#9a3412">노드 IAM 역할</text>
+    <text x="130" y="256" text-anchor="middle" fill="#9a3412">(관리형 노드그룹)</text>
+  </g>
+
+  <!-- token -->
+  <rect x="270" y="132" width="150" height="86" rx="10" fill="#e2e8f0"/>
+  <text x="345" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">IAM 서명 토큰</text>
+  <text x="345" y="180" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#334155">aws eks get-token</text>
+  <text x="345" y="202" text-anchor="middle" font-size="12" fill="#475569">→ API 서버가 검증</text>
+  <line x1="236" y1="109" x2="268" y2="150" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="236" y1="175" x2="268" y2="175" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="236" y1="241" x2="268" y2="200" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- access entries path -->
+  <rect x="452" y="60" width="484" height="226" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="472" y="86" font-size="15" font-weight="700" fill="#14532d">✔ access entries — EKS API에 저장 (모드 API)</text>
+  <g font-size="12">
+    <rect x="470" y="100" width="190" height="48" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="565" y="120" text-anchor="middle" fill="#14532d">entry: SSO 관리자</text>
+    <text x="565" y="138" text-anchor="middle" fill="#14532d">(생성자 · 명시적으로 보임)</text>
+    <rect x="470" y="158" width="190" height="48" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="565" y="178" text-anchor="middle" fill="#14532d">entry: infra-cloud-eks-viewer</text>
+    <text x="565" y="196" text-anchor="middle" fill="#14532d">STANDARD 타입</text>
+    <rect x="470" y="216" width="190" height="48" rx="8" fill="#ffffff" stroke="#16a34a"/>
+    <text x="565" y="236" text-anchor="middle" fill="#14532d">entry: 노드 역할</text>
+    <text x="565" y="254" text-anchor="middle" fill="#14532d">EC2_LINUX · EKS가 자동 생성</text>
+
+    <rect x="696" y="100" width="222" height="48" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="807" y="120" text-anchor="middle" fill="#14532d">AmazonEKSClusterAdminPolicy</text>
+    <text x="807" y="138" text-anchor="middle" fill="#14532d">범위: cluster</text>
+    <rect x="696" y="158" width="222" height="48" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="807" y="178" text-anchor="middle" fill="#14532d">AmazonEKSViewPolicy</text>
+    <text x="807" y="196" text-anchor="middle" fill="#14532d">범위: namespace demo-dev</text>
+    <rect x="696" y="216" width="222" height="48" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="807" y="236" text-anchor="middle" fill="#14532d">그룹 system:nodes</text>
+    <text x="807" y="254" text-anchor="middle" fill="#14532d">(kubelet 등록)</text>
+  </g>
+  <g stroke="#16a34a" stroke-width="1.5">
+    <line x1="660" y1="124" x2="694" y2="124" marker-end="url(#arrow)"/>
+    <line x1="660" y1="182" x2="694" y2="182" marker-end="url(#arrow)"/>
+    <line x1="660" y1="240" x2="694" y2="240" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="420" y1="168" x2="450" y2="168" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- aws-auth path -->
+  <rect x="452" y="304" width="484" height="110" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="472" y="330" font-size="15" font-weight="700" fill="#64748b">✖ aws-auth ConfigMap — deprecated</text>
+  <g font-size="12" fill="#64748b">
+    <text x="472" y="354">aws-auth의 mapRoles·mapUsers → K8s 그룹 → 직접 만든 RBAC</text>
+    <text x="472" y="376">YAML 한 줄 오타로 관리자·노드까지 잠길 수 있음 · 생성자 권한은 보이지 않음</text>
+    <text x="472" y="398">API 모드에서는 읽지 않음 (API_AND_CONFIG_MAP은 둘 다 읽음)</text>
+  </g>
+  <path d="M345,220 C345,300 380,358 450,358" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowG)"/>
+
+  <!-- bottom -->
+  <rect x="24" y="290" width="300" height="134" rx="10" fill="#eff6ff" stroke="#326ce5"/>
+  <text x="40" y="314" font-size="14" font-weight="700" fill="#1e3a8a">모드 전환은 한 방향</text>
+  <text x="40" y="338" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#1e3a8a">CONFIG_MAP → API_AND_CONFIG_MAP → API</text>
+  <text x="40" y="362" font-size="12" fill="#1e3a8a">새 클러스터는 처음부터 API로 만들고</text>
+  <text x="40" y="384" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#1e3a8a">enable_cluster_creator_</text>
+  <text x="40" y="402" font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#1e3a8a">  admin_permissions = true</text>
+  <text x="480" y="448" text-anchor="middle" font-size="13" fill="#334155">권한 변경은 AWS API로 → CloudTrail에 누가·언제 바꿨는지 남음</text>
+</svg>

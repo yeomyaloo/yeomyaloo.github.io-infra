@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">IPSec — AH/ESP × 전송/터널 모드의 패킷 모양</text>
+
+  <!-- legend -->
+  <rect x="210" y="52" width="18" height="14" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="234" y="64" font-size="12" fill="#334155">암호화 범위 (ESP만)</text>
+  <rect x="420" y="52" width="18" height="14" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+  <text x="444" y="64" font-size="12" fill="#334155">무결성·인증 범위</text>
+  <rect x="600" y="52" width="18" height="14" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="624" y="64" font-size="12" fill="#334155">새로 붙는 헤더</text>
+
+  <!-- original packet -->
+  <text x="30" y="104" font-size="14" font-weight="700" fill="#0f172a">원래 패킷</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="200" y="84" width="120" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="260" y="106" fill="#0f172a">IP 헤더</text>
+    <rect x="320" y="84" width="120" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="380" y="106" fill="#0f172a">TCP/UDP</text>
+    <rect x="440" y="84" width="200" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="540" y="106" fill="#0f172a">데이터</text>
+  </g>
+
+  <!-- AH transport -->
+  <text x="30" y="166" font-size="14" font-weight="700" fill="#0f172a">AH · 전송</text>
+  <text x="30" y="184" font-size="11" fill="#64748b">프로토콜 51</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="200" y="150" width="120" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="260" y="172" fill="#0f172a">IP 헤더</text>
+    <rect x="320" y="150" width="80" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="360" y="172" fill="#0f172a">AH</text>
+    <rect x="400" y="150" width="120" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="460" y="172" fill="#0f172a">TCP/UDP</text>
+    <rect x="520" y="150" width="200" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="620" y="172" fill="#0f172a">데이터</text>
+  </g>
+  <rect x="196" y="146" width="528" height="42" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+  <text x="740" y="166" font-size="12" fill="#b91c1c">IP 헤더까지 인증</text>
+  <text x="740" y="182" font-size="12" fill="#b91c1c">→ NAT와 충돌</text>
+
+  <!-- AH tunnel -->
+  <text x="30" y="236" font-size="14" font-weight="700" fill="#0f172a">AH · 터널</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="200" y="220" width="110" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="255" y="242" fill="#0f172a">새 IP 헤더</text>
+    <rect x="310" y="220" width="70" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="345" y="242" fill="#0f172a">AH</text>
+    <rect x="380" y="220" width="110" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="435" y="242" fill="#0f172a">원래 IP</text>
+    <rect x="490" y="220" width="100" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="540" y="242" fill="#0f172a">TCP/UDP</text>
+    <rect x="590" y="220" width="130" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="655" y="242" fill="#0f172a">데이터</text>
+  </g>
+  <rect x="196" y="216" width="528" height="42" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+  <text x="740" y="242" font-size="12" fill="#334155">암호화 없음</text>
+
+  <!-- ESP transport -->
+  <text x="30" y="306" font-size="14" font-weight="700" fill="#0f172a">ESP · 전송</text>
+  <text x="30" y="324" font-size="11" fill="#64748b">프로토콜 50</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="200" y="290" width="110" height="34" fill="#e2e8f0" stroke="#64748b"/><text x="255" y="312" fill="#0f172a">IP 헤더</text>
+    <rect x="310" y="290" width="80" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="350" y="312" fill="#0f172a">ESP 헤더</text>
+    <rect x="390" y="290" width="100" height="34" fill="#fde68a" stroke="#f59e0b"/><text x="440" y="312" fill="#0f172a">TCP/UDP</text>
+    <rect x="490" y="290" width="130" height="34" fill="#fde68a" stroke="#f59e0b"/><text x="555" y="312" fill="#0f172a">데이터</text>
+    <rect x="620" y="290" width="60" height="34" fill="#fde68a" stroke="#f59e0b"/><text x="650" y="312" font-size="11" fill="#0f172a">트레일러</text>
+    <rect x="680" y="290" width="44" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="702" y="312" font-size="11" fill="#0f172a">ICV</text>
+  </g>
+  <rect x="308" y="286" width="374" height="42" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+  <text x="740" y="306" font-size="12" fill="#334155">IP 헤더는 보호 안 함</text>
+  <text x="740" y="322" font-size="12" fill="#334155">호스트 ↔ 호스트</text>
+
+  <!-- ESP tunnel -->
+  <text x="30" y="376" font-size="14" font-weight="700" fill="#0f172a">ESP · 터널</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="200" y="360" width="100" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="250" y="382" fill="#0f172a">새 IP 헤더</text>
+    <rect x="300" y="360" width="76" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="338" y="382" fill="#0f172a">ESP 헤더</text>
+    <rect x="376" y="360" width="90" height="34" fill="#fde68a" stroke="#f59e0b"/><text x="421" y="382" fill="#0f172a">원래 IP</text>
+    <rect x="466" y="360" width="80" height="34" fill="#fde68a" stroke="#f59e0b"/><text x="506" y="382" font-size="12" fill="#0f172a">TCP/UDP</text>
+    <rect x="546" y="360" width="80" height="34" fill="#fde68a" stroke="#f59e0b"/><text x="586" y="382" fill="#0f172a">데이터</text>
+    <rect x="626" y="360" width="54" height="34" fill="#fde68a" stroke="#f59e0b"/><text x="653" y="382" font-size="11" fill="#0f172a">트레일러</text>
+    <rect x="680" y="360" width="44" height="34" fill="#fee2e2" stroke="#b91c1c"/><text x="702" y="382" font-size="11" fill="#0f172a">ICV</text>
+  </g>
+  <rect x="298" y="356" width="384" height="42" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+  <text x="740" y="376" font-size="12" fill="#334155">원래 주소까지 숨김</text>
+  <text x="740" y="392" font-size="12" fill="#334155">게이트웨이 ↔ 게이트웨이</text>
+
+  <!-- bottom summary -->
+  <rect x="30" y="420" width="900" height="84" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="50" y="446" font-size="14" font-weight="700" fill="#0f172a">외우는 법</text>
+  <text x="50" y="470" font-size="13" fill="#334155">AH = 인증(Authentication)만, ESP = 감싸서(Encapsulating) 암호화 · 전송 모드 = 원래 IP 헤더가 보임, 터널 모드 = 새 IP 헤더</text>
+  <text x="50" y="492" font-size="13" fill="#334155">키 교환 IKE(UDP 500) · NAT 통과는 ESP를 UDP 4500으로 감싸는 NAT-T</text>
+</svg>

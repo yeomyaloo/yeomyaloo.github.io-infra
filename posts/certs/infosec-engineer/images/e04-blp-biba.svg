@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">벨-라파둘라(BLP)와 비바(Biba) — 정확히 거꾸로</text>
+
+  <!-- BLP panel -->
+  <rect x="20" y="56" width="450" height="464" rx="12" fill="#eff6ff" stroke="#2496ed" stroke-width="2"/>
+  <text x="245" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">BLP — 기밀성</text>
+  <circle cx="90" cy="285" r="46" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="90" y="281" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">주체</text>
+  <text x="90" y="300" text-anchor="middle" font-size="13" fill="#334155">2급 취급자</text>
+  <g stroke="#64748b" stroke-width="2">
+    <line x1="126" y1="257" x2="230" y2="150"/>
+    <line x1="136" y1="285" x2="230" y2="285"/>
+    <line x1="126" y1="313" x2="230" y2="420"/>
+  </g>
+  <rect x="230" y="110" width="220" height="80" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="340" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">1급 비밀 (더 높음)</text>
+  <text x="340" y="160" text-anchor="middle" font-size="14"><tspan fill="#dc2626" font-weight="700">읽기 금지</tspan><tspan fill="#334155"> · </tspan><tspan fill="#16a34a" font-weight="700">쓰기 허용</tspan></text>
+  <text x="340" y="180" text-anchor="middle" font-size="12" fill="#64748b">No Read Up (단순 보안 속성)</text>
+  <rect x="230" y="245" width="220" height="80" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="340" y="271" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">2급 비밀 (같음)</text>
+  <text x="340" y="295" text-anchor="middle" font-size="14"><tspan fill="#16a34a" font-weight="700">읽기 허용</tspan><tspan fill="#334155"> · </tspan><tspan fill="#16a34a" font-weight="700">쓰기 허용</tspan></text>
+  <text x="340" y="315" text-anchor="middle" font-size="12" fill="#64748b">강한 * 속성: 같은 등급만</text>
+  <rect x="230" y="380" width="220" height="80" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="340" y="406" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">3급 비밀 (더 낮음)</text>
+  <text x="340" y="430" text-anchor="middle" font-size="14"><tspan fill="#16a34a" font-weight="700">읽기 허용</tspan><tspan fill="#334155"> · </tspan><tspan fill="#dc2626" font-weight="700">쓰기 금지</tspan></text>
+  <text x="340" y="450" text-anchor="middle" font-size="12" fill="#64748b">No Write Down (* 속성)</text>
+  <text x="245" y="500" text-anchor="middle" font-size="14" fill="#1e3a8a">비밀이 아래 등급으로 새어 나가지 않게</text>
+
+  <!-- Biba panel -->
+  <rect x="490" y="56" width="450" height="464" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="715" y="86" text-anchor="middle" font-size="17" font-weight="700" fill="#14532d">Biba — 무결성</text>
+  <circle cx="560" cy="285" r="46" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="560" y="281" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">주체</text>
+  <text x="560" y="300" text-anchor="middle" font-size="13" fill="#334155">중간 등급</text>
+  <g stroke="#64748b" stroke-width="2">
+    <line x1="596" y1="257" x2="700" y2="150"/>
+    <line x1="606" y1="285" x2="700" y2="285"/>
+    <line x1="596" y1="313" x2="700" y2="420"/>
+  </g>
+  <rect x="700" y="110" width="220" height="80" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="810" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">높은 무결성</text>
+  <text x="810" y="160" text-anchor="middle" font-size="14"><tspan fill="#16a34a" font-weight="700">읽기 허용</tspan><tspan fill="#334155"> · </tspan><tspan fill="#dc2626" font-weight="700">쓰기 금지</tspan></text>
+  <text x="810" y="180" text-anchor="middle" font-size="12" fill="#64748b">No Write Up (* 무결성 속성)</text>
+  <rect x="700" y="245" width="220" height="80" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="810" y="271" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">같은 무결성</text>
+  <text x="810" y="295" text-anchor="middle" font-size="14"><tspan fill="#16a34a" font-weight="700">읽기 허용</tspan><tspan fill="#334155"> · </tspan><tspan fill="#16a34a" font-weight="700">쓰기 허용</tspan></text>
+  <text x="810" y="315" text-anchor="middle" font-size="12" fill="#64748b">같은 등급은 자유</text>
+  <rect x="700" y="380" width="220" height="80" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="810" y="406" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">낮은 무결성</text>
+  <text x="810" y="430" text-anchor="middle" font-size="14"><tspan fill="#dc2626" font-weight="700">읽기 금지</tspan><tspan fill="#334155"> · </tspan><tspan fill="#16a34a" font-weight="700">쓰기 허용</tspan></text>
+  <text x="810" y="450" text-anchor="middle" font-size="12" fill="#64748b">No Read Down (단순 무결성 속성)</text>
+  <text x="715" y="500" text-anchor="middle" font-size="14" fill="#14532d">오염된 정보가 위로 올라가지 않게</text>
+</svg>

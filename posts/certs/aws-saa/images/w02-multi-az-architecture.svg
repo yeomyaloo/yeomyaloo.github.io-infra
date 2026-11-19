@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">다중 AZ 3계층 + 큐로 결합도 분리</text>
+  <text x="480" y="54" text-anchor="middle" font-size="13" fill="#64748b">AZ 하나가 사라져도 각 계층에 살아 있는 사본이 있어야 한다</text>
+
+  <!-- Route 53 -->
+  <rect x="310" y="68" width="200" height="38" rx="19" fill="#334155"/>
+  <text x="410" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Route 53 (별칭 레코드)</text>
+
+  <!-- region -->
+  <rect x="16" y="120" width="928" height="420" rx="14" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="30" y="142" font-size="13" font-weight="700" fill="#334155">리전 ap-northeast-2</text>
+
+  <!-- AZ columns -->
+  <rect x="36" y="150" width="360" height="374" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="50" y="512" font-size="13" font-weight="700" fill="#64748b">AZ-a</text>
+  <rect x="416" y="150" width="360" height="374" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="6 4"/>
+  <text x="430" y="512" font-size="13" font-weight="700" fill="#64748b">AZ-b</text>
+
+  <!-- ALB spanning -->
+  <rect x="56" y="156" width="700" height="40" rx="8" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="406" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">ALB — 두 AZ의 퍼블릭 서브넷에 노드 · 대상 상태 확인</text>
+
+  <!-- NAT per AZ -->
+  <rect x="56" y="212" width="150" height="34" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="131" y="234" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">NAT 게이트웨이 a</text>
+  <rect x="436" y="212" width="150" height="34" rx="6" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="511" y="234" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">NAT 게이트웨이 b</text>
+  <text x="224" y="234" font-size="11" fill="#64748b">AZ마다 1개 + AZ별 라우팅</text>
+  <text x="604" y="234" font-size="11" fill="#64748b">AZ마다 1개 + AZ별 라우팅</text>
+
+  <!-- ASG spanning -->
+  <rect x="56" y="262" width="700" height="96" rx="10" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="70" y="282" font-size="12" font-weight="700" fill="#16a34a">ASG (최소 2 · 2개 AZ · ELB 상태 확인 · 대상 추적)</text>
+  <rect x="76" y="294" width="140" height="50" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="146" y="324" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">EC2 웹·앱</text>
+  <rect x="232" y="294" width="140" height="50" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="302" y="324" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">EC2 웹·앱</text>
+  <rect x="456" y="294" width="140" height="50" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="526" y="324" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">EC2 웹·앱</text>
+  <rect x="612" y="294" width="140" height="50" rx="8" fill="#ffffff" stroke="#334155"/>
+  <text x="682" y="324" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">EC2 웹·앱</text>
+
+  <!-- DB -->
+  <rect x="96" y="388" width="240" height="56" rx="10" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+  <text x="216" y="412" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">RDS 기본(Primary)</text>
+  <text x="216" y="432" text-anchor="middle" font-size="12" fill="#312e81">읽기·쓰기</text>
+  <rect x="476" y="388" width="240" height="56" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="596" y="412" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">RDS 대기(Standby)</text>
+  <text x="596" y="432" text-anchor="middle" font-size="12" fill="#312e81">읽기 불가 · 자동 장애 조치</text>
+  <line x1="336" y1="416" x2="472" y2="416" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="404" y="408" text-anchor="middle" font-size="12" font-weight="700" fill="#4f46e5">동기 복제</text>
+  <text x="216" y="470" text-anchor="middle" font-size="11" fill="#64748b">읽기 확장은 읽기 전용 복제본(비동기)</text>
+  <text x="596" y="470" text-anchor="middle" font-size="11" fill="#64748b">AZ-a 장애 → DNS가 대기로 전환</text>
+
+  <!-- queue / workers -->
+  <rect x="790" y="156" width="140" height="56" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="860" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#166534">S3</text>
+  <text x="860" y="200" text-anchor="middle" font-size="11" fill="#166534">리전 서비스 · 3+ AZ</text>
+
+  <rect x="790" y="270" width="140" height="60" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="860" y="296" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">SQS 큐</text>
+  <text x="860" y="316" text-anchor="middle" font-size="11" fill="#78350f">버퍼 · 급증 흡수</text>
+  <line x1="752" y1="300" x2="786" y2="300" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="790" y="370" width="140" height="74" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="860" y="396" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">워커 ASG</text>
+  <text x="860" y="416" text-anchor="middle" font-size="11" fill="#334155">큐 깊이(백로그)로</text>
+  <text x="860" y="432" text-anchor="middle" font-size="11" fill="#334155">독립 확장</text>
+  <line x1="860" y1="330" x2="860" y2="366" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="790" y="470" font-size="11" fill="#64748b">워커가 멈춰도</text>
+  <text x="790" y="486" font-size="11" fill="#64748b">메시지는 큐에 보관</text>
+
+  <!-- bottom -->
+  <rect x="16" y="552" width="928" height="36" rx="8" fill="#fff4e5" stroke="#ff9900"/>
+  <text x="480" y="575" text-anchor="middle" font-size="13" fill="#9a3412">단일 장애 지점 체크: 진입점 · 웹/앱 · DB · 캐시 · NAT 게이트웨이 · (EBS는 AZ 종속 → 스냅샷·EFS)</text>
+  <line x1="410" y1="106" x2="410" y2="152" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

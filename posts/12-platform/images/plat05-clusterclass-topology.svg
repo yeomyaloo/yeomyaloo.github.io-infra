@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">ClusterClass + 토폴로지 = 클러스터용 골든 패스</text>
+
+  <!-- col1 ClusterClass -->
+  <rect x="20" y="56" width="280" height="374" rx="10" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+  <text x="160" y="82" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="15" font-weight="700" fill="#4c1d95">ClusterClass quick-start</text>
+  <text x="160" y="102" text-anchor="middle" font-size="13" fill="#64748b">플랫폼 팀이 한 번 작성</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#1e1b4b">
+    <rect x="36" y="116" width="248" height="34" rx="6" fill="#ffffff" stroke="#a78bfa"/>
+    <text x="160" y="138">KubeadmControlPlaneTemplate</text>
+    <rect x="36" y="158" width="248" height="34" rx="6" fill="#ffffff" stroke="#a78bfa"/>
+    <text x="160" y="180">DevClusterTemplate</text>
+    <rect x="36" y="200" width="248" height="34" rx="6" fill="#ffffff" stroke="#a78bfa"/>
+    <text x="160" y="222">DevMachineTemplate</text>
+    <rect x="36" y="242" width="248" height="34" rx="6" fill="#ffffff" stroke="#a78bfa"/>
+    <text x="160" y="264">KubeadmConfigTemplate</text>
+    <rect x="36" y="284" width="248" height="34" rx="6" fill="#c7d2fe"/>
+    <text x="160" y="306">workers: default-worker</text>
+  </g>
+  <rect x="36" y="326" width="248" height="90" rx="6" fill="#6d28d9"/>
+  <text x="160" y="350" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">variables (사용자가 고를 값)</text>
+  <text x="160" y="370" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#ede9fe">podSecurityStandard ...</text>
+  <text x="160" y="394" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">patches</text>
+  <text x="160" y="408" text-anchor="middle" font-size="11" fill="#ede9fe">변수 값을 템플릿 필드에 주입</text>
+
+  <!-- col2 Clusters -->
+  <rect x="330" y="56" width="260" height="176" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="460" y="82" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="15" font-weight="700" fill="#1e3a8a">Cluster dev-1</text>
+  <text x="460" y="102" text-anchor="middle" font-size="12" fill="#64748b">사용자가 작성 (spec.topology)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="350" y="128">classRef: quick-start</text>
+    <text x="350" y="150">version: v1.36.4</text>
+    <text x="350" y="172">controlPlane.replicas: 1</text>
+    <text x="350" y="194">md-0 replicas: 1</text>
+    <text x="350" y="216">PSS enforce: baseline</text>
+  </g>
+
+  <rect x="330" y="252" width="260" height="162" rx="10" fill="#eff6ff" stroke="#326ce5" stroke-width="2"/>
+  <text x="460" y="278" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="15" font-weight="700" fill="#1e3a8a">Cluster prod-1</text>
+  <text x="460" y="298" text-anchor="middle" font-size="12" fill="#64748b">같은 class, 값만 다름</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="350" y="324">classRef: quick-start</text>
+    <text x="350" y="346">version: v1.36.4</text>
+    <text x="350" y="368">controlPlane.replicas: 1</text>
+    <text x="350" y="390">md-0 replicas: 2</text>
+  </g>
+
+  <!-- arrows col1 -> col2 -->
+  <line x1="300" y1="140" x2="328" y2="140" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="300" y1="330" x2="328" y2="330" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- col3 generated -->
+  <text x="795" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">토폴로지 컨트롤러가 생성·갱신</text>
+  <rect x="650" y="80" width="290" height="152" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="795" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">dev-1 하위 리소스 (자동 생성)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#0f172a">
+    <rect x="666" y="112" width="258" height="28" rx="6" fill="#e2e8f0"/>
+    <text x="795" y="131">KubeadmControlPlane (1)</text>
+    <rect x="666" y="146" width="258" height="28" rx="6" fill="#e2e8f0"/>
+    <text x="795" y="165">DevCluster</text>
+    <rect x="666" y="180" width="258" height="28" rx="6" fill="#86efac"/>
+    <text x="795" y="199">MachineDeployment md-0</text>
+    <text x="795" y="224" fill="#334155">└ MachineSet → Machine ×1</text>
+  </g>
+
+  <rect x="650" y="252" width="290" height="162" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="795" y="276" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">prod-1 하위 리소스 (자동 생성)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" text-anchor="middle" fill="#0f172a">
+    <rect x="666" y="288" width="258" height="28" rx="6" fill="#e2e8f0"/>
+    <text x="795" y="307">KubeadmControlPlane (1)</text>
+    <rect x="666" y="322" width="258" height="28" rx="6" fill="#e2e8f0"/>
+    <text x="795" y="341">DevCluster</text>
+    <rect x="666" y="356" width="258" height="28" rx="6" fill="#86efac"/>
+    <text x="795" y="375">MachineDeployment md-0</text>
+    <text x="795" y="402" fill="#334155">└ MachineSet → Machine ×2</text>
+  </g>
+
+  <line x1="590" y1="150" x2="648" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="590" y1="333" x2="648" y2="333" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="480" y="462" text-anchor="middle" font-size="14" fill="#334155">ClusterClass를 고치면 그 class를 쓰는 모든 클러스터로 변경이 롤아웃된다 — 표준은 한 곳에서</text>
+</svg>

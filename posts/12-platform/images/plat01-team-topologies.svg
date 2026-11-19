@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6d28d9"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">팀 토폴로지 — 네 가지 팀 유형과 상호작용 모드</text>
+
+  <!-- Stream-aligned teams -->
+  <g font-size="15">
+    <rect x="180" y="80" width="420" height="50" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="196" y="102" fill="#78350f" font-weight="700">스트림 정렬 팀 — team-a-devs</text>
+    <rect x="180" y="145" width="420" height="50" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="196" y="176" fill="#78350f" font-weight="700">스트림 정렬 팀 — team-b</text>
+    <rect x="180" y="210" width="420" height="50" rx="8" fill="#fde68a" stroke="#f59e0b"/>
+    <text x="196" y="241" fill="#78350f" font-weight="700">스트림 정렬 팀 — team-c</text>
+  </g>
+  <g font-size="12" fill="#92400e">
+    <text x="196" y="121">gitops-demo-app, orders-api</text>
+  </g>
+  <!-- value flow arrows -->
+  <line x1="604" y1="105" x2="636" y2="105" stroke="#f59e0b" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="604" y1="170" x2="636" y2="170" stroke="#f59e0b" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="604" y1="235" x2="636" y2="235" stroke="#f59e0b" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="620" y="280" text-anchor="middle" font-size="12" fill="#92400e">가치 흐름</text>
+
+  <!-- Enabling team -->
+  <rect x="30" y="80" width="110" height="180" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <g font-size="13" text-anchor="middle">
+    <text x="85" y="112" font-weight="700" fill="#14532d" font-size="15">활성화 팀</text>
+    <text x="85" y="132" fill="#166534">(Enabling)</text>
+    <text x="85" y="172" fill="#166534">보안 챔피언이</text>
+    <text x="85" y="192" fill="#166534">Kyverno 도입을</text>
+    <text x="85" y="212" fill="#166534">코칭한 뒤 빠짐</text>
+  </g>
+  <line x1="142" y1="105" x2="176" y2="105" stroke="#16a34a" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowG)"/>
+  <line x1="142" y1="235" x2="176" y2="235" stroke="#16a34a" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowG)"/>
+
+  <!-- Complicated subsystem -->
+  <rect x="30" y="285" width="110" height="70" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+  <g font-size="13" text-anchor="middle">
+    <text x="85" y="306" font-weight="700" fill="#7f1d1d">복잡한 하위</text>
+    <text x="85" y="324" font-weight="700" fill="#7f1d1d">시스템 팀</text>
+    <text x="85" y="344" fill="#991b1b">(LLM 서빙)</text>
+  </g>
+  <line x1="142" y1="300" x2="196" y2="264" stroke="#334155" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+  <!-- Platform team -->
+  <rect x="160" y="370" width="440" height="90" rx="10" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+  <text x="380" y="402" text-anchor="middle" font-size="17" font-weight="700" fill="#4c1d95">플랫폼 팀 — platform-admins</text>
+  <text x="380" y="426" text-anchor="middle" font-size="13" fill="#5b21b6">Backstage · Argo CD · Crossplane · Cluster API</text>
+  <text x="380" y="446" text-anchor="middle" font-size="13" fill="#5b21b6">= 셀프서비스로 쓰는 내부 제품 (IDP)</text>
+
+  <!-- X-as-a-Service arrows -->
+  <line x1="230" y1="366" x2="230" y2="266" stroke="#6d28d9" stroke-width="3" marker-end="url(#arrowP)"/>
+  <line x1="320" y1="366" x2="320" y2="266" stroke="#6d28d9" stroke-width="3" marker-end="url(#arrowP)"/>
+  <text x="340" y="312" font-size="13" font-weight="700" fill="#4c1d95">X-as-a-Service</text>
+  <text x="340" y="330" font-size="12" fill="#5b21b6">템플릿·API를 셀프서비스로 소비</text>
+
+  <!-- Legend -->
+  <rect x="660" y="80" width="280" height="300" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="800" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">상호작용 모드</text>
+
+  <rect x="676" y="134" width="50" height="22" rx="4" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="738" y="146" font-size="14" font-weight="700" fill="#312e81">협업</text>
+  <text x="738" y="164" font-size="12" fill="#475569">기간 한정, 함께 발견</text>
+  <text x="738" y="182" font-size="12" fill="#475569">예) 첫 골든 패스 페어링</text>
+
+  <line x1="676" y1="222" x2="726" y2="222" stroke="#6d28d9" stroke-width="3" marker-end="url(#arrowP)"/>
+  <text x="738" y="216" font-size="14" font-weight="700" fill="#4c1d95">X-as-a-Service</text>
+  <text x="738" y="234" font-size="12" fill="#475569">기본 모드, 경계가 명확</text>
+  <text x="738" y="252" font-size="12" fill="#475569">예) Create 버튼으로 서비스 생성</text>
+
+  <line x1="676" y1="292" x2="726" y2="292" stroke="#16a34a" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowG)"/>
+  <text x="738" y="286" font-size="14" font-weight="700" fill="#14532d">촉진</text>
+  <text x="738" y="304" font-size="12" fill="#475569">역량을 전수하고 빠짐</text>
+  <text x="738" y="322" font-size="12" fill="#475569">예) SLO 작성 워크숍</text>
+
+  <text x="800" y="360" text-anchor="middle" font-size="12" fill="#64748b">점선 검정: 전문 기능을 서비스로 제공</text>
+
+  <!-- footer -->
+  <rect x="30" y="476" width="900" height="32" rx="6" fill="#ede9fe"/>
+  <text x="480" y="497" text-anchor="middle" font-size="14" fill="#4c1d95">플랫폼 팀의 목표 = 스트림 정렬 팀의 외재적 인지 부하를 흡수해 가치 흐름에만 집중하게 하기</text>
+</svg>

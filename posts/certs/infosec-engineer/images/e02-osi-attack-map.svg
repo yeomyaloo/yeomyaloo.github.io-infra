@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">계층별로 묶기 — 프로토콜 · 공격(원리) · 방어</text>
+
+  <!-- headers -->
+  <text x="110" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">OSI 계층</text>
+  <text x="330" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#64748b">대표 프로토콜·장비</text>
+  <text x="590" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">공격 (무엇을 악용)</text>
+  <text x="830" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#16a34a">대표 방어</text>
+
+  <!-- row 7 -->
+  <rect x="30" y="80" width="160" height="80" rx="8" fill="#1e3a8a"/>
+  <text x="110" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">7 응용</text>
+  <text x="110" y="138" text-anchor="middle" font-size="11" fill="#dbeafe">(5·6 세션·표현 포함)</text>
+  <rect x="200" y="80" width="260" height="80" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="330" y="114" text-anchor="middle" font-size="13" fill="#0f172a">HTTP · DNS · SMTP · FTP</text>
+  <text x="330" y="136" text-anchor="middle" font-size="12" fill="#334155">프록시 · WAF</text>
+  <rect x="470" y="80" width="240" height="80" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="590" y="106" text-anchor="middle" font-size="13" fill="#0f172a">Slowloris(느린 헤더)</text>
+  <text x="590" y="126" text-anchor="middle" font-size="13" fill="#0f172a">RUDY(느린 본문) · GET 플러딩</text>
+  <text x="590" y="146" text-anchor="middle" font-size="13" fill="#0f172a">DNS 스푸핑 · 세션 하이재킹</text>
+  <rect x="720" y="80" width="210" height="80" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="825" y="108" text-anchor="middle" font-size="13" fill="#0f172a">타임아웃 · 레이트 리밋</text>
+  <text x="825" y="130" text-anchor="middle" font-size="13" fill="#0f172a">DNSSEC · TLS</text>
+
+  <!-- row 4 -->
+  <rect x="30" y="172" width="160" height="80" rx="8" fill="#1e3a8a"/>
+  <text x="110" y="218" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">4 전송</text>
+  <rect x="200" y="172" width="260" height="80" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="330" y="206" text-anchor="middle" font-size="13" fill="#0f172a">TCP · UDP</text>
+  <text x="330" y="228" text-anchor="middle" font-size="12" fill="#334155">L4 스위치 · 상태 추적 방화벽</text>
+  <rect x="470" y="172" width="240" height="80" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="590" y="198" text-anchor="middle" font-size="13" fill="#0f172a">SYN 플러딩(백로그 고갈)</text>
+  <text x="590" y="218" text-anchor="middle" font-size="13" fill="#0f172a">Land(출발지 = 목적지)</text>
+  <text x="590" y="238" text-anchor="middle" font-size="13" fill="#0f172a">포트 스캔 · UDP 플러딩</text>
+  <rect x="720" y="172" width="210" height="80" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="825" y="200" text-anchor="middle" font-size="13" fill="#0f172a">SYN 쿠키 · 백로그 확대</text>
+  <text x="825" y="222" text-anchor="middle" font-size="13" fill="#0f172a">IDS/IPS · 임계치</text>
+
+  <!-- row 3 -->
+  <rect x="30" y="264" width="160" height="80" rx="8" fill="#1e3a8a"/>
+  <text x="110" y="310" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">3 네트워크</text>
+  <rect x="200" y="264" width="260" height="80" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="330" y="298" text-anchor="middle" font-size="13" fill="#0f172a">IP · ICMP · IPSec</text>
+  <text x="330" y="320" text-anchor="middle" font-size="12" fill="#334155">라우터 · 패킷 필터</text>
+  <rect x="470" y="264" width="240" height="80" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="590" y="290" text-anchor="middle" font-size="13" fill="#0f172a">스머프(브로드캐스트 증폭)</text>
+  <text x="590" y="310" text-anchor="middle" font-size="13" fill="#0f172a">Ping of Death · 티어드롭</text>
+  <text x="590" y="330" text-anchor="middle" font-size="13" fill="#0f172a">IP 스푸핑 · 반사·증폭</text>
+  <rect x="720" y="264" width="210" height="80" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="825" y="292" text-anchor="middle" font-size="13" fill="#0f172a">directed broadcast 차단</text>
+  <text x="825" y="314" text-anchor="middle" font-size="13" fill="#0f172a">유입 필터링(BCP 38)</text>
+
+  <!-- row 2 -->
+  <rect x="30" y="356" width="160" height="80" rx="8" fill="#1e3a8a"/>
+  <text x="110" y="402" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">2 데이터링크</text>
+  <rect x="200" y="356" width="260" height="80" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="330" y="390" text-anchor="middle" font-size="13" fill="#0f172a">Ethernet · ARP · 802.1Q · 802.11</text>
+  <text x="330" y="412" text-anchor="middle" font-size="12" fill="#334155">스위치 · 브리지 · AP</text>
+  <rect x="470" y="356" width="240" height="80" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="590" y="386" text-anchor="middle" font-size="13" fill="#0f172a">ARP 스푸핑(캐시 오염 → MITM)</text>
+  <text x="590" y="408" text-anchor="middle" font-size="13" fill="#0f172a">MAC 플러딩(스위치 재밍)</text>
+  <text x="590" y="428" text-anchor="middle" font-size="12" fill="#334155">무선: 이블 트윈 · Deauth</text>
+  <rect x="720" y="356" width="210" height="80" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="825" y="380" text-anchor="middle" font-size="13" fill="#0f172a">DAI + DHCP 스누핑</text>
+  <text x="825" y="402" text-anchor="middle" font-size="13" fill="#0f172a">포트 보안 · 802.1X</text>
+  <text x="825" y="424" text-anchor="middle" font-size="13" fill="#0f172a">WPA3(SAE · PMF)</text>
+
+  <!-- row 1 -->
+  <rect x="30" y="448" width="160" height="56" rx="8" fill="#334155"/>
+  <text x="110" y="482" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1 물리</text>
+  <rect x="200" y="448" width="260" height="56" rx="8" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="330" y="481" text-anchor="middle" font-size="13" fill="#0f172a">케이블 · 무선 신호 · 허브</text>
+  <rect x="470" y="448" width="240" height="56" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="590" y="481" text-anchor="middle" font-size="13" fill="#0f172a">도청 · 전파 방해</text>
+  <rect x="720" y="448" width="210" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="825" y="481" text-anchor="middle" font-size="13" fill="#0f172a">물리 통제 · 암호화</text>
+
+  <text x="480" y="526" text-anchor="middle" font-size="12" fill="#64748b">공격을 구분하는 열쇠: 위조한 출발지가 누구이고 목적지가 어디인가</text>
+</svg>

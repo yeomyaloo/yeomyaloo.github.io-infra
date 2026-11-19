@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Kubestronaut 안에서 KCNA의 위치</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">모든 자격이 "동시에 유효"해야 칭호 부여 · 2026-11-19 LF·CNCF 페이지 기준</text>
+
+  <!-- level labels -->
+  <text x="40" y="128" font-size="14" font-weight="700" fill="#334155">객관식</text>
+  <text x="40" y="148" font-size="12" fill="#64748b">개념·용어</text>
+  <text x="40" y="288" font-size="14" font-weight="700" fill="#334155">실기</text>
+  <text x="40" y="308" font-size="12" fill="#64748b">명령줄 과제</text>
+  <line x1="130" y1="210" x2="920" y2="210" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- KCNA -->
+  <rect x="150" y="96" width="250" height="84" rx="10" fill="#326ce5"/>
+  <text x="275" y="128" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">KCNA (이 탭)</text>
+  <text x="275" y="152" text-anchor="middle" font-size="13" fill="#e8eefc">입문 · 60문항 · 90분 · 75%</text>
+  <text x="275" y="170" text-anchor="middle" font-size="12" fill="#e8eefc">선수 자격 없음</text>
+
+  <!-- KCSA -->
+  <rect x="560" y="96" width="250" height="84" rx="10" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="685" y="128" text-anchor="middle" font-size="20" font-weight="700" fill="#1e3a8a">KCSA</text>
+  <text x="685" y="152" text-anchor="middle" font-size="13" fill="#334155">보안 입문 · 객관식</text>
+  <text x="685" y="170" text-anchor="middle" font-size="12" fill="#64748b">본편 Day 66~73</text>
+
+  <!-- practical row -->
+  <rect x="150" y="250" width="200" height="76" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="250" y="282" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">CKAD</text>
+  <text x="250" y="306" text-anchor="middle" font-size="12" fill="#64748b">앱 개발자 · A00~A07</text>
+
+  <rect x="380" y="250" width="200" height="76" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="480" y="282" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">CKA</text>
+  <text x="480" y="306" text-anchor="middle" font-size="12" fill="#64748b">관리자 · K00~K08</text>
+
+  <rect x="610" y="250" width="200" height="76" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="710" y="282" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">CKS</text>
+  <text x="710" y="306" text-anchor="middle" font-size="12" fill="#64748b">유효한 CKA 필요 · S00~S08</text>
+  <line x1="580" y1="288" x2="604" y2="288" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="830" y="250" width="100" height="76" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="880" y="282" text-anchor="middle" font-size="17" font-weight="700" fill="#64748b">CKNE</text>
+  <text x="880" y="304" text-anchor="middle" font-size="11" fill="#64748b">2027-02-15</text>
+  <text x="880" y="318" text-anchor="middle" font-size="11" fill="#64748b">부터 추가</text>
+
+  <!-- CARE renewal arrows -->
+  <path d="M250,250 C250,215 260,200 262,186" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowg)"/>
+  <path d="M410,250 C400,225 385,205 378,186" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowg)"/>
+  <text x="418" y="226" font-size="12" font-weight="700" fill="#16a34a">CKA·CKAD 합격 → KCNA 자동 갱신(CARE)</text>
+  <path d="M710,250 C710,215 700,200 690,186" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrowg)"/>
+  <text x="716" y="232" font-size="12" font-weight="700" fill="#16a34a">CKS 합격 → KCSA 갱신</text>
+
+  <!-- bottom -->
+  <rect x="150" y="360" width="780" height="96" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="170" y="390" font-size="15" font-weight="700" fill="#0f172a">추천 순서 (이 시리즈 기준)</text>
+  <text x="170" y="416" font-size="13" fill="#334155">KCNA로 지도 그리기 → CKA → CKAD → CKS → KCSA. 객관식을 먼저 따 두면 실기 합격 때 자동 갱신된다.</text>
+  <text x="170" y="440" font-size="13" fill="#334155">각 자격 유효 기간 2년 — 다섯(이후 여섯) 개가 겹치는 기간을 일정표로 확인할 것</text>
+</svg>

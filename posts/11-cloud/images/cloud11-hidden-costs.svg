@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">켜 두기만 해도 나가는 돈 — 유휴 infra-cloud-eks 한 달</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#64748b">서울(ap-northeast-2) 온디맨드 · 2026-11-19 조회 · 변동 가능 · 처리량(GB·LCU) 제외</text>
+
+  <!-- axis -->
+  <line x1="260" y1="76" x2="260" y2="352" stroke="#94a3b8"/>
+
+  <g font-size="14" fill="#0f172a">
+    <text x="20" y="104">EKS 컨트롤 플레인 ($0.10/h)</text>
+    <text x="20" y="148">t3.medium 노드 2대</text>
+    <text x="20" y="192">NAT 게이트웨이 1개</text>
+    <text x="20" y="236">ALB 1개 ($0.0225/h)</text>
+    <text x="20" y="280">퍼블릭 IPv4 4개</text>
+    <text x="20" y="324">EBS gp3 약 50GiB</text>
+  </g>
+
+  <!-- bars: 7.5 px per $ -->
+  <rect x="260" y="84" width="548" height="28" rx="4" fill="#ff9900"/>
+  <text x="818" y="104" font-size="14" font-weight="700" fill="#9a3412">$73</text>
+  <rect x="260" y="128" width="570" height="28" rx="4" fill="#cbd5e1"/>
+  <text x="840" y="148" font-size="14" font-weight="700" fill="#334155">$76</text>
+  <rect x="260" y="172" width="323" height="28" rx="4" fill="#ff9900"/>
+  <text x="593" y="192" font-size="14" font-weight="700" fill="#9a3412">$43 (+ GB당 $0.059)</text>
+  <rect x="260" y="216" width="120" height="28" rx="4" fill="#ff9900"/>
+  <text x="390" y="236" font-size="14" font-weight="700" fill="#9a3412">$16 (+ LCU)</text>
+  <rect x="260" y="260" width="113" height="28" rx="4" fill="#ff9900"/>
+  <text x="383" y="280" font-size="14" font-weight="700" fill="#9a3412">$15 ($0.005/h 주소당)</text>
+  <rect x="260" y="304" width="38" height="28" rx="4" fill="#ff9900"/>
+  <text x="308" y="324" font-size="14" font-weight="700" fill="#9a3412">$5</text>
+
+  <!-- total -->
+  <rect x="620" y="232" width="320" height="100" rx="12" fill="#fff4e5" stroke="#ff9900" stroke-width="2"/>
+  <text x="780" y="266" text-anchor="middle" font-size="18" font-weight="700" fill="#9a3412">합계 약 $228 / 월</text>
+  <text x="780" y="292" text-anchor="middle" font-size="14" fill="#9a3412">≈ 시간당 $0.31</text>
+  <text x="780" y="316" text-anchor="middle" font-size="12" fill="#b91c1c">연장 지원 버전이면 EKS만 $438</text>
+
+  <!-- legend -->
+  <rect x="260" y="362" width="18" height="14" rx="3" fill="#ff9900"/>
+  <text x="286" y="374" font-size="13" fill="#334155">노드를 0대로 줄여도 계속 과금</text>
+  <rect x="520" y="362" width="18" height="14" rx="3" fill="#cbd5e1"/>
+  <text x="546" y="374" font-size="13" fill="#334155">노드를 줄이면 사라짐</text>
+
+  <!-- leftovers -->
+  <line x1="20" y1="396" x2="940" y2="396" stroke="#e2e8f0"/>
+  <text x="20" y="422" font-size="16" font-weight="700" fill="#0f172a">삭제 후에도 남기 쉬운 것 — 6장에서 반드시 확인</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="20" y="436" width="220" height="36" rx="18" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="130" y="459" fill="#7f1d1d">고아 EBS 볼륨 · 스냅샷</text>
+    <rect x="253" y="436" width="220" height="36" rx="18" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="363" y="459" fill="#7f1d1d">남은 ALB · 타깃 그룹</text>
+    <rect x="486" y="436" width="220" height="36" rx="18" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="596" y="459" fill="#7f1d1d">GuardDuty VPC 엔드포인트</text>
+    <rect x="719" y="436" width="220" height="36" rx="18" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="829" y="459" fill="#7f1d1d">미연결 EIP · ENI</text>
+    <rect x="20" y="484" width="220" height="36" rx="18" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="130" y="507" fill="#78350f">로그 그룹 (만료 없음)</text>
+    <rect x="253" y="484" width="220" height="36" rx="18" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="363" y="507" fill="#78350f">ECR 이미지</text>
+    <rect x="486" y="484" width="220" height="36" rx="18" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="596" y="507" fill="#78350f">KMS 키 · AMP/AMG</text>
+    <rect x="719" y="484" width="220" height="36" rx="18" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="829" y="507" fill="#78350f">다른 리전의 자원</text>
+  </g>
+</svg>

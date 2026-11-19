@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">정보보안기사 시험 구조 (확인일 2026-11-19)</text>
+  <text x="480" y="60" text-anchor="middle" font-size="13" fill="#64748b">관련 부처 과학기술정보통신부 · 시행 기관 한국방송통신전파진흥원(KCA) · 접수 cq.or.kr</text>
+
+  <!-- 필기 -->
+  <rect x="30" y="84" width="520" height="430" rx="12" fill="#f8fafc" stroke="#1e3a8a" stroke-width="2"/>
+  <rect x="30" y="84" width="520" height="44" rx="12" fill="#1e3a8a"/>
+  <rect x="30" y="112" width="520" height="16" fill="#1e3a8a"/>
+  <text x="290" y="113" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1단계 필기 — CBT, 객관식 4지 택일</text>
+
+  <rect x="54" y="146" width="472" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="74" y="175" font-size="15" font-weight="700" fill="#1e3a8a">①</text>
+  <text x="100" y="175" font-size="15" font-weight="700" fill="#0f172a">시스템 보안</text>
+  <text x="506" y="175" text-anchor="end" font-size="14" fill="#334155">20문항 · E01</text>
+
+  <rect x="54" y="200" width="472" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="74" y="229" font-size="15" font-weight="700" fill="#1e3a8a">②</text>
+  <text x="100" y="229" font-size="15" font-weight="700" fill="#0f172a">네트워크 보안</text>
+  <text x="506" y="229" text-anchor="end" font-size="14" fill="#334155">20문항 · E02</text>
+
+  <rect x="54" y="254" width="472" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="74" y="283" font-size="15" font-weight="700" fill="#1e3a8a">③</text>
+  <text x="100" y="283" font-size="15" font-weight="700" fill="#0f172a">애플리케이션 보안</text>
+  <text x="506" y="283" text-anchor="end" font-size="14" fill="#334155">20문항 · E03</text>
+
+  <rect x="54" y="308" width="472" height="46" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="74" y="337" font-size="15" font-weight="700" fill="#1e3a8a">④</text>
+  <text x="100" y="337" font-size="15" font-weight="700" fill="#0f172a">정보보안 일반 (암호·인증·접근통제)</text>
+  <text x="506" y="337" text-anchor="end" font-size="14" fill="#334155">20문항 · E04</text>
+
+  <rect x="54" y="362" width="472" height="46" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="74" y="391" font-size="15" font-weight="700" fill="#b91c1c">⑤</text>
+  <text x="100" y="391" font-size="15" font-weight="700" fill="#0f172a">정보보안 관리 및 법규</text>
+  <text x="506" y="391" text-anchor="end" font-size="14" fill="#334155">20문항 · E05</text>
+
+  <text x="290" y="440" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">총 100문항 · 150분</text>
+  <text x="290" y="466" text-anchor="middle" font-size="14" fill="#334155">합격: 과목당 40점 이상 + 평균 60점 이상</text>
+  <text x="290" y="492" text-anchor="middle" font-size="13" fill="#b91c1c">한 과목이라도 40점 미만이면 불합격 (⑤ 과락 주의)</text>
+
+  <!-- 화살표 -->
+  <line x1="550" y1="300" x2="606" y2="300" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="578" y="288" text-anchor="middle" font-size="11" fill="#64748b">합격</text>
+
+  <!-- 서류 -->
+  <rect x="612" y="84" width="318" height="96" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="771" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">응시자격 서류 제출</text>
+  <text x="771" y="140" text-anchor="middle" font-size="13" fill="#334155">기간 안에 내야 필기 합격 확정</text>
+  <text x="771" y="162" text-anchor="middle" font-size="12" fill="#64748b">근거: 국가기술자격법 시행령 [별표 4의2]</text>
+  <line x1="771" y1="180" x2="771" y2="210" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 실기 -->
+  <rect x="612" y="214" width="318" height="300" rx="12" fill="#f8fafc" stroke="#1e3a8a" stroke-width="2"/>
+  <rect x="612" y="214" width="318" height="44" rx="12" fill="#1e3a8a"/>
+  <rect x="612" y="242" width="318" height="16" fill="#1e3a8a"/>
+  <text x="771" y="243" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2단계 실기 — 필답형</text>
+  <text x="771" y="290" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">정보보안 실무 · 3시간</text>
+  <rect x="636" y="306" width="270" height="36" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="771" y="329" text-anchor="middle" font-size="14" fill="#0f172a">단답형 — 용어·명령·숫자</text>
+  <rect x="636" y="350" width="270" height="36" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="771" y="373" text-anchor="middle" font-size="14" fill="#0f172a">서술형 — 원리·원인·대책</text>
+  <rect x="636" y="394" width="270" height="36" rx="8" fill="#dbeafe" stroke="#1e3a8a"/>
+  <text x="771" y="417" text-anchor="middle" font-size="14" fill="#0f172a">실무형 — 로그·설정 분석</text>
+  <text x="771" y="462" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">합격: 60점 이상 / 100점</text>
+  <text x="771" y="488" text-anchor="middle" font-size="12" fill="#64748b">유형별 배점은 회차 공고 확인 · E06</text>
+
+  <!-- 하단 -->
+  <rect x="30" y="532" width="900" height="50" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="480" y="553" text-anchor="middle" font-size="13" fill="#334155">필기 합격 후 2년간 필기 면제 · 2026년 정보보안 분야 연 3회(제1·2·4회)</text>
+  <text x="480" y="572" text-anchor="middle" font-size="13" fill="#334155">출제기준 2027.1.1부터 개정(형식 동일, 클라우드·API·최신 동향 추가)</text>
+</svg>

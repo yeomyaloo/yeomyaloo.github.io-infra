@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#bfdbfe"/>
+      <stop offset="1" stop-color="#b91c1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">격리 기법 스펙트럼 — 무엇을 아직 공유하는가</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">오른쪽으로 갈수록 격리는 강해지고 비용(자원·운영 부담)도 커진다</text>
+
+  <rect x="40" y="84" width="880" height="12" rx="6" fill="url(#grad)"/>
+  <text x="40" y="116" font-size="12" fill="#64748b">약함 · 소프트 멀티테넌시</text>
+  <text x="920" y="116" text-anchor="end" font-size="12" fill="#7f1d1d">강함 · 하드 멀티테넌시</text>
+
+  <g font-size="12">
+    <rect x="40" y="130" width="135" height="170" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="107" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">네임스페이스</text>
+    <text x="107" y="176" text-anchor="middle" font-size="12" fill="#1e3a8a">+ RBAC · 쿼터</text>
+    <text x="52" y="204" fill="#334155">이름 · 권한 ·</text>
+    <text x="52" y="222" fill="#334155">자원량 분리</text>
+    <text x="52" y="262" fill="#64748b">공유:</text>
+    <text x="52" y="280" fill="#b91c1c">노드·커널·네트워크</text>
+
+    <rect x="189" y="130" width="135" height="170" rx="10" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="256" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">NetworkPolicy</text>
+    <text x="256" y="176" text-anchor="middle" font-size="12" fill="#1e3a8a">· 서비스 메시</text>
+    <text x="201" y="204" fill="#334155">L3/L4(·L7) 통신</text>
+    <text x="201" y="222" fill="#334155">분리, mTLS</text>
+    <text x="201" y="262" fill="#64748b">공유:</text>
+    <text x="201" y="280" fill="#b91c1c">노드 · 커널</text>
+
+    <rect x="338" y="130" width="135" height="170" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="405" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">샌드박스 런타임</text>
+    <text x="405" y="176" text-anchor="middle" font-size="12" fill="#312e81">gVisor</text>
+    <text x="350" y="204" fill="#334155">사용자 공간 커널이</text>
+    <text x="350" y="222" fill="#334155">syscall을 가로챔</text>
+    <text x="350" y="262" fill="#64748b">공유:</text>
+    <text x="350" y="280" fill="#b91c1c">호스트 커널(간접)</text>
+
+    <rect x="487" y="130" width="135" height="170" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="554" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">경량 VM</text>
+    <text x="554" y="176" text-anchor="middle" font-size="12" fill="#312e81">Kata Containers</text>
+    <text x="499" y="204" fill="#334155">Pod마다 게스트</text>
+    <text x="499" y="222" fill="#334155">커널 · 하드웨어 가상화</text>
+    <text x="499" y="262" fill="#64748b">공유:</text>
+    <text x="499" y="280" fill="#b91c1c">하이퍼바이저 · 노드</text>
+
+    <rect x="636" y="130" width="135" height="170" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="703" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">전용 노드 풀</text>
+    <text x="703" y="176" text-anchor="middle" font-size="12" fill="#7f1d1d">taint · nodeSelector</text>
+    <text x="648" y="204" fill="#334155">테넌트별로 다른</text>
+    <text x="648" y="222" fill="#334155">노드에만 배치</text>
+    <text x="648" y="262" fill="#64748b">공유:</text>
+    <text x="648" y="280" fill="#b91c1c">컨트롤 플레인 · etcd</text>
+
+    <rect x="785" y="130" width="135" height="170" rx="10" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="852" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">별도 클러스터</text>
+    <text x="852" y="176" text-anchor="middle" font-size="12" fill="#7f1d1d">· 별도 계정</text>
+    <text x="797" y="204" fill="#334155">API 서버·etcd까지</text>
+    <text x="797" y="222" fill="#334155">완전히 분리</text>
+    <text x="797" y="262" fill="#64748b">공유:</text>
+    <text x="797" y="280" fill="#b91c1c">클라우드 조직 정도</text>
+  </g>
+
+  <line x1="40" y1="322" x2="914" y2="322" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="480" y="314" text-anchor="middle" font-size="12" fill="#334155">격리 강도 · 비용 증가</text>
+
+  <rect x="40" y="340" width="880" height="80" rx="10" fill="#f8fafc" stroke="#64748b" stroke-dasharray="5 4"/>
+  <text x="60" y="366" font-size="14" font-weight="700" fill="#334155">모든 일반 컨테이너의 바닥: 리눅스 커널 기능</text>
+  <text x="60" y="390" font-size="13" fill="#334155">namespace(보이는 것 제한) · cgroup(쓰는 양 제한) · capabilities · seccomp · AppArmor/SELinux(할 수 있는 일 제한)</text>
+  <text x="60" y="410" font-size="12" fill="#b91c1c">→ 그래도 커널은 하나다. 커널 취약점 하나로 노드 전체가 위험해질 수 있어서 위 단계들이 필요하다</text>
+</svg>

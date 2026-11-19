@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">API 요청이 etcd에 닿기까지 — 세 관문</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">어느 관문에서든 거부되면 그 뒤로 가지 않는다 · 읽기 요청(get/list)은 어드미션을 거치지 않는다</text>
+
+  <rect x="30" y="110" width="110" height="90" rx="10" fill="#f8fafc" stroke="#64748b"/>
+  <text x="85" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">요청</text>
+  <text x="85" y="168" text-anchor="middle" font-size="12" fill="#334155">kubectl · SA</text>
+  <text x="85" y="186" text-anchor="middle" font-size="12" fill="#334155">· 컨트롤러</text>
+  <line x1="142" y1="155" x2="166" y2="155" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="170" y="100" width="170" height="110" rx="10" fill="#326ce5"/>
+  <text x="255" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">① 인증 (AuthN)</text>
+  <text x="255" y="152" text-anchor="middle" font-size="12" fill="#ffffff">"너는 누구인가"</text>
+  <text x="182" y="176" font-size="12" fill="#ffffff">X.509 · SA 토큰 · OIDC</text>
+  <text x="182" y="196" font-size="12" fill="#ffffff">웹훅 토큰 · 인증 프록시</text>
+  <line x1="342" y1="155" x2="366" y2="155" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="100" width="170" height="110" rx="10" fill="#4f46e5"/>
+  <text x="455" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">② 인가 (AuthZ)</text>
+  <text x="455" y="152" text-anchor="middle" font-size="12" fill="#ffffff">"그 일을 해도 되나"</text>
+  <text x="382" y="176" font-size="12" fill="#ffffff">Node · RBAC · Webhook</text>
+  <text x="382" y="196" font-size="12" fill="#ffffff">(ABAC는 레거시)</text>
+  <line x1="542" y1="155" x2="566" y2="155" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="570" y="100" width="220" height="110" rx="10" fill="#b91c1c"/>
+  <text x="680" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">③ 어드미션</text>
+  <text x="680" y="152" text-anchor="middle" font-size="12" fill="#ffffff">"이 내용이 정책에 맞나"</text>
+  <text x="582" y="176" font-size="12" fill="#ffffff">변경(Mutating) → 스키마 검증</text>
+  <text x="582" y="196" font-size="12" fill="#ffffff">→ 검증(Validating)</text>
+  <line x1="792" y1="155" x2="816" y2="155" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="110" width="110" height="90" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="875" y="148" text-anchor="middle" font-size="15" font-weight="700" fill="#7f1d1d">etcd</text>
+  <text x="875" y="172" text-anchor="middle" font-size="12" fill="#334155">저장</text>
+  <text x="875" y="190" text-anchor="middle" font-size="12" fill="#334155">(암호화 적용)</text>
+
+  <!-- reject -->
+  <line x1="255" y1="212" x2="255" y2="252" stroke="#b91c1c" stroke-width="1.5" marker-end="url(#arrowR)"/>
+  <text x="255" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">401 Unauthorized</text>
+  <line x1="455" y1="212" x2="455" y2="252" stroke="#b91c1c" stroke-width="1.5" marker-end="url(#arrowR)"/>
+  <text x="455" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">403 Forbidden</text>
+  <line x1="680" y1="212" x2="680" y2="252" stroke="#b91c1c" stroke-width="1.5" marker-end="url(#arrowR)"/>
+  <text x="680" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">거부 (웹훅·정책 메시지)</text>
+
+  <!-- examples -->
+  <rect x="170" y="292" width="760" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="186" y="314" font-size="12" fill="#334155">어드미션 예: NodeRestriction(kubelet이 남의 노드 수정 못 함) · PodSecurity(PSS 집행) · ValidatingAdmissionPolicy(CEL)</text>
+  <text x="186" y="334" font-size="12" fill="#334155">외부 정책 엔진: OPA Gatekeeper · Kyverno (웹훅) · 이미지 서명 검증 · 허용 레지스트리 강제</text>
+
+  <!-- audit -->
+  <rect x="30" y="362" width="900" height="42" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="480" y="388" text-anchor="middle" font-size="13" fill="#78350f">감사 로그(Audit): 요청마다 단계(RequestReceived → ResponseComplete)별로 기록 · 레벨 None / Metadata / Request / RequestResponse</text>
+</svg>

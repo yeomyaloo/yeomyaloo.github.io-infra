@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">보안 프레임워크 지도 — "이건 어느 서랍에 들어가나"</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">KCSA는 프레임워크의 세부 조항보다 "목적과 쓰임새"를 구분하는지를 묻는다</text>
+
+  <!-- row 1 -->
+  <rect x="30" y="86" width="290" height="190" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="46" y="114" font-size="16" font-weight="700" fill="#7f1d1d">① 규제 · 인증 컴플라이언스</text>
+  <text x="46" y="136" font-size="12" fill="#64748b">"외부가 요구하는 의무를 지키나"</text>
+  <text x="46" y="166" font-size="13" fill="#334155">PCI DSS — 카드 결제 데이터</text>
+  <text x="46" y="190" font-size="13" fill="#334155">HIPAA — 미국 의료 정보</text>
+  <text x="46" y="214" font-size="13" fill="#334155">GDPR — EU 개인정보</text>
+  <text x="46" y="238" font-size="13" fill="#334155">SOC 2 · ISO/IEC 27001</text>
+  <text x="46" y="260" font-size="12" fill="#64748b">(감사 보고서 · 관리체계 인증)</text>
+
+  <rect x="335" y="86" width="290" height="190" rx="12" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="351" y="114" font-size="16" font-weight="700" fill="#1e3a8a">② 기술 기준 · 하드닝 가이드</text>
+  <text x="351" y="136" font-size="12" fill="#64748b">"설정을 이렇게 해라"</text>
+  <text x="351" y="166" font-size="13" fill="#334155">CIS Kubernetes Benchmark</text>
+  <text x="351" y="190" font-size="13" fill="#334155">NIST SP 800-190</text>
+  <text x="351" y="208" font-size="12" fill="#64748b">(컨테이너 보안 가이드)</text>
+  <text x="351" y="234" font-size="13" fill="#334155">NSA/CISA Kubernetes</text>
+  <text x="351" y="252" font-size="13" fill="#334155">Hardening Guidance</text>
+
+  <rect x="640" y="86" width="290" height="190" rx="12" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="656" y="114" font-size="16" font-weight="700" fill="#312e81">③ 위험 관리 체계</text>
+  <text x="656" y="136" font-size="12" fill="#64748b">"조직이 보안을 어떻게 굴리나"</text>
+  <text x="656" y="166" font-size="13" fill="#334155">NIST CSF 2.0 — 6개 기능</text>
+  <text x="656" y="188" font-size="12" fill="#334155">Govern · Identify · Protect</text>
+  <text x="656" y="206" font-size="12" fill="#334155">Detect · Respond · Recover</text>
+  <text x="656" y="234" font-size="13" fill="#334155">NIST SP 800-53</text>
+  <text x="656" y="252" font-size="12" fill="#64748b">(보안 통제 카탈로그)</text>
+
+  <!-- row 2 -->
+  <rect x="30" y="292" width="445" height="140" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="46" y="320" font-size="16" font-weight="700" fill="#78350f">④ 위협 모델링 프레임워크</text>
+  <text x="46" y="342" font-size="12" fill="#64748b">"무엇이 잘못될 수 있나"</text>
+  <text x="46" y="370" font-size="13" fill="#334155">STRIDE — 위협 분류(설계 단계)</text>
+  <text x="46" y="394" font-size="13" fill="#334155">MITRE ATT&amp;CK — 실제 공격 전술·기법 지식 베이스</text>
+  <text x="46" y="418" font-size="13" fill="#334155">Microsoft Threat Matrix for Kubernetes</text>
+
+  <rect x="485" y="292" width="445" height="140" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="501" y="320" font-size="16" font-weight="700" fill="#14532d">⑤ 공급망 컴플라이언스</text>
+  <text x="501" y="342" font-size="12" fill="#64748b">"이 소프트웨어를 믿을 수 있나"</text>
+  <text x="501" y="370" font-size="13" fill="#334155">SLSA — 빌드 무결성 수준(Build L1~L3)</text>
+  <text x="501" y="394" font-size="13" fill="#334155">SBOM 형식: SPDX · CycloneDX</text>
+  <text x="501" y="418" font-size="13" fill="#334155">in-toto 증명 · OpenSSF Scorecard</text>
+
+  <!-- tools -->
+  <rect x="30" y="448" width="900" height="76" rx="12" fill="#f8fafc" stroke="#64748b" stroke-dasharray="5 4"/>
+  <text x="46" y="474" font-size="15" font-weight="700" fill="#334155">자동화 도구 (Automation and Tooling)</text>
+  <text x="46" y="498" font-size="13" fill="#334155">kube-bench(CIS 점검) · Kubescape(여러 프레임워크 점검) · Trivy(스캔·SBOM) · OPA Gatekeeper · Kyverno(정책 강제)</text>
+  <text x="46" y="516" font-size="12" fill="#64748b">Falco(런타임 탐지) · 감사 로그 → SIEM 전송 = "증거를 자동으로 남기는" 컴플라이언스</text>
+</svg>
