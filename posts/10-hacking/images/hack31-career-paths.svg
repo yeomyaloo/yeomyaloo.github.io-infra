@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">레드·블루 성장 경로 — 서로를 아는 사람이 퍼플팀에서 빛난다</text>
+
+  <!-- column headers -->
+  <rect x="150" y="54" width="240" height="36" rx="8" fill="#b91c1c"/>
+  <text x="270" y="78" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">레드 (공격 관점)</text>
+  <rect x="410" y="54" width="180" height="36" rx="8" fill="#7c3aed"/>
+  <text x="500" y="78" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">공통 결과물</text>
+  <rect x="610" y="54" width="300" height="36" rx="8" fill="#2563eb"/>
+  <text x="760" y="78" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">블루 (방어 관점)</text>
+
+  <!-- level labels -->
+  <g font-size="14" font-weight="700" fill="#334155" text-anchor="middle">
+    <rect x="20" y="104" width="110" height="64" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="75" y="141">입문</text>
+    <rect x="20" y="186" width="110" height="64" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="75" y="223">초급 실무</text>
+    <rect x="20" y="268" width="110" height="64" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="75" y="305">중급</text>
+    <rect x="20" y="350" width="110" height="64" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="75" y="387">상급</text>
+  </g>
+
+  <!-- red column -->
+  <g font-size="12" fill="#7f1d1d">
+    <rect x="150" y="104" width="240" height="64" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="166" y="130" font-weight="700">연습용 대상 · CTF</text>
+    <text x="166" y="152" fill="#334155">해킹 03~09, 해킹 12</text>
+    <rect x="150" y="186" width="240" height="64" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="166" y="212" font-weight="700">모의해킹 컨설턴트</text>
+    <text x="166" y="234" fill="#334155">진단 참여 · 재현 절차 · 보고서</text>
+    <rect x="150" y="268" width="240" height="64" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="166" y="294" font-weight="700">분야 전문화</text>
+    <text x="166" y="316" fill="#334155">웹·API / AD / 클라우드 중 하나</text>
+    <rect x="150" y="350" width="240" height="64" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+    <text x="166" y="376" font-weight="700">레드팀 오퍼레이터 · 리드</text>
+    <text x="166" y="398" fill="#334155">위협 모사 연습 설계 · 지휘</text>
+  </g>
+  <line x1="270" y1="168" x2="270" y2="182" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrowR)"/>
+  <line x1="270" y1="250" x2="270" y2="264" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrowR)"/>
+  <line x1="270" y1="332" x2="270" y2="346" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrowR)"/>
+
+  <!-- purple column -->
+  <g font-size="12" fill="#4c1d95">
+    <rect x="410" y="104" width="180" height="64" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="426" y="130" font-weight="700">보고서 · 룰 저장소</text>
+    <text x="426" y="152" fill="#334155">이 시리즈의 결과물</text>
+    <rect x="410" y="186" width="180" height="64" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="426" y="212" font-weight="700">커버리지 표</text>
+    <text x="426" y="234" fill="#334155">튜닝 기록 · 런북</text>
+    <rect x="410" y="268" width="180" height="64" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="426" y="294" font-weight="700">공개 기여 · 발표</text>
+    <text x="426" y="316" fill="#334155">룰 · 도구 · write-up</text>
+    <rect x="410" y="350" width="180" height="64" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="426" y="376" font-weight="700">퍼플팀 프로그램</text>
+    <text x="426" y="398" fill="#334155">정기 라운드 운영</text>
+  </g>
+  <line x1="500" y1="168" x2="500" y2="182" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowP)"/>
+  <line x1="500" y1="250" x2="500" y2="264" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowP)"/>
+  <line x1="500" y1="332" x2="500" y2="346" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowP)"/>
+
+  <!-- blue column -->
+  <g font-size="12" fill="#1e3a8a">
+    <rect x="610" y="104" width="300" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="626" y="130" font-weight="700">실습장 SIEM · 기본 룰 읽기</text>
+    <text x="626" y="152" fill="#334155">Day 60·72, 해킹 10·30</text>
+    <rect x="610" y="186" width="300" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="626" y="212" font-weight="700">보안관제 분석가 (SOC)</text>
+    <text x="626" y="234" fill="#334155">경보 분류 · 정탐/오탐 판단 · 상향 보고</text>
+    <rect x="610" y="268" width="145" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="622" y="294" font-weight="700">탐지 엔지니어</text>
+    <text x="622" y="316" fill="#334155">룰 · 튜닝 · 커버리지</text>
+    <rect x="765" y="268" width="145" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="777" y="294" font-weight="700">DFIR</text>
+    <text x="777" y="316" fill="#334155">사고 대응 · 포렌식</text>
+    <rect x="610" y="350" width="300" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="626" y="376" font-weight="700">위협 헌터 · 사고 지휘 · 보안 엔지니어</text>
+    <text x="626" y="398" fill="#334155">헌팅 프로그램, SIEM·EDR 플랫폼 운영</text>
+  </g>
+  <line x1="760" y1="168" x2="760" y2="182" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowB)"/>
+  <line x1="682" y1="250" x2="682" y2="264" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowB)"/>
+  <line x1="837" y1="250" x2="837" y2="264" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowB)"/>
+  <line x1="760" y1="332" x2="760" y2="346" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowB)"/>
+
+  <!-- cross arrows -->
+  <line x1="390" y1="300" x2="406" y2="300" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowP)"/>
+  <line x1="606" y1="300" x2="594" y2="300" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowP)"/>
+
+  <!-- bottom -->
+  <rect x="20" y="436" width="890" height="108" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="462" font-size="14" font-weight="700" fill="#0f172a">이 시리즈 독자에게 자연스러운 다음 걸음</text>
+  <text x="40" y="488" font-size="12" fill="#334155">· 인프라를 직접 쌓아 봤다 → 보안 엔지니어(플랫폼): 수집 파이프라인, 에이전트 배포, 하드닝 (Day 60·67·72, 해킹 30)</text>
+  <text x="40" y="510" font-size="12" fill="#334155">· 룰을 쓰고 튜닝해 봤다 → 탐지 엔지니어: decoder·rule, logtest 회귀 시험, 커버리지 관리 (해킹 30·31)</text>
+  <text x="40" y="532" font-size="12" fill="#334155">· 어느 쪽이든 포트폴리오는 같다 — 허가된 범위에서 만든 보고서, 룰 저장소, 커버리지 표</text>
+</svg>

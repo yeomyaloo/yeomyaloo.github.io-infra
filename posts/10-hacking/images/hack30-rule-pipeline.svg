@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">로그 한 줄이 경보가 되기까지 — manager 안의 세 단계</text>
+
+  <!-- input -->
+  <rect x="20" y="70" width="150" height="150" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="95" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">에이전트</text>
+  <text x="95" y="122" text-anchor="middle" font-size="12" fill="#334155">로그 한 줄</text>
+  <text x="95" y="142" text-anchor="middle" font-size="12" fill="#334155">audit 이벤트 묶음</text>
+  <text x="95" y="162" text-anchor="middle" font-size="12" fill="#334155">Windows 이벤트</text>
+  <text x="95" y="182" text-anchor="middle" font-size="12" fill="#334155">JSON (eve.json)</text>
+  <text x="95" y="204" text-anchor="middle" font-size="11" fill="#64748b">→ 1514/TCP</text>
+
+  <!-- phase 1 -->
+  <rect x="200" y="70" width="170" height="150" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="285" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">Phase 1</text>
+  <text x="285" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">사전 디코딩</text>
+  <text x="285" y="142" text-anchor="middle" font-size="12" fill="#334155">syslog 머리말에서</text>
+  <text x="285" y="162" text-anchor="middle" font-size="12" fill="#334155">시각 · 호스트 ·</text>
+  <text x="285" y="182" text-anchor="middle" font-size="12" fill="#334155">program_name 분리</text>
+
+  <!-- phase 2 -->
+  <rect x="400" y="70" width="200" height="150" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="500" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Phase 2</text>
+  <text x="500" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">디코딩 (decoder)</text>
+  <text x="500" y="142" text-anchor="middle" font-size="12" fill="#334155">부모 prematch로 판정</text>
+  <text x="500" y="162" text-anchor="middle" font-size="12" fill="#334155">자식 regex + order로</text>
+  <text x="500" y="182" text-anchor="middle" font-size="12" fill="#334155">srcip · url · id 등 필드</text>
+  <text x="500" y="204" text-anchor="middle" font-size="11" fill="#64748b">local_decoder.xml</text>
+
+  <!-- phase 3 -->
+  <rect x="630" y="70" width="200" height="150" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="730" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">Phase 3</text>
+  <text x="730" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">룰 판정 (rule)</text>
+  <text x="730" y="142" text-anchor="middle" font-size="12" fill="#334155">if_sid 트리를 따라 내려감</text>
+  <text x="730" y="162" text-anchor="middle" font-size="12" fill="#334155">필드 조건 · 빈도(상관)</text>
+  <text x="730" y="182" text-anchor="middle" font-size="12" fill="#334155">마지막 룰의 level 결정</text>
+  <text x="730" y="204" text-anchor="middle" font-size="11" fill="#64748b">local_rules.xml</text>
+
+  <line x1="170" y1="145" x2="196" y2="145" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="370" y1="145" x2="396" y2="145" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="145" x2="626" y2="145" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- logtest bracket -->
+  <path d="M200,236 L200,250 L830,250 L830,236" fill="none" stroke="#4f46e5" stroke-width="2"/>
+  <text x="515" y="274" text-anchor="middle" font-size="13" font-weight="700" fill="#3730a3">wazuh-logtest 가 이 세 단계를 그대로 보여 준다 — 룰이 안 걸리면 먼저 Phase 2의 필드를 본다</text>
+
+  <!-- decision -->
+  <polygon points="892,112 948,145 892,178 836,145" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+  <line x1="830" y1="145" x2="836" y2="145" stroke="#334155" stroke-width="2"/>
+  <text x="892" y="141" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">level</text>
+  <text x="892" y="157" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">≥ 3 ?</text>
+
+  <!-- outputs -->
+  <line x1="892" y1="178" x2="892" y2="300" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="900" y="246" font-size="12" font-weight="700" fill="#15803d">예</text>
+  <rect x="560" y="304" width="380" height="80" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="750" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">경보 — alerts.json → indexer → dashboard</text>
+  <text x="750" y="352" text-anchor="middle" font-size="12" fill="#334155">rule.id · rule.level · rule.mitre.id · data.srcip</text>
+  <text x="750" y="372" text-anchor="middle" font-size="12" fill="#334155">지정한 룰이면 Active Response 실행 (8장 주의점)</text>
+
+  <path d="M948,145 L955,145 L955,440 L512,440" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="900" y="432" font-size="12" font-weight="700" fill="#b91c1c">아니오</text>
+  <rect x="20" y="404" width="490" height="80" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="265" y="430" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">기록만 — 경보 검색에 나오지 않음</text>
+  <text x="265" y="452" text-anchor="middle" font-size="12" fill="#334155">예: 80700(커스텀 audit 키), 61603(Sysmon 이벤트 1)</text>
+  <text x="265" y="472" text-anchor="middle" font-size="12" fill="#334155">원본을 보려면 archives(logall_json) — 실습 중에만</text>
+
+  <rect x="20" y="304" width="520" height="80" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="328" font-size="13" font-weight="700" fill="#0f172a">상관 룰 (frequency · timeframe)</text>
+  <text x="36" y="350" font-size="12" fill="#334155">같은 출발지의 4xx(31101)가 시간 안에 쌓이면 31151(레벨 10)</text>
+  <text x="36" y="370" font-size="12" fill="#334155">하나하나는 약한 신호, 모이면 "행위의 모양"이 된다</text>
+</svg>

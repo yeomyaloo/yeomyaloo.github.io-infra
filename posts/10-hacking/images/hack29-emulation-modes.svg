@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="a29e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">에뮬레이션 — 기기 없이 펌웨어를 hacklab에서 돌리기</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#64748b">QEMU 두 모드와, 그 위에 자동화를 얹은 프레임워크</text>
+
+  <!-- 사용자 모드 -->
+  <rect x="36" y="92" width="430" height="190" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="251" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">QEMU 사용자 모드</text>
+  <text x="251" y="142" text-anchor="middle" font-size="12.5" fill="#334155">qemu-&lt;arch&gt; — 실행 파일 하나를 번역</text>
+  <rect x="60" y="158" width="170" height="100" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="145" y="184" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">바이너리 1개</text>
+  <text x="145" y="206" text-anchor="middle" font-size="11.5" fill="#64748b">예: 웹 서버</text>
+  <text x="145" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">만 실행</text>
+  <text x="145" y="246" text-anchor="middle" font-size="11.5" fill="#2563eb">빠르지만 환경 손감</text>
+  <rect x="246" y="158" width="196" height="100" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="344" y="182" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">쓰는 때</text>
+  <text x="344" y="206" text-anchor="middle" font-size="11.5" fill="#64748b">한 프로그램의</text>
+  <text x="344" y="224" text-anchor="middle" font-size="11.5" fill="#64748b">동작을 빠르게</text>
+  <text x="344" y="242" text-anchor="middle" font-size="11.5" fill="#64748b">확인할 때</text>
+
+  <!-- 시스템 모드 -->
+  <rect x="494" y="92" width="430" height="190" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="709" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">QEMU 시스템 모드</text>
+  <text x="709" y="142" text-anchor="middle" font-size="12.5" fill="#334155">qemu-system-&lt;arch&gt; — VM 전체를 부팅</text>
+  <rect x="518" y="158" width="190" height="100" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="613" y="182" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">커널 + 장치 + 서비스</text>
+  <text x="613" y="204" text-anchor="middle" font-size="11.5" fill="#64748b">거의 실제처럼</text>
+  <text x="613" y="222" text-anchor="middle" font-size="11.5" fill="#64748b">부팅</text>
+  <text x="613" y="242" text-anchor="middle" font-size="11.5" fill="#16a34a">네트워크까지 관찰</text>
+  <rect x="724" y="158" width="184" height="100" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="816" y="182" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">쓰는 때</text>
+  <text x="816" y="206" text-anchor="middle" font-size="11.5" fill="#64748b">웹 관리 화면 ·</text>
+  <text x="816" y="224" text-anchor="middle" font-size="11.5" fill="#64748b">열린 포트를</text>
+  <text x="816" y="242" text-anchor="middle" font-size="11.5" fill="#64748b">관찰할 때</text>
+
+  <line x1="709" y1="282" x2="709" y2="312" stroke="#334155" stroke-width="2" marker-end="url(#a29e)"/>
+  <text x="730" y="302" font-size="12" fill="#64748b">자동화를 얹음</text>
+
+  <!-- 프레임워크 -->
+  <rect x="200" y="316" width="560" height="140" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5"/>
+  <text x="480" y="344" text-anchor="middle" font-size="16" font-weight="700" fill="#5b21b6">에뮬레이션 프레임워크 (시스템 모드 자동화)</text>
+  <rect x="220" y="358" width="166" height="82" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="303" y="382" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">Firmadyne</text>
+  <text x="303" y="402" text-anchor="middle" font-size="11" fill="#64748b">ARM·MIPS 원조</text>
+  <text x="303" y="420" text-anchor="middle" font-size="11" fill="#64748b">활동 드묾 · MIT</text>
+  <rect x="397" y="358" width="166" height="82" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="480" y="382" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">FirmAE</text>
+  <text x="480" y="402" text-anchor="middle" font-size="11" fill="#4c1d95">부팅 성공률 개선</text>
+  <text x="480" y="420" text-anchor="middle" font-size="11" fill="#4c1d95">활발 · 오늘 사용</text>
+  <rect x="574" y="358" width="166" height="82" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="657" y="382" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">FAT</text>
+  <text x="657" y="402" text-anchor="middle" font-size="11" fill="#64748b">툴킷 · Rust 재작성</text>
+  <text x="657" y="420" text-anchor="middle" font-size="11" fill="#64748b">v2.x · 소스 공개</text>
+
+  <!-- 안전 배지 -->
+  <rect x="36" y="474" width="888" height="46" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="480" y="503" text-anchor="middle" font-size="13.5" font-weight="700" fill="#991b1b">⚠ 에뮬레이트한 펌웨어는 반드시 hacklab 안에서만 (해킹 02 실습 모드 · 외부 NIC 분리) — 집 LAN·인터넷으로 내보내지 않는다</text>
+</svg>

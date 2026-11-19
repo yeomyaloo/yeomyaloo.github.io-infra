@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="a29a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">IoT 기기 해부도 — 펌웨어는 한 플래시 안에 다 있다</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#64748b">binwalk로 꺼내 보는 곳(초록)과 공격 표면이 되는 곳(빨강)</text>
+
+  <!-- 보드 외곽 -->
+  <rect x="40" y="90" width="620" height="440" rx="16" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="60" y="118" font-size="15" font-weight="700" fill="#334155">기기 보드 (작은 리눅스 컴퓨터)</text>
+
+  <!-- SoC -->
+  <rect x="70" y="140" width="250" height="130" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="195" y="168" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">SoC (System on Chip)</text>
+  <text x="195" y="192" text-anchor="middle" font-size="12.5" fill="#334155">CPU (ARM · MIPS)</text>
+  <text x="195" y="212" text-anchor="middle" font-size="12.5" fill="#334155">메모리 · 네트워크 컨트롤러</text>
+  <rect x="88" y="226" width="214" height="30" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="195" y="246" text-anchor="middle" font-size="12" fill="#166534">내장 ROM 부트 코드 → 보안 부팅 시작점</text>
+
+  <!-- 플래시 -->
+  <rect x="70" y="290" width="560" height="220" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="90" y="316" font-size="15" font-weight="700" fill="#78350f">플래시 (SPI NOR · NAND · eMMC) — 파티션으로 나뉨</text>
+
+  <rect x="90" y="330" width="120" height="70" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="150" y="358" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">부트로더</text>
+  <text x="150" y="378" text-anchor="middle" font-size="11.5" fill="#64748b">U-Boot</text>
+  <text x="150" y="393" text-anchor="middle" font-size="11.5" fill="#64748b">콘솔 열림 주의</text>
+
+  <rect x="222" y="330" width="120" height="70" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="282" y="358" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">커널</text>
+  <text x="282" y="378" text-anchor="middle" font-size="11.5" fill="#64748b">zImage</text>
+  <text x="282" y="393" text-anchor="middle" font-size="11.5" fill="#64748b">/ uImage</text>
+
+  <rect x="354" y="330" width="258" height="70" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="483" y="356" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">루트 파일시스템 (squashfs)</text>
+  <text x="483" y="378" text-anchor="middle" font-size="11.5" fill="#166534">BusyBox · 웹서버 · dropbear · 설정</text>
+  <text x="483" y="393" text-anchor="middle" font-size="11.5" fill="#15803d">← 오늘 binwalk로 꺼내는 대상</text>
+
+  <rect x="90" y="414" width="245" height="78" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="212" y="438" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">overlay (쓰기 영역)</text>
+  <text x="212" y="458" text-anchor="middle" font-size="11.5" fill="#64748b">JFFS2 · UBIFS</text>
+  <text x="212" y="476" text-anchor="middle" font-size="11.5" fill="#64748b">사용자 설정·로그가 쌓임</text>
+
+  <rect x="347" y="414" width="265" height="78" rx="8" fill="#fef2f2" stroke="#b91c1c"/>
+  <text x="479" y="438" text-anchor="middle" font-size="12.5" font-weight="700" fill="#991b1b">설정 파티션</text>
+  <text x="479" y="458" text-anchor="middle" font-size="11.5" fill="#991b1b">Wi-Fi 키 · 계정 · 인증서</text>
+  <text x="479" y="476" text-anchor="middle" font-size="11.5" fill="#991b1b">꺼내면 그대로 보임</text>
+
+  <!-- 디버그 포트 패널 -->
+  <rect x="690" y="140" width="230" height="200" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2.5"/>
+  <text x="805" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">디버그 포트 (공격 표면)</text>
+  <rect x="708" y="184" width="194" height="66" rx="8" fill="#ffffff" stroke="#b91c1c"/>
+  <text x="805" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">UART (TX·RX·GND)</text>
+  <text x="805" y="228" text-anchor="middle" font-size="11.5" fill="#7f1d1d">부팅 로그 · root 셸이</text>
+  <text x="805" y="243" text-anchor="middle" font-size="11.5" fill="#7f1d1d">남아 있기 쉬움</text>
+  <rect x="708" y="260" width="194" height="66" rx="8" fill="#ffffff" stroke="#b91c1c"/>
+  <text x="805" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">JTAG / SWD</text>
+  <text x="805" y="304" text-anchor="middle" font-size="11.5" fill="#7f1d1d">메모리·플래시 직접 읽기</text>
+  <text x="805" y="319" text-anchor="middle" font-size="11.5" fill="#7f1d1d">잠그지 않으면 덤프 가능</text>
+
+  <line x1="690" y1="240" x2="662" y2="240" stroke="#b91c1c" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a29a)"/>
+
+  <!-- 하단 수정 배지 -->
+  <rect x="690" y="360" width="230" height="170" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="805" y="388" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">블루팀의 수정 (8장)</text>
+  <text x="705" y="414" font-size="12" fill="#15803d">· 보안 부팅 (신뢰 사슬)</text>
+  <text x="705" y="438" font-size="12" fill="#15803d">· 서명된 업데이트 · 롤백 방지</text>
+  <text x="705" y="462" font-size="12" fill="#15803d">· UART·JTAG 잠금(fuse)</text>
+  <text x="705" y="486" font-size="12" fill="#15803d">· 최소 서비스 · 기본계정 제거</text>
+  <text x="705" y="510" font-size="12" fill="#15803d">· SBOM · 사용자는 망 분리</text>
+</svg>
