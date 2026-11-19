@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">CKA와 CKAD — 같은 클러스터, 다른 질문</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">겹치는 영역은 같은 명령으로 풀고, 각자의 영역에서 점수가 갈린다</text>
+
+  <!-- CKA column -->
+  <rect x="30" y="86" width="290" height="360" rx="12" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="175" y="118" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">CKA · 관리자</text>
+  <text x="175" y="142" text-anchor="middle" font-size="13" fill="#334155">"클러스터가 살아 있게 할 수 있는가"</text>
+  <text x="54" y="182" font-size="14" fill="#0f172a">• kubeadm 업그레이드</text>
+  <text x="54" y="212" font-size="14" fill="#0f172a">• etcd 백업·복원, 인증서</text>
+  <text x="54" y="242" font-size="14" fill="#0f172a">• 노드·컨트롤 플레인 고장</text>
+  <text x="54" y="272" font-size="14" fill="#0f172a">• 스케줄링(taint·affinity)</text>
+  <text x="54" y="302" font-size="14" fill="#0f172a">• PV·StorageClass·CoreDNS</text>
+  <text x="54" y="332" font-size="14" fill="#0f172a">• CNI·CSI·CRI 확장점</text>
+  <rect x="50" y="364" width="250" height="62" rx="8" fill="#ffffff" stroke="#326ce5"/>
+  <text x="66" y="390" font-size="13" font-weight="700" fill="#1e3a8a">작업 위치</text>
+  <text x="66" y="412" font-size="13" fill="#334155">ssh 노드 → sudo -i, systemd</text>
+
+  <!-- overlap -->
+  <rect x="340" y="86" width="280" height="360" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="480" y="118" text-anchor="middle" font-size="18" font-weight="700" fill="#334155">겹치는 부분</text>
+  <text x="480" y="142" text-anchor="middle" font-size="13" fill="#64748b">CKA 탭에서 익힌 손놀림 그대로</text>
+  <text x="362" y="182" font-size="14" fill="#0f172a">• Deployment·롤아웃·롤백</text>
+  <text x="362" y="212" font-size="14" fill="#0f172a">• ConfigMap·Secret 주입</text>
+  <text x="362" y="242" font-size="14" fill="#0f172a">• RBAC·ServiceAccount</text>
+  <text x="362" y="272" font-size="14" fill="#0f172a">• Helm·Kustomize</text>
+  <text x="362" y="302" font-size="14" fill="#0f172a">• Service·NetworkPolicy</text>
+  <text x="362" y="332" font-size="14" fill="#0f172a">• Ingress, 요청·제한·쿼터</text>
+  <rect x="360" y="364" width="240" height="62" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <text x="376" y="390" font-size="13" font-weight="700" fill="#334155">공통 무기</text>
+  <text x="376" y="412" font-size="13" fill="#334155" font-family="Consolas,'D2Coding',monospace">k create ... $do</text>
+
+  <!-- CKAD column -->
+  <rect x="640" y="86" width="290" height="360" rx="12" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="785" y="118" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">CKAD · 개발자</text>
+  <text x="785" y="142" text-anchor="middle" font-size="13" fill="#334155">"내 앱을 올바르게 올릴 수 있는가"</text>
+  <text x="664" y="182" font-size="14" fill="#0f172a">• 이미지 빌드·push·tar</text>
+  <text x="664" y="212" font-size="14" fill="#0f172a">• Job·CronJob 세부 필드</text>
+  <text x="664" y="242" font-size="14" fill="#0f172a">• init·사이드카·어댑터</text>
+  <text x="664" y="272" font-size="14" fill="#0f172a">• 블루그린·카나리(수동)</text>
+  <text x="664" y="302" font-size="14" fill="#0f172a">• 프로브·로그·API 폐기</text>
+  <text x="664" y="332" font-size="14" fill="#0f172a">• SecurityContext·CRD 사용</text>
+  <rect x="660" y="364" width="250" height="62" rx="8" fill="#ffffff" stroke="#15803d"/>
+  <text x="676" y="390" font-size="13" font-weight="700" fill="#14532d">작업 위치</text>
+  <text x="676" y="412" font-size="13" fill="#334155">kubectl + YAML 편집, 빌드 도구</text>
+</svg>

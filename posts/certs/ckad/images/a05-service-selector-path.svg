@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="480" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">Service에서 Pod까지 — 끊기는 지점은 세 군데</text>
+
+  <!-- client -->
+  <rect x="20" y="70" width="150" height="160" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="95" y="96" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">테스트 Pod</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <text x="32" y="124">wget http://api</text>
+    <text x="32" y="150" fill="#64748b">DNS:</text>
+    <text x="32" y="168">api.a05.svc</text>
+    <text x="32" y="184">  .cluster.local</text>
+    <text x="32" y="208">→ 10.105.21.140</text>
+  </g>
+
+  <!-- service -->
+  <rect x="200" y="70" width="200" height="160" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="300" y="96" font-size="14" font-weight="bold" fill="#326ce5" text-anchor="middle">Service api</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="214" y="124">port: 80</text>
+    <text x="214" y="146">targetPort: 8080</text>
+    <text x="214" y="168">selector:</text>
+    <text x="214" y="188" xml:space="preserve">  app: api</text>
+  </g>
+  <circle cx="380" cy="182" r="11" fill="#dc2626"/>
+  <text x="380" y="187" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <circle cx="380" cy="140" r="11" fill="#dc2626"/>
+  <text x="380" y="145" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+
+  <!-- endpointslice -->
+  <rect x="430" y="70" width="200" height="160" rx="8" fill="#fef9e7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="530" y="96" font-size="14" font-weight="bold" fill="#b45309" text-anchor="middle">EndpointSlice</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <text x="444" y="124">PORTS 8080</text>
+    <text x="444" y="150">10.244.1.23 ready</text>
+    <text x="444" y="172">10.244.2.31 ready</text>
+  </g>
+  <text x="444" y="208" font-size="11" fill="#64748b">selector가 고른 Pod 목록</text>
+  <circle cx="610" cy="160" r="11" fill="#dc2626"/>
+  <text x="610" y="165" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+
+  <!-- pods -->
+  <rect x="660" y="70" width="220" height="74" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="672" y="92" font-size="13" font-weight="bold" fill="#15803d">Pod api-...-k2v8x</text>
+  <text x="672" y="112" font-size="11" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">app=api, tier=backend</text>
+  <text x="672" y="132" font-size="11" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">containerPort 8080 · 1/1</text>
+  <rect x="660" y="156" width="220" height="74" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="672" y="178" font-size="13" font-weight="bold" fill="#15803d">Pod api-...-m4p9z</text>
+  <text x="672" y="198" font-size="11" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">app=api, tier=backend</text>
+  <text x="672" y="218" font-size="11" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">containerPort 8080 · 1/1</text>
+
+  <g stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+    <line x1="170" y1="150" x2="197" y2="150"/>
+    <line x1="400" y1="150" x2="427" y2="150"/>
+    <line x1="630" y1="107" x2="657" y2="107"/>
+    <line x1="630" y1="193" x2="657" y2="193"/>
+  </g>
+
+  <!-- legend table -->
+  <g font-size="13" fill="#334155">
+    <rect x="20" y="256" width="860" height="30" rx="4" fill="#334155"/>
+    <text x="60" y="276" fill="#ffffff" font-weight="bold">맞아야 하는 것</text>
+    <text x="330" y="276" fill="#ffffff" font-weight="bold">틀리면 보이는 증상</text>
+    <text x="580" y="276" fill="#ffffff" font-weight="bold">확인 명령</text>
+
+    <rect x="20" y="290" width="860" height="56" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <circle cx="40" cy="318" r="11" fill="#dc2626"/><text x="40" y="323" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="60" y="314" font-weight="bold">selector ↔ Pod 라벨</text>
+    <text x="60" y="334" font-size="12" fill="#64748b">selector의 모든 키가 Pod에 있어야</text>
+    <text x="330" y="323">EndpointSlice에 주소 없음</text>
+    <text x="580" y="314" font-size="12" font-family="Consolas,'D2Coding',monospace">k get svc -o wide</text>
+    <text x="580" y="334" font-size="12" font-family="Consolas,'D2Coding',monospace">k get pod --show-labels</text>
+
+    <rect x="20" y="350" width="860" height="56" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <circle cx="40" cy="378" r="11" fill="#dc2626"/><text x="40" y="383" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="60" y="374" font-weight="bold">Pod Ready</text>
+    <text x="60" y="394" font-size="12" fill="#64748b">readinessProbe 통과</text>
+    <text x="330" y="383">주소는 있지만 ready: false</text>
+    <text x="580" y="374" font-size="12" font-family="Consolas,'D2Coding',monospace">k get pod (READY 열)</text>
+    <text x="580" y="394" font-size="12" font-family="Consolas,'D2Coding',monospace">k events --for pod/X</text>
+
+    <rect x="20" y="410" width="860" height="56" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <circle cx="40" cy="438" r="11" fill="#dc2626"/><text x="40" y="443" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="60" y="434" font-weight="bold">targetPort ↔ 컨테이너 포트</text>
+    <text x="60" y="454" font-size="12" fill="#64748b">숫자 또는 포트 이름</text>
+    <text x="330" y="443">주소는 정상, Connection refused</text>
+    <text x="580" y="434" font-size="12" font-family="Consolas,'D2Coding',monospace">k describe svc api</text>
+    <text x="580" y="454" font-size="12" font-family="Consolas,'D2Coding',monospace">k get endpointslices -l ...</text>
+  </g>
+</svg>

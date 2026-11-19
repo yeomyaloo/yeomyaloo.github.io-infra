@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">CKAD 커리큘럼 v1.37 — 도메인 비중과 이 탭의 편</text>
+  <text x="480" y="62" text-anchor="middle" font-size="14" fill="#64748b">2026-11-19 cncf/curriculum 확인 · 막대 길이 = 비중 (25% = 250px)</text>
+
+  <text x="40" y="100" font-size="14" font-weight="700" fill="#334155">도메인</text>
+  <text x="340" y="100" font-size="14" font-weight="700" fill="#334155">비중</text>
+  <text x="680" y="100" font-size="14" font-weight="700" fill="#334155">다루는 편 · 핵심 주제</text>
+
+  <!-- Env Config Security 25 -->
+  <text x="40" y="132" font-size="15" font-weight="700" fill="#0f172a">Application Environment,</text>
+  <text x="40" y="152" font-size="15" font-weight="700" fill="#0f172a">Configuration &amp; Security</text>
+  <rect x="340" y="124" width="250" height="30" rx="6" fill="#15803d"/>
+  <text x="602" y="145" font-size="16" font-weight="700" fill="#15803d">25%</text>
+  <line x1="642" y1="139" x2="674" y2="139" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="120" width="250" height="38" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="692" y="145" font-size="15" font-weight="700" fill="#14532d">A04</text>
+  <text x="732" y="145" font-size="12" fill="#334155">설정·Secret·SA·보안·쿼터</text>
+
+  <!-- Design Build 20 -->
+  <text x="40" y="206" font-size="15" font-weight="700" fill="#0f172a">Application Design &amp; Build</text>
+  <rect x="340" y="186" width="200" height="30" rx="6" fill="#326ce5"/>
+  <text x="552" y="207" font-size="16" font-weight="700" fill="#326ce5">20%</text>
+  <line x1="592" y1="201" x2="674" y2="201" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="182" width="250" height="38" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="692" y="207" font-size="15" font-weight="700" fill="#1e3a8a">A01</text>
+  <text x="732" y="207" font-size="12" fill="#334155">이미지·Job·멀티 컨테이너·볼륨</text>
+
+  <!-- Deployment 20 -->
+  <text x="40" y="268" font-size="15" font-weight="700" fill="#0f172a">Application Deployment</text>
+  <rect x="340" y="248" width="200" height="30" rx="6" fill="#326ce5"/>
+  <text x="552" y="269" font-size="16" font-weight="700" fill="#326ce5">20%</text>
+  <line x1="592" y1="263" x2="674" y2="263" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="244" width="250" height="38" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="692" y="269" font-size="15" font-weight="700" fill="#1e3a8a">A02</text>
+  <text x="732" y="269" font-size="12" fill="#334155">배포 전략·Helm·Kustomize</text>
+
+  <!-- Services Networking 20 -->
+  <text x="40" y="330" font-size="15" font-weight="700" fill="#0f172a">Services &amp; Networking</text>
+  <rect x="340" y="310" width="200" height="30" rx="6" fill="#326ce5"/>
+  <text x="552" y="331" font-size="16" font-weight="700" fill="#326ce5">20%</text>
+  <line x1="592" y1="325" x2="674" y2="325" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="306" width="250" height="38" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="692" y="331" font-size="15" font-weight="700" fill="#1e3a8a">A05</text>
+  <text x="732" y="331" font-size="12" fill="#334155">Service·NetworkPolicy·Ingress</text>
+
+  <!-- Observability 15 -->
+  <text x="40" y="384" font-size="15" font-weight="700" fill="#0f172a">Application Observability</text>
+  <text x="40" y="404" font-size="15" font-weight="700" fill="#0f172a">&amp; Maintenance</text>
+  <rect x="340" y="376" width="150" height="30" rx="6" fill="#326ce5"/>
+  <text x="502" y="397" font-size="16" font-weight="700" fill="#326ce5">15%</text>
+  <line x1="542" y1="391" x2="674" y2="391" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="372" width="250" height="38" rx="8" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="692" y="397" font-size="15" font-weight="700" fill="#1e3a8a">A03</text>
+  <text x="732" y="397" font-size="12" fill="#334155">프로브·로그·디버깅·API 폐기</text>
+
+  <!-- mock exams -->
+  <line x1="40" y1="436" x2="920" y2="436" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="40" y="452" width="420" height="44" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <text x="56" y="480" font-size="14" font-weight="700" fill="#334155">A00</text>
+  <text x="96" y="480" font-size="13" fill="#334155">시험 개요 · 실습 환경 · 로컬 레지스트리</text>
+  <rect x="500" y="452" width="420" height="44" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <text x="516" y="480" font-size="14" font-weight="700" fill="#334155">A06 · A07</text>
+  <text x="600" y="480" font-size="13" fill="#334155">모의고사 (2시간, 66% 목표)</text>
+</svg>

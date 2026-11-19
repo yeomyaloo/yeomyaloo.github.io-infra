@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="540" fill="#ffffff"/>
+  <defs>
+    <marker id="arrb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+    <marker id="arrs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#334155">CKAD 모의고사 실습 환경 — base에서 빌드하고, 두 클러스터에 배포</text>
+
+  <!-- base -->
+  <rect x="24" y="64" width="256" height="410" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="152" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">작업 단말 (base, WSL2)</text>
+
+  <rect x="40" y="104" width="224" height="70" rx="6" fill="#dcfce7" stroke="#15803d"/>
+  <text x="52" y="124" font-size="13" font-weight="700" fill="#15803d">이미지 빌드</text>
+  <text x="52" y="144" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">docker | podman</text>
+  <text x="52" y="162" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">build → push → save</text>
+
+  <rect x="40" y="186" width="224" height="70" rx="6" fill="#dcfce7" stroke="#15803d"/>
+  <text x="52" y="206" font-size="13" font-weight="700" fill="#15803d">로컬 레지스트리</text>
+  <text x="52" y="226" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">$REG  (A00 고정값)</text>
+  <text x="52" y="244" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">$REG/ckad/a06-web:1.0</text>
+
+  <rect x="40" y="268" width="224" height="92" rx="6" fill="#ffffff" stroke="#64748b"/>
+  <text x="52" y="288" font-family="Consolas,'D2Coding',monospace" font-size="12" font-weight="700" fill="#334155">~/ckad/</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <text x="64" y="306">a06-setup.sh  grade.sh</text>
+    <text x="64" y="324">a06/web-img  a06/legacy</text>
+    <text x="64" y="342">a06/charts  a06/kustomize</text>
+  </g>
+
+  <rect x="40" y="372" width="224" height="88" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="52" y="392" font-size="13" font-weight="700" fill="#326ce5">kubeconfig contexts</text>
+  <text x="52" y="412" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">● cka-main</text>
+  <text x="52" y="430" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">● cka-aux</text>
+  <text x="52" y="450" font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">kubectl · helm</text>
+
+  <!-- cka-main -->
+  <rect x="340" y="64" width="536" height="290" rx="10" fill="#f8fafc" stroke="#326ce5" stroke-width="2"/>
+  <text x="356" y="90" font-size="16" font-weight="700" fill="#326ce5">cka-main</text>
+  <text x="440" y="90" font-size="12" fill="#64748b">kubeadm v1.37.1 · k8s-cp / k8s-w1 / k8s-w2 · Cilium · SC local-path</text>
+
+  <!-- namespaces by domain -->
+  <g font-size="12">
+    <rect x="356" y="104" width="160" height="62" rx="6" fill="#dcfce7" stroke="#15803d"/>
+    <text x="366" y="122" font-weight="700" fill="#15803d">설계·빌드 20</text>
+    <text x="366" y="142" font-family="Consolas,'D2Coding',monospace" fill="#334155">a06-build</text>
+    <text x="366" y="158" fill="#64748b">Q1 Q2 Q3</text>
+
+    <rect x="530" y="104" width="160" height="62" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="540" y="122" font-weight="700" fill="#326ce5">배포 20 (Q7은 aux)</text>
+    <text x="540" y="142" font-family="Consolas,'D2Coding',monospace" fill="#334155">a06-deploy a06-helm</text>
+    <text x="540" y="158" fill="#64748b">Q4 Q5 Q6</text>
+
+    <rect x="704" y="104" width="160" height="62" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="714" y="122" font-weight="700" fill="#b45309">관측성·유지보수 15</text>
+    <text x="714" y="142" font-family="Consolas,'D2Coding',monospace" fill="#334155">a06-obs</text>
+    <text x="714" y="158" fill="#64748b">Q8 Q9 Q10</text>
+
+    <rect x="356" y="178" width="250" height="62" rx="6" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="366" y="196" font-weight="700" fill="#4f46e5">환경·설정·보안 25 (Q14는 aux)</text>
+    <text x="366" y="216" font-family="Consolas,'D2Coding',monospace" fill="#334155">a06-cfg a06-sec a06-quota</text>
+    <text x="366" y="232" fill="#64748b">Q11 Q12 Q13</text>
+
+    <rect x="620" y="178" width="244" height="62" rx="6" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="630" y="196" font-weight="700" fill="#dc2626">서비스·네트워킹 20</text>
+    <text x="630" y="216" font-family="Consolas,'D2Coding',monospace" fill="#334155">a06-net a06-web</text>
+    <text x="630" y="232" fill="#64748b">Q15 Q16 Q17</text>
+  </g>
+
+  <!-- traefik path -->
+  <rect x="356" y="256" width="508" height="84" rx="6" fill="#ffffff" stroke="#64748b"/>
+  <text x="368" y="276" font-size="13" font-weight="700" fill="#334155">외부 → Traefik → HTTPRoute (Q17)</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <rect x="368" y="288" width="128" height="40" rx="5" fill="#f8fafc" stroke="#64748b"/>
+    <text x="432" y="305" text-anchor="middle">NodePort</text>
+    <text x="432" y="321" text-anchor="middle">:30080</text>
+    <rect x="530" y="288" width="160" height="40" rx="5" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="610" y="305" text-anchor="middle">traefik/</text>
+    <text x="610" y="321" text-anchor="middle">traefik-gateway</text>
+    <rect x="724" y="288" width="128" height="40" rx="5" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="788" y="305" text-anchor="middle">a06-web/</text>
+    <text x="788" y="321" text-anchor="middle">svc blog:80</text>
+  </g>
+  <line x1="497" y1="308" x2="527" y2="308" stroke="#334155" stroke-width="2" marker-end="url(#arrs)"/>
+  <line x1="691" y1="308" x2="721" y2="308" stroke="#334155" stroke-width="2" marker-end="url(#arrs)"/>
+
+  <!-- cka-aux -->
+  <rect x="340" y="378" width="536" height="96" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="356" y="404" font-size="16" font-weight="700" fill="#334155">cka-aux</text>
+  <text x="430" y="404" font-size="12" fill="#64748b">kind · cka-aux-control-plane / cka-aux-worker</text>
+  <g font-size="12">
+    <rect x="356" y="416" width="240" height="46" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+    <text x="368" y="435" font-family="Consolas,'D2Coding',monospace" fill="#334155">a06-stg</text>
+    <text x="368" y="453" fill="#64748b">Q7 Kustomize overlay</text>
+    <rect x="620" y="416" width="244" height="46" rx="6" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="632" y="435" font-family="Consolas,'D2Coding',monospace" fill="#334155">a06-crd</text>
+    <text x="632" y="453" fill="#64748b">Q14 CRD 리소스(Widget)</text>
+  </g>
+
+  <!-- arrows base -> clusters -->
+  <line x1="264" y1="394" x2="338" y2="346" stroke="#326ce5" stroke-width="2" marker-end="url(#arrb)"/>
+  <line x1="264" y1="430" x2="338" y2="430" stroke="#326ce5" stroke-width="2" marker-end="url(#arrb)"/>
+  <text x="310" y="446" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="10" fill="#326ce5">--context</text>
+  <!-- registry -> nodes pull -->
+  <path d="M264,221 C300,221 312,140 352,135" fill="none" stroke="#15803d" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrg)"/>
+  <text x="318" y="188" text-anchor="middle" font-size="11" fill="#15803d">pull</text>
+  <!-- curl -> nodeport -->
+  <path d="M264,320 C300,320 320,308 366,308" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrs)"/>
+  <text x="310" y="296" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="10" fill="#334155">curl</text>
+  <text x="310" y="308" text-anchor="middle" font-family="Consolas,'D2Coding',monospace" font-size="10" fill="#334155">-H Host</text>
+
+  <!-- legend -->
+  <g font-size="12" fill="#334155">
+    <line x1="40" y1="508" x2="76" y2="508" stroke="#326ce5" stroke-width="2" marker-end="url(#arrb)"/>
+    <text x="84" y="512">kubectl / helm (문항마다 context 확인)</text>
+    <line x1="340" y1="508" x2="376" y2="508" stroke="#15803d" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrg)"/>
+    <text x="384" y="512">노드가 레지스트리에서 이미지 pull</text>
+    <line x1="620" y1="508" x2="656" y2="508" stroke="#334155" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrs)"/>
+    <text x="664" y="512">HTTP 확인 (192.168.56.11)</text>
+  </g>
+</svg>

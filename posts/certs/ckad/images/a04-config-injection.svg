@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 570" width="900" height="570" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="570" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">ConfigMap·Secret을 Pod에 넣는 세 가지 방식</text>
+
+  <!-- sources -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#334155">
+    <rect x="20" y="70" width="270" height="90" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+    <text x="34" y="94" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="14" font-weight="bold" fill="#326ce5">ConfigMap orders-env</text>
+    <text x="34" y="118">LOG_LEVEL: DEBUG</text>
+    <text x="34" y="138">TZ: Asia/Seoul</text>
+
+    <rect x="20" y="200" width="270" height="90" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="34" y="224" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="14" font-weight="bold" fill="#b91c1c">Secret db-cred</text>
+    <text x="34" y="248">username: orders</text>
+    <text x="34" y="268">password: Tr0ub4dor&amp;3</text>
+
+    <rect x="20" y="330" width="270" height="90" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+    <text x="34" y="354" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="14" font-weight="bold" fill="#326ce5">ConfigMap orders-files</text>
+    <text x="34" y="378">application.properties: |</text>
+    <text x="34" y="398" xml:space="preserve">  server.port=8080</text>
+  </g>
+
+  <!-- methods -->
+  <g font-family="Consolas,'D2Coding',monospace" font-size="11" fill="#0f172a">
+    <rect x="315" y="65" width="265" height="100" rx="8" fill="#f8fafc" stroke="#64748b"/>
+    <text x="327" y="87" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="13" font-weight="bold" fill="#334155">① envFrom — 모든 키 (+prefix)</text>
+    <text x="327" y="110">envFrom:</text>
+    <text x="327" y="127" xml:space="preserve">- prefix: APP_</text>
+    <text x="327" y="144" xml:space="preserve">  configMapRef: {name: orders-env}</text>
+
+    <rect x="315" y="195" width="265" height="100" rx="8" fill="#f8fafc" stroke="#64748b"/>
+    <text x="327" y="217" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="13" font-weight="bold" fill="#334155">② env — 한 키, 이름 바꿔서</text>
+    <text x="327" y="240">- name: DB_PASSWORD</text>
+    <text x="327" y="257" xml:space="preserve">  valueFrom: {secretKeyRef:</text>
+    <text x="327" y="274" xml:space="preserve">    {name: db-cred, key: password}}</text>
+
+    <rect x="315" y="325" width="265" height="100" rx="8" fill="#f8fafc" stroke="#64748b"/>
+    <text x="327" y="347" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="13" font-weight="bold" fill="#334155">③ volume — 키가 파일이 된다</text>
+    <text x="327" y="370">volumes: - configMap:</text>
+    <text x="327" y="387" xml:space="preserve">    {name: orders-files}</text>
+    <text x="327" y="404">volumeMounts: /config (readOnly)</text>
+  </g>
+
+  <!-- pod -->
+  <rect x="610" y="55" width="270" height="380" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="626" y="80" font-size="14" font-weight="bold" fill="#15803d">Pod orders · 컨테이너 app</text>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#0f172a">
+    <rect x="625" y="90" width="240" height="70" rx="6" fill="#ffffff" stroke="#86efac"/>
+    <text x="637" y="110" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="12" fill="#64748b">환경 변수</text>
+    <text x="637" y="130">APP_LOG_LEVEL=DEBUG</text>
+    <text x="637" y="148">APP_TZ=Asia/Seoul</text>
+
+    <rect x="625" y="210" width="240" height="70" rx="6" fill="#ffffff" stroke="#86efac"/>
+    <text x="637" y="230" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="12" fill="#64748b">환경 변수</text>
+    <text x="637" y="252">DB_PASSWORD=Tr0ub4dor&amp;3</text>
+
+    <rect x="625" y="340" width="240" height="70" rx="6" fill="#ffffff" stroke="#86efac"/>
+    <text x="637" y="360" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="12" fill="#64748b">파일</text>
+    <text x="637" y="382">/config/</text>
+    <text x="637" y="399" xml:space="preserve">  application.properties</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#334155" stroke-width="1.4" fill="none" marker-end="url(#arr)">
+    <line x1="290" y1="115" x2="312" y2="115"/>
+    <line x1="580" y1="125" x2="622" y2="125"/>
+    <line x1="290" y1="245" x2="312" y2="245"/>
+    <line x1="580" y1="245" x2="622" y2="245"/>
+    <line x1="290" y1="375" x2="312" y2="375"/>
+    <line x1="580" y1="375" x2="622" y2="375"/>
+  </g>
+
+  <!-- bottom notes -->
+  <rect x="20" y="455" width="275" height="96" rx="8" fill="#fef9e7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="34" y="479" font-size="13" font-weight="bold" fill="#b45309">env · envFrom</text>
+  <text x="34" y="501" font-size="12" fill="#334155">값이 바뀌어도 실행 중 Pod에는</text>
+  <text x="34" y="521" font-size="12" fill="#334155">반영 안 됨 → 롤아웃(재시작) 필요</text>
+
+  <rect x="312" y="455" width="275" height="96" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="326" y="479" font-size="13" font-weight="bold" fill="#15803d">volume</text>
+  <text x="326" y="501" font-size="12" fill="#334155">약 1분 안에 파일이 갱신됨</text>
+  <text x="326" y="521" font-size="12" fill="#334155">단, subPath 마운트는 갱신 안 됨</text>
+
+  <rect x="604" y="455" width="276" height="96" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <text x="618" y="479" font-size="13" font-weight="bold" fill="#326ce5">immutable: true</text>
+  <text x="618" y="501" font-size="12" fill="#334155">data 수정 불가, 되돌릴 수도 없음</text>
+  <text x="618" y="521" font-size="12" fill="#334155">새 이름(-v2)으로 만들고 참조 교체</text>
+</svg>

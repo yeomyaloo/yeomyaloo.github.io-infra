@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#15803d"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#326ce5"/>
+    </marker>
+    <marker id="arrowS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">CKAD 실습 환경 — base · 로컬 레지스트리 · cka-main</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">이미지는 base에서 빌드 → 192.168.56.1:5000에 push → 각 노드 containerd가 pull</text>
+
+  <!-- Windows host -->
+  <rect x="20" y="76" width="420" height="500" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="36" y="102" font-size="16" font-weight="700" fill="#334155">Windows 호스트</text>
+  <text x="424" y="102" text-anchor="end" font-size="13" fill="#64748b">Host-only 192.168.56.1</text>
+
+  <!-- WSL2 base -->
+  <rect x="40" y="120" width="380" height="196" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="56" y="146" font-size="15" font-weight="700" fill="#14532d">base — WSL2 Ubuntu 24.04</text>
+  <text x="56" y="172" font-size="13" fill="#0f172a">kubectl v1.37 · helm · kind</text>
+  <text x="56" y="194" font-size="13" fill="#0f172a">docker CLI (Docker Desktop 연동)</text>
+  <text x="56" y="216" font-size="13" fill="#0f172a">podman 4.9 + registries.conf.d/50-ckad.conf</text>
+  <text x="56" y="238" font-size="13" fill="#0f172a">~/.kube/config: cka-main, cka-aux</text>
+  <rect x="56" y="254" width="348" height="48" rx="6" fill="#ffffff" stroke="#15803d"/>
+  <text x="70" y="275" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">~/ckad/apps/hello-spring  (8080)</text>
+  <text x="70" y="293" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">~/ckad/apps/hello-py      (8000)</text>
+
+  <!-- Docker Desktop -->
+  <rect x="40" y="340" width="380" height="146" rx="10" fill="#e0f2fe" stroke="#2496ed" stroke-width="2"/>
+  <text x="56" y="366" font-size="15" font-weight="700" fill="#075985">Docker Desktop VM</text>
+  <text x="56" y="390" font-size="13" fill="#0f172a">insecure-registries: 192.168.56.1:5000</text>
+  <rect x="56" y="404" width="348" height="66" rx="8" fill="#ffffff" stroke="#2496ed"/>
+  <text x="70" y="428" font-size="14" font-weight="700" fill="#075985">registry:2 · ckad-registry</text>
+  <text x="70" y="452" font-size="12" fill="#334155">-p 5000:5000 · 볼륨 ckad-registry · HTTP</text>
+
+  <!-- kind -->
+  <rect x="40" y="502" width="380" height="58" rx="10" fill="#ffffff" stroke="#64748b" stroke-dasharray="6 4"/>
+  <text x="56" y="526" font-size="13" font-weight="700" fill="#334155">cka-aux (kind, v1.37.0)</text>
+  <text x="56" y="546" font-size="12" fill="#64748b">이미지는 kind load docker-image로 넣음</text>
+
+  <!-- push arrow base -> registry -->
+  <line x1="370" y1="316" x2="370" y2="402" stroke="#15803d" stroke-width="2.5" marker-end="url(#arrowG)"/>
+  <text x="362" y="336" text-anchor="end" font-size="13" font-weight="700" fill="#15803d">push</text>
+
+  <!-- host-only network bar -->
+  <rect x="470" y="300" width="30" height="270" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="485" y="435" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e" transform="rotate(-90 485 435)" dy="4">Host-only 192.168.56.0/24</text>
+
+  <!-- registry to network -->
+  <line x1="420" y1="437" x2="468" y2="437" stroke="#f59e0b" stroke-width="2.5"/>
+
+  <!-- cka-main -->
+  <rect x="530" y="76" width="410" height="500" rx="12" fill="#e8eefc" stroke="#326ce5" stroke-width="2"/>
+  <text x="546" y="102" font-size="16" font-weight="700" fill="#1e3a8a">cka-main — kubeadm v1.37.1 · Cilium</text>
+  <text x="546" y="124" font-size="12" fill="#334155">local-path(default) · metrics-server · Traefik NodePort 30080</text>
+
+  <!-- nodes -->
+  <rect x="550" y="144" width="370" height="120" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="566" y="170" font-size="15" font-weight="700" fill="#1e3a8a">k8s-cp · 192.168.56.10</text>
+  <text x="566" y="194" font-size="12" fill="#334155">control-plane · API :6443</text>
+  <text x="566" y="216" font-size="12" fill="#334155">containerd 1.7 · config_path = /etc/containerd/certs.d</text>
+  <text x="566" y="240" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">certs.d/192.168.56.1:5000/hosts.toml</text>
+
+  <rect x="550" y="282" width="370" height="130" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="566" y="308" font-size="15" font-weight="700" fill="#1e3a8a">k8s-w1 · 192.168.56.11</text>
+  <text x="566" y="332" font-size="12" fill="#334155">worker · 같은 containerd 설정</text>
+  <rect x="566" y="346" width="160" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="646" y="368" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Pod</text>
+  <text x="646" y="386" text-anchor="middle" font-size="11" fill="#334155">ckad/hello-spring:1.0</text>
+
+  <rect x="550" y="430" width="370" height="130" rx="10" fill="#ffffff" stroke="#326ce5"/>
+  <text x="566" y="456" font-size="15" font-weight="700" fill="#1e3a8a">k8s-w2 · 192.168.56.12</text>
+  <text x="566" y="480" font-size="12" fill="#334155">worker · 같은 containerd 설정</text>
+  <rect x="566" y="494" width="160" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="646" y="516" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Pod</text>
+  <text x="646" y="534" text-anchor="middle" font-size="11" fill="#334155">ckad/hello-py:1.0</text>
+
+  <!-- network to nodes (pull) -->
+  <line x1="502" y1="320" x2="546" y2="236" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowS)"/>
+  <line x1="502" y1="360" x2="546" y2="360" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowS)"/>
+  <line x1="502" y1="508" x2="546" y2="508" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowS)"/>
+  <text x="746" y="366" font-size="12" font-weight="700" fill="#326ce5">pull (HTTP)</text>
+  <text x="746" y="386" font-size="11" fill="#64748b">kubelet → containerd</text>
+  <text x="746" y="514" font-size="12" font-weight="700" fill="#326ce5">pull (HTTP)</text>
+  <text x="746" y="534" font-size="11" fill="#64748b">192.168.56.1:5000</text>
+
+  <!-- kubectl arrow -->
+  <path d="M420,150 C470,150 490,180 548,180" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrowS)"/>
+  <text x="440" y="140" font-size="12" font-weight="700" fill="#64748b">kubectl · ssh</text>
+</svg>

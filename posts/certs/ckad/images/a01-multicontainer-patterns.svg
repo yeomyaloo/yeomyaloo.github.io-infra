@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">멀티 컨테이너 패턴 — 위치와 수명</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">어댑터·앰배서더는 역할 이름이고, YAML로는 사이드카(또는 일반 컨테이너)다</text>
+
+  <!-- ===== Panel 1: init ===== -->
+  <rect x="20" y="76" width="450" height="236" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="36" y="102" font-size="16" font-weight="700" fill="#0f172a">① init 컨테이너</text>
+  <text x="200" y="102" font-size="12" fill="#64748b" font-family="Consolas,'D2Coding',monospace">initContainers (restartPolicy 없음)</text>
+  <rect x="40" y="124" width="110" height="34" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="95" y="146" text-anchor="middle" font-size="13" fill="#92400e">init-1 끝</text>
+  <line x1="150" y1="141" x2="176" y2="141" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="180" y="124" width="110" height="34" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="235" y="146" text-anchor="middle" font-size="13" fill="#92400e">init-2 끝</text>
+  <line x1="290" y1="141" x2="316" y2="141" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="320" y="124" width="130" height="34" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="385" y="146" text-anchor="middle" font-size="13" fill="#14532d">app 시작</text>
+  <text x="40" y="190" font-size="13" fill="#334155">• 선언 순서대로 하나씩, 끝나야(exit 0) 다음으로</text>
+  <text x="40" y="214" font-size="13" fill="#334155">• 실패하면 Pod의 restartPolicy에 따라 재시도</text>
+  <text x="40" y="238" font-size="13" fill="#334155">• 용도: 설정 생성, 의존 서비스 대기, 권한 정리</text>
+  <text x="40" y="262" font-size="13" fill="#334155">• 상태 표시: Init:0/2 → Init:1/2 → Running</text>
+  <text x="40" y="290" font-size="12" fill="#dc2626">⚠ sleep 3600 같은 끝나지 않는 명령 금지</text>
+
+  <!-- ===== Panel 2: native sidecar ===== -->
+  <rect x="490" y="76" width="450" height="236" rx="12" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="506" y="102" font-size="16" font-weight="700" fill="#14532d">② 네이티브 사이드카</text>
+  <text x="680" y="102" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">initContainers + restartPolicy: Always</text>
+  <text x="506" y="140" font-size="12" fill="#64748b">sidecar</text>
+  <rect x="566" y="126" width="350" height="20" rx="4" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="506" y="172" font-size="12" fill="#64748b">app</text>
+  <rect x="616" y="158" width="250" height="20" rx="4" fill="#86efac" stroke="#16a34a"/>
+  <line x1="566" y1="188" x2="616" y2="188" stroke="#64748b" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="566" y="204" font-size="11" fill="#334155">먼저 시작</text>
+  <line x1="866" y1="188" x2="914" y2="188" stroke="#64748b" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="846" y="204" font-size="11" fill="#334155">나중에 종료</text>
+  <text x="506" y="238" font-size="13" fill="#334155">• started 되면 다음 컨테이너 시작, 앱과 계속 실행</text>
+  <text x="506" y="262" font-size="13" fill="#334155">• Job에서도 앱이 끝나면 완료 (완료를 막지 않음)</text>
+  <text x="506" y="286" font-size="13" fill="#334155">• READY에 포함: 앱 1 + 사이드카 1 → 2/2</text>
+
+  <!-- ===== Panel 3: adapter ===== -->
+  <rect x="20" y="328" width="450" height="236" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="36" y="354" font-size="16" font-weight="700" fill="#0f172a">③ 어댑터 — 출력 형식 변환</text>
+  <rect x="40" y="370" width="410" height="112" rx="10" fill="#ffffff" stroke="#326ce5" stroke-dasharray="6 4"/>
+  <text x="52" y="390" font-size="12" font-weight="700" fill="#326ce5">Pod</text>
+  <rect x="56" y="400" width="90" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="101" y="425" text-anchor="middle" font-size="13" fill="#14532d">app</text>
+  <line x1="146" y1="420" x2="176" y2="420" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="180" y="400" width="110" height="40" rx="6" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="235" y="418" text-anchor="middle" font-size="11" fill="#92400e">emptyDir</text>
+  <text x="235" y="433" text-anchor="middle" font-size="11" fill="#92400e" font-family="Consolas,'D2Coding',monospace">app.log</text>
+  <line x1="290" y1="420" x2="320" y2="420" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="324" y="400" width="110" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="379" y="425" text-anchor="middle" font-size="13" fill="#312e81">adapter</text>
+  <text x="56" y="466" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">INFO tick-7</text>
+  <text x="300" y="466" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">{"level":"INFO",...}</text>
+  <text x="40" y="508" font-size="13" fill="#334155">• 앱은 그대로, 바깥(로그 수집기·모니터링)이</text>
+  <text x="52" y="528" font-size="13" fill="#334155">원하는 형식으로 바꿔 stdout·포트로 내보냄</text>
+  <text x="40" y="552" font-size="13" fill="#334155">• 연결: 공유 볼륨</text>
+
+  <!-- ===== Panel 4: ambassador ===== -->
+  <rect x="490" y="328" width="450" height="236" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="506" y="354" font-size="16" font-weight="700" fill="#0f172a">④ 앰배서더 — 바깥 통신 대리</text>
+  <rect x="510" y="370" width="290" height="112" rx="10" fill="#ffffff" stroke="#326ce5" stroke-dasharray="6 4"/>
+  <text x="522" y="390" font-size="12" font-weight="700" fill="#326ce5">Pod</text>
+  <rect x="526" y="400" width="90" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="571" y="425" text-anchor="middle" font-size="13" fill="#14532d">app</text>
+  <line x1="616" y1="420" x2="682" y2="420" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="649" y="412" text-anchor="middle" font-size="10" fill="#334155" font-family="Consolas,'D2Coding',monospace">:9000</text>
+  <rect x="686" y="400" width="100" height="40" rx="6" fill="#c7d2fe" stroke="#4f46e5"/>
+  <text x="736" y="425" text-anchor="middle" font-size="13" fill="#312e81">proxy</text>
+  <line x1="786" y1="420" x2="826" y2="420" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="830" y="396" width="96" height="48" rx="6" fill="#e8eefc" stroke="#326ce5"/>
+  <text x="878" y="416" text-anchor="middle" font-size="12" fill="#1e3a8a">Service</text>
+  <text x="878" y="434" text-anchor="middle" font-size="12" fill="#1e3a8a">backend</text>
+  <text x="526" y="466" font-size="11" fill="#334155">app은 localhost:9000만 앎</text>
+  <text x="506" y="508" font-size="13" fill="#334155">• 대상·인증·재시도는 프록시 설정(ConfigMap)에</text>
+  <text x="506" y="532" font-size="13" fill="#334155">• 연결: localhost (같은 네트워크 네임스페이스)</text>
+  <text x="506" y="556" font-size="13" fill="#334155">• 대상이 바뀌어도 앱 이미지는 그대로</text>
+</svg>

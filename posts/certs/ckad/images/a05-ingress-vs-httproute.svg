@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="30" y="38" font-size="20" font-weight="bold" fill="#334155">같은 라우팅을 Ingress와 HTTPRoute로 — 필드 대응</text>
+
+  <text x="20" y="78" font-size="14" font-weight="bold" fill="#326ce5">Ingress (networking.k8s.io/v1)</text>
+  <text x="455" y="78" font-size="14" font-weight="bold" fill="#15803d">HTTPRoute (gateway.networking.k8s.io/v1)</text>
+
+  <!-- left code box -->
+  <rect x="20" y="90" width="425" height="330" rx="8" fill="#0f172a"/>
+  <rect x="26" y="168" width="413" height="20" rx="3" fill="#326ce5" fill-opacity="0.55"/>
+  <rect x="26" y="204" width="413" height="20" rx="3" fill="#16a34a" fill-opacity="0.55"/>
+  <rect x="26" y="258" width="413" height="38" rx="3" fill="#f59e0b" fill-opacity="0.5"/>
+  <rect x="26" y="312" width="413" height="20" rx="3" fill="#a855f7" fill-opacity="0.5"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#e2e8f0">
+    <text x="34" y="111" xml:space="preserve">apiVersion: networking.k8s.io/v1</text>
+    <text x="34" y="129" xml:space="preserve">kind: Ingress</text>
+    <text x="34" y="147" xml:space="preserve">metadata: {name: shop, namespace: a05}</text>
+    <text x="34" y="165" xml:space="preserve">spec:</text>
+    <text x="34" y="183" xml:space="preserve">  ingressClassName: traefik</text>
+    <text x="34" y="201" xml:space="preserve">  rules:</text>
+    <text x="34" y="219" xml:space="preserve">  - host: shop.a05.test</text>
+    <text x="34" y="237" xml:space="preserve">    http:</text>
+    <text x="34" y="255" xml:space="preserve">      paths:</text>
+    <text x="34" y="273" xml:space="preserve">      - path: /api</text>
+    <text x="34" y="291" xml:space="preserve">        pathType: Prefix</text>
+    <text x="34" y="309" xml:space="preserve">        backend:</text>
+    <text x="34" y="327" xml:space="preserve">          service: {name: api, port: {number: 80}}</text>
+    <text x="34" y="345" xml:space="preserve">      - path: /</text>
+    <text x="34" y="363" xml:space="preserve">        pathType: Prefix</text>
+    <text x="34" y="381" xml:space="preserve">        backend:</text>
+    <text x="34" y="399" xml:space="preserve">          service: {name: web, port: {number: 80}}</text>
+  </g>
+
+  <!-- right code box -->
+  <rect x="455" y="90" width="425" height="330" rx="8" fill="#0f172a"/>
+  <rect x="461" y="168" width="413" height="38" rx="3" fill="#326ce5" fill-opacity="0.55"/>
+  <rect x="461" y="210" width="413" height="20" rx="3" fill="#16a34a" fill-opacity="0.55"/>
+  <rect x="461" y="264" width="413" height="20" rx="3" fill="#f59e0b" fill-opacity="0.5"/>
+  <rect x="461" y="300" width="413" height="20" rx="3" fill="#a855f7" fill-opacity="0.5"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="12" fill="#e2e8f0">
+    <text x="469" y="111" xml:space="preserve">apiVersion: gateway.networking.k8s.io/v1</text>
+    <text x="469" y="129" xml:space="preserve">kind: HTTPRoute</text>
+    <text x="469" y="147" xml:space="preserve">metadata: {name: shop, namespace: a05}</text>
+    <text x="469" y="165" xml:space="preserve">spec:</text>
+    <text x="469" y="183" xml:space="preserve">  parentRefs:</text>
+    <text x="469" y="201" xml:space="preserve">  - {name: traefik-gateway, namespace: traefik}</text>
+    <text x="469" y="225" xml:space="preserve">  hostnames: ["shop.a05.test"]</text>
+    <text x="469" y="243" xml:space="preserve">  rules:</text>
+    <text x="469" y="261" xml:space="preserve">  - matches:</text>
+    <text x="469" y="279" xml:space="preserve">    - path: {type: PathPrefix, value: /api}</text>
+    <text x="469" y="297" xml:space="preserve">    backendRefs:</text>
+    <text x="469" y="315" xml:space="preserve">    - {name: api, port: 80}</text>
+    <text x="469" y="333" xml:space="preserve">  - backendRefs:</text>
+    <text x="469" y="351" xml:space="preserve">    - {name: web, port: 80}</text>
+  </g>
+  <text x="469" y="386" font-size="12" fill="#94a3b8">두 번째 규칙: matches 생략 = 경로 / 전체</text>
+  <text x="469" y="406" font-size="12" fill="#94a3b8">명령형 생성 없음 → 문서 예제 복사</text>
+
+  <!-- legend -->
+  <g font-size="13" fill="#334155">
+    <rect x="20" y="436" width="18" height="14" fill="#326ce5" fill-opacity="0.75"/><text x="46" y="448">컨트롤러 연결</text>
+    <rect x="170" y="436" width="18" height="14" fill="#16a34a" fill-opacity="0.75"/><text x="196" y="448">호스트</text>
+    <rect x="280" y="436" width="18" height="14" fill="#f59e0b" fill-opacity="0.75"/><text x="306" y="448">경로 (Prefix = PathPrefix)</text>
+    <rect x="510" y="436" width="18" height="14" fill="#a855f7" fill-opacity="0.75"/><text x="536" y="448">백엔드 — 둘 다 Service 포트(80)</text>
+  </g>
+
+  <!-- request flow -->
+  <rect x="20" y="466" width="860" height="80" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <g font-size="12" fill="#0f172a" font-family="Consolas,'D2Coding',monospace">
+    <rect x="34" y="484" width="300" height="44" rx="6" fill="#ffffff" stroke="#64748b"/>
+    <text x="44" y="502">curl -H 'Host: shop.a05.test'</text>
+    <text x="44" y="520">  192.168.56.11:30080/api</text>
+    <rect x="370" y="484" width="150" height="44" rx="6" fill="#ffffff" stroke="#326ce5"/>
+    <text x="445" y="502" text-anchor="middle">Traefik</text>
+    <text x="445" y="520" text-anchor="middle">NodePort 30080</text>
+    <rect x="556" y="484" width="140" height="44" rx="6" fill="#ffffff" stroke="#a855f7"/>
+    <text x="626" y="502" text-anchor="middle">Service api</text>
+    <text x="626" y="520" text-anchor="middle">port 80</text>
+    <rect x="732" y="484" width="134" height="44" rx="6" fill="#dcfce7" stroke="#15803d"/>
+    <text x="799" y="502" text-anchor="middle">Pod api</text>
+    <text x="799" y="520" text-anchor="middle">:8080</text>
+  </g>
+  <g stroke="#334155" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+    <line x1="334" y1="506" x2="367" y2="506"/>
+    <line x1="520" y1="506" x2="553" y2="506"/>
+    <line x1="696" y1="506" x2="729" y2="506"/>
+  </g>
+</svg>

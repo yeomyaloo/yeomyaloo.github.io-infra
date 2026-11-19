@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="900" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="30" y="40" font-size="20" font-weight="bold" fill="#334155">startup · liveness · readiness probe 타임라인 (Spring Boot 앱)</text>
+
+  <!-- lane backgrounds -->
+  <rect x="20" y="70" width="860" height="50" rx="6" fill="#f8fafc"/>
+  <rect x="20" y="130" width="860" height="50" rx="6" fill="#f8fafc"/>
+  <rect x="20" y="190" width="860" height="50" rx="6" fill="#f8fafc"/>
+  <rect x="20" y="250" width="860" height="50" rx="6" fill="#f8fafc"/>
+  <rect x="20" y="310" width="860" height="50" rx="6" fill="#f8fafc"/>
+
+  <!-- lane labels -->
+  <g font-size="14" font-weight="bold" fill="#334155">
+    <text x="30" y="100">컨테이너</text>
+    <text x="30" y="160" fill="#326ce5">startupProbe</text>
+    <text x="30" y="220" fill="#326ce5">livenessProbe</text>
+    <text x="30" y="280" fill="#15803d">readinessProbe</text>
+    <text x="30" y="340">엔드포인트</text>
+  </g>
+
+  <!-- lane 1: container -->
+  <rect x="150" y="80" width="120" height="30" rx="4" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="210" y="100" font-size="13" fill="#334155" text-anchor="middle">기동 중 (JVM)</text>
+  <rect x="270" y="80" width="510" height="30" rx="4" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="525" y="100" font-size="13" fill="#15803d" text-anchor="middle" font-weight="bold">Running</text>
+  <rect x="780" y="80" width="80" height="30" rx="4" fill="#fca5a5" stroke="#dc2626"/>
+  <text x="820" y="100" font-size="13" fill="#7f1d1d" text-anchor="middle">재시작</text>
+
+  <!-- lane 2: startup -->
+  <g>
+    <circle cx="180" cy="148" r="7" fill="#dc2626"/>
+    <circle cx="210" cy="148" r="7" fill="#dc2626"/>
+    <circle cx="240" cy="148" r="7" fill="#dc2626"/>
+    <circle cx="270" cy="148" r="7" fill="#16a34a"/>
+    <line x1="282" y1="148" x2="860" y2="148" stroke="#94a3b8" stroke-dasharray="5,4"/>
+  </g>
+  <text x="150" y="173" font-size="12" fill="#334155">실패해도 24회까지 허용</text>
+  <text x="290" y="173" font-size="12" fill="#326ce5">성공 → liveness·readiness 시작</text>
+  <text x="560" y="173" font-size="12" fill="#64748b">성공 후에는 다시 실행하지 않음</text>
+
+  <!-- lane 3: liveness -->
+  <g>
+    <circle cx="300" cy="208" r="6" fill="#16a34a"/>
+    <circle cx="360" cy="208" r="6" fill="#16a34a"/>
+    <circle cx="420" cy="208" r="6" fill="#16a34a"/>
+    <circle cx="480" cy="208" r="6" fill="#16a34a"/>
+    <circle cx="540" cy="208" r="6" fill="#16a34a"/>
+    <circle cx="600" cy="208" r="6" fill="#16a34a"/>
+    <circle cx="660" cy="208" r="7" fill="#dc2626"/>
+    <circle cx="720" cy="208" r="7" fill="#dc2626"/>
+    <circle cx="780" cy="208" r="7" fill="#dc2626"/>
+  </g>
+  <text x="300" y="233" font-size="12" fill="#334155">10초마다 /actuator/health/liveness</text>
+  <text x="640" y="233" font-size="12" fill="#dc2626" font-weight="bold">3회 연속 실패 → 재시작</text>
+
+  <!-- lane 4: readiness -->
+  <g>
+    <circle cx="300" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="330" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="360" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="390" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="420" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="450" cy="268" r="6" fill="#f59e0b"/>
+    <circle cx="480" cy="268" r="6" fill="#f59e0b"/>
+    <circle cx="510" cy="268" r="6" fill="#f59e0b"/>
+    <circle cx="540" cy="268" r="6" fill="#f59e0b"/>
+    <circle cx="570" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="600" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="630" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="660" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="690" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="720" cy="268" r="6" fill="#16a34a"/>
+    <circle cx="750" cy="268" r="6" fill="#16a34a"/>
+  </g>
+  <text x="440" y="293" font-size="12" fill="#b45309" font-weight="bold">DB 일시 장애: 실패해도 재시작 없음</text>
+
+  <!-- lane 5: endpoints -->
+  <rect x="150" y="320" width="150" height="30" rx="4" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="225" y="340" font-size="13" fill="#334155" text-anchor="middle">미포함</text>
+  <rect x="300" y="320" width="150" height="30" rx="4" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="375" y="340" font-size="13" fill="#15803d" text-anchor="middle">포함</text>
+  <rect x="450" y="320" width="120" height="30" rx="4" fill="#fde68a" stroke="#f59e0b"/>
+  <text x="510" y="340" font-size="13" fill="#92400e" text-anchor="middle" font-weight="bold">제외</text>
+  <rect x="570" y="320" width="210" height="30" rx="4" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="675" y="340" font-size="13" fill="#15803d" text-anchor="middle">포함</text>
+  <rect x="780" y="320" width="80" height="30" rx="4" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="820" y="340" font-size="13" fill="#334155" text-anchor="middle">미포함</text>
+
+  <!-- axis -->
+  <line x1="150" y1="385" x2="866" y2="385" stroke="#334155" stroke-width="1.5" marker-end="url(#arr)"/>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <line x1="150" y1="380" x2="150" y2="390" stroke="#334155"/><text x="150" y="403">0s</text>
+    <line x1="270" y1="380" x2="270" y2="390" stroke="#334155"/><text x="270" y="403">20s</text>
+    <line x1="390" y1="380" x2="390" y2="390" stroke="#334155"/><text x="390" y="403">40s</text>
+    <line x1="510" y1="380" x2="510" y2="390" stroke="#334155"/><text x="510" y="403">60s</text>
+    <line x1="630" y1="380" x2="630" y2="390" stroke="#334155"/><text x="630" y="403">80s</text>
+    <line x1="750" y1="380" x2="750" y2="390" stroke="#334155"/><text x="750" y="403">100s</text>
+  </g>
+
+  <!-- bottom box -->
+  <rect x="20" y="420" width="860" height="84" rx="8" fill="#e8eefc" stroke="#326ce5" stroke-width="1.5"/>
+  <g font-family="Consolas,'D2Coding',monospace" font-size="13" fill="#334155">
+    <text x="40" y="446" xml:space="preserve">startupProbe, livenessProbe  →  GET /actuator/health/liveness   :8080</text>
+    <text x="40" y="468" xml:space="preserve">readinessProbe               →  GET /actuator/health/readiness  :8080</text>
+  </g>
+  <text x="40" y="492" font-size="13" fill="#334155">기동 허용 시간 = failureThreshold × periodSeconds (예: 24 × 5초 = 120초) · 관리 포트를 분리했다면 그 포트로</text>
+</svg>

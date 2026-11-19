@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">롤링 업데이트 — replicas 4, maxSurge 2, maxUnavailable 0</text>
+  <text x="480" y="58" text-anchor="middle" font-size="14" fill="#64748b">Pod 수는 6(= 4 + 2)을 넘지 않고, 사용 가능한 Pod는 4(= 4 − 0) 아래로 내려가지 않는다</text>
+  <rect x="24" y="80" width="176" height="276" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="112" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">시작</text>
+  <text x="112" y="128" text-anchor="middle" font-size="12" fill="#64748b">옛 4</text>
+  <rect x="40" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="62" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="90" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="112" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="140" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="162" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="40" y="220" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="62" y="247" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <text x="112" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">합계 4</text>
+  <text x="112" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">사용 가능 4</text>
+  <line x1="201" y1="218" x2="207" y2="218" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="208" y="80" width="176" height="276" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="296" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">① 새 Pod 2개 생성</text>
+  <text x="296" y="128" text-anchor="middle" font-size="12" fill="#64748b">maxSurge 2만큼</text>
+  <rect x="224" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="246" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="274" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="296" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="324" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="346" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="224" y="220" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="246" y="247" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="274" y="220" width="44" height="44" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="296" y="247" text-anchor="middle" font-size="12" fill="#16a34a">2.0…</text>
+  <rect x="324" y="220" width="44" height="44" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="346" y="247" text-anchor="middle" font-size="12" fill="#16a34a">2.0…</text>
+  <text x="296" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">합계 6</text>
+  <text x="296" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">사용 가능 4</text>
+  <line x1="385" y1="218" x2="391" y2="218" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="392" y="80" width="176" height="276" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="480" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">② 새 2개 사용 가능</text>
+  <text x="480" y="128" text-anchor="middle" font-size="12" fill="#64748b">Ready + minReadySeconds</text>
+  <text x="480" y="146" text-anchor="middle" font-size="12" fill="#64748b">→ 옛 2개 종료</text>
+  <rect x="408" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="430" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="458" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="480" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="508" y="164" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="530" y="191" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <rect x="408" y="220" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="430" y="247" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <text x="480" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">합계 4</text>
+  <text x="480" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">사용 가능 4</text>
+  <line x1="569" y1="218" x2="575" y2="218" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="576" y="80" width="176" height="276" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="664" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">③ 새 Pod 2개 더 생성</text>
+  <rect x="592" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="614" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="642" y="164" width="44" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="664" y="191" text-anchor="middle" font-size="12" fill="#1e40af">1.0</text>
+  <rect x="692" y="164" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="714" y="191" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <rect x="592" y="220" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="614" y="247" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <rect x="642" y="220" width="44" height="44" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="664" y="247" text-anchor="middle" font-size="12" fill="#16a34a">2.0…</text>
+  <rect x="692" y="220" width="44" height="44" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="714" y="247" text-anchor="middle" font-size="12" fill="#16a34a">2.0…</text>
+  <text x="664" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">합계 6</text>
+  <text x="664" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">사용 가능 4</text>
+  <line x1="753" y1="218" x2="759" y2="218" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="760" y="80" width="176" height="276" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="848" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">④ 완료</text>
+  <text x="848" y="128" text-anchor="middle" font-size="12" fill="#64748b">옛 RS 0개</text>
+  <rect x="776" y="164" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="798" y="191" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <rect x="826" y="164" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="848" y="191" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <rect x="876" y="164" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="898" y="191" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <rect x="776" y="220" width="44" height="44" rx="6" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="798" y="247" text-anchor="middle" font-size="12" fill="#14532d">2.0</text>
+  <text x="848" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">합계 4</text>
+  <text x="848" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">사용 가능 4</text>
+  <rect x="40" y="384" width="22" height="22" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="70" y="400" font-size="13" fill="#334155">옛 버전(1.0) 사용 가능</text>
+  <rect x="310" y="384" width="22" height="22" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="340" y="400" font-size="13" fill="#334155">새 버전 생성 중·Ready 대기</text>
+  <rect x="580" y="384" width="22" height="22" rx="4" fill="#86efac" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="610" y="400" font-size="13" fill="#334155">새 버전(2.0) 사용 가능</text>
+  <text x="40" y="428" font-size="12" fill="#64748b">반올림: maxSurge가 %면 올림, maxUnavailable이 %면 내림 · 둘 다 0은 불가 · 이미지가 잘못되면 ① 상태에서 멈추고 옛 4개가 계속 서비스</text>
+</svg>
