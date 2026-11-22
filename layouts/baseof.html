@@ -34,17 +34,16 @@
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    // 좁은 화면에서 탭 줄이 넘치면 현재 탭이 보이도록 가로 스크롤
-    var strip = document.querySelector('.tabstrip');
-    var act = strip && strip.querySelector('.active');
-    if (act && strip.scrollWidth > strip.clientWidth) {
-      strip.scrollLeft = act.offsetLeft - (strip.clientWidth - act.offsetWidth) / 2;
+    // 탭 줄이 두 줄로 접히면 상단 높이가 바뀌므로, 사이드바·여백 기준(--header-h)을 실제 높이로 맞춤
+    var top = document.querySelector('.topbar'), strip = document.querySelector('.tabstrip');
+    function fitHeader() {
+      if (top && strip) root.style.setProperty('--header-h', (top.offsetHeight + strip.offsetHeight) + 'px');
     }
-    function edge() { if (strip) strip.classList.toggle('at-end', strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 2); }
-    if (strip) { strip.addEventListener('scroll', edge, { passive: true }); edge(); }
+    var root = document.documentElement;
+    fitHeader();
+    window.addEventListener('resize', fitHeader);
 
     // 다크 모드 전환 + Giscus 댓글 테마 동기화
-    var root = document.documentElement;
     document.querySelector('.theme-toggle').addEventListener('click', function () {
       var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
