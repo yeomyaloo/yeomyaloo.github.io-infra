@@ -342,7 +342,7 @@ GitHub 프로필 → **Packages** 탭에 `gitops-demo-app`이 생겼습니다. m
 ### 5-2. 로컬에서 받아 보기
 
 ```bash
-# GitHub 계정명을 소문자로 (예: yeomyaloo)
+# GitHub 계정명을 소문자로 (예: my-github-id)
 export GH_USER=<your-github-username>
 
 docker pull ghcr.io/$GH_USER/gitops-demo-app:sha-1a2b3c4     # 실제 실행 요약에 나온 태그로

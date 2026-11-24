@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">질의 변환 네 가지 — 검색 전에 질문을 바꾼다</text>
+
+  <!-- 패널 A: Query rewriting -->
+  <rect x="20" y="56" width="450" height="250" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="84" font-size="16" font-weight="700" fill="#0f172a">① Query rewriting</text>
+  <rect x="36" y="100" width="200" height="80" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="136" y="128" text-anchor="middle" font-size="12" fill="#334155">이전 대화: Day 45 vLLM 배포</text>
+  <text x="136" y="152" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="700">질문: 그거 kind에서도 돼?</text>
+  <line x1="238" y1="140" x2="258" y2="140" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="262" y="100" width="192" height="80" rx="8" fill="#7c3aed"/>
+  <text x="358" y="122" text-anchor="middle" font-size="12" fill="#ede9fe">LLM이 독립 질문으로</text>
+  <text x="358" y="145" text-anchor="middle" font-size="12" fill="#ffffff">"Day 45의 vLLM 배포를</text>
+  <text x="358" y="164" text-anchor="middle" font-size="12" fill="#ffffff">kind에서 할 수 있나?"</text>
+  <text x="36" y="214" font-size="12.5" fill="#14532d">효과: 멀티턴 대화 · 생략된 주어 · 오타</text>
+  <text x="36" y="240" font-size="12.5" fill="#78350f">비용: LLM 1회 (출력이 짧아 가장 쌈)</text>
+  <text x="36" y="266" font-size="12.5" fill="#7f1d1d">실패: 의도 왜곡, 고유명사·버전을 바꿔 씀</text>
+
+  <!-- 패널 B: Multi-query -->
+  <rect x="490" y="56" width="450" height="250" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="506" y="84" font-size="16" font-weight="700" fill="#0f172a">② Multi-query + RRF</text>
+  <rect x="506" y="112" width="90" height="70" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="551" y="143" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="700">질문</text>
+  <text x="551" y="163" text-anchor="middle" font-size="12" fill="#334155">1개</text>
+  <rect x="626" y="98" width="160" height="28" rx="6" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="706" y="117" text-anchor="middle" font-size="12" fill="#4c1d95">원 질문</text>
+  <rect x="626" y="133" width="160" height="28" rx="6" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="706" y="152" text-anchor="middle" font-size="12" fill="#4c1d95">변형 1: 동의어</text>
+  <rect x="626" y="168" width="160" height="28" rx="6" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="706" y="187" text-anchor="middle" font-size="12" fill="#4c1d95">변형 2: 영문 기술 용어</text>
+  <line x1="596" y1="140" x2="623" y2="112" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="596" y1="147" x2="623" y2="147" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="596" y1="154" x2="623" y2="182" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="816" y="112" width="110" height="70" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="871" y="140" text-anchor="middle" font-size="12" fill="#78350f" font-weight="700">검색 3회</text>
+  <text x="871" y="162" text-anchor="middle" font-size="12" fill="#78350f">→ RRF 합산</text>
+  <line x1="786" y1="112" x2="813" y2="140" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="786" y1="147" x2="813" y2="147" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="786" y1="182" x2="813" y2="154" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="506" y="226" font-size="12.5" fill="#14532d">효과: 질문과 문서의 어휘가 다를 때</text>
+  <text x="506" y="252" font-size="12.5" fill="#78350f">비용: LLM 1회 + 임베딩·검색 N회</text>
+  <text x="506" y="278" font-size="12.5" fill="#7f1d1d">실패: 변형이 주제를 벗어나면 노이즈 상승</text>
+
+  <!-- 패널 C: HyDE -->
+  <rect x="20" y="316" width="450" height="250" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="36" y="344" font-size="16" font-weight="700" fill="#0f172a">③ HyDE (가상 문서 임베딩)</text>
+  <rect x="36" y="362" width="120" height="80" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="96" y="392" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="700">질문</text>
+  <text x="96" y="416" text-anchor="middle" font-size="12" fill="#334155">"볼륨 백업은?"</text>
+  <line x1="156" y1="402" x2="176" y2="402" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="180" y="362" width="140" height="80" rx="8" fill="#7c3aed"/>
+  <text x="250" y="386" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700">LLM이 쓴</text>
+  <text x="250" y="406" text-anchor="middle" font-size="12" fill="#ffffff">가상 답변 문단</text>
+  <text x="250" y="428" text-anchor="middle" font-size="11" fill="#ede9fe" font-family="Consolas,'D2Coding',monospace">docker run --rm -v</text>
+  <line x1="320" y1="402" x2="340" y2="402" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="344" y="362" width="110" height="80" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="399" y="390" text-anchor="middle" font-size="12" fill="#78350f" font-weight="700">그 문단으로</text>
+  <text x="399" y="412" text-anchor="middle" font-size="12" fill="#78350f">검색</text>
+  <text x="399" y="430" text-anchor="middle" font-size="11" fill="#92400e">문서 ↔ 문서</text>
+  <text x="36" y="476" font-size="12.5" fill="#14532d">효과: 짧고 모호한 질문, 질문체 ≠ 문서체</text>
+  <text x="36" y="502" font-size="12.5" fill="#78350f">비용: LLM 1회 (긴 출력) → 지연이 가장 큼</text>
+  <text x="36" y="528" font-size="12.5" fill="#7f1d1d">실패: 모르는 영역·명령어 질문에서 헛발</text>
+
+  <!-- 패널 D: Self-query -->
+  <rect x="490" y="316" width="450" height="250" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="506" y="344" font-size="16" font-weight="700" fill="#0f172a">④ Self-query (메타데이터 추출)</text>
+  <rect x="506" y="362" width="170" height="86" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="591" y="392" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="700">"해킹 21~28편에서</text>
+  <text x="591" y="414" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="700">CORS 설정 실수는?"</text>
+  <text x="591" y="436" text-anchor="middle" font-size="11" fill="#64748b">규칙 우선, 안 되면 LLM</text>
+  <rect x="712" y="360" width="214" height="36" rx="6" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="819" y="383" text-anchor="middle" font-size="12" fill="#4c1d95">검색어: CORS 설정 실수</text>
+  <rect x="712" y="412" width="214" height="36" rx="6" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="819" y="435" text-anchor="middle" font-size="12" fill="#7f1d1d" font-family="Consolas,'D2Coding',monospace">series=hacking, ep 21~28</text>
+  <line x1="676" y1="396" x2="709" y2="380" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="676" y1="414" x2="709" y2="428" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="506" y="476" font-size="12.5" fill="#14532d">효과: 탭·시리즈·편 번호가 담긴 범위 질문</text>
+  <text x="506" y="502" font-size="12.5" fill="#78350f">비용: 규칙이면 0, LLM이면 1회</text>
+  <text x="506" y="528" font-size="12.5" fill="#7f1d1d">실패: 틀린 필터 = 정답이 후보에서 사라짐</text>
+  <text x="506" y="552" font-size="12" fill="#64748b">→ 결과가 적으면 필터 없이 재검색 (fallback)</text>
+</svg>

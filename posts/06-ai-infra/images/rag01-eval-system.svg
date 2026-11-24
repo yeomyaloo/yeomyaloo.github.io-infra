@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" width="980" height="560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="980" height="560" fill="#ffffff"/>
+  <text x="490" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RAG 평가 체계 — 시험지 · 응시 · 비교 · 기록</text>
+
+  <!-- column headers -->
+  <text x="135" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">1. 시험지</text>
+  <text x="460" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">2. 응시</text>
+  <text x="805" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">3. 비교 · 기록</text>
+
+  <!-- left: sources -->
+  <rect x="20" y="80" width="110" height="64" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <text x="75" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">운영 로그</text>
+  <text x="75" y="128" text-anchor="middle" font-size="11" fill="#64748b">Langfuse 질문</text>
+  <rect x="140" y="80" width="110" height="64" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <text x="195" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">Ragas 합성</text>
+  <text x="195" y="128" text-anchor="middle" font-size="11" fill="#64748b" font-family="Consolas,'D2Coding',monospace">gen_testset.py</text>
+  <line x1="75" y1="144" x2="100" y2="178" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="195" y1="144" x2="170" y2="178" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="20" y="180" width="230" height="48" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="135" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">사람 검수 (절반은 폐기)</text>
+  <line x1="135" y1="228" x2="135" y2="258" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="260" width="230" height="130" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="135" y="288" text-anchor="middle" font-size="15" font-weight="700" fill="#78350f">골든 셋</text>
+  <text x="135" y="308" text-anchor="middle" font-size="12" fill="#78350f" font-family="Consolas,'D2Coding',monospace">golden.jsonl</text>
+  <g font-size="12" fill="#78350f">
+    <text x="34" y="332">• 유형 분포 · dev / test 분리</text>
+    <text x="34" y="354">• relevant = 문서 + 섹션</text>
+    <text x="34" y="376">• KB_REF로 지식 베이스 고정</text>
+  </g>
+
+  <line x1="250" y1="325" x2="298" y2="325" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- middle: run_eval -->
+  <rect x="300" y="80" width="320" height="310" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="460" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95" font-family="Consolas,'D2Coding',monospace">python -m eval.run_eval</text>
+
+  <rect x="320" y="118" width="280" height="62" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+  <text x="336" y="142" font-size="14" font-weight="700" fill="#4c1d95">① 검색  retrieve(q, k)</text>
+  <text x="336" y="166" font-size="12" fill="#5b21b6" font-family="Consolas,'D2Coding',monospace">RETRIEVER=app:retrieve (교체 가능)</text>
+  <line x1="460" y1="180" x2="460" y2="198" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowp)"/>
+
+  <rect x="320" y="200" width="280" height="62" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+  <text x="336" y="224" font-size="14" font-weight="700" fill="#4c1d95">② 생성  LLM_MODEL</text>
+  <text x="336" y="248" font-size="12" fill="#5b21b6">build_messages → temperature 0</text>
+  <line x1="460" y1="262" x2="460" y2="280" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowp)"/>
+
+  <rect x="320" y="282" width="280" height="94" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="336" y="305" font-size="14" font-weight="700" fill="#4c1d95">③ 채점</text>
+  <g font-size="12" fill="#4c1d95">
+    <text x="336" y="327">• hit@k · MRR — 직접 계산, LLM 없음</text>
+    <text x="336" y="347">• Ragas 지표 — 심판 LLM</text>
+    <text x="336" y="367">• 거절 정확도 — unanswerable</text>
+  </g>
+
+  <!-- gateway -->
+  <line x1="460" y1="376" x2="460" y2="418" stroke="#334155" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <rect x="320" y="420" width="280" height="50" rx="8" fill="#f8fafc" stroke="#64748b"/>
+  <text x="460" y="442" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">LiteLLM 게이트웨이 (Day 40)</text>
+  <text x="460" y="461" text-anchor="middle" font-size="11" fill="#64748b">judge · embed · max_budget 건 평가 키</text>
+
+  <line x1="620" y1="115" x2="668" y2="115" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- right column -->
+  <rect x="670" y="80" width="270" height="70" rx="8" fill="#dbeafe" stroke="#2496ed"/>
+  <text x="805" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a" font-family="Consolas,'D2Coding',monospace">eval/runs/&lt;run_id&gt;/</text>
+  <text x="805" y="132" text-anchor="middle" font-size="12" fill="#1e40af">results.jsonl · summary.json(config)</text>
+  <line x1="805" y1="150" x2="805" y2="178" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="670" y="180" width="270" height="80" rx="8" fill="#2496ed"/>
+  <text x="805" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">비교 — compare.py</text>
+  <text x="805" y="227" text-anchor="middle" font-size="12" fill="#ffffff">기준 실행과 질문별로 짝지어 비교</text>
+  <text x="805" y="247" text-anchor="middle" font-size="12" fill="#ffffff">부트스트랩 95% 구간 → 회귀 판정</text>
+
+  <line x1="735" y1="260" x2="735" y2="288" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="875" y1="260" x2="875" y2="288" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="670" y="290" width="130" height="70" rx="8" fill="#ffffff" stroke="#2496ed"/>
+  <text x="735" y="318" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">CI 게이트</text>
+  <text x="735" y="340" text-anchor="middle" font-size="11" fill="#1e40af">PR 체크 통과/실패</text>
+  <rect x="810" y="290" width="130" height="70" rx="8" fill="#ffffff" stroke="#2496ed"/>
+  <text x="875" y="318" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">실험 기록</text>
+  <text x="875" y="340" text-anchor="middle" font-size="11" fill="#1e40af" font-family="Consolas,'D2Coding',monospace">EXPERIMENTS.md</text>
+
+  <rect x="670" y="390" width="270" height="46" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="805" y="418" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">baseline/ — 채택하면 교체 (Git)</text>
+  <path d="M940,413 L960,413 L960,220 L942,220" fill="none" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- loop back -->
+  <path d="M805,436 L805,500 L135,500 L135,392" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="490" y="525" text-anchor="middle" font-size="13" fill="#991b1b">실패 사례 triage.py → 원인 확정 → 다음 실험 · 새 실패 유형은 골든 셋에 추가</text>
+</svg>

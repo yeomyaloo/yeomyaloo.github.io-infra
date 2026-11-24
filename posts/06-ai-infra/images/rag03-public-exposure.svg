@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">정적 블로그에서 공개 API를 부를 때 — 층마다 상한</text>
+
+  <text x="20" y="64" font-size="14" font-weight="700" fill="#334155">요청 경로 →</text>
+
+  <!-- 층 -->
+  <rect x="20" y="74" width="135" height="104" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="87" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">블로그 위젯</text>
+  <text x="87" y="122" text-anchor="middle" font-size="12" fill="#334155">github.io (정적)</text>
+  <text x="87" y="142" text-anchor="middle" font-size="12" fill="#334155">API 키 없음</text>
+  <text x="87" y="162" text-anchor="middle" font-size="12" fill="#334155">textContent 렌더링</text>
+
+  <rect x="175" y="74" width="135" height="104" rx="10" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="242" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">Cloudflare</text>
+  <text x="242" y="122" text-anchor="middle" font-size="12" fill="#78350f">Tunnel (포트 0개)</text>
+  <text x="242" y="142" text-anchor="middle" font-size="12" fill="#78350f">WAF 레이트 리밋</text>
+  <text x="242" y="162" text-anchor="middle" font-size="12" fill="#78350f">(선택) Turnstile</text>
+
+  <rect x="330" y="74" width="135" height="104" rx="10" fill="#e0e7ff" stroke="#4f46e5"/>
+  <text x="397" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#312e81">NetworkPolicy</text>
+  <text x="397" y="122" text-anchor="middle" font-size="12" fill="#312e81">rag-api 인그레스</text>
+  <text x="397" y="142" text-anchor="middle" font-size="12" fill="#312e81">edge · webui 만</text>
+  <text x="397" y="162" text-anchor="middle" font-size="12" fill="#312e81">(Day 48 7장)</text>
+
+  <rect x="485" y="74" width="135" height="104" rx="10" fill="#7c3aed"/>
+  <text x="552" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">rag-api</text>
+  <text x="552" y="122" text-anchor="middle" font-size="12" fill="#ffffff">CORS: 블로그만</text>
+  <text x="552" y="142" text-anchor="middle" font-size="12" fill="#ffffff">5/min · 60/day</text>
+  <text x="552" y="162" text-anchor="middle" font-size="12" fill="#ede9fe">500자 · 출력 검증</text>
+
+  <rect x="640" y="74" width="135" height="104" rx="10" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="707" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">LiteLLM</text>
+  <text x="707" y="122" text-anchor="middle" font-size="12" fill="#4c1d95">rag-public 키</text>
+  <text x="707" y="142" text-anchor="middle" font-size="12" fill="#4c1d95">rpm 30 · tpm</text>
+  <text x="707" y="162" text-anchor="middle" font-size="12" fill="#4c1d95">하루 예산 상한</text>
+
+  <rect x="795" y="74" width="135" height="104" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="862" y="99" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">vLLM / Ollama</text>
+  <text x="862" y="122" text-anchor="middle" font-size="12" fill="#14532d">GPU 1장</text>
+  <text x="862" y="142" text-anchor="middle" font-size="12" fill="#14532d">포화되면</text>
+  <text x="862" y="162" text-anchor="middle" font-size="12" fill="#14532d">내 사용도 멈춤</text>
+
+  <line x1="155" y1="126" x2="172" y2="126" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="310" y1="126" x2="327" y2="126" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="465" y1="126" x2="482" y2="126" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="620" y1="126" x2="637" y2="126" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="775" y1="126" x2="792" y2="126" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 막는 것 -->
+  <text x="20" y="210" font-size="14" font-weight="700" fill="#334155">이 층이 막는 것</text>
+  <rect x="20" y="220" width="135" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="87" y="248" text-anchor="middle" font-size="12" fill="#334155">모델 출력 속</text>
+  <text x="87" y="268" text-anchor="middle" font-size="12" fill="#334155">스크립트 실행</text>
+  <rect x="175" y="220" width="135" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="242" y="248" text-anchor="middle" font-size="12" fill="#334155">대량 요청 · 봇</text>
+  <text x="242" y="268" text-anchor="middle" font-size="12" fill="#334155">앱에 닿기 전 차단</text>
+  <rect x="330" y="220" width="135" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="397" y="248" text-anchor="middle" font-size="12" fill="#334155" font-family="Consolas,'D2Coding',monospace">CF-Connecting-IP</text>
+  <text x="397" y="268" text-anchor="middle" font-size="12" fill="#334155">헤더 위조 우회</text>
+  <rect x="485" y="220" width="135" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="552" y="248" text-anchor="middle" font-size="12" fill="#334155">IP별 반복 호출,</text>
+  <text x="552" y="268" text-anchor="middle" font-size="12" fill="#334155">긴 입력 · 가짜 링크</text>
+  <rect x="640" y="220" width="135" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="707" y="248" text-anchor="middle" font-size="12" fill="#334155">비용 폭주</text>
+  <text x="707" y="268" text-anchor="middle" font-size="12" fill="#334155">(외부 API 라우팅 시)</text>
+  <rect x="795" y="220" width="135" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="862" y="248" text-anchor="middle" font-size="12" fill="#334155">마지막 자원 —</text>
+  <text x="862" y="268" text-anchor="middle" font-size="12" fill="#334155">앞 층이 지켜야 함</text>
+
+  <!-- 하단 메모 -->
+  <rect x="20" y="320" width="450" height="135" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="40" y="348" font-size="15" font-weight="700" fill="#7f1d1d">CORS는 인증이 아니다</text>
+  <text x="40" y="376" font-size="13" fill="#7f1d1d">브라우저: 다른 출처의 응답을 읽어도 되는지 CORS로 판단</text>
+  <text x="40" y="400" font-size="13" fill="#7f1d1d">curl · 스크립트: Origin을 마음대로 → CORS와 무관</text>
+  <text x="40" y="424" font-size="13" fill="#7f1d1d">정적 페이지의 JS 속 키 = 공개된 키</text>
+  <text x="40" y="446" font-size="13" font-weight="700" fill="#7f1d1d">→ 남용 방어는 서버 쪽 층(Cloudflare ~ LiteLLM)이 맡는다</text>
+
+  <rect x="490" y="320" width="450" height="135" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="510" y="348" font-size="15" font-weight="700" fill="#14532d">공개 운영은 선택 사항</text>
+  <text x="510" y="376" font-size="13" fill="#14532d">기본: Open WebUI + Cloudflare Access (내부 사용자)</text>
+  <text x="510" y="400" font-size="13" fill="#14532d">공개: 별도 호스트 + 공개용 키(rag-public) 분리</text>
+  <text x="510" y="424" font-size="13" fill="#14532d">관측: 429 비율 · 예산 소진율 · [HOLD] 로그</text>
+  <text x="510" y="446" font-size="13" font-weight="700" fill="#14532d">끄는 스위치: Tunnel의 공개 호스트 삭제</text>
+</svg>

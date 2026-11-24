@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">RAG 지표 지도 — 선 하나가 지표 하나</text>
+  <text x="480" y="60" text-anchor="middle" font-size="13" fill="#64748b">지표는 다섯 재료 중 두세 개를 짝지어 비교한다</text>
+
+  <!-- edges first (under nodes) -->
+  <!-- L - C : hit/MRR -->
+  <line x1="210" y1="115" x2="400" y2="115" stroke="#2496ed" stroke-width="3"/>
+  <text x="305" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">hit@k · MRR</text>
+  <text x="305" y="136" text-anchor="middle" font-size="11" fill="#1e40af">LLM 없이 계산</text>
+
+  <!-- C - R : precision / recall -->
+  <line x1="480" y1="145" x2="480" y2="390" stroke="#7c3aed" stroke-width="3"/>
+  <text x="470" y="200" text-anchor="end" font-size="13" font-weight="700" fill="#4c1d95">ContextRecall</text>
+  <text x="470" y="218" text-anchor="end" font-size="11" fill="#5b21b6">모범 답 문장이 문맥에 있나</text>
+  <text x="490" y="200" font-size="13" font-weight="700" fill="#4c1d95">ContextPrecision</text>
+  <text x="490" y="218" font-size="11" fill="#5b21b6">쓸모 있는 문맥이 앞 순위인가</text>
+
+  <!-- A - C : faithfulness -->
+  <line x1="790" y1="260" x2="560" y2="135" stroke="#7c3aed" stroke-width="3"/>
+  <text x="700" y="160" font-size="13" font-weight="700" fill="#4c1d95">Faithfulness</text>
+  <text x="700" y="178" font-size="11" fill="#5b21b6">답변 주장이 문맥으로</text>
+  <text x="700" y="193" font-size="11" fill="#5b21b6">뒷받침되나 (환각)</text>
+
+  <!-- Q - A : answer relevancy -->
+  <line x1="210" y1="290" x2="760" y2="290" stroke="#7c3aed" stroke-width="3"/>
+  <text x="310" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">AnswerRelevancy</text>
+  <text x="310" y="310" text-anchor="middle" font-size="11" fill="#5b21b6">답변이 질문에 맞나 (사실 여부는 안 봄)</text>
+
+  <!-- A - R : factual / noise -->
+  <line x1="770" y1="320" x2="560" y2="410" stroke="#7c3aed" stroke-width="3"/>
+  <text x="690" y="392" font-size="13" font-weight="700" fill="#4c1d95">FactualCorrectness</text>
+  <text x="690" y="412" font-size="13" font-weight="700" fill="#4c1d95">NoiseSensitivity</text>
+  <text x="690" y="430" font-size="11" fill="#5b21b6">모범 답과 일치 / 틀린 주장 비율(↓)</text>
+
+  <!-- nodes -->
+  <rect x="40" y="85" width="170" height="60" rx="10" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+  <text x="125" y="111" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">정답 문서 라벨</text>
+  <text x="125" y="131" text-anchor="middle" font-size="11" fill="#78350f" font-family="Consolas,'D2Coding',monospace">relevant</text>
+
+  <rect x="400" y="85" width="160" height="60" rx="10" fill="#dbeafe" stroke="#2496ed" stroke-width="2"/>
+  <text x="480" y="111" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">검색된 문맥</text>
+  <text x="480" y="131" text-anchor="middle" font-size="11" fill="#1e40af">top-k 청크</text>
+
+  <rect x="40" y="260" width="170" height="60" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="125" y="286" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">질문</text>
+  <text x="125" y="306" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'D2Coding',monospace">user_input</text>
+
+  <rect x="760" y="260" width="170" height="60" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="845" y="286" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">생성된 답변</text>
+  <text x="845" y="306" text-anchor="middle" font-size="11" fill="#5b21b6" font-family="Consolas,'D2Coding',monospace">response</text>
+  <text x="845" y="340" text-anchor="middle" font-size="11" fill="#991b1b">답 없는 질문 → 거절 정확도</text>
+
+  <rect x="400" y="390" width="160" height="60" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="480" y="416" text-anchor="middle" font-size="14" font-weight="700" fill="#166534">모범 답</text>
+  <text x="480" y="436" text-anchor="middle" font-size="11" fill="#166534" font-family="Consolas,'D2Coding',monospace">reference</text>
+
+  <!-- legend -->
+  <line x1="200" y1="490" x2="240" y2="490" stroke="#2496ed" stroke-width="3"/>
+  <text x="248" y="494" font-size="12" fill="#334155">LLM 없이 계산 (빠름 · 무료 · 결정적)</text>
+  <line x1="530" y1="490" x2="570" y2="490" stroke="#7c3aed" stroke-width="3"/>
+  <text x="578" y="494" font-size="12" fill="#334155">LLM 심판 필요 (비용 · 흔들림)</text>
+</svg>

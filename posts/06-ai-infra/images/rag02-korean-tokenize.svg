@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">한국어 BM25 — 공백으로 자르면 같은 말도 안 겹친다</text>
+
+  <g font-size="14">
+    <text x="30" y="72" font-weight="700" fill="#334155">질문</text>
+    <text x="80" y="72" fill="#0f172a">볼륨을 삭제해도 데이터가 남나요?</text>
+    <text x="500" y="72" font-weight="700" fill="#334155">문서</text>
+    <text x="550" y="72" fill="#0f172a">볼륨은 컨테이너를 삭제해도 데이터를 보존한다</text>
+  </g>
+
+  <!-- A: whitespace -->
+  <rect x="20" y="92" width="920" height="140" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="40" y="120" font-size="15" font-weight="700" fill="#991b1b">공백(어절) 토큰</text>
+  <text x="40" y="160" font-size="13" fill="#334155">질문</text>
+  <text x="40" y="206" font-size="13" fill="#334155">문서</text>
+  <g font-size="14" text-anchor="middle">
+    <rect x="200" y="140" width="62" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="231" y="160" fill="#334155">볼륨을</text>
+    <rect x="272" y="140" width="76" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="310" y="160" fill="#14532d">삭제해도</text>
+    <rect x="358" y="140" width="76" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="396" y="160" fill="#334155">데이터가</text>
+    <rect x="444" y="140" width="76" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="482" y="160" fill="#334155">남나요?</text>
+
+    <rect x="200" y="186" width="62" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="231" y="206" fill="#334155">볼륨은</text>
+    <rect x="272" y="186" width="90" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="317" y="206" fill="#334155">컨테이너를</text>
+    <rect x="372" y="186" width="76" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="410" y="206" fill="#14532d">삭제해도</text>
+    <rect x="458" y="186" width="76" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="496" y="206" fill="#334155">데이터를</text>
+    <rect x="544" y="186" width="76" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="582" y="206" fill="#334155">보존한다</text>
+  </g>
+  <rect x="680" y="140" width="240" height="76" rx="10" fill="#fca5a5"/>
+  <text x="800" y="172" text-anchor="middle" font-size="18" font-weight="700" fill="#7f1d1d">겹치는 토큰 1개</text>
+  <text x="800" y="198" text-anchor="middle" font-size="12" fill="#7f1d1d">볼륨을 ≠ 볼륨은, 데이터가 ≠ 데이터를</text>
+
+  <!-- B: Kiwi -->
+  <rect x="20" y="250" width="920" height="140" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="40" y="278" font-size="15" font-weight="700" fill="#166534">Kiwi 형태소 (명사 · 어간만)</text>
+  <text x="40" y="318" font-size="13" fill="#334155">질문</text>
+  <text x="40" y="364" font-size="13" fill="#334155">문서</text>
+  <g font-size="14" text-anchor="middle">
+    <rect x="200" y="298" width="48" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="224" y="318" fill="#14532d">볼륨</text>
+    <rect x="258" y="298" width="48" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="282" y="318" fill="#14532d">삭제</text>
+    <rect x="316" y="298" width="62" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="347" y="318" fill="#14532d">데이터</text>
+    <rect x="388" y="298" width="34" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="405" y="318" fill="#334155">남</text>
+
+    <rect x="200" y="344" width="48" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="224" y="364" fill="#14532d">볼륨</text>
+    <rect x="258" y="344" width="76" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="296" y="364" fill="#334155">컨테이너</text>
+    <rect x="344" y="344" width="48" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="368" y="364" fill="#14532d">삭제</text>
+    <rect x="402" y="344" width="62" height="30" rx="6" fill="#86efac" stroke="#16a34a"/><text x="433" y="364" fill="#14532d">데이터</text>
+    <rect x="474" y="344" width="48" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="498" y="364" fill="#334155">보존</text>
+  </g>
+  <rect x="680" y="298" width="240" height="76" rx="10" fill="#16a34a"/>
+  <text x="800" y="330" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">겹치는 토큰 3개</text>
+  <text x="800" y="356" text-anchor="middle" font-size="12" fill="#ffffff">조사 · 어미를 떼고 의미 단위로</text>
+
+  <!-- footer -->
+  <text x="40" y="420" font-size="13" fill="#334155">버리는 것: 조사(을 · 은 · 가 · 를), 어미(해도 · 나요 · 한다), 기호</text>
+  <text x="40" y="446" font-size="13" fill="#334155">코드 토큰은 형태소 분석 전에 정규식으로 통째로:</text>
+  <text x="372" y="446" font-size="13" fill="#7c3aed" font-family="Consolas,'D2Coding',monospace">query_points · kube-prometheus-stack · v1.20.1</text>
+</svg>
