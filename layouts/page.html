@@ -5,6 +5,9 @@
     <h1>{{ .Title }}</h1>
     <div class="post-meta">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006년 1월 2일" }}</time>
+      {{- if site.Params.goatcounter }}
+      <span class="views" data-gc-path="{{ .RelPermalink }}" hidden>조회 <b></b></span>
+      {{- end }}
       {{- with .GetTerms "tags" }}
       <span class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</span>
       {{- end }}

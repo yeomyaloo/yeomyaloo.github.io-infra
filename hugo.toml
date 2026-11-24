@@ -17,6 +17,10 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
   # 글에 image 가 없을 때 쓰는 대표 이미지 (static/ 기준)
   defaultImage = "og-default.png"
 
+  # GoatCounter 방문자 통계 (https://<code>.goatcounter.com). 비우면 추적·카운터를 모두 끕니다.
+  # 카운터 숫자는 GoatCounter 설정의 "Allow adding visitor counts on your website" 가 켜져 있어야 보입니다.
+  goatcounter = "yeom456"
+
   # 상단 탭. 챕터 _index.md 의 tab 값과 key 가 같아야 합니다.
   # 글이 없는 탭은 "준비 중"으로 표시됩니다.
   [[params.tabs]]

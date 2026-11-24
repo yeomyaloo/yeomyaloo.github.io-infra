@@ -24,6 +24,9 @@
 <footer class="footer">
   <span>© {{ now.Year }} {{ site.Params.author }}</span>
   <a href="{{ site.Params.github }}">GitHub</a>
+  {{- if site.Params.goatcounter }}
+  <span class="views" data-gc-path="TOTAL" hidden>전체 방문 <b></b></span>
+  {{- end }}
 </footer>
 <script>
   (function () {
@@ -55,5 +58,26 @@
     });
   })();
 </script>
+{{- with site.Params.goatcounter }}
+{{- if hugo.IsProduction }}
+{{- /* GoatCounter: 쿠키 없이 방문만 셉니다. 로컬 미리보기(hugo server)에서는 세지 않습니다. */}}
+<script data-goatcounter="https://{{ . }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{{- end }}
+<script>
+  // 공개 카운터(JSON)를 읽어 숫자를 채웁니다. 설정이 꺼져 있거나 실패하면 그대로 숨겨 둡니다.
+  (function () {
+    var base = 'https://{{ . }}.goatcounter.com/counter/';
+    document.querySelectorAll('[data-gc-path]').forEach(function (el) {
+      var p = el.getAttribute('data-gc-path');
+      var url = base + (p === 'TOTAL' ? 'TOTAL' : encodeURIComponent(p)) + '.json';
+      fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+        if (!d || d.count == null) return;
+        el.querySelector('b').textContent = d.count;
+        el.hidden = false;
+      }).catch(function () {});
+    });
+  })();
+</script>
+{{- end }}
 </body>
 </html>
