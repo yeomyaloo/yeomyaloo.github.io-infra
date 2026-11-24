@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="960" height="470" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">시험 23시간 45분 + 리포트 24시간 배분 예시</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#64748b">이 탭의 예시 일정(공식 일정 아님) · 한국 시간 10:00 시작 가정 · 근거: 공식 AD 준비 문서의 시간 관리 조언</text>
+
+  <!-- 1행: 시험 -->
+  <text x="60" y="96" font-size="15" font-weight="700" fill="#14532d">시험 (23:45)</text>
+  <g stroke="#ffffff" stroke-width="1.5">
+    <rect x="60" y="106" width="17.7" height="56" fill="#e2e8f0"/>
+    <rect x="77.7" y="106" width="141.5" height="56" fill="#86efac"/>
+    <rect x="219.2" y="106" width="26.5" height="56" fill="#fde68a"/>
+    <rect x="245.7" y="106" width="221.1" height="56" fill="#86efac"/>
+    <rect x="466.8" y="106" width="17.7" height="56" fill="#fde68a"/>
+    <rect x="484.5" y="106" width="159.2" height="56" fill="#c7d2fe"/>
+    <rect x="643.7" y="106" width="176.8" height="56" fill="#86efac"/>
+    <rect x="820.5" y="106" width="61.9" height="56" fill="#fca5a5"/>
+    <rect x="882.4" y="106" width="17.6" height="56" fill="#e2e8f0"/>
+  </g>
+  <g font-size="13" text-anchor="middle" fill="#0f172a">
+    <text x="148.5" y="130" font-weight="700">첫 블록 4h</text>
+    <text x="148.5" y="150" font-size="12">AD 세트 또는 머신 1대</text>
+    <text x="356.3" y="130" font-weight="700">독립 머신 순환</text>
+    <text x="356.3" y="150" font-size="12">머신당 2~3h 타이머</text>
+    <text x="564.1" y="130" font-weight="700">수면 4.5h</text>
+    <text x="564.1" y="150" font-size="12">감독 채팅에 알리기</text>
+    <text x="732.1" y="130" font-weight="700">남은 목표 재열거</text>
+    <text x="732.1" y="150" font-size="12">새 권한으로 다시 보기</text>
+    <text x="851.5" y="130" font-weight="700">증빙</text>
+    <text x="851.5" y="150" font-weight="700">점검</text>
+  </g>
+  <!-- 좁은 블록 콜아웃 -->
+  <g font-size="12" fill="#334155" stroke="#94a3b8" stroke-width="1">
+    <line x1="68.8" y1="162" x2="68.8" y2="182"/>
+    <line x1="232.4" y1="162" x2="232.4" y2="182"/>
+    <line x1="475.6" y1="162" x2="475.6" y2="182"/>
+    <line x1="891.2" y1="162" x2="891.2" y2="182"/>
+  </g>
+  <g font-size="12" fill="#334155">
+    <text x="62" y="196">준비 30분</text>
+    <text x="214" y="196">식사·증빙 확인</text>
+    <text x="458" y="196">식사</text>
+    <text x="900" y="196" text-anchor="end">새 시도 금지</text>
+  </g>
+  <!-- 눈금 -->
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="60" y="218">0h · 10:00</text>
+    <text x="272.2" y="218">6h · 16:00</text>
+    <text x="484.5" y="218">12h · 22:00</text>
+    <text x="696.7" y="218">18h · 04:00</text>
+    <text x="880" y="218">23:45 · 09:45</text>
+  </g>
+
+  <!-- 2행: 리포트 -->
+  <text x="60" y="262" font-size="15" font-weight="700" fill="#3730a3">리포트 (24시간)</text>
+  <g stroke="#ffffff" stroke-width="1.5">
+    <rect x="60" y="272" width="159.2" height="56" fill="#c7d2fe"/>
+    <rect x="219.2" y="272" width="336" height="56" fill="#bfdbfe"/>
+    <rect x="555.2" y="272" width="106.1" height="56" fill="#fde68a"/>
+    <rect x="661.3" y="272" width="35.4" height="56" fill="#fca5a5"/>
+    <rect x="696.7" y="272" width="212.2" height="56" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  </g>
+  <g font-size="13" text-anchor="middle" fill="#0f172a">
+    <text x="139.6" y="296" font-weight="700">휴식·수면</text>
+    <text x="139.6" y="316" font-size="12">피곤한 리포트 = 실수</text>
+    <text x="387.2" y="296" font-weight="700">초안 작성 (머신 순서 = 채점 순서)</text>
+    <text x="387.2" y="316" font-size="12">단계·명령·출력 + 스크린샷</text>
+    <text x="608.3" y="296" font-weight="700">PDF 검수</text>
+    <text x="608.3" y="316" font-size="12">.7z 압축</text>
+    <text x="802.8" y="296" font-weight="700">여유 (마감 6시간 전 제출)</text>
+    <text x="802.8" y="316" font-size="12">업로드 문제 대비</text>
+  </g>
+  <line x1="679" y1="328" x2="679" y2="350" stroke="#94a3b8" stroke-width="1"/>
+  <text x="679" y="364" text-anchor="middle" font-size="12" fill="#b91c1c">업로드 → MD5 비교 → Submit File</text>
+
+  <!-- 범례 -->
+  <g font-size="13" fill="#0f172a">
+    <rect x="60" y="392" width="16" height="16" fill="#86efac"/><text x="82" y="405">공략·열거</text>
+    <rect x="180" y="392" width="16" height="16" fill="#fde68a"/><text x="202" y="405">식사·휴식·검수</text>
+    <rect x="330" y="392" width="16" height="16" fill="#c7d2fe"/><text x="352" y="405">수면</text>
+    <rect x="420" y="392" width="16" height="16" fill="#fca5a5"/><text x="442" y="405">증빙·제출 (놓치면 0점)</text>
+    <rect x="620" y="392" width="16" height="16" fill="#bfdbfe"/><text x="642" y="405">리포트 작성</text>
+  </g>
+  <rect x="60" y="424" width="840" height="34" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.2"/>
+  <text x="480" y="446" text-anchor="middle" font-size="13" fill="#7f1d1d">시험이 끝나면 빠진 스크린샷을 다시 찍을 수 없다 — 마지막 1.5시간은 증빙 점검에만 쓴다</text>
+</svg>

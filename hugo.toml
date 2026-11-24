@@ -50,7 +50,7 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
   [[params.tabs]]
     key = "cert"
     name = "자격증 준비"
-    description = "RHCSA · CKA · CKS · CKAD · 정보보안기사 · KCNA · KCSA · AWS SAA · Terraform — 직접 만든 연습 문제"
+    description = "RHCSA · CKA · CKS · CKAD · 정보보안기사 · KCNA · KCSA · AWS SAA · Terraform · OSCP — 직접 만든 연습 문제와 학습 가이드"
 
   # 글 안의 .md 링크를 블로그 주소로 바꿀 때, infra 폴더 이름 → 블로그 폴더 이름
   # (해킹·클라우드·플랫폼은 탭 주소 /hacking/ /cloud/ /platform/ 과 겹치지 않게 번호 붙은 폴더에 둠)

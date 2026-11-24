@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">응시부터 결과, OSCP+ 갱신까지</text>
+
+  <!-- 상단 흐름 -->
+  <g text-anchor="middle">
+    <rect x="40" y="58" width="150" height="84" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="115" y="90" font-size="15" font-weight="700" fill="#0f172a">상품 구매·학습</text>
+    <text x="115" y="114" font-size="12" fill="#334155">PEN-200 모듈 → 랩</text>
+    <text x="115" y="131" font-size="12" fill="#334155">(O01 로드맵)</text>
+
+    <rect x="225" y="58" width="150" height="84" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="300" y="90" font-size="15" font-weight="700" fill="#0f172a">예약·사전 점검</text>
+    <text x="300" y="114" font-size="12" fill="#334155">영문 신분증·웹캠</text>
+    <text x="300" y="131" font-size="12" fill="#334155">재예약은 48시간 전까지</text>
+
+    <rect x="410" y="58" width="150" height="84" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="485" y="90" font-size="15" font-weight="700" fill="#14532d">시험 23시간 45분</text>
+    <text x="485" y="114" font-size="12" fill="#334155">감독 + Kali OpenVPN</text>
+    <text x="485" y="131" font-size="12" fill="#334155">증빙은 패널에 제출</text>
+
+    <rect x="595" y="58" width="150" height="84" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="670" y="90" font-size="15" font-weight="700" fill="#14532d">리포트 24시간</text>
+    <text x="670" y="114" font-size="12" fill="#334155">PDF → .7z → 업로드</text>
+    <text x="670" y="131" font-size="12" fill="#334155">MD5 확인 → Submit</text>
+
+    <rect x="780" y="58" width="140" height="84" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="850" y="90" font-size="15" font-weight="700" fill="#0f172a">결과 통보</text>
+    <text x="850" y="114" font-size="12" fill="#334155">고정: 10영업일</text>
+    <text x="850" y="131" font-size="12" fill="#334155">환산: 최대 15영업일</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="190" y1="100" x2="222" y2="100"/>
+    <line x1="375" y1="100" x2="407" y2="100"/>
+    <line x1="560" y1="100" x2="592" y2="100"/>
+    <line x1="745" y1="100" x2="777" y2="100"/>
+  </g>
+
+  <!-- 결과 분기 -->
+  <line x1="850" y1="142" x2="850" y2="186" stroke="#15803d" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="862" y="170" font-size="13" font-weight="700" fill="#15803d">합격</text>
+  <path d="M800,142 L800,165 L560,165 L560,186" fill="none" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="690" y="159" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">불합격</text>
+
+  <!-- 합격 결과 -->
+  <rect x="640" y="190" width="280" height="96" rx="10" fill="#ffffff" stroke="#15803d" stroke-width="2"/>
+  <text x="780" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">두 자격을 함께 받음</text>
+  <text x="660" y="246" font-size="14" fill="#0f172a">OSCP — 만료 없음 (평생)</text>
+  <text x="660" y="272" font-size="14" fill="#0f172a">OSCP+ — 발급일부터 3년</text>
+
+  <!-- 불합격 -->
+  <rect x="410" y="190" width="200" height="96" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="510" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">재응시 대기 기간</text>
+  <text x="510" y="240" text-anchor="middle" font-size="12" fill="#7f1d1d">1회 불합격 후 4주</text>
+  <text x="510" y="258" text-anchor="middle" font-size="12" fill="#7f1d1d">2회 후 8주 · 3회~ 12주</text>
+  <text x="510" y="276" text-anchor="middle" font-size="12" fill="#7f1d1d">누적 불합격 횟수 기준</text>
+  <path d="M410,238 L300,238 L300,145" fill="none" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="312" y="214" font-size="12" fill="#b91c1c">다시 예약</text>
+
+  <!-- 갱신 -->
+  <line x1="780" y1="286" x2="780" y2="318" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="40" y="322" width="880" height="160" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="348" font-size="15" font-weight="700" fill="#0f172a">OSCP+ 갱신 — 3년 안에 셋 중 하나 (CPE Handbook 기준)</text>
+  <g text-anchor="middle">
+    <rect x="60" y="362" width="270" height="104" rx="10" fill="#dcfce7" stroke="#15803d"/>
+    <text x="195" y="390" font-size="15" font-weight="700" fill="#14532d">① CPE 프로그램</text>
+    <text x="195" y="416" font-size="13" fill="#0f172a">3년 동안 CPE 120점</text>
+    <text x="195" y="438" font-size="13" fill="#0f172a">+ 매년 AMP(299 USD)</text>
+    <text x="195" y="456" font-size="13" fill="#0f172a">또는 AMF(145 USD)</text>
+
+    <rect x="345" y="362" width="270" height="104" rx="10" fill="#ffffff" stroke="#64748b"/>
+    <text x="480" y="390" font-size="15" font-weight="700" fill="#0f172a">② 같은 시험 재합격</text>
+    <text x="480" y="416" font-size="13" fill="#0f172a">OSCP+ 시험에 다시 합격</text>
+    <text x="480" y="438" font-size="13" fill="#64748b">(시험 단품: 90일 안 2회)</text>
+
+    <rect x="630" y="362" width="270" height="104" rx="10" fill="#ffffff" stroke="#4f46e5"/>
+    <text x="765" y="390" font-size="15" font-weight="700" fill="#3730a3">③ 상위 자격 합격</text>
+    <text x="765" y="416" font-size="13" fill="#0f172a">OSWA · OSEP · OSWE · OSED</text>
+    <text x="765" y="438" font-size="13" fill="#0f172a">OSMR · OSEE · OSAI+</text>
+  </g>
+  <text x="480" y="504" text-anchor="middle" font-size="12" fill="#64748b">②·③도 연간 유지 비용 적용 여부가 규칙에 있으니 갱신 시점에 공식 Handbook 확인 (가격·목록 확인일 2026-11-25)</text>
+</svg>

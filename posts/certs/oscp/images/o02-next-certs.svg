@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OSCP 다음 단계 — 발급처와 방향</text>
+  <text x="480" y="56" text-anchor="middle" font-size="13" fill="#64748b">이름·발급처·상태 확인일 2026-11-25 (각 공식 페이지)</text>
+
+  <!-- 출발점 -->
+  <rect x="30" y="170" width="220" height="110" rx="14" fill="#0f172a"/>
+  <text x="140" y="210" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">OSCP / OSCP+</text>
+  <text x="140" y="236" text-anchor="middle" font-size="13" fill="#e2e8f0">OffSec · PEN-200</text>
+  <text x="140" y="258" text-anchor="middle" font-size="12" fill="#86efac">넓게 열거 + 보고서</text>
+
+  <!-- 열 머리 -->
+  <text x="455" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">OffSec 300 레벨 (만료 없음)</text>
+  <text x="785" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">다른 발급처 · 방어 방향</text>
+
+  <!-- OffSec -->
+  <g>
+    <rect x="310" y="96" width="290" height="78" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="326" y="122" font-size="16" font-weight="700" fill="#14532d">OSEP · PEN-300</text>
+    <text x="326" y="146" font-size="13" fill="#0f172a">방어가 갖춰진 환경·대규모 AD 침투</text>
+    <text x="326" y="164" font-size="12" fill="#15803d">✔ OSCP+ 갱신 인정</text>
+
+    <rect x="310" y="186" width="290" height="78" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="326" y="212" font-size="16" font-weight="700" fill="#14532d">OSWE · WEB-300</text>
+    <text x="326" y="236" font-size="13" fill="#0f172a">소스 코드를 읽는 화이트박스 웹</text>
+    <text x="326" y="254" font-size="12" fill="#15803d">✔ OSCP+ 갱신 인정</text>
+
+    <rect x="310" y="276" width="290" height="78" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="326" y="302" font-size="16" font-weight="700" fill="#14532d">OSED · EXP-301</text>
+    <text x="326" y="326" font-size="13" fill="#0f172a">익스플로잇 개발·바이너리 이해</text>
+    <text x="326" y="344" font-size="12" fill="#15803d">✔ OSCP+ 갱신 인정</text>
+  </g>
+
+  <!-- 다른 발급처 -->
+  <g>
+    <rect x="640" y="96" width="290" height="78" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="656" y="122" font-size="16" font-weight="700" fill="#0f172a">CRTO · Zero-Point Security</text>
+    <text x="656" y="146" font-size="13" fill="#0f172a">Red Team Ops 과정, C2 기반 레드팀</text>
+    <text x="656" y="164" font-size="12" fill="#64748b">응시 횟수 제한 없음 (과정 페이지)</text>
+
+    <rect x="640" y="186" width="290" height="78" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="656" y="212" font-size="16" font-weight="700" fill="#0f172a">BSCP · PortSwigger</text>
+    <text x="656" y="236" font-size="13" fill="#0f172a">웹 취약점 실기, Web Security Academy</text>
+    <text x="656" y="254" font-size="12" fill="#64748b">개발 보안(해킹 13~20)과 연결</text>
+
+    <rect x="640" y="276" width="290" height="78" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+    <text x="656" y="302" font-size="16" font-weight="700" fill="#3730a3">OSDA · OSTH · OSIR (OffSec)</text>
+    <text x="656" y="326" font-size="13" fill="#0f172a">탐지·위협 헌팅·사고 대응</text>
+    <text x="656" y="344" font-size="12" fill="#4f46e5">OSTH·OSIR은 3년 만료형(CPE)</text>
+  </g>
+
+  <!-- 화살표 -->
+  <g stroke="#334155" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M250,200 L306,140"/>
+    <path d="M250,225 L306,225"/>
+    <path d="M250,250 L306,310"/>
+  </g>
+  <path d="M140,280 L140,384 L785,384 L785,358" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="300" y="402" font-size="12" fill="#64748b">다른 발급처·방어 방향은 OffSec 경로와 병행 가능</text>
+
+  <rect x="30" y="412" width="900" height="24" rx="6" fill="#fef2f2"/>
+  <text x="480" y="429" text-anchor="middle" font-size="12" fill="#7f1d1d">형식·가격·응시 요건은 바뀔 수 있음 — 등록 직전에 각 발급처 공식 페이지 재확인</text>
+</svg>

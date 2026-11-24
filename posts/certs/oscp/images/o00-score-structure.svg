@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">OSCP+ 시험 점수 구성 — 원점수 최대 100점</text>
+  <text x="480" y="60" text-anchor="middle" font-size="13" fill="#64748b">출처: OSCP+ Exam Guide · Scaled Scoring FAQ (확인일 2026-11-25)</text>
+
+  <!-- 그룹 라벨 -->
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <text x="216" y="96" fill="#3730a3">AD 세트 40점 (침해 가정)</text>
+    <text x="480" y="96" fill="#14532d">독립 머신 A 20점</text>
+    <text x="656" y="96" fill="#14532d">독립 머신 B 20점</text>
+    <text x="832" y="96" fill="#14532d">독립 머신 C 20점</text>
+  </g>
+  <!-- 그룹 괄호선 -->
+  <g stroke-width="2" fill="none">
+    <path d="M44,104 L44,110 L388,110 L388,104" stroke="#4f46e5"/>
+    <path d="M396,104 L396,110 L564,110 L564,104" stroke="#15803d"/>
+    <path d="M572,104 L572,110 L740,110 L740,104" stroke="#15803d"/>
+    <path d="M748,104 L748,110 L916,110 L916,104" stroke="#15803d"/>
+  </g>
+
+  <!-- 막대 -->
+  <g stroke="#ffffff" stroke-width="2">
+    <rect x="40" y="118" width="88" height="70" fill="#c7d2fe"/>
+    <rect x="128" y="118" width="88" height="70" fill="#c7d2fe"/>
+    <rect x="216" y="118" width="176" height="70" fill="#a5b4fc"/>
+    <rect x="392" y="118" width="88" height="70" fill="#dcfce7"/>
+    <rect x="480" y="118" width="88" height="70" fill="#86efac"/>
+    <rect x="568" y="118" width="88" height="70" fill="#dcfce7"/>
+    <rect x="656" y="118" width="88" height="70" fill="#86efac"/>
+    <rect x="744" y="118" width="88" height="70" fill="#dcfce7"/>
+    <rect x="832" y="118" width="88" height="70" fill="#86efac"/>
+  </g>
+  <g font-size="13" text-anchor="middle" fill="#0f172a">
+    <text x="84" y="148" font-weight="700">머신 #1</text><text x="84" y="170">10점</text>
+    <text x="172" y="148" font-weight="700">머신 #2</text><text x="172" y="170">10점</text>
+    <text x="304" y="148" font-weight="700">머신 #3</text><text x="304" y="170">20점</text>
+    <text x="436" y="148" font-weight="700">초기 접근</text><text x="436" y="170">10점</text>
+    <text x="524" y="148" font-weight="700">권한 상승</text><text x="524" y="170">10점</text>
+    <text x="612" y="148" font-weight="700">초기 접근</text><text x="612" y="170">10점</text>
+    <text x="700" y="148" font-weight="700">권한 상승</text><text x="700" y="170">10점</text>
+    <text x="788" y="148" font-weight="700">초기 접근</text><text x="788" y="170">10점</text>
+    <text x="876" y="148" font-weight="700">권한 상승</text><text x="876" y="170">10점</text>
+  </g>
+  <text x="480" y="210" text-anchor="middle" font-size="13" fill="#334155">모든 머신에 부분 점수 — "AD 세트를 전부 장악해야 점수"는 2024-11 이전의 옛 규칙</text>
+
+  <!-- 판정 화살표 -->
+  <line x1="480" y1="244" x2="250" y2="264" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="480" y1="244" x2="710" y2="264" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="480" y="234" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">시험 시작 시각에 따라 판정 방식이 다르다</text>
+
+  <!-- 왼쪽: 고정 점수제 -->
+  <rect x="40" y="268" width="420" height="150" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="250" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">2026-12-01 08:00 GMT 이전 시작</text>
+  <text x="250" y="330" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">고정 점수제</text>
+  <text x="250" y="362" text-anchor="middle" font-size="15" fill="#0f172a">원점수 70점 이상 → 합격</text>
+  <text x="250" y="392" text-anchor="middle" font-size="13" fill="#64748b">결과 통보: 리포트 제출 후 10영업일 안</text>
+
+  <!-- 오른쪽: 환산 점수제 -->
+  <rect x="500" y="268" width="420" height="150" rx="12" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="710" y="296" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">2026-12-01 08:00 GMT 이후 시작</text>
+  <text x="710" y="330" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">환산 점수제 (100 ~ 500)</text>
+  <text x="710" y="362" text-anchor="middle" font-size="15" fill="#0f172a">환산 400점 이상 → 합격</text>
+  <text x="710" y="386" text-anchor="middle" font-size="13" fill="#14532d">필요한 원점수는 세트마다 다르고 비공개</text>
+  <text x="710" y="406" text-anchor="middle" font-size="13" fill="#64748b">결과 통보: 최대 15영업일</text>
+
+  <!-- 하단 공통 규칙 -->
+  <rect x="40" y="440" width="880" height="62" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="480" y="466" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">보너스 점수 없음 · 점수는 리포트에 문서화된 목표만 인정</text>
+  <text x="480" y="489" text-anchor="middle" font-size="13" fill="#7f1d1d">증빙 파일을 컨트롤 패널에 제출 + 대화형 셸 스크린샷(파일 내용 + 대상 IP)이 없으면 그 머신은 0점</text>
+</svg>
