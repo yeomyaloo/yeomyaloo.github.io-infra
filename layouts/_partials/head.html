@@ -14,7 +14,6 @@
 {{- end }}
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $desc }}">
-<meta name="author" content="{{ site.Params.author }}">
 <link rel="canonical" href="{{ .Permalink }}">
 {{- with .GetTerms "tags" }}
 <meta name="keywords" content="{{ range $i, $t := . }}{{ if $i }}, {{ end }}{{ $t.LinkTitle }}{{ end }}">

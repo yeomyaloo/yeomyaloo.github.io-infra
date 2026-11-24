@@ -12,8 +12,8 @@ titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
 [params]
   shortTitle = "Stack Overflow"   # 좁은 화면 상단에 쓰는 짧은 제목
   description = "인프라에서 시작해 AI·보안·해킹·클라우드·자격증까지, 한 층씩 쌓아 올린 학습 기록"
-  author = "yeomyaloo"
-  github = "https://github.com/yeomyaloo"
+  # 이름·핸들은 화면에 넣지 않습니다. 하단 GitHub 링크는 이 블로그 저장소로.
+  github = "https://github.com/yeomyaloo/yeomyaloo.github.io-infra"
   # 글에 image 가 없을 때 쓰는 대표 이미지 (static/ 기준)
   defaultImage = "og-default.png"
 
