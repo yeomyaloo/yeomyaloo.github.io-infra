@@ -1,4 +1,4 @@
-# Infra Study 블로그
+# Stack Overflow — 쌓다 보니 넘쳤다
 
 Docker → Kubernetes → OpenStack 인프라 학습 기록을 올리는 Hugo 사이트입니다.
 👉 https://yeomyaloo.github.io/yeomyaloo.github.io-infra/

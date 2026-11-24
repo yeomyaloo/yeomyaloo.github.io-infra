@@ -2,7 +2,7 @@
 baseURL = "https://yeomyaloo.github.io/yeomyaloo.github.io-infra/"
 locale = "ko-KR"
 defaultContentLanguage = "ko"
-title = "yeomyaloo · Infra Study"
+title = "Stack Overflow — 쌓다 보니 넘쳤다"
 
 enableRobotsTXT = true
 enableGitInfo = false
@@ -10,8 +10,8 @@ summaryLength = 80
 titleCaseStyle = "none"   # 태그 이름을 대문자로 바꾸지 않음
 
 [params]
-  shortTitle = "Infra Study"   # 좁은 화면 상단에 쓰는 짧은 제목
-  description = "인프라·AI·보안·해킹·클라우드·플랫폼·자격증 — 하루 한 주제씩 쌓는 학습 기록"
+  shortTitle = "Stack Overflow"   # 좁은 화면 상단에 쓰는 짧은 제목
+  description = "인프라에서 시작해 AI·보안·해킹·클라우드·자격증까지, 한 층씩 쌓아 올린 학습 기록"
   author = "yeomyaloo"
   github = "https://github.com/yeomyaloo"
   # 글에 image 가 없을 때 쓰는 대표 이미지 (static/ 기준)
