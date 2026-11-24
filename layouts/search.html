@@ -1,0 +1,20 @@
+{{ define "main" }}
+<h1>검색</h1>
+<p class="muted">모든 탭의 글 본문을 검색합니다. 예: 쿠버네티스, SELinux, ArgoCD</p>
+<link rel="stylesheet" href="{{ "pagefind/pagefind-ui.css" | relURL }}">
+<div id="search" class="search-box"></div>
+<noscript><p class="muted">검색은 JavaScript 가 필요합니다. <a href="{{ "all/" | relURL }}">전체 글 목록</a>을 이용해 주세요.</p></noscript>
+<script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    if (!window.PagefindUI) {
+      document.getElementById('search').innerHTML = '<p class="muted">검색 색인은 배포된 사이트에서만 동작합니다.</p>';
+      return;
+    }
+    var ui = new PagefindUI({ element: '#search', showImages: false, showSubResults: true, resetStyles: false, autofocus: true });
+    // /search/?q=검색어 로 들어오면 바로 검색
+    var q = new URLSearchParams(location.search).get('q');
+    if (q) ui.triggerSearch(q);
+  });
+</script>
+{{ end }}

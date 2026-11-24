@@ -47,6 +47,10 @@ jobs:
         run: |
           hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      # 글 본문 검색 색인. 버전 고정, 결과물(public/pagefind/)은 사이트와 함께 배포되어 방문자는 외부 CDN 없이 검색합니다.
+      - name: Build search index (Pagefind)
+        run: npx -y pagefind@1.5.2 --site public
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,12 +1,12 @@
 {{ define "main" }}
-<article class="post">
+<article class="post" data-pagefind-body>
   <header class="post-header">
-    {{- with .CurrentSection }}{{ if not .IsHome }}<a class="post-chapter" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
+    {{- with .CurrentSection }}{{ if not .IsHome }}<a class="post-chapter" data-pagefind-ignore href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
     <h1>{{ .Title }}</h1>
-    <div class="post-meta">
+    <div class="post-meta" data-pagefind-ignore>
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006년 1월 2일" }}</time>
       {{- if site.Params.goatcounter }}
-      <span class="views" data-gc-path="{{ .RelPermalink }}" hidden>조회 <b></b></span>
+      <span class="views" data-pagefind-ignore data-gc-path="{{ .RelPermalink }}" hidden>조회 <b></b></span>
       {{- end }}
       {{- with .GetTerms "tags" }}
       <span class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</span>
@@ -15,7 +15,7 @@
   </header>
 
   {{- if and (ne .TableOfContents "") (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
-  <details class="toc">
+  <details class="toc" data-pagefind-ignore>
     <summary>목차</summary>
     {{ .TableOfContents }}
   </details>
@@ -35,12 +35,12 @@
     {{- else }}{{ $prev = . }}{{ end }}
   {{- end }}
   {{- if or $prev $next }}
-  <nav class="pager" aria-label="이전·다음 글">
+  <nav class="pager" aria-label="이전·다음 글" data-pagefind-ignore>
     {{ with $prev }}<a class="prev" href="{{ .RelPermalink }}"><small>← 이전 글</small>{{ .LinkTitle }}</a>{{ else }}<span></span>{{ end }}
     {{ with $next }}<a class="next" href="{{ .RelPermalink }}"><small>다음 글 →</small>{{ .LinkTitle }}</a>{{ end }}
   </nav>
   {{- end }}
 
-  {{ partial "comments.html" . }}
+  <div data-pagefind-ignore>{{ partial "comments.html" . }}</div>
 </article>
 {{ end }}

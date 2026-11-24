@@ -209,3 +209,23 @@ pre { background: var(--code-bg); border: 1px solid var(--border); border-radius
 /* 방문자 수 (GoatCounter) */
 .views b { font-weight: 600; font-variant-numeric: tabular-nums; }
 .footer .views { font-size: 13px; }
+
+/* 검색 (Pagefind UI) — 사이트 색·다크 모드에 맞춤 */
+.search-box {
+  --pagefind-ui-scale: .9;
+  --pagefind-ui-primary: var(--accent);
+  --pagefind-ui-text: var(--text);
+  --pagefind-ui-background: var(--bg);
+  --pagefind-ui-border: var(--border);
+  --pagefind-ui-tag: var(--bg-soft);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-font: inherit;
+  margin-top: 16px;
+}
+.search-box .pagefind-ui__result-link { color: var(--accent); }
+.search-box .pagefind-ui__result-excerpt { color: var(--muted); }
+.search-box mark { background: var(--accent-soft); color: var(--accent); }
+.search-box .pagefind-ui__result-thumb { display: none; }
+.search-box .pagefind-ui__result-title, .search-box .pagefind-ui__result-excerpt { overflow-wrap: anywhere; word-break: break-word; }
+.search-box .pagefind-ui__results, .search-box .pagefind-ui__result { min-width: 0; max-width: 100%; }
